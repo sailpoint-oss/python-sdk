@@ -74,1839 +74,1839 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2024*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AccessModelMetadataApi* | [**get_access_model_metadata_attribute**](sailpoint/v2024/docs/AccessModelMetadataApi.md#get_access_model_metadata_attribute) | **GET** /access-model-metadata/attributes/{key} | Get access model metadata attribute
-*AccessModelMetadataApi* | [**get_access_model_metadata_attribute_value**](sailpoint/v2024/docs/AccessModelMetadataApi.md#get_access_model_metadata_attribute_value) | **GET** /access-model-metadata/attributes/{key}/values/{value} | Get access model metadata value
-*AccessModelMetadataApi* | [**list_access_model_metadata_attribute**](sailpoint/v2024/docs/AccessModelMetadataApi.md#list_access_model_metadata_attribute) | **GET** /access-model-metadata/attributes | List access model metadata attributes
-*AccessModelMetadataApi* | [**list_access_model_metadata_attribute_value**](sailpoint/v2024/docs/AccessModelMetadataApi.md#list_access_model_metadata_attribute_value) | **GET** /access-model-metadata/attributes/{key}/values | List access model metadata values
-*AccessProfilesApi* | [**create_access_profile**](sailpoint/v2024/docs/AccessProfilesApi.md#create_access_profile) | **POST** /access-profiles | Create access profile
-*AccessProfilesApi* | [**delete_access_profile**](sailpoint/v2024/docs/AccessProfilesApi.md#delete_access_profile) | **DELETE** /access-profiles/{id} | Delete the specified access profile
-*AccessProfilesApi* | [**delete_access_profiles_in_bulk**](sailpoint/v2024/docs/AccessProfilesApi.md#delete_access_profiles_in_bulk) | **POST** /access-profiles/bulk-delete | Delete access profile(s)
-*AccessProfilesApi* | [**get_access_profile**](sailpoint/v2024/docs/AccessProfilesApi.md#get_access_profile) | **GET** /access-profiles/{id} | Get an access profile
-*AccessProfilesApi* | [**get_access_profile_entitlements**](sailpoint/v2024/docs/AccessProfilesApi.md#get_access_profile_entitlements) | **GET** /access-profiles/{id}/entitlements | List access profile&#39;s entitlements
-*AccessProfilesApi* | [**list_access_profiles**](sailpoint/v2024/docs/AccessProfilesApi.md#list_access_profiles) | **GET** /access-profiles | List access profiles
-*AccessProfilesApi* | [**patch_access_profile**](sailpoint/v2024/docs/AccessProfilesApi.md#patch_access_profile) | **PATCH** /access-profiles/{id} | Patch a specified access profile
-*AccessProfilesApi* | [**update_access_profiles_in_bulk**](sailpoint/v2024/docs/AccessProfilesApi.md#update_access_profiles_in_bulk) | **POST** /access-profiles/bulk-update-requestable | Update access profile(s) requestable field.
-*AccessRequestApprovalsApi* | [**approve_access_request**](sailpoint/v2024/docs/AccessRequestApprovalsApi.md#approve_access_request) | **POST** /access-request-approvals/{approvalId}/approve | Approve access request approval
-*AccessRequestApprovalsApi* | [**forward_access_request**](sailpoint/v2024/docs/AccessRequestApprovalsApi.md#forward_access_request) | **POST** /access-request-approvals/{approvalId}/forward | Forward access request approval
-*AccessRequestApprovalsApi* | [**get_access_request_approval_summary**](sailpoint/v2024/docs/AccessRequestApprovalsApi.md#get_access_request_approval_summary) | **GET** /access-request-approvals/approval-summary | Get access requests approvals number
-*AccessRequestApprovalsApi* | [**list_access_request_approvers**](sailpoint/v2024/docs/AccessRequestApprovalsApi.md#list_access_request_approvers) | **GET** /access-request-approvals/{accessRequestId}/approvers | Access request approvers
-*AccessRequestApprovalsApi* | [**list_completed_approvals**](sailpoint/v2024/docs/AccessRequestApprovalsApi.md#list_completed_approvals) | **GET** /access-request-approvals/completed | Completed access request approvals list
-*AccessRequestApprovalsApi* | [**list_pending_approvals**](sailpoint/v2024/docs/AccessRequestApprovalsApi.md#list_pending_approvals) | **GET** /access-request-approvals/pending | Pending access request approvals list
-*AccessRequestApprovalsApi* | [**reject_access_request**](sailpoint/v2024/docs/AccessRequestApprovalsApi.md#reject_access_request) | **POST** /access-request-approvals/{approvalId}/reject | Reject access request approval
-*AccessRequestIdentityMetricsApi* | [**get_access_request_identity_metrics**](sailpoint/v2024/docs/AccessRequestIdentityMetricsApi.md#get_access_request_identity_metrics) | **GET** /access-request-identity-metrics/{identityId}/requested-objects/{requestedObjectId}/type/{type} | Return access request identity metrics
-*AccessRequestsApi* | [**approve_bulk_access_request**](sailpoint/v2024/docs/AccessRequestsApi.md#approve_bulk_access_request) | **POST** /access-request-approvals/bulk-approve | Bulk approve access request
-*AccessRequestsApi* | [**cancel_access_request**](sailpoint/v2024/docs/AccessRequestsApi.md#cancel_access_request) | **POST** /access-requests/cancel | Cancel access request
-*AccessRequestsApi* | [**cancel_access_request_in_bulk**](sailpoint/v2024/docs/AccessRequestsApi.md#cancel_access_request_in_bulk) | **POST** /access-requests/bulk-cancel | Bulk cancel access request
-*AccessRequestsApi* | [**close_access_request**](sailpoint/v2024/docs/AccessRequestsApi.md#close_access_request) | **POST** /access-requests/close | Close access request
-*AccessRequestsApi* | [**create_access_request**](sailpoint/v2024/docs/AccessRequestsApi.md#create_access_request) | **POST** /access-requests | Submit access request
-*AccessRequestsApi* | [**get_access_request_config**](sailpoint/v2024/docs/AccessRequestsApi.md#get_access_request_config) | **GET** /access-request-config | Get access request configuration
-*AccessRequestsApi* | [**list_access_request_status**](sailpoint/v2024/docs/AccessRequestsApi.md#list_access_request_status) | **GET** /access-request-status | Access request status
-*AccessRequestsApi* | [**list_administrators_access_request_status**](sailpoint/v2024/docs/AccessRequestsApi.md#list_administrators_access_request_status) | **GET** /access-request-administration | Access request status for administrators
-*AccessRequestsApi* | [**load_account_selections**](sailpoint/v2024/docs/AccessRequestsApi.md#load_account_selections) | **POST** /access-requests/accounts-selection | Get accounts selections for identity
-*AccessRequestsApi* | [**set_access_request_config**](sailpoint/v2024/docs/AccessRequestsApi.md#set_access_request_config) | **PUT** /access-request-config | Update access request configuration
-*AccountActivitiesApi* | [**get_account_activity**](sailpoint/v2024/docs/AccountActivitiesApi.md#get_account_activity) | **GET** /account-activities/{id} | Get an account activity
-*AccountActivitiesApi* | [**list_account_activities**](sailpoint/v2024/docs/AccountActivitiesApi.md#list_account_activities) | **GET** /account-activities | List account activities
-*AccountAggregationsApi* | [**get_account_aggregation_status**](sailpoint/v2024/docs/AccountAggregationsApi.md#get_account_aggregation_status) | **GET** /account-aggregations/{id}/status | In-progress account aggregation status
-*AccountUsagesApi* | [**get_usages_by_account_id**](sailpoint/v2024/docs/AccountUsagesApi.md#get_usages_by_account_id) | **GET** /account-usages/{accountId}/summaries | Returns account usage insights
-*AccountsApi* | [**create_account**](sailpoint/v2024/docs/AccountsApi.md#create_account) | **POST** /accounts | Create account
-*AccountsApi* | [**delete_account**](sailpoint/v2024/docs/AccountsApi.md#delete_account) | **DELETE** /accounts/{id} | Delete account
-*AccountsApi* | [**delete_account_async**](sailpoint/v2024/docs/AccountsApi.md#delete_account_async) | **POST** /accounts/{id}/remove | Remove account
-*AccountsApi* | [**disable_account**](sailpoint/v2024/docs/AccountsApi.md#disable_account) | **POST** /accounts/{id}/disable | Disable account
-*AccountsApi* | [**disable_account_for_identity**](sailpoint/v2024/docs/AccountsApi.md#disable_account_for_identity) | **POST** /identities-accounts/{id}/disable | Disable idn account for identity
-*AccountsApi* | [**disable_accounts_for_identities**](sailpoint/v2024/docs/AccountsApi.md#disable_accounts_for_identities) | **POST** /identities-accounts/disable | Disable idn accounts for identities
-*AccountsApi* | [**enable_account**](sailpoint/v2024/docs/AccountsApi.md#enable_account) | **POST** /accounts/{id}/enable | Enable account
-*AccountsApi* | [**enable_account_for_identity**](sailpoint/v2024/docs/AccountsApi.md#enable_account_for_identity) | **POST** /identities-accounts/{id}/enable | Enable idn account for identity
-*AccountsApi* | [**enable_accounts_for_identities**](sailpoint/v2024/docs/AccountsApi.md#enable_accounts_for_identities) | **POST** /identities-accounts/enable | Enable idn accounts for identities
-*AccountsApi* | [**get_account**](sailpoint/v2024/docs/AccountsApi.md#get_account) | **GET** /accounts/{id} | Account details
-*AccountsApi* | [**get_account_entitlements**](sailpoint/v2024/docs/AccountsApi.md#get_account_entitlements) | **GET** /accounts/{id}/entitlements | Account entitlements
-*AccountsApi* | [**list_accounts**](sailpoint/v2024/docs/AccountsApi.md#list_accounts) | **GET** /accounts | Accounts list
-*AccountsApi* | [**put_account**](sailpoint/v2024/docs/AccountsApi.md#put_account) | **PUT** /accounts/{id} | Update account
-*AccountsApi* | [**submit_reload_account**](sailpoint/v2024/docs/AccountsApi.md#submit_reload_account) | **POST** /accounts/{id}/reload | Reload account
-*AccountsApi* | [**unlock_account**](sailpoint/v2024/docs/AccountsApi.md#unlock_account) | **POST** /accounts/{id}/unlock | Unlock account
-*AccountsApi* | [**update_account**](sailpoint/v2024/docs/AccountsApi.md#update_account) | **PATCH** /accounts/{id} | Update account
-*ApplicationDiscoveryApi* | [**get_discovered_applications**](sailpoint/v2024/docs/ApplicationDiscoveryApi.md#get_discovered_applications) | **GET** /discovered-applications | Get discovered applications for tenant
-*ApplicationDiscoveryApi* | [**get_manual_discover_applications_csv_template**](sailpoint/v2024/docs/ApplicationDiscoveryApi.md#get_manual_discover_applications_csv_template) | **GET** /manual-discover-applications-template | Download csv template for discovery
-*ApplicationDiscoveryApi* | [**send_manual_discover_applications_csv_template**](sailpoint/v2024/docs/ApplicationDiscoveryApi.md#send_manual_discover_applications_csv_template) | **POST** /manual-discover-applications | Upload csv to discover applications
-*ApprovalsApi* | [**get_approval**](sailpoint/v2024/docs/ApprovalsApi.md#get_approval) | **GET** /generic-approvals/{id} | Get an approval
-*ApprovalsApi* | [**get_approvals**](sailpoint/v2024/docs/ApprovalsApi.md#get_approvals) | **GET** /generic-approvals | Get approvals
-*AppsApi* | [**create_source_app**](sailpoint/v2024/docs/AppsApi.md#create_source_app) | **POST** /source-apps | Create source app
-*AppsApi* | [**delete_access_profiles_from_source_app_by_bulk**](sailpoint/v2024/docs/AppsApi.md#delete_access_profiles_from_source_app_by_bulk) | **POST** /source-apps/{id}/access-profiles/bulk-remove | Bulk remove access profiles from the specified source app
-*AppsApi* | [**delete_source_app**](sailpoint/v2024/docs/AppsApi.md#delete_source_app) | **DELETE** /source-apps/{id} | Delete source app by id
-*AppsApi* | [**get_source_app**](sailpoint/v2024/docs/AppsApi.md#get_source_app) | **GET** /source-apps/{id} | Get source app by id
-*AppsApi* | [**list_access_profiles_for_source_app**](sailpoint/v2024/docs/AppsApi.md#list_access_profiles_for_source_app) | **GET** /source-apps/{id}/access-profiles | List access profiles for the specified source app
-*AppsApi* | [**list_all_source_app**](sailpoint/v2024/docs/AppsApi.md#list_all_source_app) | **GET** /source-apps/all | List all source apps
-*AppsApi* | [**list_all_user_apps**](sailpoint/v2024/docs/AppsApi.md#list_all_user_apps) | **GET** /user-apps/all | List all user apps
-*AppsApi* | [**list_assigned_source_app**](sailpoint/v2024/docs/AppsApi.md#list_assigned_source_app) | **GET** /source-apps/assigned | List assigned source apps
-*AppsApi* | [**list_available_accounts_for_user_app**](sailpoint/v2024/docs/AppsApi.md#list_available_accounts_for_user_app) | **GET** /user-apps/{id}/available-accounts | List available accounts for user app
-*AppsApi* | [**list_available_source_apps**](sailpoint/v2024/docs/AppsApi.md#list_available_source_apps) | **GET** /source-apps | List available source apps
-*AppsApi* | [**list_owned_user_apps**](sailpoint/v2024/docs/AppsApi.md#list_owned_user_apps) | **GET** /user-apps | List owned user apps
-*AppsApi* | [**patch_source_app**](sailpoint/v2024/docs/AppsApi.md#patch_source_app) | **PATCH** /source-apps/{id} | Patch source app by id
-*AppsApi* | [**patch_user_app**](sailpoint/v2024/docs/AppsApi.md#patch_user_app) | **PATCH** /user-apps/{id} | Patch user app by id
-*AppsApi* | [**update_source_apps_in_bulk**](sailpoint/v2024/docs/AppsApi.md#update_source_apps_in_bulk) | **POST** /source-apps/bulk-update | Bulk update source apps
-*AuthProfileApi* | [**get_profile_config**](sailpoint/v2024/docs/AuthProfileApi.md#get_profile_config) | **GET** /auth-profiles/{id} | Get auth profile
-*AuthProfileApi* | [**get_profile_config_list**](sailpoint/v2024/docs/AuthProfileApi.md#get_profile_config_list) | **GET** /auth-profiles | Get list of auth profiles
-*AuthProfileApi* | [**patch_profile_config**](sailpoint/v2024/docs/AuthProfileApi.md#patch_profile_config) | **PATCH** /auth-profiles/{id} | Patch a specified auth profile
-*AuthUsersApi* | [**get_auth_user**](sailpoint/v2024/docs/AuthUsersApi.md#get_auth_user) | **GET** /auth-users/{id} | Auth user details
-*AuthUsersApi* | [**patch_auth_user**](sailpoint/v2024/docs/AuthUsersApi.md#patch_auth_user) | **PATCH** /auth-users/{id} | Auth user update
-*BrandingApi* | [**create_branding_item**](sailpoint/v2024/docs/BrandingApi.md#create_branding_item) | **POST** /brandings | Create a branding item
-*BrandingApi* | [**delete_branding**](sailpoint/v2024/docs/BrandingApi.md#delete_branding) | **DELETE** /brandings/{name} | Delete a branding item
-*BrandingApi* | [**get_branding**](sailpoint/v2024/docs/BrandingApi.md#get_branding) | **GET** /brandings/{name} | Get a branding item
-*BrandingApi* | [**get_branding_list**](sailpoint/v2024/docs/BrandingApi.md#get_branding_list) | **GET** /brandings | List of branding items
-*BrandingApi* | [**set_branding_item**](sailpoint/v2024/docs/BrandingApi.md#set_branding_item) | **PUT** /brandings/{name} | Update a branding item
-*CertificationCampaignFiltersApi* | [**create_campaign_filter**](sailpoint/v2024/docs/CertificationCampaignFiltersApi.md#create_campaign_filter) | **POST** /campaign-filters | Create campaign filter
-*CertificationCampaignFiltersApi* | [**delete_campaign_filters**](sailpoint/v2024/docs/CertificationCampaignFiltersApi.md#delete_campaign_filters) | **POST** /campaign-filters/delete | Deletes campaign filters
-*CertificationCampaignFiltersApi* | [**get_campaign_filter_by_id**](sailpoint/v2024/docs/CertificationCampaignFiltersApi.md#get_campaign_filter_by_id) | **GET** /campaign-filters/{id} | Get campaign filter by id
-*CertificationCampaignFiltersApi* | [**list_campaign_filters**](sailpoint/v2024/docs/CertificationCampaignFiltersApi.md#list_campaign_filters) | **GET** /campaign-filters | List campaign filters
-*CertificationCampaignFiltersApi* | [**update_campaign_filter**](sailpoint/v2024/docs/CertificationCampaignFiltersApi.md#update_campaign_filter) | **POST** /campaign-filters/{id} | Updates a campaign filter
-*CertificationCampaignsApi* | [**complete_campaign**](sailpoint/v2024/docs/CertificationCampaignsApi.md#complete_campaign) | **POST** /campaigns/{id}/complete | Complete a campaign
-*CertificationCampaignsApi* | [**create_campaign**](sailpoint/v2024/docs/CertificationCampaignsApi.md#create_campaign) | **POST** /campaigns | Create a campaign
-*CertificationCampaignsApi* | [**create_campaign_template**](sailpoint/v2024/docs/CertificationCampaignsApi.md#create_campaign_template) | **POST** /campaign-templates | Create a campaign template
-*CertificationCampaignsApi* | [**delete_campaign_template**](sailpoint/v2024/docs/CertificationCampaignsApi.md#delete_campaign_template) | **DELETE** /campaign-templates/{id} | Delete a campaign template
-*CertificationCampaignsApi* | [**delete_campaign_template_schedule**](sailpoint/v2024/docs/CertificationCampaignsApi.md#delete_campaign_template_schedule) | **DELETE** /campaign-templates/{id}/schedule | Delete campaign template schedule
-*CertificationCampaignsApi* | [**delete_campaigns**](sailpoint/v2024/docs/CertificationCampaignsApi.md#delete_campaigns) | **POST** /campaigns/delete | Delete campaigns
-*CertificationCampaignsApi* | [**get_active_campaigns**](sailpoint/v2024/docs/CertificationCampaignsApi.md#get_active_campaigns) | **GET** /campaigns | List campaigns
-*CertificationCampaignsApi* | [**get_campaign**](sailpoint/v2024/docs/CertificationCampaignsApi.md#get_campaign) | **GET** /campaigns/{id} | Get campaign
-*CertificationCampaignsApi* | [**get_campaign_reports**](sailpoint/v2024/docs/CertificationCampaignsApi.md#get_campaign_reports) | **GET** /campaigns/{id}/reports | Get campaign reports
-*CertificationCampaignsApi* | [**get_campaign_reports_config**](sailpoint/v2024/docs/CertificationCampaignsApi.md#get_campaign_reports_config) | **GET** /campaigns/reports-configuration | Get campaign reports configuration
-*CertificationCampaignsApi* | [**get_campaign_template**](sailpoint/v2024/docs/CertificationCampaignsApi.md#get_campaign_template) | **GET** /campaign-templates/{id} | Get a campaign template
-*CertificationCampaignsApi* | [**get_campaign_template_schedule**](sailpoint/v2024/docs/CertificationCampaignsApi.md#get_campaign_template_schedule) | **GET** /campaign-templates/{id}/schedule | Get campaign template schedule
-*CertificationCampaignsApi* | [**get_campaign_templates**](sailpoint/v2024/docs/CertificationCampaignsApi.md#get_campaign_templates) | **GET** /campaign-templates | List campaign templates
-*CertificationCampaignsApi* | [**move**](sailpoint/v2024/docs/CertificationCampaignsApi.md#move) | **POST** /campaigns/{id}/reassign | Reassign certifications
-*CertificationCampaignsApi* | [**patch_campaign_template**](sailpoint/v2024/docs/CertificationCampaignsApi.md#patch_campaign_template) | **PATCH** /campaign-templates/{id} | Update a campaign template
-*CertificationCampaignsApi* | [**set_campaign_reports_config**](sailpoint/v2024/docs/CertificationCampaignsApi.md#set_campaign_reports_config) | **PUT** /campaigns/reports-configuration | Set campaign reports configuration
-*CertificationCampaignsApi* | [**set_campaign_template_schedule**](sailpoint/v2024/docs/CertificationCampaignsApi.md#set_campaign_template_schedule) | **PUT** /campaign-templates/{id}/schedule | Set campaign template schedule
-*CertificationCampaignsApi* | [**start_campaign**](sailpoint/v2024/docs/CertificationCampaignsApi.md#start_campaign) | **POST** /campaigns/{id}/activate | Activate a campaign
-*CertificationCampaignsApi* | [**start_campaign_remediation_scan**](sailpoint/v2024/docs/CertificationCampaignsApi.md#start_campaign_remediation_scan) | **POST** /campaigns/{id}/run-remediation-scan | Run campaign remediation scan
-*CertificationCampaignsApi* | [**start_campaign_report**](sailpoint/v2024/docs/CertificationCampaignsApi.md#start_campaign_report) | **POST** /campaigns/{id}/run-report/{type} | Run campaign report
-*CertificationCampaignsApi* | [**start_generate_campaign_template**](sailpoint/v2024/docs/CertificationCampaignsApi.md#start_generate_campaign_template) | **POST** /campaign-templates/{id}/generate | Generate a campaign from template
-*CertificationCampaignsApi* | [**update_campaign**](sailpoint/v2024/docs/CertificationCampaignsApi.md#update_campaign) | **PATCH** /campaigns/{id} | Update a campaign
-*CertificationSummariesApi* | [**get_identity_access_summaries**](sailpoint/v2024/docs/CertificationSummariesApi.md#get_identity_access_summaries) | **GET** /certifications/{id}/access-summaries/{type} | Access summaries
-*CertificationSummariesApi* | [**get_identity_decision_summary**](sailpoint/v2024/docs/CertificationSummariesApi.md#get_identity_decision_summary) | **GET** /certifications/{id}/decision-summary | Summary of certification decisions
-*CertificationSummariesApi* | [**get_identity_summaries**](sailpoint/v2024/docs/CertificationSummariesApi.md#get_identity_summaries) | **GET** /certifications/{id}/identity-summaries | Identity summaries for campaign certification
-*CertificationSummariesApi* | [**get_identity_summary**](sailpoint/v2024/docs/CertificationSummariesApi.md#get_identity_summary) | **GET** /certifications/{id}/identity-summaries/{identitySummaryId} | Summary for identity
-*CertificationsApi* | [**get_certification_task**](sailpoint/v2024/docs/CertificationsApi.md#get_certification_task) | **GET** /certification-tasks/{id} | Certification task by id
-*CertificationsApi* | [**get_identity_certification**](sailpoint/v2024/docs/CertificationsApi.md#get_identity_certification) | **GET** /certifications/{id} | Identity certification by id
-*CertificationsApi* | [**get_identity_certification_item_permissions**](sailpoint/v2024/docs/CertificationsApi.md#get_identity_certification_item_permissions) | **GET** /certifications/{certificationId}/access-review-items/{itemId}/permissions | Permissions for entitlement certification item
-*CertificationsApi* | [**get_pending_certification_tasks**](sailpoint/v2024/docs/CertificationsApi.md#get_pending_certification_tasks) | **GET** /certification-tasks | List of pending certification tasks
-*CertificationsApi* | [**list_certification_reviewers**](sailpoint/v2024/docs/CertificationsApi.md#list_certification_reviewers) | **GET** /certifications/{id}/reviewers | List of reviewers for certification
-*CertificationsApi* | [**list_identity_access_review_items**](sailpoint/v2024/docs/CertificationsApi.md#list_identity_access_review_items) | **GET** /certifications/{id}/access-review-items | List of access review items
-*CertificationsApi* | [**list_identity_certifications**](sailpoint/v2024/docs/CertificationsApi.md#list_identity_certifications) | **GET** /certifications | List identity campaign certifications
-*CertificationsApi* | [**make_identity_decision**](sailpoint/v2024/docs/CertificationsApi.md#make_identity_decision) | **POST** /certifications/{id}/decide | Decide on a certification item
-*CertificationsApi* | [**reassign_identity_certifications**](sailpoint/v2024/docs/CertificationsApi.md#reassign_identity_certifications) | **POST** /certifications/{id}/reassign | Reassign identities or items
-*CertificationsApi* | [**sign_off_identity_certification**](sailpoint/v2024/docs/CertificationsApi.md#sign_off_identity_certification) | **POST** /certifications/{id}/sign-off | Finalize identity certification decisions
-*CertificationsApi* | [**submit_reassign_certs_async**](sailpoint/v2024/docs/CertificationsApi.md#submit_reassign_certs_async) | **POST** /certifications/{id}/reassign-async | Reassign certifications asynchronously
-*ConfigurationHubApi* | [**create_deploy**](sailpoint/v2024/docs/ConfigurationHubApi.md#create_deploy) | **POST** /configuration-hub/deploys | Create a deploy
-*ConfigurationHubApi* | [**create_object_mapping**](sailpoint/v2024/docs/ConfigurationHubApi.md#create_object_mapping) | **POST** /configuration-hub/object-mappings/{sourceOrg} | Creates an object mapping
-*ConfigurationHubApi* | [**create_object_mappings**](sailpoint/v2024/docs/ConfigurationHubApi.md#create_object_mappings) | **POST** /configuration-hub/object-mappings/{sourceOrg}/bulk-create | Bulk creates object mappings
-*ConfigurationHubApi* | [**create_scheduled_action**](sailpoint/v2024/docs/ConfigurationHubApi.md#create_scheduled_action) | **POST** /configuration-hub/scheduled-actions | Create scheduled action
-*ConfigurationHubApi* | [**create_uploaded_configuration**](sailpoint/v2024/docs/ConfigurationHubApi.md#create_uploaded_configuration) | **POST** /configuration-hub/backups/uploads | Upload a configuration
-*ConfigurationHubApi* | [**delete_backup**](sailpoint/v2024/docs/ConfigurationHubApi.md#delete_backup) | **DELETE** /configuration-hub/backups/{id} | Delete a backup
-*ConfigurationHubApi* | [**delete_draft**](sailpoint/v2024/docs/ConfigurationHubApi.md#delete_draft) | **DELETE** /configuration-hub/drafts/{id} | Delete a draft
-*ConfigurationHubApi* | [**delete_object_mapping**](sailpoint/v2024/docs/ConfigurationHubApi.md#delete_object_mapping) | **DELETE** /configuration-hub/object-mappings/{sourceOrg}/{objectMappingId} | Deletes an object mapping
-*ConfigurationHubApi* | [**delete_scheduled_action**](sailpoint/v2024/docs/ConfigurationHubApi.md#delete_scheduled_action) | **DELETE** /configuration-hub/scheduled-actions/{id} | Delete scheduled action
-*ConfigurationHubApi* | [**delete_uploaded_configuration**](sailpoint/v2024/docs/ConfigurationHubApi.md#delete_uploaded_configuration) | **DELETE** /configuration-hub/backups/uploads/{id} | Delete an uploaded configuration
-*ConfigurationHubApi* | [**get_deploy**](sailpoint/v2024/docs/ConfigurationHubApi.md#get_deploy) | **GET** /configuration-hub/deploys/{id} | Get a deploy
-*ConfigurationHubApi* | [**get_object_mappings**](sailpoint/v2024/docs/ConfigurationHubApi.md#get_object_mappings) | **GET** /configuration-hub/object-mappings/{sourceOrg} | Gets list of object mappings
-*ConfigurationHubApi* | [**get_uploaded_configuration**](sailpoint/v2024/docs/ConfigurationHubApi.md#get_uploaded_configuration) | **GET** /configuration-hub/backups/uploads/{id} | Get an uploaded configuration
-*ConfigurationHubApi* | [**list_backups**](sailpoint/v2024/docs/ConfigurationHubApi.md#list_backups) | **GET** /configuration-hub/backups | List backups
-*ConfigurationHubApi* | [**list_deploys**](sailpoint/v2024/docs/ConfigurationHubApi.md#list_deploys) | **GET** /configuration-hub/deploys | List deploys
-*ConfigurationHubApi* | [**list_drafts**](sailpoint/v2024/docs/ConfigurationHubApi.md#list_drafts) | **GET** /configuration-hub/drafts | List drafts
-*ConfigurationHubApi* | [**list_scheduled_actions**](sailpoint/v2024/docs/ConfigurationHubApi.md#list_scheduled_actions) | **GET** /configuration-hub/scheduled-actions | List scheduled actions
-*ConfigurationHubApi* | [**list_uploaded_configurations**](sailpoint/v2024/docs/ConfigurationHubApi.md#list_uploaded_configurations) | **GET** /configuration-hub/backups/uploads | List uploaded configurations
-*ConfigurationHubApi* | [**update_object_mappings**](sailpoint/v2024/docs/ConfigurationHubApi.md#update_object_mappings) | **POST** /configuration-hub/object-mappings/{sourceOrg}/bulk-patch | Bulk updates object mappings
-*ConfigurationHubApi* | [**update_scheduled_action**](sailpoint/v2024/docs/ConfigurationHubApi.md#update_scheduled_action) | **PATCH** /configuration-hub/scheduled-actions/{id} | Update scheduled action
-*ConnectorCustomizersApi* | [**create_connector_customizer**](sailpoint/v2024/docs/ConnectorCustomizersApi.md#create_connector_customizer) | **POST** /connector-customizers | Create connector customizer
-*ConnectorCustomizersApi* | [**create_connector_customizer_version**](sailpoint/v2024/docs/ConnectorCustomizersApi.md#create_connector_customizer_version) | **POST** /connector-customizers/{id}/versions | Creates a connector customizer version
-*ConnectorCustomizersApi* | [**delete_connector_customizer**](sailpoint/v2024/docs/ConnectorCustomizersApi.md#delete_connector_customizer) | **DELETE** /connector-customizers/{id} | Delete connector customizer
-*ConnectorCustomizersApi* | [**get_connector_customizer**](sailpoint/v2024/docs/ConnectorCustomizersApi.md#get_connector_customizer) | **GET** /connector-customizers/{id} | Get connector customizer
-*ConnectorCustomizersApi* | [**list_connector_customizers**](sailpoint/v2024/docs/ConnectorCustomizersApi.md#list_connector_customizers) | **GET** /connector-customizers | List all connector customizers
-*ConnectorCustomizersApi* | [**put_connector_customizer**](sailpoint/v2024/docs/ConnectorCustomizersApi.md#put_connector_customizer) | **PUT** /connector-customizers/{id} | Update connector customizer
-*ConnectorRuleManagementApi* | [**create_connector_rule**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#create_connector_rule) | **POST** /connector-rules | Create connector rule
-*ConnectorRuleManagementApi* | [**delete_connector_rule**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#delete_connector_rule) | **DELETE** /connector-rules/{id} | Delete connector rule
-*ConnectorRuleManagementApi* | [**get_connector_rule**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#get_connector_rule) | **GET** /connector-rules/{id} | Get connector rule
-*ConnectorRuleManagementApi* | [**get_connector_rule_list**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#get_connector_rule_list) | **GET** /connector-rules | List connector rules
-*ConnectorRuleManagementApi* | [**put_connector_rule**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#put_connector_rule) | **PUT** /connector-rules/{id} | Update connector rule
-*ConnectorRuleManagementApi* | [**test_connector_rule**](sailpoint/v2024/docs/ConnectorRuleManagementApi.md#test_connector_rule) | **POST** /connector-rules/validate | Validate connector rule
-*ConnectorsApi* | [**create_custom_connector**](sailpoint/v2024/docs/ConnectorsApi.md#create_custom_connector) | **POST** /connectors | Create custom connector
-*ConnectorsApi* | [**delete_custom_connector**](sailpoint/v2024/docs/ConnectorsApi.md#delete_custom_connector) | **DELETE** /connectors/{scriptName} | Delete connector by script name
-*ConnectorsApi* | [**get_connector**](sailpoint/v2024/docs/ConnectorsApi.md#get_connector) | **GET** /connectors/{scriptName} | Get connector by script name
-*ConnectorsApi* | [**get_connector_correlation_config**](sailpoint/v2024/docs/ConnectorsApi.md#get_connector_correlation_config) | **GET** /connectors/{scriptName}/correlation-config | Get connector correlation configuration
-*ConnectorsApi* | [**get_connector_list**](sailpoint/v2024/docs/ConnectorsApi.md#get_connector_list) | **GET** /connectors | Get connector list
-*ConnectorsApi* | [**get_connector_source_config**](sailpoint/v2024/docs/ConnectorsApi.md#get_connector_source_config) | **GET** /connectors/{scriptName}/source-config | Get connector source configuration
-*ConnectorsApi* | [**get_connector_source_template**](sailpoint/v2024/docs/ConnectorsApi.md#get_connector_source_template) | **GET** /connectors/{scriptName}/source-template | Get connector source template
-*ConnectorsApi* | [**get_connector_translations**](sailpoint/v2024/docs/ConnectorsApi.md#get_connector_translations) | **GET** /connectors/{scriptName}/translations/{locale} | Get connector translations
-*ConnectorsApi* | [**put_connector_correlation_config**](sailpoint/v2024/docs/ConnectorsApi.md#put_connector_correlation_config) | **PUT** /connectors/{scriptName}/correlation-config | Update connector correlation configuration
-*ConnectorsApi* | [**put_connector_source_config**](sailpoint/v2024/docs/ConnectorsApi.md#put_connector_source_config) | **PUT** /connectors/{scriptName}/source-config | Update connector source configuration
-*ConnectorsApi* | [**put_connector_source_template**](sailpoint/v2024/docs/ConnectorsApi.md#put_connector_source_template) | **PUT** /connectors/{scriptName}/source-template | Update connector source template
-*ConnectorsApi* | [**put_connector_translations**](sailpoint/v2024/docs/ConnectorsApi.md#put_connector_translations) | **PUT** /connectors/{scriptName}/translations/{locale} | Update connector translations
-*ConnectorsApi* | [**update_connector**](sailpoint/v2024/docs/ConnectorsApi.md#update_connector) | **PATCH** /connectors/{scriptName} | Update connector by script name
-*CustomFormsApi* | [**create_form_definition**](sailpoint/v2024/docs/CustomFormsApi.md#create_form_definition) | **POST** /form-definitions | Creates a form definition.
-*CustomFormsApi* | [**create_form_definition_dynamic_schema**](sailpoint/v2024/docs/CustomFormsApi.md#create_form_definition_dynamic_schema) | **POST** /form-definitions/forms-action-dynamic-schema | Generate json schema dynamically.
-*CustomFormsApi* | [**create_form_definition_file_request**](sailpoint/v2024/docs/CustomFormsApi.md#create_form_definition_file_request) | **POST** /form-definitions/{formDefinitionID}/upload | Upload new form definition file.
-*CustomFormsApi* | [**create_form_instance**](sailpoint/v2024/docs/CustomFormsApi.md#create_form_instance) | **POST** /form-instances | Creates a form instance.
-*CustomFormsApi* | [**delete_form_definition**](sailpoint/v2024/docs/CustomFormsApi.md#delete_form_definition) | **DELETE** /form-definitions/{formDefinitionID} | Deletes a form definition.
-*CustomFormsApi* | [**export_form_definitions_by_tenant**](sailpoint/v2024/docs/CustomFormsApi.md#export_form_definitions_by_tenant) | **GET** /form-definitions/export | List form definitions by tenant.
-*CustomFormsApi* | [**get_file_from_s3**](sailpoint/v2024/docs/CustomFormsApi.md#get_file_from_s3) | **GET** /form-definitions/{formDefinitionID}/file/{fileID} | Download definition file by fileid.
-*CustomFormsApi* | [**get_form_definition_by_key**](sailpoint/v2024/docs/CustomFormsApi.md#get_form_definition_by_key) | **GET** /form-definitions/{formDefinitionID} | Return a form definition.
-*CustomFormsApi* | [**get_form_instance_by_key**](sailpoint/v2024/docs/CustomFormsApi.md#get_form_instance_by_key) | **GET** /form-instances/{formInstanceID} | Returns a form instance.
-*CustomFormsApi* | [**get_form_instance_file**](sailpoint/v2024/docs/CustomFormsApi.md#get_form_instance_file) | **GET** /form-instances/{formInstanceID}/file/{fileID} | Download instance file by fileid.
-*CustomFormsApi* | [**import_form_definitions**](sailpoint/v2024/docs/CustomFormsApi.md#import_form_definitions) | **POST** /form-definitions/import | Import form definitions from export.
-*CustomFormsApi* | [**patch_form_definition**](sailpoint/v2024/docs/CustomFormsApi.md#patch_form_definition) | **PATCH** /form-definitions/{formDefinitionID} | Patch a form definition.
-*CustomFormsApi* | [**patch_form_instance**](sailpoint/v2024/docs/CustomFormsApi.md#patch_form_instance) | **PATCH** /form-instances/{formInstanceID} | Patch a form instance.
-*CustomFormsApi* | [**search_form_definitions_by_tenant**](sailpoint/v2024/docs/CustomFormsApi.md#search_form_definitions_by_tenant) | **GET** /form-definitions | Export form definitions by tenant.
-*CustomFormsApi* | [**search_form_element_data_by_element_id**](sailpoint/v2024/docs/CustomFormsApi.md#search_form_element_data_by_element_id) | **GET** /form-instances/{formInstanceID}/data-source/{formElementID} | Retrieves dynamic data by element.
-*CustomFormsApi* | [**search_form_instances_by_tenant**](sailpoint/v2024/docs/CustomFormsApi.md#search_form_instances_by_tenant) | **GET** /form-instances | List form instances by tenant.
-*CustomFormsApi* | [**search_pre_defined_select_options**](sailpoint/v2024/docs/CustomFormsApi.md#search_pre_defined_select_options) | **GET** /form-definitions/predefined-select-options | List predefined select options.
-*CustomFormsApi* | [**show_preview_data_source**](sailpoint/v2024/docs/CustomFormsApi.md#show_preview_data_source) | **POST** /form-definitions/{formDefinitionID}/data-source | Preview form definition data source.
-*CustomPasswordInstructionsApi* | [**create_custom_password_instructions**](sailpoint/v2024/docs/CustomPasswordInstructionsApi.md#create_custom_password_instructions) | **POST** /custom-password-instructions | Create custom password instructions
-*CustomPasswordInstructionsApi* | [**delete_custom_password_instructions**](sailpoint/v2024/docs/CustomPasswordInstructionsApi.md#delete_custom_password_instructions) | **DELETE** /custom-password-instructions/{pageId} | Delete custom password instructions by page id
-*CustomPasswordInstructionsApi* | [**get_custom_password_instructions**](sailpoint/v2024/docs/CustomPasswordInstructionsApi.md#get_custom_password_instructions) | **GET** /custom-password-instructions/{pageId} | Get custom password instructions by page id
-*DataSegmentationApi* | [**create_data_segment**](sailpoint/v2024/docs/DataSegmentationApi.md#create_data_segment) | **POST** /data-segments | Create segment
-*DataSegmentationApi* | [**delete_data_segment**](sailpoint/v2024/docs/DataSegmentationApi.md#delete_data_segment) | **DELETE** /data-segments/{segmentId} | Delete segment by id
-*DataSegmentationApi* | [**get_data_segment**](sailpoint/v2024/docs/DataSegmentationApi.md#get_data_segment) | **GET** /data-segments/{segmentId} | Get segment by id
-*DataSegmentationApi* | [**get_data_segment_identity_membership**](sailpoint/v2024/docs/DataSegmentationApi.md#get_data_segment_identity_membership) | **GET** /data-segments/membership/{identityId} | Get segmentmembership by identity id
-*DataSegmentationApi* | [**get_data_segmentation_enabled_for_user**](sailpoint/v2024/docs/DataSegmentationApi.md#get_data_segmentation_enabled_for_user) | **GET** /data-segments/user-enabled/{identityId} | Is segmentation enabled by identity
-*DataSegmentationApi* | [**list_data_segments**](sailpoint/v2024/docs/DataSegmentationApi.md#list_data_segments) | **GET** /data-segments | Get segments
-*DataSegmentationApi* | [**patch_data_segment**](sailpoint/v2024/docs/DataSegmentationApi.md#patch_data_segment) | **PATCH** /data-segments/{segmentId} | Update segment
-*DataSegmentationApi* | [**publish_data_segment**](sailpoint/v2024/docs/DataSegmentationApi.md#publish_data_segment) | **POST** /data-segments/{segmentId} | Publish segment by id
-*DimensionsApi* | [**create_dimension**](sailpoint/v2024/docs/DimensionsApi.md#create_dimension) | **POST** /roles/{roleId}/dimensions | Create a dimension
-*DimensionsApi* | [**delete_bulk_dimensions**](sailpoint/v2024/docs/DimensionsApi.md#delete_bulk_dimensions) | **POST** /roles/{roleId}/dimensions/bulk-delete | Delete dimension(s)
-*DimensionsApi* | [**delete_dimension**](sailpoint/v2024/docs/DimensionsApi.md#delete_dimension) | **DELETE** /roles/{roleId}/dimensions/{dimensionId} | Delete a dimension
-*DimensionsApi* | [**get_dimension**](sailpoint/v2024/docs/DimensionsApi.md#get_dimension) | **GET** /roles/{roleId}/dimensions/{dimensionId} | Get a dimension under role.
-*DimensionsApi* | [**get_dimension_entitlements**](sailpoint/v2024/docs/DimensionsApi.md#get_dimension_entitlements) | **GET** /roles/{roleId}/dimensions/{dimensionId}/entitlements | List dimension&#39;s entitlements
-*DimensionsApi* | [**list_dimension_access_profiles**](sailpoint/v2024/docs/DimensionsApi.md#list_dimension_access_profiles) | **GET** /roles/{roleId}/dimensions/{dimensionId}/access-profiles | List dimension&#39;s access profiles
-*DimensionsApi* | [**list_dimensions**](sailpoint/v2024/docs/DimensionsApi.md#list_dimensions) | **GET** /roles/{roleId}/dimensions | List dimensions
-*DimensionsApi* | [**patch_dimension**](sailpoint/v2024/docs/DimensionsApi.md#patch_dimension) | **PATCH** /roles/{roleId}/dimensions/{dimensionId} | Patch a specified dimension
-*EntitlementsApi* | [**create_access_model_metadata_for_entitlement**](sailpoint/v2024/docs/EntitlementsApi.md#create_access_model_metadata_for_entitlement) | **POST** /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Add metadata to an entitlement.
-*EntitlementsApi* | [**delete_access_model_metadata_from_entitlement**](sailpoint/v2024/docs/EntitlementsApi.md#delete_access_model_metadata_from_entitlement) | **DELETE** /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Remove metadata from an entitlement.
-*EntitlementsApi* | [**get_entitlement**](sailpoint/v2024/docs/EntitlementsApi.md#get_entitlement) | **GET** /entitlements/{id} | Get an entitlement
-*EntitlementsApi* | [**get_entitlement_request_config**](sailpoint/v2024/docs/EntitlementsApi.md#get_entitlement_request_config) | **GET** /entitlements/{id}/entitlement-request-config | Get entitlement request config
-*EntitlementsApi* | [**import_entitlements_by_source**](sailpoint/v2024/docs/EntitlementsApi.md#import_entitlements_by_source) | **POST** /entitlements/aggregate/sources/{id} | Aggregate entitlements
-*EntitlementsApi* | [**list_entitlement_children**](sailpoint/v2024/docs/EntitlementsApi.md#list_entitlement_children) | **GET** /entitlements/{id}/children | List of entitlements children
-*EntitlementsApi* | [**list_entitlement_parents**](sailpoint/v2024/docs/EntitlementsApi.md#list_entitlement_parents) | **GET** /entitlements/{id}/parents | List of entitlements parents
-*EntitlementsApi* | [**list_entitlements**](sailpoint/v2024/docs/EntitlementsApi.md#list_entitlements) | **GET** /entitlements | Gets a list of entitlements.
-*EntitlementsApi* | [**patch_entitlement**](sailpoint/v2024/docs/EntitlementsApi.md#patch_entitlement) | **PATCH** /entitlements/{id} | Patch an entitlement
-*EntitlementsApi* | [**put_entitlement_request_config**](sailpoint/v2024/docs/EntitlementsApi.md#put_entitlement_request_config) | **PUT** /entitlements/{id}/entitlement-request-config | Replace entitlement request config
-*EntitlementsApi* | [**reset_source_entitlements**](sailpoint/v2024/docs/EntitlementsApi.md#reset_source_entitlements) | **POST** /entitlements/reset/sources/{id} | Reset source entitlements
-*EntitlementsApi* | [**update_entitlements_in_bulk**](sailpoint/v2024/docs/EntitlementsApi.md#update_entitlements_in_bulk) | **POST** /entitlements/bulk-update | Bulk update an entitlement list
-*GlobalTenantSecuritySettingsApi* | [**create_auth_org_network_config**](sailpoint/v2024/docs/GlobalTenantSecuritySettingsApi.md#create_auth_org_network_config) | **POST** /auth-org/network-config | Create security network configuration.
-*GlobalTenantSecuritySettingsApi* | [**get_auth_org_lockout_config**](sailpoint/v2024/docs/GlobalTenantSecuritySettingsApi.md#get_auth_org_lockout_config) | **GET** /auth-org/lockout-config | Get auth org lockout configuration.
-*GlobalTenantSecuritySettingsApi* | [**get_auth_org_network_config**](sailpoint/v2024/docs/GlobalTenantSecuritySettingsApi.md#get_auth_org_network_config) | **GET** /auth-org/network-config | Get security network configuration.
-*GlobalTenantSecuritySettingsApi* | [**get_auth_org_service_provider_config**](sailpoint/v2024/docs/GlobalTenantSecuritySettingsApi.md#get_auth_org_service_provider_config) | **GET** /auth-org/service-provider-config | Get service provider configuration.
-*GlobalTenantSecuritySettingsApi* | [**get_auth_org_session_config**](sailpoint/v2024/docs/GlobalTenantSecuritySettingsApi.md#get_auth_org_session_config) | **GET** /auth-org/session-config | Get auth org session configuration.
-*GlobalTenantSecuritySettingsApi* | [**patch_auth_org_lockout_config**](sailpoint/v2024/docs/GlobalTenantSecuritySettingsApi.md#patch_auth_org_lockout_config) | **PATCH** /auth-org/lockout-config | Update auth org lockout configuration
-*GlobalTenantSecuritySettingsApi* | [**patch_auth_org_network_config**](sailpoint/v2024/docs/GlobalTenantSecuritySettingsApi.md#patch_auth_org_network_config) | **PATCH** /auth-org/network-config | Update security network configuration.
-*GlobalTenantSecuritySettingsApi* | [**patch_auth_org_service_provider_config**](sailpoint/v2024/docs/GlobalTenantSecuritySettingsApi.md#patch_auth_org_service_provider_config) | **PATCH** /auth-org/service-provider-config | Update service provider configuration
-*GlobalTenantSecuritySettingsApi* | [**patch_auth_org_session_config**](sailpoint/v2024/docs/GlobalTenantSecuritySettingsApi.md#patch_auth_org_session_config) | **PATCH** /auth-org/session-config | Update auth org session configuration
-*GovernanceGroupsApi* | [**create_workgroup**](sailpoint/v2024/docs/GovernanceGroupsApi.md#create_workgroup) | **POST** /workgroups | Create a new governance group.
-*GovernanceGroupsApi* | [**delete_workgroup**](sailpoint/v2024/docs/GovernanceGroupsApi.md#delete_workgroup) | **DELETE** /workgroups/{id} | Delete a governance group
-*GovernanceGroupsApi* | [**delete_workgroup_members**](sailpoint/v2024/docs/GovernanceGroupsApi.md#delete_workgroup_members) | **POST** /workgroups/{workgroupId}/members/bulk-delete | Remove members from governance group
-*GovernanceGroupsApi* | [**delete_workgroups_in_bulk**](sailpoint/v2024/docs/GovernanceGroupsApi.md#delete_workgroups_in_bulk) | **POST** /workgroups/bulk-delete | Delete governance group(s)
-*GovernanceGroupsApi* | [**get_workgroup**](sailpoint/v2024/docs/GovernanceGroupsApi.md#get_workgroup) | **GET** /workgroups/{id} | Get governance group by id
-*GovernanceGroupsApi* | [**list_connections**](sailpoint/v2024/docs/GovernanceGroupsApi.md#list_connections) | **GET** /workgroups/{workgroupId}/connections | List connections for governance group
-*GovernanceGroupsApi* | [**list_workgroup_members**](sailpoint/v2024/docs/GovernanceGroupsApi.md#list_workgroup_members) | **GET** /workgroups/{workgroupId}/members | List governance group members
-*GovernanceGroupsApi* | [**list_workgroups**](sailpoint/v2024/docs/GovernanceGroupsApi.md#list_workgroups) | **GET** /workgroups | List governance groups
-*GovernanceGroupsApi* | [**patch_workgroup**](sailpoint/v2024/docs/GovernanceGroupsApi.md#patch_workgroup) | **PATCH** /workgroups/{id} | Patch a governance group
-*GovernanceGroupsApi* | [**update_workgroup_members**](sailpoint/v2024/docs/GovernanceGroupsApi.md#update_workgroup_members) | **POST** /workgroups/{workgroupId}/members/bulk-add | Add members to governance group
-*IAIAccessRequestRecommendationsApi* | [**add_access_request_recommendations_ignored_item**](sailpoint/v2024/docs/IAIAccessRequestRecommendationsApi.md#add_access_request_recommendations_ignored_item) | **POST** /ai-access-request-recommendations/ignored-items | Ignore access request recommendation
-*IAIAccessRequestRecommendationsApi* | [**add_access_request_recommendations_requested_item**](sailpoint/v2024/docs/IAIAccessRequestRecommendationsApi.md#add_access_request_recommendations_requested_item) | **POST** /ai-access-request-recommendations/requested-items | Accept access request recommendation
-*IAIAccessRequestRecommendationsApi* | [**add_access_request_recommendations_viewed_item**](sailpoint/v2024/docs/IAIAccessRequestRecommendationsApi.md#add_access_request_recommendations_viewed_item) | **POST** /ai-access-request-recommendations/viewed-items | Mark viewed access request recommendations
-*IAIAccessRequestRecommendationsApi* | [**add_access_request_recommendations_viewed_items**](sailpoint/v2024/docs/IAIAccessRequestRecommendationsApi.md#add_access_request_recommendations_viewed_items) | **POST** /ai-access-request-recommendations/viewed-items/bulk-create | Bulk mark viewed access request recommendations
-*IAIAccessRequestRecommendationsApi* | [**get_access_request_recommendations**](sailpoint/v2024/docs/IAIAccessRequestRecommendationsApi.md#get_access_request_recommendations) | **GET** /ai-access-request-recommendations | Identity access request recommendations
-*IAIAccessRequestRecommendationsApi* | [**get_access_request_recommendations_config**](sailpoint/v2024/docs/IAIAccessRequestRecommendationsApi.md#get_access_request_recommendations_config) | **GET** /ai-access-request-recommendations/config | Get access request recommendations config
-*IAIAccessRequestRecommendationsApi* | [**get_access_request_recommendations_ignored_items**](sailpoint/v2024/docs/IAIAccessRequestRecommendationsApi.md#get_access_request_recommendations_ignored_items) | **GET** /ai-access-request-recommendations/ignored-items | List ignored access request recommendations
-*IAIAccessRequestRecommendationsApi* | [**get_access_request_recommendations_requested_items**](sailpoint/v2024/docs/IAIAccessRequestRecommendationsApi.md#get_access_request_recommendations_requested_items) | **GET** /ai-access-request-recommendations/requested-items | List accepted access request recommendations
-*IAIAccessRequestRecommendationsApi* | [**get_access_request_recommendations_viewed_items**](sailpoint/v2024/docs/IAIAccessRequestRecommendationsApi.md#get_access_request_recommendations_viewed_items) | **GET** /ai-access-request-recommendations/viewed-items | List viewed access request recommendations
-*IAIAccessRequestRecommendationsApi* | [**set_access_request_recommendations_config**](sailpoint/v2024/docs/IAIAccessRequestRecommendationsApi.md#set_access_request_recommendations_config) | **PUT** /ai-access-request-recommendations/config | Update access request recommendations config
-*IAICommonAccessApi* | [**create_common_access**](sailpoint/v2024/docs/IAICommonAccessApi.md#create_common_access) | **POST** /common-access | Create common access items
-*IAICommonAccessApi* | [**get_common_access**](sailpoint/v2024/docs/IAICommonAccessApi.md#get_common_access) | **GET** /common-access | Get a paginated list of common access
-*IAICommonAccessApi* | [**update_common_access_status_in_bulk**](sailpoint/v2024/docs/IAICommonAccessApi.md#update_common_access_status_in_bulk) | **POST** /common-access/update-status | Bulk update common access status
-*IAIOutliersApi* | [**export_outliers_zip**](sailpoint/v2024/docs/IAIOutliersApi.md#export_outliers_zip) | **GET** /outliers/export | Iai identity outliers export
-*IAIOutliersApi* | [**get_identity_outlier_snapshots**](sailpoint/v2024/docs/IAIOutliersApi.md#get_identity_outlier_snapshots) | **GET** /outlier-summaries | Iai identity outliers summary
-*IAIOutliersApi* | [**get_identity_outliers**](sailpoint/v2024/docs/IAIOutliersApi.md#get_identity_outliers) | **GET** /outliers | Iai get identity outliers
-*IAIOutliersApi* | [**get_latest_identity_outlier_snapshots**](sailpoint/v2024/docs/IAIOutliersApi.md#get_latest_identity_outlier_snapshots) | **GET** /outlier-summaries/latest | Iai identity outliers latest summary
-*IAIOutliersApi* | [**get_outlier_contributing_feature_summary**](sailpoint/v2024/docs/IAIOutliersApi.md#get_outlier_contributing_feature_summary) | **GET** /outlier-feature-summaries/{outlierFeatureId} | Get identity outlier contibuting feature summary
-*IAIOutliersApi* | [**get_peer_group_outliers_contributing_features**](sailpoint/v2024/docs/IAIOutliersApi.md#get_peer_group_outliers_contributing_features) | **GET** /outliers/{outlierId}/contributing-features | Get identity outlier&#39;s contibuting features
-*IAIOutliersApi* | [**ignore_identity_outliers**](sailpoint/v2024/docs/IAIOutliersApi.md#ignore_identity_outliers) | **POST** /outliers/ignore | Iai identity outliers ignore
-*IAIOutliersApi* | [**list_outliers_contributing_feature_access_items**](sailpoint/v2024/docs/IAIOutliersApi.md#list_outliers_contributing_feature_access_items) | **GET** /outliers/{outlierId}/feature-details/{contributingFeatureName}/access-items | Gets a list of access items associated with each identity outlier contributing feature
-*IAIOutliersApi* | [**un_ignore_identity_outliers**](sailpoint/v2024/docs/IAIOutliersApi.md#un_ignore_identity_outliers) | **POST** /outliers/unignore | Iai identity outliers unignore
-*IAIPeerGroupStrategiesApi* | [**get_peer_group_outliers**](sailpoint/v2024/docs/IAIPeerGroupStrategiesApi.md#get_peer_group_outliers) | **GET** /peer-group-strategies/{strategy}/identity-outliers | Identity outliers list
-*IAIRecommendationsApi* | [**get_recommendations**](sailpoint/v2024/docs/IAIRecommendationsApi.md#get_recommendations) | **POST** /recommendations/request | Returns recommendation based on object
-*IAIRecommendationsApi* | [**get_recommendations_config**](sailpoint/v2024/docs/IAIRecommendationsApi.md#get_recommendations_config) | **GET** /recommendations/config | Get certification recommendation config values
-*IAIRecommendationsApi* | [**update_recommendations_config**](sailpoint/v2024/docs/IAIRecommendationsApi.md#update_recommendations_config) | **PUT** /recommendations/config | Update certification recommendation config values
-*IAIRoleMiningApi* | [**create_potential_role_provision_request**](sailpoint/v2024/docs/IAIRoleMiningApi.md#create_potential_role_provision_request) | **POST** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/provision | Create request to provision a potential role into an actual role.
-*IAIRoleMiningApi* | [**create_role_mining_sessions**](sailpoint/v2024/docs/IAIRoleMiningApi.md#create_role_mining_sessions) | **POST** /role-mining-sessions | Create a role mining session
-*IAIRoleMiningApi* | [**download_role_mining_potential_role_zip**](sailpoint/v2024/docs/IAIRoleMiningApi.md#download_role_mining_potential_role_zip) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async/{exportId}/download | Export (download) details for a potential role in a role mining session
-*IAIRoleMiningApi* | [**export_role_mining_potential_role**](sailpoint/v2024/docs/IAIRoleMiningApi.md#export_role_mining_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export | Export (download) details for a potential role in a role mining session
-*IAIRoleMiningApi* | [**export_role_mining_potential_role_async**](sailpoint/v2024/docs/IAIRoleMiningApi.md#export_role_mining_potential_role_async) | **POST** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async | Asynchronously export details for a potential role in a role mining session and upload to S3
-*IAIRoleMiningApi* | [**export_role_mining_potential_role_status**](sailpoint/v2024/docs/IAIRoleMiningApi.md#export_role_mining_potential_role_status) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async/{exportId} | Retrieve status of a potential role export job
-*IAIRoleMiningApi* | [**get_all_potential_role_summaries**](sailpoint/v2024/docs/IAIRoleMiningApi.md#get_all_potential_role_summaries) | **GET** /role-mining-potential-roles | Retrieves all potential role summaries
-*IAIRoleMiningApi* | [**get_entitlement_distribution_potential_role**](sailpoint/v2024/docs/IAIRoleMiningApi.md#get_entitlement_distribution_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/entitlement-popularity-distribution | Retrieves entitlement popularity distribution for a potential role in a role mining session
-*IAIRoleMiningApi* | [**get_entitlements_potential_role**](sailpoint/v2024/docs/IAIRoleMiningApi.md#get_entitlements_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/entitlement-popularities | Retrieves entitlements for a potential role in a role mining session
-*IAIRoleMiningApi* | [**get_excluded_entitlements_potential_role**](sailpoint/v2024/docs/IAIRoleMiningApi.md#get_excluded_entitlements_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/excluded-entitlements | Retrieves excluded entitlements for a potential role in a role mining session
-*IAIRoleMiningApi* | [**get_identities_potential_role**](sailpoint/v2024/docs/IAIRoleMiningApi.md#get_identities_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/identities | Retrieves identities for a potential role in a role mining session
-*IAIRoleMiningApi* | [**get_potential_role**](sailpoint/v2024/docs/IAIRoleMiningApi.md#get_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Retrieves a specific potential role
-*IAIRoleMiningApi* | [**get_potential_role_applications**](sailpoint/v2024/docs/IAIRoleMiningApi.md#get_potential_role_applications) | **GET** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}/applications | Retrieves the applications of a potential role for a role mining session
-*IAIRoleMiningApi* | [**get_potential_role_entitlements**](sailpoint/v2024/docs/IAIRoleMiningApi.md#get_potential_role_entitlements) | **GET** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}/entitlements | Retrieves the entitlements of a potential role for a role mining session
-*IAIRoleMiningApi* | [**get_potential_role_source_identity_usage**](sailpoint/v2024/docs/IAIRoleMiningApi.md#get_potential_role_source_identity_usage) | **GET** /role-mining-potential-roles/{potentialRoleId}/sources/{sourceId}/identityUsage | Retrieves potential role source usage
-*IAIRoleMiningApi* | [**get_potential_role_summaries**](sailpoint/v2024/docs/IAIRoleMiningApi.md#get_potential_role_summaries) | **GET** /role-mining-sessions/{sessionId}/potential-role-summaries | Retrieves all potential role summaries
-*IAIRoleMiningApi* | [**get_role_mining_potential_role**](sailpoint/v2024/docs/IAIRoleMiningApi.md#get_role_mining_potential_role) | **GET** /role-mining-potential-roles/{potentialRoleId} | Retrieves a specific potential role
-*IAIRoleMiningApi* | [**get_role_mining_session**](sailpoint/v2024/docs/IAIRoleMiningApi.md#get_role_mining_session) | **GET** /role-mining-sessions/{sessionId} | Get a role mining session
-*IAIRoleMiningApi* | [**get_role_mining_session_status**](sailpoint/v2024/docs/IAIRoleMiningApi.md#get_role_mining_session_status) | **GET** /role-mining-sessions/{sessionId}/status | Get role mining session status state
-*IAIRoleMiningApi* | [**get_role_mining_sessions**](sailpoint/v2024/docs/IAIRoleMiningApi.md#get_role_mining_sessions) | **GET** /role-mining-sessions | Retrieves all role mining sessions
-*IAIRoleMiningApi* | [**get_saved_potential_roles**](sailpoint/v2024/docs/IAIRoleMiningApi.md#get_saved_potential_roles) | **GET** /role-mining-potential-roles/saved | Retrieves all saved potential roles
-*IAIRoleMiningApi* | [**patch_potential_role**](sailpoint/v2024/docs/IAIRoleMiningApi.md#patch_potential_role) | **PATCH** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Update a potential role
-*IAIRoleMiningApi* | [**patch_potential_role_0**](sailpoint/v2024/docs/IAIRoleMiningApi.md#patch_potential_role_0) | **PATCH** /role-mining-potential-roles/{potentialRoleId} | Update a potential role
-*IAIRoleMiningApi* | [**patch_role_mining_session**](sailpoint/v2024/docs/IAIRoleMiningApi.md#patch_role_mining_session) | **PATCH** /role-mining-sessions/{sessionId} | Patch a role mining session
-*IAIRoleMiningApi* | [**update_entitlements_potential_role**](sailpoint/v2024/docs/IAIRoleMiningApi.md#update_entitlements_potential_role) | **POST** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements | Edit entitlements for a potential role to exclude some entitlements
-*IconsApi* | [**delete_icon**](sailpoint/v2024/docs/IconsApi.md#delete_icon) | **DELETE** /icons/{objectType}/{objectId} | Delete an icon
-*IconsApi* | [**set_icon**](sailpoint/v2024/docs/IconsApi.md#set_icon) | **PUT** /icons/{objectType}/{objectId} | Update an icon
-*IdentitiesApi* | [**delete_identity**](sailpoint/v2024/docs/IdentitiesApi.md#delete_identity) | **DELETE** /identities/{id} | Delete identity
-*IdentitiesApi* | [**get_identity**](sailpoint/v2024/docs/IdentitiesApi.md#get_identity) | **GET** /identities/{id} | Identity details
-*IdentitiesApi* | [**get_identity_ownership_details**](sailpoint/v2024/docs/IdentitiesApi.md#get_identity_ownership_details) | **GET** /identities/{identityId}/ownership | Get ownership details
-*IdentitiesApi* | [**get_role_assignment**](sailpoint/v2024/docs/IdentitiesApi.md#get_role_assignment) | **GET** /identities/{identityId}/role-assignments/{assignmentId} | Role assignment details
-*IdentitiesApi* | [**get_role_assignments**](sailpoint/v2024/docs/IdentitiesApi.md#get_role_assignments) | **GET** /identities/{identityId}/role-assignments | List role assignments
-*IdentitiesApi* | [**list_identities**](sailpoint/v2024/docs/IdentitiesApi.md#list_identities) | **GET** /identities | List identities
-*IdentitiesApi* | [**reset_identity**](sailpoint/v2024/docs/IdentitiesApi.md#reset_identity) | **POST** /identities/{id}/reset | Reset an identity
-*IdentitiesApi* | [**send_identity_verification_account_token**](sailpoint/v2024/docs/IdentitiesApi.md#send_identity_verification_account_token) | **POST** /identities/{id}/verification/account/send | Send password reset email
-*IdentitiesApi* | [**start_identities_invite**](sailpoint/v2024/docs/IdentitiesApi.md#start_identities_invite) | **POST** /identities/invite | Invite identities to register
-*IdentitiesApi* | [**start_identity_processing**](sailpoint/v2024/docs/IdentitiesApi.md#start_identity_processing) | **POST** /identities/process | Process a list of identityids
-*IdentitiesApi* | [**synchronize_attributes_for_identity**](sailpoint/v2024/docs/IdentitiesApi.md#synchronize_attributes_for_identity) | **POST** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
-*IdentityAttributesApi* | [**create_identity_attribute**](sailpoint/v2024/docs/IdentityAttributesApi.md#create_identity_attribute) | **POST** /identity-attributes | Create identity attribute
-*IdentityAttributesApi* | [**delete_identity_attribute**](sailpoint/v2024/docs/IdentityAttributesApi.md#delete_identity_attribute) | **DELETE** /identity-attributes/{name} | Delete identity attribute
-*IdentityAttributesApi* | [**delete_identity_attributes_in_bulk**](sailpoint/v2024/docs/IdentityAttributesApi.md#delete_identity_attributes_in_bulk) | **DELETE** /identity-attributes/bulk-delete | Bulk delete identity attributes
-*IdentityAttributesApi* | [**get_identity_attribute**](sailpoint/v2024/docs/IdentityAttributesApi.md#get_identity_attribute) | **GET** /identity-attributes/{name} | Get identity attribute
-*IdentityAttributesApi* | [**list_identity_attributes**](sailpoint/v2024/docs/IdentityAttributesApi.md#list_identity_attributes) | **GET** /identity-attributes | List identity attributes
-*IdentityAttributesApi* | [**put_identity_attribute**](sailpoint/v2024/docs/IdentityAttributesApi.md#put_identity_attribute) | **PUT** /identity-attributes/{name} | Update identity attribute
-*IdentityHistoryApi* | [**compare_identity_snapshots**](sailpoint/v2024/docs/IdentityHistoryApi.md#compare_identity_snapshots) | **GET** /historical-identities/{id}/compare | Gets a difference of count for each access item types for the given identity between 2 snapshots
-*IdentityHistoryApi* | [**compare_identity_snapshots_access_type**](sailpoint/v2024/docs/IdentityHistoryApi.md#compare_identity_snapshots_access_type) | **GET** /historical-identities/{id}/compare/{access-type} | Gets a list of differences of specific accesstype for the given identity between 2 snapshots
-*IdentityHistoryApi* | [**get_historical_identity**](sailpoint/v2024/docs/IdentityHistoryApi.md#get_historical_identity) | **GET** /historical-identities/{id} | Get latest snapshot of identity
-*IdentityHistoryApi* | [**get_historical_identity_events**](sailpoint/v2024/docs/IdentityHistoryApi.md#get_historical_identity_events) | **GET** /historical-identities/{id}/events | Lists all events for the given identity
-*IdentityHistoryApi* | [**get_identity_snapshot**](sailpoint/v2024/docs/IdentityHistoryApi.md#get_identity_snapshot) | **GET** /historical-identities/{id}/snapshots/{date} | Gets an identity snapshot at a given date
-*IdentityHistoryApi* | [**get_identity_snapshot_summary**](sailpoint/v2024/docs/IdentityHistoryApi.md#get_identity_snapshot_summary) | **GET** /historical-identities/{id}/snapshot-summary | Gets the summary for the event count for a specific identity
-*IdentityHistoryApi* | [**get_identity_start_date**](sailpoint/v2024/docs/IdentityHistoryApi.md#get_identity_start_date) | **GET** /historical-identities/{id}/start-date | Gets the start date of the identity
-*IdentityHistoryApi* | [**list_historical_identities**](sailpoint/v2024/docs/IdentityHistoryApi.md#list_historical_identities) | **GET** /historical-identities | Lists all the identities
-*IdentityHistoryApi* | [**list_identity_access_items**](sailpoint/v2024/docs/IdentityHistoryApi.md#list_identity_access_items) | **GET** /historical-identities/{id}/access-items | List access items by identity
-*IdentityHistoryApi* | [**list_identity_snapshot_access_items**](sailpoint/v2024/docs/IdentityHistoryApi.md#list_identity_snapshot_access_items) | **GET** /historical-identities/{id}/snapshots/{date}/access-items | Gets the list of identity access items at a given date filterd by item type
-*IdentityHistoryApi* | [**list_identity_snapshots**](sailpoint/v2024/docs/IdentityHistoryApi.md#list_identity_snapshots) | **GET** /historical-identities/{id}/snapshots | Lists all the snapshots for the identity
-*IdentityProfilesApi* | [**create_identity_profile**](sailpoint/v2024/docs/IdentityProfilesApi.md#create_identity_profile) | **POST** /identity-profiles | Create identity profile
-*IdentityProfilesApi* | [**delete_identity_profile**](sailpoint/v2024/docs/IdentityProfilesApi.md#delete_identity_profile) | **DELETE** /identity-profiles/{identity-profile-id} | Delete identity profile
-*IdentityProfilesApi* | [**delete_identity_profiles**](sailpoint/v2024/docs/IdentityProfilesApi.md#delete_identity_profiles) | **POST** /identity-profiles/bulk-delete | Delete identity profiles
-*IdentityProfilesApi* | [**export_identity_profiles**](sailpoint/v2024/docs/IdentityProfilesApi.md#export_identity_profiles) | **GET** /identity-profiles/export | Export identity profiles
-*IdentityProfilesApi* | [**generate_identity_preview**](sailpoint/v2024/docs/IdentityProfilesApi.md#generate_identity_preview) | **POST** /identity-profiles/identity-preview | Generate identity profile preview
-*IdentityProfilesApi* | [**get_default_identity_attribute_config**](sailpoint/v2024/docs/IdentityProfilesApi.md#get_default_identity_attribute_config) | **GET** /identity-profiles/{identity-profile-id}/default-identity-attribute-config | Get default identity attribute config
-*IdentityProfilesApi* | [**get_identity_profile**](sailpoint/v2024/docs/IdentityProfilesApi.md#get_identity_profile) | **GET** /identity-profiles/{identity-profile-id} | Get identity profile
-*IdentityProfilesApi* | [**import_identity_profiles**](sailpoint/v2024/docs/IdentityProfilesApi.md#import_identity_profiles) | **POST** /identity-profiles/import | Import identity profiles
-*IdentityProfilesApi* | [**list_identity_profiles**](sailpoint/v2024/docs/IdentityProfilesApi.md#list_identity_profiles) | **GET** /identity-profiles | List identity profiles
-*IdentityProfilesApi* | [**sync_identity_profile**](sailpoint/v2024/docs/IdentityProfilesApi.md#sync_identity_profile) | **POST** /identity-profiles/{identity-profile-id}/process-identities | Process identities under profile
-*IdentityProfilesApi* | [**update_identity_profile**](sailpoint/v2024/docs/IdentityProfilesApi.md#update_identity_profile) | **PATCH** /identity-profiles/{identity-profile-id} | Update identity profile
-*LifecycleStatesApi* | [**create_lifecycle_state**](sailpoint/v2024/docs/LifecycleStatesApi.md#create_lifecycle_state) | **POST** /identity-profiles/{identity-profile-id}/lifecycle-states | Create lifecycle state
-*LifecycleStatesApi* | [**delete_lifecycle_state**](sailpoint/v2024/docs/LifecycleStatesApi.md#delete_lifecycle_state) | **DELETE** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Delete lifecycle state
-*LifecycleStatesApi* | [**get_lifecycle_state**](sailpoint/v2024/docs/LifecycleStatesApi.md#get_lifecycle_state) | **GET** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Get lifecycle state
-*LifecycleStatesApi* | [**get_lifecycle_states**](sailpoint/v2024/docs/LifecycleStatesApi.md#get_lifecycle_states) | **GET** /identity-profiles/{identity-profile-id}/lifecycle-states | Lists lifecyclestates
-*LifecycleStatesApi* | [**set_lifecycle_state**](sailpoint/v2024/docs/LifecycleStatesApi.md#set_lifecycle_state) | **POST** /identities/{identity-id}/set-lifecycle-state | Set lifecycle state
-*LifecycleStatesApi* | [**update_lifecycle_states**](sailpoint/v2024/docs/LifecycleStatesApi.md#update_lifecycle_states) | **PATCH** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Update lifecycle state
-*MFAConfigurationApi* | [**get_mfa_duo_config**](sailpoint/v2024/docs/MFAConfigurationApi.md#get_mfa_duo_config) | **GET** /mfa/duo-web/config | Configuration of duo mfa method
-*MFAConfigurationApi* | [**get_mfa_kba_config**](sailpoint/v2024/docs/MFAConfigurationApi.md#get_mfa_kba_config) | **GET** /mfa/kba/config | Configuration of kba mfa method
-*MFAConfigurationApi* | [**get_mfa_okta_config**](sailpoint/v2024/docs/MFAConfigurationApi.md#get_mfa_okta_config) | **GET** /mfa/okta-verify/config | Configuration of okta mfa method
-*MFAConfigurationApi* | [**set_mfa_duo_config**](sailpoint/v2024/docs/MFAConfigurationApi.md#set_mfa_duo_config) | **PUT** /mfa/duo-web/config | Set duo mfa configuration
-*MFAConfigurationApi* | [**set_mfa_okta_config**](sailpoint/v2024/docs/MFAConfigurationApi.md#set_mfa_okta_config) | **PUT** /mfa/okta-verify/config | Set okta mfa configuration
-*MFAConfigurationApi* | [**set_mfakba_config**](sailpoint/v2024/docs/MFAConfigurationApi.md#set_mfakba_config) | **POST** /mfa/kba/config/answers | Set mfa kba configuration
-*MFAConfigurationApi* | [**test_mfa_config**](sailpoint/v2024/docs/MFAConfigurationApi.md#test_mfa_config) | **GET** /mfa/{method}/test | Mfa method&#39;s test configuration
-*MachineAccountClassifyApi* | [**send_classify_machine_account**](sailpoint/v2024/docs/MachineAccountClassifyApi.md#send_classify_machine_account) | **POST** /accounts/{id}/classify | Classify a Single Machine Account
-*MachineAccountMappingsApi* | [**create_machine_account_mappings**](sailpoint/v2024/docs/MachineAccountMappingsApi.md#create_machine_account_mappings) | **POST** /sources/{sourceId}/machine-account-mappings | Create machine account mappings
-*MachineAccountMappingsApi* | [**delete_machine_account_mappings**](sailpoint/v2024/docs/MachineAccountMappingsApi.md#delete_machine_account_mappings) | **DELETE** /sources/{sourceId}/machine-account-mappings | Delete source&#39;s machine account mappings
-*MachineAccountMappingsApi* | [**list_machine_account_mappings**](sailpoint/v2024/docs/MachineAccountMappingsApi.md#list_machine_account_mappings) | **GET** /sources/{sourceId}/machine-account-mappings | Machine account mapping for source
-*MachineAccountMappingsApi* | [**set_machine_account_mappings**](sailpoint/v2024/docs/MachineAccountMappingsApi.md#set_machine_account_mappings) | **PUT** /sources/{sourceId}/machine-mappings | Update source&#39;s machine account mappings
-*MachineAccountsApi* | [**get_machine_account**](sailpoint/v2024/docs/MachineAccountsApi.md#get_machine_account) | **GET** /machine-accounts/{id} | Machine account details
-*MachineAccountsApi* | [**list_machine_accounts**](sailpoint/v2024/docs/MachineAccountsApi.md#list_machine_accounts) | **GET** /machine-accounts | Machine accounts list
-*MachineAccountsApi* | [**update_machine_account**](sailpoint/v2024/docs/MachineAccountsApi.md#update_machine_account) | **PATCH** /machine-accounts/{id} | Update a machine account
-*MachineClassificationConfigApi* | [**delete_machine_classification_config**](sailpoint/v2024/docs/MachineClassificationConfigApi.md#delete_machine_classification_config) | **DELETE** /sources/{sourceId}/machine-classification-config | Delete source&#39;s classification config
-*MachineClassificationConfigApi* | [**get_machine_classification_config**](sailpoint/v2024/docs/MachineClassificationConfigApi.md#get_machine_classification_config) | **GET** /sources/{sourceId}/machine-classification-config | Machine classification config for source
-*MachineClassificationConfigApi* | [**set_machine_classification_config**](sailpoint/v2024/docs/MachineClassificationConfigApi.md#set_machine_classification_config) | **PUT** /sources/{sourceId}/machine-classification-config | Update source&#39;s classification config
-*MachineIdentitiesApi* | [**create_machine_identity**](sailpoint/v2024/docs/MachineIdentitiesApi.md#create_machine_identity) | **POST** /machine-identities | Create machine identities
-*MachineIdentitiesApi* | [**delete_machine_identity**](sailpoint/v2024/docs/MachineIdentitiesApi.md#delete_machine_identity) | **DELETE** /machine-identities/{id} | Delete machine identity
-*MachineIdentitiesApi* | [**get_machine_identity**](sailpoint/v2024/docs/MachineIdentitiesApi.md#get_machine_identity) | **GET** /machine-identities/{id} | Machine identity details
-*MachineIdentitiesApi* | [**list_machine_identities**](sailpoint/v2024/docs/MachineIdentitiesApi.md#list_machine_identities) | **GET** /machine-identities | List machine identities
-*MachineIdentitiesApi* | [**update_machine_identity**](sailpoint/v2024/docs/MachineIdentitiesApi.md#update_machine_identity) | **PATCH** /machine-identities/{id} | Update a machine identity
-*ManagedClientsApi* | [**create_managed_client**](sailpoint/v2024/docs/ManagedClientsApi.md#create_managed_client) | **POST** /managed-clients | Create managed client
-*ManagedClientsApi* | [**delete_managed_client**](sailpoint/v2024/docs/ManagedClientsApi.md#delete_managed_client) | **DELETE** /managed-clients/{id} | Delete managed client
-*ManagedClientsApi* | [**get_managed_client**](sailpoint/v2024/docs/ManagedClientsApi.md#get_managed_client) | **GET** /managed-clients/{id} | Get managed client
-*ManagedClientsApi* | [**get_managed_client_status**](sailpoint/v2024/docs/ManagedClientsApi.md#get_managed_client_status) | **GET** /managed-clients/{id}/status | Get managed client status
-*ManagedClientsApi* | [**get_managed_clients**](sailpoint/v2024/docs/ManagedClientsApi.md#get_managed_clients) | **GET** /managed-clients | Get managed clients
-*ManagedClientsApi* | [**update_managed_client**](sailpoint/v2024/docs/ManagedClientsApi.md#update_managed_client) | **PATCH** /managed-clients/{id} | Update managed client
-*ManagedClusterTypesApi* | [**create_managed_cluster_type**](sailpoint/v2024/docs/ManagedClusterTypesApi.md#create_managed_cluster_type) | **POST** /managed-cluster-types | Create new managed cluster type
-*ManagedClusterTypesApi* | [**delete_managed_cluster_type**](sailpoint/v2024/docs/ManagedClusterTypesApi.md#delete_managed_cluster_type) | **DELETE** /managed-cluster-types/{id} | Delete a managed cluster type
-*ManagedClusterTypesApi* | [**get_managed_cluster_type**](sailpoint/v2024/docs/ManagedClusterTypesApi.md#get_managed_cluster_type) | **GET** /managed-cluster-types/{id} | Get a managed cluster type
-*ManagedClusterTypesApi* | [**get_managed_cluster_types**](sailpoint/v2024/docs/ManagedClusterTypesApi.md#get_managed_cluster_types) | **GET** /managed-cluster-types | Get managed cluster types
-*ManagedClusterTypesApi* | [**update_managed_cluster_type**](sailpoint/v2024/docs/ManagedClusterTypesApi.md#update_managed_cluster_type) | **PATCH** /managed-cluster-types/{id} | Update a managed cluster type
-*ManagedClustersApi* | [**create_managed_cluster**](sailpoint/v2024/docs/ManagedClustersApi.md#create_managed_cluster) | **POST** /managed-clusters | Create create managed cluster
-*ManagedClustersApi* | [**delete_managed_cluster**](sailpoint/v2024/docs/ManagedClustersApi.md#delete_managed_cluster) | **DELETE** /managed-clusters/{id} | Delete managed cluster
-*ManagedClustersApi* | [**get_client_log_configuration**](sailpoint/v2024/docs/ManagedClustersApi.md#get_client_log_configuration) | **GET** /managed-clusters/{id}/log-config | Get managed cluster log configuration
-*ManagedClustersApi* | [**get_managed_cluster**](sailpoint/v2024/docs/ManagedClustersApi.md#get_managed_cluster) | **GET** /managed-clusters/{id} | Get managed cluster
-*ManagedClustersApi* | [**get_managed_clusters**](sailpoint/v2024/docs/ManagedClustersApi.md#get_managed_clusters) | **GET** /managed-clusters | Get managed clusters
-*ManagedClustersApi* | [**put_client_log_configuration**](sailpoint/v2024/docs/ManagedClustersApi.md#put_client_log_configuration) | **PUT** /managed-clusters/{id}/log-config | Update managed cluster log configuration
-*ManagedClustersApi* | [**update**](sailpoint/v2024/docs/ManagedClustersApi.md#update) | **POST** /managed-clusters/{id}/manualUpgrade | Trigger manual upgrade for managed cluster
-*ManagedClustersApi* | [**update_managed_cluster**](sailpoint/v2024/docs/ManagedClustersApi.md#update_managed_cluster) | **PATCH** /managed-clusters/{id} | Update managed cluster
-*MultiHostIntegrationApi* | [**create_multi_host_integration**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#create_multi_host_integration) | **POST** /multihosts | Create multi-host integration
-*MultiHostIntegrationApi* | [**create_sources_within_multi_host**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#create_sources_within_multi_host) | **POST** /multihosts/{multihostId} | Create sources within multi-host integration
-*MultiHostIntegrationApi* | [**delete_multi_host**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#delete_multi_host) | **DELETE** /multihosts/{multihostId} | Delete multi-host integration
-*MultiHostIntegrationApi* | [**get_acct_aggregation_groups**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#get_acct_aggregation_groups) | **GET** /multihosts/{multihostId}/acctAggregationGroups | List account-aggregation-groups by multi-host id
-*MultiHostIntegrationApi* | [**get_entitlement_aggregation_groups**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#get_entitlement_aggregation_groups) | **GET** /multihosts/{multiHostId}/entitlementAggregationGroups | List entitlement-aggregation-groups by integration id
-*MultiHostIntegrationApi* | [**get_multi_host_integrations**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#get_multi_host_integrations) | **GET** /multihosts/{multihostId} | Get multi-host integration by id
-*MultiHostIntegrationApi* | [**get_multi_host_integrations_list**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#get_multi_host_integrations_list) | **GET** /multihosts | List all existing multi-host integrations
-*MultiHostIntegrationApi* | [**get_multi_host_source_creation_errors**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#get_multi_host_source_creation_errors) | **GET** /multihosts/{multiHostId}/sources/errors | List multi-host source creation errors
-*MultiHostIntegrationApi* | [**get_multihost_integration_types**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#get_multihost_integration_types) | **GET** /multihosts/types | List multi-host integration types
-*MultiHostIntegrationApi* | [**get_sources_within_multi_host**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#get_sources_within_multi_host) | **GET** /multihosts/{multihostId}/sources | List sources within multi-host integration
-*MultiHostIntegrationApi* | [**test_connection_multi_host_sources**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#test_connection_multi_host_sources) | **POST** /multihosts/{multihostId}/sources/testConnection | Test configuration for multi-host integration
-*MultiHostIntegrationApi* | [**test_source_connection_multihost**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#test_source_connection_multihost) | **GET** /multihosts/{multihostId}/sources/{sourceId}/testConnection | Test configuration for multi-host integration&#39;s single source
-*MultiHostIntegrationApi* | [**update_multi_host_sources**](sailpoint/v2024/docs/MultiHostIntegrationApi.md#update_multi_host_sources) | **PATCH** /multihosts/{multihostId} | Update multi-host integration
-*NonEmployeeLifecycleManagementApi* | [**approve_non_employee_request**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#approve_non_employee_request) | **POST** /non-employee-approvals/{id}/approve | Approve a non-employee request
-*NonEmployeeLifecycleManagementApi* | [**create_non_employee_record**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_record) | **POST** /non-employee-records | Create non-employee record
-*NonEmployeeLifecycleManagementApi* | [**create_non_employee_request**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_request) | **POST** /non-employee-requests | Create non-employee request
-*NonEmployeeLifecycleManagementApi* | [**create_non_employee_source**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_source) | **POST** /non-employee-sources | Create non-employee source
-*NonEmployeeLifecycleManagementApi* | [**create_non_employee_source_schema_attributes**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_source_schema_attributes) | **POST** /non-employee-sources/{sourceId}/schema-attributes | Create a new schema attribute for non-employee source
-*NonEmployeeLifecycleManagementApi* | [**delete_non_employee_record**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#delete_non_employee_record) | **DELETE** /non-employee-records/{id} | Delete non-employee record
-*NonEmployeeLifecycleManagementApi* | [**delete_non_employee_records_in_bulk**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#delete_non_employee_records_in_bulk) | **POST** /non-employee-records/bulk-delete | Delete multiple non-employee records
-*NonEmployeeLifecycleManagementApi* | [**delete_non_employee_request**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#delete_non_employee_request) | **DELETE** /non-employee-requests/{id} | Delete non-employee request
-*NonEmployeeLifecycleManagementApi* | [**delete_non_employee_schema_attribute**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#delete_non_employee_schema_attribute) | **DELETE** /non-employee-sources/{sourceId}/schema-attributes/{attributeId} | Delete a schema attribute for non-employee source
-*NonEmployeeLifecycleManagementApi* | [**delete_non_employee_source**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#delete_non_employee_source) | **DELETE** /non-employee-sources/{sourceId} | Delete non-employee source
-*NonEmployeeLifecycleManagementApi* | [**delete_non_employee_source_schema_attributes**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#delete_non_employee_source_schema_attributes) | **DELETE** /non-employee-sources/{sourceId}/schema-attributes | Delete all custom schema attributes for non-employee source
-*NonEmployeeLifecycleManagementApi* | [**export_non_employee_records**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#export_non_employee_records) | **GET** /non-employee-sources/{id}/non-employees/download | Exports non-employee records to csv
-*NonEmployeeLifecycleManagementApi* | [**export_non_employee_source_schema_template**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#export_non_employee_source_schema_template) | **GET** /non-employee-sources/{id}/schema-attributes-template/download | Exports source schema template
-*NonEmployeeLifecycleManagementApi* | [**get_non_employee_approval**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#get_non_employee_approval) | **GET** /non-employee-approvals/{id} | Get a non-employee approval item detail
-*NonEmployeeLifecycleManagementApi* | [**get_non_employee_approval_summary**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#get_non_employee_approval_summary) | **GET** /non-employee-approvals/summary/{requested-for} | Get summary of non-employee approval requests
-*NonEmployeeLifecycleManagementApi* | [**get_non_employee_bulk_upload_status**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#get_non_employee_bulk_upload_status) | **GET** /non-employee-sources/{id}/non-employee-bulk-upload/status | Obtain the status of bulk upload on the source
-*NonEmployeeLifecycleManagementApi* | [**get_non_employee_record**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#get_non_employee_record) | **GET** /non-employee-records/{id} | Get a non-employee record
-*NonEmployeeLifecycleManagementApi* | [**get_non_employee_request**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#get_non_employee_request) | **GET** /non-employee-requests/{id} | Get a non-employee request
-*NonEmployeeLifecycleManagementApi* | [**get_non_employee_request_summary**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#get_non_employee_request_summary) | **GET** /non-employee-requests/summary/{requested-for} | Get summary of non-employee requests
-*NonEmployeeLifecycleManagementApi* | [**get_non_employee_schema_attribute**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#get_non_employee_schema_attribute) | **GET** /non-employee-sources/{sourceId}/schema-attributes/{attributeId} | Get schema attribute non-employee source
-*NonEmployeeLifecycleManagementApi* | [**get_non_employee_source**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#get_non_employee_source) | **GET** /non-employee-sources/{sourceId} | Get a non-employee source
-*NonEmployeeLifecycleManagementApi* | [**get_non_employee_source_schema_attributes**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#get_non_employee_source_schema_attributes) | **GET** /non-employee-sources/{sourceId}/schema-attributes | List schema attributes non-employee source
-*NonEmployeeLifecycleManagementApi* | [**import_non_employee_records_in_bulk**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#import_non_employee_records_in_bulk) | **POST** /non-employee-sources/{id}/non-employee-bulk-upload | Imports, or updates, non-employee records
-*NonEmployeeLifecycleManagementApi* | [**list_non_employee_approvals**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#list_non_employee_approvals) | **GET** /non-employee-approvals | Get list of non-employee approval requests
-*NonEmployeeLifecycleManagementApi* | [**list_non_employee_records**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#list_non_employee_records) | **GET** /non-employee-records | List non-employee records
-*NonEmployeeLifecycleManagementApi* | [**list_non_employee_requests**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#list_non_employee_requests) | **GET** /non-employee-requests | List non-employee requests
-*NonEmployeeLifecycleManagementApi* | [**list_non_employee_sources**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#list_non_employee_sources) | **GET** /non-employee-sources | List non-employee sources
-*NonEmployeeLifecycleManagementApi* | [**patch_non_employee_record**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#patch_non_employee_record) | **PATCH** /non-employee-records/{id} | Patch non-employee record
-*NonEmployeeLifecycleManagementApi* | [**patch_non_employee_schema_attribute**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#patch_non_employee_schema_attribute) | **PATCH** /non-employee-sources/{sourceId}/schema-attributes/{attributeId} | Patch a schema attribute for non-employee source
-*NonEmployeeLifecycleManagementApi* | [**patch_non_employee_source**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#patch_non_employee_source) | **PATCH** /non-employee-sources/{sourceId} | Patch a non-employee source
-*NonEmployeeLifecycleManagementApi* | [**reject_non_employee_request**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#reject_non_employee_request) | **POST** /non-employee-approvals/{id}/reject | Reject a non-employee request
-*NonEmployeeLifecycleManagementApi* | [**update_non_employee_record**](sailpoint/v2024/docs/NonEmployeeLifecycleManagementApi.md#update_non_employee_record) | **PUT** /non-employee-records/{id} | Update non-employee record
-*NotificationsApi* | [**create_domain_dkim**](sailpoint/v2024/docs/NotificationsApi.md#create_domain_dkim) | **POST** /verified-domains | Verify domain address via dkim
-*NotificationsApi* | [**create_notification_template**](sailpoint/v2024/docs/NotificationsApi.md#create_notification_template) | **POST** /notification-templates | Create notification template
-*NotificationsApi* | [**create_verified_from_address**](sailpoint/v2024/docs/NotificationsApi.md#create_verified_from_address) | **POST** /verified-from-addresses | Create verified from address
-*NotificationsApi* | [**delete_notification_templates_in_bulk**](sailpoint/v2024/docs/NotificationsApi.md#delete_notification_templates_in_bulk) | **POST** /notification-templates/bulk-delete | Bulk delete notification templates
-*NotificationsApi* | [**delete_verified_from_address**](sailpoint/v2024/docs/NotificationsApi.md#delete_verified_from_address) | **DELETE** /verified-from-addresses/{id} | Delete verified from address
-*NotificationsApi* | [**get_dkim_attributes**](sailpoint/v2024/docs/NotificationsApi.md#get_dkim_attributes) | **GET** /verified-domains | Get dkim attributes
-*NotificationsApi* | [**get_mail_from_attributes**](sailpoint/v2024/docs/NotificationsApi.md#get_mail_from_attributes) | **GET** /mail-from-attributes/{identity} | Get mail from attributes
-*NotificationsApi* | [**get_notification_template**](sailpoint/v2024/docs/NotificationsApi.md#get_notification_template) | **GET** /notification-templates/{id} | Get notification template by id
-*NotificationsApi* | [**get_notifications_template_context**](sailpoint/v2024/docs/NotificationsApi.md#get_notifications_template_context) | **GET** /notification-template-context | Get notification template context
-*NotificationsApi* | [**list_from_addresses**](sailpoint/v2024/docs/NotificationsApi.md#list_from_addresses) | **GET** /verified-from-addresses | List from addresses
-*NotificationsApi* | [**list_notification_preferences**](sailpoint/v2024/docs/NotificationsApi.md#list_notification_preferences) | **GET** /notification-preferences/{key} | List notification preferences for tenant.
-*NotificationsApi* | [**list_notification_template_defaults**](sailpoint/v2024/docs/NotificationsApi.md#list_notification_template_defaults) | **GET** /notification-template-defaults | List notification template defaults
-*NotificationsApi* | [**list_notification_templates**](sailpoint/v2024/docs/NotificationsApi.md#list_notification_templates) | **GET** /notification-templates | List notification templates
-*NotificationsApi* | [**put_mail_from_attributes**](sailpoint/v2024/docs/NotificationsApi.md#put_mail_from_attributes) | **PUT** /mail-from-attributes | Change mail from domain
-*NotificationsApi* | [**send_test_notification**](sailpoint/v2024/docs/NotificationsApi.md#send_test_notification) | **POST** /send-test-notification | Send test notification
-*OAuthClientsApi* | [**create_oauth_client**](sailpoint/v2024/docs/OAuthClientsApi.md#create_oauth_client) | **POST** /oauth-clients | Create oauth client
-*OAuthClientsApi* | [**delete_oauth_client**](sailpoint/v2024/docs/OAuthClientsApi.md#delete_oauth_client) | **DELETE** /oauth-clients/{id} | Delete oauth client
-*OAuthClientsApi* | [**get_oauth_client**](sailpoint/v2024/docs/OAuthClientsApi.md#get_oauth_client) | **GET** /oauth-clients/{id} | Get oauth client
-*OAuthClientsApi* | [**list_oauth_clients**](sailpoint/v2024/docs/OAuthClientsApi.md#list_oauth_clients) | **GET** /oauth-clients | List oauth clients
-*OAuthClientsApi* | [**patch_oauth_client**](sailpoint/v2024/docs/OAuthClientsApi.md#patch_oauth_client) | **PATCH** /oauth-clients/{id} | Patch oauth client
-*OrgConfigApi* | [**get_org_config**](sailpoint/v2024/docs/OrgConfigApi.md#get_org_config) | **GET** /org-config | Get org config settings
-*OrgConfigApi* | [**get_valid_time_zones**](sailpoint/v2024/docs/OrgConfigApi.md#get_valid_time_zones) | **GET** /org-config/valid-time-zones | Get valid time zones
-*OrgConfigApi* | [**patch_org_config**](sailpoint/v2024/docs/OrgConfigApi.md#patch_org_config) | **PATCH** /org-config | Patch org config
-*PasswordConfigurationApi* | [**create_password_org_config**](sailpoint/v2024/docs/PasswordConfigurationApi.md#create_password_org_config) | **POST** /password-org-config | Create password org config
-*PasswordConfigurationApi* | [**get_password_org_config**](sailpoint/v2024/docs/PasswordConfigurationApi.md#get_password_org_config) | **GET** /password-org-config | Get password org config
-*PasswordConfigurationApi* | [**put_password_org_config**](sailpoint/v2024/docs/PasswordConfigurationApi.md#put_password_org_config) | **PUT** /password-org-config | Update password org config
-*PasswordDictionaryApi* | [**get_password_dictionary**](sailpoint/v2024/docs/PasswordDictionaryApi.md#get_password_dictionary) | **GET** /password-dictionary | Get password dictionary
-*PasswordDictionaryApi* | [**put_password_dictionary**](sailpoint/v2024/docs/PasswordDictionaryApi.md#put_password_dictionary) | **PUT** /password-dictionary | Update password dictionary
-*PasswordManagementApi* | [**create_digit_token**](sailpoint/v2024/docs/PasswordManagementApi.md#create_digit_token) | **POST** /generate-password-reset-token/digit | Generate a digit token
-*PasswordManagementApi* | [**get_password_change_status**](sailpoint/v2024/docs/PasswordManagementApi.md#get_password_change_status) | **GET** /password-change-status/{id} | Get password change request status
-*PasswordManagementApi* | [**query_password_info**](sailpoint/v2024/docs/PasswordManagementApi.md#query_password_info) | **POST** /query-password-info | Query password info
-*PasswordManagementApi* | [**set_password**](sailpoint/v2024/docs/PasswordManagementApi.md#set_password) | **POST** /set-password | Set identity&#39;s password
-*PasswordPoliciesApi* | [**create_password_policy**](sailpoint/v2024/docs/PasswordPoliciesApi.md#create_password_policy) | **POST** /password-policies | Create password policy
-*PasswordPoliciesApi* | [**delete_password_policy**](sailpoint/v2024/docs/PasswordPoliciesApi.md#delete_password_policy) | **DELETE** /password-policies/{id} | Delete password policy by id
-*PasswordPoliciesApi* | [**get_password_policy_by_id**](sailpoint/v2024/docs/PasswordPoliciesApi.md#get_password_policy_by_id) | **GET** /password-policies/{id} | Get password policy by id
-*PasswordPoliciesApi* | [**list_password_policies**](sailpoint/v2024/docs/PasswordPoliciesApi.md#list_password_policies) | **GET** /password-policies | List password policies
-*PasswordPoliciesApi* | [**set_password_policy**](sailpoint/v2024/docs/PasswordPoliciesApi.md#set_password_policy) | **PUT** /password-policies/{id} | Update password policy by id
-*PasswordSyncGroupsApi* | [**create_password_sync_group**](sailpoint/v2024/docs/PasswordSyncGroupsApi.md#create_password_sync_group) | **POST** /password-sync-groups | Create password sync group
-*PasswordSyncGroupsApi* | [**delete_password_sync_group**](sailpoint/v2024/docs/PasswordSyncGroupsApi.md#delete_password_sync_group) | **DELETE** /password-sync-groups/{id} | Delete password sync group by id
-*PasswordSyncGroupsApi* | [**get_password_sync_group**](sailpoint/v2024/docs/PasswordSyncGroupsApi.md#get_password_sync_group) | **GET** /password-sync-groups/{id} | Get password sync group by id
-*PasswordSyncGroupsApi* | [**get_password_sync_groups**](sailpoint/v2024/docs/PasswordSyncGroupsApi.md#get_password_sync_groups) | **GET** /password-sync-groups | Get password sync group list
-*PasswordSyncGroupsApi* | [**update_password_sync_group**](sailpoint/v2024/docs/PasswordSyncGroupsApi.md#update_password_sync_group) | **PUT** /password-sync-groups/{id} | Update password sync group by id
-*PersonalAccessTokensApi* | [**create_personal_access_token**](sailpoint/v2024/docs/PersonalAccessTokensApi.md#create_personal_access_token) | **POST** /personal-access-tokens | Create personal access token
-*PersonalAccessTokensApi* | [**delete_personal_access_token**](sailpoint/v2024/docs/PersonalAccessTokensApi.md#delete_personal_access_token) | **DELETE** /personal-access-tokens/{id} | Delete personal access token
-*PersonalAccessTokensApi* | [**list_personal_access_tokens**](sailpoint/v2024/docs/PersonalAccessTokensApi.md#list_personal_access_tokens) | **GET** /personal-access-tokens | List personal access tokens
-*PersonalAccessTokensApi* | [**patch_personal_access_token**](sailpoint/v2024/docs/PersonalAccessTokensApi.md#patch_personal_access_token) | **PATCH** /personal-access-tokens/{id} | Patch personal access token
-*PublicIdentitiesApi* | [**get_public_identities**](sailpoint/v2024/docs/PublicIdentitiesApi.md#get_public_identities) | **GET** /public-identities | Get list of public identities
-*PublicIdentitiesConfigApi* | [**get_public_identity_config**](sailpoint/v2024/docs/PublicIdentitiesConfigApi.md#get_public_identity_config) | **GET** /public-identities-config | Get the public identities configuration
-*PublicIdentitiesConfigApi* | [**update_public_identity_config**](sailpoint/v2024/docs/PublicIdentitiesConfigApi.md#update_public_identity_config) | **PUT** /public-identities-config | Update the public identities configuration
-*ReportsDataExtractionApi* | [**cancel_report**](sailpoint/v2024/docs/ReportsDataExtractionApi.md#cancel_report) | **POST** /reports/{id}/cancel | Cancel report
-*ReportsDataExtractionApi* | [**get_report**](sailpoint/v2024/docs/ReportsDataExtractionApi.md#get_report) | **GET** /reports/{taskResultId} | Get report file
-*ReportsDataExtractionApi* | [**get_report_result**](sailpoint/v2024/docs/ReportsDataExtractionApi.md#get_report_result) | **GET** /reports/{taskResultId}/result | Get report result
-*ReportsDataExtractionApi* | [**start_report**](sailpoint/v2024/docs/ReportsDataExtractionApi.md#start_report) | **POST** /reports/run | Run report
-*RequestableObjectsApi* | [**list_requestable_objects**](sailpoint/v2024/docs/RequestableObjectsApi.md#list_requestable_objects) | **GET** /requestable-objects | Requestable objects list
-*RoleInsightsApi* | [**create_role_insight_requests**](sailpoint/v2024/docs/RoleInsightsApi.md#create_role_insight_requests) | **POST** /role-insights/requests | Generate insights for roles
-*RoleInsightsApi* | [**download_role_insights_entitlements_changes**](sailpoint/v2024/docs/RoleInsightsApi.md#download_role_insights_entitlements_changes) | **GET** /role-insights/{insightId}/entitlement-changes/download | Download entitlement insights for a role
-*RoleInsightsApi* | [**get_entitlement_changes_identities**](sailpoint/v2024/docs/RoleInsightsApi.md#get_entitlement_changes_identities) | **GET** /role-insights/{insightId}/entitlement-changes/{entitlementId}/identities | Get identities for a suggested entitlement (for a role)
-*RoleInsightsApi* | [**get_role_insight**](sailpoint/v2024/docs/RoleInsightsApi.md#get_role_insight) | **GET** /role-insights/{insightId} | Get a single role insight
-*RoleInsightsApi* | [**get_role_insights**](sailpoint/v2024/docs/RoleInsightsApi.md#get_role_insights) | **GET** /role-insights | Get role insights
-*RoleInsightsApi* | [**get_role_insights_current_entitlements**](sailpoint/v2024/docs/RoleInsightsApi.md#get_role_insights_current_entitlements) | **GET** /role-insights/{insightId}/current-entitlements | Get current entitlement for a role
-*RoleInsightsApi* | [**get_role_insights_entitlements_changes**](sailpoint/v2024/docs/RoleInsightsApi.md#get_role_insights_entitlements_changes) | **GET** /role-insights/{insightId}/entitlement-changes | Get entitlement insights for a role
-*RoleInsightsApi* | [**get_role_insights_requests**](sailpoint/v2024/docs/RoleInsightsApi.md#get_role_insights_requests) | **GET** /role-insights/requests/{id} | Returns metadata from prior request.
-*RoleInsightsApi* | [**get_role_insights_summary**](sailpoint/v2024/docs/RoleInsightsApi.md#get_role_insights_summary) | **GET** /role-insights/summary | Get role insights summary information
-*RolesApi* | [**create_role**](sailpoint/v2024/docs/RolesApi.md#create_role) | **POST** /roles | Create a role
-*RolesApi* | [**delete_bulk_roles**](sailpoint/v2024/docs/RolesApi.md#delete_bulk_roles) | **POST** /roles/bulk-delete | Delete role(s)
-*RolesApi* | [**delete_metadata_from_role_by_key_and_value**](sailpoint/v2024/docs/RolesApi.md#delete_metadata_from_role_by_key_and_value) | **DELETE** /roles/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Remove a metadata from role.
-*RolesApi* | [**delete_role**](sailpoint/v2024/docs/RolesApi.md#delete_role) | **DELETE** /roles/{id} | Delete a role
-*RolesApi* | [**get_bulk_update_status**](sailpoint/v2024/docs/RolesApi.md#get_bulk_update_status) | **GET** /roles/access-model-metadata/bulk-update | Get bulk-update statuses
-*RolesApi* | [**get_bulk_update_status_by_id**](sailpoint/v2024/docs/RolesApi.md#get_bulk_update_status_by_id) | **GET** /roles/access-model-metadata/bulk-update/id | Get bulk-update status by id
-*RolesApi* | [**get_role**](sailpoint/v2024/docs/RolesApi.md#get_role) | **GET** /roles/{id} | Get a role
-*RolesApi* | [**get_role_assigned_identities**](sailpoint/v2024/docs/RolesApi.md#get_role_assigned_identities) | **GET** /roles/{id}/assigned-identities | List identities assigned a role
-*RolesApi* | [**get_role_entitlements**](sailpoint/v2024/docs/RolesApi.md#get_role_entitlements) | **GET** /roles/{id}/entitlements | List role&#39;s entitlements
-*RolesApi* | [**list_roles**](sailpoint/v2024/docs/RolesApi.md#list_roles) | **GET** /roles | List roles
-*RolesApi* | [**patch_role**](sailpoint/v2024/docs/RolesApi.md#patch_role) | **PATCH** /roles/{id} | Patch a specified role
-*RolesApi* | [**search_roles_by_filter**](sailpoint/v2024/docs/RolesApi.md#search_roles_by_filter) | **POST** /roles/filter | Filter roles by metadata
-*RolesApi* | [**update_attribute_key_and_value_to_role**](sailpoint/v2024/docs/RolesApi.md#update_attribute_key_and_value_to_role) | **POST** /roles/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Add a metadata to role.
-*RolesApi* | [**update_roles_metadata_by_filter**](sailpoint/v2024/docs/RolesApi.md#update_roles_metadata_by_filter) | **POST** /roles/access-model-metadata/bulk-update/filter | Bulk-update roles&#39; metadata by filters
-*RolesApi* | [**update_roles_metadata_by_ids**](sailpoint/v2024/docs/RolesApi.md#update_roles_metadata_by_ids) | **POST** /roles/access-model-metadata/bulk-update/ids | Bulk-update roles&#39; metadata by id
-*RolesApi* | [**update_roles_metadata_by_query**](sailpoint/v2024/docs/RolesApi.md#update_roles_metadata_by_query) | **POST** /roles/access-model-metadata/bulk-update/query | Bulk-update roles&#39; metadata by query
-*SIMIntegrationsApi* | [**create_sim_integration**](sailpoint/v2024/docs/SIMIntegrationsApi.md#create_sim_integration) | **POST** /sim-integrations | Create new sim integration
-*SIMIntegrationsApi* | [**delete_sim_integration**](sailpoint/v2024/docs/SIMIntegrationsApi.md#delete_sim_integration) | **DELETE** /sim-integrations/{id} | Delete a sim integration
-*SIMIntegrationsApi* | [**get_sim_integration**](sailpoint/v2024/docs/SIMIntegrationsApi.md#get_sim_integration) | **GET** /sim-integrations/{id} | Get a sim integration details.
-*SIMIntegrationsApi* | [**get_sim_integrations**](sailpoint/v2024/docs/SIMIntegrationsApi.md#get_sim_integrations) | **GET** /sim-integrations | List the existing sim integrations.
-*SIMIntegrationsApi* | [**patch_before_provisioning_rule**](sailpoint/v2024/docs/SIMIntegrationsApi.md#patch_before_provisioning_rule) | **PATCH** /sim-integrations/{id}/beforeProvisioningRule | Patch a sim beforeprovisioningrule attribute.
-*SIMIntegrationsApi* | [**patch_sim_attributes**](sailpoint/v2024/docs/SIMIntegrationsApi.md#patch_sim_attributes) | **PATCH** /sim-integrations/{id} | Patch a sim attribute.
-*SIMIntegrationsApi* | [**put_sim_integration**](sailpoint/v2024/docs/SIMIntegrationsApi.md#put_sim_integration) | **PUT** /sim-integrations/{id} | Update an existing sim integration
-*SODPoliciesApi* | [**create_sod_policy**](sailpoint/v2024/docs/SODPoliciesApi.md#create_sod_policy) | **POST** /sod-policies | Create sod policy
-*SODPoliciesApi* | [**delete_sod_policy**](sailpoint/v2024/docs/SODPoliciesApi.md#delete_sod_policy) | **DELETE** /sod-policies/{id} | Delete sod policy by id
-*SODPoliciesApi* | [**delete_sod_policy_schedule**](sailpoint/v2024/docs/SODPoliciesApi.md#delete_sod_policy_schedule) | **DELETE** /sod-policies/{id}/schedule | Delete sod policy schedule
-*SODPoliciesApi* | [**get_custom_violation_report**](sailpoint/v2024/docs/SODPoliciesApi.md#get_custom_violation_report) | **GET** /sod-violation-report/{reportResultId}/download/{fileName} | Download custom violation report
-*SODPoliciesApi* | [**get_default_violation_report**](sailpoint/v2024/docs/SODPoliciesApi.md#get_default_violation_report) | **GET** /sod-violation-report/{reportResultId}/download | Download violation report
-*SODPoliciesApi* | [**get_sod_all_report_run_status**](sailpoint/v2024/docs/SODPoliciesApi.md#get_sod_all_report_run_status) | **GET** /sod-violation-report | Get multi-report run task status
-*SODPoliciesApi* | [**get_sod_policy**](sailpoint/v2024/docs/SODPoliciesApi.md#get_sod_policy) | **GET** /sod-policies/{id} | Get sod policy by id
-*SODPoliciesApi* | [**get_sod_policy_schedule**](sailpoint/v2024/docs/SODPoliciesApi.md#get_sod_policy_schedule) | **GET** /sod-policies/{id}/schedule | Get sod policy schedule
-*SODPoliciesApi* | [**get_sod_violation_report_run_status**](sailpoint/v2024/docs/SODPoliciesApi.md#get_sod_violation_report_run_status) | **GET** /sod-policies/sod-violation-report-status/{reportResultId} | Get violation report run status
-*SODPoliciesApi* | [**get_sod_violation_report_status**](sailpoint/v2024/docs/SODPoliciesApi.md#get_sod_violation_report_status) | **GET** /sod-policies/{id}/violation-report | Get sod violation report status
-*SODPoliciesApi* | [**list_sod_policies**](sailpoint/v2024/docs/SODPoliciesApi.md#list_sod_policies) | **GET** /sod-policies | List sod policies
-*SODPoliciesApi* | [**patch_sod_policy**](sailpoint/v2024/docs/SODPoliciesApi.md#patch_sod_policy) | **PATCH** /sod-policies/{id} | Patch sod policy by id
-*SODPoliciesApi* | [**put_policy_schedule**](sailpoint/v2024/docs/SODPoliciesApi.md#put_policy_schedule) | **PUT** /sod-policies/{id}/schedule | Update sod policy schedule
-*SODPoliciesApi* | [**put_sod_policy**](sailpoint/v2024/docs/SODPoliciesApi.md#put_sod_policy) | **PUT** /sod-policies/{id} | Update sod policy by id
-*SODPoliciesApi* | [**start_evaluate_sod_policy**](sailpoint/v2024/docs/SODPoliciesApi.md#start_evaluate_sod_policy) | **POST** /sod-policies/{id}/evaluate | Evaluate one policy by id
-*SODPoliciesApi* | [**start_sod_all_policies_for_org**](sailpoint/v2024/docs/SODPoliciesApi.md#start_sod_all_policies_for_org) | **POST** /sod-violation-report/run | Runs all policies for org
-*SODPoliciesApi* | [**start_sod_policy**](sailpoint/v2024/docs/SODPoliciesApi.md#start_sod_policy) | **POST** /sod-policies/{id}/violation-report/run | Runs sod policy violation report
-*SODViolationsApi* | [**start_predict_sod_violations**](sailpoint/v2024/docs/SODViolationsApi.md#start_predict_sod_violations) | **POST** /sod-violations/predict | Predict sod violations for identity.
-*SODViolationsApi* | [**start_violation_check**](sailpoint/v2024/docs/SODViolationsApi.md#start_violation_check) | **POST** /sod-violations/check | Check sod violations
-*SPConfigApi* | [**export_sp_config**](sailpoint/v2024/docs/SPConfigApi.md#export_sp_config) | **POST** /sp-config/export | Initiates configuration objects export job
-*SPConfigApi* | [**get_sp_config_export**](sailpoint/v2024/docs/SPConfigApi.md#get_sp_config_export) | **GET** /sp-config/export/{id}/download | Download export job result.
-*SPConfigApi* | [**get_sp_config_export_status**](sailpoint/v2024/docs/SPConfigApi.md#get_sp_config_export_status) | **GET** /sp-config/export/{id} | Get export job status
-*SPConfigApi* | [**get_sp_config_import**](sailpoint/v2024/docs/SPConfigApi.md#get_sp_config_import) | **GET** /sp-config/import/{id}/download | Download import job result
-*SPConfigApi* | [**get_sp_config_import_status**](sailpoint/v2024/docs/SPConfigApi.md#get_sp_config_import_status) | **GET** /sp-config/import/{id} | Get import job status
-*SPConfigApi* | [**import_sp_config**](sailpoint/v2024/docs/SPConfigApi.md#import_sp_config) | **POST** /sp-config/import | Initiates configuration objects import job
-*SPConfigApi* | [**list_sp_config_objects**](sailpoint/v2024/docs/SPConfigApi.md#list_sp_config_objects) | **GET** /sp-config/config-objects | List config objects
-*SavedSearchApi* | [**create_saved_search**](sailpoint/v2024/docs/SavedSearchApi.md#create_saved_search) | **POST** /saved-searches | Create a saved search
-*SavedSearchApi* | [**delete_saved_search**](sailpoint/v2024/docs/SavedSearchApi.md#delete_saved_search) | **DELETE** /saved-searches/{id} | Delete document by id
-*SavedSearchApi* | [**execute_saved_search**](sailpoint/v2024/docs/SavedSearchApi.md#execute_saved_search) | **POST** /saved-searches/{id}/execute | Execute a saved search by id
-*SavedSearchApi* | [**get_saved_search**](sailpoint/v2024/docs/SavedSearchApi.md#get_saved_search) | **GET** /saved-searches/{id} | Return saved search by id
-*SavedSearchApi* | [**list_saved_searches**](sailpoint/v2024/docs/SavedSearchApi.md#list_saved_searches) | **GET** /saved-searches | A list of saved searches
-*SavedSearchApi* | [**put_saved_search**](sailpoint/v2024/docs/SavedSearchApi.md#put_saved_search) | **PUT** /saved-searches/{id} | Updates an existing saved search 
-*ScheduledSearchApi* | [**create_scheduled_search**](sailpoint/v2024/docs/ScheduledSearchApi.md#create_scheduled_search) | **POST** /scheduled-searches | Create a new scheduled search
-*ScheduledSearchApi* | [**delete_scheduled_search**](sailpoint/v2024/docs/ScheduledSearchApi.md#delete_scheduled_search) | **DELETE** /scheduled-searches/{id} | Delete a scheduled search
-*ScheduledSearchApi* | [**get_scheduled_search**](sailpoint/v2024/docs/ScheduledSearchApi.md#get_scheduled_search) | **GET** /scheduled-searches/{id} | Get a scheduled search
-*ScheduledSearchApi* | [**list_scheduled_search**](sailpoint/v2024/docs/ScheduledSearchApi.md#list_scheduled_search) | **GET** /scheduled-searches | List scheduled searches
-*ScheduledSearchApi* | [**unsubscribe_scheduled_search**](sailpoint/v2024/docs/ScheduledSearchApi.md#unsubscribe_scheduled_search) | **POST** /scheduled-searches/{id}/unsubscribe | Unsubscribe a recipient from scheduled search
-*ScheduledSearchApi* | [**update_scheduled_search**](sailpoint/v2024/docs/ScheduledSearchApi.md#update_scheduled_search) | **PUT** /scheduled-searches/{id} | Update an existing scheduled search
-*SearchApi* | [**search_aggregate**](sailpoint/v2024/docs/SearchApi.md#search_aggregate) | **POST** /search/aggregate | Perform a search query aggregation
-*SearchApi* | [**search_count**](sailpoint/v2024/docs/SearchApi.md#search_count) | **POST** /search/count | Count documents satisfying a query
-*SearchApi* | [**search_get**](sailpoint/v2024/docs/SearchApi.md#search_get) | **GET** /search/{index}/{id} | Get a document by id
-*SearchApi* | [**search_post**](sailpoint/v2024/docs/SearchApi.md#search_post) | **POST** /search | Perform search
-*SearchAttributeConfigurationApi* | [**create_search_attribute_config**](sailpoint/v2024/docs/SearchAttributeConfigurationApi.md#create_search_attribute_config) | **POST** /accounts/search-attribute-config | Create extended search attributes
-*SearchAttributeConfigurationApi* | [**delete_search_attribute_config**](sailpoint/v2024/docs/SearchAttributeConfigurationApi.md#delete_search_attribute_config) | **DELETE** /accounts/search-attribute-config/{name} | Delete extended search attribute
-*SearchAttributeConfigurationApi* | [**get_search_attribute_config**](sailpoint/v2024/docs/SearchAttributeConfigurationApi.md#get_search_attribute_config) | **GET** /accounts/search-attribute-config | List extended search attributes
-*SearchAttributeConfigurationApi* | [**get_single_search_attribute_config**](sailpoint/v2024/docs/SearchAttributeConfigurationApi.md#get_single_search_attribute_config) | **GET** /accounts/search-attribute-config/{name} | Get extended search attribute
-*SearchAttributeConfigurationApi* | [**patch_search_attribute_config**](sailpoint/v2024/docs/SearchAttributeConfigurationApi.md#patch_search_attribute_config) | **PATCH** /accounts/search-attribute-config/{name} | Update extended search attribute
-*SegmentsApi* | [**create_segment**](sailpoint/v2024/docs/SegmentsApi.md#create_segment) | **POST** /segments | Create segment
-*SegmentsApi* | [**delete_segment**](sailpoint/v2024/docs/SegmentsApi.md#delete_segment) | **DELETE** /segments/{id} | Delete segment by id
-*SegmentsApi* | [**get_segment**](sailpoint/v2024/docs/SegmentsApi.md#get_segment) | **GET** /segments/{id} | Get segment by id
-*SegmentsApi* | [**list_segments**](sailpoint/v2024/docs/SegmentsApi.md#list_segments) | **GET** /segments | List segments
-*SegmentsApi* | [**patch_segment**](sailpoint/v2024/docs/SegmentsApi.md#patch_segment) | **PATCH** /segments/{id} | Update segment
-*ServiceDeskIntegrationApi* | [**create_service_desk_integration**](sailpoint/v2024/docs/ServiceDeskIntegrationApi.md#create_service_desk_integration) | **POST** /service-desk-integrations | Create new service desk integration
-*ServiceDeskIntegrationApi* | [**delete_service_desk_integration**](sailpoint/v2024/docs/ServiceDeskIntegrationApi.md#delete_service_desk_integration) | **DELETE** /service-desk-integrations/{id} | Delete a service desk integration
-*ServiceDeskIntegrationApi* | [**get_service_desk_integration**](sailpoint/v2024/docs/ServiceDeskIntegrationApi.md#get_service_desk_integration) | **GET** /service-desk-integrations/{id} | Get a service desk integration
-*ServiceDeskIntegrationApi* | [**get_service_desk_integration_template**](sailpoint/v2024/docs/ServiceDeskIntegrationApi.md#get_service_desk_integration_template) | **GET** /service-desk-integrations/templates/{scriptName} | Service desk integration template by scriptname
-*ServiceDeskIntegrationApi* | [**get_service_desk_integration_types**](sailpoint/v2024/docs/ServiceDeskIntegrationApi.md#get_service_desk_integration_types) | **GET** /service-desk-integrations/types | List service desk integration types
-*ServiceDeskIntegrationApi* | [**get_service_desk_integrations**](sailpoint/v2024/docs/ServiceDeskIntegrationApi.md#get_service_desk_integrations) | **GET** /service-desk-integrations | List existing service desk integrations
-*ServiceDeskIntegrationApi* | [**get_status_check_details**](sailpoint/v2024/docs/ServiceDeskIntegrationApi.md#get_status_check_details) | **GET** /service-desk-integrations/status-check-configuration | Get the time check configuration
-*ServiceDeskIntegrationApi* | [**patch_service_desk_integration**](sailpoint/v2024/docs/ServiceDeskIntegrationApi.md#patch_service_desk_integration) | **PATCH** /service-desk-integrations/{id} | Patch a service desk integration
-*ServiceDeskIntegrationApi* | [**put_service_desk_integration**](sailpoint/v2024/docs/ServiceDeskIntegrationApi.md#put_service_desk_integration) | **PUT** /service-desk-integrations/{id} | Update a service desk integration
-*ServiceDeskIntegrationApi* | [**update_status_check_details**](sailpoint/v2024/docs/ServiceDeskIntegrationApi.md#update_status_check_details) | **PUT** /service-desk-integrations/status-check-configuration | Update the time check configuration
-*SourceUsagesApi* | [**get_status_by_source_id**](sailpoint/v2024/docs/SourceUsagesApi.md#get_status_by_source_id) | **GET** /source-usages/{sourceId}/status | Finds status of source usage
-*SourceUsagesApi* | [**get_usages_by_source_id**](sailpoint/v2024/docs/SourceUsagesApi.md#get_usages_by_source_id) | **GET** /source-usages/{sourceId}/summaries | Returns source usage insights
-*SourcesApi* | [**create_provisioning_policy**](sailpoint/v2024/docs/SourcesApi.md#create_provisioning_policy) | **POST** /sources/{sourceId}/provisioning-policies | Create provisioning policy
-*SourcesApi* | [**create_source**](sailpoint/v2024/docs/SourcesApi.md#create_source) | **POST** /sources | Creates a source in identitynow.
-*SourcesApi* | [**create_source_schedule**](sailpoint/v2024/docs/SourcesApi.md#create_source_schedule) | **POST** /sources/{sourceId}/schedules | Create schedule on source
-*SourcesApi* | [**create_source_schema**](sailpoint/v2024/docs/SourcesApi.md#create_source_schema) | **POST** /sources/{sourceId}/schemas | Create schema on source
-*SourcesApi* | [**delete_accounts_async**](sailpoint/v2024/docs/SourcesApi.md#delete_accounts_async) | **POST** /sources/{id}/remove-accounts | Remove all accounts in a source
-*SourcesApi* | [**delete_native_change_detection_config**](sailpoint/v2024/docs/SourcesApi.md#delete_native_change_detection_config) | **DELETE** /sources/{sourceId}/native-change-detection-config | Delete native change detection configuration
-*SourcesApi* | [**delete_provisioning_policy**](sailpoint/v2024/docs/SourcesApi.md#delete_provisioning_policy) | **DELETE** /sources/{sourceId}/provisioning-policies/{usageType} | Delete provisioning policy by usagetype
-*SourcesApi* | [**delete_source**](sailpoint/v2024/docs/SourcesApi.md#delete_source) | **DELETE** /sources/{id} | Delete source by id
-*SourcesApi* | [**delete_source_schedule**](sailpoint/v2024/docs/SourcesApi.md#delete_source_schedule) | **DELETE** /sources/{sourceId}/schedules/{scheduleType} | Delete source schedule by type.
-*SourcesApi* | [**delete_source_schema**](sailpoint/v2024/docs/SourcesApi.md#delete_source_schema) | **DELETE** /sources/{sourceId}/schemas/{schemaId} | Delete source schema by id
-*SourcesApi* | [**get_accounts_schema**](sailpoint/v2024/docs/SourcesApi.md#get_accounts_schema) | **GET** /sources/{id}/schemas/accounts | Downloads source accounts schema template
-*SourcesApi* | [**get_correlation_config**](sailpoint/v2024/docs/SourcesApi.md#get_correlation_config) | **GET** /sources/{id}/correlation-config | Get source correlation configuration
-*SourcesApi* | [**get_entitlements_schema**](sailpoint/v2024/docs/SourcesApi.md#get_entitlements_schema) | **GET** /sources/{id}/schemas/entitlements | Downloads source entitlements schema template
-*SourcesApi* | [**get_native_change_detection_config**](sailpoint/v2024/docs/SourcesApi.md#get_native_change_detection_config) | **GET** /sources/{sourceId}/native-change-detection-config | Native change detection configuration
-*SourcesApi* | [**get_provisioning_policy**](sailpoint/v2024/docs/SourcesApi.md#get_provisioning_policy) | **GET** /sources/{sourceId}/provisioning-policies/{usageType} | Get provisioning policy by usagetype
-*SourcesApi* | [**get_source**](sailpoint/v2024/docs/SourcesApi.md#get_source) | **GET** /sources/{id} | Get source by id
-*SourcesApi* | [**get_source_attr_sync_config**](sailpoint/v2024/docs/SourcesApi.md#get_source_attr_sync_config) | **GET** /sources/{id}/attribute-sync-config | Attribute sync config
-*SourcesApi* | [**get_source_config**](sailpoint/v2024/docs/SourcesApi.md#get_source_config) | **GET** /sources/{id}/connectors/source-config | Gets source config with language-translations
-*SourcesApi* | [**get_source_connections**](sailpoint/v2024/docs/SourcesApi.md#get_source_connections) | **GET** /sources/{sourceId}/connections | Get source connections by id
-*SourcesApi* | [**get_source_entitlement_request_config**](sailpoint/v2024/docs/SourcesApi.md#get_source_entitlement_request_config) | **GET** /sources/{id}/entitlement-request-config | Get source entitlement request configuration
-*SourcesApi* | [**get_source_health**](sailpoint/v2024/docs/SourcesApi.md#get_source_health) | **GET** /sources/{sourceId}/source-health | Fetches source health by id
-*SourcesApi* | [**get_source_schedule**](sailpoint/v2024/docs/SourcesApi.md#get_source_schedule) | **GET** /sources/{sourceId}/schedules/{scheduleType} | Get source schedule by type
-*SourcesApi* | [**get_source_schedules**](sailpoint/v2024/docs/SourcesApi.md#get_source_schedules) | **GET** /sources/{sourceId}/schedules | List schedules on source
-*SourcesApi* | [**get_source_schema**](sailpoint/v2024/docs/SourcesApi.md#get_source_schema) | **GET** /sources/{sourceId}/schemas/{schemaId} | Get source schema by id
-*SourcesApi* | [**get_source_schemas**](sailpoint/v2024/docs/SourcesApi.md#get_source_schemas) | **GET** /sources/{sourceId}/schemas | List schemas on source
-*SourcesApi* | [**import_accounts**](sailpoint/v2024/docs/SourcesApi.md#import_accounts) | **POST** /sources/{id}/load-accounts | Account aggregation
-*SourcesApi* | [**import_accounts_schema**](sailpoint/v2024/docs/SourcesApi.md#import_accounts_schema) | **POST** /sources/{id}/schemas/accounts | Uploads source accounts schema template
-*SourcesApi* | [**import_connector_file**](sailpoint/v2024/docs/SourcesApi.md#import_connector_file) | **POST** /sources/{sourceId}/upload-connector-file | Upload connector file to source
-*SourcesApi* | [**import_entitlements_schema**](sailpoint/v2024/docs/SourcesApi.md#import_entitlements_schema) | **POST** /sources/{id}/schemas/entitlements | Uploads source entitlements schema template
-*SourcesApi* | [**import_uncorrelated_accounts**](sailpoint/v2024/docs/SourcesApi.md#import_uncorrelated_accounts) | **POST** /sources/{id}/load-uncorrelated-accounts | Process uncorrelated accounts
-*SourcesApi* | [**list_provisioning_policies**](sailpoint/v2024/docs/SourcesApi.md#list_provisioning_policies) | **GET** /sources/{sourceId}/provisioning-policies | Lists provisioningpolicies
-*SourcesApi* | [**list_sources**](sailpoint/v2024/docs/SourcesApi.md#list_sources) | **GET** /sources | Lists all sources in identitynow.
-*SourcesApi* | [**ping_cluster**](sailpoint/v2024/docs/SourcesApi.md#ping_cluster) | **POST** /sources/{sourceId}/connector/ping-cluster | Ping cluster for source connector
-*SourcesApi* | [**put_correlation_config**](sailpoint/v2024/docs/SourcesApi.md#put_correlation_config) | **PUT** /sources/{id}/correlation-config | Update source correlation configuration
-*SourcesApi* | [**put_native_change_detection_config**](sailpoint/v2024/docs/SourcesApi.md#put_native_change_detection_config) | **PUT** /sources/{sourceId}/native-change-detection-config | Update native change detection configuration
-*SourcesApi* | [**put_provisioning_policy**](sailpoint/v2024/docs/SourcesApi.md#put_provisioning_policy) | **PUT** /sources/{sourceId}/provisioning-policies/{usageType} | Update provisioning policy by usagetype
-*SourcesApi* | [**put_source**](sailpoint/v2024/docs/SourcesApi.md#put_source) | **PUT** /sources/{id} | Update source (full)
-*SourcesApi* | [**put_source_attr_sync_config**](sailpoint/v2024/docs/SourcesApi.md#put_source_attr_sync_config) | **PUT** /sources/{id}/attribute-sync-config | Update attribute sync config
-*SourcesApi* | [**put_source_schema**](sailpoint/v2024/docs/SourcesApi.md#put_source_schema) | **PUT** /sources/{sourceId}/schemas/{schemaId} | Update source schema (full)
-*SourcesApi* | [**search_resource_objects**](sailpoint/v2024/docs/SourcesApi.md#search_resource_objects) | **POST** /sources/{sourceId}/connector/peek-resource-objects | Peek source connector&#39;s resource objects
-*SourcesApi* | [**sync_attributes_for_source**](sailpoint/v2024/docs/SourcesApi.md#sync_attributes_for_source) | **POST** /sources/{id}/synchronize-attributes | Synchronize single source attributes.
-*SourcesApi* | [**test_source_configuration**](sailpoint/v2024/docs/SourcesApi.md#test_source_configuration) | **POST** /sources/{sourceId}/connector/test-configuration | Test configuration for source connector
-*SourcesApi* | [**test_source_connection**](sailpoint/v2024/docs/SourcesApi.md#test_source_connection) | **POST** /sources/{sourceId}/connector/check-connection | Check connection for source connector.
-*SourcesApi* | [**update_password_policy_holders**](sailpoint/v2024/docs/SourcesApi.md#update_password_policy_holders) | **PATCH** /sources/{sourceId}/password-policies | Update password policy
-*SourcesApi* | [**update_provisioning_policies_in_bulk**](sailpoint/v2024/docs/SourcesApi.md#update_provisioning_policies_in_bulk) | **POST** /sources/{sourceId}/provisioning-policies/bulk-update | Bulk update provisioning policies
-*SourcesApi* | [**update_provisioning_policy**](sailpoint/v2024/docs/SourcesApi.md#update_provisioning_policy) | **PATCH** /sources/{sourceId}/provisioning-policies/{usageType} | Partial update of provisioning policy
-*SourcesApi* | [**update_source**](sailpoint/v2024/docs/SourcesApi.md#update_source) | **PATCH** /sources/{id} | Update source (partial)
-*SourcesApi* | [**update_source_entitlement_request_config**](sailpoint/v2024/docs/SourcesApi.md#update_source_entitlement_request_config) | **PUT** /sources/{id}/entitlement-request-config | Update source entitlement request configuration
-*SourcesApi* | [**update_source_schedule**](sailpoint/v2024/docs/SourcesApi.md#update_source_schedule) | **PATCH** /sources/{sourceId}/schedules/{scheduleType} | Update source schedule (partial)
-*SourcesApi* | [**update_source_schema**](sailpoint/v2024/docs/SourcesApi.md#update_source_schema) | **PATCH** /sources/{sourceId}/schemas/{schemaId} | Update source schema (partial)
-*SuggestedEntitlementDescriptionApi* | [**get_sed_batch_stats**](sailpoint/v2024/docs/SuggestedEntitlementDescriptionApi.md#get_sed_batch_stats) | **GET** /suggested-entitlement-description-batches/{batchId}/stats | Submit sed batch stats request
-*SuggestedEntitlementDescriptionApi* | [**get_sed_batches**](sailpoint/v2024/docs/SuggestedEntitlementDescriptionApi.md#get_sed_batches) | **GET** /suggested-entitlement-description-batches | List Sed Batch Record
-*SuggestedEntitlementDescriptionApi* | [**list_seds**](sailpoint/v2024/docs/SuggestedEntitlementDescriptionApi.md#list_seds) | **GET** /suggested-entitlement-descriptions | List suggested entitlement descriptions
-*SuggestedEntitlementDescriptionApi* | [**patch_sed**](sailpoint/v2024/docs/SuggestedEntitlementDescriptionApi.md#patch_sed) | **PATCH** /suggested-entitlement-descriptions | Patch suggested entitlement description
-*SuggestedEntitlementDescriptionApi* | [**submit_sed_approval**](sailpoint/v2024/docs/SuggestedEntitlementDescriptionApi.md#submit_sed_approval) | **POST** /suggested-entitlement-description-approvals | Submit bulk approval request
-*SuggestedEntitlementDescriptionApi* | [**submit_sed_assignment**](sailpoint/v2024/docs/SuggestedEntitlementDescriptionApi.md#submit_sed_assignment) | **POST** /suggested-entitlement-description-assignments | Submit sed assignment request
-*SuggestedEntitlementDescriptionApi* | [**submit_sed_batch_request**](sailpoint/v2024/docs/SuggestedEntitlementDescriptionApi.md#submit_sed_batch_request) | **POST** /suggested-entitlement-description-batches | Submit sed batch request
-*TaggedObjectsApi* | [**delete_tagged_object**](sailpoint/v2024/docs/TaggedObjectsApi.md#delete_tagged_object) | **DELETE** /tagged-objects/{type}/{id} | Delete object tags
-*TaggedObjectsApi* | [**delete_tags_to_many_object**](sailpoint/v2024/docs/TaggedObjectsApi.md#delete_tags_to_many_object) | **POST** /tagged-objects/bulk-remove | Remove tags from multiple objects
-*TaggedObjectsApi* | [**get_tagged_object**](sailpoint/v2024/docs/TaggedObjectsApi.md#get_tagged_object) | **GET** /tagged-objects/{type}/{id} | Get tagged object
-*TaggedObjectsApi* | [**list_tagged_objects**](sailpoint/v2024/docs/TaggedObjectsApi.md#list_tagged_objects) | **GET** /tagged-objects | List tagged objects
-*TaggedObjectsApi* | [**list_tagged_objects_by_type**](sailpoint/v2024/docs/TaggedObjectsApi.md#list_tagged_objects_by_type) | **GET** /tagged-objects/{type} | List tagged objects by type
-*TaggedObjectsApi* | [**put_tagged_object**](sailpoint/v2024/docs/TaggedObjectsApi.md#put_tagged_object) | **PUT** /tagged-objects/{type}/{id} | Update tagged object
-*TaggedObjectsApi* | [**set_tag_to_object**](sailpoint/v2024/docs/TaggedObjectsApi.md#set_tag_to_object) | **POST** /tagged-objects | Add tag to object
-*TaggedObjectsApi* | [**set_tags_to_many_objects**](sailpoint/v2024/docs/TaggedObjectsApi.md#set_tags_to_many_objects) | **POST** /tagged-objects/bulk-add | Tag multiple objects
-*TaskManagementApi* | [**get_pending_task_headers**](sailpoint/v2024/docs/TaskManagementApi.md#get_pending_task_headers) | **HEAD** /task-status/pending-tasks | Retrieve pending task list headers
-*TaskManagementApi* | [**get_pending_tasks**](sailpoint/v2024/docs/TaskManagementApi.md#get_pending_tasks) | **GET** /task-status/pending-tasks | Retrieve pending task status list
-*TaskManagementApi* | [**get_task_status**](sailpoint/v2024/docs/TaskManagementApi.md#get_task_status) | **GET** /task-status/{id} | Get task status by id
-*TaskManagementApi* | [**get_task_status_list**](sailpoint/v2024/docs/TaskManagementApi.md#get_task_status_list) | **GET** /task-status | Retrieve task status list
-*TaskManagementApi* | [**update_task_status**](sailpoint/v2024/docs/TaskManagementApi.md#update_task_status) | **PATCH** /task-status/{id} | Update task status by id
-*TenantApi* | [**get_tenant**](sailpoint/v2024/docs/TenantApi.md#get_tenant) | **GET** /tenant | Get tenant information.
-*TenantContextApi* | [**get_tenant_context**](sailpoint/v2024/docs/TenantContextApi.md#get_tenant_context) | **GET** /tenant-context | Retrieve tenant context
-*TenantContextApi* | [**patch_tenant_context**](sailpoint/v2024/docs/TenantContextApi.md#patch_tenant_context) | **PATCH** /tenant-context | Update tenant context
-*TransformsApi* | [**create_transform**](sailpoint/v2024/docs/TransformsApi.md#create_transform) | **POST** /transforms | Create transform
-*TransformsApi* | [**delete_transform**](sailpoint/v2024/docs/TransformsApi.md#delete_transform) | **DELETE** /transforms/{id} | Delete a transform
-*TransformsApi* | [**get_transform**](sailpoint/v2024/docs/TransformsApi.md#get_transform) | **GET** /transforms/{id} | Transform by id
-*TransformsApi* | [**list_transforms**](sailpoint/v2024/docs/TransformsApi.md#list_transforms) | **GET** /transforms | List transforms
-*TransformsApi* | [**update_transform**](sailpoint/v2024/docs/TransformsApi.md#update_transform) | **PUT** /transforms/{id} | Update a transform
-*TriggersApi* | [**complete_trigger_invocation**](sailpoint/v2024/docs/TriggersApi.md#complete_trigger_invocation) | **POST** /trigger-invocations/{id}/complete | Complete trigger invocation
-*TriggersApi* | [**create_subscription**](sailpoint/v2024/docs/TriggersApi.md#create_subscription) | **POST** /trigger-subscriptions | Create a subscription
-*TriggersApi* | [**delete_subscription**](sailpoint/v2024/docs/TriggersApi.md#delete_subscription) | **DELETE** /trigger-subscriptions/{id} | Delete a subscription
-*TriggersApi* | [**list_subscriptions**](sailpoint/v2024/docs/TriggersApi.md#list_subscriptions) | **GET** /trigger-subscriptions | List subscriptions
-*TriggersApi* | [**list_trigger_invocation_status**](sailpoint/v2024/docs/TriggersApi.md#list_trigger_invocation_status) | **GET** /trigger-invocations/status | List latest invocation statuses
-*TriggersApi* | [**list_triggers**](sailpoint/v2024/docs/TriggersApi.md#list_triggers) | **GET** /triggers | List triggers
-*TriggersApi* | [**patch_subscription**](sailpoint/v2024/docs/TriggersApi.md#patch_subscription) | **PATCH** /trigger-subscriptions/{id} | Patch a subscription
-*TriggersApi* | [**start_test_trigger_invocation**](sailpoint/v2024/docs/TriggersApi.md#start_test_trigger_invocation) | **POST** /trigger-invocations/test | Start a test invocation
-*TriggersApi* | [**test_subscription_filter**](sailpoint/v2024/docs/TriggersApi.md#test_subscription_filter) | **POST** /trigger-subscriptions/validate-filter | Validate a subscription filter
-*TriggersApi* | [**update_subscription**](sailpoint/v2024/docs/TriggersApi.md#update_subscription) | **PUT** /trigger-subscriptions/{id} | Update a subscription
-*UIMetadataApi* | [**get_tenant_ui_metadata**](sailpoint/v2024/docs/UIMetadataApi.md#get_tenant_ui_metadata) | **GET** /ui-metadata/tenant | Get a tenant ui metadata
-*UIMetadataApi* | [**set_tenant_ui_metadata**](sailpoint/v2024/docs/UIMetadataApi.md#set_tenant_ui_metadata) | **PUT** /ui-metadata/tenant | Update tenant ui metadata
-*VendorConnectorMappingsApi* | [**create_vendor_connector_mapping**](sailpoint/v2024/docs/VendorConnectorMappingsApi.md#create_vendor_connector_mapping) | **POST** /vendor-connector-mappings | Create vendor connector mapping
-*VendorConnectorMappingsApi* | [**delete_vendor_connector_mapping**](sailpoint/v2024/docs/VendorConnectorMappingsApi.md#delete_vendor_connector_mapping) | **DELETE** /vendor-connector-mappings | Delete vendor connector mapping
-*VendorConnectorMappingsApi* | [**get_vendor_connector_mappings**](sailpoint/v2024/docs/VendorConnectorMappingsApi.md#get_vendor_connector_mappings) | **GET** /vendor-connector-mappings | List vendor connector mappings
-*WorkItemsApi* | [**approve_approval_item**](sailpoint/v2024/docs/WorkItemsApi.md#approve_approval_item) | **POST** /work-items/{id}/approve/{approvalItemId} | Approve an approval item
-*WorkItemsApi* | [**approve_approval_items_in_bulk**](sailpoint/v2024/docs/WorkItemsApi.md#approve_approval_items_in_bulk) | **POST** /work-items/bulk-approve/{id} | Bulk approve approval items
-*WorkItemsApi* | [**complete_work_item**](sailpoint/v2024/docs/WorkItemsApi.md#complete_work_item) | **POST** /work-items/{id} | Complete a work item
-*WorkItemsApi* | [**forward_work_item**](sailpoint/v2024/docs/WorkItemsApi.md#forward_work_item) | **POST** /work-items/{id}/forward | Forward a work item
-*WorkItemsApi* | [**get_completed_work_items**](sailpoint/v2024/docs/WorkItemsApi.md#get_completed_work_items) | **GET** /work-items/completed | Completed work items
-*WorkItemsApi* | [**get_count_completed_work_items**](sailpoint/v2024/docs/WorkItemsApi.md#get_count_completed_work_items) | **GET** /work-items/completed/count | Count completed work items
-*WorkItemsApi* | [**get_count_work_items**](sailpoint/v2024/docs/WorkItemsApi.md#get_count_work_items) | **GET** /work-items/count | Count work items
-*WorkItemsApi* | [**get_work_item**](sailpoint/v2024/docs/WorkItemsApi.md#get_work_item) | **GET** /work-items/{id} | Get a work item
-*WorkItemsApi* | [**get_work_items_summary**](sailpoint/v2024/docs/WorkItemsApi.md#get_work_items_summary) | **GET** /work-items/summary | Work items summary
-*WorkItemsApi* | [**list_work_items**](sailpoint/v2024/docs/WorkItemsApi.md#list_work_items) | **GET** /work-items | List work items
-*WorkItemsApi* | [**reject_approval_item**](sailpoint/v2024/docs/WorkItemsApi.md#reject_approval_item) | **POST** /work-items/{id}/reject/{approvalItemId} | Reject an approval item
-*WorkItemsApi* | [**reject_approval_items_in_bulk**](sailpoint/v2024/docs/WorkItemsApi.md#reject_approval_items_in_bulk) | **POST** /work-items/bulk-reject/{id} | Bulk reject approval items
-*WorkItemsApi* | [**submit_account_selection**](sailpoint/v2024/docs/WorkItemsApi.md#submit_account_selection) | **POST** /work-items/{id}/submit-account-selection | Submit account selections
-*WorkReassignmentApi* | [**create_reassignment_configuration**](sailpoint/v2024/docs/WorkReassignmentApi.md#create_reassignment_configuration) | **POST** /reassignment-configurations | Create a reassignment configuration
-*WorkReassignmentApi* | [**delete_reassignment_configuration**](sailpoint/v2024/docs/WorkReassignmentApi.md#delete_reassignment_configuration) | **DELETE** /reassignment-configurations/{identityId}/{configType} | Delete reassignment configuration
-*WorkReassignmentApi* | [**get_evaluate_reassignment_configuration**](sailpoint/v2024/docs/WorkReassignmentApi.md#get_evaluate_reassignment_configuration) | **GET** /reassignment-configurations/{identityId}/evaluate/{configType} | Evaluate reassignment configuration
-*WorkReassignmentApi* | [**get_reassignment_config_types**](sailpoint/v2024/docs/WorkReassignmentApi.md#get_reassignment_config_types) | **GET** /reassignment-configurations/types | List reassignment config types
-*WorkReassignmentApi* | [**get_reassignment_configuration**](sailpoint/v2024/docs/WorkReassignmentApi.md#get_reassignment_configuration) | **GET** /reassignment-configurations/{identityId} | Get reassignment configuration
-*WorkReassignmentApi* | [**get_tenant_config_configuration**](sailpoint/v2024/docs/WorkReassignmentApi.md#get_tenant_config_configuration) | **GET** /reassignment-configurations/tenant-config | Get tenant-wide reassignment configuration settings
-*WorkReassignmentApi* | [**list_reassignment_configurations**](sailpoint/v2024/docs/WorkReassignmentApi.md#list_reassignment_configurations) | **GET** /reassignment-configurations | List reassignment configurations
-*WorkReassignmentApi* | [**put_reassignment_config**](sailpoint/v2024/docs/WorkReassignmentApi.md#put_reassignment_config) | **PUT** /reassignment-configurations/{identityId} | Update reassignment configuration
-*WorkReassignmentApi* | [**put_tenant_configuration**](sailpoint/v2024/docs/WorkReassignmentApi.md#put_tenant_configuration) | **PUT** /reassignment-configurations/tenant-config | Update tenant-wide reassignment configuration settings
-*WorkflowsApi* | [**cancel_workflow_execution**](sailpoint/v2024/docs/WorkflowsApi.md#cancel_workflow_execution) | **POST** /workflow-executions/{id}/cancel | Cancel workflow execution by id
-*WorkflowsApi* | [**create_external_execute_workflow**](sailpoint/v2024/docs/WorkflowsApi.md#create_external_execute_workflow) | **POST** /workflows/execute/external/{id} | Execute workflow via external trigger
-*WorkflowsApi* | [**create_workflow**](sailpoint/v2024/docs/WorkflowsApi.md#create_workflow) | **POST** /workflows | Create workflow
-*WorkflowsApi* | [**create_workflow_external_trigger**](sailpoint/v2024/docs/WorkflowsApi.md#create_workflow_external_trigger) | **POST** /workflows/{id}/external/oauth-clients | Generate external trigger oauth client
-*WorkflowsApi* | [**delete_workflow**](sailpoint/v2024/docs/WorkflowsApi.md#delete_workflow) | **DELETE** /workflows/{id} | Delete workflow by id
-*WorkflowsApi* | [**get_workflow**](sailpoint/v2024/docs/WorkflowsApi.md#get_workflow) | **GET** /workflows/{id} | Get workflow by id
-*WorkflowsApi* | [**get_workflow_execution**](sailpoint/v2024/docs/WorkflowsApi.md#get_workflow_execution) | **GET** /workflow-executions/{id} | Get workflow execution
-*WorkflowsApi* | [**get_workflow_execution_history**](sailpoint/v2024/docs/WorkflowsApi.md#get_workflow_execution_history) | **GET** /workflow-executions/{id}/history | Get workflow execution history
-*WorkflowsApi* | [**get_workflow_executions**](sailpoint/v2024/docs/WorkflowsApi.md#get_workflow_executions) | **GET** /workflows/{id}/executions | List workflow executions
-*WorkflowsApi* | [**list_complete_workflow_library**](sailpoint/v2024/docs/WorkflowsApi.md#list_complete_workflow_library) | **GET** /workflow-library | List complete workflow library
-*WorkflowsApi* | [**list_workflow_library_actions**](sailpoint/v2024/docs/WorkflowsApi.md#list_workflow_library_actions) | **GET** /workflow-library/actions | List workflow library actions
-*WorkflowsApi* | [**list_workflow_library_operators**](sailpoint/v2024/docs/WorkflowsApi.md#list_workflow_library_operators) | **GET** /workflow-library/operators | List workflow library operators
-*WorkflowsApi* | [**list_workflow_library_triggers**](sailpoint/v2024/docs/WorkflowsApi.md#list_workflow_library_triggers) | **GET** /workflow-library/triggers | List workflow library triggers
-*WorkflowsApi* | [**list_workflows**](sailpoint/v2024/docs/WorkflowsApi.md#list_workflows) | **GET** /workflows | List workflows
-*WorkflowsApi* | [**patch_workflow**](sailpoint/v2024/docs/WorkflowsApi.md#patch_workflow) | **PATCH** /workflows/{id} | Patch workflow
-*WorkflowsApi* | [**put_workflow**](sailpoint/v2024/docs/WorkflowsApi.md#put_workflow) | **PUT** /workflows/{id} | Update workflow
-*WorkflowsApi* | [**test_external_execute_workflow**](sailpoint/v2024/docs/WorkflowsApi.md#test_external_execute_workflow) | **POST** /workflows/execute/external/{id}/test | Test workflow via external trigger
-*WorkflowsApi* | [**test_workflow**](sailpoint/v2024/docs/WorkflowsApi.md#test_workflow) | **POST** /workflows/{id}/test | Test workflow by id
+*AccessModelMetadataApi* | [**get_access_model_metadata_attribute**](sailpoint\v2024/docs/AccessModelMetadataApi.md#get_access_model_metadata_attribute) | **GET** /access-model-metadata/attributes/{key} | Get access model metadata attribute
+*AccessModelMetadataApi* | [**get_access_model_metadata_attribute_value**](sailpoint\v2024/docs/AccessModelMetadataApi.md#get_access_model_metadata_attribute_value) | **GET** /access-model-metadata/attributes/{key}/values/{value} | Get access model metadata value
+*AccessModelMetadataApi* | [**list_access_model_metadata_attribute**](sailpoint\v2024/docs/AccessModelMetadataApi.md#list_access_model_metadata_attribute) | **GET** /access-model-metadata/attributes | List access model metadata attributes
+*AccessModelMetadataApi* | [**list_access_model_metadata_attribute_value**](sailpoint\v2024/docs/AccessModelMetadataApi.md#list_access_model_metadata_attribute_value) | **GET** /access-model-metadata/attributes/{key}/values | List access model metadata values
+*AccessProfilesApi* | [**create_access_profile**](sailpoint\v2024/docs/AccessProfilesApi.md#create_access_profile) | **POST** /access-profiles | Create access profile
+*AccessProfilesApi* | [**delete_access_profile**](sailpoint\v2024/docs/AccessProfilesApi.md#delete_access_profile) | **DELETE** /access-profiles/{id} | Delete the specified access profile
+*AccessProfilesApi* | [**delete_access_profiles_in_bulk**](sailpoint\v2024/docs/AccessProfilesApi.md#delete_access_profiles_in_bulk) | **POST** /access-profiles/bulk-delete | Delete access profile(s)
+*AccessProfilesApi* | [**get_access_profile**](sailpoint\v2024/docs/AccessProfilesApi.md#get_access_profile) | **GET** /access-profiles/{id} | Get an access profile
+*AccessProfilesApi* | [**get_access_profile_entitlements**](sailpoint\v2024/docs/AccessProfilesApi.md#get_access_profile_entitlements) | **GET** /access-profiles/{id}/entitlements | List access profile&#39;s entitlements
+*AccessProfilesApi* | [**list_access_profiles**](sailpoint\v2024/docs/AccessProfilesApi.md#list_access_profiles) | **GET** /access-profiles | List access profiles
+*AccessProfilesApi* | [**patch_access_profile**](sailpoint\v2024/docs/AccessProfilesApi.md#patch_access_profile) | **PATCH** /access-profiles/{id} | Patch a specified access profile
+*AccessProfilesApi* | [**update_access_profiles_in_bulk**](sailpoint\v2024/docs/AccessProfilesApi.md#update_access_profiles_in_bulk) | **POST** /access-profiles/bulk-update-requestable | Update access profile(s) requestable field.
+*AccessRequestApprovalsApi* | [**approve_access_request**](sailpoint\v2024/docs/AccessRequestApprovalsApi.md#approve_access_request) | **POST** /access-request-approvals/{approvalId}/approve | Approve access request approval
+*AccessRequestApprovalsApi* | [**forward_access_request**](sailpoint\v2024/docs/AccessRequestApprovalsApi.md#forward_access_request) | **POST** /access-request-approvals/{approvalId}/forward | Forward access request approval
+*AccessRequestApprovalsApi* | [**get_access_request_approval_summary**](sailpoint\v2024/docs/AccessRequestApprovalsApi.md#get_access_request_approval_summary) | **GET** /access-request-approvals/approval-summary | Get access requests approvals number
+*AccessRequestApprovalsApi* | [**list_access_request_approvers**](sailpoint\v2024/docs/AccessRequestApprovalsApi.md#list_access_request_approvers) | **GET** /access-request-approvals/{accessRequestId}/approvers | Access request approvers
+*AccessRequestApprovalsApi* | [**list_completed_approvals**](sailpoint\v2024/docs/AccessRequestApprovalsApi.md#list_completed_approvals) | **GET** /access-request-approvals/completed | Completed access request approvals list
+*AccessRequestApprovalsApi* | [**list_pending_approvals**](sailpoint\v2024/docs/AccessRequestApprovalsApi.md#list_pending_approvals) | **GET** /access-request-approvals/pending | Pending access request approvals list
+*AccessRequestApprovalsApi* | [**reject_access_request**](sailpoint\v2024/docs/AccessRequestApprovalsApi.md#reject_access_request) | **POST** /access-request-approvals/{approvalId}/reject | Reject access request approval
+*AccessRequestIdentityMetricsApi* | [**get_access_request_identity_metrics**](sailpoint\v2024/docs/AccessRequestIdentityMetricsApi.md#get_access_request_identity_metrics) | **GET** /access-request-identity-metrics/{identityId}/requested-objects/{requestedObjectId}/type/{type} | Return access request identity metrics
+*AccessRequestsApi* | [**approve_bulk_access_request**](sailpoint\v2024/docs/AccessRequestsApi.md#approve_bulk_access_request) | **POST** /access-request-approvals/bulk-approve | Bulk approve access request
+*AccessRequestsApi* | [**cancel_access_request**](sailpoint\v2024/docs/AccessRequestsApi.md#cancel_access_request) | **POST** /access-requests/cancel | Cancel access request
+*AccessRequestsApi* | [**cancel_access_request_in_bulk**](sailpoint\v2024/docs/AccessRequestsApi.md#cancel_access_request_in_bulk) | **POST** /access-requests/bulk-cancel | Bulk cancel access request
+*AccessRequestsApi* | [**close_access_request**](sailpoint\v2024/docs/AccessRequestsApi.md#close_access_request) | **POST** /access-requests/close | Close access request
+*AccessRequestsApi* | [**create_access_request**](sailpoint\v2024/docs/AccessRequestsApi.md#create_access_request) | **POST** /access-requests | Submit access request
+*AccessRequestsApi* | [**get_access_request_config**](sailpoint\v2024/docs/AccessRequestsApi.md#get_access_request_config) | **GET** /access-request-config | Get access request configuration
+*AccessRequestsApi* | [**list_access_request_status**](sailpoint\v2024/docs/AccessRequestsApi.md#list_access_request_status) | **GET** /access-request-status | Access request status
+*AccessRequestsApi* | [**list_administrators_access_request_status**](sailpoint\v2024/docs/AccessRequestsApi.md#list_administrators_access_request_status) | **GET** /access-request-administration | Access request status for administrators
+*AccessRequestsApi* | [**load_account_selections**](sailpoint\v2024/docs/AccessRequestsApi.md#load_account_selections) | **POST** /access-requests/accounts-selection | Get accounts selections for identity
+*AccessRequestsApi* | [**set_access_request_config**](sailpoint\v2024/docs/AccessRequestsApi.md#set_access_request_config) | **PUT** /access-request-config | Update access request configuration
+*AccountActivitiesApi* | [**get_account_activity**](sailpoint\v2024/docs/AccountActivitiesApi.md#get_account_activity) | **GET** /account-activities/{id} | Get an account activity
+*AccountActivitiesApi* | [**list_account_activities**](sailpoint\v2024/docs/AccountActivitiesApi.md#list_account_activities) | **GET** /account-activities | List account activities
+*AccountAggregationsApi* | [**get_account_aggregation_status**](sailpoint\v2024/docs/AccountAggregationsApi.md#get_account_aggregation_status) | **GET** /account-aggregations/{id}/status | In-progress account aggregation status
+*AccountUsagesApi* | [**get_usages_by_account_id**](sailpoint\v2024/docs/AccountUsagesApi.md#get_usages_by_account_id) | **GET** /account-usages/{accountId}/summaries | Returns account usage insights
+*AccountsApi* | [**create_account**](sailpoint\v2024/docs/AccountsApi.md#create_account) | **POST** /accounts | Create account
+*AccountsApi* | [**delete_account**](sailpoint\v2024/docs/AccountsApi.md#delete_account) | **DELETE** /accounts/{id} | Delete account
+*AccountsApi* | [**delete_account_async**](sailpoint\v2024/docs/AccountsApi.md#delete_account_async) | **POST** /accounts/{id}/remove | Remove account
+*AccountsApi* | [**disable_account**](sailpoint\v2024/docs/AccountsApi.md#disable_account) | **POST** /accounts/{id}/disable | Disable account
+*AccountsApi* | [**disable_account_for_identity**](sailpoint\v2024/docs/AccountsApi.md#disable_account_for_identity) | **POST** /identities-accounts/{id}/disable | Disable idn account for identity
+*AccountsApi* | [**disable_accounts_for_identities**](sailpoint\v2024/docs/AccountsApi.md#disable_accounts_for_identities) | **POST** /identities-accounts/disable | Disable idn accounts for identities
+*AccountsApi* | [**enable_account**](sailpoint\v2024/docs/AccountsApi.md#enable_account) | **POST** /accounts/{id}/enable | Enable account
+*AccountsApi* | [**enable_account_for_identity**](sailpoint\v2024/docs/AccountsApi.md#enable_account_for_identity) | **POST** /identities-accounts/{id}/enable | Enable idn account for identity
+*AccountsApi* | [**enable_accounts_for_identities**](sailpoint\v2024/docs/AccountsApi.md#enable_accounts_for_identities) | **POST** /identities-accounts/enable | Enable idn accounts for identities
+*AccountsApi* | [**get_account**](sailpoint\v2024/docs/AccountsApi.md#get_account) | **GET** /accounts/{id} | Account details
+*AccountsApi* | [**get_account_entitlements**](sailpoint\v2024/docs/AccountsApi.md#get_account_entitlements) | **GET** /accounts/{id}/entitlements | Account entitlements
+*AccountsApi* | [**list_accounts**](sailpoint\v2024/docs/AccountsApi.md#list_accounts) | **GET** /accounts | Accounts list
+*AccountsApi* | [**put_account**](sailpoint\v2024/docs/AccountsApi.md#put_account) | **PUT** /accounts/{id} | Update account
+*AccountsApi* | [**submit_reload_account**](sailpoint\v2024/docs/AccountsApi.md#submit_reload_account) | **POST** /accounts/{id}/reload | Reload account
+*AccountsApi* | [**unlock_account**](sailpoint\v2024/docs/AccountsApi.md#unlock_account) | **POST** /accounts/{id}/unlock | Unlock account
+*AccountsApi* | [**update_account**](sailpoint\v2024/docs/AccountsApi.md#update_account) | **PATCH** /accounts/{id} | Update account
+*ApplicationDiscoveryApi* | [**get_discovered_applications**](sailpoint\v2024/docs/ApplicationDiscoveryApi.md#get_discovered_applications) | **GET** /discovered-applications | Get discovered applications for tenant
+*ApplicationDiscoveryApi* | [**get_manual_discover_applications_csv_template**](sailpoint\v2024/docs/ApplicationDiscoveryApi.md#get_manual_discover_applications_csv_template) | **GET** /manual-discover-applications-template | Download csv template for discovery
+*ApplicationDiscoveryApi* | [**send_manual_discover_applications_csv_template**](sailpoint\v2024/docs/ApplicationDiscoveryApi.md#send_manual_discover_applications_csv_template) | **POST** /manual-discover-applications | Upload csv to discover applications
+*ApprovalsApi* | [**get_approval**](sailpoint\v2024/docs/ApprovalsApi.md#get_approval) | **GET** /generic-approvals/{id} | Get an approval
+*ApprovalsApi* | [**get_approvals**](sailpoint\v2024/docs/ApprovalsApi.md#get_approvals) | **GET** /generic-approvals | Get approvals
+*AppsApi* | [**create_source_app**](sailpoint\v2024/docs/AppsApi.md#create_source_app) | **POST** /source-apps | Create source app
+*AppsApi* | [**delete_access_profiles_from_source_app_by_bulk**](sailpoint\v2024/docs/AppsApi.md#delete_access_profiles_from_source_app_by_bulk) | **POST** /source-apps/{id}/access-profiles/bulk-remove | Bulk remove access profiles from the specified source app
+*AppsApi* | [**delete_source_app**](sailpoint\v2024/docs/AppsApi.md#delete_source_app) | **DELETE** /source-apps/{id} | Delete source app by id
+*AppsApi* | [**get_source_app**](sailpoint\v2024/docs/AppsApi.md#get_source_app) | **GET** /source-apps/{id} | Get source app by id
+*AppsApi* | [**list_access_profiles_for_source_app**](sailpoint\v2024/docs/AppsApi.md#list_access_profiles_for_source_app) | **GET** /source-apps/{id}/access-profiles | List access profiles for the specified source app
+*AppsApi* | [**list_all_source_app**](sailpoint\v2024/docs/AppsApi.md#list_all_source_app) | **GET** /source-apps/all | List all source apps
+*AppsApi* | [**list_all_user_apps**](sailpoint\v2024/docs/AppsApi.md#list_all_user_apps) | **GET** /user-apps/all | List all user apps
+*AppsApi* | [**list_assigned_source_app**](sailpoint\v2024/docs/AppsApi.md#list_assigned_source_app) | **GET** /source-apps/assigned | List assigned source apps
+*AppsApi* | [**list_available_accounts_for_user_app**](sailpoint\v2024/docs/AppsApi.md#list_available_accounts_for_user_app) | **GET** /user-apps/{id}/available-accounts | List available accounts for user app
+*AppsApi* | [**list_available_source_apps**](sailpoint\v2024/docs/AppsApi.md#list_available_source_apps) | **GET** /source-apps | List available source apps
+*AppsApi* | [**list_owned_user_apps**](sailpoint\v2024/docs/AppsApi.md#list_owned_user_apps) | **GET** /user-apps | List owned user apps
+*AppsApi* | [**patch_source_app**](sailpoint\v2024/docs/AppsApi.md#patch_source_app) | **PATCH** /source-apps/{id} | Patch source app by id
+*AppsApi* | [**patch_user_app**](sailpoint\v2024/docs/AppsApi.md#patch_user_app) | **PATCH** /user-apps/{id} | Patch user app by id
+*AppsApi* | [**update_source_apps_in_bulk**](sailpoint\v2024/docs/AppsApi.md#update_source_apps_in_bulk) | **POST** /source-apps/bulk-update | Bulk update source apps
+*AuthProfileApi* | [**get_profile_config**](sailpoint\v2024/docs/AuthProfileApi.md#get_profile_config) | **GET** /auth-profiles/{id} | Get auth profile
+*AuthProfileApi* | [**get_profile_config_list**](sailpoint\v2024/docs/AuthProfileApi.md#get_profile_config_list) | **GET** /auth-profiles | Get list of auth profiles
+*AuthProfileApi* | [**patch_profile_config**](sailpoint\v2024/docs/AuthProfileApi.md#patch_profile_config) | **PATCH** /auth-profiles/{id} | Patch a specified auth profile
+*AuthUsersApi* | [**get_auth_user**](sailpoint\v2024/docs/AuthUsersApi.md#get_auth_user) | **GET** /auth-users/{id} | Auth user details
+*AuthUsersApi* | [**patch_auth_user**](sailpoint\v2024/docs/AuthUsersApi.md#patch_auth_user) | **PATCH** /auth-users/{id} | Auth user update
+*BrandingApi* | [**create_branding_item**](sailpoint\v2024/docs/BrandingApi.md#create_branding_item) | **POST** /brandings | Create a branding item
+*BrandingApi* | [**delete_branding**](sailpoint\v2024/docs/BrandingApi.md#delete_branding) | **DELETE** /brandings/{name} | Delete a branding item
+*BrandingApi* | [**get_branding**](sailpoint\v2024/docs/BrandingApi.md#get_branding) | **GET** /brandings/{name} | Get a branding item
+*BrandingApi* | [**get_branding_list**](sailpoint\v2024/docs/BrandingApi.md#get_branding_list) | **GET** /brandings | List of branding items
+*BrandingApi* | [**set_branding_item**](sailpoint\v2024/docs/BrandingApi.md#set_branding_item) | **PUT** /brandings/{name} | Update a branding item
+*CertificationCampaignFiltersApi* | [**create_campaign_filter**](sailpoint\v2024/docs/CertificationCampaignFiltersApi.md#create_campaign_filter) | **POST** /campaign-filters | Create campaign filter
+*CertificationCampaignFiltersApi* | [**delete_campaign_filters**](sailpoint\v2024/docs/CertificationCampaignFiltersApi.md#delete_campaign_filters) | **POST** /campaign-filters/delete | Deletes campaign filters
+*CertificationCampaignFiltersApi* | [**get_campaign_filter_by_id**](sailpoint\v2024/docs/CertificationCampaignFiltersApi.md#get_campaign_filter_by_id) | **GET** /campaign-filters/{id} | Get campaign filter by id
+*CertificationCampaignFiltersApi* | [**list_campaign_filters**](sailpoint\v2024/docs/CertificationCampaignFiltersApi.md#list_campaign_filters) | **GET** /campaign-filters | List campaign filters
+*CertificationCampaignFiltersApi* | [**update_campaign_filter**](sailpoint\v2024/docs/CertificationCampaignFiltersApi.md#update_campaign_filter) | **POST** /campaign-filters/{id} | Updates a campaign filter
+*CertificationCampaignsApi* | [**complete_campaign**](sailpoint\v2024/docs/CertificationCampaignsApi.md#complete_campaign) | **POST** /campaigns/{id}/complete | Complete a campaign
+*CertificationCampaignsApi* | [**create_campaign**](sailpoint\v2024/docs/CertificationCampaignsApi.md#create_campaign) | **POST** /campaigns | Create a campaign
+*CertificationCampaignsApi* | [**create_campaign_template**](sailpoint\v2024/docs/CertificationCampaignsApi.md#create_campaign_template) | **POST** /campaign-templates | Create a campaign template
+*CertificationCampaignsApi* | [**delete_campaign_template**](sailpoint\v2024/docs/CertificationCampaignsApi.md#delete_campaign_template) | **DELETE** /campaign-templates/{id} | Delete a campaign template
+*CertificationCampaignsApi* | [**delete_campaign_template_schedule**](sailpoint\v2024/docs/CertificationCampaignsApi.md#delete_campaign_template_schedule) | **DELETE** /campaign-templates/{id}/schedule | Delete campaign template schedule
+*CertificationCampaignsApi* | [**delete_campaigns**](sailpoint\v2024/docs/CertificationCampaignsApi.md#delete_campaigns) | **POST** /campaigns/delete | Delete campaigns
+*CertificationCampaignsApi* | [**get_active_campaigns**](sailpoint\v2024/docs/CertificationCampaignsApi.md#get_active_campaigns) | **GET** /campaigns | List campaigns
+*CertificationCampaignsApi* | [**get_campaign**](sailpoint\v2024/docs/CertificationCampaignsApi.md#get_campaign) | **GET** /campaigns/{id} | Get campaign
+*CertificationCampaignsApi* | [**get_campaign_reports**](sailpoint\v2024/docs/CertificationCampaignsApi.md#get_campaign_reports) | **GET** /campaigns/{id}/reports | Get campaign reports
+*CertificationCampaignsApi* | [**get_campaign_reports_config**](sailpoint\v2024/docs/CertificationCampaignsApi.md#get_campaign_reports_config) | **GET** /campaigns/reports-configuration | Get campaign reports configuration
+*CertificationCampaignsApi* | [**get_campaign_template**](sailpoint\v2024/docs/CertificationCampaignsApi.md#get_campaign_template) | **GET** /campaign-templates/{id} | Get a campaign template
+*CertificationCampaignsApi* | [**get_campaign_template_schedule**](sailpoint\v2024/docs/CertificationCampaignsApi.md#get_campaign_template_schedule) | **GET** /campaign-templates/{id}/schedule | Get campaign template schedule
+*CertificationCampaignsApi* | [**get_campaign_templates**](sailpoint\v2024/docs/CertificationCampaignsApi.md#get_campaign_templates) | **GET** /campaign-templates | List campaign templates
+*CertificationCampaignsApi* | [**move**](sailpoint\v2024/docs/CertificationCampaignsApi.md#move) | **POST** /campaigns/{id}/reassign | Reassign certifications
+*CertificationCampaignsApi* | [**patch_campaign_template**](sailpoint\v2024/docs/CertificationCampaignsApi.md#patch_campaign_template) | **PATCH** /campaign-templates/{id} | Update a campaign template
+*CertificationCampaignsApi* | [**set_campaign_reports_config**](sailpoint\v2024/docs/CertificationCampaignsApi.md#set_campaign_reports_config) | **PUT** /campaigns/reports-configuration | Set campaign reports configuration
+*CertificationCampaignsApi* | [**set_campaign_template_schedule**](sailpoint\v2024/docs/CertificationCampaignsApi.md#set_campaign_template_schedule) | **PUT** /campaign-templates/{id}/schedule | Set campaign template schedule
+*CertificationCampaignsApi* | [**start_campaign**](sailpoint\v2024/docs/CertificationCampaignsApi.md#start_campaign) | **POST** /campaigns/{id}/activate | Activate a campaign
+*CertificationCampaignsApi* | [**start_campaign_remediation_scan**](sailpoint\v2024/docs/CertificationCampaignsApi.md#start_campaign_remediation_scan) | **POST** /campaigns/{id}/run-remediation-scan | Run campaign remediation scan
+*CertificationCampaignsApi* | [**start_campaign_report**](sailpoint\v2024/docs/CertificationCampaignsApi.md#start_campaign_report) | **POST** /campaigns/{id}/run-report/{type} | Run campaign report
+*CertificationCampaignsApi* | [**start_generate_campaign_template**](sailpoint\v2024/docs/CertificationCampaignsApi.md#start_generate_campaign_template) | **POST** /campaign-templates/{id}/generate | Generate a campaign from template
+*CertificationCampaignsApi* | [**update_campaign**](sailpoint\v2024/docs/CertificationCampaignsApi.md#update_campaign) | **PATCH** /campaigns/{id} | Update a campaign
+*CertificationSummariesApi* | [**get_identity_access_summaries**](sailpoint\v2024/docs/CertificationSummariesApi.md#get_identity_access_summaries) | **GET** /certifications/{id}/access-summaries/{type} | Access summaries
+*CertificationSummariesApi* | [**get_identity_decision_summary**](sailpoint\v2024/docs/CertificationSummariesApi.md#get_identity_decision_summary) | **GET** /certifications/{id}/decision-summary | Summary of certification decisions
+*CertificationSummariesApi* | [**get_identity_summaries**](sailpoint\v2024/docs/CertificationSummariesApi.md#get_identity_summaries) | **GET** /certifications/{id}/identity-summaries | Identity summaries for campaign certification
+*CertificationSummariesApi* | [**get_identity_summary**](sailpoint\v2024/docs/CertificationSummariesApi.md#get_identity_summary) | **GET** /certifications/{id}/identity-summaries/{identitySummaryId} | Summary for identity
+*CertificationsApi* | [**get_certification_task**](sailpoint\v2024/docs/CertificationsApi.md#get_certification_task) | **GET** /certification-tasks/{id} | Certification task by id
+*CertificationsApi* | [**get_identity_certification**](sailpoint\v2024/docs/CertificationsApi.md#get_identity_certification) | **GET** /certifications/{id} | Identity certification by id
+*CertificationsApi* | [**get_identity_certification_item_permissions**](sailpoint\v2024/docs/CertificationsApi.md#get_identity_certification_item_permissions) | **GET** /certifications/{certificationId}/access-review-items/{itemId}/permissions | Permissions for entitlement certification item
+*CertificationsApi* | [**get_pending_certification_tasks**](sailpoint\v2024/docs/CertificationsApi.md#get_pending_certification_tasks) | **GET** /certification-tasks | List of pending certification tasks
+*CertificationsApi* | [**list_certification_reviewers**](sailpoint\v2024/docs/CertificationsApi.md#list_certification_reviewers) | **GET** /certifications/{id}/reviewers | List of reviewers for certification
+*CertificationsApi* | [**list_identity_access_review_items**](sailpoint\v2024/docs/CertificationsApi.md#list_identity_access_review_items) | **GET** /certifications/{id}/access-review-items | List of access review items
+*CertificationsApi* | [**list_identity_certifications**](sailpoint\v2024/docs/CertificationsApi.md#list_identity_certifications) | **GET** /certifications | List identity campaign certifications
+*CertificationsApi* | [**make_identity_decision**](sailpoint\v2024/docs/CertificationsApi.md#make_identity_decision) | **POST** /certifications/{id}/decide | Decide on a certification item
+*CertificationsApi* | [**reassign_identity_certifications**](sailpoint\v2024/docs/CertificationsApi.md#reassign_identity_certifications) | **POST** /certifications/{id}/reassign | Reassign identities or items
+*CertificationsApi* | [**sign_off_identity_certification**](sailpoint\v2024/docs/CertificationsApi.md#sign_off_identity_certification) | **POST** /certifications/{id}/sign-off | Finalize identity certification decisions
+*CertificationsApi* | [**submit_reassign_certs_async**](sailpoint\v2024/docs/CertificationsApi.md#submit_reassign_certs_async) | **POST** /certifications/{id}/reassign-async | Reassign certifications asynchronously
+*ConfigurationHubApi* | [**create_deploy**](sailpoint\v2024/docs/ConfigurationHubApi.md#create_deploy) | **POST** /configuration-hub/deploys | Create a deploy
+*ConfigurationHubApi* | [**create_object_mapping**](sailpoint\v2024/docs/ConfigurationHubApi.md#create_object_mapping) | **POST** /configuration-hub/object-mappings/{sourceOrg} | Creates an object mapping
+*ConfigurationHubApi* | [**create_object_mappings**](sailpoint\v2024/docs/ConfigurationHubApi.md#create_object_mappings) | **POST** /configuration-hub/object-mappings/{sourceOrg}/bulk-create | Bulk creates object mappings
+*ConfigurationHubApi* | [**create_scheduled_action**](sailpoint\v2024/docs/ConfigurationHubApi.md#create_scheduled_action) | **POST** /configuration-hub/scheduled-actions | Create scheduled action
+*ConfigurationHubApi* | [**create_uploaded_configuration**](sailpoint\v2024/docs/ConfigurationHubApi.md#create_uploaded_configuration) | **POST** /configuration-hub/backups/uploads | Upload a configuration
+*ConfigurationHubApi* | [**delete_backup**](sailpoint\v2024/docs/ConfigurationHubApi.md#delete_backup) | **DELETE** /configuration-hub/backups/{id} | Delete a backup
+*ConfigurationHubApi* | [**delete_draft**](sailpoint\v2024/docs/ConfigurationHubApi.md#delete_draft) | **DELETE** /configuration-hub/drafts/{id} | Delete a draft
+*ConfigurationHubApi* | [**delete_object_mapping**](sailpoint\v2024/docs/ConfigurationHubApi.md#delete_object_mapping) | **DELETE** /configuration-hub/object-mappings/{sourceOrg}/{objectMappingId} | Deletes an object mapping
+*ConfigurationHubApi* | [**delete_scheduled_action**](sailpoint\v2024/docs/ConfigurationHubApi.md#delete_scheduled_action) | **DELETE** /configuration-hub/scheduled-actions/{id} | Delete scheduled action
+*ConfigurationHubApi* | [**delete_uploaded_configuration**](sailpoint\v2024/docs/ConfigurationHubApi.md#delete_uploaded_configuration) | **DELETE** /configuration-hub/backups/uploads/{id} | Delete an uploaded configuration
+*ConfigurationHubApi* | [**get_deploy**](sailpoint\v2024/docs/ConfigurationHubApi.md#get_deploy) | **GET** /configuration-hub/deploys/{id} | Get a deploy
+*ConfigurationHubApi* | [**get_object_mappings**](sailpoint\v2024/docs/ConfigurationHubApi.md#get_object_mappings) | **GET** /configuration-hub/object-mappings/{sourceOrg} | Gets list of object mappings
+*ConfigurationHubApi* | [**get_uploaded_configuration**](sailpoint\v2024/docs/ConfigurationHubApi.md#get_uploaded_configuration) | **GET** /configuration-hub/backups/uploads/{id} | Get an uploaded configuration
+*ConfigurationHubApi* | [**list_backups**](sailpoint\v2024/docs/ConfigurationHubApi.md#list_backups) | **GET** /configuration-hub/backups | List backups
+*ConfigurationHubApi* | [**list_deploys**](sailpoint\v2024/docs/ConfigurationHubApi.md#list_deploys) | **GET** /configuration-hub/deploys | List deploys
+*ConfigurationHubApi* | [**list_drafts**](sailpoint\v2024/docs/ConfigurationHubApi.md#list_drafts) | **GET** /configuration-hub/drafts | List drafts
+*ConfigurationHubApi* | [**list_scheduled_actions**](sailpoint\v2024/docs/ConfigurationHubApi.md#list_scheduled_actions) | **GET** /configuration-hub/scheduled-actions | List scheduled actions
+*ConfigurationHubApi* | [**list_uploaded_configurations**](sailpoint\v2024/docs/ConfigurationHubApi.md#list_uploaded_configurations) | **GET** /configuration-hub/backups/uploads | List uploaded configurations
+*ConfigurationHubApi* | [**update_object_mappings**](sailpoint\v2024/docs/ConfigurationHubApi.md#update_object_mappings) | **POST** /configuration-hub/object-mappings/{sourceOrg}/bulk-patch | Bulk updates object mappings
+*ConfigurationHubApi* | [**update_scheduled_action**](sailpoint\v2024/docs/ConfigurationHubApi.md#update_scheduled_action) | **PATCH** /configuration-hub/scheduled-actions/{id} | Update scheduled action
+*ConnectorCustomizersApi* | [**create_connector_customizer**](sailpoint\v2024/docs/ConnectorCustomizersApi.md#create_connector_customizer) | **POST** /connector-customizers | Create connector customizer
+*ConnectorCustomizersApi* | [**create_connector_customizer_version**](sailpoint\v2024/docs/ConnectorCustomizersApi.md#create_connector_customizer_version) | **POST** /connector-customizers/{id}/versions | Creates a connector customizer version
+*ConnectorCustomizersApi* | [**delete_connector_customizer**](sailpoint\v2024/docs/ConnectorCustomizersApi.md#delete_connector_customizer) | **DELETE** /connector-customizers/{id} | Delete connector customizer
+*ConnectorCustomizersApi* | [**get_connector_customizer**](sailpoint\v2024/docs/ConnectorCustomizersApi.md#get_connector_customizer) | **GET** /connector-customizers/{id} | Get connector customizer
+*ConnectorCustomizersApi* | [**list_connector_customizers**](sailpoint\v2024/docs/ConnectorCustomizersApi.md#list_connector_customizers) | **GET** /connector-customizers | List all connector customizers
+*ConnectorCustomizersApi* | [**put_connector_customizer**](sailpoint\v2024/docs/ConnectorCustomizersApi.md#put_connector_customizer) | **PUT** /connector-customizers/{id} | Update connector customizer
+*ConnectorRuleManagementApi* | [**create_connector_rule**](sailpoint\v2024/docs/ConnectorRuleManagementApi.md#create_connector_rule) | **POST** /connector-rules | Create connector rule
+*ConnectorRuleManagementApi* | [**delete_connector_rule**](sailpoint\v2024/docs/ConnectorRuleManagementApi.md#delete_connector_rule) | **DELETE** /connector-rules/{id} | Delete connector rule
+*ConnectorRuleManagementApi* | [**get_connector_rule**](sailpoint\v2024/docs/ConnectorRuleManagementApi.md#get_connector_rule) | **GET** /connector-rules/{id} | Get connector rule
+*ConnectorRuleManagementApi* | [**get_connector_rule_list**](sailpoint\v2024/docs/ConnectorRuleManagementApi.md#get_connector_rule_list) | **GET** /connector-rules | List connector rules
+*ConnectorRuleManagementApi* | [**put_connector_rule**](sailpoint\v2024/docs/ConnectorRuleManagementApi.md#put_connector_rule) | **PUT** /connector-rules/{id} | Update connector rule
+*ConnectorRuleManagementApi* | [**test_connector_rule**](sailpoint\v2024/docs/ConnectorRuleManagementApi.md#test_connector_rule) | **POST** /connector-rules/validate | Validate connector rule
+*ConnectorsApi* | [**create_custom_connector**](sailpoint\v2024/docs/ConnectorsApi.md#create_custom_connector) | **POST** /connectors | Create custom connector
+*ConnectorsApi* | [**delete_custom_connector**](sailpoint\v2024/docs/ConnectorsApi.md#delete_custom_connector) | **DELETE** /connectors/{scriptName} | Delete connector by script name
+*ConnectorsApi* | [**get_connector**](sailpoint\v2024/docs/ConnectorsApi.md#get_connector) | **GET** /connectors/{scriptName} | Get connector by script name
+*ConnectorsApi* | [**get_connector_correlation_config**](sailpoint\v2024/docs/ConnectorsApi.md#get_connector_correlation_config) | **GET** /connectors/{scriptName}/correlation-config | Get connector correlation configuration
+*ConnectorsApi* | [**get_connector_list**](sailpoint\v2024/docs/ConnectorsApi.md#get_connector_list) | **GET** /connectors | Get connector list
+*ConnectorsApi* | [**get_connector_source_config**](sailpoint\v2024/docs/ConnectorsApi.md#get_connector_source_config) | **GET** /connectors/{scriptName}/source-config | Get connector source configuration
+*ConnectorsApi* | [**get_connector_source_template**](sailpoint\v2024/docs/ConnectorsApi.md#get_connector_source_template) | **GET** /connectors/{scriptName}/source-template | Get connector source template
+*ConnectorsApi* | [**get_connector_translations**](sailpoint\v2024/docs/ConnectorsApi.md#get_connector_translations) | **GET** /connectors/{scriptName}/translations/{locale} | Get connector translations
+*ConnectorsApi* | [**put_connector_correlation_config**](sailpoint\v2024/docs/ConnectorsApi.md#put_connector_correlation_config) | **PUT** /connectors/{scriptName}/correlation-config | Update connector correlation configuration
+*ConnectorsApi* | [**put_connector_source_config**](sailpoint\v2024/docs/ConnectorsApi.md#put_connector_source_config) | **PUT** /connectors/{scriptName}/source-config | Update connector source configuration
+*ConnectorsApi* | [**put_connector_source_template**](sailpoint\v2024/docs/ConnectorsApi.md#put_connector_source_template) | **PUT** /connectors/{scriptName}/source-template | Update connector source template
+*ConnectorsApi* | [**put_connector_translations**](sailpoint\v2024/docs/ConnectorsApi.md#put_connector_translations) | **PUT** /connectors/{scriptName}/translations/{locale} | Update connector translations
+*ConnectorsApi* | [**update_connector**](sailpoint\v2024/docs/ConnectorsApi.md#update_connector) | **PATCH** /connectors/{scriptName} | Update connector by script name
+*CustomFormsApi* | [**create_form_definition**](sailpoint\v2024/docs/CustomFormsApi.md#create_form_definition) | **POST** /form-definitions | Creates a form definition.
+*CustomFormsApi* | [**create_form_definition_dynamic_schema**](sailpoint\v2024/docs/CustomFormsApi.md#create_form_definition_dynamic_schema) | **POST** /form-definitions/forms-action-dynamic-schema | Generate json schema dynamically.
+*CustomFormsApi* | [**create_form_definition_file_request**](sailpoint\v2024/docs/CustomFormsApi.md#create_form_definition_file_request) | **POST** /form-definitions/{formDefinitionID}/upload | Upload new form definition file.
+*CustomFormsApi* | [**create_form_instance**](sailpoint\v2024/docs/CustomFormsApi.md#create_form_instance) | **POST** /form-instances | Creates a form instance.
+*CustomFormsApi* | [**delete_form_definition**](sailpoint\v2024/docs/CustomFormsApi.md#delete_form_definition) | **DELETE** /form-definitions/{formDefinitionID} | Deletes a form definition.
+*CustomFormsApi* | [**export_form_definitions_by_tenant**](sailpoint\v2024/docs/CustomFormsApi.md#export_form_definitions_by_tenant) | **GET** /form-definitions/export | List form definitions by tenant.
+*CustomFormsApi* | [**get_file_from_s3**](sailpoint\v2024/docs/CustomFormsApi.md#get_file_from_s3) | **GET** /form-definitions/{formDefinitionID}/file/{fileID} | Download definition file by fileid.
+*CustomFormsApi* | [**get_form_definition_by_key**](sailpoint\v2024/docs/CustomFormsApi.md#get_form_definition_by_key) | **GET** /form-definitions/{formDefinitionID} | Return a form definition.
+*CustomFormsApi* | [**get_form_instance_by_key**](sailpoint\v2024/docs/CustomFormsApi.md#get_form_instance_by_key) | **GET** /form-instances/{formInstanceID} | Returns a form instance.
+*CustomFormsApi* | [**get_form_instance_file**](sailpoint\v2024/docs/CustomFormsApi.md#get_form_instance_file) | **GET** /form-instances/{formInstanceID}/file/{fileID} | Download instance file by fileid.
+*CustomFormsApi* | [**import_form_definitions**](sailpoint\v2024/docs/CustomFormsApi.md#import_form_definitions) | **POST** /form-definitions/import | Import form definitions from export.
+*CustomFormsApi* | [**patch_form_definition**](sailpoint\v2024/docs/CustomFormsApi.md#patch_form_definition) | **PATCH** /form-definitions/{formDefinitionID} | Patch a form definition.
+*CustomFormsApi* | [**patch_form_instance**](sailpoint\v2024/docs/CustomFormsApi.md#patch_form_instance) | **PATCH** /form-instances/{formInstanceID} | Patch a form instance.
+*CustomFormsApi* | [**search_form_definitions_by_tenant**](sailpoint\v2024/docs/CustomFormsApi.md#search_form_definitions_by_tenant) | **GET** /form-definitions | Export form definitions by tenant.
+*CustomFormsApi* | [**search_form_element_data_by_element_id**](sailpoint\v2024/docs/CustomFormsApi.md#search_form_element_data_by_element_id) | **GET** /form-instances/{formInstanceID}/data-source/{formElementID} | Retrieves dynamic data by element.
+*CustomFormsApi* | [**search_form_instances_by_tenant**](sailpoint\v2024/docs/CustomFormsApi.md#search_form_instances_by_tenant) | **GET** /form-instances | List form instances by tenant.
+*CustomFormsApi* | [**search_pre_defined_select_options**](sailpoint\v2024/docs/CustomFormsApi.md#search_pre_defined_select_options) | **GET** /form-definitions/predefined-select-options | List predefined select options.
+*CustomFormsApi* | [**show_preview_data_source**](sailpoint\v2024/docs/CustomFormsApi.md#show_preview_data_source) | **POST** /form-definitions/{formDefinitionID}/data-source | Preview form definition data source.
+*CustomPasswordInstructionsApi* | [**create_custom_password_instructions**](sailpoint\v2024/docs/CustomPasswordInstructionsApi.md#create_custom_password_instructions) | **POST** /custom-password-instructions | Create custom password instructions
+*CustomPasswordInstructionsApi* | [**delete_custom_password_instructions**](sailpoint\v2024/docs/CustomPasswordInstructionsApi.md#delete_custom_password_instructions) | **DELETE** /custom-password-instructions/{pageId} | Delete custom password instructions by page id
+*CustomPasswordInstructionsApi* | [**get_custom_password_instructions**](sailpoint\v2024/docs/CustomPasswordInstructionsApi.md#get_custom_password_instructions) | **GET** /custom-password-instructions/{pageId} | Get custom password instructions by page id
+*DataSegmentationApi* | [**create_data_segment**](sailpoint\v2024/docs/DataSegmentationApi.md#create_data_segment) | **POST** /data-segments | Create segment
+*DataSegmentationApi* | [**delete_data_segment**](sailpoint\v2024/docs/DataSegmentationApi.md#delete_data_segment) | **DELETE** /data-segments/{segmentId} | Delete segment by id
+*DataSegmentationApi* | [**get_data_segment**](sailpoint\v2024/docs/DataSegmentationApi.md#get_data_segment) | **GET** /data-segments/{segmentId} | Get segment by id
+*DataSegmentationApi* | [**get_data_segment_identity_membership**](sailpoint\v2024/docs/DataSegmentationApi.md#get_data_segment_identity_membership) | **GET** /data-segments/membership/{identityId} | Get segmentmembership by identity id
+*DataSegmentationApi* | [**get_data_segmentation_enabled_for_user**](sailpoint\v2024/docs/DataSegmentationApi.md#get_data_segmentation_enabled_for_user) | **GET** /data-segments/user-enabled/{identityId} | Is segmentation enabled by identity
+*DataSegmentationApi* | [**list_data_segments**](sailpoint\v2024/docs/DataSegmentationApi.md#list_data_segments) | **GET** /data-segments | Get segments
+*DataSegmentationApi* | [**patch_data_segment**](sailpoint\v2024/docs/DataSegmentationApi.md#patch_data_segment) | **PATCH** /data-segments/{segmentId} | Update segment
+*DataSegmentationApi* | [**publish_data_segment**](sailpoint\v2024/docs/DataSegmentationApi.md#publish_data_segment) | **POST** /data-segments/{segmentId} | Publish segment by id
+*DimensionsApi* | [**create_dimension**](sailpoint\v2024/docs/DimensionsApi.md#create_dimension) | **POST** /roles/{roleId}/dimensions | Create a dimension
+*DimensionsApi* | [**delete_bulk_dimensions**](sailpoint\v2024/docs/DimensionsApi.md#delete_bulk_dimensions) | **POST** /roles/{roleId}/dimensions/bulk-delete | Delete dimension(s)
+*DimensionsApi* | [**delete_dimension**](sailpoint\v2024/docs/DimensionsApi.md#delete_dimension) | **DELETE** /roles/{roleId}/dimensions/{dimensionId} | Delete a dimension
+*DimensionsApi* | [**get_dimension**](sailpoint\v2024/docs/DimensionsApi.md#get_dimension) | **GET** /roles/{roleId}/dimensions/{dimensionId} | Get a dimension under role.
+*DimensionsApi* | [**get_dimension_entitlements**](sailpoint\v2024/docs/DimensionsApi.md#get_dimension_entitlements) | **GET** /roles/{roleId}/dimensions/{dimensionId}/entitlements | List dimension&#39;s entitlements
+*DimensionsApi* | [**list_dimension_access_profiles**](sailpoint\v2024/docs/DimensionsApi.md#list_dimension_access_profiles) | **GET** /roles/{roleId}/dimensions/{dimensionId}/access-profiles | List dimension&#39;s access profiles
+*DimensionsApi* | [**list_dimensions**](sailpoint\v2024/docs/DimensionsApi.md#list_dimensions) | **GET** /roles/{roleId}/dimensions | List dimensions
+*DimensionsApi* | [**patch_dimension**](sailpoint\v2024/docs/DimensionsApi.md#patch_dimension) | **PATCH** /roles/{roleId}/dimensions/{dimensionId} | Patch a specified dimension
+*EntitlementsApi* | [**create_access_model_metadata_for_entitlement**](sailpoint\v2024/docs/EntitlementsApi.md#create_access_model_metadata_for_entitlement) | **POST** /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Add metadata to an entitlement.
+*EntitlementsApi* | [**delete_access_model_metadata_from_entitlement**](sailpoint\v2024/docs/EntitlementsApi.md#delete_access_model_metadata_from_entitlement) | **DELETE** /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Remove metadata from an entitlement.
+*EntitlementsApi* | [**get_entitlement**](sailpoint\v2024/docs/EntitlementsApi.md#get_entitlement) | **GET** /entitlements/{id} | Get an entitlement
+*EntitlementsApi* | [**get_entitlement_request_config**](sailpoint\v2024/docs/EntitlementsApi.md#get_entitlement_request_config) | **GET** /entitlements/{id}/entitlement-request-config | Get entitlement request config
+*EntitlementsApi* | [**import_entitlements_by_source**](sailpoint\v2024/docs/EntitlementsApi.md#import_entitlements_by_source) | **POST** /entitlements/aggregate/sources/{id} | Aggregate entitlements
+*EntitlementsApi* | [**list_entitlement_children**](sailpoint\v2024/docs/EntitlementsApi.md#list_entitlement_children) | **GET** /entitlements/{id}/children | List of entitlements children
+*EntitlementsApi* | [**list_entitlement_parents**](sailpoint\v2024/docs/EntitlementsApi.md#list_entitlement_parents) | **GET** /entitlements/{id}/parents | List of entitlements parents
+*EntitlementsApi* | [**list_entitlements**](sailpoint\v2024/docs/EntitlementsApi.md#list_entitlements) | **GET** /entitlements | Gets a list of entitlements.
+*EntitlementsApi* | [**patch_entitlement**](sailpoint\v2024/docs/EntitlementsApi.md#patch_entitlement) | **PATCH** /entitlements/{id} | Patch an entitlement
+*EntitlementsApi* | [**put_entitlement_request_config**](sailpoint\v2024/docs/EntitlementsApi.md#put_entitlement_request_config) | **PUT** /entitlements/{id}/entitlement-request-config | Replace entitlement request config
+*EntitlementsApi* | [**reset_source_entitlements**](sailpoint\v2024/docs/EntitlementsApi.md#reset_source_entitlements) | **POST** /entitlements/reset/sources/{id} | Reset source entitlements
+*EntitlementsApi* | [**update_entitlements_in_bulk**](sailpoint\v2024/docs/EntitlementsApi.md#update_entitlements_in_bulk) | **POST** /entitlements/bulk-update | Bulk update an entitlement list
+*GlobalTenantSecuritySettingsApi* | [**create_auth_org_network_config**](sailpoint\v2024/docs/GlobalTenantSecuritySettingsApi.md#create_auth_org_network_config) | **POST** /auth-org/network-config | Create security network configuration.
+*GlobalTenantSecuritySettingsApi* | [**get_auth_org_lockout_config**](sailpoint\v2024/docs/GlobalTenantSecuritySettingsApi.md#get_auth_org_lockout_config) | **GET** /auth-org/lockout-config | Get auth org lockout configuration.
+*GlobalTenantSecuritySettingsApi* | [**get_auth_org_network_config**](sailpoint\v2024/docs/GlobalTenantSecuritySettingsApi.md#get_auth_org_network_config) | **GET** /auth-org/network-config | Get security network configuration.
+*GlobalTenantSecuritySettingsApi* | [**get_auth_org_service_provider_config**](sailpoint\v2024/docs/GlobalTenantSecuritySettingsApi.md#get_auth_org_service_provider_config) | **GET** /auth-org/service-provider-config | Get service provider configuration.
+*GlobalTenantSecuritySettingsApi* | [**get_auth_org_session_config**](sailpoint\v2024/docs/GlobalTenantSecuritySettingsApi.md#get_auth_org_session_config) | **GET** /auth-org/session-config | Get auth org session configuration.
+*GlobalTenantSecuritySettingsApi* | [**patch_auth_org_lockout_config**](sailpoint\v2024/docs/GlobalTenantSecuritySettingsApi.md#patch_auth_org_lockout_config) | **PATCH** /auth-org/lockout-config | Update auth org lockout configuration
+*GlobalTenantSecuritySettingsApi* | [**patch_auth_org_network_config**](sailpoint\v2024/docs/GlobalTenantSecuritySettingsApi.md#patch_auth_org_network_config) | **PATCH** /auth-org/network-config | Update security network configuration.
+*GlobalTenantSecuritySettingsApi* | [**patch_auth_org_service_provider_config**](sailpoint\v2024/docs/GlobalTenantSecuritySettingsApi.md#patch_auth_org_service_provider_config) | **PATCH** /auth-org/service-provider-config | Update service provider configuration
+*GlobalTenantSecuritySettingsApi* | [**patch_auth_org_session_config**](sailpoint\v2024/docs/GlobalTenantSecuritySettingsApi.md#patch_auth_org_session_config) | **PATCH** /auth-org/session-config | Update auth org session configuration
+*GovernanceGroupsApi* | [**create_workgroup**](sailpoint\v2024/docs/GovernanceGroupsApi.md#create_workgroup) | **POST** /workgroups | Create a new governance group.
+*GovernanceGroupsApi* | [**delete_workgroup**](sailpoint\v2024/docs/GovernanceGroupsApi.md#delete_workgroup) | **DELETE** /workgroups/{id} | Delete a governance group
+*GovernanceGroupsApi* | [**delete_workgroup_members**](sailpoint\v2024/docs/GovernanceGroupsApi.md#delete_workgroup_members) | **POST** /workgroups/{workgroupId}/members/bulk-delete | Remove members from governance group
+*GovernanceGroupsApi* | [**delete_workgroups_in_bulk**](sailpoint\v2024/docs/GovernanceGroupsApi.md#delete_workgroups_in_bulk) | **POST** /workgroups/bulk-delete | Delete governance group(s)
+*GovernanceGroupsApi* | [**get_workgroup**](sailpoint\v2024/docs/GovernanceGroupsApi.md#get_workgroup) | **GET** /workgroups/{id} | Get governance group by id
+*GovernanceGroupsApi* | [**list_connections**](sailpoint\v2024/docs/GovernanceGroupsApi.md#list_connections) | **GET** /workgroups/{workgroupId}/connections | List connections for governance group
+*GovernanceGroupsApi* | [**list_workgroup_members**](sailpoint\v2024/docs/GovernanceGroupsApi.md#list_workgroup_members) | **GET** /workgroups/{workgroupId}/members | List governance group members
+*GovernanceGroupsApi* | [**list_workgroups**](sailpoint\v2024/docs/GovernanceGroupsApi.md#list_workgroups) | **GET** /workgroups | List governance groups
+*GovernanceGroupsApi* | [**patch_workgroup**](sailpoint\v2024/docs/GovernanceGroupsApi.md#patch_workgroup) | **PATCH** /workgroups/{id} | Patch a governance group
+*GovernanceGroupsApi* | [**update_workgroup_members**](sailpoint\v2024/docs/GovernanceGroupsApi.md#update_workgroup_members) | **POST** /workgroups/{workgroupId}/members/bulk-add | Add members to governance group
+*IAIAccessRequestRecommendationsApi* | [**add_access_request_recommendations_ignored_item**](sailpoint\v2024/docs/IAIAccessRequestRecommendationsApi.md#add_access_request_recommendations_ignored_item) | **POST** /ai-access-request-recommendations/ignored-items | Ignore access request recommendation
+*IAIAccessRequestRecommendationsApi* | [**add_access_request_recommendations_requested_item**](sailpoint\v2024/docs/IAIAccessRequestRecommendationsApi.md#add_access_request_recommendations_requested_item) | **POST** /ai-access-request-recommendations/requested-items | Accept access request recommendation
+*IAIAccessRequestRecommendationsApi* | [**add_access_request_recommendations_viewed_item**](sailpoint\v2024/docs/IAIAccessRequestRecommendationsApi.md#add_access_request_recommendations_viewed_item) | **POST** /ai-access-request-recommendations/viewed-items | Mark viewed access request recommendations
+*IAIAccessRequestRecommendationsApi* | [**add_access_request_recommendations_viewed_items**](sailpoint\v2024/docs/IAIAccessRequestRecommendationsApi.md#add_access_request_recommendations_viewed_items) | **POST** /ai-access-request-recommendations/viewed-items/bulk-create | Bulk mark viewed access request recommendations
+*IAIAccessRequestRecommendationsApi* | [**get_access_request_recommendations**](sailpoint\v2024/docs/IAIAccessRequestRecommendationsApi.md#get_access_request_recommendations) | **GET** /ai-access-request-recommendations | Identity access request recommendations
+*IAIAccessRequestRecommendationsApi* | [**get_access_request_recommendations_config**](sailpoint\v2024/docs/IAIAccessRequestRecommendationsApi.md#get_access_request_recommendations_config) | **GET** /ai-access-request-recommendations/config | Get access request recommendations config
+*IAIAccessRequestRecommendationsApi* | [**get_access_request_recommendations_ignored_items**](sailpoint\v2024/docs/IAIAccessRequestRecommendationsApi.md#get_access_request_recommendations_ignored_items) | **GET** /ai-access-request-recommendations/ignored-items | List ignored access request recommendations
+*IAIAccessRequestRecommendationsApi* | [**get_access_request_recommendations_requested_items**](sailpoint\v2024/docs/IAIAccessRequestRecommendationsApi.md#get_access_request_recommendations_requested_items) | **GET** /ai-access-request-recommendations/requested-items | List accepted access request recommendations
+*IAIAccessRequestRecommendationsApi* | [**get_access_request_recommendations_viewed_items**](sailpoint\v2024/docs/IAIAccessRequestRecommendationsApi.md#get_access_request_recommendations_viewed_items) | **GET** /ai-access-request-recommendations/viewed-items | List viewed access request recommendations
+*IAIAccessRequestRecommendationsApi* | [**set_access_request_recommendations_config**](sailpoint\v2024/docs/IAIAccessRequestRecommendationsApi.md#set_access_request_recommendations_config) | **PUT** /ai-access-request-recommendations/config | Update access request recommendations config
+*IAICommonAccessApi* | [**create_common_access**](sailpoint\v2024/docs/IAICommonAccessApi.md#create_common_access) | **POST** /common-access | Create common access items
+*IAICommonAccessApi* | [**get_common_access**](sailpoint\v2024/docs/IAICommonAccessApi.md#get_common_access) | **GET** /common-access | Get a paginated list of common access
+*IAICommonAccessApi* | [**update_common_access_status_in_bulk**](sailpoint\v2024/docs/IAICommonAccessApi.md#update_common_access_status_in_bulk) | **POST** /common-access/update-status | Bulk update common access status
+*IAIOutliersApi* | [**export_outliers_zip**](sailpoint\v2024/docs/IAIOutliersApi.md#export_outliers_zip) | **GET** /outliers/export | Iai identity outliers export
+*IAIOutliersApi* | [**get_identity_outlier_snapshots**](sailpoint\v2024/docs/IAIOutliersApi.md#get_identity_outlier_snapshots) | **GET** /outlier-summaries | Iai identity outliers summary
+*IAIOutliersApi* | [**get_identity_outliers**](sailpoint\v2024/docs/IAIOutliersApi.md#get_identity_outliers) | **GET** /outliers | Iai get identity outliers
+*IAIOutliersApi* | [**get_latest_identity_outlier_snapshots**](sailpoint\v2024/docs/IAIOutliersApi.md#get_latest_identity_outlier_snapshots) | **GET** /outlier-summaries/latest | Iai identity outliers latest summary
+*IAIOutliersApi* | [**get_outlier_contributing_feature_summary**](sailpoint\v2024/docs/IAIOutliersApi.md#get_outlier_contributing_feature_summary) | **GET** /outlier-feature-summaries/{outlierFeatureId} | Get identity outlier contibuting feature summary
+*IAIOutliersApi* | [**get_peer_group_outliers_contributing_features**](sailpoint\v2024/docs/IAIOutliersApi.md#get_peer_group_outliers_contributing_features) | **GET** /outliers/{outlierId}/contributing-features | Get identity outlier&#39;s contibuting features
+*IAIOutliersApi* | [**ignore_identity_outliers**](sailpoint\v2024/docs/IAIOutliersApi.md#ignore_identity_outliers) | **POST** /outliers/ignore | Iai identity outliers ignore
+*IAIOutliersApi* | [**list_outliers_contributing_feature_access_items**](sailpoint\v2024/docs/IAIOutliersApi.md#list_outliers_contributing_feature_access_items) | **GET** /outliers/{outlierId}/feature-details/{contributingFeatureName}/access-items | Gets a list of access items associated with each identity outlier contributing feature
+*IAIOutliersApi* | [**un_ignore_identity_outliers**](sailpoint\v2024/docs/IAIOutliersApi.md#un_ignore_identity_outliers) | **POST** /outliers/unignore | Iai identity outliers unignore
+*IAIPeerGroupStrategiesApi* | [**get_peer_group_outliers**](sailpoint\v2024/docs/IAIPeerGroupStrategiesApi.md#get_peer_group_outliers) | **GET** /peer-group-strategies/{strategy}/identity-outliers | Identity outliers list
+*IAIRecommendationsApi* | [**get_recommendations**](sailpoint\v2024/docs/IAIRecommendationsApi.md#get_recommendations) | **POST** /recommendations/request | Returns recommendation based on object
+*IAIRecommendationsApi* | [**get_recommendations_config**](sailpoint\v2024/docs/IAIRecommendationsApi.md#get_recommendations_config) | **GET** /recommendations/config | Get certification recommendation config values
+*IAIRecommendationsApi* | [**update_recommendations_config**](sailpoint\v2024/docs/IAIRecommendationsApi.md#update_recommendations_config) | **PUT** /recommendations/config | Update certification recommendation config values
+*IAIRoleMiningApi* | [**create_potential_role_provision_request**](sailpoint\v2024/docs/IAIRoleMiningApi.md#create_potential_role_provision_request) | **POST** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/provision | Create request to provision a potential role into an actual role.
+*IAIRoleMiningApi* | [**create_role_mining_sessions**](sailpoint\v2024/docs/IAIRoleMiningApi.md#create_role_mining_sessions) | **POST** /role-mining-sessions | Create a role mining session
+*IAIRoleMiningApi* | [**download_role_mining_potential_role_zip**](sailpoint\v2024/docs/IAIRoleMiningApi.md#download_role_mining_potential_role_zip) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async/{exportId}/download | Export (download) details for a potential role in a role mining session
+*IAIRoleMiningApi* | [**export_role_mining_potential_role**](sailpoint\v2024/docs/IAIRoleMiningApi.md#export_role_mining_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export | Export (download) details for a potential role in a role mining session
+*IAIRoleMiningApi* | [**export_role_mining_potential_role_async**](sailpoint\v2024/docs/IAIRoleMiningApi.md#export_role_mining_potential_role_async) | **POST** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async | Asynchronously export details for a potential role in a role mining session and upload to S3
+*IAIRoleMiningApi* | [**export_role_mining_potential_role_status**](sailpoint\v2024/docs/IAIRoleMiningApi.md#export_role_mining_potential_role_status) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async/{exportId} | Retrieve status of a potential role export job
+*IAIRoleMiningApi* | [**get_all_potential_role_summaries**](sailpoint\v2024/docs/IAIRoleMiningApi.md#get_all_potential_role_summaries) | **GET** /role-mining-potential-roles | Retrieves all potential role summaries
+*IAIRoleMiningApi* | [**get_entitlement_distribution_potential_role**](sailpoint\v2024/docs/IAIRoleMiningApi.md#get_entitlement_distribution_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/entitlement-popularity-distribution | Retrieves entitlement popularity distribution for a potential role in a role mining session
+*IAIRoleMiningApi* | [**get_entitlements_potential_role**](sailpoint\v2024/docs/IAIRoleMiningApi.md#get_entitlements_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/entitlement-popularities | Retrieves entitlements for a potential role in a role mining session
+*IAIRoleMiningApi* | [**get_excluded_entitlements_potential_role**](sailpoint\v2024/docs/IAIRoleMiningApi.md#get_excluded_entitlements_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/excluded-entitlements | Retrieves excluded entitlements for a potential role in a role mining session
+*IAIRoleMiningApi* | [**get_identities_potential_role**](sailpoint\v2024/docs/IAIRoleMiningApi.md#get_identities_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/identities | Retrieves identities for a potential role in a role mining session
+*IAIRoleMiningApi* | [**get_potential_role**](sailpoint\v2024/docs/IAIRoleMiningApi.md#get_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Retrieves a specific potential role
+*IAIRoleMiningApi* | [**get_potential_role_applications**](sailpoint\v2024/docs/IAIRoleMiningApi.md#get_potential_role_applications) | **GET** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}/applications | Retrieves the applications of a potential role for a role mining session
+*IAIRoleMiningApi* | [**get_potential_role_entitlements**](sailpoint\v2024/docs/IAIRoleMiningApi.md#get_potential_role_entitlements) | **GET** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}/entitlements | Retrieves the entitlements of a potential role for a role mining session
+*IAIRoleMiningApi* | [**get_potential_role_source_identity_usage**](sailpoint\v2024/docs/IAIRoleMiningApi.md#get_potential_role_source_identity_usage) | **GET** /role-mining-potential-roles/{potentialRoleId}/sources/{sourceId}/identityUsage | Retrieves potential role source usage
+*IAIRoleMiningApi* | [**get_potential_role_summaries**](sailpoint\v2024/docs/IAIRoleMiningApi.md#get_potential_role_summaries) | **GET** /role-mining-sessions/{sessionId}/potential-role-summaries | Retrieves all potential role summaries
+*IAIRoleMiningApi* | [**get_role_mining_potential_role**](sailpoint\v2024/docs/IAIRoleMiningApi.md#get_role_mining_potential_role) | **GET** /role-mining-potential-roles/{potentialRoleId} | Retrieves a specific potential role
+*IAIRoleMiningApi* | [**get_role_mining_session**](sailpoint\v2024/docs/IAIRoleMiningApi.md#get_role_mining_session) | **GET** /role-mining-sessions/{sessionId} | Get a role mining session
+*IAIRoleMiningApi* | [**get_role_mining_session_status**](sailpoint\v2024/docs/IAIRoleMiningApi.md#get_role_mining_session_status) | **GET** /role-mining-sessions/{sessionId}/status | Get role mining session status state
+*IAIRoleMiningApi* | [**get_role_mining_sessions**](sailpoint\v2024/docs/IAIRoleMiningApi.md#get_role_mining_sessions) | **GET** /role-mining-sessions | Retrieves all role mining sessions
+*IAIRoleMiningApi* | [**get_saved_potential_roles**](sailpoint\v2024/docs/IAIRoleMiningApi.md#get_saved_potential_roles) | **GET** /role-mining-potential-roles/saved | Retrieves all saved potential roles
+*IAIRoleMiningApi* | [**patch_potential_role**](sailpoint\v2024/docs/IAIRoleMiningApi.md#patch_potential_role) | **PATCH** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Update a potential role
+*IAIRoleMiningApi* | [**patch_potential_role_0**](sailpoint\v2024/docs/IAIRoleMiningApi.md#patch_potential_role_0) | **PATCH** /role-mining-potential-roles/{potentialRoleId} | Update a potential role
+*IAIRoleMiningApi* | [**patch_role_mining_session**](sailpoint\v2024/docs/IAIRoleMiningApi.md#patch_role_mining_session) | **PATCH** /role-mining-sessions/{sessionId} | Patch a role mining session
+*IAIRoleMiningApi* | [**update_entitlements_potential_role**](sailpoint\v2024/docs/IAIRoleMiningApi.md#update_entitlements_potential_role) | **POST** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements | Edit entitlements for a potential role to exclude some entitlements
+*IconsApi* | [**delete_icon**](sailpoint\v2024/docs/IconsApi.md#delete_icon) | **DELETE** /icons/{objectType}/{objectId} | Delete an icon
+*IconsApi* | [**set_icon**](sailpoint\v2024/docs/IconsApi.md#set_icon) | **PUT** /icons/{objectType}/{objectId} | Update an icon
+*IdentitiesApi* | [**delete_identity**](sailpoint\v2024/docs/IdentitiesApi.md#delete_identity) | **DELETE** /identities/{id} | Delete identity
+*IdentitiesApi* | [**get_identity**](sailpoint\v2024/docs/IdentitiesApi.md#get_identity) | **GET** /identities/{id} | Identity details
+*IdentitiesApi* | [**get_identity_ownership_details**](sailpoint\v2024/docs/IdentitiesApi.md#get_identity_ownership_details) | **GET** /identities/{identityId}/ownership | Get ownership details
+*IdentitiesApi* | [**get_role_assignment**](sailpoint\v2024/docs/IdentitiesApi.md#get_role_assignment) | **GET** /identities/{identityId}/role-assignments/{assignmentId} | Role assignment details
+*IdentitiesApi* | [**get_role_assignments**](sailpoint\v2024/docs/IdentitiesApi.md#get_role_assignments) | **GET** /identities/{identityId}/role-assignments | List role assignments
+*IdentitiesApi* | [**list_identities**](sailpoint\v2024/docs/IdentitiesApi.md#list_identities) | **GET** /identities | List identities
+*IdentitiesApi* | [**reset_identity**](sailpoint\v2024/docs/IdentitiesApi.md#reset_identity) | **POST** /identities/{id}/reset | Reset an identity
+*IdentitiesApi* | [**send_identity_verification_account_token**](sailpoint\v2024/docs/IdentitiesApi.md#send_identity_verification_account_token) | **POST** /identities/{id}/verification/account/send | Send password reset email
+*IdentitiesApi* | [**start_identities_invite**](sailpoint\v2024/docs/IdentitiesApi.md#start_identities_invite) | **POST** /identities/invite | Invite identities to register
+*IdentitiesApi* | [**start_identity_processing**](sailpoint\v2024/docs/IdentitiesApi.md#start_identity_processing) | **POST** /identities/process | Process a list of identityids
+*IdentitiesApi* | [**synchronize_attributes_for_identity**](sailpoint\v2024/docs/IdentitiesApi.md#synchronize_attributes_for_identity) | **POST** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
+*IdentityAttributesApi* | [**create_identity_attribute**](sailpoint\v2024/docs/IdentityAttributesApi.md#create_identity_attribute) | **POST** /identity-attributes | Create identity attribute
+*IdentityAttributesApi* | [**delete_identity_attribute**](sailpoint\v2024/docs/IdentityAttributesApi.md#delete_identity_attribute) | **DELETE** /identity-attributes/{name} | Delete identity attribute
+*IdentityAttributesApi* | [**delete_identity_attributes_in_bulk**](sailpoint\v2024/docs/IdentityAttributesApi.md#delete_identity_attributes_in_bulk) | **DELETE** /identity-attributes/bulk-delete | Bulk delete identity attributes
+*IdentityAttributesApi* | [**get_identity_attribute**](sailpoint\v2024/docs/IdentityAttributesApi.md#get_identity_attribute) | **GET** /identity-attributes/{name} | Get identity attribute
+*IdentityAttributesApi* | [**list_identity_attributes**](sailpoint\v2024/docs/IdentityAttributesApi.md#list_identity_attributes) | **GET** /identity-attributes | List identity attributes
+*IdentityAttributesApi* | [**put_identity_attribute**](sailpoint\v2024/docs/IdentityAttributesApi.md#put_identity_attribute) | **PUT** /identity-attributes/{name} | Update identity attribute
+*IdentityHistoryApi* | [**compare_identity_snapshots**](sailpoint\v2024/docs/IdentityHistoryApi.md#compare_identity_snapshots) | **GET** /historical-identities/{id}/compare | Gets a difference of count for each access item types for the given identity between 2 snapshots
+*IdentityHistoryApi* | [**compare_identity_snapshots_access_type**](sailpoint\v2024/docs/IdentityHistoryApi.md#compare_identity_snapshots_access_type) | **GET** /historical-identities/{id}/compare/{access-type} | Gets a list of differences of specific accesstype for the given identity between 2 snapshots
+*IdentityHistoryApi* | [**get_historical_identity**](sailpoint\v2024/docs/IdentityHistoryApi.md#get_historical_identity) | **GET** /historical-identities/{id} | Get latest snapshot of identity
+*IdentityHistoryApi* | [**get_historical_identity_events**](sailpoint\v2024/docs/IdentityHistoryApi.md#get_historical_identity_events) | **GET** /historical-identities/{id}/events | Lists all events for the given identity
+*IdentityHistoryApi* | [**get_identity_snapshot**](sailpoint\v2024/docs/IdentityHistoryApi.md#get_identity_snapshot) | **GET** /historical-identities/{id}/snapshots/{date} | Gets an identity snapshot at a given date
+*IdentityHistoryApi* | [**get_identity_snapshot_summary**](sailpoint\v2024/docs/IdentityHistoryApi.md#get_identity_snapshot_summary) | **GET** /historical-identities/{id}/snapshot-summary | Gets the summary for the event count for a specific identity
+*IdentityHistoryApi* | [**get_identity_start_date**](sailpoint\v2024/docs/IdentityHistoryApi.md#get_identity_start_date) | **GET** /historical-identities/{id}/start-date | Gets the start date of the identity
+*IdentityHistoryApi* | [**list_historical_identities**](sailpoint\v2024/docs/IdentityHistoryApi.md#list_historical_identities) | **GET** /historical-identities | Lists all the identities
+*IdentityHistoryApi* | [**list_identity_access_items**](sailpoint\v2024/docs/IdentityHistoryApi.md#list_identity_access_items) | **GET** /historical-identities/{id}/access-items | List access items by identity
+*IdentityHistoryApi* | [**list_identity_snapshot_access_items**](sailpoint\v2024/docs/IdentityHistoryApi.md#list_identity_snapshot_access_items) | **GET** /historical-identities/{id}/snapshots/{date}/access-items | Gets the list of identity access items at a given date filterd by item type
+*IdentityHistoryApi* | [**list_identity_snapshots**](sailpoint\v2024/docs/IdentityHistoryApi.md#list_identity_snapshots) | **GET** /historical-identities/{id}/snapshots | Lists all the snapshots for the identity
+*IdentityProfilesApi* | [**create_identity_profile**](sailpoint\v2024/docs/IdentityProfilesApi.md#create_identity_profile) | **POST** /identity-profiles | Create identity profile
+*IdentityProfilesApi* | [**delete_identity_profile**](sailpoint\v2024/docs/IdentityProfilesApi.md#delete_identity_profile) | **DELETE** /identity-profiles/{identity-profile-id} | Delete identity profile
+*IdentityProfilesApi* | [**delete_identity_profiles**](sailpoint\v2024/docs/IdentityProfilesApi.md#delete_identity_profiles) | **POST** /identity-profiles/bulk-delete | Delete identity profiles
+*IdentityProfilesApi* | [**export_identity_profiles**](sailpoint\v2024/docs/IdentityProfilesApi.md#export_identity_profiles) | **GET** /identity-profiles/export | Export identity profiles
+*IdentityProfilesApi* | [**generate_identity_preview**](sailpoint\v2024/docs/IdentityProfilesApi.md#generate_identity_preview) | **POST** /identity-profiles/identity-preview | Generate identity profile preview
+*IdentityProfilesApi* | [**get_default_identity_attribute_config**](sailpoint\v2024/docs/IdentityProfilesApi.md#get_default_identity_attribute_config) | **GET** /identity-profiles/{identity-profile-id}/default-identity-attribute-config | Get default identity attribute config
+*IdentityProfilesApi* | [**get_identity_profile**](sailpoint\v2024/docs/IdentityProfilesApi.md#get_identity_profile) | **GET** /identity-profiles/{identity-profile-id} | Get identity profile
+*IdentityProfilesApi* | [**import_identity_profiles**](sailpoint\v2024/docs/IdentityProfilesApi.md#import_identity_profiles) | **POST** /identity-profiles/import | Import identity profiles
+*IdentityProfilesApi* | [**list_identity_profiles**](sailpoint\v2024/docs/IdentityProfilesApi.md#list_identity_profiles) | **GET** /identity-profiles | List identity profiles
+*IdentityProfilesApi* | [**sync_identity_profile**](sailpoint\v2024/docs/IdentityProfilesApi.md#sync_identity_profile) | **POST** /identity-profiles/{identity-profile-id}/process-identities | Process identities under profile
+*IdentityProfilesApi* | [**update_identity_profile**](sailpoint\v2024/docs/IdentityProfilesApi.md#update_identity_profile) | **PATCH** /identity-profiles/{identity-profile-id} | Update identity profile
+*LifecycleStatesApi* | [**create_lifecycle_state**](sailpoint\v2024/docs/LifecycleStatesApi.md#create_lifecycle_state) | **POST** /identity-profiles/{identity-profile-id}/lifecycle-states | Create lifecycle state
+*LifecycleStatesApi* | [**delete_lifecycle_state**](sailpoint\v2024/docs/LifecycleStatesApi.md#delete_lifecycle_state) | **DELETE** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Delete lifecycle state
+*LifecycleStatesApi* | [**get_lifecycle_state**](sailpoint\v2024/docs/LifecycleStatesApi.md#get_lifecycle_state) | **GET** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Get lifecycle state
+*LifecycleStatesApi* | [**get_lifecycle_states**](sailpoint\v2024/docs/LifecycleStatesApi.md#get_lifecycle_states) | **GET** /identity-profiles/{identity-profile-id}/lifecycle-states | Lists lifecyclestates
+*LifecycleStatesApi* | [**set_lifecycle_state**](sailpoint\v2024/docs/LifecycleStatesApi.md#set_lifecycle_state) | **POST** /identities/{identity-id}/set-lifecycle-state | Set lifecycle state
+*LifecycleStatesApi* | [**update_lifecycle_states**](sailpoint\v2024/docs/LifecycleStatesApi.md#update_lifecycle_states) | **PATCH** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Update lifecycle state
+*MFAConfigurationApi* | [**get_mfa_duo_config**](sailpoint\v2024/docs/MFAConfigurationApi.md#get_mfa_duo_config) | **GET** /mfa/duo-web/config | Configuration of duo mfa method
+*MFAConfigurationApi* | [**get_mfa_kba_config**](sailpoint\v2024/docs/MFAConfigurationApi.md#get_mfa_kba_config) | **GET** /mfa/kba/config | Configuration of kba mfa method
+*MFAConfigurationApi* | [**get_mfa_okta_config**](sailpoint\v2024/docs/MFAConfigurationApi.md#get_mfa_okta_config) | **GET** /mfa/okta-verify/config | Configuration of okta mfa method
+*MFAConfigurationApi* | [**set_mfa_duo_config**](sailpoint\v2024/docs/MFAConfigurationApi.md#set_mfa_duo_config) | **PUT** /mfa/duo-web/config | Set duo mfa configuration
+*MFAConfigurationApi* | [**set_mfa_okta_config**](sailpoint\v2024/docs/MFAConfigurationApi.md#set_mfa_okta_config) | **PUT** /mfa/okta-verify/config | Set okta mfa configuration
+*MFAConfigurationApi* | [**set_mfakba_config**](sailpoint\v2024/docs/MFAConfigurationApi.md#set_mfakba_config) | **POST** /mfa/kba/config/answers | Set mfa kba configuration
+*MFAConfigurationApi* | [**test_mfa_config**](sailpoint\v2024/docs/MFAConfigurationApi.md#test_mfa_config) | **GET** /mfa/{method}/test | Mfa method&#39;s test configuration
+*MachineAccountClassifyApi* | [**send_classify_machine_account**](sailpoint\v2024/docs/MachineAccountClassifyApi.md#send_classify_machine_account) | **POST** /accounts/{id}/classify | Classify a Single Machine Account
+*MachineAccountMappingsApi* | [**create_machine_account_mappings**](sailpoint\v2024/docs/MachineAccountMappingsApi.md#create_machine_account_mappings) | **POST** /sources/{sourceId}/machine-account-mappings | Create machine account mappings
+*MachineAccountMappingsApi* | [**delete_machine_account_mappings**](sailpoint\v2024/docs/MachineAccountMappingsApi.md#delete_machine_account_mappings) | **DELETE** /sources/{sourceId}/machine-account-mappings | Delete source&#39;s machine account mappings
+*MachineAccountMappingsApi* | [**list_machine_account_mappings**](sailpoint\v2024/docs/MachineAccountMappingsApi.md#list_machine_account_mappings) | **GET** /sources/{sourceId}/machine-account-mappings | Machine account mapping for source
+*MachineAccountMappingsApi* | [**set_machine_account_mappings**](sailpoint\v2024/docs/MachineAccountMappingsApi.md#set_machine_account_mappings) | **PUT** /sources/{sourceId}/machine-mappings | Update source&#39;s machine account mappings
+*MachineAccountsApi* | [**get_machine_account**](sailpoint\v2024/docs/MachineAccountsApi.md#get_machine_account) | **GET** /machine-accounts/{id} | Machine account details
+*MachineAccountsApi* | [**list_machine_accounts**](sailpoint\v2024/docs/MachineAccountsApi.md#list_machine_accounts) | **GET** /machine-accounts | Machine accounts list
+*MachineAccountsApi* | [**update_machine_account**](sailpoint\v2024/docs/MachineAccountsApi.md#update_machine_account) | **PATCH** /machine-accounts/{id} | Update a machine account
+*MachineClassificationConfigApi* | [**delete_machine_classification_config**](sailpoint\v2024/docs/MachineClassificationConfigApi.md#delete_machine_classification_config) | **DELETE** /sources/{sourceId}/machine-classification-config | Delete source&#39;s classification config
+*MachineClassificationConfigApi* | [**get_machine_classification_config**](sailpoint\v2024/docs/MachineClassificationConfigApi.md#get_machine_classification_config) | **GET** /sources/{sourceId}/machine-classification-config | Machine classification config for source
+*MachineClassificationConfigApi* | [**set_machine_classification_config**](sailpoint\v2024/docs/MachineClassificationConfigApi.md#set_machine_classification_config) | **PUT** /sources/{sourceId}/machine-classification-config | Update source&#39;s classification config
+*MachineIdentitiesApi* | [**create_machine_identity**](sailpoint\v2024/docs/MachineIdentitiesApi.md#create_machine_identity) | **POST** /machine-identities | Create machine identities
+*MachineIdentitiesApi* | [**delete_machine_identity**](sailpoint\v2024/docs/MachineIdentitiesApi.md#delete_machine_identity) | **DELETE** /machine-identities/{id} | Delete machine identity
+*MachineIdentitiesApi* | [**get_machine_identity**](sailpoint\v2024/docs/MachineIdentitiesApi.md#get_machine_identity) | **GET** /machine-identities/{id} | Machine identity details
+*MachineIdentitiesApi* | [**list_machine_identities**](sailpoint\v2024/docs/MachineIdentitiesApi.md#list_machine_identities) | **GET** /machine-identities | List machine identities
+*MachineIdentitiesApi* | [**update_machine_identity**](sailpoint\v2024/docs/MachineIdentitiesApi.md#update_machine_identity) | **PATCH** /machine-identities/{id} | Update a machine identity
+*ManagedClientsApi* | [**create_managed_client**](sailpoint\v2024/docs/ManagedClientsApi.md#create_managed_client) | **POST** /managed-clients | Create managed client
+*ManagedClientsApi* | [**delete_managed_client**](sailpoint\v2024/docs/ManagedClientsApi.md#delete_managed_client) | **DELETE** /managed-clients/{id} | Delete managed client
+*ManagedClientsApi* | [**get_managed_client**](sailpoint\v2024/docs/ManagedClientsApi.md#get_managed_client) | **GET** /managed-clients/{id} | Get managed client
+*ManagedClientsApi* | [**get_managed_client_status**](sailpoint\v2024/docs/ManagedClientsApi.md#get_managed_client_status) | **GET** /managed-clients/{id}/status | Get managed client status
+*ManagedClientsApi* | [**get_managed_clients**](sailpoint\v2024/docs/ManagedClientsApi.md#get_managed_clients) | **GET** /managed-clients | Get managed clients
+*ManagedClientsApi* | [**update_managed_client**](sailpoint\v2024/docs/ManagedClientsApi.md#update_managed_client) | **PATCH** /managed-clients/{id} | Update managed client
+*ManagedClusterTypesApi* | [**create_managed_cluster_type**](sailpoint\v2024/docs/ManagedClusterTypesApi.md#create_managed_cluster_type) | **POST** /managed-cluster-types | Create new managed cluster type
+*ManagedClusterTypesApi* | [**delete_managed_cluster_type**](sailpoint\v2024/docs/ManagedClusterTypesApi.md#delete_managed_cluster_type) | **DELETE** /managed-cluster-types/{id} | Delete a managed cluster type
+*ManagedClusterTypesApi* | [**get_managed_cluster_type**](sailpoint\v2024/docs/ManagedClusterTypesApi.md#get_managed_cluster_type) | **GET** /managed-cluster-types/{id} | Get a managed cluster type
+*ManagedClusterTypesApi* | [**get_managed_cluster_types**](sailpoint\v2024/docs/ManagedClusterTypesApi.md#get_managed_cluster_types) | **GET** /managed-cluster-types | Get managed cluster types
+*ManagedClusterTypesApi* | [**update_managed_cluster_type**](sailpoint\v2024/docs/ManagedClusterTypesApi.md#update_managed_cluster_type) | **PATCH** /managed-cluster-types/{id} | Update a managed cluster type
+*ManagedClustersApi* | [**create_managed_cluster**](sailpoint\v2024/docs/ManagedClustersApi.md#create_managed_cluster) | **POST** /managed-clusters | Create create managed cluster
+*ManagedClustersApi* | [**delete_managed_cluster**](sailpoint\v2024/docs/ManagedClustersApi.md#delete_managed_cluster) | **DELETE** /managed-clusters/{id} | Delete managed cluster
+*ManagedClustersApi* | [**get_client_log_configuration**](sailpoint\v2024/docs/ManagedClustersApi.md#get_client_log_configuration) | **GET** /managed-clusters/{id}/log-config | Get managed cluster log configuration
+*ManagedClustersApi* | [**get_managed_cluster**](sailpoint\v2024/docs/ManagedClustersApi.md#get_managed_cluster) | **GET** /managed-clusters/{id} | Get managed cluster
+*ManagedClustersApi* | [**get_managed_clusters**](sailpoint\v2024/docs/ManagedClustersApi.md#get_managed_clusters) | **GET** /managed-clusters | Get managed clusters
+*ManagedClustersApi* | [**put_client_log_configuration**](sailpoint\v2024/docs/ManagedClustersApi.md#put_client_log_configuration) | **PUT** /managed-clusters/{id}/log-config | Update managed cluster log configuration
+*ManagedClustersApi* | [**update**](sailpoint\v2024/docs/ManagedClustersApi.md#update) | **POST** /managed-clusters/{id}/manualUpgrade | Trigger manual upgrade for managed cluster
+*ManagedClustersApi* | [**update_managed_cluster**](sailpoint\v2024/docs/ManagedClustersApi.md#update_managed_cluster) | **PATCH** /managed-clusters/{id} | Update managed cluster
+*MultiHostIntegrationApi* | [**create_multi_host_integration**](sailpoint\v2024/docs/MultiHostIntegrationApi.md#create_multi_host_integration) | **POST** /multihosts | Create multi-host integration
+*MultiHostIntegrationApi* | [**create_sources_within_multi_host**](sailpoint\v2024/docs/MultiHostIntegrationApi.md#create_sources_within_multi_host) | **POST** /multihosts/{multihostId} | Create sources within multi-host integration
+*MultiHostIntegrationApi* | [**delete_multi_host**](sailpoint\v2024/docs/MultiHostIntegrationApi.md#delete_multi_host) | **DELETE** /multihosts/{multihostId} | Delete multi-host integration
+*MultiHostIntegrationApi* | [**get_acct_aggregation_groups**](sailpoint\v2024/docs/MultiHostIntegrationApi.md#get_acct_aggregation_groups) | **GET** /multihosts/{multihostId}/acctAggregationGroups | List account-aggregation-groups by multi-host id
+*MultiHostIntegrationApi* | [**get_entitlement_aggregation_groups**](sailpoint\v2024/docs/MultiHostIntegrationApi.md#get_entitlement_aggregation_groups) | **GET** /multihosts/{multiHostId}/entitlementAggregationGroups | List entitlement-aggregation-groups by integration id
+*MultiHostIntegrationApi* | [**get_multi_host_integrations**](sailpoint\v2024/docs/MultiHostIntegrationApi.md#get_multi_host_integrations) | **GET** /multihosts/{multihostId} | Get multi-host integration by id
+*MultiHostIntegrationApi* | [**get_multi_host_integrations_list**](sailpoint\v2024/docs/MultiHostIntegrationApi.md#get_multi_host_integrations_list) | **GET** /multihosts | List all existing multi-host integrations
+*MultiHostIntegrationApi* | [**get_multi_host_source_creation_errors**](sailpoint\v2024/docs/MultiHostIntegrationApi.md#get_multi_host_source_creation_errors) | **GET** /multihosts/{multiHostId}/sources/errors | List multi-host source creation errors
+*MultiHostIntegrationApi* | [**get_multihost_integration_types**](sailpoint\v2024/docs/MultiHostIntegrationApi.md#get_multihost_integration_types) | **GET** /multihosts/types | List multi-host integration types
+*MultiHostIntegrationApi* | [**get_sources_within_multi_host**](sailpoint\v2024/docs/MultiHostIntegrationApi.md#get_sources_within_multi_host) | **GET** /multihosts/{multihostId}/sources | List sources within multi-host integration
+*MultiHostIntegrationApi* | [**test_connection_multi_host_sources**](sailpoint\v2024/docs/MultiHostIntegrationApi.md#test_connection_multi_host_sources) | **POST** /multihosts/{multihostId}/sources/testConnection | Test configuration for multi-host integration
+*MultiHostIntegrationApi* | [**test_source_connection_multihost**](sailpoint\v2024/docs/MultiHostIntegrationApi.md#test_source_connection_multihost) | **GET** /multihosts/{multihostId}/sources/{sourceId}/testConnection | Test configuration for multi-host integration&#39;s single source
+*MultiHostIntegrationApi* | [**update_multi_host_sources**](sailpoint\v2024/docs/MultiHostIntegrationApi.md#update_multi_host_sources) | **PATCH** /multihosts/{multihostId} | Update multi-host integration
+*NonEmployeeLifecycleManagementApi* | [**approve_non_employee_request**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#approve_non_employee_request) | **POST** /non-employee-approvals/{id}/approve | Approve a non-employee request
+*NonEmployeeLifecycleManagementApi* | [**create_non_employee_record**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_record) | **POST** /non-employee-records | Create non-employee record
+*NonEmployeeLifecycleManagementApi* | [**create_non_employee_request**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_request) | **POST** /non-employee-requests | Create non-employee request
+*NonEmployeeLifecycleManagementApi* | [**create_non_employee_source**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_source) | **POST** /non-employee-sources | Create non-employee source
+*NonEmployeeLifecycleManagementApi* | [**create_non_employee_source_schema_attributes**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#create_non_employee_source_schema_attributes) | **POST** /non-employee-sources/{sourceId}/schema-attributes | Create a new schema attribute for non-employee source
+*NonEmployeeLifecycleManagementApi* | [**delete_non_employee_record**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#delete_non_employee_record) | **DELETE** /non-employee-records/{id} | Delete non-employee record
+*NonEmployeeLifecycleManagementApi* | [**delete_non_employee_records_in_bulk**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#delete_non_employee_records_in_bulk) | **POST** /non-employee-records/bulk-delete | Delete multiple non-employee records
+*NonEmployeeLifecycleManagementApi* | [**delete_non_employee_request**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#delete_non_employee_request) | **DELETE** /non-employee-requests/{id} | Delete non-employee request
+*NonEmployeeLifecycleManagementApi* | [**delete_non_employee_schema_attribute**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#delete_non_employee_schema_attribute) | **DELETE** /non-employee-sources/{sourceId}/schema-attributes/{attributeId} | Delete a schema attribute for non-employee source
+*NonEmployeeLifecycleManagementApi* | [**delete_non_employee_source**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#delete_non_employee_source) | **DELETE** /non-employee-sources/{sourceId} | Delete non-employee source
+*NonEmployeeLifecycleManagementApi* | [**delete_non_employee_source_schema_attributes**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#delete_non_employee_source_schema_attributes) | **DELETE** /non-employee-sources/{sourceId}/schema-attributes | Delete all custom schema attributes for non-employee source
+*NonEmployeeLifecycleManagementApi* | [**export_non_employee_records**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#export_non_employee_records) | **GET** /non-employee-sources/{id}/non-employees/download | Exports non-employee records to csv
+*NonEmployeeLifecycleManagementApi* | [**export_non_employee_source_schema_template**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#export_non_employee_source_schema_template) | **GET** /non-employee-sources/{id}/schema-attributes-template/download | Exports source schema template
+*NonEmployeeLifecycleManagementApi* | [**get_non_employee_approval**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#get_non_employee_approval) | **GET** /non-employee-approvals/{id} | Get a non-employee approval item detail
+*NonEmployeeLifecycleManagementApi* | [**get_non_employee_approval_summary**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#get_non_employee_approval_summary) | **GET** /non-employee-approvals/summary/{requested-for} | Get summary of non-employee approval requests
+*NonEmployeeLifecycleManagementApi* | [**get_non_employee_bulk_upload_status**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#get_non_employee_bulk_upload_status) | **GET** /non-employee-sources/{id}/non-employee-bulk-upload/status | Obtain the status of bulk upload on the source
+*NonEmployeeLifecycleManagementApi* | [**get_non_employee_record**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#get_non_employee_record) | **GET** /non-employee-records/{id} | Get a non-employee record
+*NonEmployeeLifecycleManagementApi* | [**get_non_employee_request**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#get_non_employee_request) | **GET** /non-employee-requests/{id} | Get a non-employee request
+*NonEmployeeLifecycleManagementApi* | [**get_non_employee_request_summary**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#get_non_employee_request_summary) | **GET** /non-employee-requests/summary/{requested-for} | Get summary of non-employee requests
+*NonEmployeeLifecycleManagementApi* | [**get_non_employee_schema_attribute**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#get_non_employee_schema_attribute) | **GET** /non-employee-sources/{sourceId}/schema-attributes/{attributeId} | Get schema attribute non-employee source
+*NonEmployeeLifecycleManagementApi* | [**get_non_employee_source**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#get_non_employee_source) | **GET** /non-employee-sources/{sourceId} | Get a non-employee source
+*NonEmployeeLifecycleManagementApi* | [**get_non_employee_source_schema_attributes**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#get_non_employee_source_schema_attributes) | **GET** /non-employee-sources/{sourceId}/schema-attributes | List schema attributes non-employee source
+*NonEmployeeLifecycleManagementApi* | [**import_non_employee_records_in_bulk**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#import_non_employee_records_in_bulk) | **POST** /non-employee-sources/{id}/non-employee-bulk-upload | Imports, or updates, non-employee records
+*NonEmployeeLifecycleManagementApi* | [**list_non_employee_approvals**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#list_non_employee_approvals) | **GET** /non-employee-approvals | Get list of non-employee approval requests
+*NonEmployeeLifecycleManagementApi* | [**list_non_employee_records**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#list_non_employee_records) | **GET** /non-employee-records | List non-employee records
+*NonEmployeeLifecycleManagementApi* | [**list_non_employee_requests**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#list_non_employee_requests) | **GET** /non-employee-requests | List non-employee requests
+*NonEmployeeLifecycleManagementApi* | [**list_non_employee_sources**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#list_non_employee_sources) | **GET** /non-employee-sources | List non-employee sources
+*NonEmployeeLifecycleManagementApi* | [**patch_non_employee_record**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#patch_non_employee_record) | **PATCH** /non-employee-records/{id} | Patch non-employee record
+*NonEmployeeLifecycleManagementApi* | [**patch_non_employee_schema_attribute**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#patch_non_employee_schema_attribute) | **PATCH** /non-employee-sources/{sourceId}/schema-attributes/{attributeId} | Patch a schema attribute for non-employee source
+*NonEmployeeLifecycleManagementApi* | [**patch_non_employee_source**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#patch_non_employee_source) | **PATCH** /non-employee-sources/{sourceId} | Patch a non-employee source
+*NonEmployeeLifecycleManagementApi* | [**reject_non_employee_request**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#reject_non_employee_request) | **POST** /non-employee-approvals/{id}/reject | Reject a non-employee request
+*NonEmployeeLifecycleManagementApi* | [**update_non_employee_record**](sailpoint\v2024/docs/NonEmployeeLifecycleManagementApi.md#update_non_employee_record) | **PUT** /non-employee-records/{id} | Update non-employee record
+*NotificationsApi* | [**create_domain_dkim**](sailpoint\v2024/docs/NotificationsApi.md#create_domain_dkim) | **POST** /verified-domains | Verify domain address via dkim
+*NotificationsApi* | [**create_notification_template**](sailpoint\v2024/docs/NotificationsApi.md#create_notification_template) | **POST** /notification-templates | Create notification template
+*NotificationsApi* | [**create_verified_from_address**](sailpoint\v2024/docs/NotificationsApi.md#create_verified_from_address) | **POST** /verified-from-addresses | Create verified from address
+*NotificationsApi* | [**delete_notification_templates_in_bulk**](sailpoint\v2024/docs/NotificationsApi.md#delete_notification_templates_in_bulk) | **POST** /notification-templates/bulk-delete | Bulk delete notification templates
+*NotificationsApi* | [**delete_verified_from_address**](sailpoint\v2024/docs/NotificationsApi.md#delete_verified_from_address) | **DELETE** /verified-from-addresses/{id} | Delete verified from address
+*NotificationsApi* | [**get_dkim_attributes**](sailpoint\v2024/docs/NotificationsApi.md#get_dkim_attributes) | **GET** /verified-domains | Get dkim attributes
+*NotificationsApi* | [**get_mail_from_attributes**](sailpoint\v2024/docs/NotificationsApi.md#get_mail_from_attributes) | **GET** /mail-from-attributes/{identity} | Get mail from attributes
+*NotificationsApi* | [**get_notification_template**](sailpoint\v2024/docs/NotificationsApi.md#get_notification_template) | **GET** /notification-templates/{id} | Get notification template by id
+*NotificationsApi* | [**get_notifications_template_context**](sailpoint\v2024/docs/NotificationsApi.md#get_notifications_template_context) | **GET** /notification-template-context | Get notification template context
+*NotificationsApi* | [**list_from_addresses**](sailpoint\v2024/docs/NotificationsApi.md#list_from_addresses) | **GET** /verified-from-addresses | List from addresses
+*NotificationsApi* | [**list_notification_preferences**](sailpoint\v2024/docs/NotificationsApi.md#list_notification_preferences) | **GET** /notification-preferences/{key} | List notification preferences for tenant.
+*NotificationsApi* | [**list_notification_template_defaults**](sailpoint\v2024/docs/NotificationsApi.md#list_notification_template_defaults) | **GET** /notification-template-defaults | List notification template defaults
+*NotificationsApi* | [**list_notification_templates**](sailpoint\v2024/docs/NotificationsApi.md#list_notification_templates) | **GET** /notification-templates | List notification templates
+*NotificationsApi* | [**put_mail_from_attributes**](sailpoint\v2024/docs/NotificationsApi.md#put_mail_from_attributes) | **PUT** /mail-from-attributes | Change mail from domain
+*NotificationsApi* | [**send_test_notification**](sailpoint\v2024/docs/NotificationsApi.md#send_test_notification) | **POST** /send-test-notification | Send test notification
+*OAuthClientsApi* | [**create_oauth_client**](sailpoint\v2024/docs/OAuthClientsApi.md#create_oauth_client) | **POST** /oauth-clients | Create oauth client
+*OAuthClientsApi* | [**delete_oauth_client**](sailpoint\v2024/docs/OAuthClientsApi.md#delete_oauth_client) | **DELETE** /oauth-clients/{id} | Delete oauth client
+*OAuthClientsApi* | [**get_oauth_client**](sailpoint\v2024/docs/OAuthClientsApi.md#get_oauth_client) | **GET** /oauth-clients/{id} | Get oauth client
+*OAuthClientsApi* | [**list_oauth_clients**](sailpoint\v2024/docs/OAuthClientsApi.md#list_oauth_clients) | **GET** /oauth-clients | List oauth clients
+*OAuthClientsApi* | [**patch_oauth_client**](sailpoint\v2024/docs/OAuthClientsApi.md#patch_oauth_client) | **PATCH** /oauth-clients/{id} | Patch oauth client
+*OrgConfigApi* | [**get_org_config**](sailpoint\v2024/docs/OrgConfigApi.md#get_org_config) | **GET** /org-config | Get org config settings
+*OrgConfigApi* | [**get_valid_time_zones**](sailpoint\v2024/docs/OrgConfigApi.md#get_valid_time_zones) | **GET** /org-config/valid-time-zones | Get valid time zones
+*OrgConfigApi* | [**patch_org_config**](sailpoint\v2024/docs/OrgConfigApi.md#patch_org_config) | **PATCH** /org-config | Patch org config
+*PasswordConfigurationApi* | [**create_password_org_config**](sailpoint\v2024/docs/PasswordConfigurationApi.md#create_password_org_config) | **POST** /password-org-config | Create password org config
+*PasswordConfigurationApi* | [**get_password_org_config**](sailpoint\v2024/docs/PasswordConfigurationApi.md#get_password_org_config) | **GET** /password-org-config | Get password org config
+*PasswordConfigurationApi* | [**put_password_org_config**](sailpoint\v2024/docs/PasswordConfigurationApi.md#put_password_org_config) | **PUT** /password-org-config | Update password org config
+*PasswordDictionaryApi* | [**get_password_dictionary**](sailpoint\v2024/docs/PasswordDictionaryApi.md#get_password_dictionary) | **GET** /password-dictionary | Get password dictionary
+*PasswordDictionaryApi* | [**put_password_dictionary**](sailpoint\v2024/docs/PasswordDictionaryApi.md#put_password_dictionary) | **PUT** /password-dictionary | Update password dictionary
+*PasswordManagementApi* | [**create_digit_token**](sailpoint\v2024/docs/PasswordManagementApi.md#create_digit_token) | **POST** /generate-password-reset-token/digit | Generate a digit token
+*PasswordManagementApi* | [**get_password_change_status**](sailpoint\v2024/docs/PasswordManagementApi.md#get_password_change_status) | **GET** /password-change-status/{id} | Get password change request status
+*PasswordManagementApi* | [**query_password_info**](sailpoint\v2024/docs/PasswordManagementApi.md#query_password_info) | **POST** /query-password-info | Query password info
+*PasswordManagementApi* | [**set_password**](sailpoint\v2024/docs/PasswordManagementApi.md#set_password) | **POST** /set-password | Set identity&#39;s password
+*PasswordPoliciesApi* | [**create_password_policy**](sailpoint\v2024/docs/PasswordPoliciesApi.md#create_password_policy) | **POST** /password-policies | Create password policy
+*PasswordPoliciesApi* | [**delete_password_policy**](sailpoint\v2024/docs/PasswordPoliciesApi.md#delete_password_policy) | **DELETE** /password-policies/{id} | Delete password policy by id
+*PasswordPoliciesApi* | [**get_password_policy_by_id**](sailpoint\v2024/docs/PasswordPoliciesApi.md#get_password_policy_by_id) | **GET** /password-policies/{id} | Get password policy by id
+*PasswordPoliciesApi* | [**list_password_policies**](sailpoint\v2024/docs/PasswordPoliciesApi.md#list_password_policies) | **GET** /password-policies | List password policies
+*PasswordPoliciesApi* | [**set_password_policy**](sailpoint\v2024/docs/PasswordPoliciesApi.md#set_password_policy) | **PUT** /password-policies/{id} | Update password policy by id
+*PasswordSyncGroupsApi* | [**create_password_sync_group**](sailpoint\v2024/docs/PasswordSyncGroupsApi.md#create_password_sync_group) | **POST** /password-sync-groups | Create password sync group
+*PasswordSyncGroupsApi* | [**delete_password_sync_group**](sailpoint\v2024/docs/PasswordSyncGroupsApi.md#delete_password_sync_group) | **DELETE** /password-sync-groups/{id} | Delete password sync group by id
+*PasswordSyncGroupsApi* | [**get_password_sync_group**](sailpoint\v2024/docs/PasswordSyncGroupsApi.md#get_password_sync_group) | **GET** /password-sync-groups/{id} | Get password sync group by id
+*PasswordSyncGroupsApi* | [**get_password_sync_groups**](sailpoint\v2024/docs/PasswordSyncGroupsApi.md#get_password_sync_groups) | **GET** /password-sync-groups | Get password sync group list
+*PasswordSyncGroupsApi* | [**update_password_sync_group**](sailpoint\v2024/docs/PasswordSyncGroupsApi.md#update_password_sync_group) | **PUT** /password-sync-groups/{id} | Update password sync group by id
+*PersonalAccessTokensApi* | [**create_personal_access_token**](sailpoint\v2024/docs/PersonalAccessTokensApi.md#create_personal_access_token) | **POST** /personal-access-tokens | Create personal access token
+*PersonalAccessTokensApi* | [**delete_personal_access_token**](sailpoint\v2024/docs/PersonalAccessTokensApi.md#delete_personal_access_token) | **DELETE** /personal-access-tokens/{id} | Delete personal access token
+*PersonalAccessTokensApi* | [**list_personal_access_tokens**](sailpoint\v2024/docs/PersonalAccessTokensApi.md#list_personal_access_tokens) | **GET** /personal-access-tokens | List personal access tokens
+*PersonalAccessTokensApi* | [**patch_personal_access_token**](sailpoint\v2024/docs/PersonalAccessTokensApi.md#patch_personal_access_token) | **PATCH** /personal-access-tokens/{id} | Patch personal access token
+*PublicIdentitiesApi* | [**get_public_identities**](sailpoint\v2024/docs/PublicIdentitiesApi.md#get_public_identities) | **GET** /public-identities | Get list of public identities
+*PublicIdentitiesConfigApi* | [**get_public_identity_config**](sailpoint\v2024/docs/PublicIdentitiesConfigApi.md#get_public_identity_config) | **GET** /public-identities-config | Get the public identities configuration
+*PublicIdentitiesConfigApi* | [**update_public_identity_config**](sailpoint\v2024/docs/PublicIdentitiesConfigApi.md#update_public_identity_config) | **PUT** /public-identities-config | Update the public identities configuration
+*ReportsDataExtractionApi* | [**cancel_report**](sailpoint\v2024/docs/ReportsDataExtractionApi.md#cancel_report) | **POST** /reports/{id}/cancel | Cancel report
+*ReportsDataExtractionApi* | [**get_report**](sailpoint\v2024/docs/ReportsDataExtractionApi.md#get_report) | **GET** /reports/{taskResultId} | Get report file
+*ReportsDataExtractionApi* | [**get_report_result**](sailpoint\v2024/docs/ReportsDataExtractionApi.md#get_report_result) | **GET** /reports/{taskResultId}/result | Get report result
+*ReportsDataExtractionApi* | [**start_report**](sailpoint\v2024/docs/ReportsDataExtractionApi.md#start_report) | **POST** /reports/run | Run report
+*RequestableObjectsApi* | [**list_requestable_objects**](sailpoint\v2024/docs/RequestableObjectsApi.md#list_requestable_objects) | **GET** /requestable-objects | Requestable objects list
+*RoleInsightsApi* | [**create_role_insight_requests**](sailpoint\v2024/docs/RoleInsightsApi.md#create_role_insight_requests) | **POST** /role-insights/requests | Generate insights for roles
+*RoleInsightsApi* | [**download_role_insights_entitlements_changes**](sailpoint\v2024/docs/RoleInsightsApi.md#download_role_insights_entitlements_changes) | **GET** /role-insights/{insightId}/entitlement-changes/download | Download entitlement insights for a role
+*RoleInsightsApi* | [**get_entitlement_changes_identities**](sailpoint\v2024/docs/RoleInsightsApi.md#get_entitlement_changes_identities) | **GET** /role-insights/{insightId}/entitlement-changes/{entitlementId}/identities | Get identities for a suggested entitlement (for a role)
+*RoleInsightsApi* | [**get_role_insight**](sailpoint\v2024/docs/RoleInsightsApi.md#get_role_insight) | **GET** /role-insights/{insightId} | Get a single role insight
+*RoleInsightsApi* | [**get_role_insights**](sailpoint\v2024/docs/RoleInsightsApi.md#get_role_insights) | **GET** /role-insights | Get role insights
+*RoleInsightsApi* | [**get_role_insights_current_entitlements**](sailpoint\v2024/docs/RoleInsightsApi.md#get_role_insights_current_entitlements) | **GET** /role-insights/{insightId}/current-entitlements | Get current entitlement for a role
+*RoleInsightsApi* | [**get_role_insights_entitlements_changes**](sailpoint\v2024/docs/RoleInsightsApi.md#get_role_insights_entitlements_changes) | **GET** /role-insights/{insightId}/entitlement-changes | Get entitlement insights for a role
+*RoleInsightsApi* | [**get_role_insights_requests**](sailpoint\v2024/docs/RoleInsightsApi.md#get_role_insights_requests) | **GET** /role-insights/requests/{id} | Returns metadata from prior request.
+*RoleInsightsApi* | [**get_role_insights_summary**](sailpoint\v2024/docs/RoleInsightsApi.md#get_role_insights_summary) | **GET** /role-insights/summary | Get role insights summary information
+*RolesApi* | [**create_role**](sailpoint\v2024/docs/RolesApi.md#create_role) | **POST** /roles | Create a role
+*RolesApi* | [**delete_bulk_roles**](sailpoint\v2024/docs/RolesApi.md#delete_bulk_roles) | **POST** /roles/bulk-delete | Delete role(s)
+*RolesApi* | [**delete_metadata_from_role_by_key_and_value**](sailpoint\v2024/docs/RolesApi.md#delete_metadata_from_role_by_key_and_value) | **DELETE** /roles/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Remove a metadata from role.
+*RolesApi* | [**delete_role**](sailpoint\v2024/docs/RolesApi.md#delete_role) | **DELETE** /roles/{id} | Delete a role
+*RolesApi* | [**get_bulk_update_status**](sailpoint\v2024/docs/RolesApi.md#get_bulk_update_status) | **GET** /roles/access-model-metadata/bulk-update | Get bulk-update statuses
+*RolesApi* | [**get_bulk_update_status_by_id**](sailpoint\v2024/docs/RolesApi.md#get_bulk_update_status_by_id) | **GET** /roles/access-model-metadata/bulk-update/id | Get bulk-update status by id
+*RolesApi* | [**get_role**](sailpoint\v2024/docs/RolesApi.md#get_role) | **GET** /roles/{id} | Get a role
+*RolesApi* | [**get_role_assigned_identities**](sailpoint\v2024/docs/RolesApi.md#get_role_assigned_identities) | **GET** /roles/{id}/assigned-identities | List identities assigned a role
+*RolesApi* | [**get_role_entitlements**](sailpoint\v2024/docs/RolesApi.md#get_role_entitlements) | **GET** /roles/{id}/entitlements | List role&#39;s entitlements
+*RolesApi* | [**list_roles**](sailpoint\v2024/docs/RolesApi.md#list_roles) | **GET** /roles | List roles
+*RolesApi* | [**patch_role**](sailpoint\v2024/docs/RolesApi.md#patch_role) | **PATCH** /roles/{id} | Patch a specified role
+*RolesApi* | [**search_roles_by_filter**](sailpoint\v2024/docs/RolesApi.md#search_roles_by_filter) | **POST** /roles/filter | Filter roles by metadata
+*RolesApi* | [**update_attribute_key_and_value_to_role**](sailpoint\v2024/docs/RolesApi.md#update_attribute_key_and_value_to_role) | **POST** /roles/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Add a metadata to role.
+*RolesApi* | [**update_roles_metadata_by_filter**](sailpoint\v2024/docs/RolesApi.md#update_roles_metadata_by_filter) | **POST** /roles/access-model-metadata/bulk-update/filter | Bulk-update roles&#39; metadata by filters
+*RolesApi* | [**update_roles_metadata_by_ids**](sailpoint\v2024/docs/RolesApi.md#update_roles_metadata_by_ids) | **POST** /roles/access-model-metadata/bulk-update/ids | Bulk-update roles&#39; metadata by id
+*RolesApi* | [**update_roles_metadata_by_query**](sailpoint\v2024/docs/RolesApi.md#update_roles_metadata_by_query) | **POST** /roles/access-model-metadata/bulk-update/query | Bulk-update roles&#39; metadata by query
+*SIMIntegrationsApi* | [**create_sim_integration**](sailpoint\v2024/docs/SIMIntegrationsApi.md#create_sim_integration) | **POST** /sim-integrations | Create new sim integration
+*SIMIntegrationsApi* | [**delete_sim_integration**](sailpoint\v2024/docs/SIMIntegrationsApi.md#delete_sim_integration) | **DELETE** /sim-integrations/{id} | Delete a sim integration
+*SIMIntegrationsApi* | [**get_sim_integration**](sailpoint\v2024/docs/SIMIntegrationsApi.md#get_sim_integration) | **GET** /sim-integrations/{id} | Get a sim integration details.
+*SIMIntegrationsApi* | [**get_sim_integrations**](sailpoint\v2024/docs/SIMIntegrationsApi.md#get_sim_integrations) | **GET** /sim-integrations | List the existing sim integrations.
+*SIMIntegrationsApi* | [**patch_before_provisioning_rule**](sailpoint\v2024/docs/SIMIntegrationsApi.md#patch_before_provisioning_rule) | **PATCH** /sim-integrations/{id}/beforeProvisioningRule | Patch a sim beforeprovisioningrule attribute.
+*SIMIntegrationsApi* | [**patch_sim_attributes**](sailpoint\v2024/docs/SIMIntegrationsApi.md#patch_sim_attributes) | **PATCH** /sim-integrations/{id} | Patch a sim attribute.
+*SIMIntegrationsApi* | [**put_sim_integration**](sailpoint\v2024/docs/SIMIntegrationsApi.md#put_sim_integration) | **PUT** /sim-integrations/{id} | Update an existing sim integration
+*SODPoliciesApi* | [**create_sod_policy**](sailpoint\v2024/docs/SODPoliciesApi.md#create_sod_policy) | **POST** /sod-policies | Create sod policy
+*SODPoliciesApi* | [**delete_sod_policy**](sailpoint\v2024/docs/SODPoliciesApi.md#delete_sod_policy) | **DELETE** /sod-policies/{id} | Delete sod policy by id
+*SODPoliciesApi* | [**delete_sod_policy_schedule**](sailpoint\v2024/docs/SODPoliciesApi.md#delete_sod_policy_schedule) | **DELETE** /sod-policies/{id}/schedule | Delete sod policy schedule
+*SODPoliciesApi* | [**get_custom_violation_report**](sailpoint\v2024/docs/SODPoliciesApi.md#get_custom_violation_report) | **GET** /sod-violation-report/{reportResultId}/download/{fileName} | Download custom violation report
+*SODPoliciesApi* | [**get_default_violation_report**](sailpoint\v2024/docs/SODPoliciesApi.md#get_default_violation_report) | **GET** /sod-violation-report/{reportResultId}/download | Download violation report
+*SODPoliciesApi* | [**get_sod_all_report_run_status**](sailpoint\v2024/docs/SODPoliciesApi.md#get_sod_all_report_run_status) | **GET** /sod-violation-report | Get multi-report run task status
+*SODPoliciesApi* | [**get_sod_policy**](sailpoint\v2024/docs/SODPoliciesApi.md#get_sod_policy) | **GET** /sod-policies/{id} | Get sod policy by id
+*SODPoliciesApi* | [**get_sod_policy_schedule**](sailpoint\v2024/docs/SODPoliciesApi.md#get_sod_policy_schedule) | **GET** /sod-policies/{id}/schedule | Get sod policy schedule
+*SODPoliciesApi* | [**get_sod_violation_report_run_status**](sailpoint\v2024/docs/SODPoliciesApi.md#get_sod_violation_report_run_status) | **GET** /sod-policies/sod-violation-report-status/{reportResultId} | Get violation report run status
+*SODPoliciesApi* | [**get_sod_violation_report_status**](sailpoint\v2024/docs/SODPoliciesApi.md#get_sod_violation_report_status) | **GET** /sod-policies/{id}/violation-report | Get sod violation report status
+*SODPoliciesApi* | [**list_sod_policies**](sailpoint\v2024/docs/SODPoliciesApi.md#list_sod_policies) | **GET** /sod-policies | List sod policies
+*SODPoliciesApi* | [**patch_sod_policy**](sailpoint\v2024/docs/SODPoliciesApi.md#patch_sod_policy) | **PATCH** /sod-policies/{id} | Patch sod policy by id
+*SODPoliciesApi* | [**put_policy_schedule**](sailpoint\v2024/docs/SODPoliciesApi.md#put_policy_schedule) | **PUT** /sod-policies/{id}/schedule | Update sod policy schedule
+*SODPoliciesApi* | [**put_sod_policy**](sailpoint\v2024/docs/SODPoliciesApi.md#put_sod_policy) | **PUT** /sod-policies/{id} | Update sod policy by id
+*SODPoliciesApi* | [**start_evaluate_sod_policy**](sailpoint\v2024/docs/SODPoliciesApi.md#start_evaluate_sod_policy) | **POST** /sod-policies/{id}/evaluate | Evaluate one policy by id
+*SODPoliciesApi* | [**start_sod_all_policies_for_org**](sailpoint\v2024/docs/SODPoliciesApi.md#start_sod_all_policies_for_org) | **POST** /sod-violation-report/run | Runs all policies for org
+*SODPoliciesApi* | [**start_sod_policy**](sailpoint\v2024/docs/SODPoliciesApi.md#start_sod_policy) | **POST** /sod-policies/{id}/violation-report/run | Runs sod policy violation report
+*SODViolationsApi* | [**start_predict_sod_violations**](sailpoint\v2024/docs/SODViolationsApi.md#start_predict_sod_violations) | **POST** /sod-violations/predict | Predict sod violations for identity.
+*SODViolationsApi* | [**start_violation_check**](sailpoint\v2024/docs/SODViolationsApi.md#start_violation_check) | **POST** /sod-violations/check | Check sod violations
+*SPConfigApi* | [**export_sp_config**](sailpoint\v2024/docs/SPConfigApi.md#export_sp_config) | **POST** /sp-config/export | Initiates configuration objects export job
+*SPConfigApi* | [**get_sp_config_export**](sailpoint\v2024/docs/SPConfigApi.md#get_sp_config_export) | **GET** /sp-config/export/{id}/download | Download export job result.
+*SPConfigApi* | [**get_sp_config_export_status**](sailpoint\v2024/docs/SPConfigApi.md#get_sp_config_export_status) | **GET** /sp-config/export/{id} | Get export job status
+*SPConfigApi* | [**get_sp_config_import**](sailpoint\v2024/docs/SPConfigApi.md#get_sp_config_import) | **GET** /sp-config/import/{id}/download | Download import job result
+*SPConfigApi* | [**get_sp_config_import_status**](sailpoint\v2024/docs/SPConfigApi.md#get_sp_config_import_status) | **GET** /sp-config/import/{id} | Get import job status
+*SPConfigApi* | [**import_sp_config**](sailpoint\v2024/docs/SPConfigApi.md#import_sp_config) | **POST** /sp-config/import | Initiates configuration objects import job
+*SPConfigApi* | [**list_sp_config_objects**](sailpoint\v2024/docs/SPConfigApi.md#list_sp_config_objects) | **GET** /sp-config/config-objects | List config objects
+*SavedSearchApi* | [**create_saved_search**](sailpoint\v2024/docs/SavedSearchApi.md#create_saved_search) | **POST** /saved-searches | Create a saved search
+*SavedSearchApi* | [**delete_saved_search**](sailpoint\v2024/docs/SavedSearchApi.md#delete_saved_search) | **DELETE** /saved-searches/{id} | Delete document by id
+*SavedSearchApi* | [**execute_saved_search**](sailpoint\v2024/docs/SavedSearchApi.md#execute_saved_search) | **POST** /saved-searches/{id}/execute | Execute a saved search by id
+*SavedSearchApi* | [**get_saved_search**](sailpoint\v2024/docs/SavedSearchApi.md#get_saved_search) | **GET** /saved-searches/{id} | Return saved search by id
+*SavedSearchApi* | [**list_saved_searches**](sailpoint\v2024/docs/SavedSearchApi.md#list_saved_searches) | **GET** /saved-searches | A list of saved searches
+*SavedSearchApi* | [**put_saved_search**](sailpoint\v2024/docs/SavedSearchApi.md#put_saved_search) | **PUT** /saved-searches/{id} | Updates an existing saved search 
+*ScheduledSearchApi* | [**create_scheduled_search**](sailpoint\v2024/docs/ScheduledSearchApi.md#create_scheduled_search) | **POST** /scheduled-searches | Create a new scheduled search
+*ScheduledSearchApi* | [**delete_scheduled_search**](sailpoint\v2024/docs/ScheduledSearchApi.md#delete_scheduled_search) | **DELETE** /scheduled-searches/{id} | Delete a scheduled search
+*ScheduledSearchApi* | [**get_scheduled_search**](sailpoint\v2024/docs/ScheduledSearchApi.md#get_scheduled_search) | **GET** /scheduled-searches/{id} | Get a scheduled search
+*ScheduledSearchApi* | [**list_scheduled_search**](sailpoint\v2024/docs/ScheduledSearchApi.md#list_scheduled_search) | **GET** /scheduled-searches | List scheduled searches
+*ScheduledSearchApi* | [**unsubscribe_scheduled_search**](sailpoint\v2024/docs/ScheduledSearchApi.md#unsubscribe_scheduled_search) | **POST** /scheduled-searches/{id}/unsubscribe | Unsubscribe a recipient from scheduled search
+*ScheduledSearchApi* | [**update_scheduled_search**](sailpoint\v2024/docs/ScheduledSearchApi.md#update_scheduled_search) | **PUT** /scheduled-searches/{id} | Update an existing scheduled search
+*SearchApi* | [**search_aggregate**](sailpoint\v2024/docs/SearchApi.md#search_aggregate) | **POST** /search/aggregate | Perform a search query aggregation
+*SearchApi* | [**search_count**](sailpoint\v2024/docs/SearchApi.md#search_count) | **POST** /search/count | Count documents satisfying a query
+*SearchApi* | [**search_get**](sailpoint\v2024/docs/SearchApi.md#search_get) | **GET** /search/{index}/{id} | Get a document by id
+*SearchApi* | [**search_post**](sailpoint\v2024/docs/SearchApi.md#search_post) | **POST** /search | Perform search
+*SearchAttributeConfigurationApi* | [**create_search_attribute_config**](sailpoint\v2024/docs/SearchAttributeConfigurationApi.md#create_search_attribute_config) | **POST** /accounts/search-attribute-config | Create extended search attributes
+*SearchAttributeConfigurationApi* | [**delete_search_attribute_config**](sailpoint\v2024/docs/SearchAttributeConfigurationApi.md#delete_search_attribute_config) | **DELETE** /accounts/search-attribute-config/{name} | Delete extended search attribute
+*SearchAttributeConfigurationApi* | [**get_search_attribute_config**](sailpoint\v2024/docs/SearchAttributeConfigurationApi.md#get_search_attribute_config) | **GET** /accounts/search-attribute-config | List extended search attributes
+*SearchAttributeConfigurationApi* | [**get_single_search_attribute_config**](sailpoint\v2024/docs/SearchAttributeConfigurationApi.md#get_single_search_attribute_config) | **GET** /accounts/search-attribute-config/{name} | Get extended search attribute
+*SearchAttributeConfigurationApi* | [**patch_search_attribute_config**](sailpoint\v2024/docs/SearchAttributeConfigurationApi.md#patch_search_attribute_config) | **PATCH** /accounts/search-attribute-config/{name} | Update extended search attribute
+*SegmentsApi* | [**create_segment**](sailpoint\v2024/docs/SegmentsApi.md#create_segment) | **POST** /segments | Create segment
+*SegmentsApi* | [**delete_segment**](sailpoint\v2024/docs/SegmentsApi.md#delete_segment) | **DELETE** /segments/{id} | Delete segment by id
+*SegmentsApi* | [**get_segment**](sailpoint\v2024/docs/SegmentsApi.md#get_segment) | **GET** /segments/{id} | Get segment by id
+*SegmentsApi* | [**list_segments**](sailpoint\v2024/docs/SegmentsApi.md#list_segments) | **GET** /segments | List segments
+*SegmentsApi* | [**patch_segment**](sailpoint\v2024/docs/SegmentsApi.md#patch_segment) | **PATCH** /segments/{id} | Update segment
+*ServiceDeskIntegrationApi* | [**create_service_desk_integration**](sailpoint\v2024/docs/ServiceDeskIntegrationApi.md#create_service_desk_integration) | **POST** /service-desk-integrations | Create new service desk integration
+*ServiceDeskIntegrationApi* | [**delete_service_desk_integration**](sailpoint\v2024/docs/ServiceDeskIntegrationApi.md#delete_service_desk_integration) | **DELETE** /service-desk-integrations/{id} | Delete a service desk integration
+*ServiceDeskIntegrationApi* | [**get_service_desk_integration**](sailpoint\v2024/docs/ServiceDeskIntegrationApi.md#get_service_desk_integration) | **GET** /service-desk-integrations/{id} | Get a service desk integration
+*ServiceDeskIntegrationApi* | [**get_service_desk_integration_template**](sailpoint\v2024/docs/ServiceDeskIntegrationApi.md#get_service_desk_integration_template) | **GET** /service-desk-integrations/templates/{scriptName} | Service desk integration template by scriptname
+*ServiceDeskIntegrationApi* | [**get_service_desk_integration_types**](sailpoint\v2024/docs/ServiceDeskIntegrationApi.md#get_service_desk_integration_types) | **GET** /service-desk-integrations/types | List service desk integration types
+*ServiceDeskIntegrationApi* | [**get_service_desk_integrations**](sailpoint\v2024/docs/ServiceDeskIntegrationApi.md#get_service_desk_integrations) | **GET** /service-desk-integrations | List existing service desk integrations
+*ServiceDeskIntegrationApi* | [**get_status_check_details**](sailpoint\v2024/docs/ServiceDeskIntegrationApi.md#get_status_check_details) | **GET** /service-desk-integrations/status-check-configuration | Get the time check configuration
+*ServiceDeskIntegrationApi* | [**patch_service_desk_integration**](sailpoint\v2024/docs/ServiceDeskIntegrationApi.md#patch_service_desk_integration) | **PATCH** /service-desk-integrations/{id} | Patch a service desk integration
+*ServiceDeskIntegrationApi* | [**put_service_desk_integration**](sailpoint\v2024/docs/ServiceDeskIntegrationApi.md#put_service_desk_integration) | **PUT** /service-desk-integrations/{id} | Update a service desk integration
+*ServiceDeskIntegrationApi* | [**update_status_check_details**](sailpoint\v2024/docs/ServiceDeskIntegrationApi.md#update_status_check_details) | **PUT** /service-desk-integrations/status-check-configuration | Update the time check configuration
+*SourceUsagesApi* | [**get_status_by_source_id**](sailpoint\v2024/docs/SourceUsagesApi.md#get_status_by_source_id) | **GET** /source-usages/{sourceId}/status | Finds status of source usage
+*SourceUsagesApi* | [**get_usages_by_source_id**](sailpoint\v2024/docs/SourceUsagesApi.md#get_usages_by_source_id) | **GET** /source-usages/{sourceId}/summaries | Returns source usage insights
+*SourcesApi* | [**create_provisioning_policy**](sailpoint\v2024/docs/SourcesApi.md#create_provisioning_policy) | **POST** /sources/{sourceId}/provisioning-policies | Create provisioning policy
+*SourcesApi* | [**create_source**](sailpoint\v2024/docs/SourcesApi.md#create_source) | **POST** /sources | Creates a source in identitynow.
+*SourcesApi* | [**create_source_schedule**](sailpoint\v2024/docs/SourcesApi.md#create_source_schedule) | **POST** /sources/{sourceId}/schedules | Create schedule on source
+*SourcesApi* | [**create_source_schema**](sailpoint\v2024/docs/SourcesApi.md#create_source_schema) | **POST** /sources/{sourceId}/schemas | Create schema on source
+*SourcesApi* | [**delete_accounts_async**](sailpoint\v2024/docs/SourcesApi.md#delete_accounts_async) | **POST** /sources/{id}/remove-accounts | Remove all accounts in a source
+*SourcesApi* | [**delete_native_change_detection_config**](sailpoint\v2024/docs/SourcesApi.md#delete_native_change_detection_config) | **DELETE** /sources/{sourceId}/native-change-detection-config | Delete native change detection configuration
+*SourcesApi* | [**delete_provisioning_policy**](sailpoint\v2024/docs/SourcesApi.md#delete_provisioning_policy) | **DELETE** /sources/{sourceId}/provisioning-policies/{usageType} | Delete provisioning policy by usagetype
+*SourcesApi* | [**delete_source**](sailpoint\v2024/docs/SourcesApi.md#delete_source) | **DELETE** /sources/{id} | Delete source by id
+*SourcesApi* | [**delete_source_schedule**](sailpoint\v2024/docs/SourcesApi.md#delete_source_schedule) | **DELETE** /sources/{sourceId}/schedules/{scheduleType} | Delete source schedule by type.
+*SourcesApi* | [**delete_source_schema**](sailpoint\v2024/docs/SourcesApi.md#delete_source_schema) | **DELETE** /sources/{sourceId}/schemas/{schemaId} | Delete source schema by id
+*SourcesApi* | [**get_accounts_schema**](sailpoint\v2024/docs/SourcesApi.md#get_accounts_schema) | **GET** /sources/{id}/schemas/accounts | Downloads source accounts schema template
+*SourcesApi* | [**get_correlation_config**](sailpoint\v2024/docs/SourcesApi.md#get_correlation_config) | **GET** /sources/{id}/correlation-config | Get source correlation configuration
+*SourcesApi* | [**get_entitlements_schema**](sailpoint\v2024/docs/SourcesApi.md#get_entitlements_schema) | **GET** /sources/{id}/schemas/entitlements | Downloads source entitlements schema template
+*SourcesApi* | [**get_native_change_detection_config**](sailpoint\v2024/docs/SourcesApi.md#get_native_change_detection_config) | **GET** /sources/{sourceId}/native-change-detection-config | Native change detection configuration
+*SourcesApi* | [**get_provisioning_policy**](sailpoint\v2024/docs/SourcesApi.md#get_provisioning_policy) | **GET** /sources/{sourceId}/provisioning-policies/{usageType} | Get provisioning policy by usagetype
+*SourcesApi* | [**get_source**](sailpoint\v2024/docs/SourcesApi.md#get_source) | **GET** /sources/{id} | Get source by id
+*SourcesApi* | [**get_source_attr_sync_config**](sailpoint\v2024/docs/SourcesApi.md#get_source_attr_sync_config) | **GET** /sources/{id}/attribute-sync-config | Attribute sync config
+*SourcesApi* | [**get_source_config**](sailpoint\v2024/docs/SourcesApi.md#get_source_config) | **GET** /sources/{id}/connectors/source-config | Gets source config with language-translations
+*SourcesApi* | [**get_source_connections**](sailpoint\v2024/docs/SourcesApi.md#get_source_connections) | **GET** /sources/{sourceId}/connections | Get source connections by id
+*SourcesApi* | [**get_source_entitlement_request_config**](sailpoint\v2024/docs/SourcesApi.md#get_source_entitlement_request_config) | **GET** /sources/{id}/entitlement-request-config | Get source entitlement request configuration
+*SourcesApi* | [**get_source_health**](sailpoint\v2024/docs/SourcesApi.md#get_source_health) | **GET** /sources/{sourceId}/source-health | Fetches source health by id
+*SourcesApi* | [**get_source_schedule**](sailpoint\v2024/docs/SourcesApi.md#get_source_schedule) | **GET** /sources/{sourceId}/schedules/{scheduleType} | Get source schedule by type
+*SourcesApi* | [**get_source_schedules**](sailpoint\v2024/docs/SourcesApi.md#get_source_schedules) | **GET** /sources/{sourceId}/schedules | List schedules on source
+*SourcesApi* | [**get_source_schema**](sailpoint\v2024/docs/SourcesApi.md#get_source_schema) | **GET** /sources/{sourceId}/schemas/{schemaId} | Get source schema by id
+*SourcesApi* | [**get_source_schemas**](sailpoint\v2024/docs/SourcesApi.md#get_source_schemas) | **GET** /sources/{sourceId}/schemas | List schemas on source
+*SourcesApi* | [**import_accounts**](sailpoint\v2024/docs/SourcesApi.md#import_accounts) | **POST** /sources/{id}/load-accounts | Account aggregation
+*SourcesApi* | [**import_accounts_schema**](sailpoint\v2024/docs/SourcesApi.md#import_accounts_schema) | **POST** /sources/{id}/schemas/accounts | Uploads source accounts schema template
+*SourcesApi* | [**import_connector_file**](sailpoint\v2024/docs/SourcesApi.md#import_connector_file) | **POST** /sources/{sourceId}/upload-connector-file | Upload connector file to source
+*SourcesApi* | [**import_entitlements_schema**](sailpoint\v2024/docs/SourcesApi.md#import_entitlements_schema) | **POST** /sources/{id}/schemas/entitlements | Uploads source entitlements schema template
+*SourcesApi* | [**import_uncorrelated_accounts**](sailpoint\v2024/docs/SourcesApi.md#import_uncorrelated_accounts) | **POST** /sources/{id}/load-uncorrelated-accounts | Process uncorrelated accounts
+*SourcesApi* | [**list_provisioning_policies**](sailpoint\v2024/docs/SourcesApi.md#list_provisioning_policies) | **GET** /sources/{sourceId}/provisioning-policies | Lists provisioningpolicies
+*SourcesApi* | [**list_sources**](sailpoint\v2024/docs/SourcesApi.md#list_sources) | **GET** /sources | Lists all sources in identitynow.
+*SourcesApi* | [**ping_cluster**](sailpoint\v2024/docs/SourcesApi.md#ping_cluster) | **POST** /sources/{sourceId}/connector/ping-cluster | Ping cluster for source connector
+*SourcesApi* | [**put_correlation_config**](sailpoint\v2024/docs/SourcesApi.md#put_correlation_config) | **PUT** /sources/{id}/correlation-config | Update source correlation configuration
+*SourcesApi* | [**put_native_change_detection_config**](sailpoint\v2024/docs/SourcesApi.md#put_native_change_detection_config) | **PUT** /sources/{sourceId}/native-change-detection-config | Update native change detection configuration
+*SourcesApi* | [**put_provisioning_policy**](sailpoint\v2024/docs/SourcesApi.md#put_provisioning_policy) | **PUT** /sources/{sourceId}/provisioning-policies/{usageType} | Update provisioning policy by usagetype
+*SourcesApi* | [**put_source**](sailpoint\v2024/docs/SourcesApi.md#put_source) | **PUT** /sources/{id} | Update source (full)
+*SourcesApi* | [**put_source_attr_sync_config**](sailpoint\v2024/docs/SourcesApi.md#put_source_attr_sync_config) | **PUT** /sources/{id}/attribute-sync-config | Update attribute sync config
+*SourcesApi* | [**put_source_schema**](sailpoint\v2024/docs/SourcesApi.md#put_source_schema) | **PUT** /sources/{sourceId}/schemas/{schemaId} | Update source schema (full)
+*SourcesApi* | [**search_resource_objects**](sailpoint\v2024/docs/SourcesApi.md#search_resource_objects) | **POST** /sources/{sourceId}/connector/peek-resource-objects | Peek source connector&#39;s resource objects
+*SourcesApi* | [**sync_attributes_for_source**](sailpoint\v2024/docs/SourcesApi.md#sync_attributes_for_source) | **POST** /sources/{id}/synchronize-attributes | Synchronize single source attributes.
+*SourcesApi* | [**test_source_configuration**](sailpoint\v2024/docs/SourcesApi.md#test_source_configuration) | **POST** /sources/{sourceId}/connector/test-configuration | Test configuration for source connector
+*SourcesApi* | [**test_source_connection**](sailpoint\v2024/docs/SourcesApi.md#test_source_connection) | **POST** /sources/{sourceId}/connector/check-connection | Check connection for source connector.
+*SourcesApi* | [**update_password_policy_holders**](sailpoint\v2024/docs/SourcesApi.md#update_password_policy_holders) | **PATCH** /sources/{sourceId}/password-policies | Update password policy
+*SourcesApi* | [**update_provisioning_policies_in_bulk**](sailpoint\v2024/docs/SourcesApi.md#update_provisioning_policies_in_bulk) | **POST** /sources/{sourceId}/provisioning-policies/bulk-update | Bulk update provisioning policies
+*SourcesApi* | [**update_provisioning_policy**](sailpoint\v2024/docs/SourcesApi.md#update_provisioning_policy) | **PATCH** /sources/{sourceId}/provisioning-policies/{usageType} | Partial update of provisioning policy
+*SourcesApi* | [**update_source**](sailpoint\v2024/docs/SourcesApi.md#update_source) | **PATCH** /sources/{id} | Update source (partial)
+*SourcesApi* | [**update_source_entitlement_request_config**](sailpoint\v2024/docs/SourcesApi.md#update_source_entitlement_request_config) | **PUT** /sources/{id}/entitlement-request-config | Update source entitlement request configuration
+*SourcesApi* | [**update_source_schedule**](sailpoint\v2024/docs/SourcesApi.md#update_source_schedule) | **PATCH** /sources/{sourceId}/schedules/{scheduleType} | Update source schedule (partial)
+*SourcesApi* | [**update_source_schema**](sailpoint\v2024/docs/SourcesApi.md#update_source_schema) | **PATCH** /sources/{sourceId}/schemas/{schemaId} | Update source schema (partial)
+*SuggestedEntitlementDescriptionApi* | [**get_sed_batch_stats**](sailpoint\v2024/docs/SuggestedEntitlementDescriptionApi.md#get_sed_batch_stats) | **GET** /suggested-entitlement-description-batches/{batchId}/stats | Submit sed batch stats request
+*SuggestedEntitlementDescriptionApi* | [**get_sed_batches**](sailpoint\v2024/docs/SuggestedEntitlementDescriptionApi.md#get_sed_batches) | **GET** /suggested-entitlement-description-batches | List Sed Batch Record
+*SuggestedEntitlementDescriptionApi* | [**list_seds**](sailpoint\v2024/docs/SuggestedEntitlementDescriptionApi.md#list_seds) | **GET** /suggested-entitlement-descriptions | List suggested entitlement descriptions
+*SuggestedEntitlementDescriptionApi* | [**patch_sed**](sailpoint\v2024/docs/SuggestedEntitlementDescriptionApi.md#patch_sed) | **PATCH** /suggested-entitlement-descriptions | Patch suggested entitlement description
+*SuggestedEntitlementDescriptionApi* | [**submit_sed_approval**](sailpoint\v2024/docs/SuggestedEntitlementDescriptionApi.md#submit_sed_approval) | **POST** /suggested-entitlement-description-approvals | Submit bulk approval request
+*SuggestedEntitlementDescriptionApi* | [**submit_sed_assignment**](sailpoint\v2024/docs/SuggestedEntitlementDescriptionApi.md#submit_sed_assignment) | **POST** /suggested-entitlement-description-assignments | Submit sed assignment request
+*SuggestedEntitlementDescriptionApi* | [**submit_sed_batch_request**](sailpoint\v2024/docs/SuggestedEntitlementDescriptionApi.md#submit_sed_batch_request) | **POST** /suggested-entitlement-description-batches | Submit sed batch request
+*TaggedObjectsApi* | [**delete_tagged_object**](sailpoint\v2024/docs/TaggedObjectsApi.md#delete_tagged_object) | **DELETE** /tagged-objects/{type}/{id} | Delete object tags
+*TaggedObjectsApi* | [**delete_tags_to_many_object**](sailpoint\v2024/docs/TaggedObjectsApi.md#delete_tags_to_many_object) | **POST** /tagged-objects/bulk-remove | Remove tags from multiple objects
+*TaggedObjectsApi* | [**get_tagged_object**](sailpoint\v2024/docs/TaggedObjectsApi.md#get_tagged_object) | **GET** /tagged-objects/{type}/{id} | Get tagged object
+*TaggedObjectsApi* | [**list_tagged_objects**](sailpoint\v2024/docs/TaggedObjectsApi.md#list_tagged_objects) | **GET** /tagged-objects | List tagged objects
+*TaggedObjectsApi* | [**list_tagged_objects_by_type**](sailpoint\v2024/docs/TaggedObjectsApi.md#list_tagged_objects_by_type) | **GET** /tagged-objects/{type} | List tagged objects by type
+*TaggedObjectsApi* | [**put_tagged_object**](sailpoint\v2024/docs/TaggedObjectsApi.md#put_tagged_object) | **PUT** /tagged-objects/{type}/{id} | Update tagged object
+*TaggedObjectsApi* | [**set_tag_to_object**](sailpoint\v2024/docs/TaggedObjectsApi.md#set_tag_to_object) | **POST** /tagged-objects | Add tag to object
+*TaggedObjectsApi* | [**set_tags_to_many_objects**](sailpoint\v2024/docs/TaggedObjectsApi.md#set_tags_to_many_objects) | **POST** /tagged-objects/bulk-add | Tag multiple objects
+*TaskManagementApi* | [**get_pending_task_headers**](sailpoint\v2024/docs/TaskManagementApi.md#get_pending_task_headers) | **HEAD** /task-status/pending-tasks | Retrieve pending task list headers
+*TaskManagementApi* | [**get_pending_tasks**](sailpoint\v2024/docs/TaskManagementApi.md#get_pending_tasks) | **GET** /task-status/pending-tasks | Retrieve pending task status list
+*TaskManagementApi* | [**get_task_status**](sailpoint\v2024/docs/TaskManagementApi.md#get_task_status) | **GET** /task-status/{id} | Get task status by id
+*TaskManagementApi* | [**get_task_status_list**](sailpoint\v2024/docs/TaskManagementApi.md#get_task_status_list) | **GET** /task-status | Retrieve task status list
+*TaskManagementApi* | [**update_task_status**](sailpoint\v2024/docs/TaskManagementApi.md#update_task_status) | **PATCH** /task-status/{id} | Update task status by id
+*TenantApi* | [**get_tenant**](sailpoint\v2024/docs/TenantApi.md#get_tenant) | **GET** /tenant | Get tenant information.
+*TenantContextApi* | [**get_tenant_context**](sailpoint\v2024/docs/TenantContextApi.md#get_tenant_context) | **GET** /tenant-context | Retrieve tenant context
+*TenantContextApi* | [**patch_tenant_context**](sailpoint\v2024/docs/TenantContextApi.md#patch_tenant_context) | **PATCH** /tenant-context | Update tenant context
+*TransformsApi* | [**create_transform**](sailpoint\v2024/docs/TransformsApi.md#create_transform) | **POST** /transforms | Create transform
+*TransformsApi* | [**delete_transform**](sailpoint\v2024/docs/TransformsApi.md#delete_transform) | **DELETE** /transforms/{id} | Delete a transform
+*TransformsApi* | [**get_transform**](sailpoint\v2024/docs/TransformsApi.md#get_transform) | **GET** /transforms/{id} | Transform by id
+*TransformsApi* | [**list_transforms**](sailpoint\v2024/docs/TransformsApi.md#list_transforms) | **GET** /transforms | List transforms
+*TransformsApi* | [**update_transform**](sailpoint\v2024/docs/TransformsApi.md#update_transform) | **PUT** /transforms/{id} | Update a transform
+*TriggersApi* | [**complete_trigger_invocation**](sailpoint\v2024/docs/TriggersApi.md#complete_trigger_invocation) | **POST** /trigger-invocations/{id}/complete | Complete trigger invocation
+*TriggersApi* | [**create_subscription**](sailpoint\v2024/docs/TriggersApi.md#create_subscription) | **POST** /trigger-subscriptions | Create a subscription
+*TriggersApi* | [**delete_subscription**](sailpoint\v2024/docs/TriggersApi.md#delete_subscription) | **DELETE** /trigger-subscriptions/{id} | Delete a subscription
+*TriggersApi* | [**list_subscriptions**](sailpoint\v2024/docs/TriggersApi.md#list_subscriptions) | **GET** /trigger-subscriptions | List subscriptions
+*TriggersApi* | [**list_trigger_invocation_status**](sailpoint\v2024/docs/TriggersApi.md#list_trigger_invocation_status) | **GET** /trigger-invocations/status | List latest invocation statuses
+*TriggersApi* | [**list_triggers**](sailpoint\v2024/docs/TriggersApi.md#list_triggers) | **GET** /triggers | List triggers
+*TriggersApi* | [**patch_subscription**](sailpoint\v2024/docs/TriggersApi.md#patch_subscription) | **PATCH** /trigger-subscriptions/{id} | Patch a subscription
+*TriggersApi* | [**start_test_trigger_invocation**](sailpoint\v2024/docs/TriggersApi.md#start_test_trigger_invocation) | **POST** /trigger-invocations/test | Start a test invocation
+*TriggersApi* | [**test_subscription_filter**](sailpoint\v2024/docs/TriggersApi.md#test_subscription_filter) | **POST** /trigger-subscriptions/validate-filter | Validate a subscription filter
+*TriggersApi* | [**update_subscription**](sailpoint\v2024/docs/TriggersApi.md#update_subscription) | **PUT** /trigger-subscriptions/{id} | Update a subscription
+*UIMetadataApi* | [**get_tenant_ui_metadata**](sailpoint\v2024/docs/UIMetadataApi.md#get_tenant_ui_metadata) | **GET** /ui-metadata/tenant | Get a tenant ui metadata
+*UIMetadataApi* | [**set_tenant_ui_metadata**](sailpoint\v2024/docs/UIMetadataApi.md#set_tenant_ui_metadata) | **PUT** /ui-metadata/tenant | Update tenant ui metadata
+*VendorConnectorMappingsApi* | [**create_vendor_connector_mapping**](sailpoint\v2024/docs/VendorConnectorMappingsApi.md#create_vendor_connector_mapping) | **POST** /vendor-connector-mappings | Create vendor connector mapping
+*VendorConnectorMappingsApi* | [**delete_vendor_connector_mapping**](sailpoint\v2024/docs/VendorConnectorMappingsApi.md#delete_vendor_connector_mapping) | **DELETE** /vendor-connector-mappings | Delete vendor connector mapping
+*VendorConnectorMappingsApi* | [**get_vendor_connector_mappings**](sailpoint\v2024/docs/VendorConnectorMappingsApi.md#get_vendor_connector_mappings) | **GET** /vendor-connector-mappings | List vendor connector mappings
+*WorkItemsApi* | [**approve_approval_item**](sailpoint\v2024/docs/WorkItemsApi.md#approve_approval_item) | **POST** /work-items/{id}/approve/{approvalItemId} | Approve an approval item
+*WorkItemsApi* | [**approve_approval_items_in_bulk**](sailpoint\v2024/docs/WorkItemsApi.md#approve_approval_items_in_bulk) | **POST** /work-items/bulk-approve/{id} | Bulk approve approval items
+*WorkItemsApi* | [**complete_work_item**](sailpoint\v2024/docs/WorkItemsApi.md#complete_work_item) | **POST** /work-items/{id} | Complete a work item
+*WorkItemsApi* | [**forward_work_item**](sailpoint\v2024/docs/WorkItemsApi.md#forward_work_item) | **POST** /work-items/{id}/forward | Forward a work item
+*WorkItemsApi* | [**get_completed_work_items**](sailpoint\v2024/docs/WorkItemsApi.md#get_completed_work_items) | **GET** /work-items/completed | Completed work items
+*WorkItemsApi* | [**get_count_completed_work_items**](sailpoint\v2024/docs/WorkItemsApi.md#get_count_completed_work_items) | **GET** /work-items/completed/count | Count completed work items
+*WorkItemsApi* | [**get_count_work_items**](sailpoint\v2024/docs/WorkItemsApi.md#get_count_work_items) | **GET** /work-items/count | Count work items
+*WorkItemsApi* | [**get_work_item**](sailpoint\v2024/docs/WorkItemsApi.md#get_work_item) | **GET** /work-items/{id} | Get a work item
+*WorkItemsApi* | [**get_work_items_summary**](sailpoint\v2024/docs/WorkItemsApi.md#get_work_items_summary) | **GET** /work-items/summary | Work items summary
+*WorkItemsApi* | [**list_work_items**](sailpoint\v2024/docs/WorkItemsApi.md#list_work_items) | **GET** /work-items | List work items
+*WorkItemsApi* | [**reject_approval_item**](sailpoint\v2024/docs/WorkItemsApi.md#reject_approval_item) | **POST** /work-items/{id}/reject/{approvalItemId} | Reject an approval item
+*WorkItemsApi* | [**reject_approval_items_in_bulk**](sailpoint\v2024/docs/WorkItemsApi.md#reject_approval_items_in_bulk) | **POST** /work-items/bulk-reject/{id} | Bulk reject approval items
+*WorkItemsApi* | [**submit_account_selection**](sailpoint\v2024/docs/WorkItemsApi.md#submit_account_selection) | **POST** /work-items/{id}/submit-account-selection | Submit account selections
+*WorkReassignmentApi* | [**create_reassignment_configuration**](sailpoint\v2024/docs/WorkReassignmentApi.md#create_reassignment_configuration) | **POST** /reassignment-configurations | Create a reassignment configuration
+*WorkReassignmentApi* | [**delete_reassignment_configuration**](sailpoint\v2024/docs/WorkReassignmentApi.md#delete_reassignment_configuration) | **DELETE** /reassignment-configurations/{identityId}/{configType} | Delete reassignment configuration
+*WorkReassignmentApi* | [**get_evaluate_reassignment_configuration**](sailpoint\v2024/docs/WorkReassignmentApi.md#get_evaluate_reassignment_configuration) | **GET** /reassignment-configurations/{identityId}/evaluate/{configType} | Evaluate reassignment configuration
+*WorkReassignmentApi* | [**get_reassignment_config_types**](sailpoint\v2024/docs/WorkReassignmentApi.md#get_reassignment_config_types) | **GET** /reassignment-configurations/types | List reassignment config types
+*WorkReassignmentApi* | [**get_reassignment_configuration**](sailpoint\v2024/docs/WorkReassignmentApi.md#get_reassignment_configuration) | **GET** /reassignment-configurations/{identityId} | Get reassignment configuration
+*WorkReassignmentApi* | [**get_tenant_config_configuration**](sailpoint\v2024/docs/WorkReassignmentApi.md#get_tenant_config_configuration) | **GET** /reassignment-configurations/tenant-config | Get tenant-wide reassignment configuration settings
+*WorkReassignmentApi* | [**list_reassignment_configurations**](sailpoint\v2024/docs/WorkReassignmentApi.md#list_reassignment_configurations) | **GET** /reassignment-configurations | List reassignment configurations
+*WorkReassignmentApi* | [**put_reassignment_config**](sailpoint\v2024/docs/WorkReassignmentApi.md#put_reassignment_config) | **PUT** /reassignment-configurations/{identityId} | Update reassignment configuration
+*WorkReassignmentApi* | [**put_tenant_configuration**](sailpoint\v2024/docs/WorkReassignmentApi.md#put_tenant_configuration) | **PUT** /reassignment-configurations/tenant-config | Update tenant-wide reassignment configuration settings
+*WorkflowsApi* | [**cancel_workflow_execution**](sailpoint\v2024/docs/WorkflowsApi.md#cancel_workflow_execution) | **POST** /workflow-executions/{id}/cancel | Cancel workflow execution by id
+*WorkflowsApi* | [**create_external_execute_workflow**](sailpoint\v2024/docs/WorkflowsApi.md#create_external_execute_workflow) | **POST** /workflows/execute/external/{id} | Execute workflow via external trigger
+*WorkflowsApi* | [**create_workflow**](sailpoint\v2024/docs/WorkflowsApi.md#create_workflow) | **POST** /workflows | Create workflow
+*WorkflowsApi* | [**create_workflow_external_trigger**](sailpoint\v2024/docs/WorkflowsApi.md#create_workflow_external_trigger) | **POST** /workflows/{id}/external/oauth-clients | Generate external trigger oauth client
+*WorkflowsApi* | [**delete_workflow**](sailpoint\v2024/docs/WorkflowsApi.md#delete_workflow) | **DELETE** /workflows/{id} | Delete workflow by id
+*WorkflowsApi* | [**get_workflow**](sailpoint\v2024/docs/WorkflowsApi.md#get_workflow) | **GET** /workflows/{id} | Get workflow by id
+*WorkflowsApi* | [**get_workflow_execution**](sailpoint\v2024/docs/WorkflowsApi.md#get_workflow_execution) | **GET** /workflow-executions/{id} | Get workflow execution
+*WorkflowsApi* | [**get_workflow_execution_history**](sailpoint\v2024/docs/WorkflowsApi.md#get_workflow_execution_history) | **GET** /workflow-executions/{id}/history | Get workflow execution history
+*WorkflowsApi* | [**get_workflow_executions**](sailpoint\v2024/docs/WorkflowsApi.md#get_workflow_executions) | **GET** /workflows/{id}/executions | List workflow executions
+*WorkflowsApi* | [**list_complete_workflow_library**](sailpoint\v2024/docs/WorkflowsApi.md#list_complete_workflow_library) | **GET** /workflow-library | List complete workflow library
+*WorkflowsApi* | [**list_workflow_library_actions**](sailpoint\v2024/docs/WorkflowsApi.md#list_workflow_library_actions) | **GET** /workflow-library/actions | List workflow library actions
+*WorkflowsApi* | [**list_workflow_library_operators**](sailpoint\v2024/docs/WorkflowsApi.md#list_workflow_library_operators) | **GET** /workflow-library/operators | List workflow library operators
+*WorkflowsApi* | [**list_workflow_library_triggers**](sailpoint\v2024/docs/WorkflowsApi.md#list_workflow_library_triggers) | **GET** /workflow-library/triggers | List workflow library triggers
+*WorkflowsApi* | [**list_workflows**](sailpoint\v2024/docs/WorkflowsApi.md#list_workflows) | **GET** /workflows | List workflows
+*WorkflowsApi* | [**patch_workflow**](sailpoint\v2024/docs/WorkflowsApi.md#patch_workflow) | **PATCH** /workflows/{id} | Patch workflow
+*WorkflowsApi* | [**put_workflow**](sailpoint\v2024/docs/WorkflowsApi.md#put_workflow) | **PUT** /workflows/{id} | Update workflow
+*WorkflowsApi* | [**test_external_execute_workflow**](sailpoint\v2024/docs/WorkflowsApi.md#test_external_execute_workflow) | **POST** /workflows/execute/external/{id}/test | Test workflow via external trigger
+*WorkflowsApi* | [**test_workflow**](sailpoint\v2024/docs/WorkflowsApi.md#test_workflow) | **POST** /workflows/{id}/test | Test workflow by id
 
 
 ## Documentation For Models
 
- - [Access](sailpoint/v2024/docs/Access.md)
- - [AccessApps](sailpoint/v2024/docs/AccessApps.md)
- - [AccessAppsOwner](sailpoint/v2024/docs/AccessAppsOwner.md)
- - [AccessConstraint](sailpoint/v2024/docs/AccessConstraint.md)
- - [AccessCriteria](sailpoint/v2024/docs/AccessCriteria.md)
- - [AccessCriteriaCriteriaListInner](sailpoint/v2024/docs/AccessCriteriaCriteriaListInner.md)
- - [AccessItemAccessProfileResponse](sailpoint/v2024/docs/AccessItemAccessProfileResponse.md)
- - [AccessItemAccountResponse](sailpoint/v2024/docs/AccessItemAccountResponse.md)
- - [AccessItemAppResponse](sailpoint/v2024/docs/AccessItemAppResponse.md)
- - [AccessItemApproverDto](sailpoint/v2024/docs/AccessItemApproverDto.md)
- - [AccessItemAssociated](sailpoint/v2024/docs/AccessItemAssociated.md)
- - [AccessItemAssociatedAccessItem](sailpoint/v2024/docs/AccessItemAssociatedAccessItem.md)
- - [AccessItemDiff](sailpoint/v2024/docs/AccessItemDiff.md)
- - [AccessItemEntitlementResponse](sailpoint/v2024/docs/AccessItemEntitlementResponse.md)
- - [AccessItemRef](sailpoint/v2024/docs/AccessItemRef.md)
- - [AccessItemRemoved](sailpoint/v2024/docs/AccessItemRemoved.md)
- - [AccessItemRequestedFor](sailpoint/v2024/docs/AccessItemRequestedFor.md)
- - [AccessItemRequestedForDto](sailpoint/v2024/docs/AccessItemRequestedForDto.md)
- - [AccessItemRequester](sailpoint/v2024/docs/AccessItemRequester.md)
- - [AccessItemRequesterDto](sailpoint/v2024/docs/AccessItemRequesterDto.md)
- - [AccessItemReviewedBy](sailpoint/v2024/docs/AccessItemReviewedBy.md)
- - [AccessItemRoleResponse](sailpoint/v2024/docs/AccessItemRoleResponse.md)
- - [AccessModelMetadata](sailpoint/v2024/docs/AccessModelMetadata.md)
- - [AccessModelMetadataValuesInner](sailpoint/v2024/docs/AccessModelMetadataValuesInner.md)
- - [AccessProfile](sailpoint/v2024/docs/AccessProfile.md)
- - [AccessProfileApprovalScheme](sailpoint/v2024/docs/AccessProfileApprovalScheme.md)
- - [AccessProfileBulkDeleteRequest](sailpoint/v2024/docs/AccessProfileBulkDeleteRequest.md)
- - [AccessProfileBulkDeleteResponse](sailpoint/v2024/docs/AccessProfileBulkDeleteResponse.md)
- - [AccessProfileBulkUpdateRequestInner](sailpoint/v2024/docs/AccessProfileBulkUpdateRequestInner.md)
- - [AccessProfileDetails](sailpoint/v2024/docs/AccessProfileDetails.md)
- - [AccessProfileDetailsAccountSelector](sailpoint/v2024/docs/AccessProfileDetailsAccountSelector.md)
- - [AccessProfileDocument](sailpoint/v2024/docs/AccessProfileDocument.md)
- - [AccessProfileDocumentAllOfSource](sailpoint/v2024/docs/AccessProfileDocumentAllOfSource.md)
- - [AccessProfileEntitlement](sailpoint/v2024/docs/AccessProfileEntitlement.md)
- - [AccessProfileRef](sailpoint/v2024/docs/AccessProfileRef.md)
- - [AccessProfileRole](sailpoint/v2024/docs/AccessProfileRole.md)
- - [AccessProfileSourceRef](sailpoint/v2024/docs/AccessProfileSourceRef.md)
- - [AccessProfileSummary](sailpoint/v2024/docs/AccessProfileSummary.md)
- - [AccessProfileUpdateItem](sailpoint/v2024/docs/AccessProfileUpdateItem.md)
- - [AccessProfileUsage](sailpoint/v2024/docs/AccessProfileUsage.md)
- - [AccessProfileUsageUsedByInner](sailpoint/v2024/docs/AccessProfileUsageUsedByInner.md)
- - [AccessRecommendationMessage](sailpoint/v2024/docs/AccessRecommendationMessage.md)
- - [AccessRequest](sailpoint/v2024/docs/AccessRequest.md)
- - [AccessRequestAdminItemStatus](sailpoint/v2024/docs/AccessRequestAdminItemStatus.md)
- - [AccessRequestApproversListResponse](sailpoint/v2024/docs/AccessRequestApproversListResponse.md)
- - [AccessRequestConfig](sailpoint/v2024/docs/AccessRequestConfig.md)
- - [AccessRequestContext](sailpoint/v2024/docs/AccessRequestContext.md)
- - [AccessRequestDynamicApprover](sailpoint/v2024/docs/AccessRequestDynamicApprover.md)
- - [AccessRequestDynamicApprover1](sailpoint/v2024/docs/AccessRequestDynamicApprover1.md)
- - [AccessRequestDynamicApproverRequestedItemsInner](sailpoint/v2024/docs/AccessRequestDynamicApproverRequestedItemsInner.md)
- - [AccessRequestItem](sailpoint/v2024/docs/AccessRequestItem.md)
- - [AccessRequestItemResponse](sailpoint/v2024/docs/AccessRequestItemResponse.md)
- - [AccessRequestPhases](sailpoint/v2024/docs/AccessRequestPhases.md)
- - [AccessRequestPostApproval](sailpoint/v2024/docs/AccessRequestPostApproval.md)
- - [AccessRequestPostApprovalRequestedItemsStatusInner](sailpoint/v2024/docs/AccessRequestPostApprovalRequestedItemsStatusInner.md)
- - [AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner](sailpoint/v2024/docs/AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner.md)
- - [AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover](sailpoint/v2024/docs/AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover.md)
- - [AccessRequestPreApproval](sailpoint/v2024/docs/AccessRequestPreApproval.md)
- - [AccessRequestPreApproval1](sailpoint/v2024/docs/AccessRequestPreApproval1.md)
- - [AccessRequestPreApprovalRequestedItemsInner](sailpoint/v2024/docs/AccessRequestPreApprovalRequestedItemsInner.md)
- - [AccessRequestRecommendationActionItemDto](sailpoint/v2024/docs/AccessRequestRecommendationActionItemDto.md)
- - [AccessRequestRecommendationActionItemResponseDto](sailpoint/v2024/docs/AccessRequestRecommendationActionItemResponseDto.md)
- - [AccessRequestRecommendationConfigDto](sailpoint/v2024/docs/AccessRequestRecommendationConfigDto.md)
- - [AccessRequestRecommendationItem](sailpoint/v2024/docs/AccessRequestRecommendationItem.md)
- - [AccessRequestRecommendationItemDetail](sailpoint/v2024/docs/AccessRequestRecommendationItemDetail.md)
- - [AccessRequestRecommendationItemDetailAccess](sailpoint/v2024/docs/AccessRequestRecommendationItemDetailAccess.md)
- - [AccessRequestRecommendationItemType](sailpoint/v2024/docs/AccessRequestRecommendationItemType.md)
- - [AccessRequestResponse](sailpoint/v2024/docs/AccessRequestResponse.md)
- - [AccessRequestResponse1](sailpoint/v2024/docs/AccessRequestResponse1.md)
- - [AccessRequestTracking](sailpoint/v2024/docs/AccessRequestTracking.md)
- - [AccessRequestType](sailpoint/v2024/docs/AccessRequestType.md)
- - [AccessRequested](sailpoint/v2024/docs/AccessRequested.md)
- - [AccessReviewItem](sailpoint/v2024/docs/AccessReviewItem.md)
- - [AccessReviewReassignment](sailpoint/v2024/docs/AccessReviewReassignment.md)
- - [AccessSummary](sailpoint/v2024/docs/AccessSummary.md)
- - [AccessSummaryAccess](sailpoint/v2024/docs/AccessSummaryAccess.md)
- - [AccessType](sailpoint/v2024/docs/AccessType.md)
- - [Account](sailpoint/v2024/docs/Account.md)
- - [AccountAction](sailpoint/v2024/docs/AccountAction.md)
- - [AccountActivity](sailpoint/v2024/docs/AccountActivity.md)
- - [AccountActivityApprovalStatus](sailpoint/v2024/docs/AccountActivityApprovalStatus.md)
- - [AccountActivityDocument](sailpoint/v2024/docs/AccountActivityDocument.md)
- - [AccountActivityItem](sailpoint/v2024/docs/AccountActivityItem.md)
- - [AccountActivityItemOperation](sailpoint/v2024/docs/AccountActivityItemOperation.md)
- - [AccountActivitySearchedItem](sailpoint/v2024/docs/AccountActivitySearchedItem.md)
- - [AccountAggregationCompleted](sailpoint/v2024/docs/AccountAggregationCompleted.md)
- - [AccountAggregationCompletedSource](sailpoint/v2024/docs/AccountAggregationCompletedSource.md)
- - [AccountAggregationCompletedStats](sailpoint/v2024/docs/AccountAggregationCompletedStats.md)
- - [AccountAggregationStatus](sailpoint/v2024/docs/AccountAggregationStatus.md)
- - [AccountAllOfIdentity](sailpoint/v2024/docs/AccountAllOfIdentity.md)
- - [AccountAllOfOwnerIdentity](sailpoint/v2024/docs/AccountAllOfOwnerIdentity.md)
- - [AccountAllOfRecommendation](sailpoint/v2024/docs/AccountAllOfRecommendation.md)
- - [AccountAllOfSourceOwner](sailpoint/v2024/docs/AccountAllOfSourceOwner.md)
- - [AccountAttributes](sailpoint/v2024/docs/AccountAttributes.md)
- - [AccountAttributesChanged](sailpoint/v2024/docs/AccountAttributesChanged.md)
- - [AccountAttributesChangedAccount](sailpoint/v2024/docs/AccountAttributesChangedAccount.md)
- - [AccountAttributesChangedChangesInner](sailpoint/v2024/docs/AccountAttributesChangedChangesInner.md)
- - [AccountAttributesChangedChangesInnerNewValue](sailpoint/v2024/docs/AccountAttributesChangedChangesInnerNewValue.md)
- - [AccountAttributesChangedChangesInnerOldValue](sailpoint/v2024/docs/AccountAttributesChangedChangesInnerOldValue.md)
- - [AccountAttributesChangedIdentity](sailpoint/v2024/docs/AccountAttributesChangedIdentity.md)
- - [AccountAttributesChangedSource](sailpoint/v2024/docs/AccountAttributesChangedSource.md)
- - [AccountAttributesCreate](sailpoint/v2024/docs/AccountAttributesCreate.md)
- - [AccountAttributesCreateAttributes](sailpoint/v2024/docs/AccountAttributesCreateAttributes.md)
- - [AccountCorrelated](sailpoint/v2024/docs/AccountCorrelated.md)
- - [AccountCorrelatedAccount](sailpoint/v2024/docs/AccountCorrelatedAccount.md)
- - [AccountCorrelatedIdentity](sailpoint/v2024/docs/AccountCorrelatedIdentity.md)
- - [AccountCorrelatedSource](sailpoint/v2024/docs/AccountCorrelatedSource.md)
- - [AccountInfoDto](sailpoint/v2024/docs/AccountInfoDto.md)
- - [AccountInfoRef](sailpoint/v2024/docs/AccountInfoRef.md)
- - [AccountItemRef](sailpoint/v2024/docs/AccountItemRef.md)
- - [AccountRequest](sailpoint/v2024/docs/AccountRequest.md)
- - [AccountRequestInfo](sailpoint/v2024/docs/AccountRequestInfo.md)
- - [AccountRequestResult](sailpoint/v2024/docs/AccountRequestResult.md)
- - [AccountSource](sailpoint/v2024/docs/AccountSource.md)
- - [AccountStatusChanged](sailpoint/v2024/docs/AccountStatusChanged.md)
- - [AccountStatusChangedAccount](sailpoint/v2024/docs/AccountStatusChangedAccount.md)
- - [AccountStatusChangedStatusChange](sailpoint/v2024/docs/AccountStatusChangedStatusChange.md)
- - [AccountToggleRequest](sailpoint/v2024/docs/AccountToggleRequest.md)
- - [AccountUncorrelated](sailpoint/v2024/docs/AccountUncorrelated.md)
- - [AccountUncorrelatedAccount](sailpoint/v2024/docs/AccountUncorrelatedAccount.md)
- - [AccountUncorrelatedIdentity](sailpoint/v2024/docs/AccountUncorrelatedIdentity.md)
- - [AccountUncorrelatedSource](sailpoint/v2024/docs/AccountUncorrelatedSource.md)
- - [AccountUnlockRequest](sailpoint/v2024/docs/AccountUnlockRequest.md)
- - [AccountUsage](sailpoint/v2024/docs/AccountUsage.md)
- - [AccountsAsyncResult](sailpoint/v2024/docs/AccountsAsyncResult.md)
- - [AccountsCollectedForAggregation](sailpoint/v2024/docs/AccountsCollectedForAggregation.md)
- - [AccountsCollectedForAggregationSource](sailpoint/v2024/docs/AccountsCollectedForAggregationSource.md)
- - [AccountsCollectedForAggregationStats](sailpoint/v2024/docs/AccountsCollectedForAggregationStats.md)
- - [AccountsExportReportArguments](sailpoint/v2024/docs/AccountsExportReportArguments.md)
- - [AccountsSelectionRequest](sailpoint/v2024/docs/AccountsSelectionRequest.md)
- - [AccountsSelectionResponse](sailpoint/v2024/docs/AccountsSelectionResponse.md)
- - [ActivateCampaignOptions](sailpoint/v2024/docs/ActivateCampaignOptions.md)
- - [ActivityIdentity](sailpoint/v2024/docs/ActivityIdentity.md)
- - [ActivityInsights](sailpoint/v2024/docs/ActivityInsights.md)
- - [AdminReviewReassign](sailpoint/v2024/docs/AdminReviewReassign.md)
- - [AdminReviewReassignReassignTo](sailpoint/v2024/docs/AdminReviewReassignReassignTo.md)
- - [AggregationResult](sailpoint/v2024/docs/AggregationResult.md)
- - [AggregationType](sailpoint/v2024/docs/AggregationType.md)
- - [Aggregations](sailpoint/v2024/docs/Aggregations.md)
- - [App](sailpoint/v2024/docs/App.md)
- - [AppAccountDetails](sailpoint/v2024/docs/AppAccountDetails.md)
- - [AppAccountDetailsSourceAccount](sailpoint/v2024/docs/AppAccountDetailsSourceAccount.md)
- - [AppAllOfAccount](sailpoint/v2024/docs/AppAllOfAccount.md)
- - [Approval](sailpoint/v2024/docs/Approval.md)
- - [Approval1](sailpoint/v2024/docs/Approval1.md)
- - [ApprovalBatch](sailpoint/v2024/docs/ApprovalBatch.md)
- - [ApprovalComment](sailpoint/v2024/docs/ApprovalComment.md)
- - [ApprovalComment1](sailpoint/v2024/docs/ApprovalComment1.md)
- - [ApprovalComment2](sailpoint/v2024/docs/ApprovalComment2.md)
- - [ApprovalDescription](sailpoint/v2024/docs/ApprovalDescription.md)
- - [ApprovalForwardHistory](sailpoint/v2024/docs/ApprovalForwardHistory.md)
- - [ApprovalIdentity](sailpoint/v2024/docs/ApprovalIdentity.md)
- - [ApprovalInfoResponse](sailpoint/v2024/docs/ApprovalInfoResponse.md)
- - [ApprovalItemDetails](sailpoint/v2024/docs/ApprovalItemDetails.md)
- - [ApprovalItems](sailpoint/v2024/docs/ApprovalItems.md)
- - [ApprovalName](sailpoint/v2024/docs/ApprovalName.md)
- - [ApprovalReference](sailpoint/v2024/docs/ApprovalReference.md)
- - [ApprovalReminderAndEscalationConfig](sailpoint/v2024/docs/ApprovalReminderAndEscalationConfig.md)
- - [ApprovalScheme](sailpoint/v2024/docs/ApprovalScheme.md)
- - [ApprovalSchemeForRole](sailpoint/v2024/docs/ApprovalSchemeForRole.md)
- - [ApprovalStatus](sailpoint/v2024/docs/ApprovalStatus.md)
- - [ApprovalStatusDto](sailpoint/v2024/docs/ApprovalStatusDto.md)
- - [ApprovalStatusDtoCurrentOwner](sailpoint/v2024/docs/ApprovalStatusDtoCurrentOwner.md)
- - [ApprovalStatusDtoOriginalOwner](sailpoint/v2024/docs/ApprovalStatusDtoOriginalOwner.md)
- - [ApprovalSummary](sailpoint/v2024/docs/ApprovalSummary.md)
- - [Argument](sailpoint/v2024/docs/Argument.md)
- - [ArrayInner](sailpoint/v2024/docs/ArrayInner.md)
- - [AssignmentContextDto](sailpoint/v2024/docs/AssignmentContextDto.md)
- - [AttrSyncSource](sailpoint/v2024/docs/AttrSyncSource.md)
- - [AttrSyncSourceAttributeConfig](sailpoint/v2024/docs/AttrSyncSourceAttributeConfig.md)
- - [AttrSyncSourceConfig](sailpoint/v2024/docs/AttrSyncSourceConfig.md)
- - [AttributeChange](sailpoint/v2024/docs/AttributeChange.md)
- - [AttributeDTO](sailpoint/v2024/docs/AttributeDTO.md)
- - [AttributeDTOList](sailpoint/v2024/docs/AttributeDTOList.md)
- - [AttributeDefinition](sailpoint/v2024/docs/AttributeDefinition.md)
- - [AttributeDefinitionSchema](sailpoint/v2024/docs/AttributeDefinitionSchema.md)
- - [AttributeDefinitionType](sailpoint/v2024/docs/AttributeDefinitionType.md)
- - [AttributeMappings](sailpoint/v2024/docs/AttributeMappings.md)
- - [AttributeMappingsAllOfTarget](sailpoint/v2024/docs/AttributeMappingsAllOfTarget.md)
- - [AttributeMappingsAllOfTransformDefinition](sailpoint/v2024/docs/AttributeMappingsAllOfTransformDefinition.md)
- - [AttributeMappingsAllOfTransformDefinitionAttributes](sailpoint/v2024/docs/AttributeMappingsAllOfTransformDefinitionAttributes.md)
- - [AttributeMappingsAllOfTransformDefinitionAttributesInput](sailpoint/v2024/docs/AttributeMappingsAllOfTransformDefinitionAttributesInput.md)
- - [AttributeMappingsAllOfTransformDefinitionAttributesInputAttributes](sailpoint/v2024/docs/AttributeMappingsAllOfTransformDefinitionAttributesInputAttributes.md)
- - [AttributeRequest](sailpoint/v2024/docs/AttributeRequest.md)
- - [AttributeRequestValue](sailpoint/v2024/docs/AttributeRequestValue.md)
- - [AttributeValueDTO](sailpoint/v2024/docs/AttributeValueDTO.md)
- - [AttributesChanged](sailpoint/v2024/docs/AttributesChanged.md)
- - [AuditDetails](sailpoint/v2024/docs/AuditDetails.md)
- - [AuthProfile](sailpoint/v2024/docs/AuthProfile.md)
- - [AuthProfileSummary](sailpoint/v2024/docs/AuthProfileSummary.md)
- - [AuthUser](sailpoint/v2024/docs/AuthUser.md)
- - [BackupOptions](sailpoint/v2024/docs/BackupOptions.md)
- - [BackupResponse](sailpoint/v2024/docs/BackupResponse.md)
- - [BaseAccess](sailpoint/v2024/docs/BaseAccess.md)
- - [BaseAccessOwner](sailpoint/v2024/docs/BaseAccessOwner.md)
- - [BaseAccessProfile](sailpoint/v2024/docs/BaseAccessProfile.md)
- - [BaseAccount](sailpoint/v2024/docs/BaseAccount.md)
- - [BaseCommonDto](sailpoint/v2024/docs/BaseCommonDto.md)
- - [BaseDocument](sailpoint/v2024/docs/BaseDocument.md)
- - [BaseEntitlement](sailpoint/v2024/docs/BaseEntitlement.md)
- - [BaseReferenceDto](sailpoint/v2024/docs/BaseReferenceDto.md)
- - [BaseSegment](sailpoint/v2024/docs/BaseSegment.md)
- - [BasicAuthConfig](sailpoint/v2024/docs/BasicAuthConfig.md)
- - [BearerTokenAuthConfig](sailpoint/v2024/docs/BearerTokenAuthConfig.md)
- - [BeforeProvisioningRuleDto](sailpoint/v2024/docs/BeforeProvisioningRuleDto.md)
- - [Bound](sailpoint/v2024/docs/Bound.md)
- - [BrandingItem](sailpoint/v2024/docs/BrandingItem.md)
- - [BrandingItemCreate](sailpoint/v2024/docs/BrandingItemCreate.md)
- - [BucketAggregation](sailpoint/v2024/docs/BucketAggregation.md)
- - [BucketType](sailpoint/v2024/docs/BucketType.md)
- - [BulkAddTaggedObject](sailpoint/v2024/docs/BulkAddTaggedObject.md)
- - [BulkApproveAccessRequest](sailpoint/v2024/docs/BulkApproveAccessRequest.md)
- - [BulkCancelAccessRequest](sailpoint/v2024/docs/BulkCancelAccessRequest.md)
- - [BulkIdentitiesAccountsResponse](sailpoint/v2024/docs/BulkIdentitiesAccountsResponse.md)
- - [BulkRemoveTaggedObject](sailpoint/v2024/docs/BulkRemoveTaggedObject.md)
- - [BulkTaggedObjectResponse](sailpoint/v2024/docs/BulkTaggedObjectResponse.md)
- - [Campaign](sailpoint/v2024/docs/Campaign.md)
- - [CampaignActivated](sailpoint/v2024/docs/CampaignActivated.md)
- - [CampaignActivatedCampaign](sailpoint/v2024/docs/CampaignActivatedCampaign.md)
- - [CampaignActivatedCampaignCampaignOwner](sailpoint/v2024/docs/CampaignActivatedCampaignCampaignOwner.md)
- - [CampaignAlert](sailpoint/v2024/docs/CampaignAlert.md)
- - [CampaignAllOfFilter](sailpoint/v2024/docs/CampaignAllOfFilter.md)
- - [CampaignAllOfMachineAccountCampaignInfo](sailpoint/v2024/docs/CampaignAllOfMachineAccountCampaignInfo.md)
- - [CampaignAllOfRoleCompositionCampaignInfo](sailpoint/v2024/docs/CampaignAllOfRoleCompositionCampaignInfo.md)
- - [CampaignAllOfRoleCompositionCampaignInfoRemediatorRef](sailpoint/v2024/docs/CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.md)
- - [CampaignAllOfRoleCompositionCampaignInfoReviewer](sailpoint/v2024/docs/CampaignAllOfRoleCompositionCampaignInfoReviewer.md)
- - [CampaignAllOfSearchCampaignInfo](sailpoint/v2024/docs/CampaignAllOfSearchCampaignInfo.md)
- - [CampaignAllOfSearchCampaignInfoReviewer](sailpoint/v2024/docs/CampaignAllOfSearchCampaignInfoReviewer.md)
- - [CampaignAllOfSourceOwnerCampaignInfo](sailpoint/v2024/docs/CampaignAllOfSourceOwnerCampaignInfo.md)
- - [CampaignAllOfSourcesWithOrphanEntitlements](sailpoint/v2024/docs/CampaignAllOfSourcesWithOrphanEntitlements.md)
- - [CampaignCompleteOptions](sailpoint/v2024/docs/CampaignCompleteOptions.md)
- - [CampaignEnded](sailpoint/v2024/docs/CampaignEnded.md)
- - [CampaignEndedCampaign](sailpoint/v2024/docs/CampaignEndedCampaign.md)
- - [CampaignFilterDetails](sailpoint/v2024/docs/CampaignFilterDetails.md)
- - [CampaignFilterDetailsCriteriaListInner](sailpoint/v2024/docs/CampaignFilterDetailsCriteriaListInner.md)
- - [CampaignGenerated](sailpoint/v2024/docs/CampaignGenerated.md)
- - [CampaignGeneratedCampaign](sailpoint/v2024/docs/CampaignGeneratedCampaign.md)
- - [CampaignGeneratedCampaignCampaignOwner](sailpoint/v2024/docs/CampaignGeneratedCampaignCampaignOwner.md)
- - [CampaignReference](sailpoint/v2024/docs/CampaignReference.md)
- - [CampaignReport](sailpoint/v2024/docs/CampaignReport.md)
- - [CampaignReportsConfig](sailpoint/v2024/docs/CampaignReportsConfig.md)
- - [CampaignTemplate](sailpoint/v2024/docs/CampaignTemplate.md)
- - [CampaignTemplateOwnerRef](sailpoint/v2024/docs/CampaignTemplateOwnerRef.md)
- - [CampaignsDeleteRequest](sailpoint/v2024/docs/CampaignsDeleteRequest.md)
- - [CancelAccessRequest](sailpoint/v2024/docs/CancelAccessRequest.md)
- - [CancelledRequestDetails](sailpoint/v2024/docs/CancelledRequestDetails.md)
- - [Certification](sailpoint/v2024/docs/Certification.md)
- - [CertificationDecision](sailpoint/v2024/docs/CertificationDecision.md)
- - [CertificationDto](sailpoint/v2024/docs/CertificationDto.md)
- - [CertificationIdentitySummary](sailpoint/v2024/docs/CertificationIdentitySummary.md)
- - [CertificationPhase](sailpoint/v2024/docs/CertificationPhase.md)
- - [CertificationReference](sailpoint/v2024/docs/CertificationReference.md)
- - [CertificationSignedOff](sailpoint/v2024/docs/CertificationSignedOff.md)
- - [CertificationSignedOffCertification](sailpoint/v2024/docs/CertificationSignedOffCertification.md)
- - [CertificationTask](sailpoint/v2024/docs/CertificationTask.md)
- - [CertifierResponse](sailpoint/v2024/docs/CertifierResponse.md)
- - [ClientLogConfiguration](sailpoint/v2024/docs/ClientLogConfiguration.md)
- - [ClientLogConfigurationDurationMinutes](sailpoint/v2024/docs/ClientLogConfigurationDurationMinutes.md)
- - [ClientLogConfigurationExpiration](sailpoint/v2024/docs/ClientLogConfigurationExpiration.md)
- - [ClientType](sailpoint/v2024/docs/ClientType.md)
- - [CloseAccessRequest](sailpoint/v2024/docs/CloseAccessRequest.md)
- - [ClusterManualUpgrade](sailpoint/v2024/docs/ClusterManualUpgrade.md)
- - [ClusterManualUpgradeJobsInner](sailpoint/v2024/docs/ClusterManualUpgradeJobsInner.md)
- - [ClusterManualUpgradeJobsInnerManagedProcessConfiguration](sailpoint/v2024/docs/ClusterManualUpgradeJobsInnerManagedProcessConfiguration.md)
- - [ClusterManualUpgradeJobsInnerManagedProcessConfigurationCcg](sailpoint/v2024/docs/ClusterManualUpgradeJobsInnerManagedProcessConfigurationCcg.md)
- - [ClusterManualUpgradeJobsInnerManagedProcessConfigurationCharon](sailpoint/v2024/docs/ClusterManualUpgradeJobsInnerManagedProcessConfigurationCharon.md)
- - [ClusterManualUpgradeJobsInnerManagedProcessConfigurationOtelAgent](sailpoint/v2024/docs/ClusterManualUpgradeJobsInnerManagedProcessConfigurationOtelAgent.md)
- - [ClusterManualUpgradeJobsInnerManagedProcessConfigurationRelay](sailpoint/v2024/docs/ClusterManualUpgradeJobsInnerManagedProcessConfigurationRelay.md)
- - [ClusterManualUpgradeJobsInnerManagedProcessConfigurationToolbox](sailpoint/v2024/docs/ClusterManualUpgradeJobsInnerManagedProcessConfigurationToolbox.md)
- - [Column](sailpoint/v2024/docs/Column.md)
- - [Comment](sailpoint/v2024/docs/Comment.md)
- - [CommentDto](sailpoint/v2024/docs/CommentDto.md)
- - [CommentDtoAuthor](sailpoint/v2024/docs/CommentDtoAuthor.md)
- - [CommonAccessIDStatus](sailpoint/v2024/docs/CommonAccessIDStatus.md)
- - [CommonAccessItemAccess](sailpoint/v2024/docs/CommonAccessItemAccess.md)
- - [CommonAccessItemRequest](sailpoint/v2024/docs/CommonAccessItemRequest.md)
- - [CommonAccessItemResponse](sailpoint/v2024/docs/CommonAccessItemResponse.md)
- - [CommonAccessItemState](sailpoint/v2024/docs/CommonAccessItemState.md)
- - [CommonAccessResponse](sailpoint/v2024/docs/CommonAccessResponse.md)
- - [CommonAccessType](sailpoint/v2024/docs/CommonAccessType.md)
- - [CompleteInvocation](sailpoint/v2024/docs/CompleteInvocation.md)
- - [CompleteInvocationInput](sailpoint/v2024/docs/CompleteInvocationInput.md)
- - [CompletedApproval](sailpoint/v2024/docs/CompletedApproval.md)
- - [CompletedApprovalPreApprovalTriggerResult](sailpoint/v2024/docs/CompletedApprovalPreApprovalTriggerResult.md)
- - [CompletedApprovalRequesterComment](sailpoint/v2024/docs/CompletedApprovalRequesterComment.md)
- - [CompletedApprovalReviewerComment](sailpoint/v2024/docs/CompletedApprovalReviewerComment.md)
- - [CompletedApprovalState](sailpoint/v2024/docs/CompletedApprovalState.md)
- - [CompletionStatus](sailpoint/v2024/docs/CompletionStatus.md)
- - [ConditionEffect](sailpoint/v2024/docs/ConditionEffect.md)
- - [ConditionEffectConfig](sailpoint/v2024/docs/ConditionEffectConfig.md)
- - [ConditionRule](sailpoint/v2024/docs/ConditionRule.md)
- - [ConfigObject](sailpoint/v2024/docs/ConfigObject.md)
- - [ConfigType](sailpoint/v2024/docs/ConfigType.md)
- - [ConfigTypeEnum](sailpoint/v2024/docs/ConfigTypeEnum.md)
- - [ConfigTypeEnumCamel](sailpoint/v2024/docs/ConfigTypeEnumCamel.md)
- - [ConfigurationDetailsResponse](sailpoint/v2024/docs/ConfigurationDetailsResponse.md)
- - [ConfigurationItemRequest](sailpoint/v2024/docs/ConfigurationItemRequest.md)
- - [ConfigurationItemResponse](sailpoint/v2024/docs/ConfigurationItemResponse.md)
- - [ConfigurationResponse](sailpoint/v2024/docs/ConfigurationResponse.md)
- - [ConflictingAccessCriteria](sailpoint/v2024/docs/ConflictingAccessCriteria.md)
- - [ConnectedObject](sailpoint/v2024/docs/ConnectedObject.md)
- - [ConnectedObjectType](sailpoint/v2024/docs/ConnectedObjectType.md)
- - [ConnectorCustomizerCreateRequest](sailpoint/v2024/docs/ConnectorCustomizerCreateRequest.md)
- - [ConnectorCustomizerCreateResponse](sailpoint/v2024/docs/ConnectorCustomizerCreateResponse.md)
- - [ConnectorCustomizerUpdateRequest](sailpoint/v2024/docs/ConnectorCustomizerUpdateRequest.md)
- - [ConnectorCustomizerUpdateResponse](sailpoint/v2024/docs/ConnectorCustomizerUpdateResponse.md)
- - [ConnectorCustomizerVersionCreateResponse](sailpoint/v2024/docs/ConnectorCustomizerVersionCreateResponse.md)
- - [ConnectorCustomizersResponse](sailpoint/v2024/docs/ConnectorCustomizersResponse.md)
- - [ConnectorDetail](sailpoint/v2024/docs/ConnectorDetail.md)
- - [ConnectorRuleCreateRequest](sailpoint/v2024/docs/ConnectorRuleCreateRequest.md)
- - [ConnectorRuleCreateRequestSignature](sailpoint/v2024/docs/ConnectorRuleCreateRequestSignature.md)
- - [ConnectorRuleResponse](sailpoint/v2024/docs/ConnectorRuleResponse.md)
- - [ConnectorRuleUpdateRequest](sailpoint/v2024/docs/ConnectorRuleUpdateRequest.md)
- - [ConnectorRuleValidationResponse](sailpoint/v2024/docs/ConnectorRuleValidationResponse.md)
- - [ConnectorRuleValidationResponseDetailsInner](sailpoint/v2024/docs/ConnectorRuleValidationResponseDetailsInner.md)
- - [ContextAttributeDto](sailpoint/v2024/docs/ContextAttributeDto.md)
- - [ContextAttributeDtoValue](sailpoint/v2024/docs/ContextAttributeDtoValue.md)
- - [CorrelatedGovernanceEvent](sailpoint/v2024/docs/CorrelatedGovernanceEvent.md)
- - [CorrelationConfig](sailpoint/v2024/docs/CorrelationConfig.md)
- - [CorrelationConfigAttributeAssignmentsInner](sailpoint/v2024/docs/CorrelationConfigAttributeAssignmentsInner.md)
- - [CreateDomainDkim405Response](sailpoint/v2024/docs/CreateDomainDkim405Response.md)
- - [CreateExternalExecuteWorkflow200Response](sailpoint/v2024/docs/CreateExternalExecuteWorkflow200Response.md)
- - [CreateExternalExecuteWorkflowRequest](sailpoint/v2024/docs/CreateExternalExecuteWorkflowRequest.md)
- - [CreateFormDefinitionFileRequestRequest](sailpoint/v2024/docs/CreateFormDefinitionFileRequestRequest.md)
- - [CreateFormDefinitionRequest](sailpoint/v2024/docs/CreateFormDefinitionRequest.md)
- - [CreateFormInstanceRequest](sailpoint/v2024/docs/CreateFormInstanceRequest.md)
- - [CreateOAuthClientRequest](sailpoint/v2024/docs/CreateOAuthClientRequest.md)
- - [CreateOAuthClientResponse](sailpoint/v2024/docs/CreateOAuthClientResponse.md)
- - [CreatePersonalAccessTokenRequest](sailpoint/v2024/docs/CreatePersonalAccessTokenRequest.md)
- - [CreatePersonalAccessTokenResponse](sailpoint/v2024/docs/CreatePersonalAccessTokenResponse.md)
- - [CreateSavedSearchRequest](sailpoint/v2024/docs/CreateSavedSearchRequest.md)
- - [CreateScheduledSearchRequest](sailpoint/v2024/docs/CreateScheduledSearchRequest.md)
- - [CreateUploadedConfigurationRequest](sailpoint/v2024/docs/CreateUploadedConfigurationRequest.md)
- - [CreateWorkflowRequest](sailpoint/v2024/docs/CreateWorkflowRequest.md)
- - [CriteriaType](sailpoint/v2024/docs/CriteriaType.md)
- - [CustomPasswordInstruction](sailpoint/v2024/docs/CustomPasswordInstruction.md)
- - [DataAccess](sailpoint/v2024/docs/DataAccess.md)
- - [DataAccessCategoriesInner](sailpoint/v2024/docs/DataAccessCategoriesInner.md)
- - [DataAccessImpactScore](sailpoint/v2024/docs/DataAccessImpactScore.md)
- - [DataAccessPoliciesInner](sailpoint/v2024/docs/DataAccessPoliciesInner.md)
- - [DataSegment](sailpoint/v2024/docs/DataSegment.md)
- - [DeleteNonEmployeeRecordsInBulkRequest](sailpoint/v2024/docs/DeleteNonEmployeeRecordsInBulkRequest.md)
- - [DeleteSource202Response](sailpoint/v2024/docs/DeleteSource202Response.md)
- - [DeleteVendorConnectorMapping200Response](sailpoint/v2024/docs/DeleteVendorConnectorMapping200Response.md)
- - [DependantAppConnections](sailpoint/v2024/docs/DependantAppConnections.md)
- - [DependantAppConnectionsAccountSource](sailpoint/v2024/docs/DependantAppConnectionsAccountSource.md)
- - [DependantAppConnectionsAccountSourcePasswordPoliciesInner](sailpoint/v2024/docs/DependantAppConnectionsAccountSourcePasswordPoliciesInner.md)
- - [DependantConnectionsMissingDto](sailpoint/v2024/docs/DependantConnectionsMissingDto.md)
- - [DeployRequest](sailpoint/v2024/docs/DeployRequest.md)
- - [DeployResponse](sailpoint/v2024/docs/DeployResponse.md)
- - [Dimension](sailpoint/v2024/docs/Dimension.md)
- - [DimensionBulkDeleteRequest](sailpoint/v2024/docs/DimensionBulkDeleteRequest.md)
- - [DimensionCriteriaKey](sailpoint/v2024/docs/DimensionCriteriaKey.md)
- - [DimensionCriteriaKeyType](sailpoint/v2024/docs/DimensionCriteriaKeyType.md)
- - [DimensionCriteriaLevel1](sailpoint/v2024/docs/DimensionCriteriaLevel1.md)
- - [DimensionCriteriaLevel2](sailpoint/v2024/docs/DimensionCriteriaLevel2.md)
- - [DimensionCriteriaLevel3](sailpoint/v2024/docs/DimensionCriteriaLevel3.md)
- - [DimensionCriteriaOperation](sailpoint/v2024/docs/DimensionCriteriaOperation.md)
- - [DimensionMembershipSelector](sailpoint/v2024/docs/DimensionMembershipSelector.md)
- - [DimensionMembershipSelectorType](sailpoint/v2024/docs/DimensionMembershipSelectorType.md)
- - [DimensionRef](sailpoint/v2024/docs/DimensionRef.md)
- - [DisplayReference](sailpoint/v2024/docs/DisplayReference.md)
- - [DkimAttributes](sailpoint/v2024/docs/DkimAttributes.md)
- - [DomainAddress](sailpoint/v2024/docs/DomainAddress.md)
- - [DomainStatusDto](sailpoint/v2024/docs/DomainStatusDto.md)
- - [DraftResponse](sailpoint/v2024/docs/DraftResponse.md)
- - [DtoType](sailpoint/v2024/docs/DtoType.md)
- - [EmailNotificationOption](sailpoint/v2024/docs/EmailNotificationOption.md)
- - [EmailStatusDto](sailpoint/v2024/docs/EmailStatusDto.md)
- - [Entitlement](sailpoint/v2024/docs/Entitlement.md)
- - [EntitlementAccessModelMetadata](sailpoint/v2024/docs/EntitlementAccessModelMetadata.md)
- - [EntitlementAccessRequestConfig](sailpoint/v2024/docs/EntitlementAccessRequestConfig.md)
- - [EntitlementApprovalScheme](sailpoint/v2024/docs/EntitlementApprovalScheme.md)
- - [EntitlementBulkUpdateRequest](sailpoint/v2024/docs/EntitlementBulkUpdateRequest.md)
- - [EntitlementDocument](sailpoint/v2024/docs/EntitlementDocument.md)
- - [EntitlementDocumentAllOfManuallyUpdatedFields](sailpoint/v2024/docs/EntitlementDocumentAllOfManuallyUpdatedFields.md)
- - [EntitlementDocumentAllOfPermissions](sailpoint/v2024/docs/EntitlementDocumentAllOfPermissions.md)
- - [EntitlementDocumentAllOfSource](sailpoint/v2024/docs/EntitlementDocumentAllOfSource.md)
- - [EntitlementOwner](sailpoint/v2024/docs/EntitlementOwner.md)
- - [EntitlementRef](sailpoint/v2024/docs/EntitlementRef.md)
- - [EntitlementRef1](sailpoint/v2024/docs/EntitlementRef1.md)
- - [EntitlementRequestConfig](sailpoint/v2024/docs/EntitlementRequestConfig.md)
- - [EntitlementRevocationRequestConfig](sailpoint/v2024/docs/EntitlementRevocationRequestConfig.md)
- - [EntitlementSource](sailpoint/v2024/docs/EntitlementSource.md)
- - [EntitlementSourceResetBaseReferenceDto](sailpoint/v2024/docs/EntitlementSourceResetBaseReferenceDto.md)
- - [EntitlementSummary](sailpoint/v2024/docs/EntitlementSummary.md)
- - [EntityCreatedByDTO](sailpoint/v2024/docs/EntityCreatedByDTO.md)
- - [Error](sailpoint/v2024/docs/Error.md)
- - [ErrorMessage](sailpoint/v2024/docs/ErrorMessage.md)
- - [ErrorMessageDto](sailpoint/v2024/docs/ErrorMessageDto.md)
- - [ErrorResponseDto](sailpoint/v2024/docs/ErrorResponseDto.md)
- - [EvaluateResponse](sailpoint/v2024/docs/EvaluateResponse.md)
- - [Event](sailpoint/v2024/docs/Event.md)
- - [EventActor](sailpoint/v2024/docs/EventActor.md)
- - [EventAttributes](sailpoint/v2024/docs/EventAttributes.md)
- - [EventBridgeConfig](sailpoint/v2024/docs/EventBridgeConfig.md)
- - [EventDocument](sailpoint/v2024/docs/EventDocument.md)
- - [EventTarget](sailpoint/v2024/docs/EventTarget.md)
- - [ExceptionAccessCriteria](sailpoint/v2024/docs/ExceptionAccessCriteria.md)
- - [ExceptionCriteria](sailpoint/v2024/docs/ExceptionCriteria.md)
- - [ExceptionCriteriaAccess](sailpoint/v2024/docs/ExceptionCriteriaAccess.md)
- - [ExceptionCriteriaCriteriaListInner](sailpoint/v2024/docs/ExceptionCriteriaCriteriaListInner.md)
- - [ExecutionStatus](sailpoint/v2024/docs/ExecutionStatus.md)
- - [ExpansionItem](sailpoint/v2024/docs/ExpansionItem.md)
- - [ExportFormDefinitionsByTenant200ResponseInner](sailpoint/v2024/docs/ExportFormDefinitionsByTenant200ResponseInner.md)
- - [ExportFormDefinitionsByTenant200ResponseInnerSelf](sailpoint/v2024/docs/ExportFormDefinitionsByTenant200ResponseInnerSelf.md)
- - [ExportOptions](sailpoint/v2024/docs/ExportOptions.md)
- - [ExportOptions1](sailpoint/v2024/docs/ExportOptions1.md)
- - [ExportPayload](sailpoint/v2024/docs/ExportPayload.md)
- - [Expression](sailpoint/v2024/docs/Expression.md)
- - [ExpressionChildrenInner](sailpoint/v2024/docs/ExpressionChildrenInner.md)
- - [ExternalAttributes](sailpoint/v2024/docs/ExternalAttributes.md)
- - [FeatureValueDto](sailpoint/v2024/docs/FeatureValueDto.md)
- - [FederationProtocolDetails](sailpoint/v2024/docs/FederationProtocolDetails.md)
- - [FieldDetailsDto](sailpoint/v2024/docs/FieldDetailsDto.md)
- - [Filter](sailpoint/v2024/docs/Filter.md)
- - [FilterAggregation](sailpoint/v2024/docs/FilterAggregation.md)
- - [FilterType](sailpoint/v2024/docs/FilterType.md)
- - [FormCondition](sailpoint/v2024/docs/FormCondition.md)
- - [FormDefinitionDynamicSchemaRequest](sailpoint/v2024/docs/FormDefinitionDynamicSchemaRequest.md)
- - [FormDefinitionDynamicSchemaRequestAttributes](sailpoint/v2024/docs/FormDefinitionDynamicSchemaRequestAttributes.md)
- - [FormDefinitionDynamicSchemaResponse](sailpoint/v2024/docs/FormDefinitionDynamicSchemaResponse.md)
- - [FormDefinitionFileUploadResponse](sailpoint/v2024/docs/FormDefinitionFileUploadResponse.md)
- - [FormDefinitionInput](sailpoint/v2024/docs/FormDefinitionInput.md)
- - [FormDefinitionResponse](sailpoint/v2024/docs/FormDefinitionResponse.md)
- - [FormDefinitionSelfImportExportDto](sailpoint/v2024/docs/FormDefinitionSelfImportExportDto.md)
- - [FormDetails](sailpoint/v2024/docs/FormDetails.md)
- - [FormElement](sailpoint/v2024/docs/FormElement.md)
- - [FormElementDataSourceConfigOptions](sailpoint/v2024/docs/FormElementDataSourceConfigOptions.md)
- - [FormElementDynamicDataSource](sailpoint/v2024/docs/FormElementDynamicDataSource.md)
- - [FormElementDynamicDataSourceConfig](sailpoint/v2024/docs/FormElementDynamicDataSourceConfig.md)
- - [FormElementPreviewRequest](sailpoint/v2024/docs/FormElementPreviewRequest.md)
- - [FormElementValidationsSet](sailpoint/v2024/docs/FormElementValidationsSet.md)
- - [FormError](sailpoint/v2024/docs/FormError.md)
- - [FormInstanceCreatedBy](sailpoint/v2024/docs/FormInstanceCreatedBy.md)
- - [FormInstanceRecipient](sailpoint/v2024/docs/FormInstanceRecipient.md)
- - [FormInstanceResponse](sailpoint/v2024/docs/FormInstanceResponse.md)
- - [FormItemDetails](sailpoint/v2024/docs/FormItemDetails.md)
- - [FormOwner](sailpoint/v2024/docs/FormOwner.md)
- - [FormUsedBy](sailpoint/v2024/docs/FormUsedBy.md)
- - [ForwardApprovalDto](sailpoint/v2024/docs/ForwardApprovalDto.md)
- - [FullDiscoveredApplications](sailpoint/v2024/docs/FullDiscoveredApplications.md)
- - [GetActiveCampaigns200ResponseInner](sailpoint/v2024/docs/GetActiveCampaigns200ResponseInner.md)
- - [GetCampaign200Response](sailpoint/v2024/docs/GetCampaign200Response.md)
- - [GetDiscoveredApplications200ResponseInner](sailpoint/v2024/docs/GetDiscoveredApplications200ResponseInner.md)
- - [GetHistoricalIdentityEvents200ResponseInner](sailpoint/v2024/docs/GetHistoricalIdentityEvents200ResponseInner.md)
- - [GetOAuthClientResponse](sailpoint/v2024/docs/GetOAuthClientResponse.md)
- - [GetPersonalAccessTokenResponse](sailpoint/v2024/docs/GetPersonalAccessTokenResponse.md)
- - [GetRoleAssignments200ResponseInner](sailpoint/v2024/docs/GetRoleAssignments200ResponseInner.md)
- - [GetTenantContext200ResponseInner](sailpoint/v2024/docs/GetTenantContext200ResponseInner.md)
- - [GrantType](sailpoint/v2024/docs/GrantType.md)
- - [HttpAuthenticationType](sailpoint/v2024/docs/HttpAuthenticationType.md)
- - [HttpConfig](sailpoint/v2024/docs/HttpConfig.md)
- - [HttpDispatchMode](sailpoint/v2024/docs/HttpDispatchMode.md)
- - [IdentitiesAccountsBulkRequest](sailpoint/v2024/docs/IdentitiesAccountsBulkRequest.md)
- - [IdentitiesDetailsReportArguments](sailpoint/v2024/docs/IdentitiesDetailsReportArguments.md)
- - [IdentitiesReportArguments](sailpoint/v2024/docs/IdentitiesReportArguments.md)
- - [Identity](sailpoint/v2024/docs/Identity.md)
- - [Identity1](sailpoint/v2024/docs/Identity1.md)
- - [IdentityAccess](sailpoint/v2024/docs/IdentityAccess.md)
- - [IdentityAccountSelections](sailpoint/v2024/docs/IdentityAccountSelections.md)
- - [IdentityAssociationDetails](sailpoint/v2024/docs/IdentityAssociationDetails.md)
- - [IdentityAssociationDetailsAssociationDetailsInner](sailpoint/v2024/docs/IdentityAssociationDetailsAssociationDetailsInner.md)
- - [IdentityAttribute](sailpoint/v2024/docs/IdentityAttribute.md)
- - [IdentityAttributeConfig](sailpoint/v2024/docs/IdentityAttributeConfig.md)
- - [IdentityAttributeNames](sailpoint/v2024/docs/IdentityAttributeNames.md)
- - [IdentityAttributePreview](sailpoint/v2024/docs/IdentityAttributePreview.md)
- - [IdentityAttributeTransform](sailpoint/v2024/docs/IdentityAttributeTransform.md)
- - [IdentityAttributesChanged](sailpoint/v2024/docs/IdentityAttributesChanged.md)
- - [IdentityAttributesChangedChangesInner](sailpoint/v2024/docs/IdentityAttributesChangedChangesInner.md)
- - [IdentityAttributesChangedChangesInnerNewValue](sailpoint/v2024/docs/IdentityAttributesChangedChangesInnerNewValue.md)
- - [IdentityAttributesChangedChangesInnerOldValue](sailpoint/v2024/docs/IdentityAttributesChangedChangesInnerOldValue.md)
- - [IdentityAttributesChangedChangesInnerOldValueOneOfValue](sailpoint/v2024/docs/IdentityAttributesChangedChangesInnerOldValueOneOfValue.md)
- - [IdentityAttributesChangedIdentity](sailpoint/v2024/docs/IdentityAttributesChangedIdentity.md)
- - [IdentityCertDecisionSummary](sailpoint/v2024/docs/IdentityCertDecisionSummary.md)
- - [IdentityCertificationDto](sailpoint/v2024/docs/IdentityCertificationDto.md)
- - [IdentityCertified](sailpoint/v2024/docs/IdentityCertified.md)
- - [IdentityCompareResponse](sailpoint/v2024/docs/IdentityCompareResponse.md)
- - [IdentityCreated](sailpoint/v2024/docs/IdentityCreated.md)
- - [IdentityCreatedIdentity](sailpoint/v2024/docs/IdentityCreatedIdentity.md)
- - [IdentityDeleted](sailpoint/v2024/docs/IdentityDeleted.md)
- - [IdentityDeletedIdentity](sailpoint/v2024/docs/IdentityDeletedIdentity.md)
- - [IdentityDocument](sailpoint/v2024/docs/IdentityDocument.md)
- - [IdentityDocumentAllOfIdentityProfile](sailpoint/v2024/docs/IdentityDocumentAllOfIdentityProfile.md)
- - [IdentityDocumentAllOfManager](sailpoint/v2024/docs/IdentityDocumentAllOfManager.md)
- - [IdentityDocumentAllOfSource](sailpoint/v2024/docs/IdentityDocumentAllOfSource.md)
- - [IdentityEntities](sailpoint/v2024/docs/IdentityEntities.md)
- - [IdentityEntitiesIdentityEntity](sailpoint/v2024/docs/IdentityEntitiesIdentityEntity.md)
- - [IdentityExceptionReportReference](sailpoint/v2024/docs/IdentityExceptionReportReference.md)
- - [IdentityHistoryResponse](sailpoint/v2024/docs/IdentityHistoryResponse.md)
- - [IdentityLifecycleState](sailpoint/v2024/docs/IdentityLifecycleState.md)
- - [IdentityListItem](sailpoint/v2024/docs/IdentityListItem.md)
- - [IdentityManagerRef](sailpoint/v2024/docs/IdentityManagerRef.md)
- - [IdentityOwnershipAssociationDetails](sailpoint/v2024/docs/IdentityOwnershipAssociationDetails.md)
- - [IdentityOwnershipAssociationDetailsAssociationDetailsInner](sailpoint/v2024/docs/IdentityOwnershipAssociationDetailsAssociationDetailsInner.md)
- - [IdentityPreviewRequest](sailpoint/v2024/docs/IdentityPreviewRequest.md)
- - [IdentityPreviewResponse](sailpoint/v2024/docs/IdentityPreviewResponse.md)
- - [IdentityPreviewResponseIdentity](sailpoint/v2024/docs/IdentityPreviewResponseIdentity.md)
- - [IdentityProfile](sailpoint/v2024/docs/IdentityProfile.md)
- - [IdentityProfileAllOfAuthoritativeSource](sailpoint/v2024/docs/IdentityProfileAllOfAuthoritativeSource.md)
- - [IdentityProfileAllOfOwner](sailpoint/v2024/docs/IdentityProfileAllOfOwner.md)
- - [IdentityProfileExportedObject](sailpoint/v2024/docs/IdentityProfileExportedObject.md)
- - [IdentityProfileExportedObjectSelf](sailpoint/v2024/docs/IdentityProfileExportedObjectSelf.md)
- - [IdentityProfileIdentityErrorReportArguments](sailpoint/v2024/docs/IdentityProfileIdentityErrorReportArguments.md)
- - [IdentityProfilesConnections](sailpoint/v2024/docs/IdentityProfilesConnections.md)
- - [IdentityReference](sailpoint/v2024/docs/IdentityReference.md)
- - [IdentityReferenceWithNameAndEmail](sailpoint/v2024/docs/IdentityReferenceWithNameAndEmail.md)
- - [IdentitySnapshotSummaryResponse](sailpoint/v2024/docs/IdentitySnapshotSummaryResponse.md)
- - [IdentitySummary](sailpoint/v2024/docs/IdentitySummary.md)
- - [IdentitySyncJob](sailpoint/v2024/docs/IdentitySyncJob.md)
- - [IdentitySyncPayload](sailpoint/v2024/docs/IdentitySyncPayload.md)
- - [IdentityWithNewAccess](sailpoint/v2024/docs/IdentityWithNewAccess.md)
- - [IdentityWithNewAccess1](sailpoint/v2024/docs/IdentityWithNewAccess1.md)
- - [IdentityWithNewAccessAccessRefsInner](sailpoint/v2024/docs/IdentityWithNewAccessAccessRefsInner.md)
- - [IdpDetails](sailpoint/v2024/docs/IdpDetails.md)
- - [ImportAccountsRequest](sailpoint/v2024/docs/ImportAccountsRequest.md)
- - [ImportEntitlementsBySourceRequest](sailpoint/v2024/docs/ImportEntitlementsBySourceRequest.md)
- - [ImportFormDefinitions202Response](sailpoint/v2024/docs/ImportFormDefinitions202Response.md)
- - [ImportFormDefinitions202ResponseErrorsInner](sailpoint/v2024/docs/ImportFormDefinitions202ResponseErrorsInner.md)
- - [ImportFormDefinitionsRequestInner](sailpoint/v2024/docs/ImportFormDefinitionsRequestInner.md)
- - [ImportNonEmployeeRecordsInBulkRequest](sailpoint/v2024/docs/ImportNonEmployeeRecordsInBulkRequest.md)
- - [ImportObject](sailpoint/v2024/docs/ImportObject.md)
- - [ImportOptions](sailpoint/v2024/docs/ImportOptions.md)
- - [ImportSpConfigRequest](sailpoint/v2024/docs/ImportSpConfigRequest.md)
- - [Index](sailpoint/v2024/docs/Index.md)
- - [InnerHit](sailpoint/v2024/docs/InnerHit.md)
- - [InviteIdentitiesRequest](sailpoint/v2024/docs/InviteIdentitiesRequest.md)
- - [Invocation](sailpoint/v2024/docs/Invocation.md)
- - [InvocationStatus](sailpoint/v2024/docs/InvocationStatus.md)
- - [InvocationStatusType](sailpoint/v2024/docs/InvocationStatusType.md)
- - [JITConfiguration](sailpoint/v2024/docs/JITConfiguration.md)
- - [JsonPatch](sailpoint/v2024/docs/JsonPatch.md)
- - [JsonPatchOperation](sailpoint/v2024/docs/JsonPatchOperation.md)
- - [KbaAnswerRequestItem](sailpoint/v2024/docs/KbaAnswerRequestItem.md)
- - [KbaAnswerResponseItem](sailpoint/v2024/docs/KbaAnswerResponseItem.md)
- - [KbaQuestion](sailpoint/v2024/docs/KbaQuestion.md)
- - [LatestOutlierSummary](sailpoint/v2024/docs/LatestOutlierSummary.md)
- - [License](sailpoint/v2024/docs/License.md)
- - [LifecycleState](sailpoint/v2024/docs/LifecycleState.md)
- - [LifecycleStateDto](sailpoint/v2024/docs/LifecycleStateDto.md)
- - [LifecyclestateDeleted](sailpoint/v2024/docs/LifecyclestateDeleted.md)
- - [ListAccessProfiles401Response](sailpoint/v2024/docs/ListAccessProfiles401Response.md)
- - [ListAccessProfiles429Response](sailpoint/v2024/docs/ListAccessProfiles429Response.md)
- - [ListCampaignFilters200Response](sailpoint/v2024/docs/ListCampaignFilters200Response.md)
- - [ListCompleteWorkflowLibrary200ResponseInner](sailpoint/v2024/docs/ListCompleteWorkflowLibrary200ResponseInner.md)
- - [ListDeploys200Response](sailpoint/v2024/docs/ListDeploys200Response.md)
- - [ListFormDefinitionsByTenantResponse](sailpoint/v2024/docs/ListFormDefinitionsByTenantResponse.md)
- - [ListFormElementDataByElementIDResponse](sailpoint/v2024/docs/ListFormElementDataByElementIDResponse.md)
- - [ListFormInstancesByTenantResponse](sailpoint/v2024/docs/ListFormInstancesByTenantResponse.md)
- - [ListIdentityAccessItems200ResponseInner](sailpoint/v2024/docs/ListIdentityAccessItems200ResponseInner.md)
- - [ListPredefinedSelectOptionsResponse](sailpoint/v2024/docs/ListPredefinedSelectOptionsResponse.md)
- - [ListWorkgroupMembers200ResponseInner](sailpoint/v2024/docs/ListWorkgroupMembers200ResponseInner.md)
- - [LoadAccountsTask](sailpoint/v2024/docs/LoadAccountsTask.md)
- - [LoadAccountsTaskTask](sailpoint/v2024/docs/LoadAccountsTaskTask.md)
- - [LoadAccountsTaskTaskAttributes](sailpoint/v2024/docs/LoadAccountsTaskTaskAttributes.md)
- - [LoadAccountsTaskTaskMessagesInner](sailpoint/v2024/docs/LoadAccountsTaskTaskMessagesInner.md)
- - [LoadAccountsTaskTaskReturnsInner](sailpoint/v2024/docs/LoadAccountsTaskTaskReturnsInner.md)
- - [LoadEntitlementTask](sailpoint/v2024/docs/LoadEntitlementTask.md)
- - [LoadEntitlementTaskReturnsInner](sailpoint/v2024/docs/LoadEntitlementTaskReturnsInner.md)
- - [LoadUncorrelatedAccountsTask](sailpoint/v2024/docs/LoadUncorrelatedAccountsTask.md)
- - [LoadUncorrelatedAccountsTaskTask](sailpoint/v2024/docs/LoadUncorrelatedAccountsTaskTask.md)
- - [LoadUncorrelatedAccountsTaskTaskAttributes](sailpoint/v2024/docs/LoadUncorrelatedAccountsTaskTaskAttributes.md)
- - [LoadUncorrelatedAccountsTaskTaskMessagesInner](sailpoint/v2024/docs/LoadUncorrelatedAccountsTaskTaskMessagesInner.md)
- - [LocaleOrigin](sailpoint/v2024/docs/LocaleOrigin.md)
- - [LocalizedMessage](sailpoint/v2024/docs/LocalizedMessage.md)
- - [LockoutConfiguration](sailpoint/v2024/docs/LockoutConfiguration.md)
- - [LookupStep](sailpoint/v2024/docs/LookupStep.md)
- - [MachineAccount](sailpoint/v2024/docs/MachineAccount.md)
- - [MachineClassificationConfig](sailpoint/v2024/docs/MachineClassificationConfig.md)
- - [MachineIdentity](sailpoint/v2024/docs/MachineIdentity.md)
- - [MailFromAttributes](sailpoint/v2024/docs/MailFromAttributes.md)
- - [MailFromAttributesDto](sailpoint/v2024/docs/MailFromAttributesDto.md)
- - [ManagedClient](sailpoint/v2024/docs/ManagedClient.md)
- - [ManagedClientRequest](sailpoint/v2024/docs/ManagedClientRequest.md)
- - [ManagedClientStatus](sailpoint/v2024/docs/ManagedClientStatus.md)
- - [ManagedClientStatusCode](sailpoint/v2024/docs/ManagedClientStatusCode.md)
- - [ManagedClientType](sailpoint/v2024/docs/ManagedClientType.md)
- - [ManagedCluster](sailpoint/v2024/docs/ManagedCluster.md)
- - [ManagedClusterAttributes](sailpoint/v2024/docs/ManagedClusterAttributes.md)
- - [ManagedClusterKeyPair](sailpoint/v2024/docs/ManagedClusterKeyPair.md)
- - [ManagedClusterQueue](sailpoint/v2024/docs/ManagedClusterQueue.md)
- - [ManagedClusterRedis](sailpoint/v2024/docs/ManagedClusterRedis.md)
- - [ManagedClusterRequest](sailpoint/v2024/docs/ManagedClusterRequest.md)
- - [ManagedClusterType](sailpoint/v2024/docs/ManagedClusterType.md)
- - [ManagedClusterTypes](sailpoint/v2024/docs/ManagedClusterTypes.md)
- - [ManagedClusterUpdatePreferences](sailpoint/v2024/docs/ManagedClusterUpdatePreferences.md)
- - [ManagerCorrelationMapping](sailpoint/v2024/docs/ManagerCorrelationMapping.md)
- - [ManualDiscoverApplications](sailpoint/v2024/docs/ManualDiscoverApplications.md)
- - [ManualDiscoverApplicationsTemplate](sailpoint/v2024/docs/ManualDiscoverApplicationsTemplate.md)
- - [ManualWorkItemDetails](sailpoint/v2024/docs/ManualWorkItemDetails.md)
- - [ManualWorkItemDetailsCurrentOwner](sailpoint/v2024/docs/ManualWorkItemDetailsCurrentOwner.md)
- - [ManualWorkItemDetailsOriginalOwner](sailpoint/v2024/docs/ManualWorkItemDetailsOriginalOwner.md)
- - [ManualWorkItemState](sailpoint/v2024/docs/ManualWorkItemState.md)
- - [MatchTerm](sailpoint/v2024/docs/MatchTerm.md)
- - [Medium](sailpoint/v2024/docs/Medium.md)
- - [MembershipType](sailpoint/v2024/docs/MembershipType.md)
- - [MetricAggregation](sailpoint/v2024/docs/MetricAggregation.md)
- - [MetricResponse](sailpoint/v2024/docs/MetricResponse.md)
- - [MetricType](sailpoint/v2024/docs/MetricType.md)
- - [MfaConfigTestResponse](sailpoint/v2024/docs/MfaConfigTestResponse.md)
- - [MfaDuoConfig](sailpoint/v2024/docs/MfaDuoConfig.md)
- - [MfaOktaConfig](sailpoint/v2024/docs/MfaOktaConfig.md)
- - [ModelSchema](sailpoint/v2024/docs/ModelSchema.md)
- - [MultiHostIntegrationTemplateType](sailpoint/v2024/docs/MultiHostIntegrationTemplateType.md)
- - [MultiHostIntegrations](sailpoint/v2024/docs/MultiHostIntegrations.md)
- - [MultiHostIntegrationsAccountsFile](sailpoint/v2024/docs/MultiHostIntegrationsAccountsFile.md)
- - [MultiHostIntegrationsAggScheduleUpdate](sailpoint/v2024/docs/MultiHostIntegrationsAggScheduleUpdate.md)
- - [MultiHostIntegrationsBeforeProvisioningRule](sailpoint/v2024/docs/MultiHostIntegrationsBeforeProvisioningRule.md)
- - [MultiHostIntegrationsConnectorAttributes](sailpoint/v2024/docs/MultiHostIntegrationsConnectorAttributes.md)
- - [MultiHostIntegrationsConnectorAttributesConnectorFileUploadHistory](sailpoint/v2024/docs/MultiHostIntegrationsConnectorAttributesConnectorFileUploadHistory.md)
- - [MultiHostIntegrationsConnectorAttributesMultiHostAttributes](sailpoint/v2024/docs/MultiHostIntegrationsConnectorAttributesMultiHostAttributes.md)
- - [MultiHostIntegrationsCreate](sailpoint/v2024/docs/MultiHostIntegrationsCreate.md)
- - [MultiHostIntegrationsCreateSources](sailpoint/v2024/docs/MultiHostIntegrationsCreateSources.md)
- - [MultiHostSources](sailpoint/v2024/docs/MultiHostSources.md)
- - [MultiPolicyRequest](sailpoint/v2024/docs/MultiPolicyRequest.md)
- - [NativeChangeDetectionConfig](sailpoint/v2024/docs/NativeChangeDetectionConfig.md)
- - [NestedAggregation](sailpoint/v2024/docs/NestedAggregation.md)
- - [NetworkConfiguration](sailpoint/v2024/docs/NetworkConfiguration.md)
- - [NonEmployeeApprovalDecision](sailpoint/v2024/docs/NonEmployeeApprovalDecision.md)
- - [NonEmployeeApprovalItem](sailpoint/v2024/docs/NonEmployeeApprovalItem.md)
- - [NonEmployeeApprovalItemBase](sailpoint/v2024/docs/NonEmployeeApprovalItemBase.md)
- - [NonEmployeeApprovalItemDetail](sailpoint/v2024/docs/NonEmployeeApprovalItemDetail.md)
- - [NonEmployeeApprovalSummary](sailpoint/v2024/docs/NonEmployeeApprovalSummary.md)
- - [NonEmployeeBulkUploadJob](sailpoint/v2024/docs/NonEmployeeBulkUploadJob.md)
- - [NonEmployeeBulkUploadStatus](sailpoint/v2024/docs/NonEmployeeBulkUploadStatus.md)
- - [NonEmployeeIdentityDtoType](sailpoint/v2024/docs/NonEmployeeIdentityDtoType.md)
- - [NonEmployeeIdentityReferenceWithId](sailpoint/v2024/docs/NonEmployeeIdentityReferenceWithId.md)
- - [NonEmployeeIdnUserRequest](sailpoint/v2024/docs/NonEmployeeIdnUserRequest.md)
- - [NonEmployeeRecord](sailpoint/v2024/docs/NonEmployeeRecord.md)
- - [NonEmployeeRejectApprovalDecision](sailpoint/v2024/docs/NonEmployeeRejectApprovalDecision.md)
- - [NonEmployeeRequest](sailpoint/v2024/docs/NonEmployeeRequest.md)
- - [NonEmployeeRequestBody](sailpoint/v2024/docs/NonEmployeeRequestBody.md)
- - [NonEmployeeRequestLite](sailpoint/v2024/docs/NonEmployeeRequestLite.md)
- - [NonEmployeeRequestSummary](sailpoint/v2024/docs/NonEmployeeRequestSummary.md)
- - [NonEmployeeRequestWithoutApprovalItem](sailpoint/v2024/docs/NonEmployeeRequestWithoutApprovalItem.md)
- - [NonEmployeeSchemaAttribute](sailpoint/v2024/docs/NonEmployeeSchemaAttribute.md)
- - [NonEmployeeSchemaAttributeBody](sailpoint/v2024/docs/NonEmployeeSchemaAttributeBody.md)
- - [NonEmployeeSchemaAttributeType](sailpoint/v2024/docs/NonEmployeeSchemaAttributeType.md)
- - [NonEmployeeSource](sailpoint/v2024/docs/NonEmployeeSource.md)
- - [NonEmployeeSourceLite](sailpoint/v2024/docs/NonEmployeeSourceLite.md)
- - [NonEmployeeSourceLiteWithSchemaAttributes](sailpoint/v2024/docs/NonEmployeeSourceLiteWithSchemaAttributes.md)
- - [NonEmployeeSourceRequestBody](sailpoint/v2024/docs/NonEmployeeSourceRequestBody.md)
- - [NonEmployeeSourceWithCloudExternalId](sailpoint/v2024/docs/NonEmployeeSourceWithCloudExternalId.md)
- - [NonEmployeeSourceWithNECount](sailpoint/v2024/docs/NonEmployeeSourceWithNECount.md)
- - [NotificationTemplateContext](sailpoint/v2024/docs/NotificationTemplateContext.md)
- - [ObjectExportImportNames](sailpoint/v2024/docs/ObjectExportImportNames.md)
- - [ObjectExportImportOptions](sailpoint/v2024/docs/ObjectExportImportOptions.md)
- - [ObjectImportResult](sailpoint/v2024/docs/ObjectImportResult.md)
- - [ObjectImportResult1](sailpoint/v2024/docs/ObjectImportResult1.md)
- - [ObjectMappingBulkCreateRequest](sailpoint/v2024/docs/ObjectMappingBulkCreateRequest.md)
- - [ObjectMappingBulkCreateResponse](sailpoint/v2024/docs/ObjectMappingBulkCreateResponse.md)
- - [ObjectMappingBulkPatchRequest](sailpoint/v2024/docs/ObjectMappingBulkPatchRequest.md)
- - [ObjectMappingBulkPatchResponse](sailpoint/v2024/docs/ObjectMappingBulkPatchResponse.md)
- - [ObjectMappingRequest](sailpoint/v2024/docs/ObjectMappingRequest.md)
- - [ObjectMappingResponse](sailpoint/v2024/docs/ObjectMappingResponse.md)
- - [Operation](sailpoint/v2024/docs/Operation.md)
- - [OrgConfig](sailpoint/v2024/docs/OrgConfig.md)
- - [OriginalRequest](sailpoint/v2024/docs/OriginalRequest.md)
- - [OrphanIdentitiesReportArguments](sailpoint/v2024/docs/OrphanIdentitiesReportArguments.md)
- - [Outlier](sailpoint/v2024/docs/Outlier.md)
- - [OutlierContributingFeature](sailpoint/v2024/docs/OutlierContributingFeature.md)
- - [OutlierFeatureSummary](sailpoint/v2024/docs/OutlierFeatureSummary.md)
- - [OutlierFeatureSummaryOutlierFeatureDisplayValuesInner](sailpoint/v2024/docs/OutlierFeatureSummaryOutlierFeatureDisplayValuesInner.md)
- - [OutlierFeatureTranslation](sailpoint/v2024/docs/OutlierFeatureTranslation.md)
- - [OutlierSummary](sailpoint/v2024/docs/OutlierSummary.md)
- - [OutlierValueType](sailpoint/v2024/docs/OutlierValueType.md)
- - [OutliersContributingFeatureAccessItems](sailpoint/v2024/docs/OutliersContributingFeatureAccessItems.md)
- - [OwnerDto](sailpoint/v2024/docs/OwnerDto.md)
- - [OwnerReference](sailpoint/v2024/docs/OwnerReference.md)
- - [OwnerReferenceSegments](sailpoint/v2024/docs/OwnerReferenceSegments.md)
- - [Owns](sailpoint/v2024/docs/Owns.md)
- - [PasswordChangeRequest](sailpoint/v2024/docs/PasswordChangeRequest.md)
- - [PasswordChangeResponse](sailpoint/v2024/docs/PasswordChangeResponse.md)
- - [PasswordDigitToken](sailpoint/v2024/docs/PasswordDigitToken.md)
- - [PasswordDigitTokenReset](sailpoint/v2024/docs/PasswordDigitTokenReset.md)
- - [PasswordInfo](sailpoint/v2024/docs/PasswordInfo.md)
- - [PasswordInfoAccount](sailpoint/v2024/docs/PasswordInfoAccount.md)
- - [PasswordInfoQueryDTO](sailpoint/v2024/docs/PasswordInfoQueryDTO.md)
- - [PasswordOrgConfig](sailpoint/v2024/docs/PasswordOrgConfig.md)
- - [PasswordPolicyHoldersDtoAttributes](sailpoint/v2024/docs/PasswordPolicyHoldersDtoAttributes.md)
- - [PasswordPolicyHoldersDtoAttributesIdentityAttrInner](sailpoint/v2024/docs/PasswordPolicyHoldersDtoAttributesIdentityAttrInner.md)
- - [PasswordPolicyHoldersDtoInner](sailpoint/v2024/docs/PasswordPolicyHoldersDtoInner.md)
- - [PasswordPolicyV3Dto](sailpoint/v2024/docs/PasswordPolicyV3Dto.md)
- - [PasswordStatus](sailpoint/v2024/docs/PasswordStatus.md)
- - [PasswordSyncGroup](sailpoint/v2024/docs/PasswordSyncGroup.md)
- - [PatOwner](sailpoint/v2024/docs/PatOwner.md)
- - [PatchPotentialRoleRequestInner](sailpoint/v2024/docs/PatchPotentialRoleRequestInner.md)
- - [PeerGroupMember](sailpoint/v2024/docs/PeerGroupMember.md)
- - [PendingApproval](sailpoint/v2024/docs/PendingApproval.md)
- - [PendingApprovalAction](sailpoint/v2024/docs/PendingApprovalAction.md)
- - [PendingApprovalOwner](sailpoint/v2024/docs/PendingApprovalOwner.md)
- - [PermissionDto](sailpoint/v2024/docs/PermissionDto.md)
- - [PreApprovalTriggerDetails](sailpoint/v2024/docs/PreApprovalTriggerDetails.md)
- - [PreferencesDto](sailpoint/v2024/docs/PreferencesDto.md)
- - [PreviewDataSourceResponse](sailpoint/v2024/docs/PreviewDataSourceResponse.md)
- - [ProcessIdentitiesRequest](sailpoint/v2024/docs/ProcessIdentitiesRequest.md)
- - [ProcessingDetails](sailpoint/v2024/docs/ProcessingDetails.md)
- - [Product](sailpoint/v2024/docs/Product.md)
- - [ProvisioningCompleted](sailpoint/v2024/docs/ProvisioningCompleted.md)
- - [ProvisioningCompletedAccountRequestsInner](sailpoint/v2024/docs/ProvisioningCompletedAccountRequestsInner.md)
- - [ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner](sailpoint/v2024/docs/ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner.md)
- - [ProvisioningCompletedAccountRequestsInnerSource](sailpoint/v2024/docs/ProvisioningCompletedAccountRequestsInnerSource.md)
- - [ProvisioningCompletedRecipient](sailpoint/v2024/docs/ProvisioningCompletedRecipient.md)
- - [ProvisioningCompletedRequester](sailpoint/v2024/docs/ProvisioningCompletedRequester.md)
- - [ProvisioningConfig](sailpoint/v2024/docs/ProvisioningConfig.md)
- - [ProvisioningConfigPlanInitializerScript](sailpoint/v2024/docs/ProvisioningConfigPlanInitializerScript.md)
- - [ProvisioningCriteriaLevel1](sailpoint/v2024/docs/ProvisioningCriteriaLevel1.md)
- - [ProvisioningCriteriaLevel2](sailpoint/v2024/docs/ProvisioningCriteriaLevel2.md)
- - [ProvisioningCriteriaLevel3](sailpoint/v2024/docs/ProvisioningCriteriaLevel3.md)
- - [ProvisioningCriteriaOperation](sailpoint/v2024/docs/ProvisioningCriteriaOperation.md)
- - [ProvisioningDetails](sailpoint/v2024/docs/ProvisioningDetails.md)
- - [ProvisioningPolicy](sailpoint/v2024/docs/ProvisioningPolicy.md)
- - [ProvisioningPolicyDto](sailpoint/v2024/docs/ProvisioningPolicyDto.md)
- - [ProvisioningState](sailpoint/v2024/docs/ProvisioningState.md)
- - [PublicIdentity](sailpoint/v2024/docs/PublicIdentity.md)
- - [PublicIdentityAttributeConfig](sailpoint/v2024/docs/PublicIdentityAttributeConfig.md)
- - [PublicIdentityAttributesInner](sailpoint/v2024/docs/PublicIdentityAttributesInner.md)
- - [PublicIdentityConfig](sailpoint/v2024/docs/PublicIdentityConfig.md)
- - [PutClientLogConfigurationRequest](sailpoint/v2024/docs/PutClientLogConfigurationRequest.md)
- - [PutConnectorCorrelationConfigRequest](sailpoint/v2024/docs/PutConnectorCorrelationConfigRequest.md)
- - [PutConnectorSourceConfigRequest](sailpoint/v2024/docs/PutConnectorSourceConfigRequest.md)
- - [PutConnectorSourceTemplateRequest](sailpoint/v2024/docs/PutConnectorSourceTemplateRequest.md)
- - [PutPasswordDictionaryRequest](sailpoint/v2024/docs/PutPasswordDictionaryRequest.md)
- - [Query](sailpoint/v2024/docs/Query.md)
- - [QueryResultFilter](sailpoint/v2024/docs/QueryResultFilter.md)
- - [QueryType](sailpoint/v2024/docs/QueryType.md)
- - [QueuedCheckConfigDetails](sailpoint/v2024/docs/QueuedCheckConfigDetails.md)
- - [Range](sailpoint/v2024/docs/Range.md)
- - [ReassignReference](sailpoint/v2024/docs/ReassignReference.md)
- - [Reassignment](sailpoint/v2024/docs/Reassignment.md)
- - [ReassignmentReference](sailpoint/v2024/docs/ReassignmentReference.md)
- - [ReassignmentTrailDTO](sailpoint/v2024/docs/ReassignmentTrailDTO.md)
- - [ReassignmentType](sailpoint/v2024/docs/ReassignmentType.md)
- - [ReassignmentTypeEnum](sailpoint/v2024/docs/ReassignmentTypeEnum.md)
- - [Recommendation](sailpoint/v2024/docs/Recommendation.md)
- - [RecommendationConfigDto](sailpoint/v2024/docs/RecommendationConfigDto.md)
- - [RecommendationRequest](sailpoint/v2024/docs/RecommendationRequest.md)
- - [RecommendationRequestDto](sailpoint/v2024/docs/RecommendationRequestDto.md)
- - [RecommendationResponse](sailpoint/v2024/docs/RecommendationResponse.md)
- - [RecommendationResponseDto](sailpoint/v2024/docs/RecommendationResponseDto.md)
- - [RecommenderCalculations](sailpoint/v2024/docs/RecommenderCalculations.md)
- - [RecommenderCalculationsIdentityAttributesValue](sailpoint/v2024/docs/RecommenderCalculationsIdentityAttributesValue.md)
- - [Ref](sailpoint/v2024/docs/Ref.md)
- - [Reference](sailpoint/v2024/docs/Reference.md)
- - [RemediationItemDetails](sailpoint/v2024/docs/RemediationItemDetails.md)
- - [RemediationItems](sailpoint/v2024/docs/RemediationItems.md)
- - [ReportConfigDTO](sailpoint/v2024/docs/ReportConfigDTO.md)
- - [ReportDetails](sailpoint/v2024/docs/ReportDetails.md)
- - [ReportDetailsArguments](sailpoint/v2024/docs/ReportDetailsArguments.md)
- - [ReportResultReference](sailpoint/v2024/docs/ReportResultReference.md)
- - [ReportResults](sailpoint/v2024/docs/ReportResults.md)
- - [ReportType](sailpoint/v2024/docs/ReportType.md)
- - [RequestOnBehalfOfConfig](sailpoint/v2024/docs/RequestOnBehalfOfConfig.md)
- - [Requestability](sailpoint/v2024/docs/Requestability.md)
- - [RequestabilityForRole](sailpoint/v2024/docs/RequestabilityForRole.md)
- - [RequestableObject](sailpoint/v2024/docs/RequestableObject.md)
- - [RequestableObjectReference](sailpoint/v2024/docs/RequestableObjectReference.md)
- - [RequestableObjectRequestStatus](sailpoint/v2024/docs/RequestableObjectRequestStatus.md)
- - [RequestableObjectType](sailpoint/v2024/docs/RequestableObjectType.md)
- - [RequestedAccountRef](sailpoint/v2024/docs/RequestedAccountRef.md)
- - [RequestedForDtoRef](sailpoint/v2024/docs/RequestedForDtoRef.md)
- - [RequestedItemAccountSelections](sailpoint/v2024/docs/RequestedItemAccountSelections.md)
- - [RequestedItemDetails](sailpoint/v2024/docs/RequestedItemDetails.md)
- - [RequestedItemDtoRef](sailpoint/v2024/docs/RequestedItemDtoRef.md)
- - [RequestedItemStatus](sailpoint/v2024/docs/RequestedItemStatus.md)
- - [RequestedItemStatusCancelledRequestDetails](sailpoint/v2024/docs/RequestedItemStatusCancelledRequestDetails.md)
- - [RequestedItemStatusPreApprovalTriggerDetails](sailpoint/v2024/docs/RequestedItemStatusPreApprovalTriggerDetails.md)
- - [RequestedItemStatusProvisioningDetails](sailpoint/v2024/docs/RequestedItemStatusProvisioningDetails.md)
- - [RequestedItemStatusRequestState](sailpoint/v2024/docs/RequestedItemStatusRequestState.md)
- - [RequestedItemStatusRequestedFor](sailpoint/v2024/docs/RequestedItemStatusRequestedFor.md)
- - [RequestedItemStatusRequesterComment](sailpoint/v2024/docs/RequestedItemStatusRequesterComment.md)
- - [RequestedItemStatusSodViolationContext](sailpoint/v2024/docs/RequestedItemStatusSodViolationContext.md)
- - [ResourceObject](sailpoint/v2024/docs/ResourceObject.md)
- - [ResourceObjectsRequest](sailpoint/v2024/docs/ResourceObjectsRequest.md)
- - [ResourceObjectsResponse](sailpoint/v2024/docs/ResourceObjectsResponse.md)
- - [Result](sailpoint/v2024/docs/Result.md)
- - [ReviewDecision](sailpoint/v2024/docs/ReviewDecision.md)
- - [ReviewReassign](sailpoint/v2024/docs/ReviewReassign.md)
- - [ReviewRecommendation](sailpoint/v2024/docs/ReviewRecommendation.md)
- - [ReviewableAccessProfile](sailpoint/v2024/docs/ReviewableAccessProfile.md)
- - [ReviewableEntitlement](sailpoint/v2024/docs/ReviewableEntitlement.md)
- - [ReviewableEntitlementAccount](sailpoint/v2024/docs/ReviewableEntitlementAccount.md)
- - [ReviewableEntitlementAccountOwner](sailpoint/v2024/docs/ReviewableEntitlementAccountOwner.md)
- - [ReviewableRole](sailpoint/v2024/docs/ReviewableRole.md)
- - [Reviewer](sailpoint/v2024/docs/Reviewer.md)
- - [Revocability](sailpoint/v2024/docs/Revocability.md)
- - [RevocabilityForRole](sailpoint/v2024/docs/RevocabilityForRole.md)
- - [Role](sailpoint/v2024/docs/Role.md)
- - [RoleAssignmentDto](sailpoint/v2024/docs/RoleAssignmentDto.md)
- - [RoleAssignmentDtoAssigner](sailpoint/v2024/docs/RoleAssignmentDtoAssigner.md)
- - [RoleAssignmentDtoAssignmentContext](sailpoint/v2024/docs/RoleAssignmentDtoAssignmentContext.md)
- - [RoleAssignmentRef](sailpoint/v2024/docs/RoleAssignmentRef.md)
- - [RoleAssignmentSourceType](sailpoint/v2024/docs/RoleAssignmentSourceType.md)
- - [RoleBulkDeleteRequest](sailpoint/v2024/docs/RoleBulkDeleteRequest.md)
- - [RoleBulkUpdateResponse](sailpoint/v2024/docs/RoleBulkUpdateResponse.md)
- - [RoleCriteriaKey](sailpoint/v2024/docs/RoleCriteriaKey.md)
- - [RoleCriteriaKeyType](sailpoint/v2024/docs/RoleCriteriaKeyType.md)
- - [RoleCriteriaLevel1](sailpoint/v2024/docs/RoleCriteriaLevel1.md)
- - [RoleCriteriaLevel2](sailpoint/v2024/docs/RoleCriteriaLevel2.md)
- - [RoleCriteriaLevel3](sailpoint/v2024/docs/RoleCriteriaLevel3.md)
- - [RoleCriteriaOperation](sailpoint/v2024/docs/RoleCriteriaOperation.md)
- - [RoleDocument](sailpoint/v2024/docs/RoleDocument.md)
- - [RoleDocumentAllOfDimensionSchemaAttributes](sailpoint/v2024/docs/RoleDocumentAllOfDimensionSchemaAttributes.md)
- - [RoleDocumentAllOfDimensions](sailpoint/v2024/docs/RoleDocumentAllOfDimensions.md)
- - [RoleDocumentAllOfEntitlements](sailpoint/v2024/docs/RoleDocumentAllOfEntitlements.md)
- - [RoleDocumentAllOfEntitlements1](sailpoint/v2024/docs/RoleDocumentAllOfEntitlements1.md)
- - [RoleGetAllBulkUpdateResponse](sailpoint/v2024/docs/RoleGetAllBulkUpdateResponse.md)
- - [RoleIdentity](sailpoint/v2024/docs/RoleIdentity.md)
- - [RoleInsight](sailpoint/v2024/docs/RoleInsight.md)
- - [RoleInsightsEntitlement](sailpoint/v2024/docs/RoleInsightsEntitlement.md)
- - [RoleInsightsEntitlementChanges](sailpoint/v2024/docs/RoleInsightsEntitlementChanges.md)
- - [RoleInsightsIdentities](sailpoint/v2024/docs/RoleInsightsIdentities.md)
- - [RoleInsightsInsight](sailpoint/v2024/docs/RoleInsightsInsight.md)
- - [RoleInsightsResponse](sailpoint/v2024/docs/RoleInsightsResponse.md)
- - [RoleInsightsRole](sailpoint/v2024/docs/RoleInsightsRole.md)
- - [RoleInsightsSummary](sailpoint/v2024/docs/RoleInsightsSummary.md)
- - [RoleListFilterDTO](sailpoint/v2024/docs/RoleListFilterDTO.md)
- - [RoleListFilterDTOAmmKeyValuesInner](sailpoint/v2024/docs/RoleListFilterDTOAmmKeyValuesInner.md)
- - [RoleMatchDto](sailpoint/v2024/docs/RoleMatchDto.md)
- - [RoleMembershipIdentity](sailpoint/v2024/docs/RoleMembershipIdentity.md)
- - [RoleMembershipSelector](sailpoint/v2024/docs/RoleMembershipSelector.md)
- - [RoleMembershipSelectorType](sailpoint/v2024/docs/RoleMembershipSelectorType.md)
- - [RoleMetadataBulkUpdateByFilterRequest](sailpoint/v2024/docs/RoleMetadataBulkUpdateByFilterRequest.md)
- - [RoleMetadataBulkUpdateByFilterRequestValuesInner](sailpoint/v2024/docs/RoleMetadataBulkUpdateByFilterRequestValuesInner.md)
- - [RoleMetadataBulkUpdateByIdRequest](sailpoint/v2024/docs/RoleMetadataBulkUpdateByIdRequest.md)
- - [RoleMetadataBulkUpdateByIdRequestValuesInner](sailpoint/v2024/docs/RoleMetadataBulkUpdateByIdRequestValuesInner.md)
- - [RoleMetadataBulkUpdateByQueryRequest](sailpoint/v2024/docs/RoleMetadataBulkUpdateByQueryRequest.md)
- - [RoleMetadataBulkUpdateByQueryRequestValuesInner](sailpoint/v2024/docs/RoleMetadataBulkUpdateByQueryRequestValuesInner.md)
- - [RoleMiningEntitlement](sailpoint/v2024/docs/RoleMiningEntitlement.md)
- - [RoleMiningEntitlementRef](sailpoint/v2024/docs/RoleMiningEntitlementRef.md)
- - [RoleMiningIdentity](sailpoint/v2024/docs/RoleMiningIdentity.md)
- - [RoleMiningIdentityDistribution](sailpoint/v2024/docs/RoleMiningIdentityDistribution.md)
- - [RoleMiningPotentialRole](sailpoint/v2024/docs/RoleMiningPotentialRole.md)
- - [RoleMiningPotentialRoleApplication](sailpoint/v2024/docs/RoleMiningPotentialRoleApplication.md)
- - [RoleMiningPotentialRoleEditEntitlements](sailpoint/v2024/docs/RoleMiningPotentialRoleEditEntitlements.md)
- - [RoleMiningPotentialRoleEntitlements](sailpoint/v2024/docs/RoleMiningPotentialRoleEntitlements.md)
- - [RoleMiningPotentialRoleExportRequest](sailpoint/v2024/docs/RoleMiningPotentialRoleExportRequest.md)
- - [RoleMiningPotentialRoleExportResponse](sailpoint/v2024/docs/RoleMiningPotentialRoleExportResponse.md)
- - [RoleMiningPotentialRoleExportState](sailpoint/v2024/docs/RoleMiningPotentialRoleExportState.md)
- - [RoleMiningPotentialRoleProvisionRequest](sailpoint/v2024/docs/RoleMiningPotentialRoleProvisionRequest.md)
- - [RoleMiningPotentialRoleProvisionState](sailpoint/v2024/docs/RoleMiningPotentialRoleProvisionState.md)
- - [RoleMiningPotentialRoleRef](sailpoint/v2024/docs/RoleMiningPotentialRoleRef.md)
- - [RoleMiningPotentialRoleSourceUsage](sailpoint/v2024/docs/RoleMiningPotentialRoleSourceUsage.md)
- - [RoleMiningPotentialRoleSummary](sailpoint/v2024/docs/RoleMiningPotentialRoleSummary.md)
- - [RoleMiningPotentialRoleSummaryCreatedBy](sailpoint/v2024/docs/RoleMiningPotentialRoleSummaryCreatedBy.md)
- - [RoleMiningRoleType](sailpoint/v2024/docs/RoleMiningRoleType.md)
- - [RoleMiningSessionDraftRoleDto](sailpoint/v2024/docs/RoleMiningSessionDraftRoleDto.md)
- - [RoleMiningSessionDto](sailpoint/v2024/docs/RoleMiningSessionDto.md)
- - [RoleMiningSessionParametersDto](sailpoint/v2024/docs/RoleMiningSessionParametersDto.md)
- - [RoleMiningSessionResponse](sailpoint/v2024/docs/RoleMiningSessionResponse.md)
- - [RoleMiningSessionResponseCreatedBy](sailpoint/v2024/docs/RoleMiningSessionResponseCreatedBy.md)
- - [RoleMiningSessionScope](sailpoint/v2024/docs/RoleMiningSessionScope.md)
- - [RoleMiningSessionScopingMethod](sailpoint/v2024/docs/RoleMiningSessionScopingMethod.md)
- - [RoleMiningSessionState](sailpoint/v2024/docs/RoleMiningSessionState.md)
- - [RoleMiningSessionStatus](sailpoint/v2024/docs/RoleMiningSessionStatus.md)
- - [RoleSummary](sailpoint/v2024/docs/RoleSummary.md)
- - [RoleTargetDto](sailpoint/v2024/docs/RoleTargetDto.md)
- - [SavedSearch](sailpoint/v2024/docs/SavedSearch.md)
- - [SavedSearchComplete](sailpoint/v2024/docs/SavedSearchComplete.md)
- - [SavedSearchCompleteSearchResults](sailpoint/v2024/docs/SavedSearchCompleteSearchResults.md)
- - [SavedSearchCompleteSearchResultsAccount](sailpoint/v2024/docs/SavedSearchCompleteSearchResultsAccount.md)
- - [SavedSearchCompleteSearchResultsEntitlement](sailpoint/v2024/docs/SavedSearchCompleteSearchResultsEntitlement.md)
- - [SavedSearchCompleteSearchResultsIdentity](sailpoint/v2024/docs/SavedSearchCompleteSearchResultsIdentity.md)
- - [SavedSearchDetail](sailpoint/v2024/docs/SavedSearchDetail.md)
- - [SavedSearchDetailFilters](sailpoint/v2024/docs/SavedSearchDetailFilters.md)
- - [SavedSearchName](sailpoint/v2024/docs/SavedSearchName.md)
- - [Schedule](sailpoint/v2024/docs/Schedule.md)
- - [Schedule1](sailpoint/v2024/docs/Schedule1.md)
- - [Schedule2](sailpoint/v2024/docs/Schedule2.md)
- - [Schedule2Days](sailpoint/v2024/docs/Schedule2Days.md)
- - [Schedule2Hours](sailpoint/v2024/docs/Schedule2Hours.md)
- - [Schedule2Months](sailpoint/v2024/docs/Schedule2Months.md)
- - [ScheduleDays](sailpoint/v2024/docs/ScheduleDays.md)
- - [ScheduleHours](sailpoint/v2024/docs/ScheduleHours.md)
- - [ScheduleMonths](sailpoint/v2024/docs/ScheduleMonths.md)
- - [ScheduleType](sailpoint/v2024/docs/ScheduleType.md)
- - [ScheduledActionPayload](sailpoint/v2024/docs/ScheduledActionPayload.md)
- - [ScheduledActionPayloadContent](sailpoint/v2024/docs/ScheduledActionPayloadContent.md)
- - [ScheduledActionPayloadContentBackupOptions](sailpoint/v2024/docs/ScheduledActionPayloadContentBackupOptions.md)
- - [ScheduledActionResponse](sailpoint/v2024/docs/ScheduledActionResponse.md)
- - [ScheduledActionResponseContent](sailpoint/v2024/docs/ScheduledActionResponseContent.md)
- - [ScheduledActionResponseContentBackupOptions](sailpoint/v2024/docs/ScheduledActionResponseContentBackupOptions.md)
- - [ScheduledActionResponseContentBackupOptionsObjectOptionsValue](sailpoint/v2024/docs/ScheduledActionResponseContentBackupOptionsObjectOptionsValue.md)
- - [ScheduledAttributes](sailpoint/v2024/docs/ScheduledAttributes.md)
- - [ScheduledSearch](sailpoint/v2024/docs/ScheduledSearch.md)
- - [ScheduledSearchAllOfOwner](sailpoint/v2024/docs/ScheduledSearchAllOfOwner.md)
- - [ScheduledSearchName](sailpoint/v2024/docs/ScheduledSearchName.md)
- - [Scope](sailpoint/v2024/docs/Scope.md)
- - [ScopeType](sailpoint/v2024/docs/ScopeType.md)
- - [ScopeVisibilityType](sailpoint/v2024/docs/ScopeVisibilityType.md)
- - [Search](sailpoint/v2024/docs/Search.md)
- - [SearchAggregationSpecification](sailpoint/v2024/docs/SearchAggregationSpecification.md)
- - [SearchArguments](sailpoint/v2024/docs/SearchArguments.md)
- - [SearchAttributeConfig](sailpoint/v2024/docs/SearchAttributeConfig.md)
- - [SearchCriteria](sailpoint/v2024/docs/SearchCriteria.md)
- - [SearchCriteriaFiltersValue](sailpoint/v2024/docs/SearchCriteriaFiltersValue.md)
- - [SearchCriteriaFiltersValueRange](sailpoint/v2024/docs/SearchCriteriaFiltersValueRange.md)
- - [SearchCriteriaFiltersValueRangeLower](sailpoint/v2024/docs/SearchCriteriaFiltersValueRangeLower.md)
- - [SearchCriteriaFiltersValueRangeUpper](sailpoint/v2024/docs/SearchCriteriaFiltersValueRangeUpper.md)
- - [SearchCriteriaQuery](sailpoint/v2024/docs/SearchCriteriaQuery.md)
- - [SearchCriteriaTextQuery](sailpoint/v2024/docs/SearchCriteriaTextQuery.md)
- - [SearchExportReportArguments](sailpoint/v2024/docs/SearchExportReportArguments.md)
- - [SearchFilterType](sailpoint/v2024/docs/SearchFilterType.md)
- - [SearchFormDefinitionsByTenant400Response](sailpoint/v2024/docs/SearchFormDefinitionsByTenant400Response.md)
- - [SearchSchedule](sailpoint/v2024/docs/SearchSchedule.md)
- - [SearchScheduleRecipientsInner](sailpoint/v2024/docs/SearchScheduleRecipientsInner.md)
- - [SectionDetails](sailpoint/v2024/docs/SectionDetails.md)
- - [Sed](sailpoint/v2024/docs/Sed.md)
- - [SedApproval](sailpoint/v2024/docs/SedApproval.md)
- - [SedApprovalStatus](sailpoint/v2024/docs/SedApprovalStatus.md)
- - [SedAssignee](sailpoint/v2024/docs/SedAssignee.md)
- - [SedAssignment](sailpoint/v2024/docs/SedAssignment.md)
- - [SedAssignmentResponse](sailpoint/v2024/docs/SedAssignmentResponse.md)
- - [SedBatchRecord](sailpoint/v2024/docs/SedBatchRecord.md)
- - [SedBatchRequest](sailpoint/v2024/docs/SedBatchRequest.md)
- - [SedBatchResponse](sailpoint/v2024/docs/SedBatchResponse.md)
- - [SedBatchStats](sailpoint/v2024/docs/SedBatchStats.md)
- - [SedPatch](sailpoint/v2024/docs/SedPatch.md)
- - [Segment](sailpoint/v2024/docs/Segment.md)
- - [SegmentVisibilityCriteria](sailpoint/v2024/docs/SegmentVisibilityCriteria.md)
- - [Selector](sailpoint/v2024/docs/Selector.md)
- - [SelectorAccountMatchConfig](sailpoint/v2024/docs/SelectorAccountMatchConfig.md)
- - [SelectorAccountMatchConfigMatchExpression](sailpoint/v2024/docs/SelectorAccountMatchConfigMatchExpression.md)
- - [SelfImportExportDto](sailpoint/v2024/docs/SelfImportExportDto.md)
- - [SendAccountVerificationRequest](sailpoint/v2024/docs/SendAccountVerificationRequest.md)
- - [SendClassifyMachineAccount200Response](sailpoint/v2024/docs/SendClassifyMachineAccount200Response.md)
- - [SendTestNotificationRequestDto](sailpoint/v2024/docs/SendTestNotificationRequestDto.md)
- - [ServiceDeskIntegrationDto](sailpoint/v2024/docs/ServiceDeskIntegrationDto.md)
- - [ServiceDeskIntegrationTemplateDto](sailpoint/v2024/docs/ServiceDeskIntegrationTemplateDto.md)
- - [ServiceDeskIntegrationTemplateType](sailpoint/v2024/docs/ServiceDeskIntegrationTemplateType.md)
- - [ServiceDeskSource](sailpoint/v2024/docs/ServiceDeskSource.md)
- - [ServiceProviderConfiguration](sailpoint/v2024/docs/ServiceProviderConfiguration.md)
- - [ServiceProviderConfigurationFederationProtocolDetailsInner](sailpoint/v2024/docs/ServiceProviderConfigurationFederationProtocolDetailsInner.md)
- - [SessionConfiguration](sailpoint/v2024/docs/SessionConfiguration.md)
- - [SetIcon200Response](sailpoint/v2024/docs/SetIcon200Response.md)
- - [SetIconRequest](sailpoint/v2024/docs/SetIconRequest.md)
- - [SetLifecycleState200Response](sailpoint/v2024/docs/SetLifecycleState200Response.md)
- - [SetLifecycleStateRequest](sailpoint/v2024/docs/SetLifecycleStateRequest.md)
- - [SimIntegrationDetails](sailpoint/v2024/docs/SimIntegrationDetails.md)
- - [SimIntegrationDetailsAllOfBeforeProvisioningRule](sailpoint/v2024/docs/SimIntegrationDetailsAllOfBeforeProvisioningRule.md)
- - [SlimCampaign](sailpoint/v2024/docs/SlimCampaign.md)
- - [SlimDiscoveredApplications](sailpoint/v2024/docs/SlimDiscoveredApplications.md)
- - [SodExemptCriteria](sailpoint/v2024/docs/SodExemptCriteria.md)
- - [SodPolicy](sailpoint/v2024/docs/SodPolicy.md)
- - [SodPolicyConflictingAccessCriteria](sailpoint/v2024/docs/SodPolicyConflictingAccessCriteria.md)
- - [SodPolicyDto](sailpoint/v2024/docs/SodPolicyDto.md)
- - [SodPolicyOwnerRef](sailpoint/v2024/docs/SodPolicyOwnerRef.md)
- - [SodPolicySchedule](sailpoint/v2024/docs/SodPolicySchedule.md)
- - [SodRecipient](sailpoint/v2024/docs/SodRecipient.md)
- - [SodReportResultDto](sailpoint/v2024/docs/SodReportResultDto.md)
- - [SodViolationCheck](sailpoint/v2024/docs/SodViolationCheck.md)
- - [SodViolationCheckResult](sailpoint/v2024/docs/SodViolationCheckResult.md)
- - [SodViolationContext](sailpoint/v2024/docs/SodViolationContext.md)
- - [SodViolationContextCheckCompleted](sailpoint/v2024/docs/SodViolationContextCheckCompleted.md)
- - [SodViolationContextConflictingAccessCriteria](sailpoint/v2024/docs/SodViolationContextConflictingAccessCriteria.md)
- - [SodViolationContextConflictingAccessCriteriaLeftCriteria](sailpoint/v2024/docs/SodViolationContextConflictingAccessCriteriaLeftCriteria.md)
- - [Source](sailpoint/v2024/docs/Source.md)
- - [Source1](sailpoint/v2024/docs/Source1.md)
- - [SourceAccountCorrelationConfig](sailpoint/v2024/docs/SourceAccountCorrelationConfig.md)
- - [SourceAccountCorrelationRule](sailpoint/v2024/docs/SourceAccountCorrelationRule.md)
- - [SourceAccountCreated](sailpoint/v2024/docs/SourceAccountCreated.md)
- - [SourceAccountDeleted](sailpoint/v2024/docs/SourceAccountDeleted.md)
- - [SourceAccountSelections](sailpoint/v2024/docs/SourceAccountSelections.md)
- - [SourceAccountUpdated](sailpoint/v2024/docs/SourceAccountUpdated.md)
- - [SourceApp](sailpoint/v2024/docs/SourceApp.md)
- - [SourceAppAccountSource](sailpoint/v2024/docs/SourceAppAccountSource.md)
- - [SourceAppBulkUpdateRequest](sailpoint/v2024/docs/SourceAppBulkUpdateRequest.md)
- - [SourceAppCreateDto](sailpoint/v2024/docs/SourceAppCreateDto.md)
- - [SourceAppCreateDtoAccountSource](sailpoint/v2024/docs/SourceAppCreateDtoAccountSource.md)
- - [SourceAppPatchDto](sailpoint/v2024/docs/SourceAppPatchDto.md)
- - [SourceBeforeProvisioningRule](sailpoint/v2024/docs/SourceBeforeProvisioningRule.md)
- - [SourceCluster](sailpoint/v2024/docs/SourceCluster.md)
- - [SourceClusterDto](sailpoint/v2024/docs/SourceClusterDto.md)
- - [SourceCode](sailpoint/v2024/docs/SourceCode.md)
- - [SourceConnectionsDto](sailpoint/v2024/docs/SourceConnectionsDto.md)
- - [SourceCreated](sailpoint/v2024/docs/SourceCreated.md)
- - [SourceCreatedActor](sailpoint/v2024/docs/SourceCreatedActor.md)
- - [SourceCreationErrors](sailpoint/v2024/docs/SourceCreationErrors.md)
- - [SourceDeleted](sailpoint/v2024/docs/SourceDeleted.md)
- - [SourceDeletedActor](sailpoint/v2024/docs/SourceDeletedActor.md)
- - [SourceEntitlementRequestConfig](sailpoint/v2024/docs/SourceEntitlementRequestConfig.md)
- - [SourceHealthDto](sailpoint/v2024/docs/SourceHealthDto.md)
- - [SourceItemRef](sailpoint/v2024/docs/SourceItemRef.md)
- - [SourceManagementWorkgroup](sailpoint/v2024/docs/SourceManagementWorkgroup.md)
- - [SourceManagerCorrelationMapping](sailpoint/v2024/docs/SourceManagerCorrelationMapping.md)
- - [SourceManagerCorrelationRule](sailpoint/v2024/docs/SourceManagerCorrelationRule.md)
- - [SourceOwner](sailpoint/v2024/docs/SourceOwner.md)
- - [SourcePasswordPoliciesInner](sailpoint/v2024/docs/SourcePasswordPoliciesInner.md)
- - [SourceSchedule](sailpoint/v2024/docs/SourceSchedule.md)
- - [SourceSchemasInner](sailpoint/v2024/docs/SourceSchemasInner.md)
- - [SourceSyncJob](sailpoint/v2024/docs/SourceSyncJob.md)
- - [SourceSyncPayload](sailpoint/v2024/docs/SourceSyncPayload.md)
- - [SourceUpdated](sailpoint/v2024/docs/SourceUpdated.md)
- - [SourceUpdatedActor](sailpoint/v2024/docs/SourceUpdatedActor.md)
- - [SourceUsage](sailpoint/v2024/docs/SourceUsage.md)
- - [SourceUsageStatus](sailpoint/v2024/docs/SourceUsageStatus.md)
- - [SpConfigExportJob](sailpoint/v2024/docs/SpConfigExportJob.md)
- - [SpConfigExportJobStatus](sailpoint/v2024/docs/SpConfigExportJobStatus.md)
- - [SpConfigExportResults](sailpoint/v2024/docs/SpConfigExportResults.md)
- - [SpConfigImportJobStatus](sailpoint/v2024/docs/SpConfigImportJobStatus.md)
- - [SpConfigImportResults](sailpoint/v2024/docs/SpConfigImportResults.md)
- - [SpConfigJob](sailpoint/v2024/docs/SpConfigJob.md)
- - [SpConfigMessage](sailpoint/v2024/docs/SpConfigMessage.md)
- - [SpConfigMessage1](sailpoint/v2024/docs/SpConfigMessage1.md)
- - [SpConfigObject](sailpoint/v2024/docs/SpConfigObject.md)
- - [SpConfigRule](sailpoint/v2024/docs/SpConfigRule.md)
- - [SpConfigRuleValue](sailpoint/v2024/docs/SpConfigRuleValue.md)
- - [SpConfigRules](sailpoint/v2024/docs/SpConfigRules.md)
- - [SpDetails](sailpoint/v2024/docs/SpDetails.md)
- - [StandardLevel](sailpoint/v2024/docs/StandardLevel.md)
- - [StartInvocationInput](sailpoint/v2024/docs/StartInvocationInput.md)
- - [StatusResponse](sailpoint/v2024/docs/StatusResponse.md)
- - [SubSearchAggregationSpecification](sailpoint/v2024/docs/SubSearchAggregationSpecification.md)
- - [Subscription](sailpoint/v2024/docs/Subscription.md)
- - [SubscriptionPatchRequestInner](sailpoint/v2024/docs/SubscriptionPatchRequestInner.md)
- - [SubscriptionPatchRequestInnerValue](sailpoint/v2024/docs/SubscriptionPatchRequestInnerValue.md)
- - [SubscriptionPatchRequestInnerValueAnyOfInner](sailpoint/v2024/docs/SubscriptionPatchRequestInnerValueAnyOfInner.md)
- - [SubscriptionPostRequest](sailpoint/v2024/docs/SubscriptionPostRequest.md)
- - [SubscriptionPutRequest](sailpoint/v2024/docs/SubscriptionPutRequest.md)
- - [SubscriptionType](sailpoint/v2024/docs/SubscriptionType.md)
- - [TaggedObject](sailpoint/v2024/docs/TaggedObject.md)
- - [TaggedObjectDto](sailpoint/v2024/docs/TaggedObjectDto.md)
- - [Target](sailpoint/v2024/docs/Target.md)
- - [TaskDefinitionSummary](sailpoint/v2024/docs/TaskDefinitionSummary.md)
- - [TaskResultDetails](sailpoint/v2024/docs/TaskResultDetails.md)
- - [TaskResultDetailsMessagesInner](sailpoint/v2024/docs/TaskResultDetailsMessagesInner.md)
- - [TaskResultDetailsReturnsInner](sailpoint/v2024/docs/TaskResultDetailsReturnsInner.md)
- - [TaskResultDto](sailpoint/v2024/docs/TaskResultDto.md)
- - [TaskResultResponse](sailpoint/v2024/docs/TaskResultResponse.md)
- - [TaskResultSimplified](sailpoint/v2024/docs/TaskResultSimplified.md)
- - [TaskReturnDetails](sailpoint/v2024/docs/TaskReturnDetails.md)
- - [TaskStatus](sailpoint/v2024/docs/TaskStatus.md)
- - [TaskStatusMessage](sailpoint/v2024/docs/TaskStatusMessage.md)
- - [TaskStatusMessageParametersInner](sailpoint/v2024/docs/TaskStatusMessageParametersInner.md)
- - [TemplateBulkDeleteDto](sailpoint/v2024/docs/TemplateBulkDeleteDto.md)
- - [TemplateDto](sailpoint/v2024/docs/TemplateDto.md)
- - [TemplateDtoDefault](sailpoint/v2024/docs/TemplateDtoDefault.md)
- - [TemplateSlack](sailpoint/v2024/docs/TemplateSlack.md)
- - [TemplateSlackAutoApprovalData](sailpoint/v2024/docs/TemplateSlackAutoApprovalData.md)
- - [TemplateSlackCustomFields](sailpoint/v2024/docs/TemplateSlackCustomFields.md)
- - [TemplateTeams](sailpoint/v2024/docs/TemplateTeams.md)
- - [Tenant](sailpoint/v2024/docs/Tenant.md)
- - [TenantConfigurationDetails](sailpoint/v2024/docs/TenantConfigurationDetails.md)
- - [TenantConfigurationRequest](sailpoint/v2024/docs/TenantConfigurationRequest.md)
- - [TenantConfigurationResponse](sailpoint/v2024/docs/TenantConfigurationResponse.md)
- - [TenantUiMetadataItemResponse](sailpoint/v2024/docs/TenantUiMetadataItemResponse.md)
- - [TenantUiMetadataItemUpdateRequest](sailpoint/v2024/docs/TenantUiMetadataItemUpdateRequest.md)
- - [TestExternalExecuteWorkflow200Response](sailpoint/v2024/docs/TestExternalExecuteWorkflow200Response.md)
- - [TestExternalExecuteWorkflowRequest](sailpoint/v2024/docs/TestExternalExecuteWorkflowRequest.md)
- - [TestInvocation](sailpoint/v2024/docs/TestInvocation.md)
- - [TestSourceConnectionMultihost200Response](sailpoint/v2024/docs/TestSourceConnectionMultihost200Response.md)
- - [TestWorkflow200Response](sailpoint/v2024/docs/TestWorkflow200Response.md)
- - [TestWorkflowRequest](sailpoint/v2024/docs/TestWorkflowRequest.md)
- - [TextQuery](sailpoint/v2024/docs/TextQuery.md)
- - [Transform](sailpoint/v2024/docs/Transform.md)
- - [TransformDefinition](sailpoint/v2024/docs/TransformDefinition.md)
- - [TransformRead](sailpoint/v2024/docs/TransformRead.md)
- - [TranslationMessage](sailpoint/v2024/docs/TranslationMessage.md)
- - [Trigger](sailpoint/v2024/docs/Trigger.md)
- - [TriggerExampleInput](sailpoint/v2024/docs/TriggerExampleInput.md)
- - [TriggerExampleOutput](sailpoint/v2024/docs/TriggerExampleOutput.md)
- - [TriggerType](sailpoint/v2024/docs/TriggerType.md)
- - [TypeAheadQuery](sailpoint/v2024/docs/TypeAheadQuery.md)
- - [TypedReference](sailpoint/v2024/docs/TypedReference.md)
- - [UncorrelatedAccountsReportArguments](sailpoint/v2024/docs/UncorrelatedAccountsReportArguments.md)
- - [UpdateAccessProfilesInBulk412Response](sailpoint/v2024/docs/UpdateAccessProfilesInBulk412Response.md)
- - [UpdateDetail](sailpoint/v2024/docs/UpdateDetail.md)
- - [UpdateMultiHostSourcesRequestInner](sailpoint/v2024/docs/UpdateMultiHostSourcesRequestInner.md)
- - [UpdateMultiHostSourcesRequestInnerValue](sailpoint/v2024/docs/UpdateMultiHostSourcesRequestInnerValue.md)
- - [UsageType](sailpoint/v2024/docs/UsageType.md)
- - [UserApp](sailpoint/v2024/docs/UserApp.md)
- - [UserAppAccount](sailpoint/v2024/docs/UserAppAccount.md)
- - [UserAppOwner](sailpoint/v2024/docs/UserAppOwner.md)
- - [UserAppSource](sailpoint/v2024/docs/UserAppSource.md)
- - [UserAppSourceApp](sailpoint/v2024/docs/UserAppSourceApp.md)
- - [V3ConnectorDto](sailpoint/v2024/docs/V3ConnectorDto.md)
- - [V3CreateConnectorDto](sailpoint/v2024/docs/V3CreateConnectorDto.md)
- - [VAClusterStatusChangeEvent](sailpoint/v2024/docs/VAClusterStatusChangeEvent.md)
- - [VAClusterStatusChangeEventApplication](sailpoint/v2024/docs/VAClusterStatusChangeEventApplication.md)
- - [VAClusterStatusChangeEventHealthCheckResult](sailpoint/v2024/docs/VAClusterStatusChangeEventHealthCheckResult.md)
- - [VAClusterStatusChangeEventPreviousHealthCheckResult](sailpoint/v2024/docs/VAClusterStatusChangeEventPreviousHealthCheckResult.md)
- - [ValidateFilterInputDto](sailpoint/v2024/docs/ValidateFilterInputDto.md)
- - [ValidateFilterOutputDto](sailpoint/v2024/docs/ValidateFilterOutputDto.md)
- - [Value](sailpoint/v2024/docs/Value.md)
- - [VendorConnectorMapping](sailpoint/v2024/docs/VendorConnectorMapping.md)
- - [VendorConnectorMappingDeletedAt](sailpoint/v2024/docs/VendorConnectorMappingDeletedAt.md)
- - [VendorConnectorMappingDeletedBy](sailpoint/v2024/docs/VendorConnectorMappingDeletedBy.md)
- - [VendorConnectorMappingUpdatedAt](sailpoint/v2024/docs/VendorConnectorMappingUpdatedAt.md)
- - [VendorConnectorMappingUpdatedBy](sailpoint/v2024/docs/VendorConnectorMappingUpdatedBy.md)
- - [ViolationContext](sailpoint/v2024/docs/ViolationContext.md)
- - [ViolationContextPolicy](sailpoint/v2024/docs/ViolationContextPolicy.md)
- - [ViolationOwnerAssignmentConfig](sailpoint/v2024/docs/ViolationOwnerAssignmentConfig.md)
- - [ViolationOwnerAssignmentConfigOwnerRef](sailpoint/v2024/docs/ViolationOwnerAssignmentConfigOwnerRef.md)
- - [ViolationPrediction](sailpoint/v2024/docs/ViolationPrediction.md)
- - [VisibilityCriteria](sailpoint/v2024/docs/VisibilityCriteria.md)
- - [WorkItemForward](sailpoint/v2024/docs/WorkItemForward.md)
- - [WorkItemState](sailpoint/v2024/docs/WorkItemState.md)
- - [WorkItemStateManualWorkItems](sailpoint/v2024/docs/WorkItemStateManualWorkItems.md)
- - [WorkItemTypeManualWorkItems](sailpoint/v2024/docs/WorkItemTypeManualWorkItems.md)
- - [WorkItems](sailpoint/v2024/docs/WorkItems.md)
- - [WorkItemsCount](sailpoint/v2024/docs/WorkItemsCount.md)
- - [WorkItemsForm](sailpoint/v2024/docs/WorkItemsForm.md)
- - [WorkItemsSummary](sailpoint/v2024/docs/WorkItemsSummary.md)
- - [Workflow](sailpoint/v2024/docs/Workflow.md)
- - [WorkflowAllOfCreator](sailpoint/v2024/docs/WorkflowAllOfCreator.md)
- - [WorkflowBody](sailpoint/v2024/docs/WorkflowBody.md)
- - [WorkflowBodyOwner](sailpoint/v2024/docs/WorkflowBodyOwner.md)
- - [WorkflowDefinition](sailpoint/v2024/docs/WorkflowDefinition.md)
- - [WorkflowExecution](sailpoint/v2024/docs/WorkflowExecution.md)
- - [WorkflowExecutionEvent](sailpoint/v2024/docs/WorkflowExecutionEvent.md)
- - [WorkflowLibraryAction](sailpoint/v2024/docs/WorkflowLibraryAction.md)
- - [WorkflowLibraryActionExampleOutput](sailpoint/v2024/docs/WorkflowLibraryActionExampleOutput.md)
- - [WorkflowLibraryFormFields](sailpoint/v2024/docs/WorkflowLibraryFormFields.md)
- - [WorkflowLibraryOperator](sailpoint/v2024/docs/WorkflowLibraryOperator.md)
- - [WorkflowLibraryTrigger](sailpoint/v2024/docs/WorkflowLibraryTrigger.md)
- - [WorkflowModifiedBy](sailpoint/v2024/docs/WorkflowModifiedBy.md)
- - [WorkflowOAuthClient](sailpoint/v2024/docs/WorkflowOAuthClient.md)
- - [WorkflowTrigger](sailpoint/v2024/docs/WorkflowTrigger.md)
- - [WorkflowTriggerAttributes](sailpoint/v2024/docs/WorkflowTriggerAttributes.md)
- - [WorkgroupBulkDeleteRequest](sailpoint/v2024/docs/WorkgroupBulkDeleteRequest.md)
- - [WorkgroupConnectionDto](sailpoint/v2024/docs/WorkgroupConnectionDto.md)
- - [WorkgroupConnectionDtoObject](sailpoint/v2024/docs/WorkgroupConnectionDtoObject.md)
- - [WorkgroupDeleteItem](sailpoint/v2024/docs/WorkgroupDeleteItem.md)
- - [WorkgroupDto](sailpoint/v2024/docs/WorkgroupDto.md)
- - [WorkgroupDtoOwner](sailpoint/v2024/docs/WorkgroupDtoOwner.md)
- - [WorkgroupMemberAddItem](sailpoint/v2024/docs/WorkgroupMemberAddItem.md)
- - [WorkgroupMemberDeleteItem](sailpoint/v2024/docs/WorkgroupMemberDeleteItem.md)
+ - [Access](sailpoint\v2024/docs/Access.md)
+ - [AccessApps](sailpoint\v2024/docs/AccessApps.md)
+ - [AccessAppsOwner](sailpoint\v2024/docs/AccessAppsOwner.md)
+ - [AccessConstraint](sailpoint\v2024/docs/AccessConstraint.md)
+ - [AccessCriteria](sailpoint\v2024/docs/AccessCriteria.md)
+ - [AccessCriteriaCriteriaListInner](sailpoint\v2024/docs/AccessCriteriaCriteriaListInner.md)
+ - [AccessItemAccessProfileResponse](sailpoint\v2024/docs/AccessItemAccessProfileResponse.md)
+ - [AccessItemAccountResponse](sailpoint\v2024/docs/AccessItemAccountResponse.md)
+ - [AccessItemAppResponse](sailpoint\v2024/docs/AccessItemAppResponse.md)
+ - [AccessItemApproverDto](sailpoint\v2024/docs/AccessItemApproverDto.md)
+ - [AccessItemAssociated](sailpoint\v2024/docs/AccessItemAssociated.md)
+ - [AccessItemAssociatedAccessItem](sailpoint\v2024/docs/AccessItemAssociatedAccessItem.md)
+ - [AccessItemDiff](sailpoint\v2024/docs/AccessItemDiff.md)
+ - [AccessItemEntitlementResponse](sailpoint\v2024/docs/AccessItemEntitlementResponse.md)
+ - [AccessItemRef](sailpoint\v2024/docs/AccessItemRef.md)
+ - [AccessItemRemoved](sailpoint\v2024/docs/AccessItemRemoved.md)
+ - [AccessItemRequestedFor](sailpoint\v2024/docs/AccessItemRequestedFor.md)
+ - [AccessItemRequestedForDto](sailpoint\v2024/docs/AccessItemRequestedForDto.md)
+ - [AccessItemRequester](sailpoint\v2024/docs/AccessItemRequester.md)
+ - [AccessItemRequesterDto](sailpoint\v2024/docs/AccessItemRequesterDto.md)
+ - [AccessItemReviewedBy](sailpoint\v2024/docs/AccessItemReviewedBy.md)
+ - [AccessItemRoleResponse](sailpoint\v2024/docs/AccessItemRoleResponse.md)
+ - [AccessModelMetadata](sailpoint\v2024/docs/AccessModelMetadata.md)
+ - [AccessModelMetadataValuesInner](sailpoint\v2024/docs/AccessModelMetadataValuesInner.md)
+ - [AccessProfile](sailpoint\v2024/docs/AccessProfile.md)
+ - [AccessProfileApprovalScheme](sailpoint\v2024/docs/AccessProfileApprovalScheme.md)
+ - [AccessProfileBulkDeleteRequest](sailpoint\v2024/docs/AccessProfileBulkDeleteRequest.md)
+ - [AccessProfileBulkDeleteResponse](sailpoint\v2024/docs/AccessProfileBulkDeleteResponse.md)
+ - [AccessProfileBulkUpdateRequestInner](sailpoint\v2024/docs/AccessProfileBulkUpdateRequestInner.md)
+ - [AccessProfileDetails](sailpoint\v2024/docs/AccessProfileDetails.md)
+ - [AccessProfileDetailsAccountSelector](sailpoint\v2024/docs/AccessProfileDetailsAccountSelector.md)
+ - [AccessProfileDocument](sailpoint\v2024/docs/AccessProfileDocument.md)
+ - [AccessProfileDocumentAllOfSource](sailpoint\v2024/docs/AccessProfileDocumentAllOfSource.md)
+ - [AccessProfileEntitlement](sailpoint\v2024/docs/AccessProfileEntitlement.md)
+ - [AccessProfileRef](sailpoint\v2024/docs/AccessProfileRef.md)
+ - [AccessProfileRole](sailpoint\v2024/docs/AccessProfileRole.md)
+ - [AccessProfileSourceRef](sailpoint\v2024/docs/AccessProfileSourceRef.md)
+ - [AccessProfileSummary](sailpoint\v2024/docs/AccessProfileSummary.md)
+ - [AccessProfileUpdateItem](sailpoint\v2024/docs/AccessProfileUpdateItem.md)
+ - [AccessProfileUsage](sailpoint\v2024/docs/AccessProfileUsage.md)
+ - [AccessProfileUsageUsedByInner](sailpoint\v2024/docs/AccessProfileUsageUsedByInner.md)
+ - [AccessRecommendationMessage](sailpoint\v2024/docs/AccessRecommendationMessage.md)
+ - [AccessRequest](sailpoint\v2024/docs/AccessRequest.md)
+ - [AccessRequestAdminItemStatus](sailpoint\v2024/docs/AccessRequestAdminItemStatus.md)
+ - [AccessRequestApproversListResponse](sailpoint\v2024/docs/AccessRequestApproversListResponse.md)
+ - [AccessRequestConfig](sailpoint\v2024/docs/AccessRequestConfig.md)
+ - [AccessRequestContext](sailpoint\v2024/docs/AccessRequestContext.md)
+ - [AccessRequestDynamicApprover](sailpoint\v2024/docs/AccessRequestDynamicApprover.md)
+ - [AccessRequestDynamicApprover1](sailpoint\v2024/docs/AccessRequestDynamicApprover1.md)
+ - [AccessRequestDynamicApproverRequestedItemsInner](sailpoint\v2024/docs/AccessRequestDynamicApproverRequestedItemsInner.md)
+ - [AccessRequestItem](sailpoint\v2024/docs/AccessRequestItem.md)
+ - [AccessRequestItemResponse](sailpoint\v2024/docs/AccessRequestItemResponse.md)
+ - [AccessRequestPhases](sailpoint\v2024/docs/AccessRequestPhases.md)
+ - [AccessRequestPostApproval](sailpoint\v2024/docs/AccessRequestPostApproval.md)
+ - [AccessRequestPostApprovalRequestedItemsStatusInner](sailpoint\v2024/docs/AccessRequestPostApprovalRequestedItemsStatusInner.md)
+ - [AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner](sailpoint\v2024/docs/AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner.md)
+ - [AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover](sailpoint\v2024/docs/AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover.md)
+ - [AccessRequestPreApproval](sailpoint\v2024/docs/AccessRequestPreApproval.md)
+ - [AccessRequestPreApproval1](sailpoint\v2024/docs/AccessRequestPreApproval1.md)
+ - [AccessRequestPreApprovalRequestedItemsInner](sailpoint\v2024/docs/AccessRequestPreApprovalRequestedItemsInner.md)
+ - [AccessRequestRecommendationActionItemDto](sailpoint\v2024/docs/AccessRequestRecommendationActionItemDto.md)
+ - [AccessRequestRecommendationActionItemResponseDto](sailpoint\v2024/docs/AccessRequestRecommendationActionItemResponseDto.md)
+ - [AccessRequestRecommendationConfigDto](sailpoint\v2024/docs/AccessRequestRecommendationConfigDto.md)
+ - [AccessRequestRecommendationItem](sailpoint\v2024/docs/AccessRequestRecommendationItem.md)
+ - [AccessRequestRecommendationItemDetail](sailpoint\v2024/docs/AccessRequestRecommendationItemDetail.md)
+ - [AccessRequestRecommendationItemDetailAccess](sailpoint\v2024/docs/AccessRequestRecommendationItemDetailAccess.md)
+ - [AccessRequestRecommendationItemType](sailpoint\v2024/docs/AccessRequestRecommendationItemType.md)
+ - [AccessRequestResponse](sailpoint\v2024/docs/AccessRequestResponse.md)
+ - [AccessRequestResponse1](sailpoint\v2024/docs/AccessRequestResponse1.md)
+ - [AccessRequestTracking](sailpoint\v2024/docs/AccessRequestTracking.md)
+ - [AccessRequestType](sailpoint\v2024/docs/AccessRequestType.md)
+ - [AccessRequested](sailpoint\v2024/docs/AccessRequested.md)
+ - [AccessReviewItem](sailpoint\v2024/docs/AccessReviewItem.md)
+ - [AccessReviewReassignment](sailpoint\v2024/docs/AccessReviewReassignment.md)
+ - [AccessSummary](sailpoint\v2024/docs/AccessSummary.md)
+ - [AccessSummaryAccess](sailpoint\v2024/docs/AccessSummaryAccess.md)
+ - [AccessType](sailpoint\v2024/docs/AccessType.md)
+ - [Account](sailpoint\v2024/docs/Account.md)
+ - [AccountAction](sailpoint\v2024/docs/AccountAction.md)
+ - [AccountActivity](sailpoint\v2024/docs/AccountActivity.md)
+ - [AccountActivityApprovalStatus](sailpoint\v2024/docs/AccountActivityApprovalStatus.md)
+ - [AccountActivityDocument](sailpoint\v2024/docs/AccountActivityDocument.md)
+ - [AccountActivityItem](sailpoint\v2024/docs/AccountActivityItem.md)
+ - [AccountActivityItemOperation](sailpoint\v2024/docs/AccountActivityItemOperation.md)
+ - [AccountActivitySearchedItem](sailpoint\v2024/docs/AccountActivitySearchedItem.md)
+ - [AccountAggregationCompleted](sailpoint\v2024/docs/AccountAggregationCompleted.md)
+ - [AccountAggregationCompletedSource](sailpoint\v2024/docs/AccountAggregationCompletedSource.md)
+ - [AccountAggregationCompletedStats](sailpoint\v2024/docs/AccountAggregationCompletedStats.md)
+ - [AccountAggregationStatus](sailpoint\v2024/docs/AccountAggregationStatus.md)
+ - [AccountAllOfIdentity](sailpoint\v2024/docs/AccountAllOfIdentity.md)
+ - [AccountAllOfOwnerIdentity](sailpoint\v2024/docs/AccountAllOfOwnerIdentity.md)
+ - [AccountAllOfRecommendation](sailpoint\v2024/docs/AccountAllOfRecommendation.md)
+ - [AccountAllOfSourceOwner](sailpoint\v2024/docs/AccountAllOfSourceOwner.md)
+ - [AccountAttributes](sailpoint\v2024/docs/AccountAttributes.md)
+ - [AccountAttributesChanged](sailpoint\v2024/docs/AccountAttributesChanged.md)
+ - [AccountAttributesChangedAccount](sailpoint\v2024/docs/AccountAttributesChangedAccount.md)
+ - [AccountAttributesChangedChangesInner](sailpoint\v2024/docs/AccountAttributesChangedChangesInner.md)
+ - [AccountAttributesChangedChangesInnerNewValue](sailpoint\v2024/docs/AccountAttributesChangedChangesInnerNewValue.md)
+ - [AccountAttributesChangedChangesInnerOldValue](sailpoint\v2024/docs/AccountAttributesChangedChangesInnerOldValue.md)
+ - [AccountAttributesChangedIdentity](sailpoint\v2024/docs/AccountAttributesChangedIdentity.md)
+ - [AccountAttributesChangedSource](sailpoint\v2024/docs/AccountAttributesChangedSource.md)
+ - [AccountAttributesCreate](sailpoint\v2024/docs/AccountAttributesCreate.md)
+ - [AccountAttributesCreateAttributes](sailpoint\v2024/docs/AccountAttributesCreateAttributes.md)
+ - [AccountCorrelated](sailpoint\v2024/docs/AccountCorrelated.md)
+ - [AccountCorrelatedAccount](sailpoint\v2024/docs/AccountCorrelatedAccount.md)
+ - [AccountCorrelatedIdentity](sailpoint\v2024/docs/AccountCorrelatedIdentity.md)
+ - [AccountCorrelatedSource](sailpoint\v2024/docs/AccountCorrelatedSource.md)
+ - [AccountInfoDto](sailpoint\v2024/docs/AccountInfoDto.md)
+ - [AccountInfoRef](sailpoint\v2024/docs/AccountInfoRef.md)
+ - [AccountItemRef](sailpoint\v2024/docs/AccountItemRef.md)
+ - [AccountRequest](sailpoint\v2024/docs/AccountRequest.md)
+ - [AccountRequestInfo](sailpoint\v2024/docs/AccountRequestInfo.md)
+ - [AccountRequestResult](sailpoint\v2024/docs/AccountRequestResult.md)
+ - [AccountSource](sailpoint\v2024/docs/AccountSource.md)
+ - [AccountStatusChanged](sailpoint\v2024/docs/AccountStatusChanged.md)
+ - [AccountStatusChangedAccount](sailpoint\v2024/docs/AccountStatusChangedAccount.md)
+ - [AccountStatusChangedStatusChange](sailpoint\v2024/docs/AccountStatusChangedStatusChange.md)
+ - [AccountToggleRequest](sailpoint\v2024/docs/AccountToggleRequest.md)
+ - [AccountUncorrelated](sailpoint\v2024/docs/AccountUncorrelated.md)
+ - [AccountUncorrelatedAccount](sailpoint\v2024/docs/AccountUncorrelatedAccount.md)
+ - [AccountUncorrelatedIdentity](sailpoint\v2024/docs/AccountUncorrelatedIdentity.md)
+ - [AccountUncorrelatedSource](sailpoint\v2024/docs/AccountUncorrelatedSource.md)
+ - [AccountUnlockRequest](sailpoint\v2024/docs/AccountUnlockRequest.md)
+ - [AccountUsage](sailpoint\v2024/docs/AccountUsage.md)
+ - [AccountsAsyncResult](sailpoint\v2024/docs/AccountsAsyncResult.md)
+ - [AccountsCollectedForAggregation](sailpoint\v2024/docs/AccountsCollectedForAggregation.md)
+ - [AccountsCollectedForAggregationSource](sailpoint\v2024/docs/AccountsCollectedForAggregationSource.md)
+ - [AccountsCollectedForAggregationStats](sailpoint\v2024/docs/AccountsCollectedForAggregationStats.md)
+ - [AccountsExportReportArguments](sailpoint\v2024/docs/AccountsExportReportArguments.md)
+ - [AccountsSelectionRequest](sailpoint\v2024/docs/AccountsSelectionRequest.md)
+ - [AccountsSelectionResponse](sailpoint\v2024/docs/AccountsSelectionResponse.md)
+ - [ActivateCampaignOptions](sailpoint\v2024/docs/ActivateCampaignOptions.md)
+ - [ActivityIdentity](sailpoint\v2024/docs/ActivityIdentity.md)
+ - [ActivityInsights](sailpoint\v2024/docs/ActivityInsights.md)
+ - [AdminReviewReassign](sailpoint\v2024/docs/AdminReviewReassign.md)
+ - [AdminReviewReassignReassignTo](sailpoint\v2024/docs/AdminReviewReassignReassignTo.md)
+ - [AggregationResult](sailpoint\v2024/docs/AggregationResult.md)
+ - [AggregationType](sailpoint\v2024/docs/AggregationType.md)
+ - [Aggregations](sailpoint\v2024/docs/Aggregations.md)
+ - [App](sailpoint\v2024/docs/App.md)
+ - [AppAccountDetails](sailpoint\v2024/docs/AppAccountDetails.md)
+ - [AppAccountDetailsSourceAccount](sailpoint\v2024/docs/AppAccountDetailsSourceAccount.md)
+ - [AppAllOfAccount](sailpoint\v2024/docs/AppAllOfAccount.md)
+ - [Approval](sailpoint\v2024/docs/Approval.md)
+ - [Approval1](sailpoint\v2024/docs/Approval1.md)
+ - [ApprovalBatch](sailpoint\v2024/docs/ApprovalBatch.md)
+ - [ApprovalComment](sailpoint\v2024/docs/ApprovalComment.md)
+ - [ApprovalComment1](sailpoint\v2024/docs/ApprovalComment1.md)
+ - [ApprovalComment2](sailpoint\v2024/docs/ApprovalComment2.md)
+ - [ApprovalDescription](sailpoint\v2024/docs/ApprovalDescription.md)
+ - [ApprovalForwardHistory](sailpoint\v2024/docs/ApprovalForwardHistory.md)
+ - [ApprovalIdentity](sailpoint\v2024/docs/ApprovalIdentity.md)
+ - [ApprovalInfoResponse](sailpoint\v2024/docs/ApprovalInfoResponse.md)
+ - [ApprovalItemDetails](sailpoint\v2024/docs/ApprovalItemDetails.md)
+ - [ApprovalItems](sailpoint\v2024/docs/ApprovalItems.md)
+ - [ApprovalName](sailpoint\v2024/docs/ApprovalName.md)
+ - [ApprovalReference](sailpoint\v2024/docs/ApprovalReference.md)
+ - [ApprovalReminderAndEscalationConfig](sailpoint\v2024/docs/ApprovalReminderAndEscalationConfig.md)
+ - [ApprovalScheme](sailpoint\v2024/docs/ApprovalScheme.md)
+ - [ApprovalSchemeForRole](sailpoint\v2024/docs/ApprovalSchemeForRole.md)
+ - [ApprovalStatus](sailpoint\v2024/docs/ApprovalStatus.md)
+ - [ApprovalStatusDto](sailpoint\v2024/docs/ApprovalStatusDto.md)
+ - [ApprovalStatusDtoCurrentOwner](sailpoint\v2024/docs/ApprovalStatusDtoCurrentOwner.md)
+ - [ApprovalStatusDtoOriginalOwner](sailpoint\v2024/docs/ApprovalStatusDtoOriginalOwner.md)
+ - [ApprovalSummary](sailpoint\v2024/docs/ApprovalSummary.md)
+ - [Argument](sailpoint\v2024/docs/Argument.md)
+ - [ArrayInner](sailpoint\v2024/docs/ArrayInner.md)
+ - [AssignmentContextDto](sailpoint\v2024/docs/AssignmentContextDto.md)
+ - [AttrSyncSource](sailpoint\v2024/docs/AttrSyncSource.md)
+ - [AttrSyncSourceAttributeConfig](sailpoint\v2024/docs/AttrSyncSourceAttributeConfig.md)
+ - [AttrSyncSourceConfig](sailpoint\v2024/docs/AttrSyncSourceConfig.md)
+ - [AttributeChange](sailpoint\v2024/docs/AttributeChange.md)
+ - [AttributeDTO](sailpoint\v2024/docs/AttributeDTO.md)
+ - [AttributeDTOList](sailpoint\v2024/docs/AttributeDTOList.md)
+ - [AttributeDefinition](sailpoint\v2024/docs/AttributeDefinition.md)
+ - [AttributeDefinitionSchema](sailpoint\v2024/docs/AttributeDefinitionSchema.md)
+ - [AttributeDefinitionType](sailpoint\v2024/docs/AttributeDefinitionType.md)
+ - [AttributeMappings](sailpoint\v2024/docs/AttributeMappings.md)
+ - [AttributeMappingsAllOfTarget](sailpoint\v2024/docs/AttributeMappingsAllOfTarget.md)
+ - [AttributeMappingsAllOfTransformDefinition](sailpoint\v2024/docs/AttributeMappingsAllOfTransformDefinition.md)
+ - [AttributeMappingsAllOfTransformDefinitionAttributes](sailpoint\v2024/docs/AttributeMappingsAllOfTransformDefinitionAttributes.md)
+ - [AttributeMappingsAllOfTransformDefinitionAttributesInput](sailpoint\v2024/docs/AttributeMappingsAllOfTransformDefinitionAttributesInput.md)
+ - [AttributeMappingsAllOfTransformDefinitionAttributesInputAttributes](sailpoint\v2024/docs/AttributeMappingsAllOfTransformDefinitionAttributesInputAttributes.md)
+ - [AttributeRequest](sailpoint\v2024/docs/AttributeRequest.md)
+ - [AttributeRequestValue](sailpoint\v2024/docs/AttributeRequestValue.md)
+ - [AttributeValueDTO](sailpoint\v2024/docs/AttributeValueDTO.md)
+ - [AttributesChanged](sailpoint\v2024/docs/AttributesChanged.md)
+ - [AuditDetails](sailpoint\v2024/docs/AuditDetails.md)
+ - [AuthProfile](sailpoint\v2024/docs/AuthProfile.md)
+ - [AuthProfileSummary](sailpoint\v2024/docs/AuthProfileSummary.md)
+ - [AuthUser](sailpoint\v2024/docs/AuthUser.md)
+ - [BackupOptions](sailpoint\v2024/docs/BackupOptions.md)
+ - [BackupResponse](sailpoint\v2024/docs/BackupResponse.md)
+ - [BaseAccess](sailpoint\v2024/docs/BaseAccess.md)
+ - [BaseAccessOwner](sailpoint\v2024/docs/BaseAccessOwner.md)
+ - [BaseAccessProfile](sailpoint\v2024/docs/BaseAccessProfile.md)
+ - [BaseAccount](sailpoint\v2024/docs/BaseAccount.md)
+ - [BaseCommonDto](sailpoint\v2024/docs/BaseCommonDto.md)
+ - [BaseDocument](sailpoint\v2024/docs/BaseDocument.md)
+ - [BaseEntitlement](sailpoint\v2024/docs/BaseEntitlement.md)
+ - [BaseReferenceDto](sailpoint\v2024/docs/BaseReferenceDto.md)
+ - [BaseSegment](sailpoint\v2024/docs/BaseSegment.md)
+ - [BasicAuthConfig](sailpoint\v2024/docs/BasicAuthConfig.md)
+ - [BearerTokenAuthConfig](sailpoint\v2024/docs/BearerTokenAuthConfig.md)
+ - [BeforeProvisioningRuleDto](sailpoint\v2024/docs/BeforeProvisioningRuleDto.md)
+ - [Bound](sailpoint\v2024/docs/Bound.md)
+ - [BrandingItem](sailpoint\v2024/docs/BrandingItem.md)
+ - [BrandingItemCreate](sailpoint\v2024/docs/BrandingItemCreate.md)
+ - [BucketAggregation](sailpoint\v2024/docs/BucketAggregation.md)
+ - [BucketType](sailpoint\v2024/docs/BucketType.md)
+ - [BulkAddTaggedObject](sailpoint\v2024/docs/BulkAddTaggedObject.md)
+ - [BulkApproveAccessRequest](sailpoint\v2024/docs/BulkApproveAccessRequest.md)
+ - [BulkCancelAccessRequest](sailpoint\v2024/docs/BulkCancelAccessRequest.md)
+ - [BulkIdentitiesAccountsResponse](sailpoint\v2024/docs/BulkIdentitiesAccountsResponse.md)
+ - [BulkRemoveTaggedObject](sailpoint\v2024/docs/BulkRemoveTaggedObject.md)
+ - [BulkTaggedObjectResponse](sailpoint\v2024/docs/BulkTaggedObjectResponse.md)
+ - [Campaign](sailpoint\v2024/docs/Campaign.md)
+ - [CampaignActivated](sailpoint\v2024/docs/CampaignActivated.md)
+ - [CampaignActivatedCampaign](sailpoint\v2024/docs/CampaignActivatedCampaign.md)
+ - [CampaignActivatedCampaignCampaignOwner](sailpoint\v2024/docs/CampaignActivatedCampaignCampaignOwner.md)
+ - [CampaignAlert](sailpoint\v2024/docs/CampaignAlert.md)
+ - [CampaignAllOfFilter](sailpoint\v2024/docs/CampaignAllOfFilter.md)
+ - [CampaignAllOfMachineAccountCampaignInfo](sailpoint\v2024/docs/CampaignAllOfMachineAccountCampaignInfo.md)
+ - [CampaignAllOfRoleCompositionCampaignInfo](sailpoint\v2024/docs/CampaignAllOfRoleCompositionCampaignInfo.md)
+ - [CampaignAllOfRoleCompositionCampaignInfoRemediatorRef](sailpoint\v2024/docs/CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.md)
+ - [CampaignAllOfRoleCompositionCampaignInfoReviewer](sailpoint\v2024/docs/CampaignAllOfRoleCompositionCampaignInfoReviewer.md)
+ - [CampaignAllOfSearchCampaignInfo](sailpoint\v2024/docs/CampaignAllOfSearchCampaignInfo.md)
+ - [CampaignAllOfSearchCampaignInfoReviewer](sailpoint\v2024/docs/CampaignAllOfSearchCampaignInfoReviewer.md)
+ - [CampaignAllOfSourceOwnerCampaignInfo](sailpoint\v2024/docs/CampaignAllOfSourceOwnerCampaignInfo.md)
+ - [CampaignAllOfSourcesWithOrphanEntitlements](sailpoint\v2024/docs/CampaignAllOfSourcesWithOrphanEntitlements.md)
+ - [CampaignCompleteOptions](sailpoint\v2024/docs/CampaignCompleteOptions.md)
+ - [CampaignEnded](sailpoint\v2024/docs/CampaignEnded.md)
+ - [CampaignEndedCampaign](sailpoint\v2024/docs/CampaignEndedCampaign.md)
+ - [CampaignFilterDetails](sailpoint\v2024/docs/CampaignFilterDetails.md)
+ - [CampaignFilterDetailsCriteriaListInner](sailpoint\v2024/docs/CampaignFilterDetailsCriteriaListInner.md)
+ - [CampaignGenerated](sailpoint\v2024/docs/CampaignGenerated.md)
+ - [CampaignGeneratedCampaign](sailpoint\v2024/docs/CampaignGeneratedCampaign.md)
+ - [CampaignGeneratedCampaignCampaignOwner](sailpoint\v2024/docs/CampaignGeneratedCampaignCampaignOwner.md)
+ - [CampaignReference](sailpoint\v2024/docs/CampaignReference.md)
+ - [CampaignReport](sailpoint\v2024/docs/CampaignReport.md)
+ - [CampaignReportsConfig](sailpoint\v2024/docs/CampaignReportsConfig.md)
+ - [CampaignTemplate](sailpoint\v2024/docs/CampaignTemplate.md)
+ - [CampaignTemplateOwnerRef](sailpoint\v2024/docs/CampaignTemplateOwnerRef.md)
+ - [CampaignsDeleteRequest](sailpoint\v2024/docs/CampaignsDeleteRequest.md)
+ - [CancelAccessRequest](sailpoint\v2024/docs/CancelAccessRequest.md)
+ - [CancelledRequestDetails](sailpoint\v2024/docs/CancelledRequestDetails.md)
+ - [Certification](sailpoint\v2024/docs/Certification.md)
+ - [CertificationDecision](sailpoint\v2024/docs/CertificationDecision.md)
+ - [CertificationDto](sailpoint\v2024/docs/CertificationDto.md)
+ - [CertificationIdentitySummary](sailpoint\v2024/docs/CertificationIdentitySummary.md)
+ - [CertificationPhase](sailpoint\v2024/docs/CertificationPhase.md)
+ - [CertificationReference](sailpoint\v2024/docs/CertificationReference.md)
+ - [CertificationSignedOff](sailpoint\v2024/docs/CertificationSignedOff.md)
+ - [CertificationSignedOffCertification](sailpoint\v2024/docs/CertificationSignedOffCertification.md)
+ - [CertificationTask](sailpoint\v2024/docs/CertificationTask.md)
+ - [CertifierResponse](sailpoint\v2024/docs/CertifierResponse.md)
+ - [ClientLogConfiguration](sailpoint\v2024/docs/ClientLogConfiguration.md)
+ - [ClientLogConfigurationDurationMinutes](sailpoint\v2024/docs/ClientLogConfigurationDurationMinutes.md)
+ - [ClientLogConfigurationExpiration](sailpoint\v2024/docs/ClientLogConfigurationExpiration.md)
+ - [ClientType](sailpoint\v2024/docs/ClientType.md)
+ - [CloseAccessRequest](sailpoint\v2024/docs/CloseAccessRequest.md)
+ - [ClusterManualUpgrade](sailpoint\v2024/docs/ClusterManualUpgrade.md)
+ - [ClusterManualUpgradeJobsInner](sailpoint\v2024/docs/ClusterManualUpgradeJobsInner.md)
+ - [ClusterManualUpgradeJobsInnerManagedProcessConfiguration](sailpoint\v2024/docs/ClusterManualUpgradeJobsInnerManagedProcessConfiguration.md)
+ - [ClusterManualUpgradeJobsInnerManagedProcessConfigurationCcg](sailpoint\v2024/docs/ClusterManualUpgradeJobsInnerManagedProcessConfigurationCcg.md)
+ - [ClusterManualUpgradeJobsInnerManagedProcessConfigurationCharon](sailpoint\v2024/docs/ClusterManualUpgradeJobsInnerManagedProcessConfigurationCharon.md)
+ - [ClusterManualUpgradeJobsInnerManagedProcessConfigurationOtelAgent](sailpoint\v2024/docs/ClusterManualUpgradeJobsInnerManagedProcessConfigurationOtelAgent.md)
+ - [ClusterManualUpgradeJobsInnerManagedProcessConfigurationRelay](sailpoint\v2024/docs/ClusterManualUpgradeJobsInnerManagedProcessConfigurationRelay.md)
+ - [ClusterManualUpgradeJobsInnerManagedProcessConfigurationToolbox](sailpoint\v2024/docs/ClusterManualUpgradeJobsInnerManagedProcessConfigurationToolbox.md)
+ - [Column](sailpoint\v2024/docs/Column.md)
+ - [Comment](sailpoint\v2024/docs/Comment.md)
+ - [CommentDto](sailpoint\v2024/docs/CommentDto.md)
+ - [CommentDtoAuthor](sailpoint\v2024/docs/CommentDtoAuthor.md)
+ - [CommonAccessIDStatus](sailpoint\v2024/docs/CommonAccessIDStatus.md)
+ - [CommonAccessItemAccess](sailpoint\v2024/docs/CommonAccessItemAccess.md)
+ - [CommonAccessItemRequest](sailpoint\v2024/docs/CommonAccessItemRequest.md)
+ - [CommonAccessItemResponse](sailpoint\v2024/docs/CommonAccessItemResponse.md)
+ - [CommonAccessItemState](sailpoint\v2024/docs/CommonAccessItemState.md)
+ - [CommonAccessResponse](sailpoint\v2024/docs/CommonAccessResponse.md)
+ - [CommonAccessType](sailpoint\v2024/docs/CommonAccessType.md)
+ - [CompleteInvocation](sailpoint\v2024/docs/CompleteInvocation.md)
+ - [CompleteInvocationInput](sailpoint\v2024/docs/CompleteInvocationInput.md)
+ - [CompletedApproval](sailpoint\v2024/docs/CompletedApproval.md)
+ - [CompletedApprovalPreApprovalTriggerResult](sailpoint\v2024/docs/CompletedApprovalPreApprovalTriggerResult.md)
+ - [CompletedApprovalRequesterComment](sailpoint\v2024/docs/CompletedApprovalRequesterComment.md)
+ - [CompletedApprovalReviewerComment](sailpoint\v2024/docs/CompletedApprovalReviewerComment.md)
+ - [CompletedApprovalState](sailpoint\v2024/docs/CompletedApprovalState.md)
+ - [CompletionStatus](sailpoint\v2024/docs/CompletionStatus.md)
+ - [ConditionEffect](sailpoint\v2024/docs/ConditionEffect.md)
+ - [ConditionEffectConfig](sailpoint\v2024/docs/ConditionEffectConfig.md)
+ - [ConditionRule](sailpoint\v2024/docs/ConditionRule.md)
+ - [ConfigObject](sailpoint\v2024/docs/ConfigObject.md)
+ - [ConfigType](sailpoint\v2024/docs/ConfigType.md)
+ - [ConfigTypeEnum](sailpoint\v2024/docs/ConfigTypeEnum.md)
+ - [ConfigTypeEnumCamel](sailpoint\v2024/docs/ConfigTypeEnumCamel.md)
+ - [ConfigurationDetailsResponse](sailpoint\v2024/docs/ConfigurationDetailsResponse.md)
+ - [ConfigurationItemRequest](sailpoint\v2024/docs/ConfigurationItemRequest.md)
+ - [ConfigurationItemResponse](sailpoint\v2024/docs/ConfigurationItemResponse.md)
+ - [ConfigurationResponse](sailpoint\v2024/docs/ConfigurationResponse.md)
+ - [ConflictingAccessCriteria](sailpoint\v2024/docs/ConflictingAccessCriteria.md)
+ - [ConnectedObject](sailpoint\v2024/docs/ConnectedObject.md)
+ - [ConnectedObjectType](sailpoint\v2024/docs/ConnectedObjectType.md)
+ - [ConnectorCustomizerCreateRequest](sailpoint\v2024/docs/ConnectorCustomizerCreateRequest.md)
+ - [ConnectorCustomizerCreateResponse](sailpoint\v2024/docs/ConnectorCustomizerCreateResponse.md)
+ - [ConnectorCustomizerUpdateRequest](sailpoint\v2024/docs/ConnectorCustomizerUpdateRequest.md)
+ - [ConnectorCustomizerUpdateResponse](sailpoint\v2024/docs/ConnectorCustomizerUpdateResponse.md)
+ - [ConnectorCustomizerVersionCreateResponse](sailpoint\v2024/docs/ConnectorCustomizerVersionCreateResponse.md)
+ - [ConnectorCustomizersResponse](sailpoint\v2024/docs/ConnectorCustomizersResponse.md)
+ - [ConnectorDetail](sailpoint\v2024/docs/ConnectorDetail.md)
+ - [ConnectorRuleCreateRequest](sailpoint\v2024/docs/ConnectorRuleCreateRequest.md)
+ - [ConnectorRuleCreateRequestSignature](sailpoint\v2024/docs/ConnectorRuleCreateRequestSignature.md)
+ - [ConnectorRuleResponse](sailpoint\v2024/docs/ConnectorRuleResponse.md)
+ - [ConnectorRuleUpdateRequest](sailpoint\v2024/docs/ConnectorRuleUpdateRequest.md)
+ - [ConnectorRuleValidationResponse](sailpoint\v2024/docs/ConnectorRuleValidationResponse.md)
+ - [ConnectorRuleValidationResponseDetailsInner](sailpoint\v2024/docs/ConnectorRuleValidationResponseDetailsInner.md)
+ - [ContextAttributeDto](sailpoint\v2024/docs/ContextAttributeDto.md)
+ - [ContextAttributeDtoValue](sailpoint\v2024/docs/ContextAttributeDtoValue.md)
+ - [CorrelatedGovernanceEvent](sailpoint\v2024/docs/CorrelatedGovernanceEvent.md)
+ - [CorrelationConfig](sailpoint\v2024/docs/CorrelationConfig.md)
+ - [CorrelationConfigAttributeAssignmentsInner](sailpoint\v2024/docs/CorrelationConfigAttributeAssignmentsInner.md)
+ - [CreateDomainDkim405Response](sailpoint\v2024/docs/CreateDomainDkim405Response.md)
+ - [CreateExternalExecuteWorkflow200Response](sailpoint\v2024/docs/CreateExternalExecuteWorkflow200Response.md)
+ - [CreateExternalExecuteWorkflowRequest](sailpoint\v2024/docs/CreateExternalExecuteWorkflowRequest.md)
+ - [CreateFormDefinitionFileRequestRequest](sailpoint\v2024/docs/CreateFormDefinitionFileRequestRequest.md)
+ - [CreateFormDefinitionRequest](sailpoint\v2024/docs/CreateFormDefinitionRequest.md)
+ - [CreateFormInstanceRequest](sailpoint\v2024/docs/CreateFormInstanceRequest.md)
+ - [CreateOAuthClientRequest](sailpoint\v2024/docs/CreateOAuthClientRequest.md)
+ - [CreateOAuthClientResponse](sailpoint\v2024/docs/CreateOAuthClientResponse.md)
+ - [CreatePersonalAccessTokenRequest](sailpoint\v2024/docs/CreatePersonalAccessTokenRequest.md)
+ - [CreatePersonalAccessTokenResponse](sailpoint\v2024/docs/CreatePersonalAccessTokenResponse.md)
+ - [CreateSavedSearchRequest](sailpoint\v2024/docs/CreateSavedSearchRequest.md)
+ - [CreateScheduledSearchRequest](sailpoint\v2024/docs/CreateScheduledSearchRequest.md)
+ - [CreateUploadedConfigurationRequest](sailpoint\v2024/docs/CreateUploadedConfigurationRequest.md)
+ - [CreateWorkflowRequest](sailpoint\v2024/docs/CreateWorkflowRequest.md)
+ - [CriteriaType](sailpoint\v2024/docs/CriteriaType.md)
+ - [CustomPasswordInstruction](sailpoint\v2024/docs/CustomPasswordInstruction.md)
+ - [DataAccess](sailpoint\v2024/docs/DataAccess.md)
+ - [DataAccessCategoriesInner](sailpoint\v2024/docs/DataAccessCategoriesInner.md)
+ - [DataAccessImpactScore](sailpoint\v2024/docs/DataAccessImpactScore.md)
+ - [DataAccessPoliciesInner](sailpoint\v2024/docs/DataAccessPoliciesInner.md)
+ - [DataSegment](sailpoint\v2024/docs/DataSegment.md)
+ - [DeleteNonEmployeeRecordsInBulkRequest](sailpoint\v2024/docs/DeleteNonEmployeeRecordsInBulkRequest.md)
+ - [DeleteSource202Response](sailpoint\v2024/docs/DeleteSource202Response.md)
+ - [DeleteVendorConnectorMapping200Response](sailpoint\v2024/docs/DeleteVendorConnectorMapping200Response.md)
+ - [DependantAppConnections](sailpoint\v2024/docs/DependantAppConnections.md)
+ - [DependantAppConnectionsAccountSource](sailpoint\v2024/docs/DependantAppConnectionsAccountSource.md)
+ - [DependantAppConnectionsAccountSourcePasswordPoliciesInner](sailpoint\v2024/docs/DependantAppConnectionsAccountSourcePasswordPoliciesInner.md)
+ - [DependantConnectionsMissingDto](sailpoint\v2024/docs/DependantConnectionsMissingDto.md)
+ - [DeployRequest](sailpoint\v2024/docs/DeployRequest.md)
+ - [DeployResponse](sailpoint\v2024/docs/DeployResponse.md)
+ - [Dimension](sailpoint\v2024/docs/Dimension.md)
+ - [DimensionBulkDeleteRequest](sailpoint\v2024/docs/DimensionBulkDeleteRequest.md)
+ - [DimensionCriteriaKey](sailpoint\v2024/docs/DimensionCriteriaKey.md)
+ - [DimensionCriteriaKeyType](sailpoint\v2024/docs/DimensionCriteriaKeyType.md)
+ - [DimensionCriteriaLevel1](sailpoint\v2024/docs/DimensionCriteriaLevel1.md)
+ - [DimensionCriteriaLevel2](sailpoint\v2024/docs/DimensionCriteriaLevel2.md)
+ - [DimensionCriteriaLevel3](sailpoint\v2024/docs/DimensionCriteriaLevel3.md)
+ - [DimensionCriteriaOperation](sailpoint\v2024/docs/DimensionCriteriaOperation.md)
+ - [DimensionMembershipSelector](sailpoint\v2024/docs/DimensionMembershipSelector.md)
+ - [DimensionMembershipSelectorType](sailpoint\v2024/docs/DimensionMembershipSelectorType.md)
+ - [DimensionRef](sailpoint\v2024/docs/DimensionRef.md)
+ - [DisplayReference](sailpoint\v2024/docs/DisplayReference.md)
+ - [DkimAttributes](sailpoint\v2024/docs/DkimAttributes.md)
+ - [DomainAddress](sailpoint\v2024/docs/DomainAddress.md)
+ - [DomainStatusDto](sailpoint\v2024/docs/DomainStatusDto.md)
+ - [DraftResponse](sailpoint\v2024/docs/DraftResponse.md)
+ - [DtoType](sailpoint\v2024/docs/DtoType.md)
+ - [EmailNotificationOption](sailpoint\v2024/docs/EmailNotificationOption.md)
+ - [EmailStatusDto](sailpoint\v2024/docs/EmailStatusDto.md)
+ - [Entitlement](sailpoint\v2024/docs/Entitlement.md)
+ - [EntitlementAccessModelMetadata](sailpoint\v2024/docs/EntitlementAccessModelMetadata.md)
+ - [EntitlementAccessRequestConfig](sailpoint\v2024/docs/EntitlementAccessRequestConfig.md)
+ - [EntitlementApprovalScheme](sailpoint\v2024/docs/EntitlementApprovalScheme.md)
+ - [EntitlementBulkUpdateRequest](sailpoint\v2024/docs/EntitlementBulkUpdateRequest.md)
+ - [EntitlementDocument](sailpoint\v2024/docs/EntitlementDocument.md)
+ - [EntitlementDocumentAllOfManuallyUpdatedFields](sailpoint\v2024/docs/EntitlementDocumentAllOfManuallyUpdatedFields.md)
+ - [EntitlementDocumentAllOfPermissions](sailpoint\v2024/docs/EntitlementDocumentAllOfPermissions.md)
+ - [EntitlementDocumentAllOfSource](sailpoint\v2024/docs/EntitlementDocumentAllOfSource.md)
+ - [EntitlementOwner](sailpoint\v2024/docs/EntitlementOwner.md)
+ - [EntitlementRef](sailpoint\v2024/docs/EntitlementRef.md)
+ - [EntitlementRef1](sailpoint\v2024/docs/EntitlementRef1.md)
+ - [EntitlementRequestConfig](sailpoint\v2024/docs/EntitlementRequestConfig.md)
+ - [EntitlementRevocationRequestConfig](sailpoint\v2024/docs/EntitlementRevocationRequestConfig.md)
+ - [EntitlementSource](sailpoint\v2024/docs/EntitlementSource.md)
+ - [EntitlementSourceResetBaseReferenceDto](sailpoint\v2024/docs/EntitlementSourceResetBaseReferenceDto.md)
+ - [EntitlementSummary](sailpoint\v2024/docs/EntitlementSummary.md)
+ - [EntityCreatedByDTO](sailpoint\v2024/docs/EntityCreatedByDTO.md)
+ - [Error](sailpoint\v2024/docs/Error.md)
+ - [ErrorMessage](sailpoint\v2024/docs/ErrorMessage.md)
+ - [ErrorMessageDto](sailpoint\v2024/docs/ErrorMessageDto.md)
+ - [ErrorResponseDto](sailpoint\v2024/docs/ErrorResponseDto.md)
+ - [EvaluateResponse](sailpoint\v2024/docs/EvaluateResponse.md)
+ - [Event](sailpoint\v2024/docs/Event.md)
+ - [EventActor](sailpoint\v2024/docs/EventActor.md)
+ - [EventAttributes](sailpoint\v2024/docs/EventAttributes.md)
+ - [EventBridgeConfig](sailpoint\v2024/docs/EventBridgeConfig.md)
+ - [EventDocument](sailpoint\v2024/docs/EventDocument.md)
+ - [EventTarget](sailpoint\v2024/docs/EventTarget.md)
+ - [ExceptionAccessCriteria](sailpoint\v2024/docs/ExceptionAccessCriteria.md)
+ - [ExceptionCriteria](sailpoint\v2024/docs/ExceptionCriteria.md)
+ - [ExceptionCriteriaAccess](sailpoint\v2024/docs/ExceptionCriteriaAccess.md)
+ - [ExceptionCriteriaCriteriaListInner](sailpoint\v2024/docs/ExceptionCriteriaCriteriaListInner.md)
+ - [ExecutionStatus](sailpoint\v2024/docs/ExecutionStatus.md)
+ - [ExpansionItem](sailpoint\v2024/docs/ExpansionItem.md)
+ - [ExportFormDefinitionsByTenant200ResponseInner](sailpoint\v2024/docs/ExportFormDefinitionsByTenant200ResponseInner.md)
+ - [ExportFormDefinitionsByTenant200ResponseInnerSelf](sailpoint\v2024/docs/ExportFormDefinitionsByTenant200ResponseInnerSelf.md)
+ - [ExportOptions](sailpoint\v2024/docs/ExportOptions.md)
+ - [ExportOptions1](sailpoint\v2024/docs/ExportOptions1.md)
+ - [ExportPayload](sailpoint\v2024/docs/ExportPayload.md)
+ - [Expression](sailpoint\v2024/docs/Expression.md)
+ - [ExpressionChildrenInner](sailpoint\v2024/docs/ExpressionChildrenInner.md)
+ - [ExternalAttributes](sailpoint\v2024/docs/ExternalAttributes.md)
+ - [FeatureValueDto](sailpoint\v2024/docs/FeatureValueDto.md)
+ - [FederationProtocolDetails](sailpoint\v2024/docs/FederationProtocolDetails.md)
+ - [FieldDetailsDto](sailpoint\v2024/docs/FieldDetailsDto.md)
+ - [Filter](sailpoint\v2024/docs/Filter.md)
+ - [FilterAggregation](sailpoint\v2024/docs/FilterAggregation.md)
+ - [FilterType](sailpoint\v2024/docs/FilterType.md)
+ - [FormCondition](sailpoint\v2024/docs/FormCondition.md)
+ - [FormDefinitionDynamicSchemaRequest](sailpoint\v2024/docs/FormDefinitionDynamicSchemaRequest.md)
+ - [FormDefinitionDynamicSchemaRequestAttributes](sailpoint\v2024/docs/FormDefinitionDynamicSchemaRequestAttributes.md)
+ - [FormDefinitionDynamicSchemaResponse](sailpoint\v2024/docs/FormDefinitionDynamicSchemaResponse.md)
+ - [FormDefinitionFileUploadResponse](sailpoint\v2024/docs/FormDefinitionFileUploadResponse.md)
+ - [FormDefinitionInput](sailpoint\v2024/docs/FormDefinitionInput.md)
+ - [FormDefinitionResponse](sailpoint\v2024/docs/FormDefinitionResponse.md)
+ - [FormDefinitionSelfImportExportDto](sailpoint\v2024/docs/FormDefinitionSelfImportExportDto.md)
+ - [FormDetails](sailpoint\v2024/docs/FormDetails.md)
+ - [FormElement](sailpoint\v2024/docs/FormElement.md)
+ - [FormElementDataSourceConfigOptions](sailpoint\v2024/docs/FormElementDataSourceConfigOptions.md)
+ - [FormElementDynamicDataSource](sailpoint\v2024/docs/FormElementDynamicDataSource.md)
+ - [FormElementDynamicDataSourceConfig](sailpoint\v2024/docs/FormElementDynamicDataSourceConfig.md)
+ - [FormElementPreviewRequest](sailpoint\v2024/docs/FormElementPreviewRequest.md)
+ - [FormElementValidationsSet](sailpoint\v2024/docs/FormElementValidationsSet.md)
+ - [FormError](sailpoint\v2024/docs/FormError.md)
+ - [FormInstanceCreatedBy](sailpoint\v2024/docs/FormInstanceCreatedBy.md)
+ - [FormInstanceRecipient](sailpoint\v2024/docs/FormInstanceRecipient.md)
+ - [FormInstanceResponse](sailpoint\v2024/docs/FormInstanceResponse.md)
+ - [FormItemDetails](sailpoint\v2024/docs/FormItemDetails.md)
+ - [FormOwner](sailpoint\v2024/docs/FormOwner.md)
+ - [FormUsedBy](sailpoint\v2024/docs/FormUsedBy.md)
+ - [ForwardApprovalDto](sailpoint\v2024/docs/ForwardApprovalDto.md)
+ - [FullDiscoveredApplications](sailpoint\v2024/docs/FullDiscoveredApplications.md)
+ - [GetActiveCampaigns200ResponseInner](sailpoint\v2024/docs/GetActiveCampaigns200ResponseInner.md)
+ - [GetCampaign200Response](sailpoint\v2024/docs/GetCampaign200Response.md)
+ - [GetDiscoveredApplications200ResponseInner](sailpoint\v2024/docs/GetDiscoveredApplications200ResponseInner.md)
+ - [GetHistoricalIdentityEvents200ResponseInner](sailpoint\v2024/docs/GetHistoricalIdentityEvents200ResponseInner.md)
+ - [GetOAuthClientResponse](sailpoint\v2024/docs/GetOAuthClientResponse.md)
+ - [GetPersonalAccessTokenResponse](sailpoint\v2024/docs/GetPersonalAccessTokenResponse.md)
+ - [GetRoleAssignments200ResponseInner](sailpoint\v2024/docs/GetRoleAssignments200ResponseInner.md)
+ - [GetTenantContext200ResponseInner](sailpoint\v2024/docs/GetTenantContext200ResponseInner.md)
+ - [GrantType](sailpoint\v2024/docs/GrantType.md)
+ - [HttpAuthenticationType](sailpoint\v2024/docs/HttpAuthenticationType.md)
+ - [HttpConfig](sailpoint\v2024/docs/HttpConfig.md)
+ - [HttpDispatchMode](sailpoint\v2024/docs/HttpDispatchMode.md)
+ - [IdentitiesAccountsBulkRequest](sailpoint\v2024/docs/IdentitiesAccountsBulkRequest.md)
+ - [IdentitiesDetailsReportArguments](sailpoint\v2024/docs/IdentitiesDetailsReportArguments.md)
+ - [IdentitiesReportArguments](sailpoint\v2024/docs/IdentitiesReportArguments.md)
+ - [Identity](sailpoint\v2024/docs/Identity.md)
+ - [Identity1](sailpoint\v2024/docs/Identity1.md)
+ - [IdentityAccess](sailpoint\v2024/docs/IdentityAccess.md)
+ - [IdentityAccountSelections](sailpoint\v2024/docs/IdentityAccountSelections.md)
+ - [IdentityAssociationDetails](sailpoint\v2024/docs/IdentityAssociationDetails.md)
+ - [IdentityAssociationDetailsAssociationDetailsInner](sailpoint\v2024/docs/IdentityAssociationDetailsAssociationDetailsInner.md)
+ - [IdentityAttribute](sailpoint\v2024/docs/IdentityAttribute.md)
+ - [IdentityAttributeConfig](sailpoint\v2024/docs/IdentityAttributeConfig.md)
+ - [IdentityAttributeNames](sailpoint\v2024/docs/IdentityAttributeNames.md)
+ - [IdentityAttributePreview](sailpoint\v2024/docs/IdentityAttributePreview.md)
+ - [IdentityAttributeTransform](sailpoint\v2024/docs/IdentityAttributeTransform.md)
+ - [IdentityAttributesChanged](sailpoint\v2024/docs/IdentityAttributesChanged.md)
+ - [IdentityAttributesChangedChangesInner](sailpoint\v2024/docs/IdentityAttributesChangedChangesInner.md)
+ - [IdentityAttributesChangedChangesInnerNewValue](sailpoint\v2024/docs/IdentityAttributesChangedChangesInnerNewValue.md)
+ - [IdentityAttributesChangedChangesInnerOldValue](sailpoint\v2024/docs/IdentityAttributesChangedChangesInnerOldValue.md)
+ - [IdentityAttributesChangedChangesInnerOldValueOneOfValue](sailpoint\v2024/docs/IdentityAttributesChangedChangesInnerOldValueOneOfValue.md)
+ - [IdentityAttributesChangedIdentity](sailpoint\v2024/docs/IdentityAttributesChangedIdentity.md)
+ - [IdentityCertDecisionSummary](sailpoint\v2024/docs/IdentityCertDecisionSummary.md)
+ - [IdentityCertificationDto](sailpoint\v2024/docs/IdentityCertificationDto.md)
+ - [IdentityCertified](sailpoint\v2024/docs/IdentityCertified.md)
+ - [IdentityCompareResponse](sailpoint\v2024/docs/IdentityCompareResponse.md)
+ - [IdentityCreated](sailpoint\v2024/docs/IdentityCreated.md)
+ - [IdentityCreatedIdentity](sailpoint\v2024/docs/IdentityCreatedIdentity.md)
+ - [IdentityDeleted](sailpoint\v2024/docs/IdentityDeleted.md)
+ - [IdentityDeletedIdentity](sailpoint\v2024/docs/IdentityDeletedIdentity.md)
+ - [IdentityDocument](sailpoint\v2024/docs/IdentityDocument.md)
+ - [IdentityDocumentAllOfIdentityProfile](sailpoint\v2024/docs/IdentityDocumentAllOfIdentityProfile.md)
+ - [IdentityDocumentAllOfManager](sailpoint\v2024/docs/IdentityDocumentAllOfManager.md)
+ - [IdentityDocumentAllOfSource](sailpoint\v2024/docs/IdentityDocumentAllOfSource.md)
+ - [IdentityEntities](sailpoint\v2024/docs/IdentityEntities.md)
+ - [IdentityEntitiesIdentityEntity](sailpoint\v2024/docs/IdentityEntitiesIdentityEntity.md)
+ - [IdentityExceptionReportReference](sailpoint\v2024/docs/IdentityExceptionReportReference.md)
+ - [IdentityHistoryResponse](sailpoint\v2024/docs/IdentityHistoryResponse.md)
+ - [IdentityLifecycleState](sailpoint\v2024/docs/IdentityLifecycleState.md)
+ - [IdentityListItem](sailpoint\v2024/docs/IdentityListItem.md)
+ - [IdentityManagerRef](sailpoint\v2024/docs/IdentityManagerRef.md)
+ - [IdentityOwnershipAssociationDetails](sailpoint\v2024/docs/IdentityOwnershipAssociationDetails.md)
+ - [IdentityOwnershipAssociationDetailsAssociationDetailsInner](sailpoint\v2024/docs/IdentityOwnershipAssociationDetailsAssociationDetailsInner.md)
+ - [IdentityPreviewRequest](sailpoint\v2024/docs/IdentityPreviewRequest.md)
+ - [IdentityPreviewResponse](sailpoint\v2024/docs/IdentityPreviewResponse.md)
+ - [IdentityPreviewResponseIdentity](sailpoint\v2024/docs/IdentityPreviewResponseIdentity.md)
+ - [IdentityProfile](sailpoint\v2024/docs/IdentityProfile.md)
+ - [IdentityProfileAllOfAuthoritativeSource](sailpoint\v2024/docs/IdentityProfileAllOfAuthoritativeSource.md)
+ - [IdentityProfileAllOfOwner](sailpoint\v2024/docs/IdentityProfileAllOfOwner.md)
+ - [IdentityProfileExportedObject](sailpoint\v2024/docs/IdentityProfileExportedObject.md)
+ - [IdentityProfileExportedObjectSelf](sailpoint\v2024/docs/IdentityProfileExportedObjectSelf.md)
+ - [IdentityProfileIdentityErrorReportArguments](sailpoint\v2024/docs/IdentityProfileIdentityErrorReportArguments.md)
+ - [IdentityProfilesConnections](sailpoint\v2024/docs/IdentityProfilesConnections.md)
+ - [IdentityReference](sailpoint\v2024/docs/IdentityReference.md)
+ - [IdentityReferenceWithNameAndEmail](sailpoint\v2024/docs/IdentityReferenceWithNameAndEmail.md)
+ - [IdentitySnapshotSummaryResponse](sailpoint\v2024/docs/IdentitySnapshotSummaryResponse.md)
+ - [IdentitySummary](sailpoint\v2024/docs/IdentitySummary.md)
+ - [IdentitySyncJob](sailpoint\v2024/docs/IdentitySyncJob.md)
+ - [IdentitySyncPayload](sailpoint\v2024/docs/IdentitySyncPayload.md)
+ - [IdentityWithNewAccess](sailpoint\v2024/docs/IdentityWithNewAccess.md)
+ - [IdentityWithNewAccess1](sailpoint\v2024/docs/IdentityWithNewAccess1.md)
+ - [IdentityWithNewAccessAccessRefsInner](sailpoint\v2024/docs/IdentityWithNewAccessAccessRefsInner.md)
+ - [IdpDetails](sailpoint\v2024/docs/IdpDetails.md)
+ - [ImportAccountsRequest](sailpoint\v2024/docs/ImportAccountsRequest.md)
+ - [ImportEntitlementsBySourceRequest](sailpoint\v2024/docs/ImportEntitlementsBySourceRequest.md)
+ - [ImportFormDefinitions202Response](sailpoint\v2024/docs/ImportFormDefinitions202Response.md)
+ - [ImportFormDefinitions202ResponseErrorsInner](sailpoint\v2024/docs/ImportFormDefinitions202ResponseErrorsInner.md)
+ - [ImportFormDefinitionsRequestInner](sailpoint\v2024/docs/ImportFormDefinitionsRequestInner.md)
+ - [ImportNonEmployeeRecordsInBulkRequest](sailpoint\v2024/docs/ImportNonEmployeeRecordsInBulkRequest.md)
+ - [ImportObject](sailpoint\v2024/docs/ImportObject.md)
+ - [ImportOptions](sailpoint\v2024/docs/ImportOptions.md)
+ - [ImportSpConfigRequest](sailpoint\v2024/docs/ImportSpConfigRequest.md)
+ - [Index](sailpoint\v2024/docs/Index.md)
+ - [InnerHit](sailpoint\v2024/docs/InnerHit.md)
+ - [InviteIdentitiesRequest](sailpoint\v2024/docs/InviteIdentitiesRequest.md)
+ - [Invocation](sailpoint\v2024/docs/Invocation.md)
+ - [InvocationStatus](sailpoint\v2024/docs/InvocationStatus.md)
+ - [InvocationStatusType](sailpoint\v2024/docs/InvocationStatusType.md)
+ - [JITConfiguration](sailpoint\v2024/docs/JITConfiguration.md)
+ - [JsonPatch](sailpoint\v2024/docs/JsonPatch.md)
+ - [JsonPatchOperation](sailpoint\v2024/docs/JsonPatchOperation.md)
+ - [KbaAnswerRequestItem](sailpoint\v2024/docs/KbaAnswerRequestItem.md)
+ - [KbaAnswerResponseItem](sailpoint\v2024/docs/KbaAnswerResponseItem.md)
+ - [KbaQuestion](sailpoint\v2024/docs/KbaQuestion.md)
+ - [LatestOutlierSummary](sailpoint\v2024/docs/LatestOutlierSummary.md)
+ - [License](sailpoint\v2024/docs/License.md)
+ - [LifecycleState](sailpoint\v2024/docs/LifecycleState.md)
+ - [LifecycleStateDto](sailpoint\v2024/docs/LifecycleStateDto.md)
+ - [LifecyclestateDeleted](sailpoint\v2024/docs/LifecyclestateDeleted.md)
+ - [ListAccessProfiles401Response](sailpoint\v2024/docs/ListAccessProfiles401Response.md)
+ - [ListAccessProfiles429Response](sailpoint\v2024/docs/ListAccessProfiles429Response.md)
+ - [ListCampaignFilters200Response](sailpoint\v2024/docs/ListCampaignFilters200Response.md)
+ - [ListCompleteWorkflowLibrary200ResponseInner](sailpoint\v2024/docs/ListCompleteWorkflowLibrary200ResponseInner.md)
+ - [ListDeploys200Response](sailpoint\v2024/docs/ListDeploys200Response.md)
+ - [ListFormDefinitionsByTenantResponse](sailpoint\v2024/docs/ListFormDefinitionsByTenantResponse.md)
+ - [ListFormElementDataByElementIDResponse](sailpoint\v2024/docs/ListFormElementDataByElementIDResponse.md)
+ - [ListFormInstancesByTenantResponse](sailpoint\v2024/docs/ListFormInstancesByTenantResponse.md)
+ - [ListIdentityAccessItems200ResponseInner](sailpoint\v2024/docs/ListIdentityAccessItems200ResponseInner.md)
+ - [ListPredefinedSelectOptionsResponse](sailpoint\v2024/docs/ListPredefinedSelectOptionsResponse.md)
+ - [ListWorkgroupMembers200ResponseInner](sailpoint\v2024/docs/ListWorkgroupMembers200ResponseInner.md)
+ - [LoadAccountsTask](sailpoint\v2024/docs/LoadAccountsTask.md)
+ - [LoadAccountsTaskTask](sailpoint\v2024/docs/LoadAccountsTaskTask.md)
+ - [LoadAccountsTaskTaskAttributes](sailpoint\v2024/docs/LoadAccountsTaskTaskAttributes.md)
+ - [LoadAccountsTaskTaskMessagesInner](sailpoint\v2024/docs/LoadAccountsTaskTaskMessagesInner.md)
+ - [LoadAccountsTaskTaskReturnsInner](sailpoint\v2024/docs/LoadAccountsTaskTaskReturnsInner.md)
+ - [LoadEntitlementTask](sailpoint\v2024/docs/LoadEntitlementTask.md)
+ - [LoadEntitlementTaskReturnsInner](sailpoint\v2024/docs/LoadEntitlementTaskReturnsInner.md)
+ - [LoadUncorrelatedAccountsTask](sailpoint\v2024/docs/LoadUncorrelatedAccountsTask.md)
+ - [LoadUncorrelatedAccountsTaskTask](sailpoint\v2024/docs/LoadUncorrelatedAccountsTaskTask.md)
+ - [LoadUncorrelatedAccountsTaskTaskAttributes](sailpoint\v2024/docs/LoadUncorrelatedAccountsTaskTaskAttributes.md)
+ - [LoadUncorrelatedAccountsTaskTaskMessagesInner](sailpoint\v2024/docs/LoadUncorrelatedAccountsTaskTaskMessagesInner.md)
+ - [LocaleOrigin](sailpoint\v2024/docs/LocaleOrigin.md)
+ - [LocalizedMessage](sailpoint\v2024/docs/LocalizedMessage.md)
+ - [LockoutConfiguration](sailpoint\v2024/docs/LockoutConfiguration.md)
+ - [LookupStep](sailpoint\v2024/docs/LookupStep.md)
+ - [MachineAccount](sailpoint\v2024/docs/MachineAccount.md)
+ - [MachineClassificationConfig](sailpoint\v2024/docs/MachineClassificationConfig.md)
+ - [MachineIdentity](sailpoint\v2024/docs/MachineIdentity.md)
+ - [MailFromAttributes](sailpoint\v2024/docs/MailFromAttributes.md)
+ - [MailFromAttributesDto](sailpoint\v2024/docs/MailFromAttributesDto.md)
+ - [ManagedClient](sailpoint\v2024/docs/ManagedClient.md)
+ - [ManagedClientRequest](sailpoint\v2024/docs/ManagedClientRequest.md)
+ - [ManagedClientStatus](sailpoint\v2024/docs/ManagedClientStatus.md)
+ - [ManagedClientStatusCode](sailpoint\v2024/docs/ManagedClientStatusCode.md)
+ - [ManagedClientType](sailpoint\v2024/docs/ManagedClientType.md)
+ - [ManagedCluster](sailpoint\v2024/docs/ManagedCluster.md)
+ - [ManagedClusterAttributes](sailpoint\v2024/docs/ManagedClusterAttributes.md)
+ - [ManagedClusterKeyPair](sailpoint\v2024/docs/ManagedClusterKeyPair.md)
+ - [ManagedClusterQueue](sailpoint\v2024/docs/ManagedClusterQueue.md)
+ - [ManagedClusterRedis](sailpoint\v2024/docs/ManagedClusterRedis.md)
+ - [ManagedClusterRequest](sailpoint\v2024/docs/ManagedClusterRequest.md)
+ - [ManagedClusterType](sailpoint\v2024/docs/ManagedClusterType.md)
+ - [ManagedClusterTypes](sailpoint\v2024/docs/ManagedClusterTypes.md)
+ - [ManagedClusterUpdatePreferences](sailpoint\v2024/docs/ManagedClusterUpdatePreferences.md)
+ - [ManagerCorrelationMapping](sailpoint\v2024/docs/ManagerCorrelationMapping.md)
+ - [ManualDiscoverApplications](sailpoint\v2024/docs/ManualDiscoverApplications.md)
+ - [ManualDiscoverApplicationsTemplate](sailpoint\v2024/docs/ManualDiscoverApplicationsTemplate.md)
+ - [ManualWorkItemDetails](sailpoint\v2024/docs/ManualWorkItemDetails.md)
+ - [ManualWorkItemDetailsCurrentOwner](sailpoint\v2024/docs/ManualWorkItemDetailsCurrentOwner.md)
+ - [ManualWorkItemDetailsOriginalOwner](sailpoint\v2024/docs/ManualWorkItemDetailsOriginalOwner.md)
+ - [ManualWorkItemState](sailpoint\v2024/docs/ManualWorkItemState.md)
+ - [MatchTerm](sailpoint\v2024/docs/MatchTerm.md)
+ - [Medium](sailpoint\v2024/docs/Medium.md)
+ - [MembershipType](sailpoint\v2024/docs/MembershipType.md)
+ - [MetricAggregation](sailpoint\v2024/docs/MetricAggregation.md)
+ - [MetricResponse](sailpoint\v2024/docs/MetricResponse.md)
+ - [MetricType](sailpoint\v2024/docs/MetricType.md)
+ - [MfaConfigTestResponse](sailpoint\v2024/docs/MfaConfigTestResponse.md)
+ - [MfaDuoConfig](sailpoint\v2024/docs/MfaDuoConfig.md)
+ - [MfaOktaConfig](sailpoint\v2024/docs/MfaOktaConfig.md)
+ - [ModelSchema](sailpoint\v2024/docs/ModelSchema.md)
+ - [MultiHostIntegrationTemplateType](sailpoint\v2024/docs/MultiHostIntegrationTemplateType.md)
+ - [MultiHostIntegrations](sailpoint\v2024/docs/MultiHostIntegrations.md)
+ - [MultiHostIntegrationsAccountsFile](sailpoint\v2024/docs/MultiHostIntegrationsAccountsFile.md)
+ - [MultiHostIntegrationsAggScheduleUpdate](sailpoint\v2024/docs/MultiHostIntegrationsAggScheduleUpdate.md)
+ - [MultiHostIntegrationsBeforeProvisioningRule](sailpoint\v2024/docs/MultiHostIntegrationsBeforeProvisioningRule.md)
+ - [MultiHostIntegrationsConnectorAttributes](sailpoint\v2024/docs/MultiHostIntegrationsConnectorAttributes.md)
+ - [MultiHostIntegrationsConnectorAttributesConnectorFileUploadHistory](sailpoint\v2024/docs/MultiHostIntegrationsConnectorAttributesConnectorFileUploadHistory.md)
+ - [MultiHostIntegrationsConnectorAttributesMultiHostAttributes](sailpoint\v2024/docs/MultiHostIntegrationsConnectorAttributesMultiHostAttributes.md)
+ - [MultiHostIntegrationsCreate](sailpoint\v2024/docs/MultiHostIntegrationsCreate.md)
+ - [MultiHostIntegrationsCreateSources](sailpoint\v2024/docs/MultiHostIntegrationsCreateSources.md)
+ - [MultiHostSources](sailpoint\v2024/docs/MultiHostSources.md)
+ - [MultiPolicyRequest](sailpoint\v2024/docs/MultiPolicyRequest.md)
+ - [NativeChangeDetectionConfig](sailpoint\v2024/docs/NativeChangeDetectionConfig.md)
+ - [NestedAggregation](sailpoint\v2024/docs/NestedAggregation.md)
+ - [NetworkConfiguration](sailpoint\v2024/docs/NetworkConfiguration.md)
+ - [NonEmployeeApprovalDecision](sailpoint\v2024/docs/NonEmployeeApprovalDecision.md)
+ - [NonEmployeeApprovalItem](sailpoint\v2024/docs/NonEmployeeApprovalItem.md)
+ - [NonEmployeeApprovalItemBase](sailpoint\v2024/docs/NonEmployeeApprovalItemBase.md)
+ - [NonEmployeeApprovalItemDetail](sailpoint\v2024/docs/NonEmployeeApprovalItemDetail.md)
+ - [NonEmployeeApprovalSummary](sailpoint\v2024/docs/NonEmployeeApprovalSummary.md)
+ - [NonEmployeeBulkUploadJob](sailpoint\v2024/docs/NonEmployeeBulkUploadJob.md)
+ - [NonEmployeeBulkUploadStatus](sailpoint\v2024/docs/NonEmployeeBulkUploadStatus.md)
+ - [NonEmployeeIdentityDtoType](sailpoint\v2024/docs/NonEmployeeIdentityDtoType.md)
+ - [NonEmployeeIdentityReferenceWithId](sailpoint\v2024/docs/NonEmployeeIdentityReferenceWithId.md)
+ - [NonEmployeeIdnUserRequest](sailpoint\v2024/docs/NonEmployeeIdnUserRequest.md)
+ - [NonEmployeeRecord](sailpoint\v2024/docs/NonEmployeeRecord.md)
+ - [NonEmployeeRejectApprovalDecision](sailpoint\v2024/docs/NonEmployeeRejectApprovalDecision.md)
+ - [NonEmployeeRequest](sailpoint\v2024/docs/NonEmployeeRequest.md)
+ - [NonEmployeeRequestBody](sailpoint\v2024/docs/NonEmployeeRequestBody.md)
+ - [NonEmployeeRequestLite](sailpoint\v2024/docs/NonEmployeeRequestLite.md)
+ - [NonEmployeeRequestSummary](sailpoint\v2024/docs/NonEmployeeRequestSummary.md)
+ - [NonEmployeeRequestWithoutApprovalItem](sailpoint\v2024/docs/NonEmployeeRequestWithoutApprovalItem.md)
+ - [NonEmployeeSchemaAttribute](sailpoint\v2024/docs/NonEmployeeSchemaAttribute.md)
+ - [NonEmployeeSchemaAttributeBody](sailpoint\v2024/docs/NonEmployeeSchemaAttributeBody.md)
+ - [NonEmployeeSchemaAttributeType](sailpoint\v2024/docs/NonEmployeeSchemaAttributeType.md)
+ - [NonEmployeeSource](sailpoint\v2024/docs/NonEmployeeSource.md)
+ - [NonEmployeeSourceLite](sailpoint\v2024/docs/NonEmployeeSourceLite.md)
+ - [NonEmployeeSourceLiteWithSchemaAttributes](sailpoint\v2024/docs/NonEmployeeSourceLiteWithSchemaAttributes.md)
+ - [NonEmployeeSourceRequestBody](sailpoint\v2024/docs/NonEmployeeSourceRequestBody.md)
+ - [NonEmployeeSourceWithCloudExternalId](sailpoint\v2024/docs/NonEmployeeSourceWithCloudExternalId.md)
+ - [NonEmployeeSourceWithNECount](sailpoint\v2024/docs/NonEmployeeSourceWithNECount.md)
+ - [NotificationTemplateContext](sailpoint\v2024/docs/NotificationTemplateContext.md)
+ - [ObjectExportImportNames](sailpoint\v2024/docs/ObjectExportImportNames.md)
+ - [ObjectExportImportOptions](sailpoint\v2024/docs/ObjectExportImportOptions.md)
+ - [ObjectImportResult](sailpoint\v2024/docs/ObjectImportResult.md)
+ - [ObjectImportResult1](sailpoint\v2024/docs/ObjectImportResult1.md)
+ - [ObjectMappingBulkCreateRequest](sailpoint\v2024/docs/ObjectMappingBulkCreateRequest.md)
+ - [ObjectMappingBulkCreateResponse](sailpoint\v2024/docs/ObjectMappingBulkCreateResponse.md)
+ - [ObjectMappingBulkPatchRequest](sailpoint\v2024/docs/ObjectMappingBulkPatchRequest.md)
+ - [ObjectMappingBulkPatchResponse](sailpoint\v2024/docs/ObjectMappingBulkPatchResponse.md)
+ - [ObjectMappingRequest](sailpoint\v2024/docs/ObjectMappingRequest.md)
+ - [ObjectMappingResponse](sailpoint\v2024/docs/ObjectMappingResponse.md)
+ - [Operation](sailpoint\v2024/docs/Operation.md)
+ - [OrgConfig](sailpoint\v2024/docs/OrgConfig.md)
+ - [OriginalRequest](sailpoint\v2024/docs/OriginalRequest.md)
+ - [OrphanIdentitiesReportArguments](sailpoint\v2024/docs/OrphanIdentitiesReportArguments.md)
+ - [Outlier](sailpoint\v2024/docs/Outlier.md)
+ - [OutlierContributingFeature](sailpoint\v2024/docs/OutlierContributingFeature.md)
+ - [OutlierFeatureSummary](sailpoint\v2024/docs/OutlierFeatureSummary.md)
+ - [OutlierFeatureSummaryOutlierFeatureDisplayValuesInner](sailpoint\v2024/docs/OutlierFeatureSummaryOutlierFeatureDisplayValuesInner.md)
+ - [OutlierFeatureTranslation](sailpoint\v2024/docs/OutlierFeatureTranslation.md)
+ - [OutlierSummary](sailpoint\v2024/docs/OutlierSummary.md)
+ - [OutlierValueType](sailpoint\v2024/docs/OutlierValueType.md)
+ - [OutliersContributingFeatureAccessItems](sailpoint\v2024/docs/OutliersContributingFeatureAccessItems.md)
+ - [OwnerDto](sailpoint\v2024/docs/OwnerDto.md)
+ - [OwnerReference](sailpoint\v2024/docs/OwnerReference.md)
+ - [OwnerReferenceSegments](sailpoint\v2024/docs/OwnerReferenceSegments.md)
+ - [Owns](sailpoint\v2024/docs/Owns.md)
+ - [PasswordChangeRequest](sailpoint\v2024/docs/PasswordChangeRequest.md)
+ - [PasswordChangeResponse](sailpoint\v2024/docs/PasswordChangeResponse.md)
+ - [PasswordDigitToken](sailpoint\v2024/docs/PasswordDigitToken.md)
+ - [PasswordDigitTokenReset](sailpoint\v2024/docs/PasswordDigitTokenReset.md)
+ - [PasswordInfo](sailpoint\v2024/docs/PasswordInfo.md)
+ - [PasswordInfoAccount](sailpoint\v2024/docs/PasswordInfoAccount.md)
+ - [PasswordInfoQueryDTO](sailpoint\v2024/docs/PasswordInfoQueryDTO.md)
+ - [PasswordOrgConfig](sailpoint\v2024/docs/PasswordOrgConfig.md)
+ - [PasswordPolicyHoldersDtoAttributes](sailpoint\v2024/docs/PasswordPolicyHoldersDtoAttributes.md)
+ - [PasswordPolicyHoldersDtoAttributesIdentityAttrInner](sailpoint\v2024/docs/PasswordPolicyHoldersDtoAttributesIdentityAttrInner.md)
+ - [PasswordPolicyHoldersDtoInner](sailpoint\v2024/docs/PasswordPolicyHoldersDtoInner.md)
+ - [PasswordPolicyV3Dto](sailpoint\v2024/docs/PasswordPolicyV3Dto.md)
+ - [PasswordStatus](sailpoint\v2024/docs/PasswordStatus.md)
+ - [PasswordSyncGroup](sailpoint\v2024/docs/PasswordSyncGroup.md)
+ - [PatOwner](sailpoint\v2024/docs/PatOwner.md)
+ - [PatchPotentialRoleRequestInner](sailpoint\v2024/docs/PatchPotentialRoleRequestInner.md)
+ - [PeerGroupMember](sailpoint\v2024/docs/PeerGroupMember.md)
+ - [PendingApproval](sailpoint\v2024/docs/PendingApproval.md)
+ - [PendingApprovalAction](sailpoint\v2024/docs/PendingApprovalAction.md)
+ - [PendingApprovalOwner](sailpoint\v2024/docs/PendingApprovalOwner.md)
+ - [PermissionDto](sailpoint\v2024/docs/PermissionDto.md)
+ - [PreApprovalTriggerDetails](sailpoint\v2024/docs/PreApprovalTriggerDetails.md)
+ - [PreferencesDto](sailpoint\v2024/docs/PreferencesDto.md)
+ - [PreviewDataSourceResponse](sailpoint\v2024/docs/PreviewDataSourceResponse.md)
+ - [ProcessIdentitiesRequest](sailpoint\v2024/docs/ProcessIdentitiesRequest.md)
+ - [ProcessingDetails](sailpoint\v2024/docs/ProcessingDetails.md)
+ - [Product](sailpoint\v2024/docs/Product.md)
+ - [ProvisioningCompleted](sailpoint\v2024/docs/ProvisioningCompleted.md)
+ - [ProvisioningCompletedAccountRequestsInner](sailpoint\v2024/docs/ProvisioningCompletedAccountRequestsInner.md)
+ - [ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner](sailpoint\v2024/docs/ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner.md)
+ - [ProvisioningCompletedAccountRequestsInnerSource](sailpoint\v2024/docs/ProvisioningCompletedAccountRequestsInnerSource.md)
+ - [ProvisioningCompletedRecipient](sailpoint\v2024/docs/ProvisioningCompletedRecipient.md)
+ - [ProvisioningCompletedRequester](sailpoint\v2024/docs/ProvisioningCompletedRequester.md)
+ - [ProvisioningConfig](sailpoint\v2024/docs/ProvisioningConfig.md)
+ - [ProvisioningConfigPlanInitializerScript](sailpoint\v2024/docs/ProvisioningConfigPlanInitializerScript.md)
+ - [ProvisioningCriteriaLevel1](sailpoint\v2024/docs/ProvisioningCriteriaLevel1.md)
+ - [ProvisioningCriteriaLevel2](sailpoint\v2024/docs/ProvisioningCriteriaLevel2.md)
+ - [ProvisioningCriteriaLevel3](sailpoint\v2024/docs/ProvisioningCriteriaLevel3.md)
+ - [ProvisioningCriteriaOperation](sailpoint\v2024/docs/ProvisioningCriteriaOperation.md)
+ - [ProvisioningDetails](sailpoint\v2024/docs/ProvisioningDetails.md)
+ - [ProvisioningPolicy](sailpoint\v2024/docs/ProvisioningPolicy.md)
+ - [ProvisioningPolicyDto](sailpoint\v2024/docs/ProvisioningPolicyDto.md)
+ - [ProvisioningState](sailpoint\v2024/docs/ProvisioningState.md)
+ - [PublicIdentity](sailpoint\v2024/docs/PublicIdentity.md)
+ - [PublicIdentityAttributeConfig](sailpoint\v2024/docs/PublicIdentityAttributeConfig.md)
+ - [PublicIdentityAttributesInner](sailpoint\v2024/docs/PublicIdentityAttributesInner.md)
+ - [PublicIdentityConfig](sailpoint\v2024/docs/PublicIdentityConfig.md)
+ - [PutClientLogConfigurationRequest](sailpoint\v2024/docs/PutClientLogConfigurationRequest.md)
+ - [PutConnectorCorrelationConfigRequest](sailpoint\v2024/docs/PutConnectorCorrelationConfigRequest.md)
+ - [PutConnectorSourceConfigRequest](sailpoint\v2024/docs/PutConnectorSourceConfigRequest.md)
+ - [PutConnectorSourceTemplateRequest](sailpoint\v2024/docs/PutConnectorSourceTemplateRequest.md)
+ - [PutPasswordDictionaryRequest](sailpoint\v2024/docs/PutPasswordDictionaryRequest.md)
+ - [Query](sailpoint\v2024/docs/Query.md)
+ - [QueryResultFilter](sailpoint\v2024/docs/QueryResultFilter.md)
+ - [QueryType](sailpoint\v2024/docs/QueryType.md)
+ - [QueuedCheckConfigDetails](sailpoint\v2024/docs/QueuedCheckConfigDetails.md)
+ - [Range](sailpoint\v2024/docs/Range.md)
+ - [ReassignReference](sailpoint\v2024/docs/ReassignReference.md)
+ - [Reassignment](sailpoint\v2024/docs/Reassignment.md)
+ - [ReassignmentReference](sailpoint\v2024/docs/ReassignmentReference.md)
+ - [ReassignmentTrailDTO](sailpoint\v2024/docs/ReassignmentTrailDTO.md)
+ - [ReassignmentType](sailpoint\v2024/docs/ReassignmentType.md)
+ - [ReassignmentTypeEnum](sailpoint\v2024/docs/ReassignmentTypeEnum.md)
+ - [Recommendation](sailpoint\v2024/docs/Recommendation.md)
+ - [RecommendationConfigDto](sailpoint\v2024/docs/RecommendationConfigDto.md)
+ - [RecommendationRequest](sailpoint\v2024/docs/RecommendationRequest.md)
+ - [RecommendationRequestDto](sailpoint\v2024/docs/RecommendationRequestDto.md)
+ - [RecommendationResponse](sailpoint\v2024/docs/RecommendationResponse.md)
+ - [RecommendationResponseDto](sailpoint\v2024/docs/RecommendationResponseDto.md)
+ - [RecommenderCalculations](sailpoint\v2024/docs/RecommenderCalculations.md)
+ - [RecommenderCalculationsIdentityAttributesValue](sailpoint\v2024/docs/RecommenderCalculationsIdentityAttributesValue.md)
+ - [Ref](sailpoint\v2024/docs/Ref.md)
+ - [Reference](sailpoint\v2024/docs/Reference.md)
+ - [RemediationItemDetails](sailpoint\v2024/docs/RemediationItemDetails.md)
+ - [RemediationItems](sailpoint\v2024/docs/RemediationItems.md)
+ - [ReportConfigDTO](sailpoint\v2024/docs/ReportConfigDTO.md)
+ - [ReportDetails](sailpoint\v2024/docs/ReportDetails.md)
+ - [ReportDetailsArguments](sailpoint\v2024/docs/ReportDetailsArguments.md)
+ - [ReportResultReference](sailpoint\v2024/docs/ReportResultReference.md)
+ - [ReportResults](sailpoint\v2024/docs/ReportResults.md)
+ - [ReportType](sailpoint\v2024/docs/ReportType.md)
+ - [RequestOnBehalfOfConfig](sailpoint\v2024/docs/RequestOnBehalfOfConfig.md)
+ - [Requestability](sailpoint\v2024/docs/Requestability.md)
+ - [RequestabilityForRole](sailpoint\v2024/docs/RequestabilityForRole.md)
+ - [RequestableObject](sailpoint\v2024/docs/RequestableObject.md)
+ - [RequestableObjectReference](sailpoint\v2024/docs/RequestableObjectReference.md)
+ - [RequestableObjectRequestStatus](sailpoint\v2024/docs/RequestableObjectRequestStatus.md)
+ - [RequestableObjectType](sailpoint\v2024/docs/RequestableObjectType.md)
+ - [RequestedAccountRef](sailpoint\v2024/docs/RequestedAccountRef.md)
+ - [RequestedForDtoRef](sailpoint\v2024/docs/RequestedForDtoRef.md)
+ - [RequestedItemAccountSelections](sailpoint\v2024/docs/RequestedItemAccountSelections.md)
+ - [RequestedItemDetails](sailpoint\v2024/docs/RequestedItemDetails.md)
+ - [RequestedItemDtoRef](sailpoint\v2024/docs/RequestedItemDtoRef.md)
+ - [RequestedItemStatus](sailpoint\v2024/docs/RequestedItemStatus.md)
+ - [RequestedItemStatusCancelledRequestDetails](sailpoint\v2024/docs/RequestedItemStatusCancelledRequestDetails.md)
+ - [RequestedItemStatusPreApprovalTriggerDetails](sailpoint\v2024/docs/RequestedItemStatusPreApprovalTriggerDetails.md)
+ - [RequestedItemStatusProvisioningDetails](sailpoint\v2024/docs/RequestedItemStatusProvisioningDetails.md)
+ - [RequestedItemStatusRequestState](sailpoint\v2024/docs/RequestedItemStatusRequestState.md)
+ - [RequestedItemStatusRequestedFor](sailpoint\v2024/docs/RequestedItemStatusRequestedFor.md)
+ - [RequestedItemStatusRequesterComment](sailpoint\v2024/docs/RequestedItemStatusRequesterComment.md)
+ - [RequestedItemStatusSodViolationContext](sailpoint\v2024/docs/RequestedItemStatusSodViolationContext.md)
+ - [ResourceObject](sailpoint\v2024/docs/ResourceObject.md)
+ - [ResourceObjectsRequest](sailpoint\v2024/docs/ResourceObjectsRequest.md)
+ - [ResourceObjectsResponse](sailpoint\v2024/docs/ResourceObjectsResponse.md)
+ - [Result](sailpoint\v2024/docs/Result.md)
+ - [ReviewDecision](sailpoint\v2024/docs/ReviewDecision.md)
+ - [ReviewReassign](sailpoint\v2024/docs/ReviewReassign.md)
+ - [ReviewRecommendation](sailpoint\v2024/docs/ReviewRecommendation.md)
+ - [ReviewableAccessProfile](sailpoint\v2024/docs/ReviewableAccessProfile.md)
+ - [ReviewableEntitlement](sailpoint\v2024/docs/ReviewableEntitlement.md)
+ - [ReviewableEntitlementAccount](sailpoint\v2024/docs/ReviewableEntitlementAccount.md)
+ - [ReviewableEntitlementAccountOwner](sailpoint\v2024/docs/ReviewableEntitlementAccountOwner.md)
+ - [ReviewableRole](sailpoint\v2024/docs/ReviewableRole.md)
+ - [Reviewer](sailpoint\v2024/docs/Reviewer.md)
+ - [Revocability](sailpoint\v2024/docs/Revocability.md)
+ - [RevocabilityForRole](sailpoint\v2024/docs/RevocabilityForRole.md)
+ - [Role](sailpoint\v2024/docs/Role.md)
+ - [RoleAssignmentDto](sailpoint\v2024/docs/RoleAssignmentDto.md)
+ - [RoleAssignmentDtoAssigner](sailpoint\v2024/docs/RoleAssignmentDtoAssigner.md)
+ - [RoleAssignmentDtoAssignmentContext](sailpoint\v2024/docs/RoleAssignmentDtoAssignmentContext.md)
+ - [RoleAssignmentRef](sailpoint\v2024/docs/RoleAssignmentRef.md)
+ - [RoleAssignmentSourceType](sailpoint\v2024/docs/RoleAssignmentSourceType.md)
+ - [RoleBulkDeleteRequest](sailpoint\v2024/docs/RoleBulkDeleteRequest.md)
+ - [RoleBulkUpdateResponse](sailpoint\v2024/docs/RoleBulkUpdateResponse.md)
+ - [RoleCriteriaKey](sailpoint\v2024/docs/RoleCriteriaKey.md)
+ - [RoleCriteriaKeyType](sailpoint\v2024/docs/RoleCriteriaKeyType.md)
+ - [RoleCriteriaLevel1](sailpoint\v2024/docs/RoleCriteriaLevel1.md)
+ - [RoleCriteriaLevel2](sailpoint\v2024/docs/RoleCriteriaLevel2.md)
+ - [RoleCriteriaLevel3](sailpoint\v2024/docs/RoleCriteriaLevel3.md)
+ - [RoleCriteriaOperation](sailpoint\v2024/docs/RoleCriteriaOperation.md)
+ - [RoleDocument](sailpoint\v2024/docs/RoleDocument.md)
+ - [RoleDocumentAllOfDimensionSchemaAttributes](sailpoint\v2024/docs/RoleDocumentAllOfDimensionSchemaAttributes.md)
+ - [RoleDocumentAllOfDimensions](sailpoint\v2024/docs/RoleDocumentAllOfDimensions.md)
+ - [RoleDocumentAllOfEntitlements](sailpoint\v2024/docs/RoleDocumentAllOfEntitlements.md)
+ - [RoleDocumentAllOfEntitlements1](sailpoint\v2024/docs/RoleDocumentAllOfEntitlements1.md)
+ - [RoleGetAllBulkUpdateResponse](sailpoint\v2024/docs/RoleGetAllBulkUpdateResponse.md)
+ - [RoleIdentity](sailpoint\v2024/docs/RoleIdentity.md)
+ - [RoleInsight](sailpoint\v2024/docs/RoleInsight.md)
+ - [RoleInsightsEntitlement](sailpoint\v2024/docs/RoleInsightsEntitlement.md)
+ - [RoleInsightsEntitlementChanges](sailpoint\v2024/docs/RoleInsightsEntitlementChanges.md)
+ - [RoleInsightsIdentities](sailpoint\v2024/docs/RoleInsightsIdentities.md)
+ - [RoleInsightsInsight](sailpoint\v2024/docs/RoleInsightsInsight.md)
+ - [RoleInsightsResponse](sailpoint\v2024/docs/RoleInsightsResponse.md)
+ - [RoleInsightsRole](sailpoint\v2024/docs/RoleInsightsRole.md)
+ - [RoleInsightsSummary](sailpoint\v2024/docs/RoleInsightsSummary.md)
+ - [RoleListFilterDTO](sailpoint\v2024/docs/RoleListFilterDTO.md)
+ - [RoleListFilterDTOAmmKeyValuesInner](sailpoint\v2024/docs/RoleListFilterDTOAmmKeyValuesInner.md)
+ - [RoleMatchDto](sailpoint\v2024/docs/RoleMatchDto.md)
+ - [RoleMembershipIdentity](sailpoint\v2024/docs/RoleMembershipIdentity.md)
+ - [RoleMembershipSelector](sailpoint\v2024/docs/RoleMembershipSelector.md)
+ - [RoleMembershipSelectorType](sailpoint\v2024/docs/RoleMembershipSelectorType.md)
+ - [RoleMetadataBulkUpdateByFilterRequest](sailpoint\v2024/docs/RoleMetadataBulkUpdateByFilterRequest.md)
+ - [RoleMetadataBulkUpdateByFilterRequestValuesInner](sailpoint\v2024/docs/RoleMetadataBulkUpdateByFilterRequestValuesInner.md)
+ - [RoleMetadataBulkUpdateByIdRequest](sailpoint\v2024/docs/RoleMetadataBulkUpdateByIdRequest.md)
+ - [RoleMetadataBulkUpdateByIdRequestValuesInner](sailpoint\v2024/docs/RoleMetadataBulkUpdateByIdRequestValuesInner.md)
+ - [RoleMetadataBulkUpdateByQueryRequest](sailpoint\v2024/docs/RoleMetadataBulkUpdateByQueryRequest.md)
+ - [RoleMetadataBulkUpdateByQueryRequestValuesInner](sailpoint\v2024/docs/RoleMetadataBulkUpdateByQueryRequestValuesInner.md)
+ - [RoleMiningEntitlement](sailpoint\v2024/docs/RoleMiningEntitlement.md)
+ - [RoleMiningEntitlementRef](sailpoint\v2024/docs/RoleMiningEntitlementRef.md)
+ - [RoleMiningIdentity](sailpoint\v2024/docs/RoleMiningIdentity.md)
+ - [RoleMiningIdentityDistribution](sailpoint\v2024/docs/RoleMiningIdentityDistribution.md)
+ - [RoleMiningPotentialRole](sailpoint\v2024/docs/RoleMiningPotentialRole.md)
+ - [RoleMiningPotentialRoleApplication](sailpoint\v2024/docs/RoleMiningPotentialRoleApplication.md)
+ - [RoleMiningPotentialRoleEditEntitlements](sailpoint\v2024/docs/RoleMiningPotentialRoleEditEntitlements.md)
+ - [RoleMiningPotentialRoleEntitlements](sailpoint\v2024/docs/RoleMiningPotentialRoleEntitlements.md)
+ - [RoleMiningPotentialRoleExportRequest](sailpoint\v2024/docs/RoleMiningPotentialRoleExportRequest.md)
+ - [RoleMiningPotentialRoleExportResponse](sailpoint\v2024/docs/RoleMiningPotentialRoleExportResponse.md)
+ - [RoleMiningPotentialRoleExportState](sailpoint\v2024/docs/RoleMiningPotentialRoleExportState.md)
+ - [RoleMiningPotentialRoleProvisionRequest](sailpoint\v2024/docs/RoleMiningPotentialRoleProvisionRequest.md)
+ - [RoleMiningPotentialRoleProvisionState](sailpoint\v2024/docs/RoleMiningPotentialRoleProvisionState.md)
+ - [RoleMiningPotentialRoleRef](sailpoint\v2024/docs/RoleMiningPotentialRoleRef.md)
+ - [RoleMiningPotentialRoleSourceUsage](sailpoint\v2024/docs/RoleMiningPotentialRoleSourceUsage.md)
+ - [RoleMiningPotentialRoleSummary](sailpoint\v2024/docs/RoleMiningPotentialRoleSummary.md)
+ - [RoleMiningPotentialRoleSummaryCreatedBy](sailpoint\v2024/docs/RoleMiningPotentialRoleSummaryCreatedBy.md)
+ - [RoleMiningRoleType](sailpoint\v2024/docs/RoleMiningRoleType.md)
+ - [RoleMiningSessionDraftRoleDto](sailpoint\v2024/docs/RoleMiningSessionDraftRoleDto.md)
+ - [RoleMiningSessionDto](sailpoint\v2024/docs/RoleMiningSessionDto.md)
+ - [RoleMiningSessionParametersDto](sailpoint\v2024/docs/RoleMiningSessionParametersDto.md)
+ - [RoleMiningSessionResponse](sailpoint\v2024/docs/RoleMiningSessionResponse.md)
+ - [RoleMiningSessionResponseCreatedBy](sailpoint\v2024/docs/RoleMiningSessionResponseCreatedBy.md)
+ - [RoleMiningSessionScope](sailpoint\v2024/docs/RoleMiningSessionScope.md)
+ - [RoleMiningSessionScopingMethod](sailpoint\v2024/docs/RoleMiningSessionScopingMethod.md)
+ - [RoleMiningSessionState](sailpoint\v2024/docs/RoleMiningSessionState.md)
+ - [RoleMiningSessionStatus](sailpoint\v2024/docs/RoleMiningSessionStatus.md)
+ - [RoleSummary](sailpoint\v2024/docs/RoleSummary.md)
+ - [RoleTargetDto](sailpoint\v2024/docs/RoleTargetDto.md)
+ - [SavedSearch](sailpoint\v2024/docs/SavedSearch.md)
+ - [SavedSearchComplete](sailpoint\v2024/docs/SavedSearchComplete.md)
+ - [SavedSearchCompleteSearchResults](sailpoint\v2024/docs/SavedSearchCompleteSearchResults.md)
+ - [SavedSearchCompleteSearchResultsAccount](sailpoint\v2024/docs/SavedSearchCompleteSearchResultsAccount.md)
+ - [SavedSearchCompleteSearchResultsEntitlement](sailpoint\v2024/docs/SavedSearchCompleteSearchResultsEntitlement.md)
+ - [SavedSearchCompleteSearchResultsIdentity](sailpoint\v2024/docs/SavedSearchCompleteSearchResultsIdentity.md)
+ - [SavedSearchDetail](sailpoint\v2024/docs/SavedSearchDetail.md)
+ - [SavedSearchDetailFilters](sailpoint\v2024/docs/SavedSearchDetailFilters.md)
+ - [SavedSearchName](sailpoint\v2024/docs/SavedSearchName.md)
+ - [Schedule](sailpoint\v2024/docs/Schedule.md)
+ - [Schedule1](sailpoint\v2024/docs/Schedule1.md)
+ - [Schedule2](sailpoint\v2024/docs/Schedule2.md)
+ - [Schedule2Days](sailpoint\v2024/docs/Schedule2Days.md)
+ - [Schedule2Hours](sailpoint\v2024/docs/Schedule2Hours.md)
+ - [Schedule2Months](sailpoint\v2024/docs/Schedule2Months.md)
+ - [ScheduleDays](sailpoint\v2024/docs/ScheduleDays.md)
+ - [ScheduleHours](sailpoint\v2024/docs/ScheduleHours.md)
+ - [ScheduleMonths](sailpoint\v2024/docs/ScheduleMonths.md)
+ - [ScheduleType](sailpoint\v2024/docs/ScheduleType.md)
+ - [ScheduledActionPayload](sailpoint\v2024/docs/ScheduledActionPayload.md)
+ - [ScheduledActionPayloadContent](sailpoint\v2024/docs/ScheduledActionPayloadContent.md)
+ - [ScheduledActionPayloadContentBackupOptions](sailpoint\v2024/docs/ScheduledActionPayloadContentBackupOptions.md)
+ - [ScheduledActionResponse](sailpoint\v2024/docs/ScheduledActionResponse.md)
+ - [ScheduledActionResponseContent](sailpoint\v2024/docs/ScheduledActionResponseContent.md)
+ - [ScheduledActionResponseContentBackupOptions](sailpoint\v2024/docs/ScheduledActionResponseContentBackupOptions.md)
+ - [ScheduledActionResponseContentBackupOptionsObjectOptionsValue](sailpoint\v2024/docs/ScheduledActionResponseContentBackupOptionsObjectOptionsValue.md)
+ - [ScheduledAttributes](sailpoint\v2024/docs/ScheduledAttributes.md)
+ - [ScheduledSearch](sailpoint\v2024/docs/ScheduledSearch.md)
+ - [ScheduledSearchAllOfOwner](sailpoint\v2024/docs/ScheduledSearchAllOfOwner.md)
+ - [ScheduledSearchName](sailpoint\v2024/docs/ScheduledSearchName.md)
+ - [Scope](sailpoint\v2024/docs/Scope.md)
+ - [ScopeType](sailpoint\v2024/docs/ScopeType.md)
+ - [ScopeVisibilityType](sailpoint\v2024/docs/ScopeVisibilityType.md)
+ - [Search](sailpoint\v2024/docs/Search.md)
+ - [SearchAggregationSpecification](sailpoint\v2024/docs/SearchAggregationSpecification.md)
+ - [SearchArguments](sailpoint\v2024/docs/SearchArguments.md)
+ - [SearchAttributeConfig](sailpoint\v2024/docs/SearchAttributeConfig.md)
+ - [SearchCriteria](sailpoint\v2024/docs/SearchCriteria.md)
+ - [SearchCriteriaFiltersValue](sailpoint\v2024/docs/SearchCriteriaFiltersValue.md)
+ - [SearchCriteriaFiltersValueRange](sailpoint\v2024/docs/SearchCriteriaFiltersValueRange.md)
+ - [SearchCriteriaFiltersValueRangeLower](sailpoint\v2024/docs/SearchCriteriaFiltersValueRangeLower.md)
+ - [SearchCriteriaFiltersValueRangeUpper](sailpoint\v2024/docs/SearchCriteriaFiltersValueRangeUpper.md)
+ - [SearchCriteriaQuery](sailpoint\v2024/docs/SearchCriteriaQuery.md)
+ - [SearchCriteriaTextQuery](sailpoint\v2024/docs/SearchCriteriaTextQuery.md)
+ - [SearchExportReportArguments](sailpoint\v2024/docs/SearchExportReportArguments.md)
+ - [SearchFilterType](sailpoint\v2024/docs/SearchFilterType.md)
+ - [SearchFormDefinitionsByTenant400Response](sailpoint\v2024/docs/SearchFormDefinitionsByTenant400Response.md)
+ - [SearchSchedule](sailpoint\v2024/docs/SearchSchedule.md)
+ - [SearchScheduleRecipientsInner](sailpoint\v2024/docs/SearchScheduleRecipientsInner.md)
+ - [SectionDetails](sailpoint\v2024/docs/SectionDetails.md)
+ - [Sed](sailpoint\v2024/docs/Sed.md)
+ - [SedApproval](sailpoint\v2024/docs/SedApproval.md)
+ - [SedApprovalStatus](sailpoint\v2024/docs/SedApprovalStatus.md)
+ - [SedAssignee](sailpoint\v2024/docs/SedAssignee.md)
+ - [SedAssignment](sailpoint\v2024/docs/SedAssignment.md)
+ - [SedAssignmentResponse](sailpoint\v2024/docs/SedAssignmentResponse.md)
+ - [SedBatchRecord](sailpoint\v2024/docs/SedBatchRecord.md)
+ - [SedBatchRequest](sailpoint\v2024/docs/SedBatchRequest.md)
+ - [SedBatchResponse](sailpoint\v2024/docs/SedBatchResponse.md)
+ - [SedBatchStats](sailpoint\v2024/docs/SedBatchStats.md)
+ - [SedPatch](sailpoint\v2024/docs/SedPatch.md)
+ - [Segment](sailpoint\v2024/docs/Segment.md)
+ - [SegmentVisibilityCriteria](sailpoint\v2024/docs/SegmentVisibilityCriteria.md)
+ - [Selector](sailpoint\v2024/docs/Selector.md)
+ - [SelectorAccountMatchConfig](sailpoint\v2024/docs/SelectorAccountMatchConfig.md)
+ - [SelectorAccountMatchConfigMatchExpression](sailpoint\v2024/docs/SelectorAccountMatchConfigMatchExpression.md)
+ - [SelfImportExportDto](sailpoint\v2024/docs/SelfImportExportDto.md)
+ - [SendAccountVerificationRequest](sailpoint\v2024/docs/SendAccountVerificationRequest.md)
+ - [SendClassifyMachineAccount200Response](sailpoint\v2024/docs/SendClassifyMachineAccount200Response.md)
+ - [SendTestNotificationRequestDto](sailpoint\v2024/docs/SendTestNotificationRequestDto.md)
+ - [ServiceDeskIntegrationDto](sailpoint\v2024/docs/ServiceDeskIntegrationDto.md)
+ - [ServiceDeskIntegrationTemplateDto](sailpoint\v2024/docs/ServiceDeskIntegrationTemplateDto.md)
+ - [ServiceDeskIntegrationTemplateType](sailpoint\v2024/docs/ServiceDeskIntegrationTemplateType.md)
+ - [ServiceDeskSource](sailpoint\v2024/docs/ServiceDeskSource.md)
+ - [ServiceProviderConfiguration](sailpoint\v2024/docs/ServiceProviderConfiguration.md)
+ - [ServiceProviderConfigurationFederationProtocolDetailsInner](sailpoint\v2024/docs/ServiceProviderConfigurationFederationProtocolDetailsInner.md)
+ - [SessionConfiguration](sailpoint\v2024/docs/SessionConfiguration.md)
+ - [SetIcon200Response](sailpoint\v2024/docs/SetIcon200Response.md)
+ - [SetIconRequest](sailpoint\v2024/docs/SetIconRequest.md)
+ - [SetLifecycleState200Response](sailpoint\v2024/docs/SetLifecycleState200Response.md)
+ - [SetLifecycleStateRequest](sailpoint\v2024/docs/SetLifecycleStateRequest.md)
+ - [SimIntegrationDetails](sailpoint\v2024/docs/SimIntegrationDetails.md)
+ - [SimIntegrationDetailsAllOfBeforeProvisioningRule](sailpoint\v2024/docs/SimIntegrationDetailsAllOfBeforeProvisioningRule.md)
+ - [SlimCampaign](sailpoint\v2024/docs/SlimCampaign.md)
+ - [SlimDiscoveredApplications](sailpoint\v2024/docs/SlimDiscoveredApplications.md)
+ - [SodExemptCriteria](sailpoint\v2024/docs/SodExemptCriteria.md)
+ - [SodPolicy](sailpoint\v2024/docs/SodPolicy.md)
+ - [SodPolicyConflictingAccessCriteria](sailpoint\v2024/docs/SodPolicyConflictingAccessCriteria.md)
+ - [SodPolicyDto](sailpoint\v2024/docs/SodPolicyDto.md)
+ - [SodPolicyOwnerRef](sailpoint\v2024/docs/SodPolicyOwnerRef.md)
+ - [SodPolicySchedule](sailpoint\v2024/docs/SodPolicySchedule.md)
+ - [SodRecipient](sailpoint\v2024/docs/SodRecipient.md)
+ - [SodReportResultDto](sailpoint\v2024/docs/SodReportResultDto.md)
+ - [SodViolationCheck](sailpoint\v2024/docs/SodViolationCheck.md)
+ - [SodViolationCheckResult](sailpoint\v2024/docs/SodViolationCheckResult.md)
+ - [SodViolationContext](sailpoint\v2024/docs/SodViolationContext.md)
+ - [SodViolationContextCheckCompleted](sailpoint\v2024/docs/SodViolationContextCheckCompleted.md)
+ - [SodViolationContextConflictingAccessCriteria](sailpoint\v2024/docs/SodViolationContextConflictingAccessCriteria.md)
+ - [SodViolationContextConflictingAccessCriteriaLeftCriteria](sailpoint\v2024/docs/SodViolationContextConflictingAccessCriteriaLeftCriteria.md)
+ - [Source](sailpoint\v2024/docs/Source.md)
+ - [Source1](sailpoint\v2024/docs/Source1.md)
+ - [SourceAccountCorrelationConfig](sailpoint\v2024/docs/SourceAccountCorrelationConfig.md)
+ - [SourceAccountCorrelationRule](sailpoint\v2024/docs/SourceAccountCorrelationRule.md)
+ - [SourceAccountCreated](sailpoint\v2024/docs/SourceAccountCreated.md)
+ - [SourceAccountDeleted](sailpoint\v2024/docs/SourceAccountDeleted.md)
+ - [SourceAccountSelections](sailpoint\v2024/docs/SourceAccountSelections.md)
+ - [SourceAccountUpdated](sailpoint\v2024/docs/SourceAccountUpdated.md)
+ - [SourceApp](sailpoint\v2024/docs/SourceApp.md)
+ - [SourceAppAccountSource](sailpoint\v2024/docs/SourceAppAccountSource.md)
+ - [SourceAppBulkUpdateRequest](sailpoint\v2024/docs/SourceAppBulkUpdateRequest.md)
+ - [SourceAppCreateDto](sailpoint\v2024/docs/SourceAppCreateDto.md)
+ - [SourceAppCreateDtoAccountSource](sailpoint\v2024/docs/SourceAppCreateDtoAccountSource.md)
+ - [SourceAppPatchDto](sailpoint\v2024/docs/SourceAppPatchDto.md)
+ - [SourceBeforeProvisioningRule](sailpoint\v2024/docs/SourceBeforeProvisioningRule.md)
+ - [SourceCluster](sailpoint\v2024/docs/SourceCluster.md)
+ - [SourceClusterDto](sailpoint\v2024/docs/SourceClusterDto.md)
+ - [SourceCode](sailpoint\v2024/docs/SourceCode.md)
+ - [SourceConnectionsDto](sailpoint\v2024/docs/SourceConnectionsDto.md)
+ - [SourceCreated](sailpoint\v2024/docs/SourceCreated.md)
+ - [SourceCreatedActor](sailpoint\v2024/docs/SourceCreatedActor.md)
+ - [SourceCreationErrors](sailpoint\v2024/docs/SourceCreationErrors.md)
+ - [SourceDeleted](sailpoint\v2024/docs/SourceDeleted.md)
+ - [SourceDeletedActor](sailpoint\v2024/docs/SourceDeletedActor.md)
+ - [SourceEntitlementRequestConfig](sailpoint\v2024/docs/SourceEntitlementRequestConfig.md)
+ - [SourceHealthDto](sailpoint\v2024/docs/SourceHealthDto.md)
+ - [SourceItemRef](sailpoint\v2024/docs/SourceItemRef.md)
+ - [SourceManagementWorkgroup](sailpoint\v2024/docs/SourceManagementWorkgroup.md)
+ - [SourceManagerCorrelationMapping](sailpoint\v2024/docs/SourceManagerCorrelationMapping.md)
+ - [SourceManagerCorrelationRule](sailpoint\v2024/docs/SourceManagerCorrelationRule.md)
+ - [SourceOwner](sailpoint\v2024/docs/SourceOwner.md)
+ - [SourcePasswordPoliciesInner](sailpoint\v2024/docs/SourcePasswordPoliciesInner.md)
+ - [SourceSchedule](sailpoint\v2024/docs/SourceSchedule.md)
+ - [SourceSchemasInner](sailpoint\v2024/docs/SourceSchemasInner.md)
+ - [SourceSyncJob](sailpoint\v2024/docs/SourceSyncJob.md)
+ - [SourceSyncPayload](sailpoint\v2024/docs/SourceSyncPayload.md)
+ - [SourceUpdated](sailpoint\v2024/docs/SourceUpdated.md)
+ - [SourceUpdatedActor](sailpoint\v2024/docs/SourceUpdatedActor.md)
+ - [SourceUsage](sailpoint\v2024/docs/SourceUsage.md)
+ - [SourceUsageStatus](sailpoint\v2024/docs/SourceUsageStatus.md)
+ - [SpConfigExportJob](sailpoint\v2024/docs/SpConfigExportJob.md)
+ - [SpConfigExportJobStatus](sailpoint\v2024/docs/SpConfigExportJobStatus.md)
+ - [SpConfigExportResults](sailpoint\v2024/docs/SpConfigExportResults.md)
+ - [SpConfigImportJobStatus](sailpoint\v2024/docs/SpConfigImportJobStatus.md)
+ - [SpConfigImportResults](sailpoint\v2024/docs/SpConfigImportResults.md)
+ - [SpConfigJob](sailpoint\v2024/docs/SpConfigJob.md)
+ - [SpConfigMessage](sailpoint\v2024/docs/SpConfigMessage.md)
+ - [SpConfigMessage1](sailpoint\v2024/docs/SpConfigMessage1.md)
+ - [SpConfigObject](sailpoint\v2024/docs/SpConfigObject.md)
+ - [SpConfigRule](sailpoint\v2024/docs/SpConfigRule.md)
+ - [SpConfigRuleValue](sailpoint\v2024/docs/SpConfigRuleValue.md)
+ - [SpConfigRules](sailpoint\v2024/docs/SpConfigRules.md)
+ - [SpDetails](sailpoint\v2024/docs/SpDetails.md)
+ - [StandardLevel](sailpoint\v2024/docs/StandardLevel.md)
+ - [StartInvocationInput](sailpoint\v2024/docs/StartInvocationInput.md)
+ - [StatusResponse](sailpoint\v2024/docs/StatusResponse.md)
+ - [SubSearchAggregationSpecification](sailpoint\v2024/docs/SubSearchAggregationSpecification.md)
+ - [Subscription](sailpoint\v2024/docs/Subscription.md)
+ - [SubscriptionPatchRequestInner](sailpoint\v2024/docs/SubscriptionPatchRequestInner.md)
+ - [SubscriptionPatchRequestInnerValue](sailpoint\v2024/docs/SubscriptionPatchRequestInnerValue.md)
+ - [SubscriptionPatchRequestInnerValueAnyOfInner](sailpoint\v2024/docs/SubscriptionPatchRequestInnerValueAnyOfInner.md)
+ - [SubscriptionPostRequest](sailpoint\v2024/docs/SubscriptionPostRequest.md)
+ - [SubscriptionPutRequest](sailpoint\v2024/docs/SubscriptionPutRequest.md)
+ - [SubscriptionType](sailpoint\v2024/docs/SubscriptionType.md)
+ - [TaggedObject](sailpoint\v2024/docs/TaggedObject.md)
+ - [TaggedObjectDto](sailpoint\v2024/docs/TaggedObjectDto.md)
+ - [Target](sailpoint\v2024/docs/Target.md)
+ - [TaskDefinitionSummary](sailpoint\v2024/docs/TaskDefinitionSummary.md)
+ - [TaskResultDetails](sailpoint\v2024/docs/TaskResultDetails.md)
+ - [TaskResultDetailsMessagesInner](sailpoint\v2024/docs/TaskResultDetailsMessagesInner.md)
+ - [TaskResultDetailsReturnsInner](sailpoint\v2024/docs/TaskResultDetailsReturnsInner.md)
+ - [TaskResultDto](sailpoint\v2024/docs/TaskResultDto.md)
+ - [TaskResultResponse](sailpoint\v2024/docs/TaskResultResponse.md)
+ - [TaskResultSimplified](sailpoint\v2024/docs/TaskResultSimplified.md)
+ - [TaskReturnDetails](sailpoint\v2024/docs/TaskReturnDetails.md)
+ - [TaskStatus](sailpoint\v2024/docs/TaskStatus.md)
+ - [TaskStatusMessage](sailpoint\v2024/docs/TaskStatusMessage.md)
+ - [TaskStatusMessageParametersInner](sailpoint\v2024/docs/TaskStatusMessageParametersInner.md)
+ - [TemplateBulkDeleteDto](sailpoint\v2024/docs/TemplateBulkDeleteDto.md)
+ - [TemplateDto](sailpoint\v2024/docs/TemplateDto.md)
+ - [TemplateDtoDefault](sailpoint\v2024/docs/TemplateDtoDefault.md)
+ - [TemplateSlack](sailpoint\v2024/docs/TemplateSlack.md)
+ - [TemplateSlackAutoApprovalData](sailpoint\v2024/docs/TemplateSlackAutoApprovalData.md)
+ - [TemplateSlackCustomFields](sailpoint\v2024/docs/TemplateSlackCustomFields.md)
+ - [TemplateTeams](sailpoint\v2024/docs/TemplateTeams.md)
+ - [Tenant](sailpoint\v2024/docs/Tenant.md)
+ - [TenantConfigurationDetails](sailpoint\v2024/docs/TenantConfigurationDetails.md)
+ - [TenantConfigurationRequest](sailpoint\v2024/docs/TenantConfigurationRequest.md)
+ - [TenantConfigurationResponse](sailpoint\v2024/docs/TenantConfigurationResponse.md)
+ - [TenantUiMetadataItemResponse](sailpoint\v2024/docs/TenantUiMetadataItemResponse.md)
+ - [TenantUiMetadataItemUpdateRequest](sailpoint\v2024/docs/TenantUiMetadataItemUpdateRequest.md)
+ - [TestExternalExecuteWorkflow200Response](sailpoint\v2024/docs/TestExternalExecuteWorkflow200Response.md)
+ - [TestExternalExecuteWorkflowRequest](sailpoint\v2024/docs/TestExternalExecuteWorkflowRequest.md)
+ - [TestInvocation](sailpoint\v2024/docs/TestInvocation.md)
+ - [TestSourceConnectionMultihost200Response](sailpoint\v2024/docs/TestSourceConnectionMultihost200Response.md)
+ - [TestWorkflow200Response](sailpoint\v2024/docs/TestWorkflow200Response.md)
+ - [TestWorkflowRequest](sailpoint\v2024/docs/TestWorkflowRequest.md)
+ - [TextQuery](sailpoint\v2024/docs/TextQuery.md)
+ - [Transform](sailpoint\v2024/docs/Transform.md)
+ - [TransformDefinition](sailpoint\v2024/docs/TransformDefinition.md)
+ - [TransformRead](sailpoint\v2024/docs/TransformRead.md)
+ - [TranslationMessage](sailpoint\v2024/docs/TranslationMessage.md)
+ - [Trigger](sailpoint\v2024/docs/Trigger.md)
+ - [TriggerExampleInput](sailpoint\v2024/docs/TriggerExampleInput.md)
+ - [TriggerExampleOutput](sailpoint\v2024/docs/TriggerExampleOutput.md)
+ - [TriggerType](sailpoint\v2024/docs/TriggerType.md)
+ - [TypeAheadQuery](sailpoint\v2024/docs/TypeAheadQuery.md)
+ - [TypedReference](sailpoint\v2024/docs/TypedReference.md)
+ - [UncorrelatedAccountsReportArguments](sailpoint\v2024/docs/UncorrelatedAccountsReportArguments.md)
+ - [UpdateAccessProfilesInBulk412Response](sailpoint\v2024/docs/UpdateAccessProfilesInBulk412Response.md)
+ - [UpdateDetail](sailpoint\v2024/docs/UpdateDetail.md)
+ - [UpdateMultiHostSourcesRequestInner](sailpoint\v2024/docs/UpdateMultiHostSourcesRequestInner.md)
+ - [UpdateMultiHostSourcesRequestInnerValue](sailpoint\v2024/docs/UpdateMultiHostSourcesRequestInnerValue.md)
+ - [UsageType](sailpoint\v2024/docs/UsageType.md)
+ - [UserApp](sailpoint\v2024/docs/UserApp.md)
+ - [UserAppAccount](sailpoint\v2024/docs/UserAppAccount.md)
+ - [UserAppOwner](sailpoint\v2024/docs/UserAppOwner.md)
+ - [UserAppSource](sailpoint\v2024/docs/UserAppSource.md)
+ - [UserAppSourceApp](sailpoint\v2024/docs/UserAppSourceApp.md)
+ - [V3ConnectorDto](sailpoint\v2024/docs/V3ConnectorDto.md)
+ - [V3CreateConnectorDto](sailpoint\v2024/docs/V3CreateConnectorDto.md)
+ - [VAClusterStatusChangeEvent](sailpoint\v2024/docs/VAClusterStatusChangeEvent.md)
+ - [VAClusterStatusChangeEventApplication](sailpoint\v2024/docs/VAClusterStatusChangeEventApplication.md)
+ - [VAClusterStatusChangeEventHealthCheckResult](sailpoint\v2024/docs/VAClusterStatusChangeEventHealthCheckResult.md)
+ - [VAClusterStatusChangeEventPreviousHealthCheckResult](sailpoint\v2024/docs/VAClusterStatusChangeEventPreviousHealthCheckResult.md)
+ - [ValidateFilterInputDto](sailpoint\v2024/docs/ValidateFilterInputDto.md)
+ - [ValidateFilterOutputDto](sailpoint\v2024/docs/ValidateFilterOutputDto.md)
+ - [Value](sailpoint\v2024/docs/Value.md)
+ - [VendorConnectorMapping](sailpoint\v2024/docs/VendorConnectorMapping.md)
+ - [VendorConnectorMappingDeletedAt](sailpoint\v2024/docs/VendorConnectorMappingDeletedAt.md)
+ - [VendorConnectorMappingDeletedBy](sailpoint\v2024/docs/VendorConnectorMappingDeletedBy.md)
+ - [VendorConnectorMappingUpdatedAt](sailpoint\v2024/docs/VendorConnectorMappingUpdatedAt.md)
+ - [VendorConnectorMappingUpdatedBy](sailpoint\v2024/docs/VendorConnectorMappingUpdatedBy.md)
+ - [ViolationContext](sailpoint\v2024/docs/ViolationContext.md)
+ - [ViolationContextPolicy](sailpoint\v2024/docs/ViolationContextPolicy.md)
+ - [ViolationOwnerAssignmentConfig](sailpoint\v2024/docs/ViolationOwnerAssignmentConfig.md)
+ - [ViolationOwnerAssignmentConfigOwnerRef](sailpoint\v2024/docs/ViolationOwnerAssignmentConfigOwnerRef.md)
+ - [ViolationPrediction](sailpoint\v2024/docs/ViolationPrediction.md)
+ - [VisibilityCriteria](sailpoint\v2024/docs/VisibilityCriteria.md)
+ - [WorkItemForward](sailpoint\v2024/docs/WorkItemForward.md)
+ - [WorkItemState](sailpoint\v2024/docs/WorkItemState.md)
+ - [WorkItemStateManualWorkItems](sailpoint\v2024/docs/WorkItemStateManualWorkItems.md)
+ - [WorkItemTypeManualWorkItems](sailpoint\v2024/docs/WorkItemTypeManualWorkItems.md)
+ - [WorkItems](sailpoint\v2024/docs/WorkItems.md)
+ - [WorkItemsCount](sailpoint\v2024/docs/WorkItemsCount.md)
+ - [WorkItemsForm](sailpoint\v2024/docs/WorkItemsForm.md)
+ - [WorkItemsSummary](sailpoint\v2024/docs/WorkItemsSummary.md)
+ - [Workflow](sailpoint\v2024/docs/Workflow.md)
+ - [WorkflowAllOfCreator](sailpoint\v2024/docs/WorkflowAllOfCreator.md)
+ - [WorkflowBody](sailpoint\v2024/docs/WorkflowBody.md)
+ - [WorkflowBodyOwner](sailpoint\v2024/docs/WorkflowBodyOwner.md)
+ - [WorkflowDefinition](sailpoint\v2024/docs/WorkflowDefinition.md)
+ - [WorkflowExecution](sailpoint\v2024/docs/WorkflowExecution.md)
+ - [WorkflowExecutionEvent](sailpoint\v2024/docs/WorkflowExecutionEvent.md)
+ - [WorkflowLibraryAction](sailpoint\v2024/docs/WorkflowLibraryAction.md)
+ - [WorkflowLibraryActionExampleOutput](sailpoint\v2024/docs/WorkflowLibraryActionExampleOutput.md)
+ - [WorkflowLibraryFormFields](sailpoint\v2024/docs/WorkflowLibraryFormFields.md)
+ - [WorkflowLibraryOperator](sailpoint\v2024/docs/WorkflowLibraryOperator.md)
+ - [WorkflowLibraryTrigger](sailpoint\v2024/docs/WorkflowLibraryTrigger.md)
+ - [WorkflowModifiedBy](sailpoint\v2024/docs/WorkflowModifiedBy.md)
+ - [WorkflowOAuthClient](sailpoint\v2024/docs/WorkflowOAuthClient.md)
+ - [WorkflowTrigger](sailpoint\v2024/docs/WorkflowTrigger.md)
+ - [WorkflowTriggerAttributes](sailpoint\v2024/docs/WorkflowTriggerAttributes.md)
+ - [WorkgroupBulkDeleteRequest](sailpoint\v2024/docs/WorkgroupBulkDeleteRequest.md)
+ - [WorkgroupConnectionDto](sailpoint\v2024/docs/WorkgroupConnectionDto.md)
+ - [WorkgroupConnectionDtoObject](sailpoint\v2024/docs/WorkgroupConnectionDtoObject.md)
+ - [WorkgroupDeleteItem](sailpoint\v2024/docs/WorkgroupDeleteItem.md)
+ - [WorkgroupDto](sailpoint\v2024/docs/WorkgroupDto.md)
+ - [WorkgroupDtoOwner](sailpoint\v2024/docs/WorkgroupDtoOwner.md)
+ - [WorkgroupMemberAddItem](sailpoint\v2024/docs/WorkgroupMemberAddItem.md)
+ - [WorkgroupMemberDeleteItem](sailpoint\v2024/docs/WorkgroupMemberDeleteItem.md)
 
 
 <a id="documentation-for-authorization"></a>
