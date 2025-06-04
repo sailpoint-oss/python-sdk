@@ -654,6 +654,7 @@ sailpoint/v2025/docs/IdentityWithNewAccessAccessRefsInner.md
 sailpoint/v2025/docs/IdpDetails.md
 sailpoint/v2025/docs/ImportAccountsRequest.md
 sailpoint/v2025/docs/ImportEntitlementsBySourceRequest.md
+sailpoint/v2025/docs/ImportEntitlementsRequest.md
 sailpoint/v2025/docs/ImportFormDefinitions202Response.md
 sailpoint/v2025/docs/ImportFormDefinitions202ResponseErrorsInner.md
 sailpoint/v2025/docs/ImportFormDefinitionsRequestInner.md
@@ -1830,6 +1831,7 @@ sailpoint/v2025/models/identity_with_new_access_access_refs_inner.py
 sailpoint/v2025/models/idp_details.py
 sailpoint/v2025/models/import_accounts_request.py
 sailpoint/v2025/models/import_entitlements_by_source_request.py
+sailpoint/v2025/models/import_entitlements_request.py
 sailpoint/v2025/models/import_form_definitions202_response.py
 sailpoint/v2025/models/import_form_definitions202_response_errors_inner.py
 sailpoint/v2025/models/import_form_definitions_request_inner.py
@@ -2998,6 +3000,7 @@ sailpoint/v2025/test/test_identity_with_new_access_access_refs_inner.py
 sailpoint/v2025/test/test_idp_details.py
 sailpoint/v2025/test/test_import_accounts_request.py
 sailpoint/v2025/test/test_import_entitlements_by_source_request.py
+sailpoint/v2025/test/test_import_entitlements_request.py
 sailpoint/v2025/test/test_import_form_definitions202_response.py
 sailpoint/v2025/test/test_import_form_definitions202_response_errors_inner.py
 sailpoint/v2025/test/test_import_form_definitions_request_inner.py

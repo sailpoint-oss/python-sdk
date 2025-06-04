@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2024.models.source_usage import SourceUsage
+from sailpoint.v2024.models.import_entitlements_request import ImportEntitlementsRequest
 
-class TestSourceUsage(unittest.TestCase):
-    """SourceUsage unit test stubs"""
+class TestImportEntitlementsRequest(unittest.TestCase):
+    """ImportEntitlementsRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,26 +25,25 @@ class TestSourceUsage(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SourceUsage:
-        """Test SourceUsage
+    def make_instance(self, include_optional) -> ImportEntitlementsRequest:
+        """Test ImportEntitlementsRequest
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `SourceUsage`
+        # uncomment below to create an instance of `ImportEntitlementsRequest`
         """
-        model = SourceUsage()
+        model = ImportEntitlementsRequest()
         if include_optional:
-            return SourceUsage(
-                var_date = 'Fri Apr 21 00:00:00 UTC 2023',
-                count = 10.45
+            return ImportEntitlementsRequest(
+                file = bytes(b'blah')
             )
         else:
-            return SourceUsage(
+            return ImportEntitlementsRequest(
         )
         """
 
-    def testSourceUsage(self):
-        """Test SourceUsage"""
+    def testImportEntitlementsRequest(self):
+        """Test ImportEntitlementsRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

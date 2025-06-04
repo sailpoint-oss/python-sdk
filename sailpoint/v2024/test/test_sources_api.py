@@ -222,6 +222,13 @@ class TestSourcesApi(unittest.TestCase):
         """
         pass
 
+    def test_import_entitlements(self) -> None:
+        """Test case for import_entitlements
+
+        Entitlement aggregation
+        """
+        pass
+
     def test_import_entitlements_schema(self) -> None:
         """Test case for import_entitlements_schema
 
