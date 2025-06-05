@@ -20,6 +20,7 @@ from sailpoint.v2025.api.certification_campaign_filters_api import Certification
 from sailpoint.v2025.api.certification_campaigns_api import CertificationCampaignsApi
 from sailpoint.v2025.api.certification_summaries_api import CertificationSummariesApi
 from sailpoint.v2025.api.certifications_api import CertificationsApi
+from sailpoint.v2025.api.classify_source_api import ClassifySourceApi
 from sailpoint.v2025.api.configuration_hub_api import ConfigurationHubApi
 from sailpoint.v2025.api.connector_customizers_api import ConnectorCustomizersApi
 from sailpoint.v2025.api.connector_rule_management_api import ConnectorRuleManagementApi
@@ -44,7 +45,10 @@ from sailpoint.v2025.api.identity_history_api import IdentityHistoryApi
 from sailpoint.v2025.api.identity_profiles_api import IdentityProfilesApi
 from sailpoint.v2025.api.lifecycle_states_api import LifecycleStatesApi
 from sailpoint.v2025.api.mfa_configuration_api import MFAConfigurationApi
+from sailpoint.v2025.api.machine_account_classify_api import MachineAccountClassifyApi
+from sailpoint.v2025.api.machine_account_mappings_api import MachineAccountMappingsApi
 from sailpoint.v2025.api.machine_accounts_api import MachineAccountsApi
+from sailpoint.v2025.api.machine_classification_config_api import MachineClassificationConfigApi
 from sailpoint.v2025.api.machine_identities_api import MachineIdentitiesApi
 from sailpoint.v2025.api.managed_clients_api import ManagedClientsApi
 from sailpoint.v2025.api.managed_cluster_types_api import ManagedClusterTypesApi

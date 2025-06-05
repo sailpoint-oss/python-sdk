@@ -21,6 +21,7 @@ sailpoint/v2025/api/certification_campaign_filters_api.py
 sailpoint/v2025/api/certification_campaigns_api.py
 sailpoint/v2025/api/certification_summaries_api.py
 sailpoint/v2025/api/certifications_api.py
+sailpoint/v2025/api/classify_source_api.py
 sailpoint/v2025/api/configuration_hub_api.py
 sailpoint/v2025/api/connector_customizers_api.py
 sailpoint/v2025/api/connector_rule_management_api.py
@@ -44,7 +45,10 @@ sailpoint/v2025/api/identity_attributes_api.py
 sailpoint/v2025/api/identity_history_api.py
 sailpoint/v2025/api/identity_profiles_api.py
 sailpoint/v2025/api/lifecycle_states_api.py
+sailpoint/v2025/api/machine_account_classify_api.py
+sailpoint/v2025/api/machine_account_mappings_api.py
 sailpoint/v2025/api/machine_accounts_api.py
+sailpoint/v2025/api/machine_classification_config_api.py
 sailpoint/v2025/api/machine_identities_api.py
 sailpoint/v2025/api/managed_clients_api.py
 sailpoint/v2025/api/managed_cluster_types_api.py
@@ -283,6 +287,12 @@ sailpoint/v2025/docs/AttributeDTOList.md
 sailpoint/v2025/docs/AttributeDefinition.md
 sailpoint/v2025/docs/AttributeDefinitionSchema.md
 sailpoint/v2025/docs/AttributeDefinitionType.md
+sailpoint/v2025/docs/AttributeMappings.md
+sailpoint/v2025/docs/AttributeMappingsAllOfTarget.md
+sailpoint/v2025/docs/AttributeMappingsAllOfTransformDefinition.md
+sailpoint/v2025/docs/AttributeMappingsAllOfTransformDefinitionAttributes.md
+sailpoint/v2025/docs/AttributeMappingsAllOfTransformDefinitionAttributesInput.md
+sailpoint/v2025/docs/AttributeMappingsAllOfTransformDefinitionAttributesInputAttributes.md
 sailpoint/v2025/docs/AttributeRequest.md
 sailpoint/v2025/docs/AttributeRequestValue.md
 sailpoint/v2025/docs/AttributeValueDTO.md
@@ -365,6 +375,7 @@ sailpoint/v2025/docs/CertificationSummariesApi.md
 sailpoint/v2025/docs/CertificationTask.md
 sailpoint/v2025/docs/CertificationsApi.md
 sailpoint/v2025/docs/CertifierResponse.md
+sailpoint/v2025/docs/ClassifySourceApi.md
 sailpoint/v2025/docs/ClientLogConfiguration.md
 sailpoint/v2025/docs/ClientLogConfigurationDurationMinutes.md
 sailpoint/v2025/docs/ClientLogConfigurationExpiration.md
@@ -708,7 +719,11 @@ sailpoint/v2025/docs/LockoutConfiguration.md
 sailpoint/v2025/docs/LookupStep.md
 sailpoint/v2025/docs/MFAConfigurationApi.md
 sailpoint/v2025/docs/MachineAccount.md
+sailpoint/v2025/docs/MachineAccountClassifyApi.md
+sailpoint/v2025/docs/MachineAccountMappingsApi.md
 sailpoint/v2025/docs/MachineAccountsApi.md
+sailpoint/v2025/docs/MachineClassificationConfig.md
+sailpoint/v2025/docs/MachineClassificationConfigApi.md
 sailpoint/v2025/docs/MachineIdentitiesApi.md
 sailpoint/v2025/docs/MachineIdentity.md
 sailpoint/v2025/docs/MailFromAttributes.md
@@ -1095,6 +1110,8 @@ sailpoint/v2025/docs/SelectorAccountMatchConfig.md
 sailpoint/v2025/docs/SelectorAccountMatchConfigMatchExpression.md
 sailpoint/v2025/docs/SelfImportExportDto.md
 sailpoint/v2025/docs/SendAccountVerificationRequest.md
+sailpoint/v2025/docs/SendClassifyMachineAccount200Response.md
+sailpoint/v2025/docs/SendClassifyMachineAccountFromSource200Response.md
 sailpoint/v2025/docs/SendTestNotificationRequestDto.md
 sailpoint/v2025/docs/ServiceDeskIntegrationApi.md
 sailpoint/v2025/docs/ServiceDeskIntegrationDto.md
@@ -1141,6 +1158,8 @@ sailpoint/v2025/docs/SourceAppCreateDto.md
 sailpoint/v2025/docs/SourceAppCreateDtoAccountSource.md
 sailpoint/v2025/docs/SourceAppPatchDto.md
 sailpoint/v2025/docs/SourceBeforeProvisioningRule.md
+sailpoint/v2025/docs/SourceClassificationStatus.md
+sailpoint/v2025/docs/SourceClassificationStatusAllOfCounts.md
 sailpoint/v2025/docs/SourceCluster.md
 sailpoint/v2025/docs/SourceClusterDto.md
 sailpoint/v2025/docs/SourceCode.md
@@ -1490,6 +1509,12 @@ sailpoint/v2025/models/attribute_definition_schema.py
 sailpoint/v2025/models/attribute_definition_type.py
 sailpoint/v2025/models/attribute_dto.py
 sailpoint/v2025/models/attribute_dto_list.py
+sailpoint/v2025/models/attribute_mappings.py
+sailpoint/v2025/models/attribute_mappings_all_of_target.py
+sailpoint/v2025/models/attribute_mappings_all_of_transform_definition.py
+sailpoint/v2025/models/attribute_mappings_all_of_transform_definition_attributes.py
+sailpoint/v2025/models/attribute_mappings_all_of_transform_definition_attributes_input.py
+sailpoint/v2025/models/attribute_mappings_all_of_transform_definition_attributes_input_attributes.py
 sailpoint/v2025/models/attribute_request.py
 sailpoint/v2025/models/attribute_request_value.py
 sailpoint/v2025/models/attribute_value_dto.py
@@ -1883,6 +1908,7 @@ sailpoint/v2025/models/localized_message.py
 sailpoint/v2025/models/lockout_configuration.py
 sailpoint/v2025/models/lookup_step.py
 sailpoint/v2025/models/machine_account.py
+sailpoint/v2025/models/machine_classification_config.py
 sailpoint/v2025/models/machine_identity.py
 sailpoint/v2025/models/mail_from_attributes.py
 sailpoint/v2025/models/mail_from_attributes_dto.py
@@ -2238,6 +2264,8 @@ sailpoint/v2025/models/selector_account_match_config.py
 sailpoint/v2025/models/selector_account_match_config_match_expression.py
 sailpoint/v2025/models/self_import_export_dto.py
 sailpoint/v2025/models/send_account_verification_request.py
+sailpoint/v2025/models/send_classify_machine_account200_response.py
+sailpoint/v2025/models/send_classify_machine_account_from_source200_response.py
 sailpoint/v2025/models/send_test_notification_request_dto.py
 sailpoint/v2025/models/service_desk_integration_dto.py
 sailpoint/v2025/models/service_desk_integration_template_dto.py
@@ -2283,6 +2311,8 @@ sailpoint/v2025/models/source_app_create_dto.py
 sailpoint/v2025/models/source_app_create_dto_account_source.py
 sailpoint/v2025/models/source_app_patch_dto.py
 sailpoint/v2025/models/source_before_provisioning_rule.py
+sailpoint/v2025/models/source_classification_status.py
+sailpoint/v2025/models/source_classification_status_all_of_counts.py
 sailpoint/v2025/models/source_cluster.py
 sailpoint/v2025/models/source_cluster_dto.py
 sailpoint/v2025/models/source_code.py
@@ -2630,6 +2660,12 @@ sailpoint/v2025/test/test_attribute_definition_schema.py
 sailpoint/v2025/test/test_attribute_definition_type.py
 sailpoint/v2025/test/test_attribute_dto.py
 sailpoint/v2025/test/test_attribute_dto_list.py
+sailpoint/v2025/test/test_attribute_mappings.py
+sailpoint/v2025/test/test_attribute_mappings_all_of_target.py
+sailpoint/v2025/test/test_attribute_mappings_all_of_transform_definition.py
+sailpoint/v2025/test/test_attribute_mappings_all_of_transform_definition_attributes.py
+sailpoint/v2025/test/test_attribute_mappings_all_of_transform_definition_attributes_input.py
+sailpoint/v2025/test/test_attribute_mappings_all_of_transform_definition_attributes_input_attributes.py
 sailpoint/v2025/test/test_attribute_request.py
 sailpoint/v2025/test/test_attribute_request_value.py
 sailpoint/v2025/test/test_attribute_value_dto.py
@@ -2712,6 +2748,7 @@ sailpoint/v2025/test/test_certification_summaries_api.py
 sailpoint/v2025/test/test_certification_task.py
 sailpoint/v2025/test/test_certifications_api.py
 sailpoint/v2025/test/test_certifier_response.py
+sailpoint/v2025/test/test_classify_source_api.py
 sailpoint/v2025/test/test_client_log_configuration.py
 sailpoint/v2025/test/test_client_log_configuration_duration_minutes.py
 sailpoint/v2025/test/test_client_log_configuration_expiration.py
@@ -3053,7 +3090,11 @@ sailpoint/v2025/test/test_localized_message.py
 sailpoint/v2025/test/test_lockout_configuration.py
 sailpoint/v2025/test/test_lookup_step.py
 sailpoint/v2025/test/test_machine_account.py
+sailpoint/v2025/test/test_machine_account_classify_api.py
+sailpoint/v2025/test/test_machine_account_mappings_api.py
 sailpoint/v2025/test/test_machine_accounts_api.py
+sailpoint/v2025/test/test_machine_classification_config.py
+sailpoint/v2025/test/test_machine_classification_config_api.py
 sailpoint/v2025/test/test_machine_identities_api.py
 sailpoint/v2025/test/test_machine_identity.py
 sailpoint/v2025/test/test_mail_from_attributes.py
@@ -3436,6 +3477,8 @@ sailpoint/v2025/test/test_selector_account_match_config.py
 sailpoint/v2025/test/test_selector_account_match_config_match_expression.py
 sailpoint/v2025/test/test_self_import_export_dto.py
 sailpoint/v2025/test/test_send_account_verification_request.py
+sailpoint/v2025/test/test_send_classify_machine_account200_response.py
+sailpoint/v2025/test/test_send_classify_machine_account_from_source200_response.py
 sailpoint/v2025/test/test_send_test_notification_request_dto.py
 sailpoint/v2025/test/test_service_desk_integration_api.py
 sailpoint/v2025/test/test_service_desk_integration_dto.py
@@ -3485,6 +3528,8 @@ sailpoint/v2025/test/test_source_app_create_dto.py
 sailpoint/v2025/test/test_source_app_create_dto_account_source.py
 sailpoint/v2025/test/test_source_app_patch_dto.py
 sailpoint/v2025/test/test_source_before_provisioning_rule.py
+sailpoint/v2025/test/test_source_classification_status.py
+sailpoint/v2025/test/test_source_classification_status_all_of_counts.py
 sailpoint/v2025/test/test_source_cluster.py
 sailpoint/v2025/test/test_source_cluster_dto.py
 sailpoint/v2025/test/test_source_code.py

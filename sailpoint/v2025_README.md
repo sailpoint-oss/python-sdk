@@ -196,6 +196,9 @@ Class | Method | HTTP request | Description
 *CertificationsApi* | [**reassign_identity_certifications**](sailpoint/v2025/docs/CertificationsApi.md#reassign_identity_certifications) | **POST** /certifications/{id}/reassign | Reassign identities or items
 *CertificationsApi* | [**sign_off_identity_certification**](sailpoint/v2025/docs/CertificationsApi.md#sign_off_identity_certification) | **POST** /certifications/{id}/sign-off | Finalize identity certification decisions
 *CertificationsApi* | [**submit_reassign_certs_async**](sailpoint/v2025/docs/CertificationsApi.md#submit_reassign_certs_async) | **POST** /certifications/{id}/reassign-async | Reassign certifications asynchronously
+*ClassifySourceApi* | [**delete_classify_machine_account_from_source**](sailpoint/v2025/docs/ClassifySourceApi.md#delete_classify_machine_account_from_source) | **DELETE** /sources/{sourceId}/classify | Cancel classify source&#39;s accounts process
+*ClassifySourceApi* | [**get_classify_machine_account_from_source_status**](sailpoint/v2025/docs/ClassifySourceApi.md#get_classify_machine_account_from_source_status) | **GET** /sources/{sourceId}/classify | Source accounts classification status
+*ClassifySourceApi* | [**send_classify_machine_account_from_source**](sailpoint/v2025/docs/ClassifySourceApi.md#send_classify_machine_account_from_source) | **POST** /sources/{sourceId}/classify | Classify source&#39;s all accounts
 *ConfigurationHubApi* | [**create_deploy**](sailpoint/v2025/docs/ConfigurationHubApi.md#create_deploy) | **POST** /configuration-hub/deploys | Create a deploy
 *ConfigurationHubApi* | [**create_object_mapping**](sailpoint/v2025/docs/ConfigurationHubApi.md#create_object_mapping) | **POST** /configuration-hub/object-mappings/{sourceOrg} | Creates an object mapping
 *ConfigurationHubApi* | [**create_object_mappings**](sailpoint/v2025/docs/ConfigurationHubApi.md#create_object_mappings) | **POST** /configuration-hub/object-mappings/{sourceOrg}/bulk-create | Bulk creates object mappings
@@ -414,9 +417,17 @@ Class | Method | HTTP request | Description
 *MFAConfigurationApi* | [**set_mfa_okta_config**](sailpoint/v2025/docs/MFAConfigurationApi.md#set_mfa_okta_config) | **PUT** /mfa/okta-verify/config | Set okta mfa configuration
 *MFAConfigurationApi* | [**set_mfakba_config**](sailpoint/v2025/docs/MFAConfigurationApi.md#set_mfakba_config) | **POST** /mfa/kba/config/answers | Set mfa kba configuration
 *MFAConfigurationApi* | [**test_mfa_config**](sailpoint/v2025/docs/MFAConfigurationApi.md#test_mfa_config) | **GET** /mfa/{method}/test | Mfa method&#39;s test configuration
+*MachineAccountClassifyApi* | [**send_classify_machine_account**](sailpoint/v2025/docs/MachineAccountClassifyApi.md#send_classify_machine_account) | **POST** /accounts/{id}/classify | Classify a Single Machine Account
+*MachineAccountMappingsApi* | [**create_machine_account_mappings**](sailpoint/v2025/docs/MachineAccountMappingsApi.md#create_machine_account_mappings) | **POST** /sources/{sourceId}/machine-account-mappings | Create machine account mappings
+*MachineAccountMappingsApi* | [**delete_machine_account_mappings**](sailpoint/v2025/docs/MachineAccountMappingsApi.md#delete_machine_account_mappings) | **DELETE** /sources/{sourceId}/machine-account-mappings | Delete source&#39;s machine account mappings
+*MachineAccountMappingsApi* | [**list_machine_account_mappings**](sailpoint/v2025/docs/MachineAccountMappingsApi.md#list_machine_account_mappings) | **GET** /sources/{sourceId}/machine-account-mappings | Machine account mapping for source
+*MachineAccountMappingsApi* | [**set_machine_account_mappings**](sailpoint/v2025/docs/MachineAccountMappingsApi.md#set_machine_account_mappings) | **PUT** /sources/{sourceId}/machine-mappings | Update Source&#39;s Machine Account Mappings
 *MachineAccountsApi* | [**get_machine_account**](sailpoint/v2025/docs/MachineAccountsApi.md#get_machine_account) | **GET** /machine-accounts/{id} | Machine account details
 *MachineAccountsApi* | [**list_machine_accounts**](sailpoint/v2025/docs/MachineAccountsApi.md#list_machine_accounts) | **GET** /machine-accounts | Machine accounts list
 *MachineAccountsApi* | [**update_machine_account**](sailpoint/v2025/docs/MachineAccountsApi.md#update_machine_account) | **PATCH** /machine-accounts/{id} | Update a machine account
+*MachineClassificationConfigApi* | [**delete_machine_classification_config**](sailpoint/v2025/docs/MachineClassificationConfigApi.md#delete_machine_classification_config) | **DELETE** /sources/{sourceId}/machine-classification-config | Delete source&#39;s classification config
+*MachineClassificationConfigApi* | [**get_machine_classification_config**](sailpoint/v2025/docs/MachineClassificationConfigApi.md#get_machine_classification_config) | **GET** /sources/{sourceId}/machine-classification-config | Machine classification config for source
+*MachineClassificationConfigApi* | [**set_machine_classification_config**](sailpoint/v2025/docs/MachineClassificationConfigApi.md#set_machine_classification_config) | **PUT** /sources/{sourceId}/machine-classification-config | Update source&#39;s classification config
 *MachineIdentitiesApi* | [**create_machine_identity**](sailpoint/v2025/docs/MachineIdentitiesApi.md#create_machine_identity) | **POST** /machine-identities | Create machine identities
 *MachineIdentitiesApi* | [**delete_machine_identity**](sailpoint/v2025/docs/MachineIdentitiesApi.md#delete_machine_identity) | **DELETE** /machine-identities/{id} | Delete machine identity
 *MachineIdentitiesApi* | [**get_machine_identity**](sailpoint/v2025/docs/MachineIdentitiesApi.md#get_machine_identity) | **GET** /machine-identities/{id} | Machine identity details
@@ -951,6 +962,12 @@ Class | Method | HTTP request | Description
  - [AttributeDefinition](sailpoint/v2025/docs/AttributeDefinition.md)
  - [AttributeDefinitionSchema](sailpoint/v2025/docs/AttributeDefinitionSchema.md)
  - [AttributeDefinitionType](sailpoint/v2025/docs/AttributeDefinitionType.md)
+ - [AttributeMappings](sailpoint/v2025/docs/AttributeMappings.md)
+ - [AttributeMappingsAllOfTarget](sailpoint/v2025/docs/AttributeMappingsAllOfTarget.md)
+ - [AttributeMappingsAllOfTransformDefinition](sailpoint/v2025/docs/AttributeMappingsAllOfTransformDefinition.md)
+ - [AttributeMappingsAllOfTransformDefinitionAttributes](sailpoint/v2025/docs/AttributeMappingsAllOfTransformDefinitionAttributes.md)
+ - [AttributeMappingsAllOfTransformDefinitionAttributesInput](sailpoint/v2025/docs/AttributeMappingsAllOfTransformDefinitionAttributesInput.md)
+ - [AttributeMappingsAllOfTransformDefinitionAttributesInputAttributes](sailpoint/v2025/docs/AttributeMappingsAllOfTransformDefinitionAttributesInputAttributes.md)
  - [AttributeRequest](sailpoint/v2025/docs/AttributeRequest.md)
  - [AttributeRequestValue](sailpoint/v2025/docs/AttributeRequestValue.md)
  - [AttributeValueDTO](sailpoint/v2025/docs/AttributeValueDTO.md)
@@ -1344,6 +1361,7 @@ Class | Method | HTTP request | Description
  - [LockoutConfiguration](sailpoint/v2025/docs/LockoutConfiguration.md)
  - [LookupStep](sailpoint/v2025/docs/LookupStep.md)
  - [MachineAccount](sailpoint/v2025/docs/MachineAccount.md)
+ - [MachineClassificationConfig](sailpoint/v2025/docs/MachineClassificationConfig.md)
  - [MachineIdentity](sailpoint/v2025/docs/MachineIdentity.md)
  - [MailFromAttributes](sailpoint/v2025/docs/MailFromAttributes.md)
  - [MailFromAttributesDto](sailpoint/v2025/docs/MailFromAttributesDto.md)
@@ -1699,6 +1717,8 @@ Class | Method | HTTP request | Description
  - [SelectorAccountMatchConfigMatchExpression](sailpoint/v2025/docs/SelectorAccountMatchConfigMatchExpression.md)
  - [SelfImportExportDto](sailpoint/v2025/docs/SelfImportExportDto.md)
  - [SendAccountVerificationRequest](sailpoint/v2025/docs/SendAccountVerificationRequest.md)
+ - [SendClassifyMachineAccount200Response](sailpoint/v2025/docs/SendClassifyMachineAccount200Response.md)
+ - [SendClassifyMachineAccountFromSource200Response](sailpoint/v2025/docs/SendClassifyMachineAccountFromSource200Response.md)
  - [SendTestNotificationRequestDto](sailpoint/v2025/docs/SendTestNotificationRequestDto.md)
  - [ServiceDeskIntegrationDto](sailpoint/v2025/docs/ServiceDeskIntegrationDto.md)
  - [ServiceDeskIntegrationTemplateDto](sailpoint/v2025/docs/ServiceDeskIntegrationTemplateDto.md)
@@ -1744,6 +1764,8 @@ Class | Method | HTTP request | Description
  - [SourceAppCreateDtoAccountSource](sailpoint/v2025/docs/SourceAppCreateDtoAccountSource.md)
  - [SourceAppPatchDto](sailpoint/v2025/docs/SourceAppPatchDto.md)
  - [SourceBeforeProvisioningRule](sailpoint/v2025/docs/SourceBeforeProvisioningRule.md)
+ - [SourceClassificationStatus](sailpoint/v2025/docs/SourceClassificationStatus.md)
+ - [SourceClassificationStatusAllOfCounts](sailpoint/v2025/docs/SourceClassificationStatusAllOfCounts.md)
  - [SourceCluster](sailpoint/v2025/docs/SourceCluster.md)
  - [SourceClusterDto](sailpoint/v2025/docs/SourceClusterDto.md)
  - [SourceCode](sailpoint/v2025/docs/SourceCode.md)

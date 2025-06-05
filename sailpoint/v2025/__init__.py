@@ -36,6 +36,7 @@ from sailpoint.v2025.api.certification_campaign_filters_api import Certification
 from sailpoint.v2025.api.certification_campaigns_api import CertificationCampaignsApi
 from sailpoint.v2025.api.certification_summaries_api import CertificationSummariesApi
 from sailpoint.v2025.api.certifications_api import CertificationsApi
+from sailpoint.v2025.api.classify_source_api import ClassifySourceApi
 from sailpoint.v2025.api.configuration_hub_api import ConfigurationHubApi
 from sailpoint.v2025.api.connector_customizers_api import ConnectorCustomizersApi
 from sailpoint.v2025.api.connector_rule_management_api import ConnectorRuleManagementApi
@@ -60,7 +61,10 @@ from sailpoint.v2025.api.identity_history_api import IdentityHistoryApi
 from sailpoint.v2025.api.identity_profiles_api import IdentityProfilesApi
 from sailpoint.v2025.api.lifecycle_states_api import LifecycleStatesApi
 from sailpoint.v2025.api.mfa_configuration_api import MFAConfigurationApi
+from sailpoint.v2025.api.machine_account_classify_api import MachineAccountClassifyApi
+from sailpoint.v2025.api.machine_account_mappings_api import MachineAccountMappingsApi
 from sailpoint.v2025.api.machine_accounts_api import MachineAccountsApi
+from sailpoint.v2025.api.machine_classification_config_api import MachineClassificationConfigApi
 from sailpoint.v2025.api.machine_identities_api import MachineIdentitiesApi
 from sailpoint.v2025.api.managed_clients_api import ManagedClientsApi
 from sailpoint.v2025.api.managed_cluster_types_api import ManagedClusterTypesApi
@@ -296,6 +300,12 @@ from sailpoint.v2025.models.attribute_dto_list import AttributeDTOList
 from sailpoint.v2025.models.attribute_definition import AttributeDefinition
 from sailpoint.v2025.models.attribute_definition_schema import AttributeDefinitionSchema
 from sailpoint.v2025.models.attribute_definition_type import AttributeDefinitionType
+from sailpoint.v2025.models.attribute_mappings import AttributeMappings
+from sailpoint.v2025.models.attribute_mappings_all_of_target import AttributeMappingsAllOfTarget
+from sailpoint.v2025.models.attribute_mappings_all_of_transform_definition import AttributeMappingsAllOfTransformDefinition
+from sailpoint.v2025.models.attribute_mappings_all_of_transform_definition_attributes import AttributeMappingsAllOfTransformDefinitionAttributes
+from sailpoint.v2025.models.attribute_mappings_all_of_transform_definition_attributes_input import AttributeMappingsAllOfTransformDefinitionAttributesInput
+from sailpoint.v2025.models.attribute_mappings_all_of_transform_definition_attributes_input_attributes import AttributeMappingsAllOfTransformDefinitionAttributesInputAttributes
 from sailpoint.v2025.models.attribute_request import AttributeRequest
 from sailpoint.v2025.models.attribute_request_value import AttributeRequestValue
 from sailpoint.v2025.models.attribute_value_dto import AttributeValueDTO
@@ -689,6 +699,7 @@ from sailpoint.v2025.models.localized_message import LocalizedMessage
 from sailpoint.v2025.models.lockout_configuration import LockoutConfiguration
 from sailpoint.v2025.models.lookup_step import LookupStep
 from sailpoint.v2025.models.machine_account import MachineAccount
+from sailpoint.v2025.models.machine_classification_config import MachineClassificationConfig
 from sailpoint.v2025.models.machine_identity import MachineIdentity
 from sailpoint.v2025.models.mail_from_attributes import MailFromAttributes
 from sailpoint.v2025.models.mail_from_attributes_dto import MailFromAttributesDto
@@ -1044,6 +1055,8 @@ from sailpoint.v2025.models.selector_account_match_config import SelectorAccount
 from sailpoint.v2025.models.selector_account_match_config_match_expression import SelectorAccountMatchConfigMatchExpression
 from sailpoint.v2025.models.self_import_export_dto import SelfImportExportDto
 from sailpoint.v2025.models.send_account_verification_request import SendAccountVerificationRequest
+from sailpoint.v2025.models.send_classify_machine_account200_response import SendClassifyMachineAccount200Response
+from sailpoint.v2025.models.send_classify_machine_account_from_source200_response import SendClassifyMachineAccountFromSource200Response
 from sailpoint.v2025.models.send_test_notification_request_dto import SendTestNotificationRequestDto
 from sailpoint.v2025.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.v2025.models.service_desk_integration_template_dto import ServiceDeskIntegrationTemplateDto
@@ -1089,6 +1102,8 @@ from sailpoint.v2025.models.source_app_create_dto import SourceAppCreateDto
 from sailpoint.v2025.models.source_app_create_dto_account_source import SourceAppCreateDtoAccountSource
 from sailpoint.v2025.models.source_app_patch_dto import SourceAppPatchDto
 from sailpoint.v2025.models.source_before_provisioning_rule import SourceBeforeProvisioningRule
+from sailpoint.v2025.models.source_classification_status import SourceClassificationStatus
+from sailpoint.v2025.models.source_classification_status_all_of_counts import SourceClassificationStatusAllOfCounts
 from sailpoint.v2025.models.source_cluster import SourceCluster
 from sailpoint.v2025.models.source_cluster_dto import SourceClusterDto
 from sailpoint.v2025.models.source_code import SourceCode
