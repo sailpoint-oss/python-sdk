@@ -1,13 +1,13 @@
-import json
-import os
 import copy
+import http.client as httplib
+import json
 import logging
 import multiprocessing
-import sys
+import os
 import ssl
-import urllib3
+import sys
 
-import http.client as httplib
+import urllib3
 
 SUPPORTED_SOCKS_PROXIES = {"socks5", "socks5h", "socks4", "socks4a"}
 
@@ -51,6 +51,7 @@ class Configuration:
             self.access_token = self.get_access_token(url, self.client_id, self.client_secret, self.proxy, self.proxy_headers, self.verify_ssl)
 
         self.experimental = False
+        self.suppress_experimental_warnings = False
 
         self.temp_folder_path = None
         """Temp file folder for downloading files
