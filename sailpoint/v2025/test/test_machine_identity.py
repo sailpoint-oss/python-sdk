@@ -42,12 +42,22 @@ class TestMachineIdentity(unittest.TestCase):
                 business_application = 'ADService',
                 description = '',
                 manually_edited = True,
-                attributes = {"Region":"EU"}
+                attributes = {"Region":"EU"},
+                subtype = 'Application',
+                owners = sailpoint.v2025.models.machine_identity_dto_owners.MachineIdentityDto_owners(
+                    primary_identity = sailpoint.v2025.models.machine_identity_dto_owners_primary_identity.MachineIdentityDto_owners_primaryIdentity(), 
+                    secondary_identities = [
+                        sailpoint.v2025.models.base_reference_dto.BaseReferenceDto(
+                            type = 'IDENTITY', 
+                            id = '2c91808568c529c60168cca6f90c1313', 
+                            name = 'William Wilson', )
+                        ], )
             )
         else:
             return MachineIdentity(
                 name = 'aName',
                 business_application = 'ADService',
+                subtype = 'Application',
         )
         """
 

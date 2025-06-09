@@ -1363,6 +1363,7 @@ Class | Method | HTTP request | Description
  - [MachineAccount](sailpoint/v2025/docs/MachineAccount.md)
  - [MachineClassificationConfig](sailpoint/v2025/docs/MachineClassificationConfig.md)
  - [MachineIdentity](sailpoint/v2025/docs/MachineIdentity.md)
+ - [MachineIdentityDtoOwners](sailpoint/v2025/docs/MachineIdentityDtoOwners.md)
  - [MailFromAttributes](sailpoint/v2025/docs/MailFromAttributes.md)
  - [MailFromAttributesDto](sailpoint/v2025/docs/MailFromAttributesDto.md)
  - [ManagedClient](sailpoint/v2025/docs/ManagedClient.md)

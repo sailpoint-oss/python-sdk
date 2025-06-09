@@ -21,6 +21,7 @@ import warnings
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.v2025.models.machine_identity_dto_owners import MachineIdentityDtoOwners
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -36,7 +37,9 @@ class MachineIdentity(BaseModel):
     description: Optional[StrictStr] = Field(default=None, description="Description of machine identity")
     manually_edited: Optional[StrictBool] = Field(default=False, description="Indicates if the machine identity has been manually edited", alias="manuallyEdited")
     attributes: Optional[Dict[str, Any]] = Field(default=None, description="A map of custom machine identity attributes")
-    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "businessApplication", "description", "manuallyEdited", "attributes"]
+    subtype: StrictStr = Field(description="The subtype value associated to the machine identity")
+    owners: Optional[MachineIdentityDtoOwners] = None
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "businessApplication", "description", "manuallyEdited", "attributes", "subtype", "owners"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,6 +86,9 @@ class MachineIdentity(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of owners
+        if self.owners:
+            _dict['owners'] = self.owners.to_dict()
         # set to None if name (nullable) is None
         # and model_fields_set contains the field
         if self.name is None and "name" in self.model_fields_set:
@@ -107,7 +113,9 @@ class MachineIdentity(BaseModel):
             "businessApplication": obj.get("businessApplication"),
             "description": obj.get("description"),
             "manuallyEdited": obj.get("manuallyEdited") if obj.get("manuallyEdited") is not None else False,
-            "attributes": obj.get("attributes")
+            "attributes": obj.get("attributes"),
+            "subtype": obj.get("subtype"),
+            "owners": MachineIdentityDtoOwners.from_dict(obj["owners"]) if obj.get("owners") is not None else None
         })
         return _obj
 

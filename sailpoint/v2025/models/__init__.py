@@ -592,6 +592,7 @@ from sailpoint.v2025.models.lookup_step import LookupStep
 from sailpoint.v2025.models.machine_account import MachineAccount
 from sailpoint.v2025.models.machine_classification_config import MachineClassificationConfig
 from sailpoint.v2025.models.machine_identity import MachineIdentity
+from sailpoint.v2025.models.machine_identity_dto_owners import MachineIdentityDtoOwners
 from sailpoint.v2025.models.mail_from_attributes import MailFromAttributes
 from sailpoint.v2025.models.mail_from_attributes_dto import MailFromAttributesDto
 from sailpoint.v2025.models.managed_client import ManagedClient
