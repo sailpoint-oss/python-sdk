@@ -40,7 +40,7 @@ class AccessProfile(BaseModel):
     created: Optional[datetime] = Field(default=None, description="Date and time when the access profile was created.")
     modified: Optional[datetime] = Field(default=None, description="Date and time when the access profile was last modified.")
     enabled: Optional[StrictBool] = Field(default=False, description="Indicates whether the access profile is enabled. If it's enabled, you must include at least one entitlement.")
-    owner: OwnerReference
+    owner: Optional[OwnerReference]
     source: AccessProfileSourceRef
     entitlements: Optional[List[EntitlementRef]] = Field(default=None, description="List of entitlements associated with the access profile. If `enabled` is false, this can be empty. Otherwise, it must contain at least one entitlement.")
     requestable: Optional[StrictBool] = Field(default=True, description="Indicates whether the access profile is requestable by access request. Currently, making an access profile non-requestable is only supported  for customers enabled with the new Request Center. Otherwise, attempting to create an access profile with a value  **false** in this field results in a 400 error.")
@@ -121,6 +121,11 @@ class AccessProfile(BaseModel):
         # and model_fields_set contains the field
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
+
+        # set to None if owner (nullable) is None
+        # and model_fields_set contains the field
+        if self.owner is None and "owner" in self.model_fields_set:
+            _dict['owner'] = None
 
         # set to None if entitlements (nullable) is None
         # and model_fields_set contains the field

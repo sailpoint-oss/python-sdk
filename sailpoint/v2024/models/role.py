@@ -42,7 +42,7 @@ class Role(BaseModel):
     created: Optional[datetime] = Field(default=None, description="Date the Role was created")
     modified: Optional[datetime] = Field(default=None, description="Date the Role was last modified.")
     description: Optional[StrictStr] = Field(default=None, description="A human-readable description of the Role")
-    owner: OwnerReference
+    owner: Optional[OwnerReference]
     access_profiles: Optional[List[AccessProfileRef]] = Field(default=None, alias="accessProfiles")
     entitlements: Optional[List[EntitlementRef]] = None
     membership: Optional[RoleMembershipSelector] = None
@@ -140,6 +140,11 @@ class Role(BaseModel):
         # and model_fields_set contains the field
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
+
+        # set to None if owner (nullable) is None
+        # and model_fields_set contains the field
+        if self.owner is None and "owner" in self.model_fields_set:
+            _dict['owner'] = None
 
         # set to None if access_profiles (nullable) is None
         # and model_fields_set contains the field
