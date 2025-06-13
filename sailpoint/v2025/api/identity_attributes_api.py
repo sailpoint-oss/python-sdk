@@ -44,7 +44,6 @@ class IdentityAttributesApi:
     def create_identity_attribute(
         self,
         identity_attribute: IdentityAttribute,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -62,8 +61,6 @@ class IdentityAttributesApi:
 
         Use this API to create a new identity attribute.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identity_attribute: (required)
         :type identity_attribute: IdentityAttribute
         :param _request_timeout: timeout setting for this request. If one
@@ -89,7 +86,6 @@ class IdentityAttributesApi:
         """ # noqa: E501
 
         _param = self._create_identity_attribute_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             identity_attribute=identity_attribute,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -121,7 +117,6 @@ class IdentityAttributesApi:
     def create_identity_attribute_with_http_info(
         self,
         identity_attribute: IdentityAttribute,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -139,8 +134,6 @@ class IdentityAttributesApi:
 
         Use this API to create a new identity attribute.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identity_attribute: (required)
         :type identity_attribute: IdentityAttribute
         :param _request_timeout: timeout setting for this request. If one
@@ -166,7 +159,6 @@ class IdentityAttributesApi:
         """ # noqa: E501
 
         _param = self._create_identity_attribute_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             identity_attribute=identity_attribute,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -198,7 +190,6 @@ class IdentityAttributesApi:
     def create_identity_attribute_without_preload_content(
         self,
         identity_attribute: IdentityAttribute,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -216,8 +207,6 @@ class IdentityAttributesApi:
 
         Use this API to create a new identity attribute.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identity_attribute: (required)
         :type identity_attribute: IdentityAttribute
         :param _request_timeout: timeout setting for this request. If one
@@ -243,7 +232,6 @@ class IdentityAttributesApi:
         """ # noqa: E501
 
         _param = self._create_identity_attribute_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             identity_attribute=identity_attribute,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -269,7 +257,6 @@ class IdentityAttributesApi:
 
     def _create_identity_attribute_serialize(
         self,
-        x_sail_point_experimental,
         identity_attribute,
         _request_auth,
         _content_type,
@@ -294,8 +281,6 @@ class IdentityAttributesApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if identity_attribute is not None:
@@ -352,7 +337,6 @@ class IdentityAttributesApi:
     def delete_identity_attribute(
         self,
         name: Annotated[StrictStr, Field(description="The attribute's technical name.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -372,8 +356,6 @@ class IdentityAttributesApi:
 
         :param name: The attribute's technical name. (required)
         :type name: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -398,7 +380,6 @@ class IdentityAttributesApi:
 
         _param = self._delete_identity_attribute_serialize(
             name=name,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -429,7 +410,6 @@ class IdentityAttributesApi:
     def delete_identity_attribute_with_http_info(
         self,
         name: Annotated[StrictStr, Field(description="The attribute's technical name.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -449,8 +429,6 @@ class IdentityAttributesApi:
 
         :param name: The attribute's technical name. (required)
         :type name: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -475,7 +453,6 @@ class IdentityAttributesApi:
 
         _param = self._delete_identity_attribute_serialize(
             name=name,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -506,7 +483,6 @@ class IdentityAttributesApi:
     def delete_identity_attribute_without_preload_content(
         self,
         name: Annotated[StrictStr, Field(description="The attribute's technical name.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -526,8 +502,6 @@ class IdentityAttributesApi:
 
         :param name: The attribute's technical name. (required)
         :type name: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -552,7 +526,6 @@ class IdentityAttributesApi:
 
         _param = self._delete_identity_attribute_serialize(
             name=name,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -578,7 +551,6 @@ class IdentityAttributesApi:
     def _delete_identity_attribute_serialize(
         self,
         name,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -604,8 +576,6 @@ class IdentityAttributesApi:
             _path_params['name'] = name
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -647,7 +617,6 @@ class IdentityAttributesApi:
     def delete_identity_attributes_in_bulk(
         self,
         identity_attribute_names: IdentityAttributeNames,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -665,8 +634,6 @@ class IdentityAttributesApi:
 
         Use this API to bulk delete identity attributes for a given set of names. Attributes that are currently mapped in an identity profile cannot be deleted.  The `system` and `standard` properties must be set to 'false' before you can delete an identity attribute.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identity_attribute_names: (required)
         :type identity_attribute_names: IdentityAttributeNames
         :param _request_timeout: timeout setting for this request. If one
@@ -692,7 +659,6 @@ class IdentityAttributesApi:
         """ # noqa: E501
 
         _param = self._delete_identity_attributes_in_bulk_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             identity_attribute_names=identity_attribute_names,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -724,7 +690,6 @@ class IdentityAttributesApi:
     def delete_identity_attributes_in_bulk_with_http_info(
         self,
         identity_attribute_names: IdentityAttributeNames,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -742,8 +707,6 @@ class IdentityAttributesApi:
 
         Use this API to bulk delete identity attributes for a given set of names. Attributes that are currently mapped in an identity profile cannot be deleted.  The `system` and `standard` properties must be set to 'false' before you can delete an identity attribute.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identity_attribute_names: (required)
         :type identity_attribute_names: IdentityAttributeNames
         :param _request_timeout: timeout setting for this request. If one
@@ -769,7 +732,6 @@ class IdentityAttributesApi:
         """ # noqa: E501
 
         _param = self._delete_identity_attributes_in_bulk_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             identity_attribute_names=identity_attribute_names,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -801,7 +763,6 @@ class IdentityAttributesApi:
     def delete_identity_attributes_in_bulk_without_preload_content(
         self,
         identity_attribute_names: IdentityAttributeNames,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -819,8 +780,6 @@ class IdentityAttributesApi:
 
         Use this API to bulk delete identity attributes for a given set of names. Attributes that are currently mapped in an identity profile cannot be deleted.  The `system` and `standard` properties must be set to 'false' before you can delete an identity attribute.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identity_attribute_names: (required)
         :type identity_attribute_names: IdentityAttributeNames
         :param _request_timeout: timeout setting for this request. If one
@@ -846,7 +805,6 @@ class IdentityAttributesApi:
         """ # noqa: E501
 
         _param = self._delete_identity_attributes_in_bulk_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             identity_attribute_names=identity_attribute_names,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -872,7 +830,6 @@ class IdentityAttributesApi:
 
     def _delete_identity_attributes_in_bulk_serialize(
         self,
-        x_sail_point_experimental,
         identity_attribute_names,
         _request_auth,
         _content_type,
@@ -897,8 +854,6 @@ class IdentityAttributesApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if identity_attribute_names is not None:
@@ -955,7 +910,6 @@ class IdentityAttributesApi:
     def get_identity_attribute(
         self,
         name: Annotated[StrictStr, Field(description="The attribute's technical name.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -975,8 +929,6 @@ class IdentityAttributesApi:
 
         :param name: The attribute's technical name. (required)
         :type name: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1001,7 +953,6 @@ class IdentityAttributesApi:
 
         _param = self._get_identity_attribute_serialize(
             name=name,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1032,7 +983,6 @@ class IdentityAttributesApi:
     def get_identity_attribute_with_http_info(
         self,
         name: Annotated[StrictStr, Field(description="The attribute's technical name.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1052,8 +1002,6 @@ class IdentityAttributesApi:
 
         :param name: The attribute's technical name. (required)
         :type name: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1078,7 +1026,6 @@ class IdentityAttributesApi:
 
         _param = self._get_identity_attribute_serialize(
             name=name,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1109,7 +1056,6 @@ class IdentityAttributesApi:
     def get_identity_attribute_without_preload_content(
         self,
         name: Annotated[StrictStr, Field(description="The attribute's technical name.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1129,8 +1075,6 @@ class IdentityAttributesApi:
 
         :param name: The attribute's technical name. (required)
         :type name: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1155,7 +1099,6 @@ class IdentityAttributesApi:
 
         _param = self._get_identity_attribute_serialize(
             name=name,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1181,7 +1124,6 @@ class IdentityAttributesApi:
     def _get_identity_attribute_serialize(
         self,
         name,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -1207,8 +1149,6 @@ class IdentityAttributesApi:
             _path_params['name'] = name
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -1253,7 +1193,6 @@ class IdentityAttributesApi:
         include_silent: Annotated[Optional[StrictBool], Field(description="Include 'silent' attributes in the response.")] = None,
         searchable_only: Annotated[Optional[StrictBool], Field(description="Include only 'searchable' attributes in the response.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1271,8 +1210,6 @@ class IdentityAttributesApi:
 
         Use this API to get a collection of identity attributes.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param include_system: Include 'system' attributes in the response.
         :type include_system: bool
         :param include_silent: Include 'silent' attributes in the response.
@@ -1304,7 +1241,6 @@ class IdentityAttributesApi:
         """ # noqa: E501
 
         _param = self._list_identity_attributes_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             include_system=include_system,
             include_silent=include_silent,
             searchable_only=searchable_only,
@@ -1341,7 +1277,6 @@ class IdentityAttributesApi:
         include_silent: Annotated[Optional[StrictBool], Field(description="Include 'silent' attributes in the response.")] = None,
         searchable_only: Annotated[Optional[StrictBool], Field(description="Include only 'searchable' attributes in the response.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1359,8 +1294,6 @@ class IdentityAttributesApi:
 
         Use this API to get a collection of identity attributes.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param include_system: Include 'system' attributes in the response.
         :type include_system: bool
         :param include_silent: Include 'silent' attributes in the response.
@@ -1392,7 +1325,6 @@ class IdentityAttributesApi:
         """ # noqa: E501
 
         _param = self._list_identity_attributes_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             include_system=include_system,
             include_silent=include_silent,
             searchable_only=searchable_only,
@@ -1429,7 +1361,6 @@ class IdentityAttributesApi:
         include_silent: Annotated[Optional[StrictBool], Field(description="Include 'silent' attributes in the response.")] = None,
         searchable_only: Annotated[Optional[StrictBool], Field(description="Include only 'searchable' attributes in the response.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1447,8 +1378,6 @@ class IdentityAttributesApi:
 
         Use this API to get a collection of identity attributes.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param include_system: Include 'system' attributes in the response.
         :type include_system: bool
         :param include_silent: Include 'silent' attributes in the response.
@@ -1480,7 +1409,6 @@ class IdentityAttributesApi:
         """ # noqa: E501
 
         _param = self._list_identity_attributes_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             include_system=include_system,
             include_silent=include_silent,
             searchable_only=searchable_only,
@@ -1508,7 +1436,6 @@ class IdentityAttributesApi:
 
     def _list_identity_attributes_serialize(
         self,
-        x_sail_point_experimental,
         include_system,
         include_silent,
         searchable_only,
@@ -1552,8 +1479,6 @@ class IdentityAttributesApi:
             _query_params.append(('count', count))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -1596,7 +1521,6 @@ class IdentityAttributesApi:
         self,
         name: Annotated[StrictStr, Field(description="The attribute's technical name.")],
         identity_attribute: IdentityAttribute,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1616,8 +1540,6 @@ class IdentityAttributesApi:
 
         :param name: The attribute's technical name. (required)
         :type name: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identity_attribute: (required)
         :type identity_attribute: IdentityAttribute
         :param _request_timeout: timeout setting for this request. If one
@@ -1644,7 +1566,6 @@ class IdentityAttributesApi:
 
         _param = self._put_identity_attribute_serialize(
             name=name,
-            x_sail_point_experimental=x_sail_point_experimental,
             identity_attribute=identity_attribute,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1677,7 +1598,6 @@ class IdentityAttributesApi:
         self,
         name: Annotated[StrictStr, Field(description="The attribute's technical name.")],
         identity_attribute: IdentityAttribute,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1697,8 +1617,6 @@ class IdentityAttributesApi:
 
         :param name: The attribute's technical name. (required)
         :type name: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identity_attribute: (required)
         :type identity_attribute: IdentityAttribute
         :param _request_timeout: timeout setting for this request. If one
@@ -1725,7 +1643,6 @@ class IdentityAttributesApi:
 
         _param = self._put_identity_attribute_serialize(
             name=name,
-            x_sail_point_experimental=x_sail_point_experimental,
             identity_attribute=identity_attribute,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1758,7 +1675,6 @@ class IdentityAttributesApi:
         self,
         name: Annotated[StrictStr, Field(description="The attribute's technical name.")],
         identity_attribute: IdentityAttribute,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1778,8 +1694,6 @@ class IdentityAttributesApi:
 
         :param name: The attribute's technical name. (required)
         :type name: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identity_attribute: (required)
         :type identity_attribute: IdentityAttribute
         :param _request_timeout: timeout setting for this request. If one
@@ -1806,7 +1720,6 @@ class IdentityAttributesApi:
 
         _param = self._put_identity_attribute_serialize(
             name=name,
-            x_sail_point_experimental=x_sail_point_experimental,
             identity_attribute=identity_attribute,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1833,7 +1746,6 @@ class IdentityAttributesApi:
     def _put_identity_attribute_serialize(
         self,
         name,
-        x_sail_point_experimental,
         identity_attribute,
         _request_auth,
         _content_type,
@@ -1860,8 +1772,6 @@ class IdentityAttributesApi:
             _path_params['name'] = name
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if identity_attribute is not None:

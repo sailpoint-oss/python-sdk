@@ -347,7 +347,6 @@ class IdentitiesApi:
     def get_identity(
         self,
         id: Annotated[StrictStr, Field(description="Identity Id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -367,8 +366,6 @@ class IdentitiesApi:
 
         :param id: Identity Id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -393,7 +390,6 @@ class IdentitiesApi:
 
         _param = self._get_identity_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -424,7 +420,6 @@ class IdentitiesApi:
     def get_identity_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Identity Id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -444,8 +439,6 @@ class IdentitiesApi:
 
         :param id: Identity Id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -470,7 +463,6 @@ class IdentitiesApi:
 
         _param = self._get_identity_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -501,7 +493,6 @@ class IdentitiesApi:
     def get_identity_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Identity Id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -521,8 +512,6 @@ class IdentitiesApi:
 
         :param id: Identity Id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -547,7 +536,6 @@ class IdentitiesApi:
 
         _param = self._get_identity_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -573,7 +561,6 @@ class IdentitiesApi:
     def _get_identity_serialize(
         self,
         id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -599,8 +586,6 @@ class IdentitiesApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -642,7 +627,6 @@ class IdentitiesApi:
     def get_identity_ownership_details(
         self,
         identity_id: Annotated[StrictStr, Field(description="Identity ID.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -662,8 +646,6 @@ class IdentitiesApi:
 
         :param identity_id: Identity ID. (required)
         :type identity_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -688,7 +670,6 @@ class IdentitiesApi:
 
         _param = self._get_identity_ownership_details_serialize(
             identity_id=identity_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -719,7 +700,6 @@ class IdentitiesApi:
     def get_identity_ownership_details_with_http_info(
         self,
         identity_id: Annotated[StrictStr, Field(description="Identity ID.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -739,8 +719,6 @@ class IdentitiesApi:
 
         :param identity_id: Identity ID. (required)
         :type identity_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -765,7 +743,6 @@ class IdentitiesApi:
 
         _param = self._get_identity_ownership_details_serialize(
             identity_id=identity_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -796,7 +773,6 @@ class IdentitiesApi:
     def get_identity_ownership_details_without_preload_content(
         self,
         identity_id: Annotated[StrictStr, Field(description="Identity ID.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -816,8 +792,6 @@ class IdentitiesApi:
 
         :param identity_id: Identity ID. (required)
         :type identity_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -842,7 +816,6 @@ class IdentitiesApi:
 
         _param = self._get_identity_ownership_details_serialize(
             identity_id=identity_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -868,7 +841,6 @@ class IdentitiesApi:
     def _get_identity_ownership_details_serialize(
         self,
         identity_id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -894,8 +866,6 @@ class IdentitiesApi:
             _path_params['identityId'] = identity_id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -938,7 +908,6 @@ class IdentitiesApi:
         self,
         identity_id: Annotated[StrictStr, Field(description="Identity Id")],
         assignment_id: Annotated[StrictStr, Field(description="Assignment Id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -959,8 +928,6 @@ class IdentitiesApi:
         :type identity_id: str
         :param assignment_id: Assignment Id (required)
         :type assignment_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -986,7 +953,6 @@ class IdentitiesApi:
         _param = self._get_role_assignment_serialize(
             identity_id=identity_id,
             assignment_id=assignment_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1018,7 +984,6 @@ class IdentitiesApi:
         self,
         identity_id: Annotated[StrictStr, Field(description="Identity Id")],
         assignment_id: Annotated[StrictStr, Field(description="Assignment Id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1039,8 +1004,6 @@ class IdentitiesApi:
         :type identity_id: str
         :param assignment_id: Assignment Id (required)
         :type assignment_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1066,7 +1029,6 @@ class IdentitiesApi:
         _param = self._get_role_assignment_serialize(
             identity_id=identity_id,
             assignment_id=assignment_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1098,7 +1060,6 @@ class IdentitiesApi:
         self,
         identity_id: Annotated[StrictStr, Field(description="Identity Id")],
         assignment_id: Annotated[StrictStr, Field(description="Assignment Id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1119,8 +1080,6 @@ class IdentitiesApi:
         :type identity_id: str
         :param assignment_id: Assignment Id (required)
         :type assignment_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1146,7 +1105,6 @@ class IdentitiesApi:
         _param = self._get_role_assignment_serialize(
             identity_id=identity_id,
             assignment_id=assignment_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1173,7 +1131,6 @@ class IdentitiesApi:
         self,
         identity_id,
         assignment_id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -1201,8 +1158,6 @@ class IdentitiesApi:
             _path_params['assignmentId'] = assignment_id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -1246,7 +1201,6 @@ class IdentitiesApi:
         identity_id: Annotated[StrictStr, Field(description="Identity Id to get the role assignments for")],
         role_id: Annotated[Optional[StrictStr], Field(description="Role Id to filter the role assignments with")] = None,
         role_name: Annotated[Optional[StrictStr], Field(description="Role name to filter the role assignments with")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1266,8 +1220,6 @@ class IdentitiesApi:
 
         :param identity_id: Identity Id to get the role assignments for (required)
         :type identity_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param role_id: Role Id to filter the role assignments with
         :type role_id: str
         :param role_name: Role name to filter the role assignments with
@@ -1296,7 +1248,6 @@ class IdentitiesApi:
 
         _param = self._get_role_assignments_serialize(
             identity_id=identity_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             role_id=role_id,
             role_name=role_name,
             _request_auth=_request_auth,
@@ -1331,7 +1282,6 @@ class IdentitiesApi:
         identity_id: Annotated[StrictStr, Field(description="Identity Id to get the role assignments for")],
         role_id: Annotated[Optional[StrictStr], Field(description="Role Id to filter the role assignments with")] = None,
         role_name: Annotated[Optional[StrictStr], Field(description="Role name to filter the role assignments with")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1351,8 +1301,6 @@ class IdentitiesApi:
 
         :param identity_id: Identity Id to get the role assignments for (required)
         :type identity_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param role_id: Role Id to filter the role assignments with
         :type role_id: str
         :param role_name: Role name to filter the role assignments with
@@ -1381,7 +1329,6 @@ class IdentitiesApi:
 
         _param = self._get_role_assignments_serialize(
             identity_id=identity_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             role_id=role_id,
             role_name=role_name,
             _request_auth=_request_auth,
@@ -1416,7 +1363,6 @@ class IdentitiesApi:
         identity_id: Annotated[StrictStr, Field(description="Identity Id to get the role assignments for")],
         role_id: Annotated[Optional[StrictStr], Field(description="Role Id to filter the role assignments with")] = None,
         role_name: Annotated[Optional[StrictStr], Field(description="Role name to filter the role assignments with")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1436,8 +1382,6 @@ class IdentitiesApi:
 
         :param identity_id: Identity Id to get the role assignments for (required)
         :type identity_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param role_id: Role Id to filter the role assignments with
         :type role_id: str
         :param role_name: Role name to filter the role assignments with
@@ -1466,7 +1410,6 @@ class IdentitiesApi:
 
         _param = self._get_role_assignments_serialize(
             identity_id=identity_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             role_id=role_id,
             role_name=role_name,
             _request_auth=_request_auth,
@@ -1494,7 +1437,6 @@ class IdentitiesApi:
     def _get_role_assignments_serialize(
         self,
         identity_id,
-        x_sail_point_experimental,
         role_id,
         role_name,
         _request_auth,
@@ -1530,8 +1472,6 @@ class IdentitiesApi:
             _query_params.append(('roleName', role_name))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -1578,7 +1518,6 @@ class IdentitiesApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1596,8 +1535,6 @@ class IdentitiesApi:
 
         This API returns a list of identities.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **alias**: *eq, sw*  **firstname**: *eq, sw*  **lastname**: *eq, sw*  **email**: *eq, sw*  **cloudStatus**: *eq*  **processingState**: *eq*  **correlated**: *eq*  **protected**: *eq*
         :type filters: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, alias, cloudStatus**
@@ -1633,7 +1570,6 @@ class IdentitiesApi:
         """ # noqa: E501
 
         _param = self._list_identities_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             filters=filters,
             sorters=sorters,
             default_filter=default_filter,
@@ -1674,7 +1610,6 @@ class IdentitiesApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1692,8 +1627,6 @@ class IdentitiesApi:
 
         This API returns a list of identities.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **alias**: *eq, sw*  **firstname**: *eq, sw*  **lastname**: *eq, sw*  **email**: *eq, sw*  **cloudStatus**: *eq*  **processingState**: *eq*  **correlated**: *eq*  **protected**: *eq*
         :type filters: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, alias, cloudStatus**
@@ -1729,7 +1662,6 @@ class IdentitiesApi:
         """ # noqa: E501
 
         _param = self._list_identities_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             filters=filters,
             sorters=sorters,
             default_filter=default_filter,
@@ -1770,7 +1702,6 @@ class IdentitiesApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1788,8 +1719,6 @@ class IdentitiesApi:
 
         This API returns a list of identities.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **alias**: *eq, sw*  **firstname**: *eq, sw*  **lastname**: *eq, sw*  **email**: *eq, sw*  **cloudStatus**: *eq*  **processingState**: *eq*  **correlated**: *eq*  **protected**: *eq*
         :type filters: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, alias, cloudStatus**
@@ -1825,7 +1754,6 @@ class IdentitiesApi:
         """ # noqa: E501
 
         _param = self._list_identities_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             filters=filters,
             sorters=sorters,
             default_filter=default_filter,
@@ -1855,7 +1783,6 @@ class IdentitiesApi:
 
     def _list_identities_serialize(
         self,
-        x_sail_point_experimental,
         filters,
         sorters,
         default_filter,
@@ -1909,8 +1836,6 @@ class IdentitiesApi:
             _query_params.append(('offset', offset))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -1952,7 +1877,6 @@ class IdentitiesApi:
     def reset_identity(
         self,
         identity_id: Annotated[StrictStr, Field(description="Identity Id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1972,8 +1896,6 @@ class IdentitiesApi:
 
         :param identity_id: Identity Id (required)
         :type identity_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1998,7 +1920,6 @@ class IdentitiesApi:
 
         _param = self._reset_identity_serialize(
             identity_id=identity_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2029,7 +1950,6 @@ class IdentitiesApi:
     def reset_identity_with_http_info(
         self,
         identity_id: Annotated[StrictStr, Field(description="Identity Id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2049,8 +1969,6 @@ class IdentitiesApi:
 
         :param identity_id: Identity Id (required)
         :type identity_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2075,7 +1993,6 @@ class IdentitiesApi:
 
         _param = self._reset_identity_serialize(
             identity_id=identity_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2106,7 +2023,6 @@ class IdentitiesApi:
     def reset_identity_without_preload_content(
         self,
         identity_id: Annotated[StrictStr, Field(description="Identity Id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2126,8 +2042,6 @@ class IdentitiesApi:
 
         :param identity_id: Identity Id (required)
         :type identity_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2152,7 +2066,6 @@ class IdentitiesApi:
 
         _param = self._reset_identity_serialize(
             identity_id=identity_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2178,7 +2091,6 @@ class IdentitiesApi:
     def _reset_identity_serialize(
         self,
         identity_id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -2204,8 +2116,6 @@ class IdentitiesApi:
             _path_params['identityId'] = identity_id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -2570,7 +2480,6 @@ class IdentitiesApi:
     def start_identities_invite(
         self,
         invite_identities_request: InviteIdentitiesRequest,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2588,8 +2497,6 @@ class IdentitiesApi:
 
         This API submits a task for inviting given identities via email to complete registration. The invitation email will include the link. After selecting the link an identity will be able to set up password and log in into the system. Invitations expire after 7 days. By default invitations send to the work identity email. It can be changed in Admin > Identities > Identity Profiles by selecting corresponding profile and editing Invitation Options.  This task will send an invitation email only for unregistered identities.  The executed task status can be checked by Task Management > [Get task status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status). 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param invite_identities_request: (required)
         :type invite_identities_request: InviteIdentitiesRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2615,7 +2522,6 @@ class IdentitiesApi:
         """ # noqa: E501
 
         _param = self._start_identities_invite_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             invite_identities_request=invite_identities_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2647,7 +2553,6 @@ class IdentitiesApi:
     def start_identities_invite_with_http_info(
         self,
         invite_identities_request: InviteIdentitiesRequest,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2665,8 +2570,6 @@ class IdentitiesApi:
 
         This API submits a task for inviting given identities via email to complete registration. The invitation email will include the link. After selecting the link an identity will be able to set up password and log in into the system. Invitations expire after 7 days. By default invitations send to the work identity email. It can be changed in Admin > Identities > Identity Profiles by selecting corresponding profile and editing Invitation Options.  This task will send an invitation email only for unregistered identities.  The executed task status can be checked by Task Management > [Get task status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status). 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param invite_identities_request: (required)
         :type invite_identities_request: InviteIdentitiesRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2692,7 +2595,6 @@ class IdentitiesApi:
         """ # noqa: E501
 
         _param = self._start_identities_invite_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             invite_identities_request=invite_identities_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2724,7 +2626,6 @@ class IdentitiesApi:
     def start_identities_invite_without_preload_content(
         self,
         invite_identities_request: InviteIdentitiesRequest,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2742,8 +2643,6 @@ class IdentitiesApi:
 
         This API submits a task for inviting given identities via email to complete registration. The invitation email will include the link. After selecting the link an identity will be able to set up password and log in into the system. Invitations expire after 7 days. By default invitations send to the work identity email. It can be changed in Admin > Identities > Identity Profiles by selecting corresponding profile and editing Invitation Options.  This task will send an invitation email only for unregistered identities.  The executed task status can be checked by Task Management > [Get task status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status). 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param invite_identities_request: (required)
         :type invite_identities_request: InviteIdentitiesRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2769,7 +2668,6 @@ class IdentitiesApi:
         """ # noqa: E501
 
         _param = self._start_identities_invite_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             invite_identities_request=invite_identities_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2795,7 +2693,6 @@ class IdentitiesApi:
 
     def _start_identities_invite_serialize(
         self,
-        x_sail_point_experimental,
         invite_identities_request,
         _request_auth,
         _content_type,
@@ -2820,8 +2717,6 @@ class IdentitiesApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if invite_identities_request is not None:

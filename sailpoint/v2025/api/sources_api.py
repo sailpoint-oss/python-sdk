@@ -1582,7 +1582,6 @@ class SourcesApi:
     def delete_native_change_detection_config(
         self,
         id: Annotated[StrictStr, Field(description="The source id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1602,8 +1601,6 @@ class SourcesApi:
 
         :param id: The source id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1628,7 +1625,6 @@ class SourcesApi:
 
         _param = self._delete_native_change_detection_config_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1659,7 +1655,6 @@ class SourcesApi:
     def delete_native_change_detection_config_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The source id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1679,8 +1674,6 @@ class SourcesApi:
 
         :param id: The source id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1705,7 +1698,6 @@ class SourcesApi:
 
         _param = self._delete_native_change_detection_config_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1736,7 +1728,6 @@ class SourcesApi:
     def delete_native_change_detection_config_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The source id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1756,8 +1747,6 @@ class SourcesApi:
 
         :param id: The source id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1782,7 +1771,6 @@ class SourcesApi:
 
         _param = self._delete_native_change_detection_config_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1808,7 +1796,6 @@ class SourcesApi:
     def _delete_native_change_detection_config_serialize(
         self,
         id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -1834,8 +1821,6 @@ class SourcesApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -3897,7 +3882,6 @@ class SourcesApi:
     def get_native_change_detection_config(
         self,
         id: Annotated[StrictStr, Field(description="The source id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3917,8 +3901,6 @@ class SourcesApi:
 
         :param id: The source id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3943,7 +3925,6 @@ class SourcesApi:
 
         _param = self._get_native_change_detection_config_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3974,7 +3955,6 @@ class SourcesApi:
     def get_native_change_detection_config_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The source id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3994,8 +3974,6 @@ class SourcesApi:
 
         :param id: The source id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4020,7 +3998,6 @@ class SourcesApi:
 
         _param = self._get_native_change_detection_config_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4051,7 +4028,6 @@ class SourcesApi:
     def get_native_change_detection_config_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The source id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4071,8 +4047,6 @@ class SourcesApi:
 
         :param id: The source id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4097,7 +4071,6 @@ class SourcesApi:
 
         _param = self._get_native_change_detection_config_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4123,7 +4096,6 @@ class SourcesApi:
     def _get_native_change_detection_config_serialize(
         self,
         id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -4149,8 +4121,6 @@ class SourcesApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -10528,7 +10498,6 @@ class SourcesApi:
         self,
         id: Annotated[StrictStr, Field(description="The source id")],
         native_change_detection_config: NativeChangeDetectionConfig,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10548,8 +10517,6 @@ class SourcesApi:
 
         :param id: The source id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param native_change_detection_config: (required)
         :type native_change_detection_config: NativeChangeDetectionConfig
         :param _request_timeout: timeout setting for this request. If one
@@ -10576,7 +10543,6 @@ class SourcesApi:
 
         _param = self._put_native_change_detection_config_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             native_change_detection_config=native_change_detection_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -10609,7 +10575,6 @@ class SourcesApi:
         self,
         id: Annotated[StrictStr, Field(description="The source id")],
         native_change_detection_config: NativeChangeDetectionConfig,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10629,8 +10594,6 @@ class SourcesApi:
 
         :param id: The source id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param native_change_detection_config: (required)
         :type native_change_detection_config: NativeChangeDetectionConfig
         :param _request_timeout: timeout setting for this request. If one
@@ -10657,7 +10620,6 @@ class SourcesApi:
 
         _param = self._put_native_change_detection_config_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             native_change_detection_config=native_change_detection_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -10690,7 +10652,6 @@ class SourcesApi:
         self,
         id: Annotated[StrictStr, Field(description="The source id")],
         native_change_detection_config: NativeChangeDetectionConfig,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -10710,8 +10671,6 @@ class SourcesApi:
 
         :param id: The source id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param native_change_detection_config: (required)
         :type native_change_detection_config: NativeChangeDetectionConfig
         :param _request_timeout: timeout setting for this request. If one
@@ -10738,7 +10697,6 @@ class SourcesApi:
 
         _param = self._put_native_change_detection_config_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             native_change_detection_config=native_change_detection_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -10765,7 +10723,6 @@ class SourcesApi:
     def _put_native_change_detection_config_serialize(
         self,
         id,
-        x_sail_point_experimental,
         native_change_detection_config,
         _request_auth,
         _content_type,
@@ -10792,8 +10749,6 @@ class SourcesApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if native_change_detection_config is not None:
