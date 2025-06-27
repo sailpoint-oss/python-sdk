@@ -966,6 +966,7 @@ class AccessProfilesApi:
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
             '500': "ErrorResponseDto",
         }
@@ -1038,6 +1039,7 @@ class AccessProfilesApi:
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
             '500': "ErrorResponseDto",
         }
@@ -1110,6 +1112,7 @@ class AccessProfilesApi:
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
             '500': "ErrorResponseDto",
         }

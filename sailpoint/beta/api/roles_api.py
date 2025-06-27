@@ -959,6 +959,7 @@ class RolesApi:
             '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
@@ -1031,6 +1032,7 @@ class RolesApi:
             '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
@@ -1103,6 +1105,7 @@ class RolesApi:
             '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
             '429': "ListAccessModelMetadataAttribute429Response",
             '500': "ErrorResponseDto",
         }
