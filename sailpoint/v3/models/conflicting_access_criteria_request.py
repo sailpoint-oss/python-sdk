@@ -18,29 +18,19 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.v3.models.access_criteria_request import AccessCriteriaRequest
 from typing import Optional, Set
 from typing_extensions import Self
 
-class AccessCriteriaCriteriaListInner(BaseModel):
+class ConflictingAccessCriteriaRequest(BaseModel):
     """
-    AccessCriteriaCriteriaListInner
+    ConflictingAccessCriteriaRequest
     """ # noqa: E501
-    type: Optional[StrictStr] = Field(default=None, description="Type of the property to which this reference applies to")
-    id: Optional[StrictStr] = Field(default=None, description="ID of the object to which this reference applies to")
-    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the object to which this reference applies to")
-    __properties: ClassVar[List[str]] = ["type", "id", "name"]
-
-    @field_validator('type')
-    def type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['ENTITLEMENT']):
-            warnings.warn(f"must be one of enum values ('ENTITLEMENT') unknown value: {value}")
-        return value
+    left_criteria: Optional[AccessCriteriaRequest] = Field(default=None, alias="leftCriteria")
+    right_criteria: Optional[AccessCriteriaRequest] = Field(default=None, alias="rightCriteria")
+    __properties: ClassVar[List[str]] = ["leftCriteria", "rightCriteria"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -60,7 +50,7 @@ class AccessCriteriaCriteriaListInner(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AccessCriteriaCriteriaListInner from a JSON string"""
+        """Create an instance of ConflictingAccessCriteriaRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -81,11 +71,17 @@ class AccessCriteriaCriteriaListInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of left_criteria
+        if self.left_criteria:
+            _dict['leftCriteria'] = self.left_criteria.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of right_criteria
+        if self.right_criteria:
+            _dict['rightCriteria'] = self.right_criteria.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AccessCriteriaCriteriaListInner from a dict"""
+        """Create an instance of ConflictingAccessCriteriaRequest from a dict"""
         if obj is None:
             return None
 
@@ -93,9 +89,8 @@ class AccessCriteriaCriteriaListInner(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "type": obj.get("type"),
-            "id": obj.get("id"),
-            "name": obj.get("name")
+            "leftCriteria": AccessCriteriaRequest.from_dict(obj["leftCriteria"]) if obj.get("leftCriteria") is not None else None,
+            "rightCriteria": AccessCriteriaRequest.from_dict(obj["rightCriteria"]) if obj.get("rightCriteria") is not None else None
         })
         return _obj
 

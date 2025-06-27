@@ -20,16 +20,16 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v3.models.access_criteria import AccessCriteria
+from sailpoint.v3.models.access_criteria_request import AccessCriteriaRequest
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SodPolicyConflictingAccessCriteria(BaseModel):
+class SodPolicyRequestAllOfConflictingAccessCriteria(BaseModel):
     """
-    SodPolicyConflictingAccessCriteria
+    SodPolicyRequestAllOfConflictingAccessCriteria
     """ # noqa: E501
-    left_criteria: Optional[AccessCriteria] = Field(default=None, alias="leftCriteria")
-    right_criteria: Optional[AccessCriteria] = Field(default=None, alias="rightCriteria")
+    left_criteria: Optional[AccessCriteriaRequest] = Field(default=None, alias="leftCriteria")
+    right_criteria: Optional[AccessCriteriaRequest] = Field(default=None, alias="rightCriteria")
     __properties: ClassVar[List[str]] = ["leftCriteria", "rightCriteria"]
 
     model_config = ConfigDict(
@@ -50,7 +50,7 @@ class SodPolicyConflictingAccessCriteria(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SodPolicyConflictingAccessCriteria from a JSON string"""
+        """Create an instance of SodPolicyRequestAllOfConflictingAccessCriteria from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -81,7 +81,7 @@ class SodPolicyConflictingAccessCriteria(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SodPolicyConflictingAccessCriteria from a dict"""
+        """Create an instance of SodPolicyRequestAllOfConflictingAccessCriteria from a dict"""
         if obj is None:
             return None
 
@@ -89,8 +89,8 @@ class SodPolicyConflictingAccessCriteria(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "leftCriteria": AccessCriteria.from_dict(obj["leftCriteria"]) if obj.get("leftCriteria") is not None else None,
-            "rightCriteria": AccessCriteria.from_dict(obj["rightCriteria"]) if obj.get("rightCriteria") is not None else None
+            "leftCriteria": AccessCriteriaRequest.from_dict(obj["leftCriteria"]) if obj.get("leftCriteria") is not None else None,
+            "rightCriteria": AccessCriteriaRequest.from_dict(obj["rightCriteria"]) if obj.get("rightCriteria") is not None else None
         })
         return _obj
 

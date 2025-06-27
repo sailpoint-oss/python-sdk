@@ -22,7 +22,8 @@ from typing_extensions import Annotated
 from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v3.models.multi_policy_request import MultiPolicyRequest
 from sailpoint.v3.models.report_result_reference import ReportResultReference
-from sailpoint.v3.models.sod_policy import SodPolicy
+from sailpoint.v3.models.sod_policy_read import SodPolicyRead
+from sailpoint.v3.models.sod_policy_request import SodPolicyRequest
 from sailpoint.v3.models.sod_policy_schedule import SodPolicySchedule
 
 from sailpoint.v3.api_client import ApiClient, RequestSerialized
@@ -46,7 +47,7 @@ class SODPoliciesApi:
     @validate_call
     def create_sod_policy(
         self,
-        sod_policy: SodPolicy,
+        sod_policy_request: SodPolicyRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -59,13 +60,13 @@ class SODPoliciesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SodPolicy:
+    ) -> SodPolicyRead:
         """Create sod policy
 
         This creates both General and Conflicting Access Based policy, with a limit of 50 entitlements for each (left & right) criteria for Conflicting Access Based SOD policy. Requires role of ORG_ADMIN.
 
-        :param sod_policy: (required)
-        :type sod_policy: SodPolicy
+        :param sod_policy_request: (required)
+        :type sod_policy_request: SodPolicyRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -89,7 +90,7 @@ class SODPoliciesApi:
         """ # noqa: E501
 
         _param = self._create_sod_policy_serialize(
-            sod_policy=sod_policy,
+            sod_policy_request=sod_policy_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -97,7 +98,7 @@ class SODPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "SodPolicy",
+            '201': "SodPolicyRead",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -118,7 +119,7 @@ class SODPoliciesApi:
     @validate_call
     def create_sod_policy_with_http_info(
         self,
-        sod_policy: SodPolicy,
+        sod_policy_request: SodPolicyRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -131,13 +132,13 @@ class SODPoliciesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SodPolicy]:
+    ) -> ApiResponse[SodPolicyRead]:
         """Create sod policy
 
         This creates both General and Conflicting Access Based policy, with a limit of 50 entitlements for each (left & right) criteria for Conflicting Access Based SOD policy. Requires role of ORG_ADMIN.
 
-        :param sod_policy: (required)
-        :type sod_policy: SodPolicy
+        :param sod_policy_request: (required)
+        :type sod_policy_request: SodPolicyRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -161,7 +162,7 @@ class SODPoliciesApi:
         """ # noqa: E501
 
         _param = self._create_sod_policy_serialize(
-            sod_policy=sod_policy,
+            sod_policy_request=sod_policy_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -169,7 +170,7 @@ class SODPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "SodPolicy",
+            '201': "SodPolicyRead",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -190,7 +191,7 @@ class SODPoliciesApi:
     @validate_call
     def create_sod_policy_without_preload_content(
         self,
-        sod_policy: SodPolicy,
+        sod_policy_request: SodPolicyRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -208,8 +209,8 @@ class SODPoliciesApi:
 
         This creates both General and Conflicting Access Based policy, with a limit of 50 entitlements for each (left & right) criteria for Conflicting Access Based SOD policy. Requires role of ORG_ADMIN.
 
-        :param sod_policy: (required)
-        :type sod_policy: SodPolicy
+        :param sod_policy_request: (required)
+        :type sod_policy_request: SodPolicyRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -233,7 +234,7 @@ class SODPoliciesApi:
         """ # noqa: E501
 
         _param = self._create_sod_policy_serialize(
-            sod_policy=sod_policy,
+            sod_policy_request=sod_policy_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -241,7 +242,7 @@ class SODPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "SodPolicy",
+            '201': "SodPolicyRead",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -257,7 +258,7 @@ class SODPoliciesApi:
 
     def _create_sod_policy_serialize(
         self,
-        sod_policy,
+        sod_policy_request,
         _request_auth,
         _content_type,
         _headers,
@@ -283,8 +284,8 @@ class SODPoliciesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if sod_policy is not None:
-            _body_params = sod_policy
+        if sod_policy_request is not None:
+            _body_params = sod_policy_request
 
 
         # set the HTTP header `Accept`
@@ -1765,7 +1766,7 @@ class SODPoliciesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SodPolicy:
+    ) -> SodPolicyRead:
         """Get sod policy by id
 
         This gets specified SOD policy. Requires role of ORG_ADMIN.
@@ -1803,7 +1804,7 @@ class SODPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SodPolicy",
+            '200': "SodPolicyRead",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1838,7 +1839,7 @@ class SODPoliciesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SodPolicy]:
+    ) -> ApiResponse[SodPolicyRead]:
         """Get sod policy by id
 
         This gets specified SOD policy. Requires role of ORG_ADMIN.
@@ -1876,7 +1877,7 @@ class SODPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SodPolicy",
+            '200': "SodPolicyRead",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1949,7 +1950,7 @@ class SODPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SodPolicy",
+            '200': "SodPolicyRead",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -2886,7 +2887,7 @@ class SODPoliciesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[SodPolicy]:
+    ) -> List[SodPolicyRead]:
         """List sod policies
 
         This gets list of all SOD policies. Requires role of ORG_ADMIN
@@ -2936,7 +2937,7 @@ class SODPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[SodPolicy]",
+            '200': "List[SodPolicyRead]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -2974,7 +2975,7 @@ class SODPoliciesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[SodPolicy]]:
+    ) -> ApiResponse[List[SodPolicyRead]]:
         """List sod policies
 
         This gets list of all SOD policies. Requires role of ORG_ADMIN
@@ -3024,7 +3025,7 @@ class SODPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[SodPolicy]",
+            '200': "List[SodPolicyRead]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -3112,7 +3113,7 @@ class SODPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[SodPolicy]",
+            '200': "List[SodPolicyRead]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -3230,7 +3231,7 @@ class SODPoliciesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SodPolicy:
+    ) -> SodPolicyRead:
         """Patch sod policy by id
 
         Allows updating SOD Policy fields other than [\"id\",\"created\",\"creatorId\",\"policyQuery\",\"type\"] using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Requires role of ORG_ADMIN. This endpoint can only patch CONFLICTING_ACCESS_BASED type policies. Do not use this endpoint to patch general policies - doing so will build an API exception. 
@@ -3271,7 +3272,7 @@ class SODPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SodPolicy",
+            '200': "SodPolicyRead",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -3307,7 +3308,7 @@ class SODPoliciesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SodPolicy]:
+    ) -> ApiResponse[SodPolicyRead]:
         """Patch sod policy by id
 
         Allows updating SOD Policy fields other than [\"id\",\"created\",\"creatorId\",\"policyQuery\",\"type\"] using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Requires role of ORG_ADMIN. This endpoint can only patch CONFLICTING_ACCESS_BASED type policies. Do not use this endpoint to patch general policies - doing so will build an API exception. 
@@ -3348,7 +3349,7 @@ class SODPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SodPolicy",
+            '200': "SodPolicyRead",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -3425,7 +3426,7 @@ class SODPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SodPolicy",
+            '200': "SodPolicyRead",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -3831,7 +3832,7 @@ class SODPoliciesApi:
     def put_sod_policy(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the SOD policy to update.")],
-        sod_policy: SodPolicy,
+        sod_policy_read: SodPolicyRead,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3844,15 +3845,15 @@ class SODPoliciesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> SodPolicy:
+    ) -> SodPolicyRead:
         """Update sod policy by id
 
         This updates a specified SOD policy. Requires role of ORG_ADMIN.
 
         :param id: The ID of the SOD policy to update. (required)
         :type id: str
-        :param sod_policy: (required)
-        :type sod_policy: SodPolicy
+        :param sod_policy_read: (required)
+        :type sod_policy_read: SodPolicyRead
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3877,7 +3878,7 @@ class SODPoliciesApi:
 
         _param = self._put_sod_policy_serialize(
             id=id,
-            sod_policy=sod_policy,
+            sod_policy_read=sod_policy_read,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3885,7 +3886,7 @@ class SODPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SodPolicy",
+            '200': "SodPolicyRead",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -3908,7 +3909,7 @@ class SODPoliciesApi:
     def put_sod_policy_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the SOD policy to update.")],
-        sod_policy: SodPolicy,
+        sod_policy_read: SodPolicyRead,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3921,15 +3922,15 @@ class SODPoliciesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[SodPolicy]:
+    ) -> ApiResponse[SodPolicyRead]:
         """Update sod policy by id
 
         This updates a specified SOD policy. Requires role of ORG_ADMIN.
 
         :param id: The ID of the SOD policy to update. (required)
         :type id: str
-        :param sod_policy: (required)
-        :type sod_policy: SodPolicy
+        :param sod_policy_read: (required)
+        :type sod_policy_read: SodPolicyRead
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3954,7 +3955,7 @@ class SODPoliciesApi:
 
         _param = self._put_sod_policy_serialize(
             id=id,
-            sod_policy=sod_policy,
+            sod_policy_read=sod_policy_read,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3962,7 +3963,7 @@ class SODPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SodPolicy",
+            '200': "SodPolicyRead",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -3985,7 +3986,7 @@ class SODPoliciesApi:
     def put_sod_policy_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the SOD policy to update.")],
-        sod_policy: SodPolicy,
+        sod_policy_read: SodPolicyRead,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4005,8 +4006,8 @@ class SODPoliciesApi:
 
         :param id: The ID of the SOD policy to update. (required)
         :type id: str
-        :param sod_policy: (required)
-        :type sod_policy: SodPolicy
+        :param sod_policy_read: (required)
+        :type sod_policy_read: SodPolicyRead
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4031,7 +4032,7 @@ class SODPoliciesApi:
 
         _param = self._put_sod_policy_serialize(
             id=id,
-            sod_policy=sod_policy,
+            sod_policy_read=sod_policy_read,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4039,7 +4040,7 @@ class SODPoliciesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "SodPolicy",
+            '200': "SodPolicyRead",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -4057,7 +4058,7 @@ class SODPoliciesApi:
     def _put_sod_policy_serialize(
         self,
         id,
-        sod_policy,
+        sod_policy_read,
         _request_auth,
         _content_type,
         _headers,
@@ -4085,8 +4086,8 @@ class SODPoliciesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if sod_policy is not None:
-            _body_params = sod_policy
+        if sod_policy_read is not None:
+            _body_params = sod_policy_read
 
 
         # set the HTTP header `Accept`

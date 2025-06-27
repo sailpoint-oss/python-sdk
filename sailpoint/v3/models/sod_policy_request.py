@@ -22,13 +22,14 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v3.models.sod_policy_owner_ref import SodPolicyOwnerRef
+from sailpoint.v3.models.sod_policy_request_all_of_conflicting_access_criteria import SodPolicyRequestAllOfConflictingAccessCriteria
 from sailpoint.v3.models.violation_owner_assignment_config import ViolationOwnerAssignmentConfig
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SodPolicy(BaseModel):
+class SodPolicyRequest(BaseModel):
     """
-    SodPolicy
+    SodPolicyRequest
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Policy id")
     name: Optional[StrictStr] = Field(default=None, description="Policy Business Name")
@@ -47,7 +48,8 @@ class SodPolicy(BaseModel):
     violation_owner_assignment_config: Optional[ViolationOwnerAssignmentConfig] = Field(default=None, alias="violationOwnerAssignmentConfig")
     scheduled: Optional[StrictBool] = Field(default=False, description="defines whether a policy has been scheduled or not")
     type: Optional[StrictStr] = Field(default='GENERAL', description="whether a policy is query based or conflicting access based")
-    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "ownerRef", "externalPolicyReference", "policyQuery", "compensatingControls", "correctionAdvice", "state", "tags", "creatorId", "modifierId", "violationOwnerAssignmentConfig", "scheduled", "type"]
+    conflicting_access_criteria: Optional[SodPolicyRequestAllOfConflictingAccessCriteria] = Field(default=None, alias="conflictingAccessCriteria")
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "ownerRef", "externalPolicyReference", "policyQuery", "compensatingControls", "correctionAdvice", "state", "tags", "creatorId", "modifierId", "violationOwnerAssignmentConfig", "scheduled", "type", "conflictingAccessCriteria"]
 
     @field_validator('state')
     def state_validate_enum(cls, value):
@@ -87,7 +89,7 @@ class SodPolicy(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SodPolicy from a JSON string"""
+        """Create an instance of SodPolicyRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -124,6 +126,9 @@ class SodPolicy(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of violation_owner_assignment_config
         if self.violation_owner_assignment_config:
             _dict['violationOwnerAssignmentConfig'] = self.violation_owner_assignment_config.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of conflicting_access_criteria
+        if self.conflicting_access_criteria:
+            _dict['conflictingAccessCriteria'] = self.conflicting_access_criteria.to_dict()
         # set to None if description (nullable) is None
         # and model_fields_set contains the field
         if self.description is None and "description" in self.model_fields_set:
@@ -153,7 +158,7 @@ class SodPolicy(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SodPolicy from a dict"""
+        """Create an instance of SodPolicyRequest from a dict"""
         if obj is None:
             return None
 
@@ -177,7 +182,8 @@ class SodPolicy(BaseModel):
             "modifierId": obj.get("modifierId"),
             "violationOwnerAssignmentConfig": ViolationOwnerAssignmentConfig.from_dict(obj["violationOwnerAssignmentConfig"]) if obj.get("violationOwnerAssignmentConfig") is not None else None,
             "scheduled": obj.get("scheduled") if obj.get("scheduled") is not None else False,
-            "type": obj.get("type") if obj.get("type") is not None else 'GENERAL'
+            "type": obj.get("type") if obj.get("type") is not None else 'GENERAL',
+            "conflictingAccessCriteria": SodPolicyRequestAllOfConflictingAccessCriteria.from_dict(obj["conflictingAccessCriteria"]) if obj.get("conflictingAccessCriteria") is not None else None
         })
         return _obj
 

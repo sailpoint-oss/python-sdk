@@ -20,6 +20,8 @@ from sailpoint.v3.models.access_apps_owner import AccessAppsOwner
 from sailpoint.v3.models.access_constraint import AccessConstraint
 from sailpoint.v3.models.access_criteria import AccessCriteria
 from sailpoint.v3.models.access_criteria_criteria_list_inner import AccessCriteriaCriteriaListInner
+from sailpoint.v3.models.access_criteria_request import AccessCriteriaRequest
+from sailpoint.v3.models.access_criteria_request_criteria_list_inner import AccessCriteriaRequestCriteriaListInner
 from sailpoint.v3.models.access_item_requested_for import AccessItemRequestedFor
 from sailpoint.v3.models.access_item_requester import AccessItemRequester
 from sailpoint.v3.models.access_item_reviewed_by import AccessItemReviewedBy
@@ -170,6 +172,7 @@ from sailpoint.v3.models.completed_approval_reviewer_comment import CompletedApp
 from sailpoint.v3.models.completed_approval_state import CompletedApprovalState
 from sailpoint.v3.models.completion_status import CompletionStatus
 from sailpoint.v3.models.conflicting_access_criteria import ConflictingAccessCriteria
+from sailpoint.v3.models.conflicting_access_criteria_request import ConflictingAccessCriteriaRequest
 from sailpoint.v3.models.connector_detail import ConnectorDetail
 from sailpoint.v3.models.create_external_execute_workflow200_response import CreateExternalExecuteWorkflow200Response
 from sailpoint.v3.models.create_external_execute_workflow_request import CreateExternalExecuteWorkflowRequest
@@ -510,9 +513,12 @@ from sailpoint.v3.models.slim_campaign import SlimCampaign
 from sailpoint.v3.models.slim_discovered_applications import SlimDiscoveredApplications
 from sailpoint.v3.models.sod_exempt_criteria import SodExemptCriteria
 from sailpoint.v3.models.sod_policy import SodPolicy
-from sailpoint.v3.models.sod_policy_conflicting_access_criteria import SodPolicyConflictingAccessCriteria
 from sailpoint.v3.models.sod_policy_dto import SodPolicyDto
 from sailpoint.v3.models.sod_policy_owner_ref import SodPolicyOwnerRef
+from sailpoint.v3.models.sod_policy_read import SodPolicyRead
+from sailpoint.v3.models.sod_policy_read_all_of_conflicting_access_criteria import SodPolicyReadAllOfConflictingAccessCriteria
+from sailpoint.v3.models.sod_policy_request import SodPolicyRequest
+from sailpoint.v3.models.sod_policy_request_all_of_conflicting_access_criteria import SodPolicyRequestAllOfConflictingAccessCriteria
 from sailpoint.v3.models.sod_policy_schedule import SodPolicySchedule
 from sailpoint.v3.models.sod_recipient import SodRecipient
 from sailpoint.v3.models.sod_report_result_dto import SodReportResultDto

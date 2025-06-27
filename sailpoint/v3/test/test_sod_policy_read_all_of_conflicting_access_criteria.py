@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v3.models.sod_policy_conflicting_access_criteria import SodPolicyConflictingAccessCriteria
+from sailpoint.v3.models.sod_policy_read_all_of_conflicting_access_criteria import SodPolicyReadAllOfConflictingAccessCriteria
 
-class TestSodPolicyConflictingAccessCriteria(unittest.TestCase):
-    """SodPolicyConflictingAccessCriteria unit test stubs"""
+class TestSodPolicyReadAllOfConflictingAccessCriteria(unittest.TestCase):
+    """SodPolicyReadAllOfConflictingAccessCriteria unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,16 +25,16 @@ class TestSodPolicyConflictingAccessCriteria(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SodPolicyConflictingAccessCriteria:
-        """Test SodPolicyConflictingAccessCriteria
+    def make_instance(self, include_optional) -> SodPolicyReadAllOfConflictingAccessCriteria:
+        """Test SodPolicyReadAllOfConflictingAccessCriteria
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `SodPolicyConflictingAccessCriteria`
+        # uncomment below to create an instance of `SodPolicyReadAllOfConflictingAccessCriteria`
         """
-        model = SodPolicyConflictingAccessCriteria()
+        model = SodPolicyReadAllOfConflictingAccessCriteria()
         if include_optional:
-            return SodPolicyConflictingAccessCriteria(
+            return SodPolicyReadAllOfConflictingAccessCriteria(
                 left_criteria = sailpoint.v3.models.access_criteria.AccessCriteria(
                     name = 'money-in', 
                     criteria_list = [{type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a66, name=Administrator}, {type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a67, name=Administrator}], ),
@@ -43,12 +43,12 @@ class TestSodPolicyConflictingAccessCriteria(unittest.TestCase):
                     criteria_list = [{type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a66, name=Administrator}, {type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a67, name=Administrator}], )
             )
         else:
-            return SodPolicyConflictingAccessCriteria(
+            return SodPolicyReadAllOfConflictingAccessCriteria(
         )
         """
 
-    def testSodPolicyConflictingAccessCriteria(self):
-        """Test SodPolicyConflictingAccessCriteria"""
+    def testSodPolicyReadAllOfConflictingAccessCriteria(self):
+        """Test SodPolicyReadAllOfConflictingAccessCriteria"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

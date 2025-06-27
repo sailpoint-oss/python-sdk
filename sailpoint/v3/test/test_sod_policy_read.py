@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v3.models.sod_policy import SodPolicy
+from sailpoint.v3.models.sod_policy_read import SodPolicyRead
 
-class TestSodPolicy(unittest.TestCase):
-    """SodPolicy unit test stubs"""
+class TestSodPolicyRead(unittest.TestCase):
+    """SodPolicyRead unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,16 +25,16 @@ class TestSodPolicy(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SodPolicy:
-        """Test SodPolicy
+    def make_instance(self, include_optional) -> SodPolicyRead:
+        """Test SodPolicyRead
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `SodPolicy`
+        # uncomment below to create an instance of `SodPolicyRead`
         """
-        model = SodPolicy()
+        model = SodPolicyRead()
         if include_optional:
-            return SodPolicy(
+            return SodPolicyRead(
                 id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde',
                 name = 'policy-xyz',
                 created = '2020-01-01T00:00Z',
@@ -59,15 +59,16 @@ class TestSodPolicy(unittest.TestCase):
                         id = '2c9180a46faadee4016fb4e018c20639', 
                         name = 'Support', ), ),
                 scheduled = True,
-                type = 'GENERAL'
+                type = 'GENERAL',
+                conflicting_access_criteria = None
             )
         else:
-            return SodPolicy(
+            return SodPolicyRead(
         )
         """
 
-    def testSodPolicy(self):
-        """Test SodPolicy"""
+    def testSodPolicyRead(self):
+        """Test SodPolicyRead"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

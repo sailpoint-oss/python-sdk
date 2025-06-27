@@ -23,14 +23,13 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class AccessCriteriaCriteriaListInner(BaseModel):
+class AccessCriteriaRequestCriteriaListInner(BaseModel):
     """
-    AccessCriteriaCriteriaListInner
+    AccessCriteriaRequestCriteriaListInner
     """ # noqa: E501
     type: Optional[StrictStr] = Field(default=None, description="Type of the property to which this reference applies to")
     id: Optional[StrictStr] = Field(default=None, description="ID of the object to which this reference applies to")
-    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the object to which this reference applies to")
-    __properties: ClassVar[List[str]] = ["type", "id", "name"]
+    __properties: ClassVar[List[str]] = ["type", "id"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -60,7 +59,7 @@ class AccessCriteriaCriteriaListInner(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AccessCriteriaCriteriaListInner from a JSON string"""
+        """Create an instance of AccessCriteriaRequestCriteriaListInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -85,7 +84,7 @@ class AccessCriteriaCriteriaListInner(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AccessCriteriaCriteriaListInner from a dict"""
+        """Create an instance of AccessCriteriaRequestCriteriaListInner from a dict"""
         if obj is None:
             return None
 
@@ -94,8 +93,7 @@ class AccessCriteriaCriteriaListInner(BaseModel):
 
         _obj = cls.model_validate({
             "type": obj.get("type"),
-            "id": obj.get("id"),
-            "name": obj.get("name")
+            "id": obj.get("id")
         })
         return _obj
 
