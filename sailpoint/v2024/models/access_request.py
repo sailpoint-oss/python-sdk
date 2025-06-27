@@ -33,7 +33,7 @@ class AccessRequest(BaseModel):
     """ # noqa: E501
     requested_for: List[StrictStr] = Field(description="A list of Identity IDs for whom the Access is requested. If it's a Revoke request, there can only be one Identity ID.", alias="requestedFor")
     request_type: Optional[AccessRequestType] = Field(default=None, alias="requestType")
-    requested_items: Annotated[List[AccessRequestItem], Field(min_length=1, max_length=25)] = Field(alias="requestedItems")
+    requested_items: Annotated[List[AccessRequestItem], Field(min_length=1)] = Field(alias="requestedItems")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities.", alias="clientMetadata")
     requested_for_with_requested_items: Optional[List[RequestedForDtoRef]] = Field(default=None, description="Additional submit data structure with requestedFor containing requestedItems allowing distinction for each request item and Identity. * Can only be used when 'requestedFor' and 'requestedItems' are not separately provided * Adds ability to specify which account the user wants the access on, in case they have multiple accounts on a source * Allows the ability to request items with different remove dates * Also allows different combinations of request items and identities in the same request * Only for use in GRANT_ACCESS type requests ", alias="requestedForWithRequestedItems")
     __properties: ClassVar[List[str]] = ["requestedFor", "requestType", "requestedItems", "clientMetadata", "requestedForWithRequestedItems"]
