@@ -38,8 +38,8 @@ class CampaignAllOfFilter(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['CAMPAIGN_FILTER', 'RULE']):
-            warnings.warn(f"must be one of enum values ('CAMPAIGN_FILTER', 'RULE') unknown value: {value}")
+        if value not in set(['CAMPAIGN_FILTER']):
+            warnings.warn(f"must be one of enum values ('CAMPAIGN_FILTER') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
