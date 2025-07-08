@@ -124,6 +124,7 @@ from sailpoint.v2025.exceptions import ApiException
 
 # import models into sdk package
 from sailpoint.v2025.models.access import Access
+from sailpoint.v2025.models.access_action_configuration import AccessActionConfiguration
 from sailpoint.v2025.models.access_apps import AccessApps
 from sailpoint.v2025.models.access_apps_owner import AccessAppsOwner
 from sailpoint.v2025.models.access_constraint import AccessConstraint

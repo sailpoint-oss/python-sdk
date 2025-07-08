@@ -99,6 +99,7 @@ sailpoint/v2025/api_client.py
 sailpoint/v2025/api_response.py
 sailpoint/v2025/configuration.py
 sailpoint/v2025/docs/Access.md
+sailpoint/v2025/docs/AccessActionConfiguration.md
 sailpoint/v2025/docs/AccessApps.md
 sailpoint/v2025/docs/AccessAppsOwner.md
 sailpoint/v2025/docs/AccessConstraint.md
@@ -1334,6 +1335,7 @@ sailpoint/v2025/docs/WorkgroupMemberDeleteItem.md
 sailpoint/v2025/exceptions.py
 sailpoint/v2025/models/__init__.py
 sailpoint/v2025/models/access.py
+sailpoint/v2025/models/access_action_configuration.py
 sailpoint/v2025/models/access_apps.py
 sailpoint/v2025/models/access_apps_owner.py
 sailpoint/v2025/models/access_constraint.py
@@ -2474,6 +2476,7 @@ sailpoint/v2025/models/workgroup_member_delete_item.py
 sailpoint/v2025/rest.py
 sailpoint/v2025/test/__init__.py
 sailpoint/v2025/test/test_access.py
+sailpoint/v2025/test/test_access_action_configuration.py
 sailpoint/v2025/test/test_access_apps.py
 sailpoint/v2025/test/test_access_apps_owner.py
 sailpoint/v2025/test/test_access_constraint.py

@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2025.models.account_action import AccountAction
+from sailpoint.v2025.models.access_action_configuration import AccessActionConfiguration
 
-class TestAccountAction(unittest.TestCase):
-    """AccountAction unit test stubs"""
+class TestAccessActionConfiguration(unittest.TestCase):
+    """AccessActionConfiguration unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,28 +25,25 @@ class TestAccountAction(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> AccountAction:
-        """Test AccountAction
+    def make_instance(self, include_optional) -> AccessActionConfiguration:
+        """Test AccessActionConfiguration
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `AccountAction`
+        # uncomment below to create an instance of `AccessActionConfiguration`
         """
-        model = AccountAction()
+        model = AccessActionConfiguration()
         if include_optional:
-            return AccountAction(
-                action = 'ENABLE',
-                source_ids = [2c918084660f45d6016617daa9210584, 2c918084660f45d6016617daa9210500],
-                exclude_source_ids = [3b551ccf5566478b9b77f37de25303aa],
-                all_sources = True
+            return AccessActionConfiguration(
+                remove_all_access_enabled = True
             )
         else:
-            return AccountAction(
+            return AccessActionConfiguration(
         )
         """
 
-    def testAccountAction(self):
-        """Test AccountAction"""
+    def testAccessActionConfiguration(self):
+        """Test AccessActionConfiguration"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

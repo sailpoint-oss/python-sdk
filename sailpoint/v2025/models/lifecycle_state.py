@@ -19,8 +19,9 @@ import json
 import warnings
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.v2025.models.access_action_configuration import AccessActionConfiguration
 from sailpoint.v2025.models.account_action import AccountAction
 from sailpoint.v2025.models.email_notification_option import EmailNotificationOption
 from typing import Optional, Set
@@ -42,7 +43,19 @@ class LifecycleState(BaseModel):
     account_actions: Optional[List[AccountAction]] = Field(default=None, alias="accountActions")
     access_profile_ids: Optional[List[StrictStr]] = Field(default=None, description="List of unique access-profile IDs that are associated with the lifecycle state.", alias="accessProfileIds")
     identity_state: Optional[StrictStr] = Field(default=None, description="The lifecycle state's associated identity state. This field is generally 'null'.", alias="identityState")
-    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "enabled", "technicalName", "description", "identityCount", "emailNotificationOption", "accountActions", "accessProfileIds", "identityState"]
+    access_action_configuration: Optional[AccessActionConfiguration] = Field(default=None, alias="accessActionConfiguration")
+    priority: Optional[StrictInt] = Field(default=None, description="Priority level used to determine which profile to assign when a user exists in multiple profiles. Lower numeric values have higher priority.  By default, new profiles are assigned the lowest priority. The assigned profile also controls access granted or removed during provisioning based on lifecycle state changes.")
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "enabled", "technicalName", "description", "identityCount", "emailNotificationOption", "accountActions", "accessProfileIds", "identityState", "accessActionConfiguration", "priority"]
+
+    @field_validator('identity_state')
+    def identity_state_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['ACTIVE', 'INACTIVE_SHORT_TERM', 'INACTIVE_LONG_TERM']):
+            warnings.warn(f"must be one of enum values ('ACTIVE', 'INACTIVE_SHORT_TERM', 'INACTIVE_LONG_TERM') unknown value: {value}")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -101,6 +114,9 @@ class LifecycleState(BaseModel):
                 if _item_account_actions:
                     _items.append(_item_account_actions.to_dict())
             _dict['accountActions'] = _items
+        # override the default output from pydantic by calling `to_dict()` of access_action_configuration
+        if self.access_action_configuration:
+            _dict['accessActionConfiguration'] = self.access_action_configuration.to_dict()
         # set to None if name (nullable) is None
         # and model_fields_set contains the field
         if self.name is None and "name" in self.model_fields_set:
@@ -115,6 +131,11 @@ class LifecycleState(BaseModel):
         # and model_fields_set contains the field
         if self.identity_state is None and "identity_state" in self.model_fields_set:
             _dict['identityState'] = None
+
+        # set to None if priority (nullable) is None
+        # and model_fields_set contains the field
+        if self.priority is None and "priority" in self.model_fields_set:
+            _dict['priority'] = None
 
         return _dict
 
@@ -139,7 +160,9 @@ class LifecycleState(BaseModel):
             "emailNotificationOption": EmailNotificationOption.from_dict(obj["emailNotificationOption"]) if obj.get("emailNotificationOption") is not None else None,
             "accountActions": [AccountAction.from_dict(_item) for _item in obj["accountActions"]] if obj.get("accountActions") is not None else None,
             "accessProfileIds": obj.get("accessProfileIds"),
-            "identityState": obj.get("identityState")
+            "identityState": obj.get("identityState"),
+            "accessActionConfiguration": AccessActionConfiguration.from_dict(obj["accessActionConfiguration"]) if obj.get("accessActionConfiguration") is not None else None,
+            "priority": obj.get("priority")
         })
         return _obj
 

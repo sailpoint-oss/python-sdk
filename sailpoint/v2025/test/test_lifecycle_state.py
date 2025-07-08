@@ -51,10 +51,15 @@ class TestLifecycleState(unittest.TestCase):
                 account_actions = [
                     sailpoint.v2025.models.account_action.AccountAction(
                         action = 'ENABLE', 
-                        source_ids = [2c918084660f45d6016617daa9210584, 2c918084660f45d6016617daa9210500], )
+                        source_ids = [2c918084660f45d6016617daa9210584, 2c918084660f45d6016617daa9210500], 
+                        exclude_source_ids = [3b551ccf5566478b9b77f37de25303aa], 
+                        all_sources = True, )
                     ],
                 access_profile_ids = [2c918084660f45d6016617daa9210584, 2c918084660f45d6016617daa9210500],
-                identity_state = ''
+                identity_state = 'INACTIVE_LONG_TERM',
+                access_action_configuration = sailpoint.v2025.models.access_action_configuration.AccessActionConfiguration(
+                    remove_all_access_enabled = True, ),
+                priority = 10
             )
         else:
             return LifecycleState(

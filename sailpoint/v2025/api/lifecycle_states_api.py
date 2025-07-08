@@ -369,7 +369,7 @@ class LifecycleStatesApi:
     ) -> LifecyclestateDeleted:
         """Delete lifecycle state
 
-        Use this endpoint to delete the lifecycle state by its ID. 
+        Use this endpoint to delete the lifecycle state by its ID.
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
@@ -446,7 +446,7 @@ class LifecycleStatesApi:
     ) -> ApiResponse[LifecyclestateDeleted]:
         """Delete lifecycle state
 
-        Use this endpoint to delete the lifecycle state by its ID. 
+        Use this endpoint to delete the lifecycle state by its ID.
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
@@ -523,7 +523,7 @@ class LifecycleStatesApi:
     ) -> RESTResponseType:
         """Delete lifecycle state
 
-        Use this endpoint to delete the lifecycle state by its ID. 
+        Use this endpoint to delete the lifecycle state by its ID.
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
@@ -665,7 +665,7 @@ class LifecycleStatesApi:
     ) -> LifecycleState:
         """Get lifecycle state
 
-        Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID. 
+        Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID.
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
@@ -742,7 +742,7 @@ class LifecycleStatesApi:
     ) -> ApiResponse[LifecycleState]:
         """Get lifecycle state
 
-        Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID. 
+        Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID.
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
@@ -819,7 +819,7 @@ class LifecycleStatesApi:
     ) -> RESTResponseType:
         """Get lifecycle state
 
-        Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID. 
+        Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID.
 
         :param identity_profile_id: Identity profile ID. (required)
         :type identity_profile_id: str
@@ -1599,7 +1599,7 @@ class LifecycleStatesApi:
         self,
         identity_profile_id: Annotated[StrictStr, Field(description="Identity profile ID.")],
         lifecycle_state_id: Annotated[StrictStr, Field(description="Lifecycle state ID.")],
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1621,7 +1621,7 @@ class LifecycleStatesApi:
         :type identity_profile_id: str
         :param lifecycle_state_id: Lifecycle state ID. (required)
         :type lifecycle_state_id: str
-        :param json_patch_operation: A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption  (required)
+        :param json_patch_operation: A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority  (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1680,7 +1680,7 @@ class LifecycleStatesApi:
         self,
         identity_profile_id: Annotated[StrictStr, Field(description="Identity profile ID.")],
         lifecycle_state_id: Annotated[StrictStr, Field(description="Lifecycle state ID.")],
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1702,7 +1702,7 @@ class LifecycleStatesApi:
         :type identity_profile_id: str
         :param lifecycle_state_id: Lifecycle state ID. (required)
         :type lifecycle_state_id: str
-        :param json_patch_operation: A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption  (required)
+        :param json_patch_operation: A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority  (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1761,7 +1761,7 @@ class LifecycleStatesApi:
         self,
         identity_profile_id: Annotated[StrictStr, Field(description="Identity profile ID.")],
         lifecycle_state_id: Annotated[StrictStr, Field(description="Lifecycle state ID.")],
-        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption ")],
+        json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority ")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1783,7 +1783,7 @@ class LifecycleStatesApi:
         :type identity_profile_id: str
         :param lifecycle_state_id: Lifecycle state ID. (required)
         :type lifecycle_state_id: str
-        :param json_patch_operation: A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption  (required)
+        :param json_patch_operation: A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority  (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -28,8 +28,10 @@ class AccountAction(BaseModel):
     Object for specifying Actions to be performed on a specified list of sources' account.
     """ # noqa: E501
     action: Optional[StrictStr] = Field(default=None, description="Describes if action will be enabled or disabled")
-    source_ids: Optional[List[StrictStr]] = Field(default=None, description="List of unique source IDs. The sources must have the ENABLE feature or flat file source. See \"/sources\" endpoint for source features.", alias="sourceIds")
-    __properties: ClassVar[List[str]] = ["action", "sourceIds"]
+    source_ids: Optional[List[StrictStr]] = Field(default=None, description="A unique list of specific source IDs to apply the action to. The sources must have the ENABLE feature or flat file source. Required if allSources is not true. Must not be provided if allSources is true. Cannot be used together with excludeSourceIds See \"/sources\" endpoint for source features.", alias="sourceIds")
+    exclude_source_ids: Optional[List[StrictStr]] = Field(default=None, description="A list of source IDs to exclude from the action. Cannot be used together with sourceIds.", alias="excludeSourceIds")
+    all_sources: Optional[StrictBool] = Field(default=False, description="If true, the action applies to all available sources. If true, sourceIds must not be provided. If false or not set, sourceIds is required.", alias="allSources")
+    __properties: ClassVar[List[str]] = ["action", "sourceIds", "excludeSourceIds", "allSources"]
 
     @field_validator('action')
     def action_validate_enum(cls, value):
@@ -80,6 +82,16 @@ class AccountAction(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if source_ids (nullable) is None
+        # and model_fields_set contains the field
+        if self.source_ids is None and "source_ids" in self.model_fields_set:
+            _dict['sourceIds'] = None
+
+        # set to None if exclude_source_ids (nullable) is None
+        # and model_fields_set contains the field
+        if self.exclude_source_ids is None and "exclude_source_ids" in self.model_fields_set:
+            _dict['excludeSourceIds'] = None
+
         return _dict
 
     @classmethod
@@ -93,7 +105,9 @@ class AccountAction(BaseModel):
 
         _obj = cls.model_validate({
             "action": obj.get("action"),
-            "sourceIds": obj.get("sourceIds")
+            "sourceIds": obj.get("sourceIds"),
+            "excludeSourceIds": obj.get("excludeSourceIds"),
+            "allSources": obj.get("allSources") if obj.get("allSources") is not None else False
         })
         return _obj
 

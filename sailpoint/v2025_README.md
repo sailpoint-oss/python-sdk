@@ -786,6 +786,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [Access](sailpoint/v2025/docs/Access.md)
+ - [AccessActionConfiguration](sailpoint/v2025/docs/AccessActionConfiguration.md)
  - [AccessApps](sailpoint/v2025/docs/AccessApps.md)
  - [AccessAppsOwner](sailpoint/v2025/docs/AccessAppsOwner.md)
  - [AccessConstraint](sailpoint/v2025/docs/AccessConstraint.md)
