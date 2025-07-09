@@ -100,7 +100,7 @@ Class | Method | HTTP request | Description
 *AccessRequestsApi* | [**close_access_request**](sailpoint/v2025/docs/AccessRequestsApi.md#close_access_request) | **POST** /access-requests/close | Close access request
 *AccessRequestsApi* | [**create_access_request**](sailpoint/v2025/docs/AccessRequestsApi.md#create_access_request) | **POST** /access-requests | Submit access request
 *AccessRequestsApi* | [**get_access_request_config**](sailpoint/v2025/docs/AccessRequestsApi.md#get_access_request_config) | **GET** /access-request-config | Get access request configuration
-*AccessRequestsApi* | [**get_entitlement_details_for_identity**](sailpoint/v2025/docs/AccessRequestsApi.md#get_entitlement_details_for_identity) | **GET** /access-requests/revocable-objects | Identity entitlement details
+*AccessRequestsApi* | [**get_entitlement_details_for_identity**](sailpoint/v2025/docs/AccessRequestsApi.md#get_entitlement_details_for_identity) | **GET** /revocable-objects | Identity entitlement details
 *AccessRequestsApi* | [**list_access_request_status**](sailpoint/v2025/docs/AccessRequestsApi.md#list_access_request_status) | **GET** /access-request-status | Access request status
 *AccessRequestsApi* | [**list_administrators_access_request_status**](sailpoint/v2025/docs/AccessRequestsApi.md#list_administrators_access_request_status) | **GET** /access-request-administration | Access request status for administrators
 *AccessRequestsApi* | [**load_account_selections**](sailpoint/v2025/docs/AccessRequestsApi.md#load_account_selections) | **POST** /access-requests/accounts-selection | Get accounts selections for identity

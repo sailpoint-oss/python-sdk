@@ -970,7 +970,7 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling AccessRequestsApi->get_access_request_config: %s\n" % e)
-- path: /access-requests/revocable-objects
+- path: /revocable-objects
   method: GET
   xCodeSample:
     - lang: Python
