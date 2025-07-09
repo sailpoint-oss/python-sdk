@@ -37,7 +37,7 @@ class ProvisioningCompleted(BaseModel):
     warnings: Optional[List[StrictStr]] = Field(default=None, description="A list of any accumulated warning messages that occurred during provisioning.")
     recipient: ProvisioningCompletedRecipient
     requester: Optional[ProvisioningCompletedRequester] = None
-    account_requests: List[ProvisioningCompletedAccountRequestsInner] = Field(description="A list of provisioning instructions to perform on an account-by-account basis.", alias="accountRequests")
+    account_requests: List[ProvisioningCompletedAccountRequestsInner] = Field(description="A list of provisioning instructions to be executed on a per-account basis. The order in which operations are executed may not always be predictable.", alias="accountRequests")
     __properties: ClassVar[List[str]] = ["trackingNumber", "sources", "action", "errors", "warnings", "recipient", "requester", "accountRequests"]
 
     model_config = ConfigDict(
