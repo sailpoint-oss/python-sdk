@@ -29,6 +29,8 @@ class NonEmployeeSchemaAttributeType(str, Enum):
     TEXT = 'TEXT'
     DATE = 'DATE'
     IDENTITY = 'IDENTITY'
+    PHONE = 'PHONE'
+    EMAIL = 'EMAIL'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

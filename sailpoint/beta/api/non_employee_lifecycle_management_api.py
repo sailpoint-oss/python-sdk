@@ -75,7 +75,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeApprovalItem:
-        """Approve a non-employee request
+        """(Deprecated) Approve a non-employee request
 
         Approves a non-employee approval request and notifies the next approver.
 
@@ -104,6 +104,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /non-employee-approvals/{id}/approve is deprecated.", DeprecationWarning)
 
         _param = self._approve_non_employee_request_serialize(
             id=id,
@@ -151,7 +152,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeApprovalItem]:
-        """Approve a non-employee request
+        """(Deprecated) Approve a non-employee request
 
         Approves a non-employee approval request and notifies the next approver.
 
@@ -180,6 +181,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /non-employee-approvals/{id}/approve is deprecated.", DeprecationWarning)
 
         _param = self._approve_non_employee_request_serialize(
             id=id,
@@ -227,7 +229,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Approve a non-employee request
+        """(Deprecated) Approve a non-employee request
 
         Approves a non-employee approval request and notifies the next approver.
 
@@ -256,6 +258,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /non-employee-approvals/{id}/approve is deprecated.", DeprecationWarning)
 
         _param = self._approve_non_employee_request_serialize(
             id=id,
@@ -379,7 +382,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeRecord:
-        """Create non-employee record
+        """(Deprecated) Create non-employee record
 
         This request will create a non-employee record. Request will require the following security scope: 'idn:nesr:create'
 
@@ -406,6 +409,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /non-employee-records is deprecated.", DeprecationWarning)
 
         _param = self._create_non_employee_record_serialize(
             non_employee_request_body=non_employee_request_body,
@@ -451,7 +455,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeRecord]:
-        """Create non-employee record
+        """(Deprecated) Create non-employee record
 
         This request will create a non-employee record. Request will require the following security scope: 'idn:nesr:create'
 
@@ -478,6 +482,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /non-employee-records is deprecated.", DeprecationWarning)
 
         _param = self._create_non_employee_record_serialize(
             non_employee_request_body=non_employee_request_body,
@@ -523,7 +528,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create non-employee record
+        """(Deprecated) Create non-employee record
 
         This request will create a non-employee record. Request will require the following security scope: 'idn:nesr:create'
 
@@ -550,6 +555,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /non-employee-records is deprecated.", DeprecationWarning)
 
         _param = self._create_non_employee_record_serialize(
             non_employee_request_body=non_employee_request_body,
@@ -669,7 +675,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeRequest:
-        """Create non-employee request
+        """(Deprecated) Create non-employee request
 
         This request will create a non-employee request and notify the approver
 
@@ -696,6 +702,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /non-employee-requests is deprecated.", DeprecationWarning)
 
         _param = self._create_non_employee_request_serialize(
             non_employee_request_body=non_employee_request_body,
@@ -741,7 +748,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeRequest]:
-        """Create non-employee request
+        """(Deprecated) Create non-employee request
 
         This request will create a non-employee request and notify the approver
 
@@ -768,6 +775,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /non-employee-requests is deprecated.", DeprecationWarning)
 
         _param = self._create_non_employee_request_serialize(
             non_employee_request_body=non_employee_request_body,
@@ -813,7 +821,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create non-employee request
+        """(Deprecated) Create non-employee request
 
         This request will create a non-employee request and notify the approver
 
@@ -840,6 +848,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /non-employee-requests is deprecated.", DeprecationWarning)
 
         _param = self._create_non_employee_request_serialize(
             non_employee_request_body=non_employee_request_body,
@@ -959,7 +968,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeSourceWithCloudExternalId:
-        """Create non-employee source
+        """(Deprecated) Create non-employee source
 
         Create a non-employee source.
 
@@ -986,6 +995,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /non-employee-sources is deprecated.", DeprecationWarning)
 
         _param = self._create_non_employee_source_serialize(
             non_employee_source_request_body=non_employee_source_request_body,
@@ -1031,7 +1041,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeSourceWithCloudExternalId]:
-        """Create non-employee source
+        """(Deprecated) Create non-employee source
 
         Create a non-employee source.
 
@@ -1058,6 +1068,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /non-employee-sources is deprecated.", DeprecationWarning)
 
         _param = self._create_non_employee_source_serialize(
             non_employee_source_request_body=non_employee_source_request_body,
@@ -1103,7 +1114,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create non-employee source
+        """(Deprecated) Create non-employee source
 
         Create a non-employee source.
 
@@ -1130,6 +1141,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /non-employee-sources is deprecated.", DeprecationWarning)
 
         _param = self._create_non_employee_source_serialize(
             non_employee_source_request_body=non_employee_source_request_body,
@@ -1250,7 +1262,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeSchemaAttribute:
-        """Create non-employee source schema attribute
+        """(Deprecated) Create non-employee source schema attribute
 
         This API creates a new schema attribute for Non-Employee Source. The schema technical name must be unique in the source. Attempts to create a schema attribute with an existing name will result in a \"400.1.409 Reference conflict\" response. At most, 10 custom attributes can be created per schema. Attempts to create more than 10 will result in a \"400.1.4 Limit violation\" response.
 
@@ -1279,6 +1291,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /non-employee-sources/{sourceId}/schema-attributes is deprecated.", DeprecationWarning)
 
         _param = self._create_non_employee_source_schema_attributes_serialize(
             source_id=source_id,
@@ -1326,7 +1339,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeSchemaAttribute]:
-        """Create non-employee source schema attribute
+        """(Deprecated) Create non-employee source schema attribute
 
         This API creates a new schema attribute for Non-Employee Source. The schema technical name must be unique in the source. Attempts to create a schema attribute with an existing name will result in a \"400.1.409 Reference conflict\" response. At most, 10 custom attributes can be created per schema. Attempts to create more than 10 will result in a \"400.1.4 Limit violation\" response.
 
@@ -1355,6 +1368,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /non-employee-sources/{sourceId}/schema-attributes is deprecated.", DeprecationWarning)
 
         _param = self._create_non_employee_source_schema_attributes_serialize(
             source_id=source_id,
@@ -1402,7 +1416,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create non-employee source schema attribute
+        """(Deprecated) Create non-employee source schema attribute
 
         This API creates a new schema attribute for Non-Employee Source. The schema technical name must be unique in the source. Attempts to create a schema attribute with an existing name will result in a \"400.1.409 Reference conflict\" response. At most, 10 custom attributes can be created per schema. Attempts to create more than 10 will result in a \"400.1.4 Limit violation\" response.
 
@@ -1431,6 +1445,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /non-employee-sources/{sourceId}/schema-attributes is deprecated.", DeprecationWarning)
 
         _param = self._create_non_employee_source_schema_attributes_serialize(
             source_id=source_id,
@@ -1554,7 +1569,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete non-employee record
+        """(Deprecated) Delete non-employee record
 
         This request will delete a non-employee record.
 
@@ -1581,6 +1596,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /non-employee-records/{id} is deprecated.", DeprecationWarning)
 
         _param = self._delete_non_employee_record_serialize(
             id=id,
@@ -1626,7 +1642,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete non-employee record
+        """(Deprecated) Delete non-employee record
 
         This request will delete a non-employee record.
 
@@ -1653,6 +1669,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /non-employee-records/{id} is deprecated.", DeprecationWarning)
 
         _param = self._delete_non_employee_record_serialize(
             id=id,
@@ -1698,7 +1715,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete non-employee record
+        """(Deprecated) Delete non-employee record
 
         This request will delete a non-employee record.
 
@@ -1725,6 +1742,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /non-employee-records/{id} is deprecated.", DeprecationWarning)
 
         _param = self._delete_non_employee_record_serialize(
             id=id,
@@ -1831,7 +1849,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete multiple non-employee records
+        """(Deprecated) Delete multiple non-employee records
 
         This request will delete multiple non-employee records based on the non-employee ids provided. Request will require the following scope: 'idn:nesr:delete'
 
@@ -1858,6 +1876,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /non-employee-records/bulk-delete is deprecated.", DeprecationWarning)
 
         _param = self._delete_non_employee_record_in_bulk_serialize(
             delete_non_employee_record_in_bulk_request=delete_non_employee_record_in_bulk_request,
@@ -1903,7 +1922,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete multiple non-employee records
+        """(Deprecated) Delete multiple non-employee records
 
         This request will delete multiple non-employee records based on the non-employee ids provided. Request will require the following scope: 'idn:nesr:delete'
 
@@ -1930,6 +1949,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /non-employee-records/bulk-delete is deprecated.", DeprecationWarning)
 
         _param = self._delete_non_employee_record_in_bulk_serialize(
             delete_non_employee_record_in_bulk_request=delete_non_employee_record_in_bulk_request,
@@ -1975,7 +1995,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete multiple non-employee records
+        """(Deprecated) Delete multiple non-employee records
 
         This request will delete multiple non-employee records based on the non-employee ids provided. Request will require the following scope: 'idn:nesr:delete'
 
@@ -2002,6 +2022,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /non-employee-records/bulk-delete is deprecated.", DeprecationWarning)
 
         _param = self._delete_non_employee_record_in_bulk_serialize(
             delete_non_employee_record_in_bulk_request=delete_non_employee_record_in_bulk_request,
@@ -2121,7 +2142,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete non-employee request
+        """(Deprecated) Delete non-employee request
 
         This request will delete a non-employee request.
 
@@ -2148,6 +2169,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /non-employee-requests/{id} is deprecated.", DeprecationWarning)
 
         _param = self._delete_non_employee_request_serialize(
             id=id,
@@ -2194,7 +2216,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete non-employee request
+        """(Deprecated) Delete non-employee request
 
         This request will delete a non-employee request.
 
@@ -2221,6 +2243,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /non-employee-requests/{id} is deprecated.", DeprecationWarning)
 
         _param = self._delete_non_employee_request_serialize(
             id=id,
@@ -2267,7 +2290,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete non-employee request
+        """(Deprecated) Delete non-employee request
 
         This request will delete a non-employee request.
 
@@ -2294,6 +2317,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /non-employee-requests/{id} is deprecated.", DeprecationWarning)
 
         _param = self._delete_non_employee_request_serialize(
             id=id,
@@ -2402,7 +2426,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete non-employee source's schema attribute
+        """(Deprecated) Delete non-employee source's schema attribute
 
         This end-point deletes a specific schema attribute for a non-employee source. 
 
@@ -2431,6 +2455,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /non-employee-sources/{sourceId}/schema-attributes/{attributeId} is deprecated.", DeprecationWarning)
 
         _param = self._delete_non_employee_schema_attribute_serialize(
             attribute_id=attribute_id,
@@ -2478,7 +2503,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete non-employee source's schema attribute
+        """(Deprecated) Delete non-employee source's schema attribute
 
         This end-point deletes a specific schema attribute for a non-employee source. 
 
@@ -2507,6 +2532,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /non-employee-sources/{sourceId}/schema-attributes/{attributeId} is deprecated.", DeprecationWarning)
 
         _param = self._delete_non_employee_schema_attribute_serialize(
             attribute_id=attribute_id,
@@ -2554,7 +2580,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete non-employee source's schema attribute
+        """(Deprecated) Delete non-employee source's schema attribute
 
         This end-point deletes a specific schema attribute for a non-employee source. 
 
@@ -2583,6 +2609,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /non-employee-sources/{sourceId}/schema-attributes/{attributeId} is deprecated.", DeprecationWarning)
 
         _param = self._delete_non_employee_schema_attribute_serialize(
             attribute_id=attribute_id,
@@ -2693,7 +2720,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete non-employee source
+        """(Deprecated) Delete non-employee source
 
         This request will delete a non-employee source.
 
@@ -2720,6 +2747,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /non-employee-sources/{sourceId} is deprecated.", DeprecationWarning)
 
         _param = self._delete_non_employee_source_serialize(
             source_id=source_id,
@@ -2765,7 +2793,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete non-employee source
+        """(Deprecated) Delete non-employee source
 
         This request will delete a non-employee source.
 
@@ -2792,6 +2820,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /non-employee-sources/{sourceId} is deprecated.", DeprecationWarning)
 
         _param = self._delete_non_employee_source_serialize(
             source_id=source_id,
@@ -2837,7 +2866,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete non-employee source
+        """(Deprecated) Delete non-employee source
 
         This request will delete a non-employee source.
 
@@ -2864,6 +2893,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /non-employee-sources/{sourceId} is deprecated.", DeprecationWarning)
 
         _param = self._delete_non_employee_source_serialize(
             source_id=source_id,
@@ -2970,7 +3000,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete all custom schema attributes
+        """(Deprecated) Delete all custom schema attributes
 
         This end-point deletes all custom schema attributes for a non-employee source.
 
@@ -2997,6 +3027,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /non-employee-sources/{sourceId}/schema-attributes is deprecated.", DeprecationWarning)
 
         _param = self._delete_non_employee_source_schema_attributes_serialize(
             source_id=source_id,
@@ -3042,7 +3073,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete all custom schema attributes
+        """(Deprecated) Delete all custom schema attributes
 
         This end-point deletes all custom schema attributes for a non-employee source.
 
@@ -3069,6 +3100,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /non-employee-sources/{sourceId}/schema-attributes is deprecated.", DeprecationWarning)
 
         _param = self._delete_non_employee_source_schema_attributes_serialize(
             source_id=source_id,
@@ -3114,7 +3146,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete all custom schema attributes
+        """(Deprecated) Delete all custom schema attributes
 
         This end-point deletes all custom schema attributes for a non-employee source.
 
@@ -3141,6 +3173,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /non-employee-sources/{sourceId}/schema-attributes is deprecated.", DeprecationWarning)
 
         _param = self._delete_non_employee_source_schema_attributes_serialize(
             source_id=source_id,
@@ -3231,568 +3264,6 @@ class NonEmployeeLifecycleManagementApi:
 
 
     @validate_call
-    def export_non_employee_records(
-        self,
-        id: Annotated[StrictStr, Field(description="Source Id (UUID)")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """Exports non-employee records to csv
-
-        This requests a CSV download for all non-employees from a provided source.
-
-        :param id: Source Id (UUID) (required)
-        :type id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._export_non_employee_records_serialize(
-            id=id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '400': "ErrorResponseDto",
-            '401': "ListAccessModelMetadataAttribute401Response",
-            '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto",
-            '429': "ListAccessModelMetadataAttribute429Response",
-            '500': "ErrorResponseDto",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def export_non_employee_records_with_http_info(
-        self,
-        id: Annotated[StrictStr, Field(description="Source Id (UUID)")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """Exports non-employee records to csv
-
-        This requests a CSV download for all non-employees from a provided source.
-
-        :param id: Source Id (UUID) (required)
-        :type id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._export_non_employee_records_serialize(
-            id=id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '400': "ErrorResponseDto",
-            '401': "ListAccessModelMetadataAttribute401Response",
-            '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto",
-            '429': "ListAccessModelMetadataAttribute429Response",
-            '500': "ErrorResponseDto",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def export_non_employee_records_without_preload_content(
-        self,
-        id: Annotated[StrictStr, Field(description="Source Id (UUID)")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Exports non-employee records to csv
-
-        This requests a CSV download for all non-employees from a provided source.
-
-        :param id: Source Id (UUID) (required)
-        :type id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._export_non_employee_records_serialize(
-            id=id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '400': "ErrorResponseDto",
-            '401': "ListAccessModelMetadataAttribute401Response",
-            '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto",
-            '429': "ListAccessModelMetadataAttribute429Response",
-            '500': "ErrorResponseDto",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _export_non_employee_records_serialize(
-        self,
-        id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
-                [
-                    'text/csv', 
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'userAuth', 
-            'userAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/non-employee-sources/{id}/non-employees/download',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def export_non_employee_source_schema_template(
-        self,
-        id: Annotated[StrictStr, Field(description="Source Id (UUID)")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """Exports source schema template
-
-        This requests a download for the Source Schema Template for a provided source. Request will require the following security scope: idn:nesr:read'
-
-        :param id: Source Id (UUID) (required)
-        :type id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._export_non_employee_source_schema_template_serialize(
-            id=id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '400': "ErrorResponseDto",
-            '401': "ListAccessModelMetadataAttribute401Response",
-            '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto",
-            '429': "ListAccessModelMetadataAttribute429Response",
-            '500': "ErrorResponseDto",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def export_non_employee_source_schema_template_with_http_info(
-        self,
-        id: Annotated[StrictStr, Field(description="Source Id (UUID)")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """Exports source schema template
-
-        This requests a download for the Source Schema Template for a provided source. Request will require the following security scope: idn:nesr:read'
-
-        :param id: Source Id (UUID) (required)
-        :type id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._export_non_employee_source_schema_template_serialize(
-            id=id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '400': "ErrorResponseDto",
-            '401': "ListAccessModelMetadataAttribute401Response",
-            '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto",
-            '429': "ListAccessModelMetadataAttribute429Response",
-            '500': "ErrorResponseDto",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def export_non_employee_source_schema_template_without_preload_content(
-        self,
-        id: Annotated[StrictStr, Field(description="Source Id (UUID)")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Exports source schema template
-
-        This requests a download for the Source Schema Template for a provided source. Request will require the following security scope: idn:nesr:read'
-
-        :param id: Source Id (UUID) (required)
-        :type id: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._export_non_employee_source_schema_template_serialize(
-            id=id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '400': "ErrorResponseDto",
-            '401': "ListAccessModelMetadataAttribute401Response",
-            '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto",
-            '429': "ListAccessModelMetadataAttribute429Response",
-            '500': "ErrorResponseDto",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _export_non_employee_source_schema_template_serialize(
-        self,
-        id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
-                [
-                    'text/csv', 
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'userAuth', 
-            'userAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/non-employee-sources/{id}/schema-attributes-template/download',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
     def get_non_employee_approval(
         self,
         id: Annotated[StrictStr, Field(description="Non-Employee approval item id (UUID)")],
@@ -3810,7 +3281,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeApprovalItemDetail:
-        """Get a non-employee approval item detail
+        """(Deprecated) A non-employee approval item detail
 
         Approves a non-employee approval request and notifies the next approver.
 
@@ -3839,6 +3310,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-approvals/{id} is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_approval_serialize(
             id=id,
@@ -3886,7 +3358,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeApprovalItemDetail]:
-        """Get a non-employee approval item detail
+        """(Deprecated) A non-employee approval item detail
 
         Approves a non-employee approval request and notifies the next approver.
 
@@ -3915,6 +3387,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-approvals/{id} is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_approval_serialize(
             id=id,
@@ -3962,7 +3435,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get a non-employee approval item detail
+        """(Deprecated) A non-employee approval item detail
 
         Approves a non-employee approval request and notifies the next approver.
 
@@ -3991,6 +3464,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-approvals/{id} is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_approval_serialize(
             id=id,
@@ -4103,7 +3577,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeApprovalSummary:
-        """Get summary of non-employee approval requests
+        """(Deprecated) Summary of non-employee approval requests
 
         This request will retrieve a summary of non-employee approval requests. There are two contextual uses for the `requested-for` path parameter: 1. The current user is the Org Admin, in which case he or she may request a summary of all non-employee approval requests assigned to a particular approver by passing in that approver's id. 2. The current user is an approver, in which case \"me\" should be provided as the `requested-for` value. This will provide the approver with a summary of the approval items assigned to him or her.
 
@@ -4130,6 +3604,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-approvals/summary/{requested-for} is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_approval_summary_serialize(
             requested_for=requested_for,
@@ -4175,7 +3650,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeApprovalSummary]:
-        """Get summary of non-employee approval requests
+        """(Deprecated) Summary of non-employee approval requests
 
         This request will retrieve a summary of non-employee approval requests. There are two contextual uses for the `requested-for` path parameter: 1. The current user is the Org Admin, in which case he or she may request a summary of all non-employee approval requests assigned to a particular approver by passing in that approver's id. 2. The current user is an approver, in which case \"me\" should be provided as the `requested-for` value. This will provide the approver with a summary of the approval items assigned to him or her.
 
@@ -4202,6 +3677,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-approvals/summary/{requested-for} is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_approval_summary_serialize(
             requested_for=requested_for,
@@ -4247,7 +3723,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get summary of non-employee approval requests
+        """(Deprecated) Summary of non-employee approval requests
 
         This request will retrieve a summary of non-employee approval requests. There are two contextual uses for the `requested-for` path parameter: 1. The current user is the Org Admin, in which case he or she may request a summary of all non-employee approval requests assigned to a particular approver by passing in that approver's id. 2. The current user is an approver, in which case \"me\" should be provided as the `requested-for` value. This will provide the approver with a summary of the approval items assigned to him or her.
 
@@ -4274,6 +3750,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-approvals/summary/{requested-for} is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_approval_summary_serialize(
             requested_for=requested_for,
@@ -4380,7 +3857,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeBulkUploadStatus:
-        """Bulk upload status on source
+        """(Deprecated) Bulk upload status on source
 
         The nonEmployeeBulkUploadStatus API returns the status of the newest bulk upload job for the specified source. 
 
@@ -4407,6 +3884,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-sources/{id}/non-employee-bulk-upload/status is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_bulk_upload_status_serialize(
             id=id,
@@ -4452,7 +3930,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeBulkUploadStatus]:
-        """Bulk upload status on source
+        """(Deprecated) Bulk upload status on source
 
         The nonEmployeeBulkUploadStatus API returns the status of the newest bulk upload job for the specified source. 
 
@@ -4479,6 +3957,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-sources/{id}/non-employee-bulk-upload/status is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_bulk_upload_status_serialize(
             id=id,
@@ -4524,7 +4003,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Bulk upload status on source
+        """(Deprecated) Bulk upload status on source
 
         The nonEmployeeBulkUploadStatus API returns the status of the newest bulk upload job for the specified source. 
 
@@ -4551,6 +4030,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-sources/{id}/non-employee-bulk-upload/status is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_bulk_upload_status_serialize(
             id=id,
@@ -4641,6 +4121,574 @@ class NonEmployeeLifecycleManagementApi:
 
 
     @validate_call
+    def get_non_employee_export_records(
+        self,
+        id: Annotated[StrictStr, Field(description="Source Id (UUID)")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """(Deprecated) Exports non-employee records to csv
+
+        This requests a CSV download for all non-employees from a provided source.
+
+        :param id: Source Id (UUID) (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+        warnings.warn("GET /non-employee-sources/{id}/non-employees/download is deprecated.", DeprecationWarning)
+
+        _param = self._get_non_employee_export_records_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def get_non_employee_export_records_with_http_info(
+        self,
+        id: Annotated[StrictStr, Field(description="Source Id (UUID)")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """(Deprecated) Exports non-employee records to csv
+
+        This requests a CSV download for all non-employees from a provided source.
+
+        :param id: Source Id (UUID) (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+        warnings.warn("GET /non-employee-sources/{id}/non-employees/download is deprecated.", DeprecationWarning)
+
+        _param = self._get_non_employee_export_records_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def get_non_employee_export_records_without_preload_content(
+        self,
+        id: Annotated[StrictStr, Field(description="Source Id (UUID)")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """(Deprecated) Exports non-employee records to csv
+
+        This requests a CSV download for all non-employees from a provided source.
+
+        :param id: Source Id (UUID) (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+        warnings.warn("GET /non-employee-sources/{id}/non-employees/download is deprecated.", DeprecationWarning)
+
+        _param = self._get_non_employee_export_records_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_non_employee_export_records_serialize(
+        self,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'text/csv', 
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/non-employee-sources/{id}/non-employees/download',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def get_non_employee_export_source_schema_template(
+        self,
+        id: Annotated[StrictStr, Field(description="Source Id (UUID)")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """(Deprecated) Exports source schema template
+
+        This requests a download for the Source Schema Template for a provided source. Request will require the following security scope: idn:nesr:read'
+
+        :param id: Source Id (UUID) (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+        warnings.warn("GET /non-employee-sources/{id}/schema-attributes-template/download is deprecated.", DeprecationWarning)
+
+        _param = self._get_non_employee_export_source_schema_template_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def get_non_employee_export_source_schema_template_with_http_info(
+        self,
+        id: Annotated[StrictStr, Field(description="Source Id (UUID)")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """(Deprecated) Exports source schema template
+
+        This requests a download for the Source Schema Template for a provided source. Request will require the following security scope: idn:nesr:read'
+
+        :param id: Source Id (UUID) (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+        warnings.warn("GET /non-employee-sources/{id}/schema-attributes-template/download is deprecated.", DeprecationWarning)
+
+        _param = self._get_non_employee_export_source_schema_template_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def get_non_employee_export_source_schema_template_without_preload_content(
+        self,
+        id: Annotated[StrictStr, Field(description="Source Id (UUID)")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """(Deprecated) Exports source schema template
+
+        This requests a download for the Source Schema Template for a provided source. Request will require the following security scope: idn:nesr:read'
+
+        :param id: Source Id (UUID) (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+        warnings.warn("GET /non-employee-sources/{id}/schema-attributes-template/download is deprecated.", DeprecationWarning)
+
+        _param = self._get_non_employee_export_source_schema_template_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_non_employee_export_source_schema_template_serialize(
+        self,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'text/csv', 
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/non-employee-sources/{id}/schema-attributes-template/download',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def get_non_employee_record(
         self,
         id: Annotated[StrictStr, Field(description="Non-Employee record id (UUID)")],
@@ -4657,7 +4705,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeRecord:
-        """Get a non-employee record
+        """(Deprecated) Get a non-employee record
 
         This gets a non-employee record.
 
@@ -4684,6 +4732,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-records/{id} is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_record_serialize(
             id=id,
@@ -4729,7 +4778,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeRecord]:
-        """Get a non-employee record
+        """(Deprecated) Get a non-employee record
 
         This gets a non-employee record.
 
@@ -4756,6 +4805,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-records/{id} is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_record_serialize(
             id=id,
@@ -4801,7 +4851,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get a non-employee record
+        """(Deprecated) Get a non-employee record
 
         This gets a non-employee record.
 
@@ -4828,6 +4878,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-records/{id} is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_record_serialize(
             id=id,
@@ -4934,7 +4985,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeRequest:
-        """Get a non-employee request
+        """(Deprecated) Get a non-employee request
 
         This gets a non-employee request.
 
@@ -4961,6 +5012,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-requests/{id} is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_request_serialize(
             id=id,
@@ -5007,7 +5059,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeRequest]:
-        """Get a non-employee request
+        """(Deprecated) Get a non-employee request
 
         This gets a non-employee request.
 
@@ -5034,6 +5086,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-requests/{id} is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_request_serialize(
             id=id,
@@ -5080,7 +5133,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get a non-employee request
+        """(Deprecated) Get a non-employee request
 
         This gets a non-employee request.
 
@@ -5107,6 +5160,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-requests/{id} is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_request_serialize(
             id=id,
@@ -5214,7 +5268,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeRequestSummary:
-        """Get summary of non-employee requests
+        """(Deprecated) Get summary of non-employee requests
 
         This request will retrieve a summary of non-employee requests. There are two contextual uses for the `requested-for` path parameter: 1. The current user is the Org Admin, in which case he or she may request a summary of all non-employee approval requests assigned to a particular account manager by passing in that manager's id. 2. The current user is an account manager, in which case \"me\" should be provided as the `requested-for` value. This will provide the user with a summary of the non-employee requests in the source(s) he or she manages.
 
@@ -5241,6 +5295,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-requests/summary/{requested-for} is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_request_summary_serialize(
             requested_for=requested_for,
@@ -5286,7 +5341,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeRequestSummary]:
-        """Get summary of non-employee requests
+        """(Deprecated) Get summary of non-employee requests
 
         This request will retrieve a summary of non-employee requests. There are two contextual uses for the `requested-for` path parameter: 1. The current user is the Org Admin, in which case he or she may request a summary of all non-employee approval requests assigned to a particular account manager by passing in that manager's id. 2. The current user is an account manager, in which case \"me\" should be provided as the `requested-for` value. This will provide the user with a summary of the non-employee requests in the source(s) he or she manages.
 
@@ -5313,6 +5368,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-requests/summary/{requested-for} is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_request_summary_serialize(
             requested_for=requested_for,
@@ -5358,7 +5414,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get summary of non-employee requests
+        """(Deprecated) Get summary of non-employee requests
 
         This request will retrieve a summary of non-employee requests. There are two contextual uses for the `requested-for` path parameter: 1. The current user is the Org Admin, in which case he or she may request a summary of all non-employee approval requests assigned to a particular account manager by passing in that manager's id. 2. The current user is an account manager, in which case \"me\" should be provided as the `requested-for` value. This will provide the user with a summary of the non-employee requests in the source(s) he or she manages.
 
@@ -5385,6 +5441,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-requests/summary/{requested-for} is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_request_summary_serialize(
             requested_for=requested_for,
@@ -5492,7 +5549,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeSchemaAttribute:
-        """Get schema attribute non-employee source
+        """(Deprecated) Get schema attribute non-employee source
 
         This API gets a schema attribute by Id for the specified Non-Employee SourceId.
 
@@ -5521,6 +5578,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-sources/{sourceId}/schema-attributes/{attributeId} is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_schema_attribute_serialize(
             attribute_id=attribute_id,
@@ -5568,7 +5626,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeSchemaAttribute]:
-        """Get schema attribute non-employee source
+        """(Deprecated) Get schema attribute non-employee source
 
         This API gets a schema attribute by Id for the specified Non-Employee SourceId.
 
@@ -5597,6 +5655,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-sources/{sourceId}/schema-attributes/{attributeId} is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_schema_attribute_serialize(
             attribute_id=attribute_id,
@@ -5644,7 +5703,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get schema attribute non-employee source
+        """(Deprecated) Get schema attribute non-employee source
 
         This API gets a schema attribute by Id for the specified Non-Employee SourceId.
 
@@ -5673,6 +5732,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-sources/{sourceId}/schema-attributes/{attributeId} is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_schema_attribute_serialize(
             attribute_id=attribute_id,
@@ -5783,7 +5843,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeSource:
-        """Get a non-employee source
+        """(Deprecated) Get a non-employee source
 
         This gets a non-employee source.
 
@@ -5810,6 +5870,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-sources/{sourceId} is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_source_serialize(
             source_id=source_id,
@@ -5855,7 +5916,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeSource]:
-        """Get a non-employee source
+        """(Deprecated) Get a non-employee source
 
         This gets a non-employee source.
 
@@ -5882,6 +5943,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-sources/{sourceId} is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_source_serialize(
             source_id=source_id,
@@ -5927,7 +5989,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get a non-employee source
+        """(Deprecated) Get a non-employee source
 
         This gets a non-employee source.
 
@@ -5954,6 +6016,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-sources/{sourceId} is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_source_serialize(
             source_id=source_id,
@@ -6047,6 +6110,8 @@ class NonEmployeeLifecycleManagementApi:
     def get_non_employee_source_schema_attributes(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id")],
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6060,12 +6125,16 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[NonEmployeeSchemaAttribute]:
-        """List schema attributes non-employee source
+        """(Deprecated) List schema attributes non-employee source
 
         This API gets the list of schema attributes for the specified Non-Employee SourceId. There are 8 mandatory attributes added to each new Non-Employee Source automatically. Additionaly, user can add up to 10 custom attributes. This interface returns all the mandatory attributes followed by any custom attributes. At most, a total of 18 attributes will be returned.
 
         :param source_id: The Source id (required)
         :type source_id: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6087,9 +6156,12 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-sources/{sourceId}/schema-attributes is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_source_schema_attributes_serialize(
             source_id=source_id,
+            limit=limit,
+            offset=offset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6120,6 +6192,8 @@ class NonEmployeeLifecycleManagementApi:
     def get_non_employee_source_schema_attributes_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id")],
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6133,12 +6207,16 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[NonEmployeeSchemaAttribute]]:
-        """List schema attributes non-employee source
+        """(Deprecated) List schema attributes non-employee source
 
         This API gets the list of schema attributes for the specified Non-Employee SourceId. There are 8 mandatory attributes added to each new Non-Employee Source automatically. Additionaly, user can add up to 10 custom attributes. This interface returns all the mandatory attributes followed by any custom attributes. At most, a total of 18 attributes will be returned.
 
         :param source_id: The Source id (required)
         :type source_id: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6160,9 +6238,12 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-sources/{sourceId}/schema-attributes is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_source_schema_attributes_serialize(
             source_id=source_id,
+            limit=limit,
+            offset=offset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6193,6 +6274,8 @@ class NonEmployeeLifecycleManagementApi:
     def get_non_employee_source_schema_attributes_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id")],
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6206,12 +6289,16 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List schema attributes non-employee source
+        """(Deprecated) List schema attributes non-employee source
 
         This API gets the list of schema attributes for the specified Non-Employee SourceId. There are 8 mandatory attributes added to each new Non-Employee Source automatically. Additionaly, user can add up to 10 custom attributes. This interface returns all the mandatory attributes followed by any custom attributes. At most, a total of 18 attributes will be returned.
 
         :param source_id: The Source id (required)
         :type source_id: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6233,9 +6320,12 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-sources/{sourceId}/schema-attributes is deprecated.", DeprecationWarning)
 
         _param = self._get_non_employee_source_schema_attributes_serialize(
             source_id=source_id,
+            limit=limit,
+            offset=offset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6261,6 +6351,8 @@ class NonEmployeeLifecycleManagementApi:
     def _get_non_employee_source_schema_attributes_serialize(
         self,
         source_id,
+        limit,
+        offset,
         _request_auth,
         _content_type,
         _headers,
@@ -6285,6 +6377,14 @@ class NonEmployeeLifecycleManagementApi:
         if source_id is not None:
             _path_params['sourceId'] = source_id
         # process the query parameters
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -6341,7 +6441,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeBulkUploadJob:
-        """Imports, or updates, non-employee records
+        """(Deprecated) Imports, or updates, non-employee records
 
         This post will import, or update, Non-Employee records found in the CSV. Request will need the following security scope: 'idn:nesr:create'
 
@@ -6370,6 +6470,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /non-employee-sources/{id}/non-employee-bulk-upload is deprecated.", DeprecationWarning)
 
         _param = self._import_non_employee_records_in_bulk_serialize(
             id=id,
@@ -6418,7 +6519,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeBulkUploadJob]:
-        """Imports, or updates, non-employee records
+        """(Deprecated) Imports, or updates, non-employee records
 
         This post will import, or update, Non-Employee records found in the CSV. Request will need the following security scope: 'idn:nesr:create'
 
@@ -6447,6 +6548,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /non-employee-sources/{id}/non-employee-bulk-upload is deprecated.", DeprecationWarning)
 
         _param = self._import_non_employee_records_in_bulk_serialize(
             id=id,
@@ -6495,7 +6597,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Imports, or updates, non-employee records
+        """(Deprecated) Imports, or updates, non-employee records
 
         This post will import, or update, Non-Employee records found in the CSV. Request will need the following security scope: 'idn:nesr:create'
 
@@ -6524,6 +6626,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /non-employee-sources/{id}/non-employee-bulk-upload is deprecated.", DeprecationWarning)
 
         _param = self._import_non_employee_records_in_bulk_serialize(
             id=id,
@@ -6653,7 +6756,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[NonEmployeeApprovalItem]:
-        """Get list of non-employee approval requests
+        """(Deprecated) List of non-employee approval requests
 
         This gets a list of non-employee approval requests.
 
@@ -6690,6 +6793,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-approvals is deprecated.", DeprecationWarning)
 
         _param = self._list_non_employee_approval_serialize(
             requested_for=requested_for,
@@ -6745,7 +6849,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[NonEmployeeApprovalItem]]:
-        """Get list of non-employee approval requests
+        """(Deprecated) List of non-employee approval requests
 
         This gets a list of non-employee approval requests.
 
@@ -6782,6 +6886,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-approvals is deprecated.", DeprecationWarning)
 
         _param = self._list_non_employee_approval_serialize(
             requested_for=requested_for,
@@ -6837,7 +6942,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get list of non-employee approval requests
+        """(Deprecated) List of non-employee approval requests
 
         This gets a list of non-employee approval requests.
 
@@ -6874,6 +6979,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-approvals is deprecated.", DeprecationWarning)
 
         _param = self._list_non_employee_approval_serialize(
             requested_for=requested_for,
@@ -7016,7 +7122,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[NonEmployeeRecord]:
-        """List non-employee records
+        """(Deprecated) List non-employee records
 
         This gets a list of non-employee records.
 
@@ -7051,6 +7157,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-records is deprecated.", DeprecationWarning)
 
         _param = self._list_non_employee_records_serialize(
             limit=limit,
@@ -7104,7 +7211,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[NonEmployeeRecord]]:
-        """List non-employee records
+        """(Deprecated) List non-employee records
 
         This gets a list of non-employee records.
 
@@ -7139,6 +7246,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-records is deprecated.", DeprecationWarning)
 
         _param = self._list_non_employee_records_serialize(
             limit=limit,
@@ -7192,7 +7300,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List non-employee records
+        """(Deprecated) List non-employee records
 
         This gets a list of non-employee records.
 
@@ -7227,6 +7335,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-records is deprecated.", DeprecationWarning)
 
         _param = self._list_non_employee_records_serialize(
             limit=limit,
@@ -7364,7 +7473,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[NonEmployeeRequest]:
-        """List non-employee requests
+        """(Deprecated) List non-employee requests
 
         This gets a list of non-employee requests.
 
@@ -7401,6 +7510,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-requests is deprecated.", DeprecationWarning)
 
         _param = self._list_non_employee_requests_serialize(
             requested_for=requested_for,
@@ -7456,7 +7566,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[NonEmployeeRequest]]:
-        """List non-employee requests
+        """(Deprecated) List non-employee requests
 
         This gets a list of non-employee requests.
 
@@ -7493,6 +7603,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-requests is deprecated.", DeprecationWarning)
 
         _param = self._list_non_employee_requests_serialize(
             requested_for=requested_for,
@@ -7548,7 +7659,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List non-employee requests
+        """(Deprecated) List non-employee requests
 
         This gets a list of non-employee requests.
 
@@ -7585,6 +7696,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-requests is deprecated.", DeprecationWarning)
 
         _param = self._list_non_employee_requests_serialize(
             requested_for=requested_for,
@@ -7728,7 +7840,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[NonEmployeeSourceWithNECount]:
-        """List non-employee sources
+        """(Deprecated) List non-employee sources
 
         Get a list of non-employee sources. There are two contextual uses for the `requested-for` path parameter:    1. If the user has the role context of `idn:nesr:read`, he or she may request a list sources assigned to a particular account manager by passing in that manager's `id`.   2. If the current user is an account manager, the user should provide 'me' as the `requested-for` value. Doing so provide the user with a list of the sources he or she owns.
 
@@ -7765,6 +7877,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-sources is deprecated.", DeprecationWarning)
 
         _param = self._list_non_employee_sources_serialize(
             limit=limit,
@@ -7820,7 +7933,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[NonEmployeeSourceWithNECount]]:
-        """List non-employee sources
+        """(Deprecated) List non-employee sources
 
         Get a list of non-employee sources. There are two contextual uses for the `requested-for` path parameter:    1. If the user has the role context of `idn:nesr:read`, he or she may request a list sources assigned to a particular account manager by passing in that manager's `id`.   2. If the current user is an account manager, the user should provide 'me' as the `requested-for` value. Doing so provide the user with a list of the sources he or she owns.
 
@@ -7857,6 +7970,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-sources is deprecated.", DeprecationWarning)
 
         _param = self._list_non_employee_sources_serialize(
             limit=limit,
@@ -7912,7 +8026,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List non-employee sources
+        """(Deprecated) List non-employee sources
 
         Get a list of non-employee sources. There are two contextual uses for the `requested-for` path parameter:    1. If the user has the role context of `idn:nesr:read`, he or she may request a list sources assigned to a particular account manager by passing in that manager's `id`.   2. If the current user is an account manager, the user should provide 'me' as the `requested-for` value. Doing so provide the user with a list of the sources he or she owns.
 
@@ -7949,6 +8063,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /non-employee-sources is deprecated.", DeprecationWarning)
 
         _param = self._list_non_employee_sources_serialize(
             limit=limit,
@@ -8088,7 +8203,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeRecord:
-        """Patch non-employee record
+        """(Deprecated) Patch non-employee record
 
         This request will patch a non-employee record.
 
@@ -8117,6 +8232,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /non-employee-records/{id} is deprecated.", DeprecationWarning)
 
         _param = self._patch_non_employee_record_serialize(
             id=id,
@@ -8165,7 +8281,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeRecord]:
-        """Patch non-employee record
+        """(Deprecated) Patch non-employee record
 
         This request will patch a non-employee record.
 
@@ -8194,6 +8310,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /non-employee-records/{id} is deprecated.", DeprecationWarning)
 
         _param = self._patch_non_employee_record_serialize(
             id=id,
@@ -8242,7 +8359,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Patch non-employee record
+        """(Deprecated) Patch non-employee record
 
         This request will patch a non-employee record.
 
@@ -8271,6 +8388,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /non-employee-records/{id} is deprecated.", DeprecationWarning)
 
         _param = self._patch_non_employee_record_serialize(
             id=id,
@@ -8398,7 +8516,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeSchemaAttribute:
-        """Patch non-employee source's schema attribute
+        """(Deprecated) Patch non-employee source's schema attribute
 
         This end-point patches a specific schema attribute for a non-employee SourceId. 
 
@@ -8429,6 +8547,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /non-employee-sources/{sourceId}/schema-attributes/{attributeId} is deprecated.", DeprecationWarning)
 
         _param = self._patch_non_employee_schema_attribute_serialize(
             attribute_id=attribute_id,
@@ -8479,7 +8598,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeSchemaAttribute]:
-        """Patch non-employee source's schema attribute
+        """(Deprecated) Patch non-employee source's schema attribute
 
         This end-point patches a specific schema attribute for a non-employee SourceId. 
 
@@ -8510,6 +8629,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /non-employee-sources/{sourceId}/schema-attributes/{attributeId} is deprecated.", DeprecationWarning)
 
         _param = self._patch_non_employee_schema_attribute_serialize(
             attribute_id=attribute_id,
@@ -8560,7 +8680,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Patch non-employee source's schema attribute
+        """(Deprecated) Patch non-employee source's schema attribute
 
         This end-point patches a specific schema attribute for a non-employee SourceId. 
 
@@ -8591,6 +8711,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /non-employee-sources/{sourceId}/schema-attributes/{attributeId} is deprecated.", DeprecationWarning)
 
         _param = self._patch_non_employee_schema_attribute_serialize(
             attribute_id=attribute_id,
@@ -8721,7 +8842,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeSource:
-        """Patch a non-employee source
+        """(Deprecated) Patch a non-employee source
 
         patch a non-employee source. (Partial Update)  Patchable field: **name, description, approvers, accountManagers**
 
@@ -8750,6 +8871,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /non-employee-sources/{sourceId} is deprecated.", DeprecationWarning)
 
         _param = self._patch_non_employee_source_serialize(
             source_id=source_id,
@@ -8797,7 +8919,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeSource]:
-        """Patch a non-employee source
+        """(Deprecated) Patch a non-employee source
 
         patch a non-employee source. (Partial Update)  Patchable field: **name, description, approvers, accountManagers**
 
@@ -8826,6 +8948,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /non-employee-sources/{sourceId} is deprecated.", DeprecationWarning)
 
         _param = self._patch_non_employee_source_serialize(
             source_id=source_id,
@@ -8873,7 +8996,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Patch a non-employee source
+        """(Deprecated) Patch a non-employee source
 
         patch a non-employee source. (Partial Update)  Patchable field: **name, description, approvers, accountManagers**
 
@@ -8902,6 +9025,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /non-employee-sources/{sourceId} is deprecated.", DeprecationWarning)
 
         _param = self._patch_non_employee_source_serialize(
             source_id=source_id,
@@ -9010,6 +9134,317 @@ class NonEmployeeLifecycleManagementApi:
 
 
     @validate_call
+    def put_non_employee_record(
+        self,
+        id: Annotated[StrictStr, Field(description="Non-employee record id (UUID)")],
+        non_employee_request_body: Annotated[NonEmployeeRequestBody, Field(description="Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> NonEmployeeRecord:
+        """(Deprecated) Update non-employee record
+
+        This request will update a non-employee record.
+
+        :param id: Non-employee record id (UUID) (required)
+        :type id: str
+        :param non_employee_request_body: Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields. (required)
+        :type non_employee_request_body: NonEmployeeRequestBody
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+        warnings.warn("PUT /non-employee-records/{id} is deprecated.", DeprecationWarning)
+
+        _param = self._put_non_employee_record_serialize(
+            id=id,
+            non_employee_request_body=non_employee_request_body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "NonEmployeeRecord",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def put_non_employee_record_with_http_info(
+        self,
+        id: Annotated[StrictStr, Field(description="Non-employee record id (UUID)")],
+        non_employee_request_body: Annotated[NonEmployeeRequestBody, Field(description="Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[NonEmployeeRecord]:
+        """(Deprecated) Update non-employee record
+
+        This request will update a non-employee record.
+
+        :param id: Non-employee record id (UUID) (required)
+        :type id: str
+        :param non_employee_request_body: Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields. (required)
+        :type non_employee_request_body: NonEmployeeRequestBody
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+        warnings.warn("PUT /non-employee-records/{id} is deprecated.", DeprecationWarning)
+
+        _param = self._put_non_employee_record_serialize(
+            id=id,
+            non_employee_request_body=non_employee_request_body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "NonEmployeeRecord",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def put_non_employee_record_without_preload_content(
+        self,
+        id: Annotated[StrictStr, Field(description="Non-employee record id (UUID)")],
+        non_employee_request_body: Annotated[NonEmployeeRequestBody, Field(description="Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """(Deprecated) Update non-employee record
+
+        This request will update a non-employee record.
+
+        :param id: Non-employee record id (UUID) (required)
+        :type id: str
+        :param non_employee_request_body: Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields. (required)
+        :type non_employee_request_body: NonEmployeeRequestBody
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+        warnings.warn("PUT /non-employee-records/{id} is deprecated.", DeprecationWarning)
+
+        _param = self._put_non_employee_record_serialize(
+            id=id,
+            non_employee_request_body=non_employee_request_body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "NonEmployeeRecord",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _put_non_employee_record_serialize(
+        self,
+        id,
+        non_employee_request_body,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if non_employee_request_body is not None:
+            _body_params = non_employee_request_body
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PUT',
+            resource_path='/non-employee-records/{id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def reject_non_employee_request(
         self,
         id: Annotated[StrictStr, Field(description="Non-Employee approval item id (UUID)")],
@@ -9027,7 +9462,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> NonEmployeeApprovalItem:
-        """Reject a non-employee request
+        """(Deprecated) Reject a non-employee request
 
         This endpoint will reject an approval item request and notify user.
 
@@ -9056,6 +9491,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /non-employee-approvals/{id}/reject is deprecated.", DeprecationWarning)
 
         _param = self._reject_non_employee_request_serialize(
             id=id,
@@ -9103,7 +9539,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[NonEmployeeApprovalItem]:
-        """Reject a non-employee request
+        """(Deprecated) Reject a non-employee request
 
         This endpoint will reject an approval item request and notify user.
 
@@ -9132,6 +9568,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /non-employee-approvals/{id}/reject is deprecated.", DeprecationWarning)
 
         _param = self._reject_non_employee_request_serialize(
             id=id,
@@ -9179,7 +9616,7 @@ class NonEmployeeLifecycleManagementApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Reject a non-employee request
+        """(Deprecated) Reject a non-employee request
 
         This endpoint will reject an approval item request and notify user.
 
@@ -9208,6 +9645,7 @@ class NonEmployeeLifecycleManagementApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /non-employee-approvals/{id}/reject is deprecated.", DeprecationWarning)
 
         _param = self._reject_non_employee_request_serialize(
             id=id,
@@ -9299,314 +9737,6 @@ class NonEmployeeLifecycleManagementApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/non-employee-approvals/{id}/reject',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def update_non_employee_record(
-        self,
-        id: Annotated[StrictStr, Field(description="Non-employee record id (UUID)")],
-        non_employee_request_body: Annotated[NonEmployeeRequestBody, Field(description="Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> NonEmployeeRecord:
-        """Update non-employee record
-
-        This request will update a non-employee record.
-
-        :param id: Non-employee record id (UUID) (required)
-        :type id: str
-        :param non_employee_request_body: Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields. (required)
-        :type non_employee_request_body: NonEmployeeRequestBody
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._update_non_employee_record_serialize(
-            id=id,
-            non_employee_request_body=non_employee_request_body,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "NonEmployeeRecord",
-            '400': "ErrorResponseDto",
-            '401': "ListAccessModelMetadataAttribute401Response",
-            '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto",
-            '429': "ListAccessModelMetadataAttribute429Response",
-            '500': "ErrorResponseDto",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def update_non_employee_record_with_http_info(
-        self,
-        id: Annotated[StrictStr, Field(description="Non-employee record id (UUID)")],
-        non_employee_request_body: Annotated[NonEmployeeRequestBody, Field(description="Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[NonEmployeeRecord]:
-        """Update non-employee record
-
-        This request will update a non-employee record.
-
-        :param id: Non-employee record id (UUID) (required)
-        :type id: str
-        :param non_employee_request_body: Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields. (required)
-        :type non_employee_request_body: NonEmployeeRequestBody
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._update_non_employee_record_serialize(
-            id=id,
-            non_employee_request_body=non_employee_request_body,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "NonEmployeeRecord",
-            '400': "ErrorResponseDto",
-            '401': "ListAccessModelMetadataAttribute401Response",
-            '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto",
-            '429': "ListAccessModelMetadataAttribute429Response",
-            '500': "ErrorResponseDto",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def update_non_employee_record_without_preload_content(
-        self,
-        id: Annotated[StrictStr, Field(description="Non-employee record id (UUID)")],
-        non_employee_request_body: Annotated[NonEmployeeRequestBody, Field(description="Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Update non-employee record
-
-        This request will update a non-employee record.
-
-        :param id: Non-employee record id (UUID) (required)
-        :type id: str
-        :param non_employee_request_body: Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields. (required)
-        :type non_employee_request_body: NonEmployeeRequestBody
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._update_non_employee_record_serialize(
-            id=id,
-            non_employee_request_body=non_employee_request_body,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "NonEmployeeRecord",
-            '400': "ErrorResponseDto",
-            '401': "ListAccessModelMetadataAttribute401Response",
-            '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto",
-            '429': "ListAccessModelMetadataAttribute429Response",
-            '500': "ErrorResponseDto",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _update_non_employee_record_serialize(
-        self,
-        id,
-        non_employee_request_body,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if non_employee_request_body is not None:
-            _body_params = non_employee_request_body
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
-                [
-                    'application/json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'userAuth', 
-            'userAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='PUT',
-            resource_path='/non-employee-records/{id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

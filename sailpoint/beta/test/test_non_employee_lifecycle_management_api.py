@@ -103,31 +103,17 @@ class TestNonEmployeeLifecycleManagementApi(unittest.TestCase):
         """
         pass
 
-    def test_export_non_employee_records(self) -> None:
-        """Test case for export_non_employee_records
-
-        Exports non-employee records to csv
-        """
-        pass
-
-    def test_export_non_employee_source_schema_template(self) -> None:
-        """Test case for export_non_employee_source_schema_template
-
-        Exports source schema template
-        """
-        pass
-
     def test_get_non_employee_approval(self) -> None:
         """Test case for get_non_employee_approval
 
-        Get a non-employee approval item detail
+        A non-employee approval item detail
         """
         pass
 
     def test_get_non_employee_approval_summary(self) -> None:
         """Test case for get_non_employee_approval_summary
 
-        Get summary of non-employee approval requests
+        Summary of non-employee approval requests
         """
         pass
 
@@ -135,6 +121,20 @@ class TestNonEmployeeLifecycleManagementApi(unittest.TestCase):
         """Test case for get_non_employee_bulk_upload_status
 
         Bulk upload status on source
+        """
+        pass
+
+    def test_get_non_employee_export_records(self) -> None:
+        """Test case for get_non_employee_export_records
+
+        Exports non-employee records to csv
+        """
+        pass
+
+    def test_get_non_employee_export_source_schema_template(self) -> None:
+        """Test case for get_non_employee_export_source_schema_template
+
+        Exports source schema template
         """
         pass
 
@@ -190,7 +190,7 @@ class TestNonEmployeeLifecycleManagementApi(unittest.TestCase):
     def test_list_non_employee_approval(self) -> None:
         """Test case for list_non_employee_approval
 
-        Get list of non-employee approval requests
+        List of non-employee approval requests
         """
         pass
 
@@ -236,17 +236,17 @@ class TestNonEmployeeLifecycleManagementApi(unittest.TestCase):
         """
         pass
 
+    def test_put_non_employee_record(self) -> None:
+        """Test case for put_non_employee_record
+
+        Update non-employee record
+        """
+        pass
+
     def test_reject_non_employee_request(self) -> None:
         """Test case for reject_non_employee_request
 
         Reject a non-employee request
-        """
-        pass
-
-    def test_update_non_employee_record(self) -> None:
-        """Test case for update_non_employee_record
-
-        Update non-employee record
         """
         pass
 

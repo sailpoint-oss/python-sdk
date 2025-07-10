@@ -80,6 +80,16 @@ class NonEmployeeSchemaAttribute(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if help_text (nullable) is None
+        # and model_fields_set contains the field
+        if self.help_text is None and "help_text" in self.model_fields_set:
+            _dict['helpText'] = None
+
+        # set to None if placeholder (nullable) is None
+        # and model_fields_set contains the field
+        if self.placeholder is None and "placeholder" in self.model_fields_set:
+            _dict['placeholder'] = None
+
         return _dict
 
     @classmethod
