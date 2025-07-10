@@ -1290,7 +1290,6 @@ class SourcesApi:
     def delete_accounts_async(
         self,
         id: Annotated[StrictStr, Field(description="The source id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1304,14 +1303,12 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TaskResultDto:
-        """Remove all accounts in a source
+        """Remove all accounts in source
 
         Use this endpoint to remove all accounts from the system without provisioning changes to the source. Accounts that are removed could be re-created during the next aggregation.  This endpoint is good for: * Removing accounts that no longer exist on the source. * Removing accounts that won't be aggregated following updates to the source configuration. * Forcing accounts to be re-created following the next aggregation to re-run account processing, support testing, etc. 
 
         :param id: The source id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1336,7 +1333,6 @@ class SourcesApi:
 
         _param = self._delete_accounts_async_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1366,7 +1362,6 @@ class SourcesApi:
     def delete_accounts_async_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The source id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1380,14 +1375,12 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TaskResultDto]:
-        """Remove all accounts in a source
+        """Remove all accounts in source
 
         Use this endpoint to remove all accounts from the system without provisioning changes to the source. Accounts that are removed could be re-created during the next aggregation.  This endpoint is good for: * Removing accounts that no longer exist on the source. * Removing accounts that won't be aggregated following updates to the source configuration. * Forcing accounts to be re-created following the next aggregation to re-run account processing, support testing, etc. 
 
         :param id: The source id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1412,7 +1405,6 @@ class SourcesApi:
 
         _param = self._delete_accounts_async_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1442,7 +1434,6 @@ class SourcesApi:
     def delete_accounts_async_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The source id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1456,14 +1447,12 @@ class SourcesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Remove all accounts in a source
+        """Remove all accounts in source
 
         Use this endpoint to remove all accounts from the system without provisioning changes to the source. Accounts that are removed could be re-created during the next aggregation.  This endpoint is good for: * Removing accounts that no longer exist on the source. * Removing accounts that won't be aggregated following updates to the source configuration. * Forcing accounts to be re-created following the next aggregation to re-run account processing, support testing, etc. 
 
         :param id: The source id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1488,7 +1477,6 @@ class SourcesApi:
 
         _param = self._delete_accounts_async_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1513,7 +1501,6 @@ class SourcesApi:
     def _delete_accounts_async_serialize(
         self,
         id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -1539,8 +1526,6 @@ class SourcesApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -8924,7 +8909,6 @@ class SourcesApi:
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
         file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8944,8 +8928,6 @@ class SourcesApi:
 
         :param id: Source Id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param file:
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -8972,7 +8954,6 @@ class SourcesApi:
 
         _param = self._import_uncorrelated_accounts_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -9004,7 +8985,6 @@ class SourcesApi:
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
         file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9024,8 +9004,6 @@ class SourcesApi:
 
         :param id: Source Id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param file:
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -9052,7 +9030,6 @@ class SourcesApi:
 
         _param = self._import_uncorrelated_accounts_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -9084,7 +9061,6 @@ class SourcesApi:
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
         file: Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -9104,8 +9080,6 @@ class SourcesApi:
 
         :param id: Source Id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param file:
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -9132,7 +9106,6 @@ class SourcesApi:
 
         _param = self._import_uncorrelated_accounts_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -9158,7 +9131,6 @@ class SourcesApi:
     def _import_uncorrelated_accounts_serialize(
         self,
         id,
-        x_sail_point_experimental,
         file,
         _request_auth,
         _content_type,
@@ -9185,8 +9157,6 @@ class SourcesApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         if file is not None:
             _files['file'] = file

@@ -622,7 +622,6 @@ class AccountsApi:
     def delete_account_async(
         self,
         id: Annotated[StrictStr, Field(description="The account id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -642,8 +641,6 @@ class AccountsApi:
 
         :param id: The account id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -668,7 +665,6 @@ class AccountsApi:
 
         _param = self._delete_account_async_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -698,7 +694,6 @@ class AccountsApi:
     def delete_account_async_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The account id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -718,8 +713,6 @@ class AccountsApi:
 
         :param id: The account id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -744,7 +737,6 @@ class AccountsApi:
 
         _param = self._delete_account_async_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -774,7 +766,6 @@ class AccountsApi:
     def delete_account_async_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The account id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -794,8 +785,6 @@ class AccountsApi:
 
         :param id: The account id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -820,7 +809,6 @@ class AccountsApi:
 
         _param = self._delete_account_async_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -845,7 +833,6 @@ class AccountsApi:
     def _delete_account_async_serialize(
         self,
         id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -871,8 +858,6 @@ class AccountsApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -1222,7 +1207,6 @@ class AccountsApi:
     def disable_account_for_identity(
         self,
         id: Annotated[StrictStr, Field(description="The identity id.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1242,8 +1226,6 @@ class AccountsApi:
 
         :param id: The identity id. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1268,7 +1250,6 @@ class AccountsApi:
 
         _param = self._disable_account_for_identity_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1299,7 +1280,6 @@ class AccountsApi:
     def disable_account_for_identity_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The identity id.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1319,8 +1299,6 @@ class AccountsApi:
 
         :param id: The identity id. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1345,7 +1323,6 @@ class AccountsApi:
 
         _param = self._disable_account_for_identity_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1376,7 +1353,6 @@ class AccountsApi:
     def disable_account_for_identity_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The identity id.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1396,8 +1372,6 @@ class AccountsApi:
 
         :param id: The identity id. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1422,7 +1396,6 @@ class AccountsApi:
 
         _param = self._disable_account_for_identity_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1448,7 +1421,6 @@ class AccountsApi:
     def _disable_account_for_identity_serialize(
         self,
         id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -1474,8 +1446,6 @@ class AccountsApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -1517,7 +1487,6 @@ class AccountsApi:
     def disable_accounts_for_identities(
         self,
         identities_accounts_bulk_request: IdentitiesAccountsBulkRequest,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1535,8 +1504,6 @@ class AccountsApi:
 
         This API submits tasks to disable IDN account for each identity provided in the request body.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identities_accounts_bulk_request: (required)
         :type identities_accounts_bulk_request: IdentitiesAccountsBulkRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1562,7 +1529,6 @@ class AccountsApi:
         """ # noqa: E501
 
         _param = self._disable_accounts_for_identities_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             identities_accounts_bulk_request=identities_accounts_bulk_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1593,7 +1559,6 @@ class AccountsApi:
     def disable_accounts_for_identities_with_http_info(
         self,
         identities_accounts_bulk_request: IdentitiesAccountsBulkRequest,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1611,8 +1576,6 @@ class AccountsApi:
 
         This API submits tasks to disable IDN account for each identity provided in the request body.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identities_accounts_bulk_request: (required)
         :type identities_accounts_bulk_request: IdentitiesAccountsBulkRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1638,7 +1601,6 @@ class AccountsApi:
         """ # noqa: E501
 
         _param = self._disable_accounts_for_identities_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             identities_accounts_bulk_request=identities_accounts_bulk_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1669,7 +1631,6 @@ class AccountsApi:
     def disable_accounts_for_identities_without_preload_content(
         self,
         identities_accounts_bulk_request: IdentitiesAccountsBulkRequest,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1687,8 +1648,6 @@ class AccountsApi:
 
         This API submits tasks to disable IDN account for each identity provided in the request body.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identities_accounts_bulk_request: (required)
         :type identities_accounts_bulk_request: IdentitiesAccountsBulkRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1714,7 +1673,6 @@ class AccountsApi:
         """ # noqa: E501
 
         _param = self._disable_accounts_for_identities_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             identities_accounts_bulk_request=identities_accounts_bulk_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1739,7 +1697,6 @@ class AccountsApi:
 
     def _disable_accounts_for_identities_serialize(
         self,
-        x_sail_point_experimental,
         identities_accounts_bulk_request,
         _request_auth,
         _content_type,
@@ -1764,8 +1721,6 @@ class AccountsApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if identities_accounts_bulk_request is not None:
@@ -2130,7 +2085,6 @@ class AccountsApi:
     def enable_account_for_identity(
         self,
         id: Annotated[StrictStr, Field(description="The identity id.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2150,8 +2104,6 @@ class AccountsApi:
 
         :param id: The identity id. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2176,7 +2128,6 @@ class AccountsApi:
 
         _param = self._enable_account_for_identity_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2207,7 +2158,6 @@ class AccountsApi:
     def enable_account_for_identity_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The identity id.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2227,8 +2177,6 @@ class AccountsApi:
 
         :param id: The identity id. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2253,7 +2201,6 @@ class AccountsApi:
 
         _param = self._enable_account_for_identity_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2284,7 +2231,6 @@ class AccountsApi:
     def enable_account_for_identity_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The identity id.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2304,8 +2250,6 @@ class AccountsApi:
 
         :param id: The identity id. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2330,7 +2274,6 @@ class AccountsApi:
 
         _param = self._enable_account_for_identity_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2356,7 +2299,6 @@ class AccountsApi:
     def _enable_account_for_identity_serialize(
         self,
         id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -2382,8 +2324,6 @@ class AccountsApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -2425,7 +2365,6 @@ class AccountsApi:
     def enable_accounts_for_identities(
         self,
         identities_accounts_bulk_request: IdentitiesAccountsBulkRequest,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2443,8 +2382,6 @@ class AccountsApi:
 
         This API submits tasks to enable IDN account for each identity provided in the request body.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identities_accounts_bulk_request: (required)
         :type identities_accounts_bulk_request: IdentitiesAccountsBulkRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2470,7 +2407,6 @@ class AccountsApi:
         """ # noqa: E501
 
         _param = self._enable_accounts_for_identities_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             identities_accounts_bulk_request=identities_accounts_bulk_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2501,7 +2437,6 @@ class AccountsApi:
     def enable_accounts_for_identities_with_http_info(
         self,
         identities_accounts_bulk_request: IdentitiesAccountsBulkRequest,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2519,8 +2454,6 @@ class AccountsApi:
 
         This API submits tasks to enable IDN account for each identity provided in the request body.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identities_accounts_bulk_request: (required)
         :type identities_accounts_bulk_request: IdentitiesAccountsBulkRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2546,7 +2479,6 @@ class AccountsApi:
         """ # noqa: E501
 
         _param = self._enable_accounts_for_identities_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             identities_accounts_bulk_request=identities_accounts_bulk_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2577,7 +2509,6 @@ class AccountsApi:
     def enable_accounts_for_identities_without_preload_content(
         self,
         identities_accounts_bulk_request: IdentitiesAccountsBulkRequest,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2595,8 +2526,6 @@ class AccountsApi:
 
         This API submits tasks to enable IDN account for each identity provided in the request body.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identities_accounts_bulk_request: (required)
         :type identities_accounts_bulk_request: IdentitiesAccountsBulkRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2622,7 +2551,6 @@ class AccountsApi:
         """ # noqa: E501
 
         _param = self._enable_accounts_for_identities_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             identities_accounts_bulk_request=identities_accounts_bulk_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2647,7 +2575,6 @@ class AccountsApi:
 
     def _enable_accounts_for_identities_serialize(
         self,
-        x_sail_point_experimental,
         identities_accounts_bulk_request,
         _request_auth,
         _content_type,
@@ -2672,8 +2599,6 @@ class AccountsApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if identities_accounts_bulk_request is not None:

@@ -32,7 +32,11 @@ class AccountAggregationStatus(BaseModel):
     status: Optional[StrictStr] = Field(default=None, description="STARTED - Aggregation started, but source account iteration has not completed.  ACCOUNTS_COLLECTED - Source account iteration completed, but all accounts have not yet been processed.  COMPLETED - Aggregation completed (*possibly with errors*).  CANCELLED - Aggregation cancelled by user.  RETRIED - Aggregation retried because of connectivity issues with the Virtual Appliance.  TERMINATED - Aggregation marked as failed after 3 tries after connectivity issues with the Virtual Appliance. ")
     total_accounts: Optional[StrictInt] = Field(default=None, description="The total number of *NEW, CHANGED and DELETED* accounts that need to be processed for this aggregation. This does not include accounts that were unchanged since the previous aggregation. This can be zero if there were no new, changed or deleted accounts since the previous aggregation. *Only available when status is ACCOUNTS_COLLECTED or COMPLETED.*", alias="totalAccounts")
     processed_accounts: Optional[StrictInt] = Field(default=None, description="The number of *NEW, CHANGED and DELETED* accounts that have been processed so far. This reflects the number of accounts that have been processed at the time of the API call, and may increase on subsequent API calls while the status is ACCOUNTS_COLLECTED. *Only available when status is ACCOUNTS_COLLECTED or COMPLETED.*", alias="processedAccounts")
-    __properties: ClassVar[List[str]] = ["start", "status", "totalAccounts", "processedAccounts"]
+    total_accounts_marked_for_deletion: Optional[StrictInt] = Field(default=None, description="The total number of accounts that have been marked for deletion during the aggregation. *Only available when status is ACCOUNTS_COLLECTED or COMPLETED.*", alias="totalAccountsMarkedForDeletion")
+    deleted_accounts: Optional[StrictInt] = Field(default=None, description="The number of accounts that have been deleted during the aggregation. *Only available when status is ACCOUNTS_COLLECTED or COMPLETED.*", alias="deletedAccounts")
+    total_identities: Optional[StrictInt] = Field(default=None, description="The total number of unique identities that have been marked for refresh. *Only available when status is ACCOUNTS_COLLECTED or COMPLETED.*", alias="totalIdentities")
+    processed_identities: Optional[StrictInt] = Field(default=None, description="The number of unique identities that have been refreshed at the time of the API call, and may increase on subsequent API calls while the status is ACCOUNTS_COLLECTED. *Only available when status is ACCOUNTS_COLLECTED or COMPLETED.*", alias="processedIdentities")
+    __properties: ClassVar[List[str]] = ["start", "status", "totalAccounts", "processedAccounts", "totalAccountsMarkedForDeletion", "deletedAccounts", "totalIdentities", "processedIdentities"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -103,7 +107,11 @@ class AccountAggregationStatus(BaseModel):
             "start": obj.get("start"),
             "status": obj.get("status"),
             "totalAccounts": obj.get("totalAccounts"),
-            "processedAccounts": obj.get("processedAccounts")
+            "processedAccounts": obj.get("processedAccounts"),
+            "totalAccountsMarkedForDeletion": obj.get("totalAccountsMarkedForDeletion"),
+            "deletedAccounts": obj.get("deletedAccounts"),
+            "totalIdentities": obj.get("totalIdentities"),
+            "processedIdentities": obj.get("processedIdentities")
         })
         return _obj
 

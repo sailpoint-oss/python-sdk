@@ -932,7 +932,6 @@ class AccessRequestsApi:
     def close_access_request(
         self,
         close_access_request: CloseAccessRequest,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -950,8 +949,6 @@ class AccessRequestsApi:
 
         This endpoint closes access requests that are stuck in a pending state. It can be used throughout a request's lifecycle even after the approval state, unlike the [Cancel Access Request endpoint](https://developer.sailpoint.com/idn/api/v3/cancel-access-request/).  To find pending access requests with the UI, navigate to Search and use this query: status: Pending AND \"Access Request\". Use the Column Chooser to select 'Tracking Number', and use the 'Download' button to export a CSV containing the tracking numbers.  To find pending access requests with the API, use the [List Account Activities endpoint](https://developer.sailpoint.com/idn/api/v3/list-account-activities/).  Input the IDs from either source.  To track the status of endpoint requests, navigate to Search and use this query: name:\"Close Identity Requests\". Search will include \"Close Identity Requests Started\" audits when requests are initiated and \"Close Identity Requests Completed\" audits when requests are completed. The completion audit will list the identity request IDs that finished in error.  This API triggers the [Provisioning Completed event trigger](https://developer.sailpoint.com/idn/docs/event-triggers/triggers/provisioning-completed/) for each access request that is closed. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param close_access_request: (required)
         :type close_access_request: CloseAccessRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -977,7 +974,6 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._close_access_request_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             close_access_request=close_access_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1008,7 +1004,6 @@ class AccessRequestsApi:
     def close_access_request_with_http_info(
         self,
         close_access_request: CloseAccessRequest,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1026,8 +1021,6 @@ class AccessRequestsApi:
 
         This endpoint closes access requests that are stuck in a pending state. It can be used throughout a request's lifecycle even after the approval state, unlike the [Cancel Access Request endpoint](https://developer.sailpoint.com/idn/api/v3/cancel-access-request/).  To find pending access requests with the UI, navigate to Search and use this query: status: Pending AND \"Access Request\". Use the Column Chooser to select 'Tracking Number', and use the 'Download' button to export a CSV containing the tracking numbers.  To find pending access requests with the API, use the [List Account Activities endpoint](https://developer.sailpoint.com/idn/api/v3/list-account-activities/).  Input the IDs from either source.  To track the status of endpoint requests, navigate to Search and use this query: name:\"Close Identity Requests\". Search will include \"Close Identity Requests Started\" audits when requests are initiated and \"Close Identity Requests Completed\" audits when requests are completed. The completion audit will list the identity request IDs that finished in error.  This API triggers the [Provisioning Completed event trigger](https://developer.sailpoint.com/idn/docs/event-triggers/triggers/provisioning-completed/) for each access request that is closed. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param close_access_request: (required)
         :type close_access_request: CloseAccessRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1053,7 +1046,6 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._close_access_request_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             close_access_request=close_access_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1084,7 +1076,6 @@ class AccessRequestsApi:
     def close_access_request_without_preload_content(
         self,
         close_access_request: CloseAccessRequest,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1102,8 +1093,6 @@ class AccessRequestsApi:
 
         This endpoint closes access requests that are stuck in a pending state. It can be used throughout a request's lifecycle even after the approval state, unlike the [Cancel Access Request endpoint](https://developer.sailpoint.com/idn/api/v3/cancel-access-request/).  To find pending access requests with the UI, navigate to Search and use this query: status: Pending AND \"Access Request\". Use the Column Chooser to select 'Tracking Number', and use the 'Download' button to export a CSV containing the tracking numbers.  To find pending access requests with the API, use the [List Account Activities endpoint](https://developer.sailpoint.com/idn/api/v3/list-account-activities/).  Input the IDs from either source.  To track the status of endpoint requests, navigate to Search and use this query: name:\"Close Identity Requests\". Search will include \"Close Identity Requests Started\" audits when requests are initiated and \"Close Identity Requests Completed\" audits when requests are completed. The completion audit will list the identity request IDs that finished in error.  This API triggers the [Provisioning Completed event trigger](https://developer.sailpoint.com/idn/docs/event-triggers/triggers/provisioning-completed/) for each access request that is closed. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param close_access_request: (required)
         :type close_access_request: CloseAccessRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1129,7 +1118,6 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._close_access_request_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             close_access_request=close_access_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1154,7 +1142,6 @@ class AccessRequestsApi:
 
     def _close_access_request_serialize(
         self,
-        x_sail_point_experimental,
         close_access_request,
         _request_auth,
         _content_type,
@@ -1179,8 +1166,6 @@ class AccessRequestsApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if close_access_request is not None:

@@ -651,7 +651,7 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**create_source**](sailpoint/v2025/docs/SourcesApi.md#create_source) | **POST** /sources | Creates a source in identitynow.
 *SourcesApi* | [**create_source_schedule**](sailpoint/v2025/docs/SourcesApi.md#create_source_schedule) | **POST** /sources/{sourceId}/schedules | Create schedule on source
 *SourcesApi* | [**create_source_schema**](sailpoint/v2025/docs/SourcesApi.md#create_source_schema) | **POST** /sources/{sourceId}/schemas | Create schema on source
-*SourcesApi* | [**delete_accounts_async**](sailpoint/v2025/docs/SourcesApi.md#delete_accounts_async) | **POST** /sources/{id}/remove-accounts | Remove all accounts in a source
+*SourcesApi* | [**delete_accounts_async**](sailpoint/v2025/docs/SourcesApi.md#delete_accounts_async) | **POST** /sources/{id}/remove-accounts | Remove all accounts in source
 *SourcesApi* | [**delete_native_change_detection_config**](sailpoint/v2025/docs/SourcesApi.md#delete_native_change_detection_config) | **DELETE** /sources/{sourceId}/native-change-detection-config | Delete native change detection configuration
 *SourcesApi* | [**delete_provisioning_policy**](sailpoint/v2025/docs/SourcesApi.md#delete_provisioning_policy) | **DELETE** /sources/{sourceId}/provisioning-policies/{usageType} | Delete provisioning policy by usagetype
 *SourcesApi* | [**delete_source**](sailpoint/v2025/docs/SourcesApi.md#delete_source) | **DELETE** /sources/{id} | Delete source by id

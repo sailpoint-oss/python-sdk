@@ -38,7 +38,11 @@ class TestAccountAggregationStatus(unittest.TestCase):
                 start = '2021-01-31T14:30:05.104Z',
                 status = 'ACCOUNTS_COLLECTED',
                 total_accounts = 520,
-                processed_accounts = 150
+                processed_accounts = 150,
+                total_accounts_marked_for_deletion = 10,
+                deleted_accounts = 5,
+                total_identities = 300,
+                processed_identities = 250
             )
         else:
             return AccountAggregationStatus(

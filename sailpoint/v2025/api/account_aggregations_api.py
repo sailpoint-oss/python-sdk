@@ -42,7 +42,6 @@ class AccountAggregationsApi:
     def get_account_aggregation_status(
         self,
         id: Annotated[StrictStr, Field(description="The account aggregation id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -62,8 +61,6 @@ class AccountAggregationsApi:
 
         :param id: The account aggregation id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -88,7 +85,6 @@ class AccountAggregationsApi:
 
         _param = self._get_account_aggregation_status_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -97,6 +93,7 @@ class AccountAggregationsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AccountAggregationStatus",
+            '400': "ListAccessProfiles401Response",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
@@ -118,7 +115,6 @@ class AccountAggregationsApi:
     def get_account_aggregation_status_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The account aggregation id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -138,8 +134,6 @@ class AccountAggregationsApi:
 
         :param id: The account aggregation id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -164,7 +158,6 @@ class AccountAggregationsApi:
 
         _param = self._get_account_aggregation_status_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -173,6 +166,7 @@ class AccountAggregationsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AccountAggregationStatus",
+            '400': "ListAccessProfiles401Response",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
@@ -194,7 +188,6 @@ class AccountAggregationsApi:
     def get_account_aggregation_status_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The account aggregation id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -214,8 +207,6 @@ class AccountAggregationsApi:
 
         :param id: The account aggregation id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -240,7 +231,6 @@ class AccountAggregationsApi:
 
         _param = self._get_account_aggregation_status_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -249,6 +239,7 @@ class AccountAggregationsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AccountAggregationStatus",
+            '400': "ListAccessProfiles401Response",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
@@ -265,7 +256,6 @@ class AccountAggregationsApi:
     def _get_account_aggregation_status_serialize(
         self,
         id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -291,8 +281,6 @@ class AccountAggregationsApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 

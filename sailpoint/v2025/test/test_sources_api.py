@@ -57,7 +57,7 @@ class TestSourcesApi(unittest.TestCase):
     def test_delete_accounts_async(self) -> None:
         """Test case for delete_accounts_async
 
-        Remove all accounts in a source
+        Remove all accounts in source
         """
         pass
 
