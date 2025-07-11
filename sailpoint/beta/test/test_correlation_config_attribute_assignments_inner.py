@@ -35,6 +35,7 @@ class TestCorrelationConfigAttributeAssignmentsInner(unittest.TestCase):
         model = CorrelationConfigAttributeAssignmentsInner()
         if include_optional:
             return CorrelationConfigAttributeAssignmentsInner(
+                sequence = 1,
                 var_property = 'first_name',
                 value = 'firstName',
                 operation = 'EQ',

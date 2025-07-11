@@ -39,6 +39,7 @@ class TestCorrelationConfig(unittest.TestCase):
                 name = 'Source [source] Account Correlation',
                 attribute_assignments = [
                     sailpoint.beta.models.correlation_config_attribute_assignments_inner.CorrelationConfig_attributeAssignments_inner(
+                        sequence = 1, 
                         property = 'first_name', 
                         value = 'firstName', 
                         operation = 'EQ', 

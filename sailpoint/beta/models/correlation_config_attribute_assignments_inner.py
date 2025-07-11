@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,6 +27,7 @@ class CorrelationConfigAttributeAssignmentsInner(BaseModel):
     """
     The attribute assignment of the correlation configuration.
     """ # noqa: E501
+    sequence: Optional[StrictInt] = Field(default=None, description="The sequence of the attribute assignment.")
     var_property: Optional[StrictStr] = Field(default=None, description="The property of the attribute assignment.", alias="property")
     value: Optional[StrictStr] = Field(default=None, description="The value of the attribute assignment.")
     operation: Optional[StrictStr] = Field(default=None, description="The operation of the attribute assignment.")
@@ -34,7 +35,7 @@ class CorrelationConfigAttributeAssignmentsInner(BaseModel):
     ignore_case: Optional[StrictBool] = Field(default=False, description="Whether or not the attribute assignment should ignore case.", alias="ignoreCase")
     match_mode: Optional[StrictStr] = Field(default=None, description="The match mode of the attribute assignment.", alias="matchMode")
     filter_string: Optional[StrictStr] = Field(default=None, description="The filter string of the attribute assignment.", alias="filterString")
-    __properties: ClassVar[List[str]] = ["property", "value", "operation", "complex", "ignoreCase", "matchMode", "filterString"]
+    __properties: ClassVar[List[str]] = ["sequence", "property", "value", "operation", "complex", "ignoreCase", "matchMode", "filterString"]
 
     @field_validator('operation')
     def operation_validate_enum(cls, value):
@@ -107,6 +108,7 @@ class CorrelationConfigAttributeAssignmentsInner(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "sequence": obj.get("sequence"),
             "property": obj.get("property"),
             "value": obj.get("value"),
             "operation": obj.get("operation"),
