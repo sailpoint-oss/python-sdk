@@ -652,7 +652,6 @@ class OrgConfigApi:
     def patch_org_config(
         self,
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -670,8 +669,6 @@ class OrgConfigApi:
 
         Patch the current organization's configuration, using http://jsonpatch.com/ syntax. This is commonly used to changing an organization's time zone.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param json_patch_operation: A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
@@ -697,7 +694,6 @@ class OrgConfigApi:
         """ # noqa: E501
 
         _param = self._patch_org_config_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -729,7 +725,6 @@ class OrgConfigApi:
     def patch_org_config_with_http_info(
         self,
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -747,8 +742,6 @@ class OrgConfigApi:
 
         Patch the current organization's configuration, using http://jsonpatch.com/ syntax. This is commonly used to changing an organization's time zone.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param json_patch_operation: A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
@@ -774,7 +767,6 @@ class OrgConfigApi:
         """ # noqa: E501
 
         _param = self._patch_org_config_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -806,7 +798,6 @@ class OrgConfigApi:
     def patch_org_config_without_preload_content(
         self,
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -824,8 +815,6 @@ class OrgConfigApi:
 
         Patch the current organization's configuration, using http://jsonpatch.com/ syntax. This is commonly used to changing an organization's time zone.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param json_patch_operation: A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
@@ -851,7 +840,6 @@ class OrgConfigApi:
         """ # noqa: E501
 
         _param = self._patch_org_config_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -877,7 +865,6 @@ class OrgConfigApi:
 
     def _patch_org_config_serialize(
         self,
-        x_sail_point_experimental,
         json_patch_operation,
         _request_auth,
         _content_type,
@@ -903,8 +890,6 @@ class OrgConfigApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if json_patch_operation is not None:
