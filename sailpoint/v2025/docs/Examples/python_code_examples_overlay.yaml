@@ -13683,16 +13683,14 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           try:
               # Get org config settings
               
-              results = OrgConfigApi(api_client).get_org_config(x_sail_point_experimental=x_sail_point_experimental)
+              results = OrgConfigApi(api_client).get_org_config()
               # Below is a request that includes all optional parameters
-              # results = OrgConfigApi(api_client).get_org_config(x_sail_point_experimental)
+              # results = OrgConfigApi(api_client).get_org_config()
               print("The response of OrgConfigApi->get_org_config:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:

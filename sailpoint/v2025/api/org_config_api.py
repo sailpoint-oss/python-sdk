@@ -43,7 +43,6 @@ class OrgConfigApi:
     @validate_call
     def get_org_config(
         self,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -61,8 +60,6 @@ class OrgConfigApi:
 
         Get the current organization's configuration settings, only external accessible properties.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -86,7 +83,6 @@ class OrgConfigApi:
         """ # noqa: E501
 
         _param = self._get_org_config_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -116,7 +112,6 @@ class OrgConfigApi:
     @validate_call
     def get_org_config_with_http_info(
         self,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -134,8 +129,6 @@ class OrgConfigApi:
 
         Get the current organization's configuration settings, only external accessible properties.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -159,7 +152,6 @@ class OrgConfigApi:
         """ # noqa: E501
 
         _param = self._get_org_config_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -189,7 +181,6 @@ class OrgConfigApi:
     @validate_call
     def get_org_config_without_preload_content(
         self,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -207,8 +198,6 @@ class OrgConfigApi:
 
         Get the current organization's configuration settings, only external accessible properties.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -232,7 +221,6 @@ class OrgConfigApi:
         """ # noqa: E501
 
         _param = self._get_org_config_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -257,7 +245,6 @@ class OrgConfigApi:
 
     def _get_org_config_serialize(
         self,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -281,8 +268,6 @@ class OrgConfigApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
