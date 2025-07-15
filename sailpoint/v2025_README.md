@@ -265,6 +265,13 @@ Class | Method | HTTP request | Description
 *CustomPasswordInstructionsApi* | [**create_custom_password_instructions**](sailpoint/v2025/docs/CustomPasswordInstructionsApi.md#create_custom_password_instructions) | **POST** /custom-password-instructions | Create custom password instructions
 *CustomPasswordInstructionsApi* | [**delete_custom_password_instructions**](sailpoint/v2025/docs/CustomPasswordInstructionsApi.md#delete_custom_password_instructions) | **DELETE** /custom-password-instructions/{pageId} | Delete custom password instructions by page id
 *CustomPasswordInstructionsApi* | [**get_custom_password_instructions**](sailpoint/v2025/docs/CustomPasswordInstructionsApi.md#get_custom_password_instructions) | **GET** /custom-password-instructions/{pageId} | Get custom password instructions by page id
+*CustomUserLevelsApi* | [**create_custom_user_level**](sailpoint/v2025/docs/CustomUserLevelsApi.md#create_custom_user_level) | **POST** /authorization/custom-user-levels | Create a custom user level
+*CustomUserLevelsApi* | [**delete_user_level**](sailpoint/v2025/docs/CustomUserLevelsApi.md#delete_user_level) | **DELETE** /authorization/custom-user-levels/{id} | Delete a user level
+*CustomUserLevelsApi* | [**get_user_level**](sailpoint/v2025/docs/CustomUserLevelsApi.md#get_user_level) | **GET** /authorization/custom-user-levels/{id} | Retrieve a user level
+*CustomUserLevelsApi* | [**list_all_authorization_right_sets**](sailpoint/v2025/docs/CustomUserLevelsApi.md#list_all_authorization_right_sets) | **GET** /authorization/authorization-assignable-right-sets | List all uiAssignable right sets
+*CustomUserLevelsApi* | [**list_user_levels**](sailpoint/v2025/docs/CustomUserLevelsApi.md#list_user_levels) | **GET** /authorization/custom-user-levels | List user levels
+*CustomUserLevelsApi* | [**publish_custom_user_level**](sailpoint/v2025/docs/CustomUserLevelsApi.md#publish_custom_user_level) | **POST** /authorization/custom-user-levels/{id}/publish | Publish a custom user level
+*CustomUserLevelsApi* | [**update_user_level**](sailpoint/v2025/docs/CustomUserLevelsApi.md#update_user_level) | **PATCH** /authorization/custom-user-levels/{id} | Update a user level
 *DataSegmentationApi* | [**create_data_segment**](sailpoint/v2025/docs/DataSegmentationApi.md#create_data_segment) | **POST** /data-segments | Create segment
 *DataSegmentationApi* | [**delete_data_segment**](sailpoint/v2025/docs/DataSegmentationApi.md#delete_data_segment) | **DELETE** /data-segments/{segmentId} | Delete segment by id
 *DataSegmentationApi* | [**get_data_segment**](sailpoint/v2025/docs/DataSegmentationApi.md#get_data_segment) | **GET** /data-segments/{segmentId} | Get segment by id
@@ -1241,6 +1248,7 @@ Class | Method | HTTP request | Description
  - [GetRoleAssignments200ResponseInner](sailpoint/v2025/docs/GetRoleAssignments200ResponseInner.md)
  - [GetTenantContext200ResponseInner](sailpoint/v2025/docs/GetTenantContext200ResponseInner.md)
  - [GrantType](sailpoint/v2025/docs/GrantType.md)
+ - [HierarchicalRightSet](sailpoint/v2025/docs/HierarchicalRightSet.md)
  - [HttpAuthenticationType](sailpoint/v2025/docs/HttpAuthenticationType.md)
  - [HttpConfig](sailpoint/v2025/docs/HttpConfig.md)
  - [HttpDispatchMode](sailpoint/v2025/docs/HttpDispatchMode.md)
@@ -1411,6 +1419,7 @@ Class | Method | HTTP request | Description
  - [MultiPolicyRequest](sailpoint/v2025/docs/MultiPolicyRequest.md)
  - [NativeChangeDetectionConfig](sailpoint/v2025/docs/NativeChangeDetectionConfig.md)
  - [NestedAggregation](sailpoint/v2025/docs/NestedAggregation.md)
+ - [NestedConfig](sailpoint/v2025/docs/NestedConfig.md)
  - [NetworkConfiguration](sailpoint/v2025/docs/NetworkConfiguration.md)
  - [NonEmployeeApprovalDecision](sailpoint/v2025/docs/NonEmployeeApprovalDecision.md)
  - [NonEmployeeApprovalItem](sailpoint/v2025/docs/NonEmployeeApprovalItem.md)
@@ -1581,6 +1590,7 @@ Class | Method | HTTP request | Description
  - [Reviewer](sailpoint/v2025/docs/Reviewer.md)
  - [Revocability](sailpoint/v2025/docs/Revocability.md)
  - [RevocabilityForRole](sailpoint/v2025/docs/RevocabilityForRole.md)
+ - [RightSetDTO](sailpoint/v2025/docs/RightSetDTO.md)
  - [Role](sailpoint/v2025/docs/Role.md)
  - [RoleAssignmentDto](sailpoint/v2025/docs/RoleAssignmentDto.md)
  - [RoleAssignmentDtoAssigner](sailpoint/v2025/docs/RoleAssignmentDtoAssigner.md)
@@ -1872,6 +1882,9 @@ Class | Method | HTTP request | Description
  - [UserAppOwner](sailpoint/v2025/docs/UserAppOwner.md)
  - [UserAppSource](sailpoint/v2025/docs/UserAppSource.md)
  - [UserAppSourceApp](sailpoint/v2025/docs/UserAppSourceApp.md)
+ - [UserLevelPublishSummary](sailpoint/v2025/docs/UserLevelPublishSummary.md)
+ - [UserLevelRequest](sailpoint/v2025/docs/UserLevelRequest.md)
+ - [UserLevelSummaryDTO](sailpoint/v2025/docs/UserLevelSummaryDTO.md)
  - [V3ConnectorDto](sailpoint/v2025/docs/V3ConnectorDto.md)
  - [V3CreateConnectorDto](sailpoint/v2025/docs/V3CreateConnectorDto.md)
  - [VAClusterStatusChangeEvent](sailpoint/v2025/docs/VAClusterStatusChangeEvent.md)

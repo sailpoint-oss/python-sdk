@@ -43,6 +43,7 @@ from sailpoint.v2025.api.connector_rule_management_api import ConnectorRuleManag
 from sailpoint.v2025.api.connectors_api import ConnectorsApi
 from sailpoint.v2025.api.custom_forms_api import CustomFormsApi
 from sailpoint.v2025.api.custom_password_instructions_api import CustomPasswordInstructionsApi
+from sailpoint.v2025.api.custom_user_levels_api import CustomUserLevelsApi
 from sailpoint.v2025.api.data_segmentation_api import DataSegmentationApi
 from sailpoint.v2025.api.dimensions_api import DimensionsApi
 from sailpoint.v2025.api.entitlements_api import EntitlementsApi
@@ -579,6 +580,7 @@ from sailpoint.v2025.models.get_personal_access_token_response import GetPersona
 from sailpoint.v2025.models.get_role_assignments200_response_inner import GetRoleAssignments200ResponseInner
 from sailpoint.v2025.models.get_tenant_context200_response_inner import GetTenantContext200ResponseInner
 from sailpoint.v2025.models.grant_type import GrantType
+from sailpoint.v2025.models.hierarchical_right_set import HierarchicalRightSet
 from sailpoint.v2025.models.http_authentication_type import HttpAuthenticationType
 from sailpoint.v2025.models.http_config import HttpConfig
 from sailpoint.v2025.models.http_dispatch_mode import HttpDispatchMode
@@ -749,6 +751,7 @@ from sailpoint.v2025.models.multi_host_sources import MultiHostSources
 from sailpoint.v2025.models.multi_policy_request import MultiPolicyRequest
 from sailpoint.v2025.models.native_change_detection_config import NativeChangeDetectionConfig
 from sailpoint.v2025.models.nested_aggregation import NestedAggregation
+from sailpoint.v2025.models.nested_config import NestedConfig
 from sailpoint.v2025.models.network_configuration import NetworkConfiguration
 from sailpoint.v2025.models.non_employee_approval_decision import NonEmployeeApprovalDecision
 from sailpoint.v2025.models.non_employee_approval_item import NonEmployeeApprovalItem
@@ -919,6 +922,7 @@ from sailpoint.v2025.models.reviewable_role import ReviewableRole
 from sailpoint.v2025.models.reviewer import Reviewer
 from sailpoint.v2025.models.revocability import Revocability
 from sailpoint.v2025.models.revocability_for_role import RevocabilityForRole
+from sailpoint.v2025.models.right_set_dto import RightSetDTO
 from sailpoint.v2025.models.role import Role
 from sailpoint.v2025.models.role_assignment_dto import RoleAssignmentDto
 from sailpoint.v2025.models.role_assignment_dto_assigner import RoleAssignmentDtoAssigner
@@ -1210,6 +1214,9 @@ from sailpoint.v2025.models.user_app_account import UserAppAccount
 from sailpoint.v2025.models.user_app_owner import UserAppOwner
 from sailpoint.v2025.models.user_app_source import UserAppSource
 from sailpoint.v2025.models.user_app_source_app import UserAppSourceApp
+from sailpoint.v2025.models.user_level_publish_summary import UserLevelPublishSummary
+from sailpoint.v2025.models.user_level_request import UserLevelRequest
+from sailpoint.v2025.models.user_level_summary_dto import UserLevelSummaryDTO
 from sailpoint.v2025.models.v3_connector_dto import V3ConnectorDto
 from sailpoint.v2025.models.v3_create_connector_dto import V3CreateConnectorDto
 from sailpoint.v2025.models.va_cluster_status_change_event import VAClusterStatusChangeEvent

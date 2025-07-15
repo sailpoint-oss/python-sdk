@@ -27,6 +27,7 @@ from sailpoint.v2025.api.connector_rule_management_api import ConnectorRuleManag
 from sailpoint.v2025.api.connectors_api import ConnectorsApi
 from sailpoint.v2025.api.custom_forms_api import CustomFormsApi
 from sailpoint.v2025.api.custom_password_instructions_api import CustomPasswordInstructionsApi
+from sailpoint.v2025.api.custom_user_levels_api import CustomUserLevelsApi
 from sailpoint.v2025.api.data_segmentation_api import DataSegmentationApi
 from sailpoint.v2025.api.dimensions_api import DimensionsApi
 from sailpoint.v2025.api.entitlements_api import EntitlementsApi

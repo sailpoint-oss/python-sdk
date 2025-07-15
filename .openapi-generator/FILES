@@ -28,6 +28,7 @@ sailpoint/v2025/api/connector_rule_management_api.py
 sailpoint/v2025/api/connectors_api.py
 sailpoint/v2025/api/custom_forms_api.py
 sailpoint/v2025/api/custom_password_instructions_api.py
+sailpoint/v2025/api/custom_user_levels_api.py
 sailpoint/v2025/api/data_segmentation_api.py
 sailpoint/v2025/api/dimensions_api.py
 sailpoint/v2025/api/entitlements_api.py
@@ -463,6 +464,7 @@ sailpoint/v2025/docs/CriteriaType.md
 sailpoint/v2025/docs/CustomFormsApi.md
 sailpoint/v2025/docs/CustomPasswordInstruction.md
 sailpoint/v2025/docs/CustomPasswordInstructionsApi.md
+sailpoint/v2025/docs/CustomUserLevelsApi.md
 sailpoint/v2025/docs/DataAccess.md
 sailpoint/v2025/docs/DataAccessCategoriesInner.md
 sailpoint/v2025/docs/DataAccessImpactScore.md
@@ -586,6 +588,7 @@ sailpoint/v2025/docs/GetTenantContext200ResponseInner.md
 sailpoint/v2025/docs/GlobalTenantSecuritySettingsApi.md
 sailpoint/v2025/docs/GovernanceGroupsApi.md
 sailpoint/v2025/docs/GrantType.md
+sailpoint/v2025/docs/HierarchicalRightSet.md
 sailpoint/v2025/docs/HttpAuthenticationType.md
 sailpoint/v2025/docs/HttpConfig.md
 sailpoint/v2025/docs/HttpDispatchMode.md
@@ -779,6 +782,7 @@ sailpoint/v2025/docs/MultiHostSources.md
 sailpoint/v2025/docs/MultiPolicyRequest.md
 sailpoint/v2025/docs/NativeChangeDetectionConfig.md
 sailpoint/v2025/docs/NestedAggregation.md
+sailpoint/v2025/docs/NestedConfig.md
 sailpoint/v2025/docs/NetworkConfiguration.md
 sailpoint/v2025/docs/NonEmployeeApprovalDecision.md
 sailpoint/v2025/docs/NonEmployeeApprovalItem.md
@@ -963,6 +967,7 @@ sailpoint/v2025/docs/ReviewableRole.md
 sailpoint/v2025/docs/Reviewer.md
 sailpoint/v2025/docs/Revocability.md
 sailpoint/v2025/docs/RevocabilityForRole.md
+sailpoint/v2025/docs/RightSetDTO.md
 sailpoint/v2025/docs/Role.md
 sailpoint/v2025/docs/RoleAssignmentDto.md
 sailpoint/v2025/docs/RoleAssignmentDtoAssigner.md
@@ -1276,6 +1281,9 @@ sailpoint/v2025/docs/UserAppAccount.md
 sailpoint/v2025/docs/UserAppOwner.md
 sailpoint/v2025/docs/UserAppSource.md
 sailpoint/v2025/docs/UserAppSourceApp.md
+sailpoint/v2025/docs/UserLevelPublishSummary.md
+sailpoint/v2025/docs/UserLevelRequest.md
+sailpoint/v2025/docs/UserLevelSummaryDTO.md
 sailpoint/v2025/docs/V3ConnectorDto.md
 sailpoint/v2025/docs/V3CreateConnectorDto.md
 sailpoint/v2025/docs/VAClusterStatusChangeEvent.md
@@ -1790,6 +1798,7 @@ sailpoint/v2025/models/get_personal_access_token_response.py
 sailpoint/v2025/models/get_role_assignments200_response_inner.py
 sailpoint/v2025/models/get_tenant_context200_response_inner.py
 sailpoint/v2025/models/grant_type.py
+sailpoint/v2025/models/hierarchical_right_set.py
 sailpoint/v2025/models/http_authentication_type.py
 sailpoint/v2025/models/http_config.py
 sailpoint/v2025/models/http_dispatch_mode.py
@@ -1960,6 +1969,7 @@ sailpoint/v2025/models/multi_host_sources.py
 sailpoint/v2025/models/multi_policy_request.py
 sailpoint/v2025/models/native_change_detection_config.py
 sailpoint/v2025/models/nested_aggregation.py
+sailpoint/v2025/models/nested_config.py
 sailpoint/v2025/models/network_configuration.py
 sailpoint/v2025/models/non_employee_approval_decision.py
 sailpoint/v2025/models/non_employee_approval_item.py
@@ -2130,6 +2140,7 @@ sailpoint/v2025/models/reviewable_role.py
 sailpoint/v2025/models/reviewer.py
 sailpoint/v2025/models/revocability.py
 sailpoint/v2025/models/revocability_for_role.py
+sailpoint/v2025/models/right_set_dto.py
 sailpoint/v2025/models/role.py
 sailpoint/v2025/models/role_assignment_dto.py
 sailpoint/v2025/models/role_assignment_dto_assigner.py
@@ -2421,6 +2432,9 @@ sailpoint/v2025/models/user_app_account.py
 sailpoint/v2025/models/user_app_owner.py
 sailpoint/v2025/models/user_app_source.py
 sailpoint/v2025/models/user_app_source_app.py
+sailpoint/v2025/models/user_level_publish_summary.py
+sailpoint/v2025/models/user_level_request.py
+sailpoint/v2025/models/user_level_summary_dto.py
 sailpoint/v2025/models/v3_connector_dto.py
 sailpoint/v2025/models/v3_create_connector_dto.py
 sailpoint/v2025/models/va_cluster_status_change_event.py
@@ -2840,6 +2854,7 @@ sailpoint/v2025/test/test_criteria_type.py
 sailpoint/v2025/test/test_custom_forms_api.py
 sailpoint/v2025/test/test_custom_password_instruction.py
 sailpoint/v2025/test/test_custom_password_instructions_api.py
+sailpoint/v2025/test/test_custom_user_levels_api.py
 sailpoint/v2025/test/test_data_access.py
 sailpoint/v2025/test/test_data_access_categories_inner.py
 sailpoint/v2025/test/test_data_access_impact_score.py
@@ -2962,6 +2977,7 @@ sailpoint/v2025/test/test_get_tenant_context200_response_inner.py
 sailpoint/v2025/test/test_global_tenant_security_settings_api.py
 sailpoint/v2025/test/test_governance_groups_api.py
 sailpoint/v2025/test/test_grant_type.py
+sailpoint/v2025/test/test_hierarchical_right_set.py
 sailpoint/v2025/test/test_http_authentication_type.py
 sailpoint/v2025/test/test_http_config.py
 sailpoint/v2025/test/test_http_dispatch_mode.py
@@ -3154,6 +3170,7 @@ sailpoint/v2025/test/test_multi_host_sources.py
 sailpoint/v2025/test/test_multi_policy_request.py
 sailpoint/v2025/test/test_native_change_detection_config.py
 sailpoint/v2025/test/test_nested_aggregation.py
+sailpoint/v2025/test/test_nested_config.py
 sailpoint/v2025/test/test_network_configuration.py
 sailpoint/v2025/test/test_non_employee_approval_decision.py
 sailpoint/v2025/test/test_non_employee_approval_item.py
@@ -3338,6 +3355,7 @@ sailpoint/v2025/test/test_reviewable_role.py
 sailpoint/v2025/test/test_reviewer.py
 sailpoint/v2025/test/test_revocability.py
 sailpoint/v2025/test/test_revocability_for_role.py
+sailpoint/v2025/test/test_right_set_dto.py
 sailpoint/v2025/test/test_role.py
 sailpoint/v2025/test/test_role_assignment_dto.py
 sailpoint/v2025/test/test_role_assignment_dto_assigner.py
@@ -3651,6 +3669,9 @@ sailpoint/v2025/test/test_user_app_account.py
 sailpoint/v2025/test/test_user_app_owner.py
 sailpoint/v2025/test/test_user_app_source.py
 sailpoint/v2025/test/test_user_app_source_app.py
+sailpoint/v2025/test/test_user_level_publish_summary.py
+sailpoint/v2025/test/test_user_level_request.py
+sailpoint/v2025/test/test_user_level_summary_dto.py
 sailpoint/v2025/test/test_v3_connector_dto.py
 sailpoint/v2025/test/test_v3_create_connector_dto.py
 sailpoint/v2025/test/test_va_cluster_status_change_event.py
