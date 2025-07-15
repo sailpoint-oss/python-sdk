@@ -44,7 +44,8 @@ class TestCreatePersonalAccessTokenResponse(unittest.TestCase):
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'Support', ),
                 created = '2017-07-11T18:45:37.098Z',
-                access_token_validity_seconds = 36900
+                access_token_validity_seconds = 36900,
+                expiration_date = '2018-01-11T18:45:37.098Z'
             )
         else:
             return CreatePersonalAccessTokenResponse(
@@ -58,6 +59,7 @@ class TestCreatePersonalAccessTokenResponse(unittest.TestCase):
                     name = 'Support', ),
                 created = '2017-07-11T18:45:37.098Z',
                 access_token_validity_seconds = 36900,
+                expiration_date = '2018-01-11T18:45:37.098Z',
         )
         """
 

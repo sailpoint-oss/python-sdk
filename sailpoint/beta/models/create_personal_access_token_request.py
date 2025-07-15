@@ -18,6 +18,7 @@ import re  # noqa: F401
 import json
 import warnings
 
+from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
@@ -31,7 +32,8 @@ class CreatePersonalAccessTokenRequest(BaseModel):
     name: StrictStr = Field(description="The name of the personal access token (PAT) to be created. Cannot be the same as another PAT owned by the user for whom this PAT is being created.")
     scope: Optional[List[StrictStr]] = Field(default=None, description="Scopes of the personal access token. If no scope is specified, the token will be created with the default scope \"sp:scopes:all\". This means the personal access token will have all the rights of the owner who created it.")
     access_token_validity_seconds: Optional[Annotated[int, Field(le=43200, strict=True, ge=15)]] = Field(default=None, description="Number of seconds an access token is valid when generated using this Personal Access Token. If no value is specified, the token will be created with the default value of 43200.", alias="accessTokenValiditySeconds")
-    __properties: ClassVar[List[str]] = ["name", "scope", "accessTokenValiditySeconds"]
+    expiration_date: Optional[datetime] = Field(default=None, description="Date and time, down to the millisecond, when this personal access token will expire. If not provided, the token will expire 6 months after its creation date. The value must be a valid date-time string between the current date and 6 months from the creation date.", alias="expirationDate")
+    __properties: ClassVar[List[str]] = ["name", "scope", "accessTokenValiditySeconds", "expirationDate"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -77,6 +79,16 @@ class CreatePersonalAccessTokenRequest(BaseModel):
         if self.scope is None and "scope" in self.model_fields_set:
             _dict['scope'] = None
 
+        # set to None if access_token_validity_seconds (nullable) is None
+        # and model_fields_set contains the field
+        if self.access_token_validity_seconds is None and "access_token_validity_seconds" in self.model_fields_set:
+            _dict['accessTokenValiditySeconds'] = None
+
+        # set to None if expiration_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.expiration_date is None and "expiration_date" in self.model_fields_set:
+            _dict['expirationDate'] = None
+
         return _dict
 
     @classmethod
@@ -91,7 +103,8 @@ class CreatePersonalAccessTokenRequest(BaseModel):
         _obj = cls.model_validate({
             "name": obj.get("name"),
             "scope": obj.get("scope"),
-            "accessTokenValiditySeconds": obj.get("accessTokenValiditySeconds")
+            "accessTokenValiditySeconds": obj.get("accessTokenValiditySeconds"),
+            "expirationDate": obj.get("expirationDate")
         })
         return _obj
 

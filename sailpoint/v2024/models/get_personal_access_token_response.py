@@ -19,7 +19,7 @@ import json
 import warnings
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v2024.models.pat_owner import PatOwner
 from typing import Optional, Set
@@ -36,7 +36,9 @@ class GetPersonalAccessTokenResponse(BaseModel):
     created: datetime = Field(description="The date and time, down to the millisecond, when this personal access token was created.")
     last_used: Optional[datetime] = Field(default=None, description="The date and time, down to the millisecond, when this personal access token was last used to generate an access token. This timestamp does not get updated on every PAT usage, but only once a day. This property can be useful for identifying which PATs are no longer actively used and can be removed.", alias="lastUsed")
     managed: Optional[StrictBool] = Field(default=False, description="If true, this token is managed by the SailPoint platform, and is not visible in the user interface. For example, Workflows will create managed personal access tokens for users who create workflows.")
-    __properties: ClassVar[List[str]] = ["id", "name", "scope", "owner", "created", "lastUsed", "managed"]
+    access_token_validity_seconds: Optional[StrictInt] = Field(default=43200, description="Number of seconds an access token is valid when generated using this Personal Access Token. If no value is specified, the token will be created with the default value of 43200.", alias="accessTokenValiditySeconds")
+    expiration_date: Optional[datetime] = Field(default=None, description="Date and time, down to the millisecond, when this personal access token will expire. If not provided, the token will expire 6 months after its creation date. The value must be a valid date-time string between the current date and 6 months from the creation date.", alias="expirationDate")
+    __properties: ClassVar[List[str]] = ["id", "name", "scope", "owner", "created", "lastUsed", "managed", "accessTokenValiditySeconds", "expirationDate"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -108,7 +110,9 @@ class GetPersonalAccessTokenResponse(BaseModel):
             "owner": PatOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "created": obj.get("created"),
             "lastUsed": obj.get("lastUsed"),
-            "managed": obj.get("managed") if obj.get("managed") is not None else False
+            "managed": obj.get("managed") if obj.get("managed") is not None else False,
+            "accessTokenValiditySeconds": obj.get("accessTokenValiditySeconds") if obj.get("accessTokenValiditySeconds") is not None else 43200,
+            "expirationDate": obj.get("expirationDate")
         })
         return _obj
 

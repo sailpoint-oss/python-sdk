@@ -36,7 +36,8 @@ class CreatePersonalAccessTokenResponse(BaseModel):
     owner: PatOwner
     created: datetime = Field(description="The date and time, down to the millisecond, when this personal access token was created.")
     access_token_validity_seconds: StrictInt = Field(description="Number of seconds an access token is valid when generated using this Personal Access Token. If no value is specified, the token will be created with the default value of 43200.", alias="accessTokenValiditySeconds")
-    __properties: ClassVar[List[str]] = ["id", "secret", "scope", "name", "owner", "created", "accessTokenValiditySeconds"]
+    expiration_date: datetime = Field(description="Date and time, down to the millisecond, when this personal access token will expire. If not provided, the token will expire 6 months after its creation date. The value must be a valid date-time string between the current date and 6 months from the creation date.", alias="expirationDate")
+    __properties: ClassVar[List[str]] = ["id", "secret", "scope", "name", "owner", "created", "accessTokenValiditySeconds", "expirationDate"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -103,7 +104,8 @@ class CreatePersonalAccessTokenResponse(BaseModel):
             "name": obj.get("name"),
             "owner": PatOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "created": obj.get("created"),
-            "accessTokenValiditySeconds": obj.get("accessTokenValiditySeconds")
+            "accessTokenValiditySeconds": obj.get("accessTokenValiditySeconds"),
+            "expirationDate": obj.get("expirationDate")
         })
         return _obj
 
