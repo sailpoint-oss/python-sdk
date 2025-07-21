@@ -34,7 +34,7 @@ class CampaignAllOfSearchCampaignInfo(BaseModel):
     description: Optional[StrictStr] = Field(default=None, description="Describes this search campaign. Intended for storing the query used, and possibly the number of identities selected/available.")
     reviewer: Optional[CampaignAllOfSearchCampaignInfoReviewer] = None
     query: Optional[StrictStr] = Field(default=None, description="The scope for the campaign. The campaign will cover identities returned by the query and identities that have access items returned by the query. One of `query` or `identityIds` must be set.")
-    identity_ids: Optional[Annotated[List[StrictStr], Field(max_length=1000)]] = Field(default=None, description="A direct list of identities to include in this campaign. One of `identityIds` or `query` must be set.", alias="identityIds")
+    identity_ids: Optional[List[StrictStr]] = Field(default=None, description="A direct list of identities to include in this campaign. One of `identityIds` or `query` must be set.", alias="identityIds")
     access_constraints: Optional[Annotated[List[AccessConstraint], Field(max_length=1000)]] = Field(default=None, description="Further reduces the scope of the campaign by excluding identities (from `query` or `identityIds`) that do not have this access.", alias="accessConstraints")
     __properties: ClassVar[List[str]] = ["type", "description", "reviewer", "query", "identityIds", "accessConstraints"]
 
