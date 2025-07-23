@@ -27,7 +27,7 @@ from typing_extensions import Self
 
 class EntitlementBulkUpdateRequest(BaseModel):
     """
-    EntitlementBulkUpdateRequest
+    Object for specifying the bulk update request
     """ # noqa: E501
     entitlement_ids: Annotated[List[StrictStr], Field(max_length=50)] = Field(description="List of entitlement ids to update", alias="entitlementIds")
     json_patch: List[JsonPatchOperation] = Field(alias="jsonPatch")
