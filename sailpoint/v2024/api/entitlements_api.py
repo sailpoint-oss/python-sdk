@@ -50,7 +50,6 @@ class EntitlementsApi:
         id: Annotated[StrictStr, Field(description="The entitlement id.")],
         attribute_key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
         attribute_value: Annotated[StrictStr, Field(description="Technical name of the Attribute Value.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -74,8 +73,6 @@ class EntitlementsApi:
         :type attribute_key: str
         :param attribute_value: Technical name of the Attribute Value. (required)
         :type attribute_value: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -102,7 +99,6 @@ class EntitlementsApi:
             id=id,
             attribute_key=attribute_key,
             attribute_value=attribute_value,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -134,7 +130,6 @@ class EntitlementsApi:
         id: Annotated[StrictStr, Field(description="The entitlement id.")],
         attribute_key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
         attribute_value: Annotated[StrictStr, Field(description="Technical name of the Attribute Value.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -158,8 +153,6 @@ class EntitlementsApi:
         :type attribute_key: str
         :param attribute_value: Technical name of the Attribute Value. (required)
         :type attribute_value: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -186,7 +179,6 @@ class EntitlementsApi:
             id=id,
             attribute_key=attribute_key,
             attribute_value=attribute_value,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -218,7 +210,6 @@ class EntitlementsApi:
         id: Annotated[StrictStr, Field(description="The entitlement id.")],
         attribute_key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
         attribute_value: Annotated[StrictStr, Field(description="Technical name of the Attribute Value.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -242,8 +233,6 @@ class EntitlementsApi:
         :type attribute_key: str
         :param attribute_value: Technical name of the Attribute Value. (required)
         :type attribute_value: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -270,7 +259,6 @@ class EntitlementsApi:
             id=id,
             attribute_key=attribute_key,
             attribute_value=attribute_value,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -297,7 +285,6 @@ class EntitlementsApi:
         id,
         attribute_key,
         attribute_value,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -327,8 +314,6 @@ class EntitlementsApi:
             _path_params['attributeValue'] = attribute_value
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -372,7 +357,6 @@ class EntitlementsApi:
         id: Annotated[StrictStr, Field(description="The entitlement id.")],
         attribute_key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
         attribute_value: Annotated[StrictStr, Field(description="Technical name of the Attribute Value.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -396,8 +380,6 @@ class EntitlementsApi:
         :type attribute_key: str
         :param attribute_value: Technical name of the Attribute Value. (required)
         :type attribute_value: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -424,7 +406,6 @@ class EntitlementsApi:
             id=id,
             attribute_key=attribute_key,
             attribute_value=attribute_value,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -456,7 +437,6 @@ class EntitlementsApi:
         id: Annotated[StrictStr, Field(description="The entitlement id.")],
         attribute_key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
         attribute_value: Annotated[StrictStr, Field(description="Technical name of the Attribute Value.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -480,8 +460,6 @@ class EntitlementsApi:
         :type attribute_key: str
         :param attribute_value: Technical name of the Attribute Value. (required)
         :type attribute_value: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -508,7 +486,6 @@ class EntitlementsApi:
             id=id,
             attribute_key=attribute_key,
             attribute_value=attribute_value,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -540,7 +517,6 @@ class EntitlementsApi:
         id: Annotated[StrictStr, Field(description="The entitlement id.")],
         attribute_key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
         attribute_value: Annotated[StrictStr, Field(description="Technical name of the Attribute Value.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -564,8 +540,6 @@ class EntitlementsApi:
         :type attribute_key: str
         :param attribute_value: Technical name of the Attribute Value. (required)
         :type attribute_value: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -592,7 +566,6 @@ class EntitlementsApi:
             id=id,
             attribute_key=attribute_key,
             attribute_value=attribute_value,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -619,7 +592,6 @@ class EntitlementsApi:
         id,
         attribute_key,
         attribute_value,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -649,8 +621,6 @@ class EntitlementsApi:
             _path_params['attributeValue'] = attribute_value
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -692,7 +662,6 @@ class EntitlementsApi:
     def get_entitlement(
         self,
         id: Annotated[StrictStr, Field(description="The entitlement ID")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -712,8 +681,6 @@ class EntitlementsApi:
 
         :param id: The entitlement ID (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -738,7 +705,6 @@ class EntitlementsApi:
 
         _param = self._get_entitlement_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -769,7 +735,6 @@ class EntitlementsApi:
     def get_entitlement_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The entitlement ID")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -789,8 +754,6 @@ class EntitlementsApi:
 
         :param id: The entitlement ID (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -815,7 +778,6 @@ class EntitlementsApi:
 
         _param = self._get_entitlement_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -846,7 +808,6 @@ class EntitlementsApi:
     def get_entitlement_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The entitlement ID")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -866,8 +827,6 @@ class EntitlementsApi:
 
         :param id: The entitlement ID (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -892,7 +851,6 @@ class EntitlementsApi:
 
         _param = self._get_entitlement_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -918,7 +876,6 @@ class EntitlementsApi:
     def _get_entitlement_serialize(
         self,
         id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -944,8 +901,6 @@ class EntitlementsApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -987,7 +942,6 @@ class EntitlementsApi:
     def get_entitlement_request_config(
         self,
         id: Annotated[StrictStr, Field(description="Entitlement Id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1007,8 +961,6 @@ class EntitlementsApi:
 
         :param id: Entitlement Id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1033,7 +985,6 @@ class EntitlementsApi:
 
         _param = self._get_entitlement_request_config_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1064,7 +1015,6 @@ class EntitlementsApi:
     def get_entitlement_request_config_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Entitlement Id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1084,8 +1034,6 @@ class EntitlementsApi:
 
         :param id: Entitlement Id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1110,7 +1058,6 @@ class EntitlementsApi:
 
         _param = self._get_entitlement_request_config_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1141,7 +1088,6 @@ class EntitlementsApi:
     def get_entitlement_request_config_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Entitlement Id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1161,8 +1107,6 @@ class EntitlementsApi:
 
         :param id: Entitlement Id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1187,7 +1131,6 @@ class EntitlementsApi:
 
         _param = self._get_entitlement_request_config_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1213,7 +1156,6 @@ class EntitlementsApi:
     def _get_entitlement_request_config_serialize(
         self,
         id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -1239,8 +1181,6 @@ class EntitlementsApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -1283,7 +1223,6 @@ class EntitlementsApi:
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
         csv_file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1303,8 +1242,6 @@ class EntitlementsApi:
 
         :param id: Source Id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param csv_file: The CSV file containing the source entitlements to aggregate.
         :type csv_file: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -1332,7 +1269,6 @@ class EntitlementsApi:
 
         _param = self._import_entitlements_by_source_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             csv_file=csv_file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1364,7 +1300,6 @@ class EntitlementsApi:
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
         csv_file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1384,8 +1319,6 @@ class EntitlementsApi:
 
         :param id: Source Id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param csv_file: The CSV file containing the source entitlements to aggregate.
         :type csv_file: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -1413,7 +1346,6 @@ class EntitlementsApi:
 
         _param = self._import_entitlements_by_source_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             csv_file=csv_file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1445,7 +1377,6 @@ class EntitlementsApi:
         self,
         id: Annotated[StrictStr, Field(description="Source Id")],
         csv_file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1465,8 +1396,6 @@ class EntitlementsApi:
 
         :param id: Source Id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param csv_file: The CSV file containing the source entitlements to aggregate.
         :type csv_file: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -1494,7 +1423,6 @@ class EntitlementsApi:
 
         _param = self._import_entitlements_by_source_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             csv_file=csv_file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1520,7 +1448,6 @@ class EntitlementsApi:
     def _import_entitlements_by_source_serialize(
         self,
         id,
-        x_sail_point_experimental,
         csv_file,
         _request_auth,
         _content_type,
@@ -1547,8 +1474,6 @@ class EntitlementsApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         if csv_file is not None:
             _files['csvFile'] = csv_file
@@ -1610,7 +1535,6 @@ class EntitlementsApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id**")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1630,8 +1554,6 @@ class EntitlementsApi:
 
         :param id: Entitlement Id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1666,7 +1588,6 @@ class EntitlementsApi:
 
         _param = self._list_entitlement_children_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -1707,7 +1628,6 @@ class EntitlementsApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id**")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1727,8 +1647,6 @@ class EntitlementsApi:
 
         :param id: Entitlement Id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1763,7 +1681,6 @@ class EntitlementsApi:
 
         _param = self._list_entitlement_children_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -1804,7 +1721,6 @@ class EntitlementsApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id**")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1824,8 +1740,6 @@ class EntitlementsApi:
 
         :param id: Entitlement Id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1860,7 +1774,6 @@ class EntitlementsApi:
 
         _param = self._list_entitlement_children_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -1891,7 +1804,6 @@ class EntitlementsApi:
     def _list_entitlement_children_serialize(
         self,
         id,
-        x_sail_point_experimental,
         limit,
         offset,
         count,
@@ -1942,8 +1854,6 @@ class EntitlementsApi:
             _query_params.append(('filters', filters))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -1990,7 +1900,6 @@ class EntitlementsApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id**")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2010,8 +1919,6 @@ class EntitlementsApi:
 
         :param id: Entitlement Id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -2046,7 +1953,6 @@ class EntitlementsApi:
 
         _param = self._list_entitlement_parents_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -2087,7 +1993,6 @@ class EntitlementsApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id**")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2107,8 +2012,6 @@ class EntitlementsApi:
 
         :param id: Entitlement Id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -2143,7 +2046,6 @@ class EntitlementsApi:
 
         _param = self._list_entitlement_parents_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -2184,7 +2086,6 @@ class EntitlementsApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id**")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2204,8 +2105,6 @@ class EntitlementsApi:
 
         :param id: Entitlement Id (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -2240,7 +2139,6 @@ class EntitlementsApi:
 
         _param = self._list_entitlement_parents_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -2271,7 +2169,6 @@ class EntitlementsApi:
     def _list_entitlement_parents_serialize(
         self,
         id,
-        x_sail_point_experimental,
         limit,
         offset,
         count,
@@ -2322,8 +2219,6 @@ class EntitlementsApi:
             _query_params.append(('filters', filters))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -2373,7 +2268,6 @@ class EntitlementsApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2391,8 +2285,6 @@ class EntitlementsApi:
 
         This API returns a list of entitlements.  This API can be used in one of the two following ways: either getting entitlements for a specific **account-id**, or getting via use of **filters** (those two options are exclusive).  Any authenticated token can call this API.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param account_id: The account ID. If specified, returns only entitlements associated with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s).
         :type account_id: str
         :param segmented_for_identity: If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user's Identity.
@@ -2434,7 +2326,6 @@ class EntitlementsApi:
         """ # noqa: E501
 
         _param = self._list_entitlements_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             account_id=account_id,
             segmented_for_identity=segmented_for_identity,
             for_segment_ids=for_segment_ids,
@@ -2481,7 +2372,6 @@ class EntitlementsApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2499,8 +2389,6 @@ class EntitlementsApi:
 
         This API returns a list of entitlements.  This API can be used in one of the two following ways: either getting entitlements for a specific **account-id**, or getting via use of **filters** (those two options are exclusive).  Any authenticated token can call this API.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param account_id: The account ID. If specified, returns only entitlements associated with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s).
         :type account_id: str
         :param segmented_for_identity: If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user's Identity.
@@ -2542,7 +2430,6 @@ class EntitlementsApi:
         """ # noqa: E501
 
         _param = self._list_entitlements_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             account_id=account_id,
             segmented_for_identity=segmented_for_identity,
             for_segment_ids=for_segment_ids,
@@ -2589,7 +2476,6 @@ class EntitlementsApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2607,8 +2493,6 @@ class EntitlementsApi:
 
         This API returns a list of entitlements.  This API can be used in one of the two following ways: either getting entitlements for a specific **account-id**, or getting via use of **filters** (those two options are exclusive).  Any authenticated token can call this API.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param account_id: The account ID. If specified, returns only entitlements associated with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s).
         :type account_id: str
         :param segmented_for_identity: If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user's Identity.
@@ -2650,7 +2534,6 @@ class EntitlementsApi:
         """ # noqa: E501
 
         _param = self._list_entitlements_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             account_id=account_id,
             segmented_for_identity=segmented_for_identity,
             for_segment_ids=for_segment_ids,
@@ -2683,7 +2566,6 @@ class EntitlementsApi:
 
     def _list_entitlements_serialize(
         self,
-        x_sail_point_experimental,
         account_id,
         segmented_for_identity,
         for_segment_ids,
@@ -2752,8 +2634,6 @@ class EntitlementsApi:
             _query_params.append(('filters', filters))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -2796,7 +2676,6 @@ class EntitlementsApi:
         self,
         id: Annotated[StrictStr, Field(description="ID of the entitlement to patch")],
         json_patch_operation: Optional[List[JsonPatchOperation]] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2816,8 +2695,6 @@ class EntitlementsApi:
 
         :param id: ID of the entitlement to patch (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param json_patch_operation:
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
@@ -2844,7 +2721,6 @@ class EntitlementsApi:
 
         _param = self._patch_entitlement_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2877,7 +2753,6 @@ class EntitlementsApi:
         self,
         id: Annotated[StrictStr, Field(description="ID of the entitlement to patch")],
         json_patch_operation: Optional[List[JsonPatchOperation]] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2897,8 +2772,6 @@ class EntitlementsApi:
 
         :param id: ID of the entitlement to patch (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param json_patch_operation:
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
@@ -2925,7 +2798,6 @@ class EntitlementsApi:
 
         _param = self._patch_entitlement_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2958,7 +2830,6 @@ class EntitlementsApi:
         self,
         id: Annotated[StrictStr, Field(description="ID of the entitlement to patch")],
         json_patch_operation: Optional[List[JsonPatchOperation]] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2978,8 +2849,6 @@ class EntitlementsApi:
 
         :param id: ID of the entitlement to patch (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param json_patch_operation:
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
@@ -3006,7 +2875,6 @@ class EntitlementsApi:
 
         _param = self._patch_entitlement_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3033,7 +2901,6 @@ class EntitlementsApi:
     def _patch_entitlement_serialize(
         self,
         id,
-        x_sail_point_experimental,
         json_patch_operation,
         _request_auth,
         _content_type,
@@ -3061,8 +2928,6 @@ class EntitlementsApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if json_patch_operation is not None:
@@ -3120,7 +2985,6 @@ class EntitlementsApi:
         self,
         id: Annotated[StrictStr, Field(description="Entitlement ID")],
         entitlement_request_config: EntitlementRequestConfig,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3140,8 +3004,6 @@ class EntitlementsApi:
 
         :param id: Entitlement ID (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param entitlement_request_config: (required)
         :type entitlement_request_config: EntitlementRequestConfig
         :param _request_timeout: timeout setting for this request. If one
@@ -3168,7 +3030,6 @@ class EntitlementsApi:
 
         _param = self._put_entitlement_request_config_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             entitlement_request_config=entitlement_request_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3201,7 +3062,6 @@ class EntitlementsApi:
         self,
         id: Annotated[StrictStr, Field(description="Entitlement ID")],
         entitlement_request_config: EntitlementRequestConfig,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3221,8 +3081,6 @@ class EntitlementsApi:
 
         :param id: Entitlement ID (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param entitlement_request_config: (required)
         :type entitlement_request_config: EntitlementRequestConfig
         :param _request_timeout: timeout setting for this request. If one
@@ -3249,7 +3107,6 @@ class EntitlementsApi:
 
         _param = self._put_entitlement_request_config_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             entitlement_request_config=entitlement_request_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3282,7 +3139,6 @@ class EntitlementsApi:
         self,
         id: Annotated[StrictStr, Field(description="Entitlement ID")],
         entitlement_request_config: EntitlementRequestConfig,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3302,8 +3158,6 @@ class EntitlementsApi:
 
         :param id: Entitlement ID (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param entitlement_request_config: (required)
         :type entitlement_request_config: EntitlementRequestConfig
         :param _request_timeout: timeout setting for this request. If one
@@ -3330,7 +3184,6 @@ class EntitlementsApi:
 
         _param = self._put_entitlement_request_config_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             entitlement_request_config=entitlement_request_config,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3357,7 +3210,6 @@ class EntitlementsApi:
     def _put_entitlement_request_config_serialize(
         self,
         id,
-        x_sail_point_experimental,
         entitlement_request_config,
         _request_auth,
         _content_type,
@@ -3384,8 +3236,6 @@ class EntitlementsApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if entitlement_request_config is not None:
@@ -3442,7 +3292,6 @@ class EntitlementsApi:
     def reset_source_entitlements(
         self,
         id: Annotated[StrictStr, Field(description="ID of source for the entitlement reset")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3462,8 +3311,6 @@ class EntitlementsApi:
 
         :param id: ID of source for the entitlement reset (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3488,7 +3335,6 @@ class EntitlementsApi:
 
         _param = self._reset_source_entitlements_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3518,7 +3364,6 @@ class EntitlementsApi:
     def reset_source_entitlements_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of source for the entitlement reset")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3538,8 +3383,6 @@ class EntitlementsApi:
 
         :param id: ID of source for the entitlement reset (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3564,7 +3407,6 @@ class EntitlementsApi:
 
         _param = self._reset_source_entitlements_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3594,7 +3436,6 @@ class EntitlementsApi:
     def reset_source_entitlements_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of source for the entitlement reset")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3614,8 +3455,6 @@ class EntitlementsApi:
 
         :param id: ID of source for the entitlement reset (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3640,7 +3479,6 @@ class EntitlementsApi:
 
         _param = self._reset_source_entitlements_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3665,7 +3503,6 @@ class EntitlementsApi:
     def _reset_source_entitlements_serialize(
         self,
         id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -3691,8 +3528,6 @@ class EntitlementsApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -3734,7 +3569,6 @@ class EntitlementsApi:
     def update_entitlements_in_bulk(
         self,
         entitlement_bulk_update_request: EntitlementBulkUpdateRequest,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3752,8 +3586,6 @@ class EntitlementsApi:
 
         This API applies an update to every entitlement of the list.   The number of entitlements to update is limited to 50 items maximum.   The JsonPatch update follows the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. examples of allowed operations : `**{ \"op\": \"replace\", \"path\": \"/privileged\", \"value\": boolean }**` `**{ \"op\": \"replace\", \"path\": \"/requestable\",\"value\": boolean }**` `**{ \"op\": \"replace\", \"path\": \"/privilegeOverride/overrideLevel\",\"value\": string }**`  A token with ORG_ADMIN or API authority is required to call this API. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param entitlement_bulk_update_request: (required)
         :type entitlement_bulk_update_request: EntitlementBulkUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -3779,7 +3611,6 @@ class EntitlementsApi:
         """ # noqa: E501
 
         _param = self._update_entitlements_in_bulk_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             entitlement_bulk_update_request=entitlement_bulk_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3810,7 +3641,6 @@ class EntitlementsApi:
     def update_entitlements_in_bulk_with_http_info(
         self,
         entitlement_bulk_update_request: EntitlementBulkUpdateRequest,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3828,8 +3658,6 @@ class EntitlementsApi:
 
         This API applies an update to every entitlement of the list.   The number of entitlements to update is limited to 50 items maximum.   The JsonPatch update follows the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. examples of allowed operations : `**{ \"op\": \"replace\", \"path\": \"/privileged\", \"value\": boolean }**` `**{ \"op\": \"replace\", \"path\": \"/requestable\",\"value\": boolean }**` `**{ \"op\": \"replace\", \"path\": \"/privilegeOverride/overrideLevel\",\"value\": string }**`  A token with ORG_ADMIN or API authority is required to call this API. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param entitlement_bulk_update_request: (required)
         :type entitlement_bulk_update_request: EntitlementBulkUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -3855,7 +3683,6 @@ class EntitlementsApi:
         """ # noqa: E501
 
         _param = self._update_entitlements_in_bulk_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             entitlement_bulk_update_request=entitlement_bulk_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3886,7 +3713,6 @@ class EntitlementsApi:
     def update_entitlements_in_bulk_without_preload_content(
         self,
         entitlement_bulk_update_request: EntitlementBulkUpdateRequest,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3904,8 +3730,6 @@ class EntitlementsApi:
 
         This API applies an update to every entitlement of the list.   The number of entitlements to update is limited to 50 items maximum.   The JsonPatch update follows the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. examples of allowed operations : `**{ \"op\": \"replace\", \"path\": \"/privileged\", \"value\": boolean }**` `**{ \"op\": \"replace\", \"path\": \"/requestable\",\"value\": boolean }**` `**{ \"op\": \"replace\", \"path\": \"/privilegeOverride/overrideLevel\",\"value\": string }**`  A token with ORG_ADMIN or API authority is required to call this API. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param entitlement_bulk_update_request: (required)
         :type entitlement_bulk_update_request: EntitlementBulkUpdateRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -3931,7 +3755,6 @@ class EntitlementsApi:
         """ # noqa: E501
 
         _param = self._update_entitlements_in_bulk_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             entitlement_bulk_update_request=entitlement_bulk_update_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3956,7 +3779,6 @@ class EntitlementsApi:
 
     def _update_entitlements_in_bulk_serialize(
         self,
-        x_sail_point_experimental,
         entitlement_bulk_update_request,
         _request_auth,
         _content_type,
@@ -3981,8 +3803,6 @@ class EntitlementsApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if entitlement_bulk_update_request is not None:

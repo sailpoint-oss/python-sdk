@@ -56,11 +56,10 @@ with sailpoint.v2025.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2025.AccessModelMetadataApi(api_client)
     key = 'iscPrivacy' # str | Technical name of the Attribute.
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
         # Get access model metadata attribute
-        api_response = api_instance.get_access_model_metadata_attribute(key, x_sail_point_experimental)
+        api_response = api_instance.get_access_model_metadata_attribute(key)
         print("The response of AccessModelMetadataApi->get_access_model_metadata_attribute:\n")
         pprint(api_response)
     except ApiException as e:
@@ -377,6 +376,7 @@ Class | Method | HTTP request | Description
 *IdentitiesApi* | [**get_identity_ownership_details**](sailpoint/v2025/docs/IdentitiesApi.md#get_identity_ownership_details) | **GET** /identities/{identityId}/ownership | Get ownership details
 *IdentitiesApi* | [**get_role_assignment**](sailpoint/v2025/docs/IdentitiesApi.md#get_role_assignment) | **GET** /identities/{identityId}/role-assignments/{assignmentId} | Role assignment details
 *IdentitiesApi* | [**get_role_assignments**](sailpoint/v2025/docs/IdentitiesApi.md#get_role_assignments) | **GET** /identities/{identityId}/role-assignments | List role assignments
+*IdentitiesApi* | [**list_entitlements_by_identity**](sailpoint/v2025/docs/IdentitiesApi.md#list_entitlements_by_identity) | **GET** /entitlements/identities/{id}/entitlements | List of entitlements by identity.
 *IdentitiesApi* | [**list_identities**](sailpoint/v2025/docs/IdentitiesApi.md#list_identities) | **GET** /identities | List identities
 *IdentitiesApi* | [**reset_identity**](sailpoint/v2025/docs/IdentitiesApi.md#reset_identity) | **POST** /identities/{id}/reset | Reset an identity
 *IdentitiesApi* | [**send_identity_verification_account_token**](sailpoint/v2025/docs/IdentitiesApi.md#send_identity_verification_account_token) | **POST** /identities/{id}/verification/account/send | Send password reset email
@@ -1290,6 +1290,7 @@ Class | Method | HTTP request | Description
  - [IdentityEntitlementDetails](sailpoint/v2025/docs/IdentityEntitlementDetails.md)
  - [IdentityEntitlementDetailsAccountTarget](sailpoint/v2025/docs/IdentityEntitlementDetailsAccountTarget.md)
  - [IdentityEntitlementDetailsEntitlementDto](sailpoint/v2025/docs/IdentityEntitlementDetailsEntitlementDto.md)
+ - [IdentityEntitlements](sailpoint/v2025/docs/IdentityEntitlements.md)
  - [IdentityExceptionReportReference](sailpoint/v2025/docs/IdentityExceptionReportReference.md)
  - [IdentityHistoryResponse](sailpoint/v2025/docs/IdentityHistoryResponse.md)
  - [IdentityLifecycleState](sailpoint/v2025/docs/IdentityLifecycleState.md)

@@ -639,6 +639,7 @@ sailpoint/v2025/docs/IdentityEntitiesIdentityEntity.md
 sailpoint/v2025/docs/IdentityEntitlementDetails.md
 sailpoint/v2025/docs/IdentityEntitlementDetailsAccountTarget.md
 sailpoint/v2025/docs/IdentityEntitlementDetailsEntitlementDto.md
+sailpoint/v2025/docs/IdentityEntitlements.md
 sailpoint/v2025/docs/IdentityExceptionReportReference.md
 sailpoint/v2025/docs/IdentityHistoryApi.md
 sailpoint/v2025/docs/IdentityHistoryResponse.md
@@ -1842,6 +1843,7 @@ sailpoint/v2025/models/identity_entities_identity_entity.py
 sailpoint/v2025/models/identity_entitlement_details.py
 sailpoint/v2025/models/identity_entitlement_details_account_target.py
 sailpoint/v2025/models/identity_entitlement_details_entitlement_dto.py
+sailpoint/v2025/models/identity_entitlements.py
 sailpoint/v2025/models/identity_exception_report_reference.py
 sailpoint/v2025/models/identity_history_response.py
 sailpoint/v2025/models/identity_lifecycle_state.py
@@ -3032,6 +3034,7 @@ sailpoint/v2025/test/test_identity_entities_identity_entity.py
 sailpoint/v2025/test/test_identity_entitlement_details.py
 sailpoint/v2025/test/test_identity_entitlement_details_account_target.py
 sailpoint/v2025/test/test_identity_entitlement_details_entitlement_dto.py
+sailpoint/v2025/test/test_identity_entitlements.py
 sailpoint/v2025/test/test_identity_exception_report_reference.py
 sailpoint/v2025/test/test_identity_history_api.py
 sailpoint/v2025/test/test_identity_history_response.py

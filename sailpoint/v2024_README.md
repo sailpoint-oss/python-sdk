@@ -56,11 +56,10 @@ with sailpoint.v2024.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2024.AccessModelMetadataApi(api_client)
     key = 'iscPrivacy' # str | Technical name of the Attribute.
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
         # Get access model metadata attribute
-        api_response = api_instance.get_access_model_metadata_attribute(key, x_sail_point_experimental)
+        api_response = api_instance.get_access_model_metadata_attribute(key)
         print("The response of AccessModelMetadataApi->get_access_model_metadata_attribute:\n")
         pprint(api_response)
     except ApiException as e:

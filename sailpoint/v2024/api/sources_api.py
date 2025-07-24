@@ -8267,7 +8267,6 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="Source Id")],
         file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8287,8 +8286,6 @@ class SourcesApi:
 
         :param source_id: Source Id (required)
         :type source_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param file: The CSV file containing the source entitlements to aggregate.
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -8315,7 +8312,6 @@ class SourcesApi:
 
         _param = self._import_entitlements_serialize(
             source_id=source_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -8347,7 +8343,6 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="Source Id")],
         file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8367,8 +8362,6 @@ class SourcesApi:
 
         :param source_id: Source Id (required)
         :type source_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param file: The CSV file containing the source entitlements to aggregate.
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -8395,7 +8388,6 @@ class SourcesApi:
 
         _param = self._import_entitlements_serialize(
             source_id=source_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -8427,7 +8419,6 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="Source Id")],
         file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8447,8 +8438,6 @@ class SourcesApi:
 
         :param source_id: Source Id (required)
         :type source_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param file: The CSV file containing the source entitlements to aggregate.
         :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -8475,7 +8464,6 @@ class SourcesApi:
 
         _param = self._import_entitlements_serialize(
             source_id=source_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -8501,7 +8489,6 @@ class SourcesApi:
     def _import_entitlements_serialize(
         self,
         source_id,
-        x_sail_point_experimental,
         file,
         _request_auth,
         _content_type,
@@ -8528,8 +8515,6 @@ class SourcesApi:
             _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         if file is not None:
             _files['file'] = file
