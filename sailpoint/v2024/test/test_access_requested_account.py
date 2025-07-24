@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2024.models.approval_info_response import ApprovalInfoResponse
+from sailpoint.v2024.models.access_requested_account import AccessRequestedAccount
 
-class TestApprovalInfoResponse(unittest.TestCase):
-    """ApprovalInfoResponse unit test stubs"""
+class TestAccessRequestedAccount(unittest.TestCase):
+    """AccessRequestedAccount unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,27 +25,31 @@ class TestApprovalInfoResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ApprovalInfoResponse:
-        """Test ApprovalInfoResponse
+    def make_instance(self, include_optional) -> AccessRequestedAccount:
+        """Test AccessRequestedAccount
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ApprovalInfoResponse`
+        # uncomment below to create an instance of `AccessRequestedAccount`
         """
-        model = ApprovalInfoResponse()
+        model = AccessRequestedAccount()
         if include_optional:
-            return ApprovalInfoResponse(
-                id = '8a80828f643d484f01643e14202e2000',
-                name = 'John Snow',
-                status = 'Approved'
+            return AccessRequestedAccount(
+                id = '2c91808a77ff216301782327a50f09bf',
+                native_identity = 'dr.arden.ogahn.d',
+                display_name = 'Adam Archer',
+                source_id = '8a80828f643d484f01643e14202e206f',
+                source_name = 'JDBC Entitlements Source',
+                entitlement_count = 2,
+                access_type = 'account'
             )
         else:
-            return ApprovalInfoResponse(
+            return AccessRequestedAccount(
         )
         """
 
-    def testApprovalInfoResponse(self):
-        """Test ApprovalInfoResponse"""
+    def testAccessRequestedAccount(self):
+        """Test AccessRequestedAccount"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

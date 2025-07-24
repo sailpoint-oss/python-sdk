@@ -35,21 +35,24 @@ class TestAccessItemEntitlementResponse(unittest.TestCase):
         model = AccessItemEntitlementResponse()
         if include_optional:
             return AccessItemEntitlementResponse(
-                access_type = 'entitlement',
                 id = '2c918087763e69d901763e72e97f006f',
+                access_type = 'entitlement',
+                display_name = 'Dr. Arden Rogahn MD',
+                source_name = 'DataScienceDataset',
                 attribute = 'groups',
                 value = 'Upward mobility access',
-                entitlement_type = 'entitlement',
-                source_name = 'DataScienceDataset',
-                source_id = '2793o32dwd',
+                type = 'ENTITLEMENT',
                 description = 'Entitlement - Workday/Citizenship access',
-                display_name = 'Dr. Arden Rogahn MD',
+                source_id = '2793o32dwd',
                 standalone = True,
                 privileged = False,
                 cloud_governed = True
             )
         else:
             return AccessItemEntitlementResponse(
+                attribute = 'groups',
+                value = 'Upward mobility access',
+                type = 'ENTITLEMENT',
                 standalone = True,
                 privileged = False,
                 cloud_governed = True,

@@ -28,15 +28,15 @@ class IdentityCertified(BaseModel):
     """
     IdentityCertified
     """ # noqa: E501
-    certification_id: Optional[StrictStr] = Field(default=None, description="the id of the certification item", alias="certificationId")
-    certification_name: Optional[StrictStr] = Field(default=None, description="the certification item name", alias="certificationName")
+    certification_id: StrictStr = Field(description="the id of the certification item", alias="certificationId")
+    certification_name: StrictStr = Field(description="the certification item name", alias="certificationName")
     signed_date: Optional[StrictStr] = Field(default=None, description="the date ceritification was signed", alias="signedDate")
     certifiers: Optional[List[CertifierResponse]] = Field(default=None, description="this field is deprecated and may go away")
     reviewers: Optional[List[CertifierResponse]] = Field(default=None, description="The list of identities who review this certification")
     signer: Optional[CertifierResponse] = None
     event_type: Optional[StrictStr] = Field(default=None, description="the event type", alias="eventType")
-    dt: Optional[StrictStr] = Field(default=None, description="the date of event")
-    __properties: ClassVar[List[str]] = ["certificationId", "certificationName", "signedDate", "certifiers", "reviewers", "signer", "eventType", "dt"]
+    date_time: Optional[StrictStr] = Field(default=None, description="the date of event", alias="dateTime")
+    __properties: ClassVar[List[str]] = ["certificationId", "certificationName", "signedDate", "certifiers", "reviewers", "signer", "eventType", "dateTime"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -113,7 +113,7 @@ class IdentityCertified(BaseModel):
             "reviewers": [CertifierResponse.from_dict(_item) for _item in obj["reviewers"]] if obj.get("reviewers") is not None else None,
             "signer": CertifierResponse.from_dict(obj["signer"]) if obj.get("signer") is not None else None,
             "eventType": obj.get("eventType"),
-            "dt": obj.get("dt")
+            "dateTime": obj.get("dateTime")
         })
         return _obj
 

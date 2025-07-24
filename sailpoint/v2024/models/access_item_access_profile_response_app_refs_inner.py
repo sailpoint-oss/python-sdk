@@ -20,18 +20,16 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2024.models.access_request_item_response import AccessRequestItemResponse
 from typing import Optional, Set
 from typing_extensions import Self
 
-class AccessRequestResponse1(BaseModel):
+class AccessItemAccessProfileResponseAppRefsInner(BaseModel):
     """
-    AccessRequestResponse1
+    AccessItemAccessProfileResponseAppRefsInner
     """ # noqa: E501
-    requester_id: Optional[StrictStr] = Field(default=None, description="the requester Id", alias="requesterId")
-    requester_name: Optional[StrictStr] = Field(default=None, description="the requesterName", alias="requesterName")
-    items: Optional[List[AccessRequestItemResponse]] = None
-    __properties: ClassVar[List[str]] = ["requesterId", "requesterName", "items"]
+    cloud_app_id: Optional[StrictStr] = Field(default=None, description="the cloud app id associated with the access profile", alias="cloudAppId")
+    cloud_app_name: Optional[StrictStr] = Field(default=None, description="the cloud app name associated with the access profile", alias="cloudAppName")
+    __properties: ClassVar[List[str]] = ["cloudAppId", "cloudAppName"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +49,7 @@ class AccessRequestResponse1(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AccessRequestResponse1 from a JSON string"""
+        """Create an instance of AccessItemAccessProfileResponseAppRefsInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,18 +70,11 @@ class AccessRequestResponse1(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in items (list)
-        _items = []
-        if self.items:
-            for _item_items in self.items:
-                if _item_items:
-                    _items.append(_item_items.to_dict())
-            _dict['items'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AccessRequestResponse1 from a dict"""
+        """Create an instance of AccessItemAccessProfileResponseAppRefsInner from a dict"""
         if obj is None:
             return None
 
@@ -91,9 +82,8 @@ class AccessRequestResponse1(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "requesterId": obj.get("requesterId"),
-            "requesterName": obj.get("requesterName"),
-            "items": [AccessRequestItemResponse.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None
+            "cloudAppId": obj.get("cloudAppId"),
+            "cloudAppName": obj.get("cloudAppName")
         })
         return _obj
 

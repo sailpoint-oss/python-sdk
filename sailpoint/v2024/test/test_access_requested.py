@@ -35,16 +35,34 @@ class TestAccessRequested(unittest.TestCase):
         model = AccessRequested()
         if include_optional:
             return AccessRequested(
-                access_request = sailpoint.v2024.models.access_request_response_1.AccessRequestResponse_1(
-                    requester_id = '2c91808a77ff216301782327a50f09bf', 
-                    requester_name = 'Bing C', 
-                    items = [{operation=Add, accessItemType=role, name=Role-1, decision=APPROVED, description=The role descrition, sourceId=8a80828f643d484f01643e14202e206f, sourceName=Source1, approvalInfos=[{name=John Snow, id=8a80828f643d484f01643e14202e2000, status=Approved}]}], ),
+                event_type = 'AccountStatusChanged',
                 identity_id = '8a80828f643d484f01643e14202e206f',
-                event_type = 'AccessRequested',
-                dt = '2019-03-08T22:37:33.901Z'
+                date_time = '2019-03-08T22:37:33.901Z',
+                account = sailpoint.v2024.models.access_requested_account.AccessRequested_account(
+                    id = '2c91808a77ff216301782327a50f09bf', 
+                    native_identity = 'dr.arden.ogahn.d', 
+                    display_name = 'Adam Archer', 
+                    source_id = '8a80828f643d484f01643e14202e206f', 
+                    source_name = 'JDBC Entitlements Source', 
+                    entitlement_count = 2, 
+                    access_type = 'account', ),
+                status_change = sailpoint.v2024.models.access_requested_status_change.AccessRequested_statusChange(
+                    previous_status = 'enabled', 
+                    new_status = 'disabled', )
             )
         else:
             return AccessRequested(
+                account = sailpoint.v2024.models.access_requested_account.AccessRequested_account(
+                    id = '2c91808a77ff216301782327a50f09bf', 
+                    native_identity = 'dr.arden.ogahn.d', 
+                    display_name = 'Adam Archer', 
+                    source_id = '8a80828f643d484f01643e14202e206f', 
+                    source_name = 'JDBC Entitlements Source', 
+                    entitlement_count = 2, 
+                    access_type = 'account', ),
+                status_change = sailpoint.v2024.models.access_requested_status_change.AccessRequested_statusChange(
+                    previous_status = 'enabled', 
+                    new_status = 'disabled', ),
         )
         """
 

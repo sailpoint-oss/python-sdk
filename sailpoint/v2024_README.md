@@ -381,7 +381,7 @@ Class | Method | HTTP request | Description
 *IdentityHistoryApi* | [**compare_identity_snapshots**](sailpoint/v2024/docs/IdentityHistoryApi.md#compare_identity_snapshots) | **GET** /historical-identities/{id}/compare | Gets a difference of count for each access item types for the given identity between 2 snapshots
 *IdentityHistoryApi* | [**compare_identity_snapshots_access_type**](sailpoint/v2024/docs/IdentityHistoryApi.md#compare_identity_snapshots_access_type) | **GET** /historical-identities/{id}/compare/{access-type} | Gets a list of differences of specific accesstype for the given identity between 2 snapshots
 *IdentityHistoryApi* | [**get_historical_identity**](sailpoint/v2024/docs/IdentityHistoryApi.md#get_historical_identity) | **GET** /historical-identities/{id} | Get latest snapshot of identity
-*IdentityHistoryApi* | [**get_historical_identity_events**](sailpoint/v2024/docs/IdentityHistoryApi.md#get_historical_identity_events) | **GET** /historical-identities/{id}/events | Lists all events for the given identity
+*IdentityHistoryApi* | [**get_historical_identity_events**](sailpoint/v2024/docs/IdentityHistoryApi.md#get_historical_identity_events) | **GET** /historical-identities/{id}/events | List identity event history
 *IdentityHistoryApi* | [**get_identity_snapshot**](sailpoint/v2024/docs/IdentityHistoryApi.md#get_identity_snapshot) | **GET** /historical-identities/{id}/snapshots/{date} | Gets an identity snapshot at a given date
 *IdentityHistoryApi* | [**get_identity_snapshot_summary**](sailpoint/v2024/docs/IdentityHistoryApi.md#get_identity_snapshot_summary) | **GET** /historical-identities/{id}/snapshot-summary | Gets the summary for the event count for a specific identity
 *IdentityHistoryApi* | [**get_identity_start_date**](sailpoint/v2024/docs/IdentityHistoryApi.md#get_identity_start_date) | **GET** /historical-identities/{id}/start-date | Gets the start date of the identity
@@ -788,6 +788,7 @@ Class | Method | HTTP request | Description
  - [AccessCriteria](sailpoint/v2024/docs/AccessCriteria.md)
  - [AccessCriteriaCriteriaListInner](sailpoint/v2024/docs/AccessCriteriaCriteriaListInner.md)
  - [AccessItemAccessProfileResponse](sailpoint/v2024/docs/AccessItemAccessProfileResponse.md)
+ - [AccessItemAccessProfileResponseAppRefsInner](sailpoint/v2024/docs/AccessItemAccessProfileResponseAppRefsInner.md)
  - [AccessItemAccountResponse](sailpoint/v2024/docs/AccessItemAccountResponse.md)
  - [AccessItemAppResponse](sailpoint/v2024/docs/AccessItemAppResponse.md)
  - [AccessItemApproverDto](sailpoint/v2024/docs/AccessItemApproverDto.md)
@@ -832,7 +833,6 @@ Class | Method | HTTP request | Description
  - [AccessRequestDynamicApprover1](sailpoint/v2024/docs/AccessRequestDynamicApprover1.md)
  - [AccessRequestDynamicApproverRequestedItemsInner](sailpoint/v2024/docs/AccessRequestDynamicApproverRequestedItemsInner.md)
  - [AccessRequestItem](sailpoint/v2024/docs/AccessRequestItem.md)
- - [AccessRequestItemResponse](sailpoint/v2024/docs/AccessRequestItemResponse.md)
  - [AccessRequestPhases](sailpoint/v2024/docs/AccessRequestPhases.md)
  - [AccessRequestPostApproval](sailpoint/v2024/docs/AccessRequestPostApproval.md)
  - [AccessRequestPostApprovalRequestedItemsStatusInner](sailpoint/v2024/docs/AccessRequestPostApprovalRequestedItemsStatusInner.md)
@@ -849,10 +849,11 @@ Class | Method | HTTP request | Description
  - [AccessRequestRecommendationItemDetailAccess](sailpoint/v2024/docs/AccessRequestRecommendationItemDetailAccess.md)
  - [AccessRequestRecommendationItemType](sailpoint/v2024/docs/AccessRequestRecommendationItemType.md)
  - [AccessRequestResponse](sailpoint/v2024/docs/AccessRequestResponse.md)
- - [AccessRequestResponse1](sailpoint/v2024/docs/AccessRequestResponse1.md)
  - [AccessRequestTracking](sailpoint/v2024/docs/AccessRequestTracking.md)
  - [AccessRequestType](sailpoint/v2024/docs/AccessRequestType.md)
  - [AccessRequested](sailpoint/v2024/docs/AccessRequested.md)
+ - [AccessRequestedAccount](sailpoint/v2024/docs/AccessRequestedAccount.md)
+ - [AccessRequestedStatusChange](sailpoint/v2024/docs/AccessRequestedStatusChange.md)
  - [AccessReviewItem](sailpoint/v2024/docs/AccessReviewItem.md)
  - [AccessReviewReassignment](sailpoint/v2024/docs/AccessReviewReassignment.md)
  - [AccessSummary](sailpoint/v2024/docs/AccessSummary.md)
@@ -896,8 +897,6 @@ Class | Method | HTTP request | Description
  - [AccountRequestResult](sailpoint/v2024/docs/AccountRequestResult.md)
  - [AccountSource](sailpoint/v2024/docs/AccountSource.md)
  - [AccountStatusChanged](sailpoint/v2024/docs/AccountStatusChanged.md)
- - [AccountStatusChangedAccount](sailpoint/v2024/docs/AccountStatusChangedAccount.md)
- - [AccountStatusChangedStatusChange](sailpoint/v2024/docs/AccountStatusChangedStatusChange.md)
  - [AccountToggleRequest](sailpoint/v2024/docs/AccountToggleRequest.md)
  - [AccountUncorrelated](sailpoint/v2024/docs/AccountUncorrelated.md)
  - [AccountUncorrelatedAccount](sailpoint/v2024/docs/AccountUncorrelatedAccount.md)
@@ -933,7 +932,6 @@ Class | Method | HTTP request | Description
  - [ApprovalDescription](sailpoint/v2024/docs/ApprovalDescription.md)
  - [ApprovalForwardHistory](sailpoint/v2024/docs/ApprovalForwardHistory.md)
  - [ApprovalIdentity](sailpoint/v2024/docs/ApprovalIdentity.md)
- - [ApprovalInfoResponse](sailpoint/v2024/docs/ApprovalInfoResponse.md)
  - [ApprovalItemDetails](sailpoint/v2024/docs/ApprovalItemDetails.md)
  - [ApprovalItems](sailpoint/v2024/docs/ApprovalItems.md)
  - [ApprovalName](sailpoint/v2024/docs/ApprovalName.md)
@@ -1332,6 +1330,7 @@ Class | Method | HTTP request | Description
  - [ListFormElementDataByElementIDResponse](sailpoint/v2024/docs/ListFormElementDataByElementIDResponse.md)
  - [ListFormInstancesByTenantResponse](sailpoint/v2024/docs/ListFormInstancesByTenantResponse.md)
  - [ListIdentityAccessItems200ResponseInner](sailpoint/v2024/docs/ListIdentityAccessItems200ResponseInner.md)
+ - [ListIdentitySnapshotAccessItems200ResponseInner](sailpoint/v2024/docs/ListIdentitySnapshotAccessItems200ResponseInner.md)
  - [ListPredefinedSelectOptionsResponse](sailpoint/v2024/docs/ListPredefinedSelectOptionsResponse.md)
  - [ListWorkgroupMembers200ResponseInner](sailpoint/v2024/docs/ListWorkgroupMembers200ResponseInner.md)
  - [LoadAccountsTask](sailpoint/v2024/docs/LoadAccountsTask.md)

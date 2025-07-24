@@ -35,15 +35,24 @@ class TestAttributesChanged(unittest.TestCase):
         model = AttributesChanged()
         if include_optional:
             return AttributesChanged(
-                changes = [
-                    {name=firstname, previousValue=adam, newValue=zampa}
+                attribute_changes = [
+                    sailpoint.beta.models.attribute_change.AttributeChange(
+                        name = 'firstname', 
+                        previous_value = 'adam', 
+                        new_value = 'zampa', )
                     ],
-                event_type = '',
-                identity_id = '',
-                dt = ''
+                event_type = 'AttributesChanged',
+                identity_id = '8a80828f643d484f01643e14202e206f',
+                date_time = '2019-03-08T22:37:33.901Z'
             )
         else:
             return AttributesChanged(
+                attribute_changes = [
+                    sailpoint.beta.models.attribute_change.AttributeChange(
+                        name = 'firstname', 
+                        previous_value = 'adam', 
+                        new_value = 'zampa', )
+                    ],
         )
         """
 

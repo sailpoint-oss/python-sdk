@@ -36,7 +36,7 @@ class TestAccountStatusChangedStatusChange(unittest.TestCase):
         if include_optional:
             return AccountStatusChangedStatusChange(
                 previous_status = 'enabled',
-                new_status = 'enabled'
+                new_status = 'disabled'
             )
         else:
             return AccountStatusChangedStatusChange(

@@ -26,6 +26,7 @@ from sailpoint.beta.models.identity_history_response import IdentityHistoryRespo
 from sailpoint.beta.models.identity_list_item import IdentityListItem
 from sailpoint.beta.models.identity_snapshot_summary_response import IdentitySnapshotSummaryResponse
 from sailpoint.beta.models.list_identity_access_items200_response_inner import ListIdentityAccessItems200ResponseInner
+from sailpoint.beta.models.list_identity_snapshot_access_items200_response_inner import ListIdentitySnapshotAccessItems200ResponseInner
 from sailpoint.beta.models.metric_response import MetricResponse
 
 from sailpoint.beta.api_client import ApiClient, RequestSerialized
@@ -1120,7 +1121,7 @@ class IdentityHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[GetHistoricalIdentityEvents200ResponseInner]:
-        """Lists all events for the given identity
+        """List identity event history
 
         This method retrieves all access events for the identity Requires authorization scope of 'idn:identity-history:read' 
 
@@ -1217,7 +1218,7 @@ class IdentityHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[GetHistoricalIdentityEvents200ResponseInner]]:
-        """Lists all events for the given identity
+        """List identity event history
 
         This method retrieves all access events for the identity Requires authorization scope of 'idn:identity-history:read' 
 
@@ -1314,7 +1315,7 @@ class IdentityHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Lists all events for the given identity
+        """List identity event history
 
         This method retrieves all access events for the identity Requires authorization scope of 'idn:identity-history:read' 
 
@@ -3193,7 +3194,7 @@ class IdentityHistoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[ListIdentityAccessItems200ResponseInner]:
+    ) -> List[ListIdentitySnapshotAccessItems200ResponseInner]:
         """Get identity access items snapshot
 
         Use this API to get a list of identity access items at a specified date, filtered by item type.
@@ -3237,7 +3238,7 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[ListIdentityAccessItems200ResponseInner]",
+            '200': "List[ListIdentitySnapshotAccessItems200ResponseInner]",
             '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
@@ -3274,7 +3275,7 @@ class IdentityHistoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[ListIdentityAccessItems200ResponseInner]]:
+    ) -> ApiResponse[List[ListIdentitySnapshotAccessItems200ResponseInner]]:
         """Get identity access items snapshot
 
         Use this API to get a list of identity access items at a specified date, filtered by item type.
@@ -3318,7 +3319,7 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[ListIdentityAccessItems200ResponseInner]",
+            '200': "List[ListIdentitySnapshotAccessItems200ResponseInner]",
             '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
@@ -3399,7 +3400,7 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[ListIdentityAccessItems200ResponseInner]",
+            '200': "List[ListIdentitySnapshotAccessItems200ResponseInner]",
             '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",

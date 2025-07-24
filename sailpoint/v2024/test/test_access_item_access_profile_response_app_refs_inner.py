@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2024.models.account_status_changed_account import AccountStatusChangedAccount
+from sailpoint.v2024.models.access_item_access_profile_response_app_refs_inner import AccessItemAccessProfileResponseAppRefsInner
 
-class TestAccountStatusChangedAccount(unittest.TestCase):
-    """AccountStatusChangedAccount unit test stubs"""
+class TestAccessItemAccessProfileResponseAppRefsInner(unittest.TestCase):
+    """AccessItemAccessProfileResponseAppRefsInner unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,31 +25,26 @@ class TestAccountStatusChangedAccount(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> AccountStatusChangedAccount:
-        """Test AccountStatusChangedAccount
+    def make_instance(self, include_optional) -> AccessItemAccessProfileResponseAppRefsInner:
+        """Test AccessItemAccessProfileResponseAppRefsInner
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `AccountStatusChangedAccount`
+        # uncomment below to create an instance of `AccessItemAccessProfileResponseAppRefsInner`
         """
-        model = AccountStatusChangedAccount()
+        model = AccessItemAccessProfileResponseAppRefsInner()
         if include_optional:
-            return AccountStatusChangedAccount(
-                id = '',
-                native_identity = '',
-                display_name = '',
-                source_id = '',
-                source_name = '',
-                entitlement_count = 56,
-                access_type = ''
+            return AccessItemAccessProfileResponseAppRefsInner(
+                cloud_app_id = '8c190e6787aa4ed9a90bd9d5344523fb',
+                cloud_app_name = 'Sample App'
             )
         else:
-            return AccountStatusChangedAccount(
+            return AccessItemAccessProfileResponseAppRefsInner(
         )
         """
 
-    def testAccountStatusChangedAccount(self):
-        """Test AccountStatusChangedAccount"""
+    def testAccessItemAccessProfileResponseAppRefsInner(self):
+        """Test AccessItemAccessProfileResponseAppRefsInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -41,10 +41,14 @@ class TestAccessRequested(unittest.TestCase):
                     items = [{operation=Add, accessItemType=role, name=Role-1, decision=APPROVED, description=The role descrition, sourceId=8a80828f643d484f01643e14202e206f, sourceName=Source1, approvalInfos=[{name=John Snow, id=8a80828f643d484f01643e14202e2000, status=Approved}]}], ),
                 identity_id = '8a80828f643d484f01643e14202e206f',
                 event_type = 'AccessRequested',
-                dt = '2019-03-08T22:37:33.901Z'
+                date_time = '2019-03-08T22:37:33.901Z'
             )
         else:
             return AccessRequested(
+                access_request = sailpoint.beta.models.access_request_response_1.AccessRequestResponse_1(
+                    requester_id = '2c91808a77ff216301782327a50f09bf', 
+                    requester_name = 'Bing C', 
+                    items = [{operation=Add, accessItemType=role, name=Role-1, decision=APPROVED, description=The role descrition, sourceId=8a80828f643d484f01643e14202e206f, sourceName=Source1, approvalInfos=[{name=John Snow, id=8a80828f643d484f01643e14202e2000, status=Approved}]}], ),
         )
         """
 

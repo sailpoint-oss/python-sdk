@@ -35,32 +35,38 @@ class TestListIdentityAccessItems200ResponseInner(unittest.TestCase):
         model = ListIdentityAccessItems200ResponseInner()
         if include_optional:
             return ListIdentityAccessItems200ResponseInner(
-                access_type = 'role',
                 id = '2c918087763e69d901763e72e97f006f',
-                name = 'sample',
-                source_name = 'Source Name',
-                source_id = '2793o32dwd',
-                description = 'Role - Workday/Citizenship access',
-                display_name = 'sample',
-                entitlement_count = '12',
-                app_display_name = 'AppName',
-                remove_date = '2024-07-01T06:00:00.00Z',
-                standalone = True,
-                revocable = True,
-                native_identity = 'dr.arden.ogahn.d',
-                app_role_id = '2c918087763e69d901763e72e97f006f',
+                access_type = 'app',
+                display_name = 'Display Name',
+                source_name = 'appName',
                 attribute = 'groups',
                 value = 'Upward mobility access',
-                entitlement_type = 'entitlement',
+                type = 'ENTITLEMENT',
+                description = 'Role - Workday/Citizenship access',
+                source_id = '2793o32dwd',
+                standalone = False,
                 privileged = False,
-                cloud_governed = True
+                cloud_governed = True,
+                entitlement_count = 12,
+                app_refs = [{cloudAppId=8c190e6787aa4ed9a90bd9d5344523fb, cloudAppName=Sample App}, {cloudAppId=2c91808a77ff216301782327a50f09bf, cloudAppName=Another App}],
+                remove_date = '2024-07-01T06:00:00.00Z',
+                revocable = True,
+                native_identity = 'dr.arden.ogahn.d',
+                app_role_id = '2c918087763e69d901763e72e97f006f'
             )
         else:
             return ListIdentityAccessItems200ResponseInner(
-                standalone = True,
-                revocable = True,
+                attribute = 'groups',
+                value = 'Upward mobility access',
+                type = 'ENTITLEMENT',
+                standalone = False,
                 privileged = False,
                 cloud_governed = True,
+                entitlement_count = 12,
+                app_refs = [{cloudAppId=8c190e6787aa4ed9a90bd9d5344523fb, cloudAppName=Sample App}, {cloudAppId=2c91808a77ff216301782327a50f09bf, cloudAppName=Another App}],
+                revocable = True,
+                native_identity = 'dr.arden.ogahn.d',
+                app_role_id = '2c918087763e69d901763e72e97f006f',
         )
         """
 

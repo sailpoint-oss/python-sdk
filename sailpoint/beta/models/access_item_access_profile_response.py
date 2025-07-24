@@ -18,8 +18,9 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.beta.models.access_item_access_profile_response_app_refs_inner import AccessItemAccessProfileResponseAppRefsInner
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,19 +28,18 @@ class AccessItemAccessProfileResponse(BaseModel):
     """
     AccessItemAccessProfileResponse
     """ # noqa: E501
-    access_type: Optional[StrictStr] = Field(default=None, description="the access item type. accessProfile in this case", alias="accessType")
     id: Optional[StrictStr] = Field(default=None, description="the access item id")
-    name: Optional[StrictStr] = Field(default=None, description="the access profile name")
-    source_name: Optional[StrictStr] = Field(default=None, description="the name of the source", alias="sourceName")
-    source_id: Optional[StrictStr] = Field(default=None, description="the id of the source", alias="sourceId")
-    description: Optional[StrictStr] = Field(default=None, description="the description for the access profile")
+    access_type: Optional[StrictStr] = Field(default=None, description="the access item type. accessProfile in this case", alias="accessType")
     display_name: Optional[StrictStr] = Field(default=None, description="the display name of the identity", alias="displayName")
-    entitlement_count: Optional[StrictStr] = Field(default=None, description="the number of entitlements the access profile will create", alias="entitlementCount")
-    app_display_name: Optional[StrictStr] = Field(default=None, description="the name of", alias="appDisplayName")
+    source_name: Optional[StrictStr] = Field(default=None, description="the name of the source", alias="sourceName")
+    entitlement_count: StrictInt = Field(description="the number of entitlements the access profile will create", alias="entitlementCount")
+    description: Optional[StrictStr] = Field(default=None, description="the description for the access profile")
+    source_id: Optional[StrictStr] = Field(default=None, description="the id of the source", alias="sourceId")
+    app_refs: List[AccessItemAccessProfileResponseAppRefsInner] = Field(description="the list of app ids associated with the access profile", alias="appRefs")
     remove_date: Optional[StrictStr] = Field(default=None, description="the date the access profile is no longer assigned to the specified identity", alias="removeDate")
-    standalone: StrictBool = Field(description="indicates whether the access profile is standalone")
-    revocable: StrictBool = Field(description="indicates whether the access profile is")
-    __properties: ClassVar[List[str]] = ["accessType", "id", "name", "sourceName", "sourceId", "description", "displayName", "entitlementCount", "appDisplayName", "removeDate", "standalone", "revocable"]
+    standalone: Optional[StrictBool] = Field(description="indicates whether the access profile is standalone")
+    revocable: Optional[StrictBool] = Field(description="indicates whether the access profile is revocable")
+    __properties: ClassVar[List[str]] = ["id", "accessType", "displayName", "sourceName", "entitlementCount", "description", "sourceId", "appRefs", "removeDate", "standalone", "revocable"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,6 +80,33 @@ class AccessItemAccessProfileResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in app_refs (list)
+        _items = []
+        if self.app_refs:
+            for _item_app_refs in self.app_refs:
+                if _item_app_refs:
+                    _items.append(_item_app_refs.to_dict())
+            _dict['appRefs'] = _items
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
+        # set to None if remove_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.remove_date is None and "remove_date" in self.model_fields_set:
+            _dict['removeDate'] = None
+
+        # set to None if standalone (nullable) is None
+        # and model_fields_set contains the field
+        if self.standalone is None and "standalone" in self.model_fields_set:
+            _dict['standalone'] = None
+
+        # set to None if revocable (nullable) is None
+        # and model_fields_set contains the field
+        if self.revocable is None and "revocable" in self.model_fields_set:
+            _dict['revocable'] = None
+
         return _dict
 
     @classmethod
@@ -92,15 +119,14 @@ class AccessItemAccessProfileResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accessType": obj.get("accessType"),
             "id": obj.get("id"),
-            "name": obj.get("name"),
-            "sourceName": obj.get("sourceName"),
-            "sourceId": obj.get("sourceId"),
-            "description": obj.get("description"),
+            "accessType": obj.get("accessType"),
             "displayName": obj.get("displayName"),
+            "sourceName": obj.get("sourceName"),
             "entitlementCount": obj.get("entitlementCount"),
-            "appDisplayName": obj.get("appDisplayName"),
+            "description": obj.get("description"),
+            "sourceId": obj.get("sourceId"),
+            "appRefs": [AccessItemAccessProfileResponseAppRefsInner.from_dict(_item) for _item in obj["appRefs"]] if obj.get("appRefs") is not None else None,
             "removeDate": obj.get("removeDate"),
             "standalone": obj.get("standalone"),
             "revocable": obj.get("revocable")

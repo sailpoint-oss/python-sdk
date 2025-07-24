@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v2025.models.access_item_associated_access_item import AccessItemAssociatedAccessItem
 from sailpoint.v2025.models.correlated_governance_event import CorrelatedGovernanceEvent
@@ -29,12 +29,23 @@ class AccessItemAssociated(BaseModel):
     """
     AccessItemAssociated
     """ # noqa: E501
-    access_item: Optional[AccessItemAssociatedAccessItem] = Field(default=None, alias="accessItem")
-    identity_id: Optional[StrictStr] = Field(default=None, description="the identity id", alias="identityId")
     event_type: Optional[StrictStr] = Field(default=None, description="the event type", alias="eventType")
-    dt: Optional[StrictStr] = Field(default=None, description="the date of event")
-    governance_event: Optional[CorrelatedGovernanceEvent] = Field(default=None, alias="governanceEvent")
-    __properties: ClassVar[List[str]] = ["accessItem", "identityId", "eventType", "dt", "governanceEvent"]
+    date_time: Optional[StrictStr] = Field(default=None, description="the date of event", alias="dateTime")
+    identity_id: Optional[StrictStr] = Field(default=None, description="the identity id", alias="identityId")
+    access_item: AccessItemAssociatedAccessItem = Field(alias="accessItem")
+    governance_event: Optional[CorrelatedGovernanceEvent] = Field(alias="governanceEvent")
+    access_item_type: Optional[StrictStr] = Field(default=None, description="the access item type", alias="accessItemType")
+    __properties: ClassVar[List[str]] = ["eventType", "dateTime", "identityId", "accessItem", "governanceEvent", "accessItemType"]
+
+    @field_validator('access_item_type')
+    def access_item_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['account', 'app', 'entitlement', 'role', 'accessProfile']):
+            warnings.warn(f"must be one of enum values ('account', 'app', 'entitlement', 'role', 'accessProfile') unknown value: {value}")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,6 +92,11 @@ class AccessItemAssociated(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of governance_event
         if self.governance_event:
             _dict['governanceEvent'] = self.governance_event.to_dict()
+        # set to None if governance_event (nullable) is None
+        # and model_fields_set contains the field
+        if self.governance_event is None and "governance_event" in self.model_fields_set:
+            _dict['governanceEvent'] = None
+
         return _dict
 
     @classmethod
@@ -93,11 +109,12 @@ class AccessItemAssociated(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accessItem": AccessItemAssociatedAccessItem.from_dict(obj["accessItem"]) if obj.get("accessItem") is not None else None,
-            "identityId": obj.get("identityId"),
             "eventType": obj.get("eventType"),
-            "dt": obj.get("dt"),
-            "governanceEvent": CorrelatedGovernanceEvent.from_dict(obj["governanceEvent"]) if obj.get("governanceEvent") is not None else None
+            "dateTime": obj.get("dateTime"),
+            "identityId": obj.get("identityId"),
+            "accessItem": AccessItemAssociatedAccessItem.from_dict(obj["accessItem"]) if obj.get("accessItem") is not None else None,
+            "governanceEvent": CorrelatedGovernanceEvent.from_dict(obj["governanceEvent"]) if obj.get("governanceEvent") is not None else None,
+            "accessItemType": obj.get("accessItemType")
         })
         return _obj
 

@@ -26,6 +26,7 @@ from sailpoint.v2025.models.identity_history_response import IdentityHistoryResp
 from sailpoint.v2025.models.identity_list_item import IdentityListItem
 from sailpoint.v2025.models.identity_snapshot_summary_response import IdentitySnapshotSummaryResponse
 from sailpoint.v2025.models.list_identity_access_items200_response_inner import ListIdentityAccessItems200ResponseInner
+from sailpoint.v2025.models.list_identity_snapshot_access_items200_response_inner import ListIdentitySnapshotAccessItems200ResponseInner
 from sailpoint.v2025.models.metric_response import MetricResponse
 
 from sailpoint.v2025.api_client import ApiClient, RequestSerialized
@@ -1166,7 +1167,7 @@ class IdentityHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[GetHistoricalIdentityEvents200ResponseInner]:
-        """Lists all events for the given identity
+        """List identity event history
 
         This method retrieves all access events for the identity Requires authorization scope of 'idn:identity-history:read' 
 
@@ -1267,7 +1268,7 @@ class IdentityHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[GetHistoricalIdentityEvents200ResponseInner]]:
-        """Lists all events for the given identity
+        """List identity event history
 
         This method retrieves all access events for the identity Requires authorization scope of 'idn:identity-history:read' 
 
@@ -1368,7 +1369,7 @@ class IdentityHistoryApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Lists all events for the given identity
+        """List identity event history
 
         This method retrieves all access events for the identity Requires authorization scope of 'idn:identity-history:read' 
 
@@ -3278,7 +3279,7 @@ class IdentityHistoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[ListIdentityAccessItems200ResponseInner]:
+    ) -> List[ListIdentitySnapshotAccessItems200ResponseInner]:
         """Gets the list of identity access items at a given date filterd by item type
 
         This method retrieves the list of identity access items at a given date filterd by item type Requires authorization scope of 'idn:identity-history:read' 
@@ -3325,7 +3326,7 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[ListIdentityAccessItems200ResponseInner]",
+            '200': "List[ListIdentitySnapshotAccessItems200ResponseInner]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -3362,7 +3363,7 @@ class IdentityHistoryApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[ListIdentityAccessItems200ResponseInner]]:
+    ) -> ApiResponse[List[ListIdentitySnapshotAccessItems200ResponseInner]]:
         """Gets the list of identity access items at a given date filterd by item type
 
         This method retrieves the list of identity access items at a given date filterd by item type Requires authorization scope of 'idn:identity-history:read' 
@@ -3409,7 +3410,7 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[ListIdentityAccessItems200ResponseInner]",
+            '200': "List[ListIdentitySnapshotAccessItems200ResponseInner]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -3493,7 +3494,7 @@ class IdentityHistoryApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[ListIdentityAccessItems200ResponseInner]",
+            '200': "List[ListIdentitySnapshotAccessItems200ResponseInner]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",

@@ -35,16 +35,17 @@ class TestAccessItemAccountResponse(unittest.TestCase):
         model = AccessItemAccountResponse()
         if include_optional:
             return AccessItemAccountResponse(
-                access_type = 'account',
                 id = '2c918087763e69d901763e72e97f006f',
-                native_identity = 'dr.arden.ogahn.d',
+                access_type = 'account',
+                display_name = 'Dr. Arden Rogahn MD',
                 source_name = 'DataScienceDataset',
+                native_identity = 'dr.arden.ogahn.d',
                 source_id = '2793o32dwd',
-                entitlement_count = '12',
-                display_name = 'Dr. Arden Rogahn MD'
+                entitlement_count = 12
             )
         else:
             return AccessItemAccountResponse(
+                native_identity = 'dr.arden.ogahn.d',
         )
         """
 

@@ -27,14 +27,14 @@ class AccessItemRoleResponse(BaseModel):
     """
     AccessItemRoleResponse
     """ # noqa: E501
-    access_type: Optional[StrictStr] = Field(default=None, description="the access item type. role in this case", alias="accessType")
     id: Optional[StrictStr] = Field(default=None, description="the access item id")
+    access_type: Optional[StrictStr] = Field(default=None, description="the access item type. role in this case", alias="accessType")
     display_name: Optional[StrictStr] = Field(default=None, description="the role display name", alias="displayName")
-    description: Optional[StrictStr] = Field(default=None, description="the description for the role")
     source_name: Optional[StrictStr] = Field(default=None, description="the associated source name if it exists", alias="sourceName")
+    description: Optional[StrictStr] = Field(default=None, description="the description for the role")
     remove_date: Optional[StrictStr] = Field(default=None, description="the date the role is no longer assigned to the specified identity", alias="removeDate")
     revocable: StrictBool = Field(description="indicates whether the role is revocable")
-    __properties: ClassVar[List[str]] = ["accessType", "id", "displayName", "description", "sourceName", "removeDate", "revocable"]
+    __properties: ClassVar[List[str]] = ["id", "accessType", "displayName", "sourceName", "description", "removeDate", "revocable"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -75,6 +75,11 @@ class AccessItemRoleResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if source_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.source_name is None and "source_name" in self.model_fields_set:
+            _dict['sourceName'] = None
+
         return _dict
 
     @classmethod
@@ -87,11 +92,11 @@ class AccessItemRoleResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accessType": obj.get("accessType"),
             "id": obj.get("id"),
+            "accessType": obj.get("accessType"),
             "displayName": obj.get("displayName"),
-            "description": obj.get("description"),
             "sourceName": obj.get("sourceName"),
+            "description": obj.get("description"),
             "removeDate": obj.get("removeDate"),
             "revocable": obj.get("revocable")
         })

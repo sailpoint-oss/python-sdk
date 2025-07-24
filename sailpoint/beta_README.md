@@ -293,7 +293,7 @@ Class | Method | HTTP request | Description
 *IdentityHistoryApi* | [**compare_identity_snapshots**](sailpoint/beta/docs/IdentityHistoryApi.md#compare_identity_snapshots) | **GET** /historical-identities/{id}/compare | Gets a difference of count for each access item types for the given identity between 2 snapshots
 *IdentityHistoryApi* | [**compare_identity_snapshots_access_type**](sailpoint/beta/docs/IdentityHistoryApi.md#compare_identity_snapshots_access_type) | **GET** /historical-identities/{id}/compare/{accessType} | Gets a list of differences of specific accesstype for the given identity between 2 snapshots
 *IdentityHistoryApi* | [**get_historical_identity**](sailpoint/beta/docs/IdentityHistoryApi.md#get_historical_identity) | **GET** /historical-identities/{id} | Get latest snapshot of identity
-*IdentityHistoryApi* | [**get_historical_identity_events**](sailpoint/beta/docs/IdentityHistoryApi.md#get_historical_identity_events) | **GET** /historical-identities/{id}/events | Lists all events for the given identity
+*IdentityHistoryApi* | [**get_historical_identity_events**](sailpoint/beta/docs/IdentityHistoryApi.md#get_historical_identity_events) | **GET** /historical-identities/{id}/events | List identity event history
 *IdentityHistoryApi* | [**get_identity_snapshot**](sailpoint/beta/docs/IdentityHistoryApi.md#get_identity_snapshot) | **GET** /historical-identities/{id}/snapshots/{date} | Gets an identity snapshot at a given date
 *IdentityHistoryApi* | [**get_identity_snapshot_summary**](sailpoint/beta/docs/IdentityHistoryApi.md#get_identity_snapshot_summary) | **GET** /historical-identities/{id}/snapshot-summary | Gets the summary for the event count for a specific identity
 *IdentityHistoryApi* | [**get_identity_start_date**](sailpoint/beta/docs/IdentityHistoryApi.md#get_identity_start_date) | **GET** /historical-identities/{id}/start-date | Gets the start date of the identity
@@ -640,6 +640,7 @@ Class | Method | HTTP request | Description
  - [AccessCriteria](sailpoint/beta/docs/AccessCriteria.md)
  - [AccessCriteriaCriteriaListInner](sailpoint/beta/docs/AccessCriteriaCriteriaListInner.md)
  - [AccessItemAccessProfileResponse](sailpoint/beta/docs/AccessItemAccessProfileResponse.md)
+ - [AccessItemAccessProfileResponseAppRefsInner](sailpoint/beta/docs/AccessItemAccessProfileResponseAppRefsInner.md)
  - [AccessItemAccountResponse](sailpoint/beta/docs/AccessItemAccountResponse.md)
  - [AccessItemAppResponse](sailpoint/beta/docs/AccessItemAppResponse.md)
  - [AccessItemApproverDto](sailpoint/beta/docs/AccessItemApproverDto.md)
@@ -1061,6 +1062,7 @@ Class | Method | HTTP request | Description
  - [ListFormDefinitionsByTenantResponse](sailpoint/beta/docs/ListFormDefinitionsByTenantResponse.md)
  - [ListFormElementDataByElementIDResponse](sailpoint/beta/docs/ListFormElementDataByElementIDResponse.md)
  - [ListIdentityAccessItems200ResponseInner](sailpoint/beta/docs/ListIdentityAccessItems200ResponseInner.md)
+ - [ListIdentitySnapshotAccessItems200ResponseInner](sailpoint/beta/docs/ListIdentitySnapshotAccessItems200ResponseInner.md)
  - [ListPredefinedSelectOptionsResponse](sailpoint/beta/docs/ListPredefinedSelectOptionsResponse.md)
  - [ListWorkgroupMembers200ResponseInner](sailpoint/beta/docs/ListWorkgroupMembers200ResponseInner.md)
  - [LoadAccountsTask](sailpoint/beta/docs/LoadAccountsTask.md)

@@ -35,9 +35,9 @@ class TestAttributeChange(unittest.TestCase):
         model = AttributeChange()
         if include_optional:
             return AttributeChange(
-                name = '',
-                previous_value = '',
-                new_value = ''
+                name = 'firstname',
+                previous_value = 'adam',
+                new_value = 'zampa'
             )
         else:
             return AttributeChange(

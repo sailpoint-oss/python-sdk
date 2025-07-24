@@ -28,11 +28,11 @@ class AccessRequested(BaseModel):
     """
     AccessRequested
     """ # noqa: E501
-    access_request: Optional[AccessRequestResponse1] = Field(default=None, alias="accessRequest")
+    access_request: AccessRequestResponse1 = Field(alias="accessRequest")
     identity_id: Optional[StrictStr] = Field(default=None, description="the identity id", alias="identityId")
     event_type: Optional[StrictStr] = Field(default=None, description="the event type", alias="eventType")
-    dt: Optional[StrictStr] = Field(default=None, description="the date of event")
-    __properties: ClassVar[List[str]] = ["accessRequest", "identityId", "eventType", "dt"]
+    date_time: Optional[StrictStr] = Field(default=None, description="the date of event", alias="dateTime")
+    __properties: ClassVar[List[str]] = ["accessRequest", "identityId", "eventType", "dateTime"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,7 +91,7 @@ class AccessRequested(BaseModel):
             "accessRequest": AccessRequestResponse1.from_dict(obj["accessRequest"]) if obj.get("accessRequest") is not None else None,
             "identityId": obj.get("identityId"),
             "eventType": obj.get("eventType"),
-            "dt": obj.get("dt")
+            "dateTime": obj.get("dateTime")
         })
         return _obj
 

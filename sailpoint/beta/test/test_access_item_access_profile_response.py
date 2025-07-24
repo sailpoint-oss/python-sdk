@@ -35,21 +35,22 @@ class TestAccessItemAccessProfileResponse(unittest.TestCase):
         model = AccessItemAccessProfileResponse()
         if include_optional:
             return AccessItemAccessProfileResponse(
-                access_type = 'accessProfile',
                 id = '2c918087763e69d901763e72e97f006f',
-                name = 'sample',
-                source_name = 'DataScienceDataset',
-                source_id = '2793o32dwd',
-                description = 'AccessProfile - Workday/Citizenship access',
+                access_type = 'accessProfile',
                 display_name = 'Dr. Arden Rogahn MD',
-                entitlement_count = '12',
-                app_display_name = 'AppName',
+                source_name = 'DataScienceDataset',
+                entitlement_count = 12,
+                description = 'AccessProfile - Workday/Citizenship access',
+                source_id = '2793o32dwd',
+                app_refs = [{cloudAppId=8c190e6787aa4ed9a90bd9d5344523fb, cloudAppName=Sample App}, {cloudAppId=2c91808a77ff216301782327a50f09bf, cloudAppName=Another App}],
                 remove_date = '2024-07-01T06:00:00.00Z',
                 standalone = False,
                 revocable = True
             )
         else:
             return AccessItemAccessProfileResponse(
+                entitlement_count = 12,
+                app_refs = [{cloudAppId=8c190e6787aa4ed9a90bd9d5344523fb, cloudAppName=Sample App}, {cloudAppId=2c91808a77ff216301782327a50f09bf, cloudAppName=Another App}],
                 standalone = False,
                 revocable = True,
         )

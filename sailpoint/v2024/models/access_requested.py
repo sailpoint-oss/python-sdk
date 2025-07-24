@@ -20,7 +20,8 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2024.models.access_request_response1 import AccessRequestResponse1
+from sailpoint.v2024.models.access_requested_account import AccessRequestedAccount
+from sailpoint.v2024.models.access_requested_status_change import AccessRequestedStatusChange
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,11 +29,12 @@ class AccessRequested(BaseModel):
     """
     AccessRequested
     """ # noqa: E501
-    access_request: Optional[AccessRequestResponse1] = Field(default=None, alias="accessRequest")
-    identity_id: Optional[StrictStr] = Field(default=None, description="the identity id", alias="identityId")
     event_type: Optional[StrictStr] = Field(default=None, description="the event type", alias="eventType")
-    dt: Optional[StrictStr] = Field(default=None, description="the date of event")
-    __properties: ClassVar[List[str]] = ["accessRequest", "identityId", "eventType", "dt"]
+    identity_id: Optional[StrictStr] = Field(default=None, description="the identity id", alias="identityId")
+    date_time: Optional[StrictStr] = Field(default=None, description="the date of event", alias="dateTime")
+    account: AccessRequestedAccount
+    status_change: AccessRequestedStatusChange = Field(alias="statusChange")
+    __properties: ClassVar[List[str]] = ["eventType", "identityId", "dateTime", "account", "statusChange"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -73,9 +75,12 @@ class AccessRequested(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of access_request
-        if self.access_request:
-            _dict['accessRequest'] = self.access_request.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of account
+        if self.account:
+            _dict['account'] = self.account.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of status_change
+        if self.status_change:
+            _dict['statusChange'] = self.status_change.to_dict()
         return _dict
 
     @classmethod
@@ -88,10 +93,11 @@ class AccessRequested(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accessRequest": AccessRequestResponse1.from_dict(obj["accessRequest"]) if obj.get("accessRequest") is not None else None,
-            "identityId": obj.get("identityId"),
             "eventType": obj.get("eventType"),
-            "dt": obj.get("dt")
+            "identityId": obj.get("identityId"),
+            "dateTime": obj.get("dateTime"),
+            "account": AccessRequestedAccount.from_dict(obj["account"]) if obj.get("account") is not None else None,
+            "statusChange": AccessRequestedStatusChange.from_dict(obj["statusChange"]) if obj.get("statusChange") is not None else None
         })
         return _obj
 

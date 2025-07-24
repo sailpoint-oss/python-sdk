@@ -27,19 +27,19 @@ class AccessItemEntitlementResponse(BaseModel):
     """
     AccessItemEntitlementResponse
     """ # noqa: E501
-    access_type: Optional[StrictStr] = Field(default=None, description="the access item type. entitlement in this case", alias="accessType")
     id: Optional[StrictStr] = Field(default=None, description="the access item id")
-    attribute: Optional[StrictStr] = Field(default=None, description="the entitlement attribute")
-    value: Optional[StrictStr] = Field(default=None, description="the associated value")
-    entitlement_type: Optional[StrictStr] = Field(default=None, description="the type of entitlement", alias="entitlementType")
-    source_name: Optional[StrictStr] = Field(default=None, description="the name of the source", alias="sourceName")
-    source_id: Optional[StrictStr] = Field(default=None, description="the id of the source", alias="sourceId")
-    description: Optional[StrictStr] = Field(default=None, description="the description for the entitlment")
+    access_type: Optional[StrictStr] = Field(default=None, description="the access item type. entitlement in this case", alias="accessType")
     display_name: Optional[StrictStr] = Field(default=None, description="the display name of the identity", alias="displayName")
-    standalone: StrictBool = Field(description="indicates whether the entitlement is standalone")
-    privileged: StrictBool = Field(description="indicates whether the entitlement is privileged")
-    cloud_governed: StrictBool = Field(description="indicates whether the entitlement is cloud governed", alias="cloudGoverned")
-    __properties: ClassVar[List[str]] = ["accessType", "id", "attribute", "value", "entitlementType", "sourceName", "sourceId", "description", "displayName", "standalone", "privileged", "cloudGoverned"]
+    source_name: Optional[StrictStr] = Field(default=None, description="the name of the source", alias="sourceName")
+    attribute: StrictStr = Field(description="the entitlement attribute")
+    value: StrictStr = Field(description="the associated value")
+    type: StrictStr = Field(description="the type of entitlement")
+    description: Optional[StrictStr] = Field(default=None, description="the description for the entitlment")
+    source_id: Optional[StrictStr] = Field(default=None, description="the id of the source", alias="sourceId")
+    standalone: Optional[StrictBool] = Field(description="indicates whether the entitlement is standalone")
+    privileged: Optional[StrictBool] = Field(description="indicates whether the entitlement is privileged")
+    cloud_governed: Optional[StrictBool] = Field(description="indicates whether the entitlement is cloud governed", alias="cloudGoverned")
+    __properties: ClassVar[List[str]] = ["id", "accessType", "displayName", "sourceName", "attribute", "value", "type", "description", "sourceId", "standalone", "privileged", "cloudGoverned"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,6 +80,26 @@ class AccessItemEntitlementResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
+        # set to None if standalone (nullable) is None
+        # and model_fields_set contains the field
+        if self.standalone is None and "standalone" in self.model_fields_set:
+            _dict['standalone'] = None
+
+        # set to None if privileged (nullable) is None
+        # and model_fields_set contains the field
+        if self.privileged is None and "privileged" in self.model_fields_set:
+            _dict['privileged'] = None
+
+        # set to None if cloud_governed (nullable) is None
+        # and model_fields_set contains the field
+        if self.cloud_governed is None and "cloud_governed" in self.model_fields_set:
+            _dict['cloudGoverned'] = None
+
         return _dict
 
     @classmethod
@@ -92,15 +112,15 @@ class AccessItemEntitlementResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accessType": obj.get("accessType"),
             "id": obj.get("id"),
+            "accessType": obj.get("accessType"),
+            "displayName": obj.get("displayName"),
+            "sourceName": obj.get("sourceName"),
             "attribute": obj.get("attribute"),
             "value": obj.get("value"),
-            "entitlementType": obj.get("entitlementType"),
-            "sourceName": obj.get("sourceName"),
-            "sourceId": obj.get("sourceId"),
+            "type": obj.get("type"),
             "description": obj.get("description"),
-            "displayName": obj.get("displayName"),
+            "sourceId": obj.get("sourceId"),
             "standalone": obj.get("standalone"),
             "privileged": obj.get("privileged"),
             "cloudGoverned": obj.get("cloudGoverned")

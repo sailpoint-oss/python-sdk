@@ -23,9 +23,9 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class AccountStatusChangedAccount(BaseModel):
+class AccessRequestedAccount(BaseModel):
     """
-    AccountStatusChangedAccount
+    AccessRequestedAccount
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="the ID of the account in the database")
     native_identity: Optional[StrictStr] = Field(default=None, description="the native identifier of the account", alias="nativeIdentity")
@@ -54,7 +54,7 @@ class AccountStatusChangedAccount(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AccountStatusChangedAccount from a JSON string"""
+        """Create an instance of AccessRequestedAccount from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -79,7 +79,7 @@ class AccountStatusChangedAccount(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AccountStatusChangedAccount from a dict"""
+        """Create an instance of AccessRequestedAccount from a dict"""
         if obj is None:
             return None
 

@@ -20,32 +20,35 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2024.models.approval_info_response import ApprovalInfoResponse
 from typing import Optional, Set
 from typing_extensions import Self
 
-class AccessRequestItemResponse(BaseModel):
+class AccessRequestedStatusChange(BaseModel):
     """
-    AccessRequestItemResponse
+    AccessRequestedStatusChange
     """ # noqa: E501
-    operation: Optional[StrictStr] = Field(default=None, description="the access request item operation")
-    access_item_type: Optional[StrictStr] = Field(default=None, description="the access item type", alias="accessItemType")
-    name: Optional[StrictStr] = Field(default=None, description="the name of access request item")
-    decision: Optional[StrictStr] = Field(default=None, description="the final decision for the access request")
-    description: Optional[StrictStr] = Field(default=None, description="the description of access request item")
-    source_id: Optional[StrictStr] = Field(default=None, description="the source id", alias="sourceId")
-    source_name: Optional[StrictStr] = Field(default=None, description="the source Name", alias="sourceName")
-    approval_infos: Optional[List[ApprovalInfoResponse]] = Field(default=None, alias="approvalInfos")
-    __properties: ClassVar[List[str]] = ["operation", "accessItemType", "name", "decision", "description", "sourceId", "sourceName", "approvalInfos"]
+    previous_status: Optional[StrictStr] = Field(default=None, description="the previous status of the account", alias="previousStatus")
+    new_status: Optional[StrictStr] = Field(default=None, description="the new status of the account", alias="newStatus")
+    __properties: ClassVar[List[str]] = ["previousStatus", "newStatus"]
 
-    @field_validator('decision')
-    def decision_validate_enum(cls, value):
+    @field_validator('previous_status')
+    def previous_status_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
 
-        if value not in set(['APPROVED', 'REJECTED']):
-            warnings.warn(f"must be one of enum values ('APPROVED', 'REJECTED') unknown value: {value}")
+        if value not in set(['enabled', 'disabled', 'locked']):
+            warnings.warn(f"must be one of enum values ('enabled', 'disabled', 'locked') unknown value: {value}")
+        return value
+
+    @field_validator('new_status')
+    def new_status_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['enabled', 'disabled', 'locked']):
+            warnings.warn(f"must be one of enum values ('enabled', 'disabled', 'locked') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -66,7 +69,7 @@ class AccessRequestItemResponse(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AccessRequestItemResponse from a JSON string"""
+        """Create an instance of AccessRequestedStatusChange from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -87,18 +90,11 @@ class AccessRequestItemResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in approval_infos (list)
-        _items = []
-        if self.approval_infos:
-            for _item_approval_infos in self.approval_infos:
-                if _item_approval_infos:
-                    _items.append(_item_approval_infos.to_dict())
-            _dict['approvalInfos'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AccessRequestItemResponse from a dict"""
+        """Create an instance of AccessRequestedStatusChange from a dict"""
         if obj is None:
             return None
 
@@ -106,14 +102,8 @@ class AccessRequestItemResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "operation": obj.get("operation"),
-            "accessItemType": obj.get("accessItemType"),
-            "name": obj.get("name"),
-            "decision": obj.get("decision"),
-            "description": obj.get("description"),
-            "sourceId": obj.get("sourceId"),
-            "sourceName": obj.get("sourceName"),
-            "approvalInfos": [ApprovalInfoResponse.from_dict(_item) for _item in obj["approvalInfos"]] if obj.get("approvalInfos") is not None else None
+            "previousStatus": obj.get("previousStatus"),
+            "newStatus": obj.get("newStatus")
         })
         return _obj
 

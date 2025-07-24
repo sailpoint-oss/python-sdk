@@ -38,10 +38,11 @@ class TestAccessItemRemoved(unittest.TestCase):
                 access_item = {id=8c190e6787aa4ed9a90bd9d5344523fb, accessType=account, nativeIdentity=127999, sourceName=JDBC Entitlements Source, entitlementCount=0, displayName=Sample Name},
                 identity_id = '8c190e6787aa4ed9a90bd9d5344523fb',
                 event_type = 'AccessItemRemoved',
-                dt = '2019-03-08T22:37:33.901Z',
+                date_time = '2019-03-08T22:37:33.901Z',
+                access_item_type = 'account',
                 governance_event = sailpoint.v2024.models.correlated_governance_event.CorrelatedGovernanceEvent(
                     name = 'Manager Certification for Jon Snow', 
-                    dt = '2019-03-08T22:37:33.901Z', 
+                    date_time = '2019-03-08T22:37:33.901Z', 
                     type = 'certification', 
                     governance_id = '2c91808a77ff216301782327a50f09bf', 
                     owners = [{id=8a80828f643d484f01643e14202e206f, displayName=John Snow}], 
@@ -52,6 +53,7 @@ class TestAccessItemRemoved(unittest.TestCase):
             )
         else:
             return AccessItemRemoved(
+                access_item = {id=8c190e6787aa4ed9a90bd9d5344523fb, accessType=account, nativeIdentity=127999, sourceName=JDBC Entitlements Source, entitlementCount=0, displayName=Sample Name},
         )
         """
 

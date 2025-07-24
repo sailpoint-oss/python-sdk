@@ -35,11 +35,11 @@ class TestAccessItemRoleResponse(unittest.TestCase):
         model = AccessItemRoleResponse()
         if include_optional:
             return AccessItemRoleResponse(
-                access_type = 'role',
                 id = '2c918087763e69d901763e72e97f006f',
+                access_type = 'role',
                 display_name = 'sample',
-                description = 'Role - Workday/Citizenship access',
                 source_name = 'Source Name',
+                description = 'Role - Workday/Citizenship access',
                 remove_date = '2024-07-01T06:00:00.00Z',
                 revocable = True
             )

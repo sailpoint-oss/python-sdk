@@ -44,10 +44,12 @@ class TestIdentityCertified(unittest.TestCase):
                     id = '8a80828f643d484f01643e14202e206f', 
                     display_name = 'John Snow', ),
                 event_type = 'IdentityCertified',
-                dt = '2019-03-08T22:37:33.901Z'
+                date_time = '2019-03-08T22:37:33.901Z'
             )
         else:
             return IdentityCertified(
+                certification_id = '2c91808a77ff216301782327a50f09bf',
+                certification_name = 'Cert name',
         )
         """
 

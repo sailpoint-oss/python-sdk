@@ -35,23 +35,34 @@ class TestAccountStatusChanged(unittest.TestCase):
         model = AccountStatusChanged()
         if include_optional:
             return AccountStatusChanged(
-                event_type = '',
-                identity_id = '',
-                dt = '',
-                account = sailpoint.v2024.models.account_status_changed_account.AccountStatusChanged_account(
-                    id = '', 
-                    native_identity = '', 
-                    display_name = '', 
-                    source_id = '', 
-                    source_name = '', 
-                    entitlement_count = 56, 
-                    access_type = '', ),
-                status_change = sailpoint.v2024.models.account_status_changed_status_change.AccountStatusChanged_statusChange(
+                event_type = 'AccountStatusChanged',
+                identity_id = '8a80828f643d484f01643e14202e206f',
+                date_time = '2019-03-08T22:37:33.901Z',
+                account = sailpoint.v2024.models.access_requested_account.AccessRequested_account(
+                    id = '2c91808a77ff216301782327a50f09bf', 
+                    native_identity = 'dr.arden.ogahn.d', 
+                    display_name = 'Adam Archer', 
+                    source_id = '8a80828f643d484f01643e14202e206f', 
+                    source_name = 'JDBC Entitlements Source', 
+                    entitlement_count = 2, 
+                    access_type = 'account', ),
+                status_change = sailpoint.v2024.models.access_requested_status_change.AccessRequested_statusChange(
                     previous_status = 'enabled', 
-                    new_status = 'enabled', )
+                    new_status = 'disabled', )
             )
         else:
             return AccountStatusChanged(
+                account = sailpoint.v2024.models.access_requested_account.AccessRequested_account(
+                    id = '2c91808a77ff216301782327a50f09bf', 
+                    native_identity = 'dr.arden.ogahn.d', 
+                    display_name = 'Adam Archer', 
+                    source_id = '8a80828f643d484f01643e14202e206f', 
+                    source_name = 'JDBC Entitlements Source', 
+                    entitlement_count = 2, 
+                    access_type = 'account', ),
+                status_change = sailpoint.v2024.models.access_requested_status_change.AccessRequested_statusChange(
+                    previous_status = 'enabled', 
+                    new_status = 'disabled', ),
         )
         """
 

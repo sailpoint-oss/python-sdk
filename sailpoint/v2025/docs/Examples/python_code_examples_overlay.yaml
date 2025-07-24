@@ -10055,7 +10055,7 @@
           offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
           try:
-              # Lists all events for the given identity
+              # List identity event history
               
               results = IdentityHistoryApi(api_client).get_historical_identity_events(id=id, x_sail_point_experimental=x_sail_point_experimental)
               # Below is a request that includes all optional parameters
@@ -10225,7 +10225,7 @@
       source: |
         from sailpoint.v2025.api.identity_history_api import IdentityHistoryApi
         from sailpoint.v2025.api_client import ApiClient
-        from sailpoint.v2025.models.list_identity_access_items200_response_inner import ListIdentityAccessItems200ResponseInner
+        from sailpoint.v2025.models.list_identity_snapshot_access_items200_response_inner import ListIdentitySnapshotAccessItems200ResponseInner
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 

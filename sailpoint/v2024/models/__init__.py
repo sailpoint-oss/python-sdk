@@ -21,6 +21,7 @@ from sailpoint.v2024.models.access_constraint import AccessConstraint
 from sailpoint.v2024.models.access_criteria import AccessCriteria
 from sailpoint.v2024.models.access_criteria_criteria_list_inner import AccessCriteriaCriteriaListInner
 from sailpoint.v2024.models.access_item_access_profile_response import AccessItemAccessProfileResponse
+from sailpoint.v2024.models.access_item_access_profile_response_app_refs_inner import AccessItemAccessProfileResponseAppRefsInner
 from sailpoint.v2024.models.access_item_account_response import AccessItemAccountResponse
 from sailpoint.v2024.models.access_item_app_response import AccessItemAppResponse
 from sailpoint.v2024.models.access_item_approver_dto import AccessItemApproverDto
@@ -65,7 +66,6 @@ from sailpoint.v2024.models.access_request_dynamic_approver import AccessRequest
 from sailpoint.v2024.models.access_request_dynamic_approver1 import AccessRequestDynamicApprover1
 from sailpoint.v2024.models.access_request_dynamic_approver_requested_items_inner import AccessRequestDynamicApproverRequestedItemsInner
 from sailpoint.v2024.models.access_request_item import AccessRequestItem
-from sailpoint.v2024.models.access_request_item_response import AccessRequestItemResponse
 from sailpoint.v2024.models.access_request_phases import AccessRequestPhases
 from sailpoint.v2024.models.access_request_post_approval import AccessRequestPostApproval
 from sailpoint.v2024.models.access_request_post_approval_requested_items_status_inner import AccessRequestPostApprovalRequestedItemsStatusInner
@@ -82,10 +82,11 @@ from sailpoint.v2024.models.access_request_recommendation_item_detail import Acc
 from sailpoint.v2024.models.access_request_recommendation_item_detail_access import AccessRequestRecommendationItemDetailAccess
 from sailpoint.v2024.models.access_request_recommendation_item_type import AccessRequestRecommendationItemType
 from sailpoint.v2024.models.access_request_response import AccessRequestResponse
-from sailpoint.v2024.models.access_request_response1 import AccessRequestResponse1
 from sailpoint.v2024.models.access_request_tracking import AccessRequestTracking
 from sailpoint.v2024.models.access_request_type import AccessRequestType
 from sailpoint.v2024.models.access_requested import AccessRequested
+from sailpoint.v2024.models.access_requested_account import AccessRequestedAccount
+from sailpoint.v2024.models.access_requested_status_change import AccessRequestedStatusChange
 from sailpoint.v2024.models.access_review_item import AccessReviewItem
 from sailpoint.v2024.models.access_review_reassignment import AccessReviewReassignment
 from sailpoint.v2024.models.access_summary import AccessSummary
@@ -129,8 +130,6 @@ from sailpoint.v2024.models.account_request_info import AccountRequestInfo
 from sailpoint.v2024.models.account_request_result import AccountRequestResult
 from sailpoint.v2024.models.account_source import AccountSource
 from sailpoint.v2024.models.account_status_changed import AccountStatusChanged
-from sailpoint.v2024.models.account_status_changed_account import AccountStatusChangedAccount
-from sailpoint.v2024.models.account_status_changed_status_change import AccountStatusChangedStatusChange
 from sailpoint.v2024.models.account_toggle_request import AccountToggleRequest
 from sailpoint.v2024.models.account_uncorrelated import AccountUncorrelated
 from sailpoint.v2024.models.account_uncorrelated_account import AccountUncorrelatedAccount
@@ -166,7 +165,6 @@ from sailpoint.v2024.models.approval_comment2 import ApprovalComment2
 from sailpoint.v2024.models.approval_description import ApprovalDescription
 from sailpoint.v2024.models.approval_forward_history import ApprovalForwardHistory
 from sailpoint.v2024.models.approval_identity import ApprovalIdentity
-from sailpoint.v2024.models.approval_info_response import ApprovalInfoResponse
 from sailpoint.v2024.models.approval_item_details import ApprovalItemDetails
 from sailpoint.v2024.models.approval_items import ApprovalItems
 from sailpoint.v2024.models.approval_name import ApprovalName
@@ -565,6 +563,7 @@ from sailpoint.v2024.models.list_form_definitions_by_tenant_response import List
 from sailpoint.v2024.models.list_form_element_data_by_element_id_response import ListFormElementDataByElementIDResponse
 from sailpoint.v2024.models.list_form_instances_by_tenant_response import ListFormInstancesByTenantResponse
 from sailpoint.v2024.models.list_identity_access_items200_response_inner import ListIdentityAccessItems200ResponseInner
+from sailpoint.v2024.models.list_identity_snapshot_access_items200_response_inner import ListIdentitySnapshotAccessItems200ResponseInner
 from sailpoint.v2024.models.list_predefined_select_options_response import ListPredefinedSelectOptionsResponse
 from sailpoint.v2024.models.list_workgroup_members200_response_inner import ListWorkgroupMembers200ResponseInner
 from sailpoint.v2024.models.load_accounts_task import LoadAccountsTask

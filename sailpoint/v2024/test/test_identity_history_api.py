@@ -50,7 +50,7 @@ class TestIdentityHistoryApi(unittest.TestCase):
     def test_get_historical_identity_events(self) -> None:
         """Test case for get_historical_identity_events
 
-        Lists all events for the given identity
+        List identity event history
         """
         pass
 

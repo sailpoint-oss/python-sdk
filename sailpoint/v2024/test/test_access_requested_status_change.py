@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2024.models.access_request_response1 import AccessRequestResponse1
+from sailpoint.v2024.models.access_requested_status_change import AccessRequestedStatusChange
 
-class TestAccessRequestResponse1(unittest.TestCase):
-    """AccessRequestResponse1 unit test stubs"""
+class TestAccessRequestedStatusChange(unittest.TestCase):
+    """AccessRequestedStatusChange unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,27 +25,26 @@ class TestAccessRequestResponse1(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> AccessRequestResponse1:
-        """Test AccessRequestResponse1
+    def make_instance(self, include_optional) -> AccessRequestedStatusChange:
+        """Test AccessRequestedStatusChange
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `AccessRequestResponse1`
+        # uncomment below to create an instance of `AccessRequestedStatusChange`
         """
-        model = AccessRequestResponse1()
+        model = AccessRequestedStatusChange()
         if include_optional:
-            return AccessRequestResponse1(
-                requester_id = '2c91808a77ff216301782327a50f09bf',
-                requester_name = 'Bing C',
-                items = [{operation=Add, accessItemType=role, name=Role-1, decision=APPROVED, description=The role descrition, sourceId=8a80828f643d484f01643e14202e206f, sourceName=Source1, approvalInfos=[{name=John Snow, id=8a80828f643d484f01643e14202e2000, status=Approved}]}]
+            return AccessRequestedStatusChange(
+                previous_status = 'enabled',
+                new_status = 'disabled'
             )
         else:
-            return AccessRequestResponse1(
+            return AccessRequestedStatusChange(
         )
         """
 
-    def testAccessRequestResponse1(self):
-        """Test AccessRequestResponse1"""
+    def testAccessRequestedStatusChange(self):
+        """Test AccessRequestedStatusChange"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

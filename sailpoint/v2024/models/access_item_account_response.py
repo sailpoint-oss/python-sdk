@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,14 +27,14 @@ class AccessItemAccountResponse(BaseModel):
     """
     AccessItemAccountResponse
     """ # noqa: E501
-    access_type: Optional[StrictStr] = Field(default=None, description="the access item type. account in this case", alias="accessType")
     id: Optional[StrictStr] = Field(default=None, description="the access item id")
-    native_identity: Optional[StrictStr] = Field(default=None, description="the native identifier used to uniquely identify an acccount", alias="nativeIdentity")
-    source_name: Optional[StrictStr] = Field(default=None, description="the name of the source", alias="sourceName")
-    source_id: Optional[StrictStr] = Field(default=None, description="the id of the source", alias="sourceId")
-    entitlement_count: Optional[StrictStr] = Field(default=None, description="the number of entitlements the account will create", alias="entitlementCount")
+    access_type: Optional[StrictStr] = Field(default=None, description="the access item type. account in this case", alias="accessType")
     display_name: Optional[StrictStr] = Field(default=None, description="the display name of the identity", alias="displayName")
-    __properties: ClassVar[List[str]] = ["accessType", "id", "nativeIdentity", "sourceName", "sourceId", "entitlementCount", "displayName"]
+    source_name: Optional[StrictStr] = Field(default=None, description="the name of the source", alias="sourceName")
+    native_identity: StrictStr = Field(description="the native identifier used to uniquely identify an acccount", alias="nativeIdentity")
+    source_id: Optional[StrictStr] = Field(default=None, description="the id of the source", alias="sourceId")
+    entitlement_count: Optional[StrictInt] = Field(default=None, description="the number of entitlements the account will create", alias="entitlementCount")
+    __properties: ClassVar[List[str]] = ["id", "accessType", "displayName", "sourceName", "nativeIdentity", "sourceId", "entitlementCount"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,13 +87,13 @@ class AccessItemAccountResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accessType": obj.get("accessType"),
             "id": obj.get("id"),
-            "nativeIdentity": obj.get("nativeIdentity"),
+            "accessType": obj.get("accessType"),
+            "displayName": obj.get("displayName"),
             "sourceName": obj.get("sourceName"),
+            "nativeIdentity": obj.get("nativeIdentity"),
             "sourceId": obj.get("sourceId"),
-            "entitlementCount": obj.get("entitlementCount"),
-            "displayName": obj.get("displayName")
+            "entitlementCount": obj.get("entitlementCount")
         })
         return _obj
 

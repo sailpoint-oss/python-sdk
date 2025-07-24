@@ -27,12 +27,12 @@ class AccessItemAppResponse(BaseModel):
     """
     AccessItemAppResponse
     """ # noqa: E501
-    access_type: Optional[StrictStr] = Field(default=None, description="the access item type. entitlement in this case", alias="accessType")
     id: Optional[StrictStr] = Field(default=None, description="the access item id")
+    access_type: Optional[StrictStr] = Field(default=None, description="the access item type. entitlement in this case", alias="accessType")
     display_name: Optional[StrictStr] = Field(default=None, description="the access item display name", alias="displayName")
     source_name: Optional[StrictStr] = Field(default=None, description="the associated source name if it exists", alias="sourceName")
-    app_role_id: Optional[StrictStr] = Field(default=None, description="the app role id", alias="appRoleId")
-    __properties: ClassVar[List[str]] = ["accessType", "id", "displayName", "sourceName", "appRoleId"]
+    app_role_id: Optional[StrictStr] = Field(description="the app role id", alias="appRoleId")
+    __properties: ClassVar[List[str]] = ["id", "accessType", "displayName", "sourceName", "appRoleId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -73,6 +73,16 @@ class AccessItemAppResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if source_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.source_name is None and "source_name" in self.model_fields_set:
+            _dict['sourceName'] = None
+
+        # set to None if app_role_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.app_role_id is None and "app_role_id" in self.model_fields_set:
+            _dict['appRoleId'] = None
+
         return _dict
 
     @classmethod
@@ -85,8 +95,8 @@ class AccessItemAppResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accessType": obj.get("accessType"),
             "id": obj.get("id"),
+            "accessType": obj.get("accessType"),
             "displayName": obj.get("displayName"),
             "sourceName": obj.get("sourceName"),
             "appRoleId": obj.get("appRoleId")

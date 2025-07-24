@@ -29,13 +29,13 @@ class CorrelatedGovernanceEvent(BaseModel):
     CorrelatedGovernanceEvent
     """ # noqa: E501
     name: Optional[StrictStr] = Field(default=None, description="The name of the governance event, such as the certification name or access request ID.")
-    dt: Optional[StrictStr] = Field(default=None, description="The date that the certification or access request was completed.")
+    date_time: Optional[StrictStr] = Field(default=None, description="The date that the certification or access request was completed.", alias="dateTime")
     type: Optional[StrictStr] = Field(default=None, description="The type of governance event.")
     governance_id: Optional[StrictStr] = Field(default=None, description="The ID of the instance that caused the event - either the certification ID or access request ID.", alias="governanceId")
     owners: Optional[List[CertifierResponse]] = Field(default=None, description="The owners of the governance event (the certifiers or approvers)")
     reviewers: Optional[List[CertifierResponse]] = Field(default=None, description="The owners of the governance event (the certifiers or approvers), this field should be preferred over owners")
     decision_maker: Optional[CertifierResponse] = Field(default=None, alias="decisionMaker")
-    __properties: ClassVar[List[str]] = ["name", "dt", "type", "governanceId", "owners", "reviewers", "decisionMaker"]
+    __properties: ClassVar[List[str]] = ["name", "dateTime", "type", "governanceId", "owners", "reviewers", "decisionMaker"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -116,7 +116,7 @@ class CorrelatedGovernanceEvent(BaseModel):
 
         _obj = cls.model_validate({
             "name": obj.get("name"),
-            "dt": obj.get("dt"),
+            "dateTime": obj.get("dateTime"),
             "type": obj.get("type"),
             "governanceId": obj.get("governanceId"),
             "owners": [CertifierResponse.from_dict(_item) for _item in obj["owners"]] if obj.get("owners") is not None else None,

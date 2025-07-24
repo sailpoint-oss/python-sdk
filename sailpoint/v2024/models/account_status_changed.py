@@ -20,8 +20,8 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2024.models.account_status_changed_account import AccountStatusChangedAccount
-from sailpoint.v2024.models.account_status_changed_status_change import AccountStatusChangedStatusChange
+from sailpoint.v2024.models.access_requested_account import AccessRequestedAccount
+from sailpoint.v2024.models.access_requested_status_change import AccessRequestedStatusChange
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -31,10 +31,10 @@ class AccountStatusChanged(BaseModel):
     """ # noqa: E501
     event_type: Optional[StrictStr] = Field(default=None, description="the event type", alias="eventType")
     identity_id: Optional[StrictStr] = Field(default=None, description="the identity id", alias="identityId")
-    dt: Optional[StrictStr] = Field(default=None, description="the date of event")
-    account: Optional[AccountStatusChangedAccount] = None
-    status_change: Optional[AccountStatusChangedStatusChange] = Field(default=None, alias="statusChange")
-    __properties: ClassVar[List[str]] = ["eventType", "identityId", "dt", "account", "statusChange"]
+    date_time: Optional[StrictStr] = Field(default=None, description="the date of event", alias="dateTime")
+    account: AccessRequestedAccount
+    status_change: AccessRequestedStatusChange = Field(alias="statusChange")
+    __properties: ClassVar[List[str]] = ["eventType", "identityId", "dateTime", "account", "statusChange"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -95,9 +95,9 @@ class AccountStatusChanged(BaseModel):
         _obj = cls.model_validate({
             "eventType": obj.get("eventType"),
             "identityId": obj.get("identityId"),
-            "dt": obj.get("dt"),
-            "account": AccountStatusChangedAccount.from_dict(obj["account"]) if obj.get("account") is not None else None,
-            "statusChange": AccountStatusChangedStatusChange.from_dict(obj["statusChange"]) if obj.get("statusChange") is not None else None
+            "dateTime": obj.get("dateTime"),
+            "account": AccessRequestedAccount.from_dict(obj["account"]) if obj.get("account") is not None else None,
+            "statusChange": AccessRequestedStatusChange.from_dict(obj["statusChange"]) if obj.get("statusChange") is not None else None
         })
         return _obj
 

@@ -31,10 +31,10 @@ class AccountStatusChanged(BaseModel):
     """ # noqa: E501
     event_type: Optional[StrictStr] = Field(default=None, description="the event type", alias="eventType")
     identity_id: Optional[StrictStr] = Field(default=None, description="the identity id", alias="identityId")
-    dt: Optional[StrictStr] = Field(default=None, description="the date of event")
-    account: Optional[AccountStatusChangedAccount] = None
-    status_change: Optional[AccountStatusChangedStatusChange] = Field(default=None, alias="statusChange")
-    __properties: ClassVar[List[str]] = ["eventType", "identityId", "dt", "account", "statusChange"]
+    date_time: Optional[StrictStr] = Field(default=None, description="the date of event", alias="dateTime")
+    account: AccountStatusChangedAccount
+    status_change: AccountStatusChangedStatusChange = Field(alias="statusChange")
+    __properties: ClassVar[List[str]] = ["eventType", "identityId", "dateTime", "account", "statusChange"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -95,7 +95,7 @@ class AccountStatusChanged(BaseModel):
         _obj = cls.model_validate({
             "eventType": obj.get("eventType"),
             "identityId": obj.get("identityId"),
-            "dt": obj.get("dt"),
+            "dateTime": obj.get("dateTime"),
             "account": AccountStatusChangedAccount.from_dict(obj["account"]) if obj.get("account") is not None else None,
             "statusChange": AccountStatusChangedStatusChange.from_dict(obj["statusChange"]) if obj.get("statusChange") is not None else None
         })

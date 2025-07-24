@@ -36,16 +36,16 @@ class GetHistoricalIdentityEvents200ResponseInner(BaseModel):
     GetHistoricalIdentityEvents200ResponseInner
     """
 
-    # data type: AccessItemAssociated
-    anyof_schema_1_validator: Optional[AccessItemAssociated] = None
-    # data type: AccessItemRemoved
-    anyof_schema_2_validator: Optional[AccessItemRemoved] = None
-    # data type: AttributesChanged
-    anyof_schema_3_validator: Optional[AttributesChanged] = None
-    # data type: AccessRequested
-    anyof_schema_4_validator: Optional[AccessRequested] = None
     # data type: IdentityCertified
-    anyof_schema_5_validator: Optional[IdentityCertified] = None
+    anyof_schema_1_validator: Optional[IdentityCertified] = None
+    # data type: AccessItemAssociated
+    anyof_schema_2_validator: Optional[AccessItemAssociated] = None
+    # data type: AccessItemRemoved
+    anyof_schema_3_validator: Optional[AccessItemRemoved] = None
+    # data type: AttributesChanged
+    anyof_schema_4_validator: Optional[AttributesChanged] = None
+    # data type: AccessRequested
+    anyof_schema_5_validator: Optional[AccessRequested] = None
     # data type: AccountStatusChanged
     anyof_schema_6_validator: Optional[AccountStatusChanged] = None
     if TYPE_CHECKING:
@@ -73,6 +73,12 @@ class GetHistoricalIdentityEvents200ResponseInner(BaseModel):
     def actual_instance_must_validate_anyof(cls, v):
         instance = GetHistoricalIdentityEvents200ResponseInner.model_construct()
         error_messages = []
+        # validate data type: IdentityCertified
+        if not isinstance(v, IdentityCertified):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `IdentityCertified`")
+        else:
+            return v
+
         # validate data type: AccessItemAssociated
         if not isinstance(v, AccessItemAssociated):
             error_messages.append(f"Error! Input type `{type(v)}` is not `AccessItemAssociated`")
@@ -97,12 +103,6 @@ class GetHistoricalIdentityEvents200ResponseInner(BaseModel):
         else:
             return v
 
-        # validate data type: IdentityCertified
-        if not isinstance(v, IdentityCertified):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `IdentityCertified`")
-        else:
-            return v
-
         # validate data type: AccountStatusChanged
         if not isinstance(v, AccountStatusChanged):
             error_messages.append(f"Error! Input type `{type(v)}` is not `AccountStatusChanged`")
@@ -124,33 +124,33 @@ class GetHistoricalIdentityEvents200ResponseInner(BaseModel):
         """Returns the object represented by the json string"""
         instance = cls.model_construct()
         error_messages = []
-        # anyof_schema_1_validator: Optional[AccessItemAssociated] = None
+        # anyof_schema_1_validator: Optional[IdentityCertified] = None
+        try:
+            instance.actual_instance = IdentityCertified.from_json(json_str)
+            return instance
+        except (ValidationError, ValueError) as e:
+             error_messages.append(str(e))
+        # anyof_schema_2_validator: Optional[AccessItemAssociated] = None
         try:
             instance.actual_instance = AccessItemAssociated.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
-        # anyof_schema_2_validator: Optional[AccessItemRemoved] = None
+        # anyof_schema_3_validator: Optional[AccessItemRemoved] = None
         try:
             instance.actual_instance = AccessItemRemoved.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
-        # anyof_schema_3_validator: Optional[AttributesChanged] = None
+        # anyof_schema_4_validator: Optional[AttributesChanged] = None
         try:
             instance.actual_instance = AttributesChanged.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
-        # anyof_schema_4_validator: Optional[AccessRequested] = None
+        # anyof_schema_5_validator: Optional[AccessRequested] = None
         try:
             instance.actual_instance = AccessRequested.from_json(json_str)
-            return instance
-        except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_5_validator: Optional[IdentityCertified] = None
-        try:
-            instance.actual_instance = IdentityCertified.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
