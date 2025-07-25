@@ -35,7 +35,7 @@ class TestSedAssignment(unittest.TestCase):
         model = SedAssignment()
         if include_optional:
             return SedAssignment(
-                assignee = sailpoint.v2024.models.sed_assignee.SedAssignee(
+                assignee = sailpoint.v2024.models.sed_assignee.Sed Assignee(
                     type = 'SOURCE_OWNER', 
                     value = '016629d1-1d25-463f-97f3-c6686846650', ),
                 items = [

@@ -53,7 +53,7 @@ class TestEntitlement(unittest.TestCase):
                     name = 'ODS-AD-Source', ),
                 owner = None,
                 direct_permissions = [
-                    sailpoint.beta.models.permission_dto.PermissionDto(
+                    sailpoint.beta.models.permission_dto.Permission DTO(
                         rights = [
                             'SELECT'
                             ], 

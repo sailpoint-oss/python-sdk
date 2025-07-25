@@ -35,7 +35,7 @@ class TestRoleMiningSessionResponse(unittest.TestCase):
         model = RoleMiningSessionResponse()
         if include_optional:
             return RoleMiningSessionResponse(
-                scope = sailpoint.v2024.models.role_mining_session_scope.RoleMiningSessionScope(
+                scope = sailpoint.v2024.models.role_mining_session_scope.Role Mining Session Scope(
                     identity_ids = [2c918090761a5aac0176215c46a62d58, 2c918090761a5aac01722015c46a62d42], 
                     criteria = 'source.name:DataScienceDataset', 
                     attribute_filter_criteria = {displayName={untranslated=Location: Miami}, ariaLabel={untranslated=Location: Miami}, data={displayName={translateKey=IDN.IDENTITY_ATTRIBUTES.LOCATION}, name=location, operator=EQUALS, values=[Miami]}}, ),
@@ -45,7 +45,7 @@ class TestRoleMiningSessionResponse(unittest.TestCase):
                 prune_threshold = 70,
                 potential_role_count = 8,
                 potential_roles_ready_count = 4,
-                status = sailpoint.v2024.models.role_mining_session_status.RoleMiningSessionStatus(
+                status = sailpoint.v2024.models.role_mining_session_status.Role Mining Session Status(
                     state = 'CREATED', ),
                 email_recipient_id = '',
                 created_by = None,

@@ -38,7 +38,7 @@ class TestApprovalReminderAndEscalationConfig(unittest.TestCase):
                 days_until_escalation = 0,
                 days_between_reminders = 0,
                 max_reminders = 1,
-                fallback_approver_ref = sailpoint.beta.models.identity_reference_with_name_and_email.IdentityReferenceWithNameAndEmail(
+                fallback_approver_ref = sailpoint.beta.models.identity_reference_with_name_and_email.Identity Reference With Name And Email(
                     type = 'IDENTITY', 
                     id = '5168015d32f890ca15812c9180835d2e', 
                     name = 'Alison Ferguso', 

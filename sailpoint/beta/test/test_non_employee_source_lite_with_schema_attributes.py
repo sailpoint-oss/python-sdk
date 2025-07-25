@@ -40,7 +40,7 @@ class TestNonEmployeeSourceLiteWithSchemaAttributes(unittest.TestCase):
                 name = 'Retail',
                 description = 'Source description',
                 schema_attributes = [
-                    sailpoint.beta.models.non_employee_schema_attribute.NonEmployeeSchemaAttribute(
+                    sailpoint.beta.models.non_employee_schema_attribute.Non Employee Schema Attribute(
                         id = 'ac110005-7156-1150-8171-5b292e3e0084', 
                         system = True, 
                         modified = '2019-08-23T18:52:59.162Z', 

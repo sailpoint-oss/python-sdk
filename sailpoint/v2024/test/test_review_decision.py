@@ -39,7 +39,7 @@ class TestReviewDecision(unittest.TestCase):
                 decision = 'APPROVE',
                 proposed_end_date = '2017-07-11T18:45:37.098Z',
                 bulk = True,
-                recommendation = sailpoint.v2024.models.review_recommendation.ReviewRecommendation(
+                recommendation = sailpoint.v2024.models.review_recommendation.Review Recommendation(
                     recommendation = '', 
                     reasons = [Reason 1, Reason 2], 
                     timestamp = '2020-06-01T13:49:37.385Z', ),

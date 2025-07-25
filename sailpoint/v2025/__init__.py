@@ -1094,6 +1094,7 @@ from sailpoint.v2025.models.sod_exempt_criteria import SodExemptCriteria
 from sailpoint.v2025.models.sod_policy import SodPolicy
 from sailpoint.v2025.models.sod_policy_conflicting_access_criteria import SodPolicyConflictingAccessCriteria
 from sailpoint.v2025.models.sod_policy_dto import SodPolicyDto
+from sailpoint.v2025.models.sod_policy_dto1 import SodPolicyDto1
 from sailpoint.v2025.models.sod_policy_owner_ref import SodPolicyOwnerRef
 from sailpoint.v2025.models.sod_policy_schedule import SodPolicySchedule
 from sailpoint.v2025.models.sod_recipient import SodRecipient

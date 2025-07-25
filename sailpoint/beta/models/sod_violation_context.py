@@ -20,7 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.beta.models.sod_policy_dto import SodPolicyDto
+from sailpoint.beta.models.sod_policy_dto1 import SodPolicyDto1
 from sailpoint.beta.models.sod_violation_context_conflicting_access_criteria import SodViolationContextConflictingAccessCriteria
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,7 +29,7 @@ class SodViolationContext(BaseModel):
     """
     The contextual information of the violated criteria
     """ # noqa: E501
-    policy: Optional[SodPolicyDto] = None
+    policy: Optional[SodPolicyDto1] = None
     conflicting_access_criteria: Optional[SodViolationContextConflictingAccessCriteria] = Field(default=None, alias="conflictingAccessCriteria")
     __properties: ClassVar[List[str]] = ["policy", "conflictingAccessCriteria"]
 
@@ -90,7 +90,7 @@ class SodViolationContext(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "policy": SodPolicyDto.from_dict(obj["policy"]) if obj.get("policy") is not None else None,
+            "policy": SodPolicyDto1.from_dict(obj["policy"]) if obj.get("policy") is not None else None,
             "conflictingAccessCriteria": SodViolationContextConflictingAccessCriteria.from_dict(obj["conflictingAccessCriteria"]) if obj.get("conflictingAccessCriteria") is not None else None
         })
         return _obj

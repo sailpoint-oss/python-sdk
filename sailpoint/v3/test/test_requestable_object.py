@@ -43,7 +43,7 @@ class TestRequestableObject(unittest.TestCase):
                 type = 'ACCESS_PROFILE',
                 request_status = None,
                 identity_request_id = '',
-                owner_ref = sailpoint.v3.models.identity_reference_with_name_and_email.IdentityReferenceWithNameAndEmail(
+                owner_ref = sailpoint.v3.models.identity_reference_with_name_and_email.Identity Reference With Name And Email(
                     type = 'IDENTITY', 
                     id = '5168015d32f890ca15812c9180835d2e', 
                     name = 'Alison Ferguso', 

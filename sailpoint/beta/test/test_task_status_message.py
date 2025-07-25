@@ -36,7 +36,7 @@ class TestTaskStatusMessage(unittest.TestCase):
         if include_optional:
             return TaskStatusMessage(
                 type = 'INFO',
-                localized_text = sailpoint.beta.models.localized_message.LocalizedMessage(
+                localized_text = sailpoint.beta.models.localized_message.Localized Message(
                     locale = 'An error has occurred!', 
                     message = 'Error has occurred!', ),
                 key = 'akey',
@@ -45,7 +45,7 @@ class TestTaskStatusMessage(unittest.TestCase):
         else:
             return TaskStatusMessage(
                 type = 'INFO',
-                localized_text = sailpoint.beta.models.localized_message.LocalizedMessage(
+                localized_text = sailpoint.beta.models.localized_message.Localized Message(
                     locale = 'An error has occurred!', 
                     message = 'Error has occurred!', ),
                 key = 'akey',

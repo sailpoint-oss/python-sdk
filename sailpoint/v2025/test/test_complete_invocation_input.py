@@ -35,7 +35,7 @@ class TestCompleteInvocationInput(unittest.TestCase):
         model = CompleteInvocationInput()
         if include_optional:
             return CompleteInvocationInput(
-                localized_error = sailpoint.v2025.models.localized_message.LocalizedMessage(
+                localized_error = sailpoint.v2025.models.localized_message.Localized Message(
                     locale = 'An error has occurred!', 
                     message = 'Error has occurred!', ),
                 output = {approved=false}

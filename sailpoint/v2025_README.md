@@ -1765,6 +1765,7 @@ Class | Method | HTTP request | Description
  - [SodPolicy](sailpoint/v2025/docs/SodPolicy.md)
  - [SodPolicyConflictingAccessCriteria](sailpoint/v2025/docs/SodPolicyConflictingAccessCriteria.md)
  - [SodPolicyDto](sailpoint/v2025/docs/SodPolicyDto.md)
+ - [SodPolicyDto1](sailpoint/v2025/docs/SodPolicyDto1.md)
  - [SodPolicyOwnerRef](sailpoint/v2025/docs/SodPolicyOwnerRef.md)
  - [SodPolicySchedule](sailpoint/v2025/docs/SodPolicySchedule.md)
  - [SodRecipient](sailpoint/v2025/docs/SodRecipient.md)

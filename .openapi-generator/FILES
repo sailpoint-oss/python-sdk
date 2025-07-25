@@ -1151,6 +1151,7 @@ sailpoint/v2025/docs/SodExemptCriteria.md
 sailpoint/v2025/docs/SodPolicy.md
 sailpoint/v2025/docs/SodPolicyConflictingAccessCriteria.md
 sailpoint/v2025/docs/SodPolicyDto.md
+sailpoint/v2025/docs/SodPolicyDto1.md
 sailpoint/v2025/docs/SodPolicyOwnerRef.md
 sailpoint/v2025/docs/SodPolicySchedule.md
 sailpoint/v2025/docs/SodRecipient.md
@@ -2323,6 +2324,7 @@ sailpoint/v2025/models/sod_exempt_criteria.py
 sailpoint/v2025/models/sod_policy.py
 sailpoint/v2025/models/sod_policy_conflicting_access_criteria.py
 sailpoint/v2025/models/sod_policy_dto.py
+sailpoint/v2025/models/sod_policy_dto1.py
 sailpoint/v2025/models/sod_policy_owner_ref.py
 sailpoint/v2025/models/sod_policy_schedule.py
 sailpoint/v2025/models/sod_recipient.py
@@ -3559,6 +3561,7 @@ sailpoint/v2025/test/test_sod_policies_api.py
 sailpoint/v2025/test/test_sod_policy.py
 sailpoint/v2025/test/test_sod_policy_conflicting_access_criteria.py
 sailpoint/v2025/test/test_sod_policy_dto.py
+sailpoint/v2025/test/test_sod_policy_dto1.py
 sailpoint/v2025/test/test_sod_policy_owner_ref.py
 sailpoint/v2025/test/test_sod_policy_schedule.py
 sailpoint/v2025/test/test_sod_recipient.py

@@ -36,7 +36,7 @@ class TestEntitlementAccessRequestConfig(unittest.TestCase):
         if include_optional:
             return EntitlementAccessRequestConfig(
                 approval_schemes = [
-                    sailpoint.beta.models.entitlement_approval_scheme.EntitlementApprovalScheme(
+                    sailpoint.beta.models.entitlement_approval_scheme.Entitlement Approval Scheme(
                         approver_type = 'GOVERNANCE_GROUP', 
                         approver_id = 'e3eab852-8315-467f-9de7-70eda97f63c8', )
                     ],

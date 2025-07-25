@@ -41,7 +41,7 @@ class TestWorkItemsForm(unittest.TestCase):
                 subtitle = 'Please select from the following',
                 target_user = 'Jane.Doe',
                 sections = [
-                    sailpoint.v2024.models.section_details.SectionDetails()
+                    sailpoint.v2024.models.section_details.Section Details()
                     ]
             )
         else:

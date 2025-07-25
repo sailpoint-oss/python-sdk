@@ -54,7 +54,7 @@ class TestMultiHostSources(unittest.TestCase):
                     type = 'RULE', 
                     id = '2c918085708c274401708c2a8a760001', 
                     name = 'Example Rule', ),
-                manager_correlation_mapping = sailpoint.v2025.models.manager_correlation_mapping.ManagerCorrelationMapping(
+                manager_correlation_mapping = sailpoint.v2025.models.manager_correlation_mapping.Manager Correlation Mapping(
                     account_attribute_name = 'manager', 
                     identity_attribute_name = 'manager', ),
                 manager_correlation_rule = sailpoint.v2025.models.source_manager_correlation_rule.Source_managerCorrelationRule(

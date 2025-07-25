@@ -49,7 +49,7 @@ class TestConnectorRuleCreateRequest(unittest.TestCase):
                         name = 'firstName', 
                         description = 'the first name of the identity', 
                         type = 'String', ), ),
-                source_code = sailpoint.v2024.models.source_code.SourceCode(
+                source_code = sailpoint.v2024.models.source_code.Source Code(
                     version = '1.0', 
                     script = 'return "Mr. " + firstName;', ),
                 attributes = {}
@@ -58,7 +58,7 @@ class TestConnectorRuleCreateRequest(unittest.TestCase):
             return ConnectorRuleCreateRequest(
                 name = 'WebServiceBeforeOperationRule',
                 type = 'BuildMap',
-                source_code = sailpoint.v2024.models.source_code.SourceCode(
+                source_code = sailpoint.v2024.models.source_code.Source Code(
                     version = '1.0', 
                     script = 'return "Mr. " + firstName;', ),
         )

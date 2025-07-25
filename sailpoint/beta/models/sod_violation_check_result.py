@@ -21,7 +21,7 @@ import warnings
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.beta.models.error_message_dto import ErrorMessageDto
-from sailpoint.beta.models.sod_policy_dto import SodPolicyDto
+from sailpoint.beta.models.sod_policy_dto1 import SodPolicyDto1
 from sailpoint.beta.models.sod_violation_context import SodViolationContext
 from typing import Optional, Set
 from typing_extensions import Self
@@ -33,7 +33,7 @@ class SodViolationCheckResult(BaseModel):
     message: Optional[ErrorMessageDto] = None
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check.", alias="clientMetadata")
     violation_contexts: Optional[List[SodViolationContext]] = Field(default=None, alias="violationContexts")
-    violated_policies: Optional[List[SodPolicyDto]] = Field(default=None, description="A list of the SOD policies that were violated.", alias="violatedPolicies")
+    violated_policies: Optional[List[SodPolicyDto1]] = Field(default=None, description="A list of the SOD policies that were violated.", alias="violatedPolicies")
     __properties: ClassVar[List[str]] = ["message", "clientMetadata", "violationContexts", "violatedPolicies"]
 
     model_config = ConfigDict(
@@ -122,7 +122,7 @@ class SodViolationCheckResult(BaseModel):
             "message": ErrorMessageDto.from_dict(obj["message"]) if obj.get("message") is not None else None,
             "clientMetadata": obj.get("clientMetadata"),
             "violationContexts": [SodViolationContext.from_dict(_item) for _item in obj["violationContexts"]] if obj.get("violationContexts") is not None else None,
-            "violatedPolicies": [SodPolicyDto.from_dict(_item) for _item in obj["violatedPolicies"]] if obj.get("violatedPolicies") is not None else None
+            "violatedPolicies": [SodPolicyDto1.from_dict(_item) for _item in obj["violatedPolicies"]] if obj.get("violatedPolicies") is not None else None
         })
         return _obj
 

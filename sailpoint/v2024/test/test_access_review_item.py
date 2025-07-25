@@ -35,7 +35,7 @@ class TestAccessReviewItem(unittest.TestCase):
         model = AccessReviewItem()
         if include_optional:
             return AccessReviewItem(
-                access_summary = sailpoint.v2024.models.access_summary.AccessSummary(
+                access_summary = sailpoint.v2024.models.access_summary.Access Summary(
                     access = sailpoint.v2024.models.access_summary_access.AccessSummary_access(
                         type = 'IDENTITY', 
                         id = '2c9180867160846801719932c5153fb7', 
@@ -45,7 +45,7 @@ class TestAccessReviewItem(unittest.TestCase):
                         name = 'CN=entitlement.bbb7c650', 
                         description = 'Gives read/write access to the company database', 
                         privileged = False, 
-                        owner = sailpoint.v2024.models.identity_reference_with_name_and_email.IdentityReferenceWithNameAndEmail(
+                        owner = sailpoint.v2024.models.identity_reference_with_name_and_email.Identity Reference With Name And Email(
                             id = '5168015d32f890ca15812c9180835d2e', 
                             name = 'Alison Ferguso', 
                             email = 'alison.ferguso@identitysoon.com', ), 
@@ -60,7 +60,7 @@ class TestAccessReviewItem(unittest.TestCase):
                         revocable = True, 
                         cloud_governed = False, 
                         contains_data_access = True, 
-                        data_access = sailpoint.v2024.models.data_access.DataAccess(
+                        data_access = sailpoint.v2024.models.data_access.Data Access(
                             policies = [
                                 sailpoint.v2024.models.data_access_policies_inner.DataAccess_policies_inner(
                                     value = 'GDPR-20', )
@@ -80,7 +80,7 @@ class TestAccessReviewItem(unittest.TestCase):
                             name = 'Alison Ferguso', 
                             created = '2020-04-20T20:11:05.067Z', 
                             modified = '2020-05-20T18:57:16.987Z', 
-                            activity_insights = sailpoint.v2024.models.activity_insights.ActivityInsights(
+                            activity_insights = sailpoint.v2024.models.activity_insights.Activity Insights(
                                 account_id = 'c4ddd5421d8549f0abd309162cafd3b1', 
                                 usage_days = 45, 
                                 usage_days_state = 'COMPLETE', ), 
@@ -131,7 +131,7 @@ class TestAccessReviewItem(unittest.TestCase):
                                 created = '2021-01-01T22:32:58.104Z', 
                                 modified = '2021-02-01T22:32:58.104Z', )
                             ], ), ),
-                identity_summary = sailpoint.v2024.models.certification_identity_summary.CertificationIdentitySummary(
+                identity_summary = sailpoint.v2024.models.certification_identity_summary.Certification Identity Summary(
                     id = '2c91808772a504f50172a9540e501ba7', 
                     name = 'Alison Ferguso', 
                     identity_id = '2c9180857182306001719937377a33de', 

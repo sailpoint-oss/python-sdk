@@ -45,7 +45,7 @@ class TestAccessRequestRecommendationItemDetail(unittest.TestCase):
                 requested = True,
                 viewed = True,
                 messages = [
-                    sailpoint.v2025.models.access_recommendation_message.AccessRecommendationMessage(
+                    sailpoint.v2025.models.access_recommendation_message.Access Recommendation Message(
                         interpretation = '95% of your peers have this access.', )
                     ],
                 translation_messages = [{key=recommender-api.V2_WEIGHT_FEATURE_PRODUCT_INTERPRETATION_HIGH, values=[75, department]}]

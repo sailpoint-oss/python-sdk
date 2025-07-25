@@ -36,7 +36,7 @@ class TestAccessRequestRecommendationActionItemResponseDto(unittest.TestCase):
         if include_optional:
             return AccessRequestRecommendationActionItemResponseDto(
                 identity_id = '2c91808570313110017040b06f344ec9',
-                access = sailpoint.v2025.models.access_request_recommendation_item.AccessRequestRecommendationItem(
+                access = sailpoint.v2025.models.access_request_recommendation_item.Access Request Recommendation Item(
                     id = '2c9180835d2e5168015d32f890ca1581', 
                     type = 'ACCESS_PROFILE', ),
                 timestamp = '2017-07-11T18:45:37.098Z'

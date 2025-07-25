@@ -35,21 +35,21 @@ class TestSodViolationCheckResult(unittest.TestCase):
         model = SodViolationCheckResult()
         if include_optional:
             return SodViolationCheckResult(
-                message = sailpoint.beta.models.error_message_dto.ErrorMessageDto(
+                message = sailpoint.beta.models.error_message_dto.Error Message Dto(
                     locale = 'en-US', 
                     locale_origin = 'DEFAULT', 
                     text = 'The request was syntactically correct but its content is semantically invalid.', ),
                 client_metadata = {requestedAppName=test-app, requestedAppId=2c91808f7892918f0178b78da4a305a1},
                 violation_contexts = [
-                    sailpoint.beta.models.sod_violation_context.SodViolationContext(
-                        policy = sailpoint.beta.models.sod_policy_dto.SodPolicyDto(
+                    sailpoint.beta.models.sod_violation_context.Sod Violation Context(
+                        policy = sailpoint.beta.models.sod_policy_dto.Sod Policy Dto(
                             type = 'SOD_POLICY', 
                             id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde', 
                             name = 'Business SOD Policy', ), 
                         conflicting_access_criteria = sailpoint.beta.models.sod_violation_context_conflicting_access_criteria.SodViolationContext_conflictingAccessCriteria(
                             left_criteria = sailpoint.beta.models.sod_violation_context_conflicting_access_criteria_left_criteria.SodViolationContext_conflictingAccessCriteria_leftCriteria(
                                 criteria_list = [
-                                    sailpoint.beta.models.sod_exempt_criteria.SodExemptCriteria(
+                                    sailpoint.beta.models.sod_exempt_criteria.Sod Exempt Criteria(
                                         existing = True, 
                                         type = 'IDENTITY', 
                                         id = '2c918085771e9d3301773b3cb66f6398', 
@@ -58,7 +58,7 @@ class TestSodViolationCheckResult(unittest.TestCase):
                             right_criteria = sailpoint.beta.models.sod_violation_context_conflicting_access_criteria_left_criteria.SodViolationContext_conflictingAccessCriteria_leftCriteria(), ), )
                     ],
                 violated_policies = [
-                    sailpoint.beta.models.sod_policy_dto.SodPolicyDto(
+                    sailpoint.beta.models.sod_policy_dto.Sod Policy Dto(
                         type = 'SOD_POLICY', 
                         id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde', 
                         name = 'Business SOD Policy', )

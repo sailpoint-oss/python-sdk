@@ -35,10 +35,10 @@ class TestOutlierFeatureTranslation(unittest.TestCase):
         model = OutlierFeatureTranslation()
         if include_optional:
             return OutlierFeatureTranslation(
-                display_name = sailpoint.v2024.models.translation_message.TranslationMessage(
+                display_name = sailpoint.v2024.models.translation_message.Translation Message(
                     key = 'recommender-api.V2_WEIGHT_FEATURE_PRODUCT_INTERPRETATION_HIGH', 
                     values = [75, department], ),
-                description = sailpoint.v2024.models.translation_message.TranslationMessage(
+                description = sailpoint.v2024.models.translation_message.Translation Message(
                     key = 'recommender-api.V2_WEIGHT_FEATURE_PRODUCT_INTERPRETATION_HIGH', 
                     values = [75, department], )
             )

@@ -49,10 +49,10 @@ class TestSlimcampaign(unittest.TestCase):
                 total_certifications = 100,
                 completed_certifications = 10,
                 alerts = [
-                    sailpoint.beta.models.campaign_alert.CampaignAlert(
+                    sailpoint.beta.models.campaign_alert.Campaign Alert(
                         level = 'ERROR', 
                         localizations = [
-                            sailpoint.beta.models.error_message_dto.ErrorMessageDto(
+                            sailpoint.beta.models.error_message_dto.Error Message Dto(
                                 locale = 'en-US', 
                                 locale_origin = 'DEFAULT', 
                                 text = 'The request was syntactically correct but its content is semantically invalid.', )

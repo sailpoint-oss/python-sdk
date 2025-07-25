@@ -37,7 +37,7 @@ class TestIdentityCertificationDto(unittest.TestCase):
             return IdentityCertificationDto(
                 id = '2c9180835d2e5168015d32f890ca1581',
                 name = 'Source Owner Access Review for Employees [source]',
-                campaign = sailpoint.v2024.models.campaign_reference.CampaignReference(
+                campaign = sailpoint.v2024.models.campaign_reference.Campaign Reference(
                     id = 'ef38f94347e94562b5bb8424a56397d8', 
                     name = 'Campaign Name', 
                     type = 'CAMPAIGN', 
@@ -62,7 +62,7 @@ class TestIdentityCertificationDto(unittest.TestCase):
                     created = '2018-06-25T20:22:28.104Z', 
                     modified = '2018-06-25T20:22:28.104Z', ),
                 reassignment = sailpoint.v2024.models.reassignment.Reassignment(
-                    from = sailpoint.v2024.models.certification_reference.CertificationReference(
+                    from = sailpoint.v2024.models.certification_reference.Certification Reference(
                         id = 'ef38f94347e94562b5bb8424a56397d8', 
                         name = 'Certification Name', 
                         type = 'CERTIFICATION', 

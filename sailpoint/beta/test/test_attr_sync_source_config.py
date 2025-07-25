@@ -35,7 +35,7 @@ class TestAttrSyncSourceConfig(unittest.TestCase):
         model = AttrSyncSourceConfig()
         if include_optional:
             return AttrSyncSourceConfig(
-                source = sailpoint.beta.models.attr_sync_source.AttrSyncSource(
+                source = sailpoint.beta.models.attr_sync_source.Attr Sync Source(
                     type = 'SOURCE', 
                     id = '2c9180835d191a86015d28455b4b232a', 
                     name = 'HR Active Directory', ),
@@ -43,7 +43,7 @@ class TestAttrSyncSourceConfig(unittest.TestCase):
             )
         else:
             return AttrSyncSourceConfig(
-                source = sailpoint.beta.models.attr_sync_source.AttrSyncSource(
+                source = sailpoint.beta.models.attr_sync_source.Attr Sync Source(
                     type = 'SOURCE', 
                     id = '2c9180835d191a86015d28455b4b232a', 
                     name = 'HR Active Directory', ),

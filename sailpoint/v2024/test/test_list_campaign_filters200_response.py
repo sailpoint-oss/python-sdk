@@ -36,7 +36,7 @@ class TestListCampaignFilters200Response(unittest.TestCase):
         if include_optional:
             return ListCampaignFilters200Response(
                 items = [
-                    sailpoint.v2024.models.campaign_filter_details.CampaignFilterDetails(
+                    sailpoint.v2024.models.campaign_filter_details.Campaign Filter Details(
                         id = '5ec18cef39020d6fd7a60ad3970aba61', 
                         name = 'Identity Attribute Campaign Filter', 
                         description = 'Campaign filter to certify data based on an identity attribute's specified property.', 

@@ -35,14 +35,14 @@ class TestSodViolationContext(unittest.TestCase):
         model = SodViolationContext()
         if include_optional:
             return SodViolationContext(
-                policy = sailpoint.v3.models.sod_policy_dto.SodPolicyDto(
+                policy = sailpoint.v3.models.sod_policy_dto.Sod Policy Dto(
                     type = 'SOD_POLICY', 
                     id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde', 
                     name = 'Business SOD Policy', ),
                 conflicting_access_criteria = sailpoint.v3.models.sod_violation_context_conflicting_access_criteria.SodViolationContext_conflictingAccessCriteria(
                     left_criteria = sailpoint.v3.models.sod_violation_context_conflicting_access_criteria_left_criteria.SodViolationContext_conflictingAccessCriteria_leftCriteria(
                         criteria_list = [
-                            sailpoint.v3.models.sod_exempt_criteria.SodExemptCriteria(
+                            sailpoint.v3.models.sod_exempt_criteria.Sod Exempt Criteria(
                                 existing = True, 
                                 type = 'IDENTITY', 
                                 id = '2c918085771e9d3301773b3cb66f6398', 

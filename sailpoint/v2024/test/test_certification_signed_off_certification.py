@@ -39,7 +39,7 @@ class TestCertificationSignedOffCertification(unittest.TestCase):
                 name = 'Manager Access Review for Alice Baker',
                 created = '2020-02-16T03:04:45.815Z',
                 modified = '2020-02-16T03:06:45.815Z',
-                campaign_ref = sailpoint.v2024.models.campaign_reference.CampaignReference(
+                campaign_ref = sailpoint.v2024.models.campaign_reference.Campaign Reference(
                     id = 'ef38f94347e94562b5bb8424a56397d8', 
                     name = 'Campaign Name', 
                     type = 'CAMPAIGN', 
@@ -58,7 +58,7 @@ class TestCertificationSignedOffCertification(unittest.TestCase):
                     created = '2018-06-25T20:22:28.104Z', 
                     modified = '2018-06-25T20:22:28.104Z', ),
                 reassignment = sailpoint.v2024.models.reassignment.Reassignment(
-                    from = sailpoint.v2024.models.certification_reference.CertificationReference(
+                    from = sailpoint.v2024.models.certification_reference.Certification Reference(
                         id = 'ef38f94347e94562b5bb8424a56397d8', 
                         name = 'Certification Name', 
                         type = 'CERTIFICATION', 
@@ -83,7 +83,7 @@ class TestCertificationSignedOffCertification(unittest.TestCase):
                 id = '2c91808576f886190176f88caf0d0067',
                 name = 'Manager Access Review for Alice Baker',
                 created = '2020-02-16T03:04:45.815Z',
-                campaign_ref = sailpoint.v2024.models.campaign_reference.CampaignReference(
+                campaign_ref = sailpoint.v2024.models.campaign_reference.Campaign Reference(
                     id = 'ef38f94347e94562b5bb8424a56397d8', 
                     name = 'Campaign Name', 
                     type = 'CAMPAIGN', 

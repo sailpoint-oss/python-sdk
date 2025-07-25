@@ -39,7 +39,7 @@ class TestReviewableRole(unittest.TestCase):
                 name = 'Accounting-Employees',
                 description = 'Role for members of the accounting department with the necessary Access Profiles',
                 privileged = False,
-                owner = sailpoint.v2025.models.identity_reference_with_name_and_email.IdentityReferenceWithNameAndEmail(
+                owner = sailpoint.v2025.models.identity_reference_with_name_and_email.Identity Reference With Name And Email(
                     type = 'IDENTITY', 
                     id = '5168015d32f890ca15812c9180835d2e', 
                     name = 'Alison Ferguso', 
@@ -54,7 +54,7 @@ class TestReviewableRole(unittest.TestCase):
                         privileged = False, 
                         cloud_governed = False, 
                         end_date = '2021-12-25T00:00Z', 
-                        owner = sailpoint.v2025.models.identity_reference_with_name_and_email.IdentityReferenceWithNameAndEmail(
+                        owner = sailpoint.v2025.models.identity_reference_with_name_and_email.Identity Reference With Name And Email(
                             type = 'IDENTITY', 
                             id = '5168015d32f890ca15812c9180835d2e', 
                             name = 'Alison Ferguso', 
@@ -76,7 +76,7 @@ class TestReviewableRole(unittest.TestCase):
                                 revocable = True, 
                                 cloud_governed = False, 
                                 contains_data_access = True, 
-                                data_access = sailpoint.v2025.models.data_access.DataAccess(
+                                data_access = sailpoint.v2025.models.data_access.Data Access(
                                     policies = [
                                         sailpoint.v2025.models.data_access_policies_inner.DataAccess_policies_inner(
                                             value = 'GDPR-20', )
@@ -97,7 +97,7 @@ class TestReviewableRole(unittest.TestCase):
                                     name = 'Alison Ferguso', 
                                     created = '2020-04-20T20:11:05.067Z', 
                                     modified = '2020-05-20T18:57:16.987Z', 
-                                    activity_insights = sailpoint.v2025.models.activity_insights.ActivityInsights(
+                                    activity_insights = sailpoint.v2025.models.activity_insights.Activity Insights(
                                         account_id = 'c4ddd5421d8549f0abd309162cafd3b1', 
                                         usage_days = 45, 
                                         usage_days_state = 'COMPLETE', ), 
@@ -113,7 +113,7 @@ class TestReviewableRole(unittest.TestCase):
                         name = 'CN=entitlement.bbb7c650', 
                         description = 'Gives read/write access to the company database', 
                         privileged = False, 
-                        owner = sailpoint.v2025.models.identity_reference_with_name_and_email.IdentityReferenceWithNameAndEmail(
+                        owner = sailpoint.v2025.models.identity_reference_with_name_and_email.Identity Reference With Name And Email(
                             type = 'IDENTITY', 
                             id = '5168015d32f890ca15812c9180835d2e', 
                             name = 'Alison Ferguso', 
@@ -129,7 +129,7 @@ class TestReviewableRole(unittest.TestCase):
                         revocable = True, 
                         cloud_governed = False, 
                         contains_data_access = True, 
-                        data_access = sailpoint.v2025.models.data_access.DataAccess(
+                        data_access = sailpoint.v2025.models.data_access.Data Access(
                             policies = [
                                 sailpoint.v2025.models.data_access_policies_inner.DataAccess_policies_inner(
                                     value = 'GDPR-20', )
@@ -150,7 +150,7 @@ class TestReviewableRole(unittest.TestCase):
                             name = 'Alison Ferguso', 
                             created = '2020-04-20T20:11:05.067Z', 
                             modified = '2020-05-20T18:57:16.987Z', 
-                            activity_insights = sailpoint.v2025.models.activity_insights.ActivityInsights(
+                            activity_insights = sailpoint.v2025.models.activity_insights.Activity Insights(
                                 account_id = 'c4ddd5421d8549f0abd309162cafd3b1', 
                                 usage_days = 45, 
                                 usage_days_state = 'COMPLETE', ), 

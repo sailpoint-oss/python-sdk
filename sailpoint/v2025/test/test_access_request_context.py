@@ -36,7 +36,7 @@ class TestAccessRequestContext(unittest.TestCase):
         if include_optional:
             return AccessRequestContext(
                 context_attributes = [
-                    sailpoint.v2025.models.context_attribute_dto.ContextAttributeDto(
+                    sailpoint.v2025.models.context_attribute_dto.Context Attribute Dto(
                         attribute = 'location', 
                         value = Austin, 
                         derived = False, )

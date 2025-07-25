@@ -36,7 +36,7 @@ class TestAccessReviewReassignment(unittest.TestCase):
         if include_optional:
             return AccessReviewReassignment(
                 reassign = [
-                    sailpoint.v2025.models.reassign_reference.ReassignReference(
+                    sailpoint.v2025.models.reassign_reference.Reassign Reference(
                         id = 'ef38f94347e94562b5bb8424a56397d8', 
                         type = 'ITEM', )
                     ],
@@ -46,7 +46,7 @@ class TestAccessReviewReassignment(unittest.TestCase):
         else:
             return AccessReviewReassignment(
                 reassign = [
-                    sailpoint.v2025.models.reassign_reference.ReassignReference(
+                    sailpoint.v2025.models.reassign_reference.Reassign Reference(
                         id = 'ef38f94347e94562b5bb8424a56397d8', 
                         type = 'ITEM', )
                     ],

@@ -36,7 +36,7 @@ class TestEntitlementAccessModelMetadata(unittest.TestCase):
         if include_optional:
             return EntitlementAccessModelMetadata(
                 attributes = [
-                    sailpoint.v2024.models.access_model_metadata.AccessModelMetadata(
+                    sailpoint.v2024.models.access_model_metadata.Access Model Metadata(
                         key = 'iscCsp', 
                         name = 'CSP', 
                         multiselect = True, 

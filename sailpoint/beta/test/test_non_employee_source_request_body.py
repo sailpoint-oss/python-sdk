@@ -37,15 +37,15 @@ class TestNonEmployeeSourceRequestBody(unittest.TestCase):
             return NonEmployeeSourceRequestBody(
                 name = 'Retail',
                 description = 'Source description',
-                owner = sailpoint.beta.models.non_employee_idn_user_request.NonEmployeeIdnUserRequest(
+                owner = sailpoint.beta.models.non_employee_idn_user_request.Non Employee Idn User Request(
                     id = '2c91808570313110017040b06f344ec9', ),
                 management_workgroup = '123299',
                 approvers = [
-                    sailpoint.beta.models.non_employee_idn_user_request.NonEmployeeIdnUserRequest(
+                    sailpoint.beta.models.non_employee_idn_user_request.Non Employee Idn User Request(
                         id = '2c91808570313110017040b06f344ec9', )
                     ],
                 account_managers = [
-                    sailpoint.beta.models.non_employee_idn_user_request.NonEmployeeIdnUserRequest(
+                    sailpoint.beta.models.non_employee_idn_user_request.Non Employee Idn User Request(
                         id = '2c91808570313110017040b06f344ec9', )
                     ]
             )
@@ -53,7 +53,7 @@ class TestNonEmployeeSourceRequestBody(unittest.TestCase):
             return NonEmployeeSourceRequestBody(
                 name = 'Retail',
                 description = 'Source description',
-                owner = sailpoint.beta.models.non_employee_idn_user_request.NonEmployeeIdnUserRequest(
+                owner = sailpoint.beta.models.non_employee_idn_user_request.Non Employee Idn User Request(
                     id = '2c91808570313110017040b06f344ec9', ),
         )
         """

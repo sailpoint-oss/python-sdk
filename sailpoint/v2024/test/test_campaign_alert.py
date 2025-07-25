@@ -37,7 +37,7 @@ class TestCampaignAlert(unittest.TestCase):
             return CampaignAlert(
                 level = 'ERROR',
                 localizations = [
-                    sailpoint.v2024.models.error_message_dto.ErrorMessageDto(
+                    sailpoint.v2024.models.error_message_dto.Error Message Dto(
                         locale = 'en-US', 
                         locale_origin = 'DEFAULT', 
                         text = 'The request was syntactically correct but its content is semantically invalid.', )

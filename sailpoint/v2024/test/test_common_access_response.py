@@ -36,7 +36,7 @@ class TestCommonAccessResponse(unittest.TestCase):
         if include_optional:
             return CommonAccessResponse(
                 id = '555ab47a-0d32-4813-906f-adf3567de6a4',
-                access = sailpoint.v2024.models.common_access_item_access.CommonAccessItemAccess(
+                access = sailpoint.v2024.models.common_access_item_access.Common Access Item Access(
                     id = '', 
                     type = 'ACCESS_PROFILE', 
                     name = '', 

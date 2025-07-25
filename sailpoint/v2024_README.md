@@ -1730,6 +1730,7 @@ Class | Method | HTTP request | Description
  - [SodPolicy](sailpoint/v2024/docs/SodPolicy.md)
  - [SodPolicyConflictingAccessCriteria](sailpoint/v2024/docs/SodPolicyConflictingAccessCriteria.md)
  - [SodPolicyDto](sailpoint/v2024/docs/SodPolicyDto.md)
+ - [SodPolicyDto1](sailpoint/v2024/docs/SodPolicyDto1.md)
  - [SodPolicyOwnerRef](sailpoint/v2024/docs/SodPolicyOwnerRef.md)
  - [SodPolicySchedule](sailpoint/v2024/docs/SodPolicySchedule.md)
  - [SodRecipient](sailpoint/v2024/docs/SodRecipient.md)

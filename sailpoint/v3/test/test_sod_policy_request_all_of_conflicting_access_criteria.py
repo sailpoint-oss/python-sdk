@@ -35,10 +35,10 @@ class TestSodPolicyRequestAllOfConflictingAccessCriteria(unittest.TestCase):
         model = SodPolicyRequestAllOfConflictingAccessCriteria()
         if include_optional:
             return SodPolicyRequestAllOfConflictingAccessCriteria(
-                left_criteria = sailpoint.v3.models.access_criteria_request.AccessCriteriaRequest(
+                left_criteria = sailpoint.v3.models.access_criteria_request.Access Criteria Request(
                     name = 'money-in', 
                     criteria_list = [{type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a66, name=Administrator}, {type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a67, name=Administrator}], ),
-                right_criteria = sailpoint.v3.models.access_criteria_request.AccessCriteriaRequest(
+                right_criteria = sailpoint.v3.models.access_criteria_request.Access Criteria Request(
                     name = 'money-in', 
                     criteria_list = [{type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a66, name=Administrator}, {type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a67, name=Administrator}], )
             )

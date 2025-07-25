@@ -35,7 +35,7 @@ class TestCommonAccessItemRequest(unittest.TestCase):
         model = CommonAccessItemRequest()
         if include_optional:
             return CommonAccessItemRequest(
-                access = sailpoint.v2024.models.common_access_item_access.CommonAccessItemAccess(
+                access = sailpoint.v2024.models.common_access_item_access.Common Access Item Access(
                     id = '', 
                     type = 'ACCESS_PROFILE', 
                     name = '', 

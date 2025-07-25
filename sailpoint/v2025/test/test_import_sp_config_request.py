@@ -36,7 +36,7 @@ class TestImportSpConfigRequest(unittest.TestCase):
         if include_optional:
             return ImportSpConfigRequest(
                 data = bytes(b'blah'),
-                options = sailpoint.v2025.models.import_options.ImportOptions(
+                options = sailpoint.v2025.models.import_options.Import Options(
                     exclude_types = [
                         'SOURCE'
                         ], 

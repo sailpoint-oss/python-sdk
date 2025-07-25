@@ -36,10 +36,10 @@ class TestRecommendationResponseDto(unittest.TestCase):
         if include_optional:
             return RecommendationResponseDto(
                 response = [
-                    sailpoint.v2025.models.recommendation_response.RecommendationResponse(
-                        request = sailpoint.v2025.models.recommendation_request.RecommendationRequest(
+                    sailpoint.v2025.models.recommendation_response.Recommendation Response(
+                        request = sailpoint.v2025.models.recommendation_request.Recommendation Request(
                             identity_id = '2c938083633d259901633d25c68c00fa', 
-                            item = sailpoint.v2025.models.access_item_ref.AccessItemRef(
+                            item = sailpoint.v2025.models.access_item_ref.Access Item Ref(
                                 id = '2c938083633d259901633d2623ec0375', 
                                 type = 'ENTITLEMENT', ), ), 
                         recommendation = 'true', 
@@ -58,7 +58,7 @@ class TestRecommendationResponseDto(unittest.TestCase):
                                 'key' : sailpoint.v2025.models.recommender_calculations_identity_attributes_value.RecommenderCalculations_identityAttributes_value(
                                     value = '', )
                                 }, 
-                            feature_values = sailpoint.v2025.models.feature_value_dto.FeatureValueDto(
+                            feature_values = sailpoint.v2025.models.feature_value_dto.Feature Value Dto(
                                 feature = 'department', 
                                 numerator = 14, 
                                 denominator = 14, ), ), )

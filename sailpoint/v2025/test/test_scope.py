@@ -37,7 +37,7 @@ class TestScope(unittest.TestCase):
             return Scope(
                 scope = 'ALL',
                 visibility = 'ALL',
-                scope_filter = sailpoint.v2025.models.visibility_criteria.VisibilityCriteria(
+                scope_filter = sailpoint.v2025.models.visibility_criteria.Visibility Criteria(
                     expression = sailpoint.v2025.models.expression.Expression(
                         operator = 'EQUALS', 
                         attribute = 'location', 

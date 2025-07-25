@@ -36,7 +36,7 @@ class TestAttributesChanged(unittest.TestCase):
         if include_optional:
             return AttributesChanged(
                 attribute_changes = [
-                    sailpoint.beta.models.attribute_change.AttributeChange(
+                    sailpoint.beta.models.attribute_change.Attribute Change(
                         name = 'firstname', 
                         previous_value = 'adam', 
                         new_value = 'zampa', )
@@ -48,7 +48,7 @@ class TestAttributesChanged(unittest.TestCase):
         else:
             return AttributesChanged(
                 attribute_changes = [
-                    sailpoint.beta.models.attribute_change.AttributeChange(
+                    sailpoint.beta.models.attribute_change.Attribute Change(
                         name = 'firstname', 
                         previous_value = 'adam', 
                         new_value = 'zampa', )

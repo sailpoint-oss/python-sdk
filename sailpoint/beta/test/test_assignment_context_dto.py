@@ -35,20 +35,20 @@ class TestAssignmentContextDto(unittest.TestCase):
         model = AssignmentContextDto()
         if include_optional:
             return AssignmentContextDto(
-                requested = sailpoint.beta.models.access_request_context.AccessRequestContext(
+                requested = sailpoint.beta.models.access_request_context.Access Request Context(
                     context_attributes = [
-                        sailpoint.beta.models.context_attribute_dto.ContextAttributeDto(
+                        sailpoint.beta.models.context_attribute_dto.Context Attribute Dto(
                             attribute = 'location', 
                             value = Austin, 
                             derived = False, )
                         ], ),
                 matched = [
-                    sailpoint.beta.models.role_match_dto.RoleMatchDto(
-                        role_ref = sailpoint.beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                    sailpoint.beta.models.role_match_dto.Role Match Dto(
+                        role_ref = sailpoint.beta.models.base_reference_dto.Base Reference Dto(
                             id = 'ff8081814d977c21014da056804a0af3', 
                             name = 'Github', ), 
                         matched_attributes = [
-                            sailpoint.beta.models.context_attribute_dto.ContextAttributeDto(
+                            sailpoint.beta.models.context_attribute_dto.Context Attribute Dto(
                                 attribute = 'location', 
                                 value = Austin, 
                                 derived = False, )

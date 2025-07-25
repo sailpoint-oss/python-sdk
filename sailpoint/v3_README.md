@@ -940,6 +940,7 @@ Class | Method | HTTP request | Description
  - [SodExemptCriteria](sailpoint/v3/docs/SodExemptCriteria.md)
  - [SodPolicy](sailpoint/v3/docs/SodPolicy.md)
  - [SodPolicyDto](sailpoint/v3/docs/SodPolicyDto.md)
+ - [SodPolicyDto1](sailpoint/v3/docs/SodPolicyDto1.md)
  - [SodPolicyOwnerRef](sailpoint/v3/docs/SodPolicyOwnerRef.md)
  - [SodPolicyRead](sailpoint/v3/docs/SodPolicyRead.md)
  - [SodPolicyReadAllOfConflictingAccessCriteria](sailpoint/v3/docs/SodPolicyReadAllOfConflictingAccessCriteria.md)

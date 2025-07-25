@@ -36,7 +36,7 @@ class TestBulkTaggedObject(unittest.TestCase):
         if include_optional:
             return BulkTaggedObject(
                 object_refs = [
-                    sailpoint.beta.models.tagged_object_dto.TaggedObjectDto(
+                    sailpoint.beta.models.tagged_object_dto.Tagged Object Dto(
                         type = 'IDENTITY', 
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'William Wilson', )

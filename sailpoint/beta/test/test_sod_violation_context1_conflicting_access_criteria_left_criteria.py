@@ -36,7 +36,7 @@ class TestSodViolationContext1ConflictingAccessCriteriaLeftCriteria(unittest.Tes
         if include_optional:
             return SodViolationContext1ConflictingAccessCriteriaLeftCriteria(
                 criteria_list = [
-                    sailpoint.beta.models.sod_exempt_criteria_1.SodExemptCriteria_1(
+                    sailpoint.beta.models.sod_exempt_criteria.Sod Exempt Criteria(
                         existing = True, 
                         type = 'IDENTITY', 
                         id = '2c918085771e9d3301773b3cb66f6398', 

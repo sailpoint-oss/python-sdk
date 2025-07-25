@@ -44,7 +44,7 @@ class TestSegment(unittest.TestCase):
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'support', ),
-                visibility_criteria = sailpoint.beta.models.visibility_criteria.VisibilityCriteria(
+                visibility_criteria = sailpoint.beta.models.visibility_criteria.Visibility Criteria(
                     expression = sailpoint.beta.models.expression.Expression(
                         operator = 'EQUALS', 
                         attribute = 'location', 

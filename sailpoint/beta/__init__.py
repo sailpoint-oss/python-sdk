@@ -839,6 +839,7 @@ from sailpoint.beta.models.sod_exempt_criteria1 import SodExemptCriteria1
 from sailpoint.beta.models.sod_policy import SodPolicy
 from sailpoint.beta.models.sod_policy_conflicting_access_criteria import SodPolicyConflictingAccessCriteria
 from sailpoint.beta.models.sod_policy_dto import SodPolicyDto
+from sailpoint.beta.models.sod_policy_dto1 import SodPolicyDto1
 from sailpoint.beta.models.sod_policy_owner_ref import SodPolicyOwnerRef
 from sailpoint.beta.models.sod_policy_schedule import SodPolicySchedule
 from sailpoint.beta.models.sod_recipient import SodRecipient

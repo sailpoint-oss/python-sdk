@@ -35,7 +35,7 @@ class TestReassignment(unittest.TestCase):
         model = Reassignment()
         if include_optional:
             return Reassignment(
-                var_from = sailpoint.beta.models.certification_reference.CertificationReference(),
+                var_from = sailpoint.beta.models.certification_reference.Certification Reference(),
                 comment = 'Please review'
             )
         else:

@@ -36,7 +36,7 @@ class TestJsonPatch(unittest.TestCase):
         if include_optional:
             return JsonPatch(
                 operations = [
-                    sailpoint.v2025.models.json_patch_operation.JsonPatchOperation(
+                    sailpoint.v2025.models.json_patch_operation.Json Patch Operation(
                         op = 'replace', 
                         path = '/description', 
                         value = New description, )

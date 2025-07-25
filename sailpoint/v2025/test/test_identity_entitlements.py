@@ -35,7 +35,7 @@ class TestIdentityEntitlements(unittest.TestCase):
         model = IdentityEntitlements()
         if include_optional:
             return IdentityEntitlements(
-                object_ref = sailpoint.v2025.models.tagged_object_dto.TaggedObjectDto(
+                object_ref = sailpoint.v2025.models.tagged_object_dto.Tagged Object Dto(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),

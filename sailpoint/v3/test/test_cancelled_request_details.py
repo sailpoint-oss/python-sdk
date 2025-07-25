@@ -36,7 +36,7 @@ class TestCancelledRequestDetails(unittest.TestCase):
         if include_optional:
             return CancelledRequestDetails(
                 comment = 'This request must be cancelled.',
-                owner = sailpoint.v3.models.owner_dto.OwnerDto(
+                owner = sailpoint.v3.models.owner_dto.Owner Dto(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'Support', ),

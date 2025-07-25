@@ -35,7 +35,7 @@ class TestApprovalComment1(unittest.TestCase):
         model = ApprovalComment1()
         if include_optional:
             return ApprovalComment1(
-                author = sailpoint.v2025.models.approval_identity.ApprovalIdentity(
+                author = sailpoint.v2025.models.approval_identity.Approval Identity(
                     id = '85d173e7d57e496569df763231d6deb6a', 
                     type = 'IDENTITY', 
                     name = 'John Doe', ),

@@ -35,7 +35,7 @@ class TestRoleMiningEntitlement(unittest.TestCase):
         model = RoleMiningEntitlement()
         if include_optional:
             return RoleMiningEntitlement(
-                entitlement_ref = sailpoint.v2024.models.role_mining_entitlement_ref.RoleMiningEntitlementRef(
+                entitlement_ref = sailpoint.v2024.models.role_mining_entitlement_ref.Role Mining Entitlement Ref(
                     id = '2c91808a7e95e6e0017e96e2086206c8', 
                     name = 'App.entitlement.1', 
                     description = 'Entitlement 1', 

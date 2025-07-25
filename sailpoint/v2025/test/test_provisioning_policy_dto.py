@@ -39,7 +39,7 @@ class TestProvisioningPolicyDto(unittest.TestCase):
                 description = 'this provisioning policy creates access based on an identity going inactive',
                 usage_type = 'CREATE',
                 fields = [
-                    sailpoint.v2025.models.field_details_dto.FieldDetailsDto(
+                    sailpoint.v2025.models.field_details_dto.Field Details Dto(
                         name = 'userName', 
                         transform = {type=rule, attributes={name=Create Unique LDAP Attribute}}, 
                         attributes = {template=${firstname}.${lastname}${uniqueCounter}, cloudMaxUniqueChecks=50, cloudMaxSize=20, cloudRequired=true}, 

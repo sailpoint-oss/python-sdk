@@ -39,7 +39,7 @@ class TestCreatePersonalAccessTokenResponse(unittest.TestCase):
                 secret = '1d1bef2b9f426383447f64f69349fc7cac176042578d205c256ba3f37c59adb9',
                 scope = [demo:personal-access-token-scope:first, demo:personal-access-token-scope:second],
                 name = 'NodeJS Integration',
-                owner = sailpoint.v2024.models.pat_owner.PatOwner(
+                owner = sailpoint.v2024.models.pat_owner.Pat Owner(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'Support', ),
@@ -53,7 +53,7 @@ class TestCreatePersonalAccessTokenResponse(unittest.TestCase):
                 secret = '1d1bef2b9f426383447f64f69349fc7cac176042578d205c256ba3f37c59adb9',
                 scope = [demo:personal-access-token-scope:first, demo:personal-access-token-scope:second],
                 name = 'NodeJS Integration',
-                owner = sailpoint.v2024.models.pat_owner.PatOwner(
+                owner = sailpoint.v2024.models.pat_owner.Pat Owner(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'Support', ),

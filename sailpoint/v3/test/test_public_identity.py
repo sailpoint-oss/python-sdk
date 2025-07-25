@@ -41,7 +41,7 @@ class TestPublicIdentity(unittest.TestCase):
                 email = 'alison.ferguso@acme-solar.com',
                 status = 'Active',
                 identity_state = 'ACTIVE',
-                manager = sailpoint.v3.models.identity_reference.IdentityReference(
+                manager = sailpoint.v3.models.identity_reference.Identity Reference(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'Thomas Edison', ),

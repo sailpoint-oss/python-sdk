@@ -1370,6 +1370,7 @@ Class | Method | HTTP request | Description
  - [SodPolicy](sailpoint/beta/docs/SodPolicy.md)
  - [SodPolicyConflictingAccessCriteria](sailpoint/beta/docs/SodPolicyConflictingAccessCriteria.md)
  - [SodPolicyDto](sailpoint/beta/docs/SodPolicyDto.md)
+ - [SodPolicyDto1](sailpoint/beta/docs/SodPolicyDto1.md)
  - [SodPolicyOwnerRef](sailpoint/beta/docs/SodPolicyOwnerRef.md)
  - [SodPolicySchedule](sailpoint/beta/docs/SodPolicySchedule.md)
  - [SodRecipient](sailpoint/beta/docs/SodRecipient.md)

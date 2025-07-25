@@ -41,7 +41,7 @@ class TestCorrelatedGovernanceEvent(unittest.TestCase):
                 governance_id = '2c91808a77ff216301782327a50f09bf',
                 owners = [{id=8a80828f643d484f01643e14202e206f, displayName=John Snow}],
                 reviewers = [{id=8a80828f643d484f01643e14202e206f, displayName=John Snow}],
-                decision_maker = sailpoint.beta.models.certifier_response.CertifierResponse(
+                decision_maker = sailpoint.beta.models.certifier_response.Certifier Response(
                     id = '8a80828f643d484f01643e14202e206f', 
                     display_name = 'John Snow', )
             )

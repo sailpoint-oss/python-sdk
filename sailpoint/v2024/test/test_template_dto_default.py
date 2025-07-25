@@ -46,7 +46,7 @@ class TestTemplateDtoDefault(unittest.TestCase):
                 var_from = '$__global.emailFromAddress',
                 reply_to = '$__global.emailFromAddress',
                 description = 'Daily digest - sent if number of outstanding tasks for task owner > 0',
-                slack_template = sailpoint.v2024.models.template_slack.TemplateSlack(
+                slack_template = sailpoint.v2024.models.template_slack.Template Slack(
                     key = '', 
                     text = '', 
                     blocks = '', 
@@ -67,7 +67,7 @@ class TestTemplateDtoDefault(unittest.TestCase):
                         contains_deny = '', 
                         campaign_id = '', 
                         campaign_status = '', ), ),
-                teams_template = sailpoint.v2024.models.template_teams.TemplateTeams(
+                teams_template = sailpoint.v2024.models.template_teams.Template Teams(
                     key = '', 
                     title = '', 
                     text = '', 
