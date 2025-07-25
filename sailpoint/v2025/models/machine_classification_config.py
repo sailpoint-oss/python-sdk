@@ -21,6 +21,7 @@ import warnings
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.v2025.models.machine_classification_criteria_level1 import MachineClassificationCriteriaLevel1
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,11 +29,11 @@ class MachineClassificationConfig(BaseModel):
     """
     MachineClassificationConfig
     """ # noqa: E501
-    enabled: Optional[StrictBool] = Field(default=False, description="Indicates if the Classification is enabled for a Source")
+    enabled: Optional[StrictBool] = Field(default=False, description="Indicates whether Classification is enabled for a Source")
     classification_method: Optional[StrictStr] = Field(default=None, description="Classification Method", alias="classificationMethod")
-    criteria: Optional[StrictStr] = Field(default=None, description="A classification criteria object")
-    created: Optional[datetime] = Field(default=None, description="Time when the config was created")
-    modified: Optional[datetime] = Field(default=None, description="Time when the config was last updated")
+    criteria: Optional[MachineClassificationCriteriaLevel1] = None
+    created: Optional[datetime] = Field(default=None, description="Date the config was created")
+    modified: Optional[datetime] = Field(default=None, description="Date the config was last updated")
     __properties: ClassVar[List[str]] = ["enabled", "classificationMethod", "criteria", "created", "modified"]
 
     @field_validator('classification_method')
@@ -41,8 +42,8 @@ class MachineClassificationConfig(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['SOURCE']):
-            warnings.warn(f"must be one of enum values ('SOURCE') unknown value: {value}")
+        if value not in set(['SOURCE', 'CRITERIA']):
+            warnings.warn(f"must be one of enum values ('SOURCE', 'CRITERIA') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -84,11 +85,9 @@ class MachineClassificationConfig(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if criteria (nullable) is None
-        # and model_fields_set contains the field
-        if self.criteria is None and "criteria" in self.model_fields_set:
-            _dict['criteria'] = None
-
+        # override the default output from pydantic by calling `to_dict()` of criteria
+        if self.criteria:
+            _dict['criteria'] = self.criteria.to_dict()
         # set to None if modified (nullable) is None
         # and model_fields_set contains the field
         if self.modified is None and "modified" in self.model_fields_set:
@@ -108,7 +107,7 @@ class MachineClassificationConfig(BaseModel):
         _obj = cls.model_validate({
             "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
             "classificationMethod": obj.get("classificationMethod"),
-            "criteria": obj.get("criteria"),
+            "criteria": MachineClassificationCriteriaLevel1.from_dict(obj["criteria"]) if obj.get("criteria") is not None else None,
             "created": obj.get("created"),
             "modified": obj.get("modified")
         })

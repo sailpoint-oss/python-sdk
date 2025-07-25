@@ -33,7 +33,7 @@ class WorkItemTypeManualWorkItems(str, Enum):
     APPROVAL = 'Approval'
     VIOLATIONREVIEW = 'ViolationReview'
     FORM = 'Form'
-    POLICYVIOLOATION = 'PolicyVioloation'
+    POLICYVIOLATION = 'PolicyViolation'
     CHALLENGE = 'Challenge'
     IMPACTANALYSIS = 'ImpactAnalysis'
     SIGNOFF = 'Signoff'

@@ -37,7 +37,19 @@ class TestMachineClassificationConfig(unittest.TestCase):
             return MachineClassificationConfig(
                 enabled = True,
                 classification_method = 'SOURCE',
-                criteria = '',
+                criteria = sailpoint.v2024.models.machine_classification_criteria_level1.MachineClassificationCriteriaLevel1(
+                    operation = 'EQUALS', 
+                    case_sensitive = False, 
+                    data_type = '', 
+                    attribute = 'distinguishedName', 
+                    value = 'OU=Service Accounts', 
+                    children = [
+                        sailpoint.v2024.models.machine_classification_criteria_level2.MachineClassificationCriteriaLevel2(
+                            case_sensitive = False, 
+                            data_type = '', 
+                            attribute = 'employeeType', 
+                            value = 'SERVICE', )
+                        ], ),
                 created = '2017-07-11T18:45:37.098Z',
                 modified = '2018-06-25T20:22:28.104Z'
             )

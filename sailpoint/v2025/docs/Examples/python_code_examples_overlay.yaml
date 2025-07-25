@@ -108,6 +108,224 @@
                   print(item.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling AccessModelMetadataApi->list_access_model_metadata_attribute_value: %s\n" % e)
+- path: /access-model-metadata/bulk-update/filter
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/access-model-metadata#update-access-model-metadata-by-filter
+      source: |
+        from sailpoint.v2025.api.access_model_metadata_api import AccessModelMetadataApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.access_model_metadata_bulk_update_response import AccessModelMetadataBulkUpdateResponse
+        from sailpoint.v2025.models.entitlement_attribute_bulk_update_filter_request import EntitlementAttributeBulkUpdateFilterRequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          entitlement_attribute_bulk_update_filter_request = '''{
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "filters" : "id eq 2c9180867817ac4d017817c491119a20",
+          "replaceScope" : "attribute",
+          "operation" : "add"
+        }''' # EntitlementAttributeBulkUpdateFilterRequest | Attribute metadata bulk update request body.
+          try:
+              # Metadata Attribute update by filter
+              new_entitlement_attribute_bulk_update_filter_request = EntitlementAttributeBulkUpdateFilterRequest.from_json(entitlement_attribute_bulk_update_filter_request)
+              results = AccessModelMetadataApi(api_client).update_access_model_metadata_by_filter(entitlement_attribute_bulk_update_filter_request=new_entitlement_attribute_bulk_update_filter_request)
+              # Below is a request that includes all optional parameters
+              # results = AccessModelMetadataApi(api_client).update_access_model_metadata_by_filter(new_entitlement_attribute_bulk_update_filter_request)
+              print("The response of AccessModelMetadataApi->update_access_model_metadata_by_filter:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessModelMetadataApi->update_access_model_metadata_by_filter: %s\n" % e)
+- path: /access-model-metadata/bulk-update/ids
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/access-model-metadata#update-access-model-metadata-by-ids
+      source: |
+        from sailpoint.v2025.api.access_model_metadata_api import AccessModelMetadataApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.access_model_metadata_bulk_update_response import AccessModelMetadataBulkUpdateResponse
+        from sailpoint.v2025.models.entitlement_attribute_bulk_update_ids_request import EntitlementAttributeBulkUpdateIdsRequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          entitlement_attribute_bulk_update_ids_request = '''{
+          "entitlements" : [ "2c9180867817ac4d017817c491119a20", "2c9180867817ac4d017817c491119a21" ],
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "replaceScope" : "attribute",
+          "operation" : "add"
+        }''' # EntitlementAttributeBulkUpdateIdsRequest | Attribute metadata bulk update request body.
+          try:
+              # Metadata Attribute update by ids
+              new_entitlement_attribute_bulk_update_ids_request = EntitlementAttributeBulkUpdateIdsRequest.from_json(entitlement_attribute_bulk_update_ids_request)
+              results = AccessModelMetadataApi(api_client).update_access_model_metadata_by_ids(entitlement_attribute_bulk_update_ids_request=new_entitlement_attribute_bulk_update_ids_request)
+              # Below is a request that includes all optional parameters
+              # results = AccessModelMetadataApi(api_client).update_access_model_metadata_by_ids(new_entitlement_attribute_bulk_update_ids_request)
+              print("The response of AccessModelMetadataApi->update_access_model_metadata_by_ids:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessModelMetadataApi->update_access_model_metadata_by_ids: %s\n" % e)
+- path: /access-model-metadata/bulk-update/query
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/access-model-metadata#update-access-model-metadata-by-query
+      source: |
+        from sailpoint.v2025.api.access_model_metadata_api import AccessModelMetadataApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.access_model_metadata_bulk_update_response import AccessModelMetadataBulkUpdateResponse
+        from sailpoint.v2025.models.entitlement_attribute_bulk_update_query_request import EntitlementAttributeBulkUpdateQueryRequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          entitlement_attribute_bulk_update_query_request = '''{
+          "query" : {
+            "queryDsl" : {
+              "match" : {
+                "name" : "john.doe"
+              }
+            },
+            "aggregationType" : "DSL",
+            "aggregationsVersion" : "",
+            "query" : {
+              "query" : "name:a*",
+              "timeZone" : "America/Chicago",
+              "fields" : "[firstName,lastName,email]",
+              "innerHit" : {
+                "query" : "source.name:\\\"Active Directory\\\"",
+                "type" : "access"
+              }
+            },
+            "aggregationsDsl" : { },
+            "sort" : [ "displayName", "+id" ],
+            "filters" : { },
+            "queryVersion" : "",
+            "queryType" : "SAILPOINT",
+            "includeNested" : true,
+            "queryResultFilter" : {
+              "excludes" : [ "stacktrace" ],
+              "includes" : [ "name", "displayName" ]
+            },
+            "indices" : [ "identities" ],
+            "typeAheadQuery" : {
+              "field" : "source.name",
+              "size" : 100,
+              "query" : "Work",
+              "sortByValue" : true,
+              "nestedType" : "access",
+              "sort" : "asc",
+              "maxExpansions" : 10
+            },
+            "textQuery" : {
+              "contains" : true,
+              "terms" : [ "The quick brown fox", "3141592", "7" ],
+              "matchAny" : false,
+              "fields" : [ "displayName", "employeeNumber", "roleCount" ]
+            },
+            "searchAfter" : [ "John Doe", "2c91808375d8e80a0175e1f88a575221" ],
+            "aggregations" : {
+              "filter" : {
+                "field" : "access.type",
+                "name" : "Entitlements",
+                "type" : "TERM",
+                "value" : "ENTITLEMENT"
+              },
+              "bucket" : {
+                "field" : "attributes.city",
+                "size" : 100,
+                "minDocCount" : 2,
+                "name" : "Identity Locations",
+                "type" : "TERMS"
+              },
+              "metric" : {
+                "field" : "@access.name",
+                "name" : "Access Name Count",
+                "type" : "COUNT"
+              },
+              "subAggregation" : {
+                "filter" : {
+                  "field" : "access.type",
+                  "name" : "Entitlements",
+                  "type" : "TERM",
+                  "value" : "ENTITLEMENT"
+                },
+                "bucket" : {
+                  "field" : "attributes.city",
+                  "size" : 100,
+                  "minDocCount" : 2,
+                  "name" : "Identity Locations",
+                  "type" : "TERMS"
+                },
+                "metric" : {
+                  "field" : "@access.name",
+                  "name" : "Access Name Count",
+                  "type" : "COUNT"
+                },
+                "subAggregation" : {
+                  "filter" : {
+                    "field" : "access.type",
+                    "name" : "Entitlements",
+                    "type" : "TERM",
+                    "value" : "ENTITLEMENT"
+                  },
+                  "bucket" : {
+                    "field" : "attributes.city",
+                    "size" : 100,
+                    "minDocCount" : 2,
+                    "name" : "Identity Locations",
+                    "type" : "TERMS"
+                  },
+                  "metric" : {
+                    "field" : "@access.name",
+                    "name" : "Access Name Count",
+                    "type" : "COUNT"
+                  },
+                  "nested" : {
+                    "name" : "id",
+                    "type" : "access"
+                  }
+                },
+                "nested" : {
+                  "name" : "id",
+                  "type" : "access"
+                }
+              },
+              "nested" : {
+                "name" : "id",
+                "type" : "access"
+              }
+            }
+          },
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "replaceScope" : "attribute",
+          "operation" : "add"
+        }''' # EntitlementAttributeBulkUpdateQueryRequest | Attribute metadata bulk update request body.
+          try:
+              # Metadata Attribute update by query
+              new_entitlement_attribute_bulk_update_query_request = EntitlementAttributeBulkUpdateQueryRequest.from_json(entitlement_attribute_bulk_update_query_request)
+              results = AccessModelMetadataApi(api_client).update_access_model_metadata_by_query(entitlement_attribute_bulk_update_query_request=new_entitlement_attribute_bulk_update_query_request)
+              # Below is a request that includes all optional parameters
+              # results = AccessModelMetadataApi(api_client).update_access_model_metadata_by_query(new_entitlement_attribute_bulk_update_query_request)
+              print("The response of AccessModelMetadataApi->update_access_model_metadata_by_query:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessModelMetadataApi->update_access_model_metadata_by_query: %s\n" % e)
 - path: /access-profiles
   method: POST
   xCodeSample:
@@ -11355,7 +11573,56 @@
         with ApiClient(configuration) as api_client:
           id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID. # str | Source ID.
           machine_classification_config = '''{
-          "criteria" : "criteria",
+          "criteria" : {
+            "children" : [ {
+              "children" : [ {
+                "children" : [ "children", "children" ],
+                "caseSensitive" : false,
+                "dataType" : "This is the first level of classification criteria",
+                "attribute" : "sAMAccountName",
+                "operation" : "EQUALS",
+                "value" : "SVC"
+              }, {
+                "children" : [ "children", "children" ],
+                "caseSensitive" : false,
+                "dataType" : "This is the first level of classification criteria",
+                "attribute" : "sAMAccountName",
+                "operation" : "EQUALS",
+                "value" : "SVC"
+              } ],
+              "caseSensitive" : false,
+              "dataType" : "dataType",
+              "attribute" : "employeeType",
+              "operation" : "EQUALS",
+              "value" : "SERVICE"
+            }, {
+              "children" : [ {
+                "children" : [ "children", "children" ],
+                "caseSensitive" : false,
+                "dataType" : "This is the first level of classification criteria",
+                "attribute" : "sAMAccountName",
+                "operation" : "EQUALS",
+                "value" : "SVC"
+              }, {
+                "children" : [ "children", "children" ],
+                "caseSensitive" : false,
+                "dataType" : "This is the first level of classification criteria",
+                "attribute" : "sAMAccountName",
+                "operation" : "EQUALS",
+                "value" : "SVC"
+              } ],
+              "caseSensitive" : false,
+              "dataType" : "dataType",
+              "attribute" : "employeeType",
+              "operation" : "EQUALS",
+              "value" : "SERVICE"
+            } ],
+            "caseSensitive" : false,
+            "dataType" : "dataType",
+            "attribute" : "distinguishedName",
+            "operation" : "EQUALS",
+            "value" : "OU=Service Accounts"
+          },
           "created" : "2017-07-11T18:45:37.098Z",
           "modified" : "2018-06-25T20:22:28.104Z",
           "classificationMethod" : "SOURCE",

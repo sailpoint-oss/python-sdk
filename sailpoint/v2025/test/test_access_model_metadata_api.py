@@ -54,6 +54,27 @@ class TestAccessModelMetadataApi(unittest.TestCase):
         """
         pass
 
+    def test_update_access_model_metadata_by_filter(self) -> None:
+        """Test case for update_access_model_metadata_by_filter
+
+        Metadata Attribute update by filter
+        """
+        pass
+
+    def test_update_access_model_metadata_by_ids(self) -> None:
+        """Test case for update_access_model_metadata_by_ids
+
+        Metadata Attribute update by ids
+        """
+        pass
+
+    def test_update_access_model_metadata_by_query(self) -> None:
+        """Test case for update_access_model_metadata_by_query
+
+        Metadata Attribute update by query
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

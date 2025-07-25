@@ -29,6 +29,9 @@ Method | HTTP request | Description
 [**get-access-model-metadata-attribute-value**](#get-access-model-metadata-attribute-value) | **GET** `/access-model-metadata/attributes/{key}/values/{value}` | Get access model metadata value
 [**list-access-model-metadata-attribute**](#list-access-model-metadata-attribute) | **GET** `/access-model-metadata/attributes` | List access model metadata attributes
 [**list-access-model-metadata-attribute-value**](#list-access-model-metadata-attribute-value) | **GET** `/access-model-metadata/attributes/{key}/values` | List access model metadata values
+[**update-access-model-metadata-by-filter**](#update-access-model-metadata-by-filter) | **POST** `/access-model-metadata/bulk-update/filter` | Metadata Attribute update by filter
+[**update-access-model-metadata-by-ids**](#update-access-model-metadata-by-ids) | **POST** `/access-model-metadata/bulk-update/ids` | Metadata Attribute update by ids
+[**update-access-model-metadata-by-query**](#update-access-model-metadata-by-query) | **POST** `/access-model-metadata/bulk-update/query` | Metadata Attribute update by query
 
 
 ## get-access-model-metadata-attribute
@@ -275,6 +278,323 @@ with ApiClient(configuration) as api_client:
             print(item.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling AccessModelMetadataApi->list_access_model_metadata_attribute_value: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## update-access-model-metadata-by-filter
+Metadata Attribute update by filter
+Bulk update Access Model Metadata Attribute Values using a filter
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/update-access-model-metadata-by-filter)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | entitlement_attribute_bulk_update_filter_request | [**EntitlementAttributeBulkUpdateFilterRequest**](../models/entitlement-attribute-bulk-update-filter-request) | True  | Attribute metadata bulk update request body.
+
+### Return type
+[**AccessModelMetadataBulkUpdateResponse**](../models/access-model-metadata-bulk-update-response)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | OK | AccessModelMetadataBulkUpdateResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2025.api.access_model_metadata_api import AccessModelMetadataApi
+from sailpoint.v2025.api_client import ApiClient
+from sailpoint.v2025.models.access_model_metadata_bulk_update_response import AccessModelMetadataBulkUpdateResponse
+from sailpoint.v2025.models.entitlement_attribute_bulk_update_filter_request import EntitlementAttributeBulkUpdateFilterRequest
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    entitlement_attribute_bulk_update_filter_request = '''{
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "filters" : "id eq 2c9180867817ac4d017817c491119a20",
+          "replaceScope" : "attribute",
+          "operation" : "add"
+        }''' # EntitlementAttributeBulkUpdateFilterRequest | Attribute metadata bulk update request body.
+
+    try:
+        # Metadata Attribute update by filter
+        new_entitlement_attribute_bulk_update_filter_request = EntitlementAttributeBulkUpdateFilterRequest.from_json(entitlement_attribute_bulk_update_filter_request)
+        results = AccessModelMetadataApi(api_client).update_access_model_metadata_by_filter(entitlement_attribute_bulk_update_filter_request=new_entitlement_attribute_bulk_update_filter_request)
+        # Below is a request that includes all optional parameters
+        # results = AccessModelMetadataApi(api_client).update_access_model_metadata_by_filter(new_entitlement_attribute_bulk_update_filter_request)
+        print("The response of AccessModelMetadataApi->update_access_model_metadata_by_filter:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling AccessModelMetadataApi->update_access_model_metadata_by_filter: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## update-access-model-metadata-by-ids
+Metadata Attribute update by ids
+Bulk update Access Model Metadata Attribute Values using ids.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/update-access-model-metadata-by-ids)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | entitlement_attribute_bulk_update_ids_request | [**EntitlementAttributeBulkUpdateIdsRequest**](../models/entitlement-attribute-bulk-update-ids-request) | True  | Attribute metadata bulk update request body.
+
+### Return type
+[**AccessModelMetadataBulkUpdateResponse**](../models/access-model-metadata-bulk-update-response)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | OK | AccessModelMetadataBulkUpdateResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2025.api.access_model_metadata_api import AccessModelMetadataApi
+from sailpoint.v2025.api_client import ApiClient
+from sailpoint.v2025.models.access_model_metadata_bulk_update_response import AccessModelMetadataBulkUpdateResponse
+from sailpoint.v2025.models.entitlement_attribute_bulk_update_ids_request import EntitlementAttributeBulkUpdateIdsRequest
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    entitlement_attribute_bulk_update_ids_request = '''{
+          "entitlements" : [ "2c9180867817ac4d017817c491119a20", "2c9180867817ac4d017817c491119a21" ],
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "replaceScope" : "attribute",
+          "operation" : "add"
+        }''' # EntitlementAttributeBulkUpdateIdsRequest | Attribute metadata bulk update request body.
+
+    try:
+        # Metadata Attribute update by ids
+        new_entitlement_attribute_bulk_update_ids_request = EntitlementAttributeBulkUpdateIdsRequest.from_json(entitlement_attribute_bulk_update_ids_request)
+        results = AccessModelMetadataApi(api_client).update_access_model_metadata_by_ids(entitlement_attribute_bulk_update_ids_request=new_entitlement_attribute_bulk_update_ids_request)
+        # Below is a request that includes all optional parameters
+        # results = AccessModelMetadataApi(api_client).update_access_model_metadata_by_ids(new_entitlement_attribute_bulk_update_ids_request)
+        print("The response of AccessModelMetadataApi->update_access_model_metadata_by_ids:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling AccessModelMetadataApi->update_access_model_metadata_by_ids: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## update-access-model-metadata-by-query
+Metadata Attribute update by query
+Bulk update Access Model Metadata Attribute Values using a query
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/update-access-model-metadata-by-query)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | entitlement_attribute_bulk_update_query_request | [**EntitlementAttributeBulkUpdateQueryRequest**](../models/entitlement-attribute-bulk-update-query-request) | True  | Attribute metadata bulk update request body.
+
+### Return type
+[**AccessModelMetadataBulkUpdateResponse**](../models/access-model-metadata-bulk-update-response)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | OK | AccessModelMetadataBulkUpdateResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2025.api.access_model_metadata_api import AccessModelMetadataApi
+from sailpoint.v2025.api_client import ApiClient
+from sailpoint.v2025.models.access_model_metadata_bulk_update_response import AccessModelMetadataBulkUpdateResponse
+from sailpoint.v2025.models.entitlement_attribute_bulk_update_query_request import EntitlementAttributeBulkUpdateQueryRequest
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    entitlement_attribute_bulk_update_query_request = '''{
+          "query" : {
+            "queryDsl" : {
+              "match" : {
+                "name" : "john.doe"
+              }
+            },
+            "aggregationType" : "DSL",
+            "aggregationsVersion" : "",
+            "query" : {
+              "query" : "name:a*",
+              "timeZone" : "America/Chicago",
+              "fields" : "[firstName,lastName,email]",
+              "innerHit" : {
+                "query" : "source.name:\\\"Active Directory\\\"",
+                "type" : "access"
+              }
+            },
+            "aggregationsDsl" : { },
+            "sort" : [ "displayName", "+id" ],
+            "filters" : { },
+            "queryVersion" : "",
+            "queryType" : "SAILPOINT",
+            "includeNested" : true,
+            "queryResultFilter" : {
+              "excludes" : [ "stacktrace" ],
+              "includes" : [ "name", "displayName" ]
+            },
+            "indices" : [ "identities" ],
+            "typeAheadQuery" : {
+              "field" : "source.name",
+              "size" : 100,
+              "query" : "Work",
+              "sortByValue" : true,
+              "nestedType" : "access",
+              "sort" : "asc",
+              "maxExpansions" : 10
+            },
+            "textQuery" : {
+              "contains" : true,
+              "terms" : [ "The quick brown fox", "3141592", "7" ],
+              "matchAny" : false,
+              "fields" : [ "displayName", "employeeNumber", "roleCount" ]
+            },
+            "searchAfter" : [ "John Doe", "2c91808375d8e80a0175e1f88a575221" ],
+            "aggregations" : {
+              "filter" : {
+                "field" : "access.type",
+                "name" : "Entitlements",
+                "type" : "TERM",
+                "value" : "ENTITLEMENT"
+              },
+              "bucket" : {
+                "field" : "attributes.city",
+                "size" : 100,
+                "minDocCount" : 2,
+                "name" : "Identity Locations",
+                "type" : "TERMS"
+              },
+              "metric" : {
+                "field" : "@access.name",
+                "name" : "Access Name Count",
+                "type" : "COUNT"
+              },
+              "subAggregation" : {
+                "filter" : {
+                  "field" : "access.type",
+                  "name" : "Entitlements",
+                  "type" : "TERM",
+                  "value" : "ENTITLEMENT"
+                },
+                "bucket" : {
+                  "field" : "attributes.city",
+                  "size" : 100,
+                  "minDocCount" : 2,
+                  "name" : "Identity Locations",
+                  "type" : "TERMS"
+                },
+                "metric" : {
+                  "field" : "@access.name",
+                  "name" : "Access Name Count",
+                  "type" : "COUNT"
+                },
+                "subAggregation" : {
+                  "filter" : {
+                    "field" : "access.type",
+                    "name" : "Entitlements",
+                    "type" : "TERM",
+                    "value" : "ENTITLEMENT"
+                  },
+                  "bucket" : {
+                    "field" : "attributes.city",
+                    "size" : 100,
+                    "minDocCount" : 2,
+                    "name" : "Identity Locations",
+                    "type" : "TERMS"
+                  },
+                  "metric" : {
+                    "field" : "@access.name",
+                    "name" : "Access Name Count",
+                    "type" : "COUNT"
+                  },
+                  "nested" : {
+                    "name" : "id",
+                    "type" : "access"
+                  }
+                },
+                "nested" : {
+                  "name" : "id",
+                  "type" : "access"
+                }
+              },
+              "nested" : {
+                "name" : "id",
+                "type" : "access"
+              }
+            }
+          },
+          "values" : [ {
+            "attribute" : "iscFederalClassifications",
+            "values" : [ "topSecret" ]
+          } ],
+          "replaceScope" : "attribute",
+          "operation" : "add"
+        }''' # EntitlementAttributeBulkUpdateQueryRequest | Attribute metadata bulk update request body.
+
+    try:
+        # Metadata Attribute update by query
+        new_entitlement_attribute_bulk_update_query_request = EntitlementAttributeBulkUpdateQueryRequest.from_json(entitlement_attribute_bulk_update_query_request)
+        results = AccessModelMetadataApi(api_client).update_access_model_metadata_by_query(entitlement_attribute_bulk_update_query_request=new_entitlement_attribute_bulk_update_query_request)
+        # Below is a request that includes all optional parameters
+        # results = AccessModelMetadataApi(api_client).update_access_model_metadata_by_query(new_entitlement_attribute_bulk_update_query_request)
+        print("The response of AccessModelMetadataApi->update_access_model_metadata_by_query:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling AccessModelMetadataApi->update_access_model_metadata_by_query: %s\n" % e)
 ```
 
 

@@ -125,6 +125,7 @@ sailpoint/v2025/docs/AccessItemReviewedBy.md
 sailpoint/v2025/docs/AccessItemRoleResponse.md
 sailpoint/v2025/docs/AccessModelMetadata.md
 sailpoint/v2025/docs/AccessModelMetadataApi.md
+sailpoint/v2025/docs/AccessModelMetadataBulkUpdateResponse.md
 sailpoint/v2025/docs/AccessModelMetadataValuesInner.md
 sailpoint/v2025/docs/AccessProfile.md
 sailpoint/v2025/docs/AccessProfileApprovalScheme.md
@@ -505,6 +506,9 @@ sailpoint/v2025/docs/Entitlement.md
 sailpoint/v2025/docs/EntitlementAccessModelMetadata.md
 sailpoint/v2025/docs/EntitlementAccessRequestConfig.md
 sailpoint/v2025/docs/EntitlementApprovalScheme.md
+sailpoint/v2025/docs/EntitlementAttributeBulkUpdateFilterRequest.md
+sailpoint/v2025/docs/EntitlementAttributeBulkUpdateIdsRequest.md
+sailpoint/v2025/docs/EntitlementAttributeBulkUpdateQueryRequest.md
 sailpoint/v2025/docs/EntitlementBulkUpdateRequest.md
 sailpoint/v2025/docs/EntitlementDocument.md
 sailpoint/v2025/docs/EntitlementDocumentAllOfManuallyUpdatedFields.md
@@ -731,6 +735,10 @@ sailpoint/v2025/docs/MachineAccountMappingsApi.md
 sailpoint/v2025/docs/MachineAccountsApi.md
 sailpoint/v2025/docs/MachineClassificationConfig.md
 sailpoint/v2025/docs/MachineClassificationConfigApi.md
+sailpoint/v2025/docs/MachineClassificationCriteriaLevel1.md
+sailpoint/v2025/docs/MachineClassificationCriteriaLevel2.md
+sailpoint/v2025/docs/MachineClassificationCriteriaLevel3.md
+sailpoint/v2025/docs/MachineClassificationCriteriaOperation.md
 sailpoint/v2025/docs/MachineIdentitiesApi.md
 sailpoint/v2025/docs/MachineIdentity.md
 sailpoint/v2025/docs/MachineIdentityDtoOwners.md
@@ -1370,6 +1378,7 @@ sailpoint/v2025/models/access_item_requester_dto.py
 sailpoint/v2025/models/access_item_reviewed_by.py
 sailpoint/v2025/models/access_item_role_response.py
 sailpoint/v2025/models/access_model_metadata.py
+sailpoint/v2025/models/access_model_metadata_bulk_update_response.py
 sailpoint/v2025/models/access_model_metadata_values_inner.py
 sailpoint/v2025/models/access_profile.py
 sailpoint/v2025/models/access_profile_approval_scheme.py
@@ -1722,6 +1731,9 @@ sailpoint/v2025/models/entitlement.py
 sailpoint/v2025/models/entitlement_access_model_metadata.py
 sailpoint/v2025/models/entitlement_access_request_config.py
 sailpoint/v2025/models/entitlement_approval_scheme.py
+sailpoint/v2025/models/entitlement_attribute_bulk_update_filter_request.py
+sailpoint/v2025/models/entitlement_attribute_bulk_update_ids_request.py
+sailpoint/v2025/models/entitlement_attribute_bulk_update_query_request.py
 sailpoint/v2025/models/entitlement_bulk_update_request.py
 sailpoint/v2025/models/entitlement_document.py
 sailpoint/v2025/models/entitlement_document_all_of_manually_updated_fields.py
@@ -1927,6 +1939,10 @@ sailpoint/v2025/models/lockout_configuration.py
 sailpoint/v2025/models/lookup_step.py
 sailpoint/v2025/models/machine_account.py
 sailpoint/v2025/models/machine_classification_config.py
+sailpoint/v2025/models/machine_classification_criteria_level1.py
+sailpoint/v2025/models/machine_classification_criteria_level2.py
+sailpoint/v2025/models/machine_classification_criteria_level3.py
+sailpoint/v2025/models/machine_classification_criteria_operation.py
 sailpoint/v2025/models/machine_identity.py
 sailpoint/v2025/models/machine_identity_dto_owners.py
 sailpoint/v2025/models/mail_from_attributes.py
@@ -2521,6 +2537,7 @@ sailpoint/v2025/test/test_access_item_reviewed_by.py
 sailpoint/v2025/test/test_access_item_role_response.py
 sailpoint/v2025/test/test_access_model_metadata.py
 sailpoint/v2025/test/test_access_model_metadata_api.py
+sailpoint/v2025/test/test_access_model_metadata_bulk_update_response.py
 sailpoint/v2025/test/test_access_model_metadata_values_inner.py
 sailpoint/v2025/test/test_access_profile.py
 sailpoint/v2025/test/test_access_profile_approval_scheme.py
@@ -2901,6 +2918,9 @@ sailpoint/v2025/test/test_entitlement.py
 sailpoint/v2025/test/test_entitlement_access_model_metadata.py
 sailpoint/v2025/test/test_entitlement_access_request_config.py
 sailpoint/v2025/test/test_entitlement_approval_scheme.py
+sailpoint/v2025/test/test_entitlement_attribute_bulk_update_filter_request.py
+sailpoint/v2025/test/test_entitlement_attribute_bulk_update_ids_request.py
+sailpoint/v2025/test/test_entitlement_attribute_bulk_update_query_request.py
 sailpoint/v2025/test/test_entitlement_bulk_update_request.py
 sailpoint/v2025/test/test_entitlement_document.py
 sailpoint/v2025/test/test_entitlement_document_all_of_manually_updated_fields.py
@@ -3125,6 +3145,10 @@ sailpoint/v2025/test/test_machine_account_mappings_api.py
 sailpoint/v2025/test/test_machine_accounts_api.py
 sailpoint/v2025/test/test_machine_classification_config.py
 sailpoint/v2025/test/test_machine_classification_config_api.py
+sailpoint/v2025/test/test_machine_classification_criteria_level1.py
+sailpoint/v2025/test/test_machine_classification_criteria_level2.py
+sailpoint/v2025/test/test_machine_classification_criteria_level3.py
+sailpoint/v2025/test/test_machine_classification_criteria_operation.py
 sailpoint/v2025/test/test_machine_identities_api.py
 sailpoint/v2025/test/test_machine_identity.py
 sailpoint/v2025/test/test_machine_identity_dto_owners.py

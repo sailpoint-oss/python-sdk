@@ -26,7 +26,7 @@ from typing_extensions import Self
 
 class RoleCriteriaKey(BaseModel):
     """
-    Refers to a specific Identity attribute, Account attibute, or Entitlement used in Role membership criteria
+    Refers to a specific Identity attribute, Account attribute, or Entitlement used in Role membership criteria
     """ # noqa: E501
     type: RoleCriteriaKeyType
     var_property: StrictStr = Field(description="The name of the attribute or entitlement to which the associated criteria applies.", alias="property")

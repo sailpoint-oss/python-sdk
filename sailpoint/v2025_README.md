@@ -77,6 +77,9 @@ Class | Method | HTTP request | Description
 *AccessModelMetadataApi* | [**get_access_model_metadata_attribute_value**](sailpoint/v2025/docs/AccessModelMetadataApi.md#get_access_model_metadata_attribute_value) | **GET** /access-model-metadata/attributes/{key}/values/{value} | Get access model metadata value
 *AccessModelMetadataApi* | [**list_access_model_metadata_attribute**](sailpoint/v2025/docs/AccessModelMetadataApi.md#list_access_model_metadata_attribute) | **GET** /access-model-metadata/attributes | List access model metadata attributes
 *AccessModelMetadataApi* | [**list_access_model_metadata_attribute_value**](sailpoint/v2025/docs/AccessModelMetadataApi.md#list_access_model_metadata_attribute_value) | **GET** /access-model-metadata/attributes/{key}/values | List access model metadata values
+*AccessModelMetadataApi* | [**update_access_model_metadata_by_filter**](sailpoint/v2025/docs/AccessModelMetadataApi.md#update_access_model_metadata_by_filter) | **POST** /access-model-metadata/bulk-update/filter | Metadata Attribute update by filter
+*AccessModelMetadataApi* | [**update_access_model_metadata_by_ids**](sailpoint/v2025/docs/AccessModelMetadataApi.md#update_access_model_metadata_by_ids) | **POST** /access-model-metadata/bulk-update/ids | Metadata Attribute update by ids
+*AccessModelMetadataApi* | [**update_access_model_metadata_by_query**](sailpoint/v2025/docs/AccessModelMetadataApi.md#update_access_model_metadata_by_query) | **POST** /access-model-metadata/bulk-update/query | Metadata Attribute update by query
 *AccessProfilesApi* | [**create_access_profile**](sailpoint/v2025/docs/AccessProfilesApi.md#create_access_profile) | **POST** /access-profiles | Create access profile
 *AccessProfilesApi* | [**delete_access_profile**](sailpoint/v2025/docs/AccessProfilesApi.md#delete_access_profile) | **DELETE** /access-profiles/{id} | Delete the specified access profile
 *AccessProfilesApi* | [**delete_access_profiles_in_bulk**](sailpoint/v2025/docs/AccessProfilesApi.md#delete_access_profiles_in_bulk) | **POST** /access-profiles/bulk-delete | Delete access profile(s)
@@ -817,6 +820,7 @@ Class | Method | HTTP request | Description
  - [AccessItemReviewedBy](sailpoint/v2025/docs/AccessItemReviewedBy.md)
  - [AccessItemRoleResponse](sailpoint/v2025/docs/AccessItemRoleResponse.md)
  - [AccessModelMetadata](sailpoint/v2025/docs/AccessModelMetadata.md)
+ - [AccessModelMetadataBulkUpdateResponse](sailpoint/v2025/docs/AccessModelMetadataBulkUpdateResponse.md)
  - [AccessModelMetadataValuesInner](sailpoint/v2025/docs/AccessModelMetadataValuesInner.md)
  - [AccessProfile](sailpoint/v2025/docs/AccessProfile.md)
  - [AccessProfileApprovalScheme](sailpoint/v2025/docs/AccessProfileApprovalScheme.md)
@@ -1169,6 +1173,9 @@ Class | Method | HTTP request | Description
  - [EntitlementAccessModelMetadata](sailpoint/v2025/docs/EntitlementAccessModelMetadata.md)
  - [EntitlementAccessRequestConfig](sailpoint/v2025/docs/EntitlementAccessRequestConfig.md)
  - [EntitlementApprovalScheme](sailpoint/v2025/docs/EntitlementApprovalScheme.md)
+ - [EntitlementAttributeBulkUpdateFilterRequest](sailpoint/v2025/docs/EntitlementAttributeBulkUpdateFilterRequest.md)
+ - [EntitlementAttributeBulkUpdateIdsRequest](sailpoint/v2025/docs/EntitlementAttributeBulkUpdateIdsRequest.md)
+ - [EntitlementAttributeBulkUpdateQueryRequest](sailpoint/v2025/docs/EntitlementAttributeBulkUpdateQueryRequest.md)
  - [EntitlementBulkUpdateRequest](sailpoint/v2025/docs/EntitlementBulkUpdateRequest.md)
  - [EntitlementDocument](sailpoint/v2025/docs/EntitlementDocument.md)
  - [EntitlementDocumentAllOfManuallyUpdatedFields](sailpoint/v2025/docs/EntitlementDocumentAllOfManuallyUpdatedFields.md)
@@ -1374,6 +1381,10 @@ Class | Method | HTTP request | Description
  - [LookupStep](sailpoint/v2025/docs/LookupStep.md)
  - [MachineAccount](sailpoint/v2025/docs/MachineAccount.md)
  - [MachineClassificationConfig](sailpoint/v2025/docs/MachineClassificationConfig.md)
+ - [MachineClassificationCriteriaLevel1](sailpoint/v2025/docs/MachineClassificationCriteriaLevel1.md)
+ - [MachineClassificationCriteriaLevel2](sailpoint/v2025/docs/MachineClassificationCriteriaLevel2.md)
+ - [MachineClassificationCriteriaLevel3](sailpoint/v2025/docs/MachineClassificationCriteriaLevel3.md)
+ - [MachineClassificationCriteriaOperation](sailpoint/v2025/docs/MachineClassificationCriteriaOperation.md)
  - [MachineIdentity](sailpoint/v2025/docs/MachineIdentity.md)
  - [MachineIdentityDtoOwners](sailpoint/v2025/docs/MachineIdentityDtoOwners.md)
  - [MailFromAttributes](sailpoint/v2025/docs/MailFromAttributes.md)
