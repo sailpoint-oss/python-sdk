@@ -432,8 +432,14 @@ Class | Method | HTTP request | Description
 *MachineAccountMappingsApi* | [**delete_machine_account_mappings**](sailpoint/v2025/docs/MachineAccountMappingsApi.md#delete_machine_account_mappings) | **DELETE** /sources/{sourceId}/machine-account-mappings | Delete source&#39;s machine account mappings
 *MachineAccountMappingsApi* | [**list_machine_account_mappings**](sailpoint/v2025/docs/MachineAccountMappingsApi.md#list_machine_account_mappings) | **GET** /sources/{sourceId}/machine-account-mappings | Machine account mapping for source
 *MachineAccountMappingsApi* | [**set_machine_account_mappings**](sailpoint/v2025/docs/MachineAccountMappingsApi.md#set_machine_account_mappings) | **PUT** /sources/{sourceId}/machine-mappings | Update Source&#39;s Machine Account Mappings
+*MachineAccountsApi* | [**create_machine_account_subtype**](sailpoint/v2025/docs/MachineAccountsApi.md#create_machine_account_subtype) | **POST** /sources/{sourceId}/subtypes | Create subtype
+*MachineAccountsApi* | [**delete_machine_account_subtype**](sailpoint/v2025/docs/MachineAccountsApi.md#delete_machine_account_subtype) | **DELETE** /sources/{sourceId}/subtypes/{technicalName} | Delete subtype
 *MachineAccountsApi* | [**get_machine_account**](sailpoint/v2025/docs/MachineAccountsApi.md#get_machine_account) | **GET** /machine-accounts/{id} | Machine account details
+*MachineAccountsApi* | [**get_machine_account_subtype_by_id**](sailpoint/v2025/docs/MachineAccountsApi.md#get_machine_account_subtype_by_id) | **GET** /sources/subtype/{subtypeId} | Retrieve subtype by subtype id
+*MachineAccountsApi* | [**get_machine_account_subtype_by_technical_name**](sailpoint/v2025/docs/MachineAccountsApi.md#get_machine_account_subtype_by_technical_name) | **GET** /sources/{sourceId}/subtypes/{technicalName} | Retrieve subtype by source and technicalName
+*MachineAccountsApi* | [**list_machine_account_subtypes**](sailpoint/v2025/docs/MachineAccountsApi.md#list_machine_account_subtypes) | **GET** /sources/{sourceId}/subtypes | Retrieve all subtypes by source
 *MachineAccountsApi* | [**list_machine_accounts**](sailpoint/v2025/docs/MachineAccountsApi.md#list_machine_accounts) | **GET** /machine-accounts | Machine accounts list
+*MachineAccountsApi* | [**patch_machine_account_subtype**](sailpoint/v2025/docs/MachineAccountsApi.md#patch_machine_account_subtype) | **PATCH** /sources/{sourceId}/subtypes/{technicalName} | Patch subtype
 *MachineAccountsApi* | [**update_machine_account**](sailpoint/v2025/docs/MachineAccountsApi.md#update_machine_account) | **PATCH** /machine-accounts/{id} | Update a machine account
 *MachineClassificationConfigApi* | [**delete_machine_classification_config**](sailpoint/v2025/docs/MachineClassificationConfigApi.md#delete_machine_classification_config) | **DELETE** /sources/{sourceId}/machine-classification-config | Delete source&#39;s classification config
 *MachineClassificationConfigApi* | [**get_machine_classification_config**](sailpoint/v2025/docs/MachineClassificationConfigApi.md#get_machine_classification_config) | **GET** /sources/{sourceId}/machine-classification-config | Machine classification config for source
@@ -1812,6 +1818,7 @@ Class | Method | HTTP request | Description
  - [SourcePasswordPoliciesInner](sailpoint/v2025/docs/SourcePasswordPoliciesInner.md)
  - [SourceSchedule](sailpoint/v2025/docs/SourceSchedule.md)
  - [SourceSchemasInner](sailpoint/v2025/docs/SourceSchemasInner.md)
+ - [SourceSubtype](sailpoint/v2025/docs/SourceSubtype.md)
  - [SourceSyncJob](sailpoint/v2025/docs/SourceSyncJob.md)
  - [SourceSyncPayload](sailpoint/v2025/docs/SourceSyncPayload.md)
  - [SourceUpdated](sailpoint/v2025/docs/SourceUpdated.md)

@@ -26,6 +26,20 @@ class TestMachineAccountsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_create_machine_account_subtype(self) -> None:
+        """Test case for create_machine_account_subtype
+
+        Create subtype
+        """
+        pass
+
+    def test_delete_machine_account_subtype(self) -> None:
+        """Test case for delete_machine_account_subtype
+
+        Delete subtype
+        """
+        pass
+
     def test_get_machine_account(self) -> None:
         """Test case for get_machine_account
 
@@ -33,10 +47,38 @@ class TestMachineAccountsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_machine_account_subtype_by_id(self) -> None:
+        """Test case for get_machine_account_subtype_by_id
+
+        Retrieve subtype by subtype id
+        """
+        pass
+
+    def test_get_machine_account_subtype_by_technical_name(self) -> None:
+        """Test case for get_machine_account_subtype_by_technical_name
+
+        Retrieve subtype by source and technicalName
+        """
+        pass
+
+    def test_list_machine_account_subtypes(self) -> None:
+        """Test case for list_machine_account_subtypes
+
+        Retrieve all subtypes by source
+        """
+        pass
+
     def test_list_machine_accounts(self) -> None:
         """Test case for list_machine_accounts
 
         Machine accounts list
+        """
+        pass
+
+    def test_patch_machine_account_subtype(self) -> None:
+        """Test case for patch_machine_account_subtype
+
+        Patch subtype
         """
         pass
 

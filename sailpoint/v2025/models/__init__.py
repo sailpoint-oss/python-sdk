@@ -1031,6 +1031,7 @@ from sailpoint.v2025.models.source_owner import SourceOwner
 from sailpoint.v2025.models.source_password_policies_inner import SourcePasswordPoliciesInner
 from sailpoint.v2025.models.source_schedule import SourceSchedule
 from sailpoint.v2025.models.source_schemas_inner import SourceSchemasInner
+from sailpoint.v2025.models.source_subtype import SourceSubtype
 from sailpoint.v2025.models.source_sync_job import SourceSyncJob
 from sailpoint.v2025.models.source_sync_payload import SourceSyncPayload
 from sailpoint.v2025.models.source_updated import SourceUpdated

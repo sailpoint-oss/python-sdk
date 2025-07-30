@@ -1198,6 +1198,7 @@ sailpoint/v2025/docs/SourceOwner.md
 sailpoint/v2025/docs/SourcePasswordPoliciesInner.md
 sailpoint/v2025/docs/SourceSchedule.md
 sailpoint/v2025/docs/SourceSchemasInner.md
+sailpoint/v2025/docs/SourceSubtype.md
 sailpoint/v2025/docs/SourceSyncJob.md
 sailpoint/v2025/docs/SourceSyncPayload.md
 sailpoint/v2025/docs/SourceUpdated.md
@@ -2371,6 +2372,7 @@ sailpoint/v2025/models/source_owner.py
 sailpoint/v2025/models/source_password_policies_inner.py
 sailpoint/v2025/models/source_schedule.py
 sailpoint/v2025/models/source_schemas_inner.py
+sailpoint/v2025/models/source_subtype.py
 sailpoint/v2025/models/source_sync_job.py
 sailpoint/v2025/models/source_sync_payload.py
 sailpoint/v2025/models/source_updated.py
@@ -3609,6 +3611,7 @@ sailpoint/v2025/test/test_source_owner.py
 sailpoint/v2025/test/test_source_password_policies_inner.py
 sailpoint/v2025/test/test_source_schedule.py
 sailpoint/v2025/test/test_source_schemas_inner.py
+sailpoint/v2025/test/test_source_subtype.py
 sailpoint/v2025/test/test_source_sync_job.py
 sailpoint/v2025/test/test_source_sync_payload.py
 sailpoint/v2025/test/test_source_updated.py
