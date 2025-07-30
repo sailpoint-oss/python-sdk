@@ -31,7 +31,8 @@ class ApprovalComment1(BaseModel):
     author: Optional[ApprovalIdentity] = None
     comment: Optional[StrictStr] = Field(default=None, description="Comment to be left on an approval")
     created_date: Optional[StrictStr] = Field(default=None, description="Date the comment was created", alias="createdDate")
-    __properties: ClassVar[List[str]] = ["author", "comment", "createdDate"]
+    comment_id: Optional[StrictStr] = Field(default=None, description="ID of the comment", alias="commentId")
+    __properties: ClassVar[List[str]] = ["author", "comment", "createdDate", "commentId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,7 +90,8 @@ class ApprovalComment1(BaseModel):
         _obj = cls.model_validate({
             "author": ApprovalIdentity.from_dict(obj["author"]) if obj.get("author") is not None else None,
             "comment": obj.get("comment"),
-            "createdDate": obj.get("createdDate")
+            "createdDate": obj.get("createdDate"),
+            "commentId": obj.get("commentId")
         })
         return _obj
 

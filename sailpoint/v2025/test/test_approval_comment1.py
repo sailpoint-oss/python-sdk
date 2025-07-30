@@ -36,11 +36,27 @@ class TestApprovalComment1(unittest.TestCase):
         if include_optional:
             return ApprovalComment1(
                 author = sailpoint.v2025.models.approval_identity.Approval Identity(
-                    id = '85d173e7d57e496569df763231d6deb6a', 
-                    type = 'IDENTITY', 
-                    name = 'John Doe', ),
+                    email = 'mail@mail.com', 
+                    identity_id = '17e633e7d57e481569df76323169deb6a', 
+                    members = [
+                        sailpoint.v2025.models.approval_identity_members_inner.ApprovalIdentity_members_inner(
+                            email = 'mail@mail.com', 
+                            id = '17e633e7d57e481569df76323169deb6a', 
+                            name = 'Bob Neil', 
+                            type = 'IDENTITY', )
+                        ], 
+                    name = 'Jim Bob', 
+                    owner_of = [
+                        sailpoint.v2025.models.approval_identity_owner_of_inner.ApprovalIdentity_ownerOf_inner(
+                            id = 'string', 
+                            name = 'Access Request App', 
+                            type = 'APPLICATION', )
+                        ], 
+                    serial_order = 0, 
+                    type = 'IDENTITY', ),
                 comment = 'Looks good',
-                created_date = '2023-04-12T23:20:50.52Z'
+                created_date = '2023-04-12T23:20:50.52Z',
+                comment_id = '38453251-6be2-5f8f-df93-5ce19e295837'
             )
         else:
             return ApprovalComment1(

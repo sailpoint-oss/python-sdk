@@ -18,13 +18,18 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.v2025.models.approval_approval_criteria import ApprovalApprovalCriteria
 from sailpoint.v2025.models.approval_comment1 import ApprovalComment1
 from sailpoint.v2025.models.approval_description import ApprovalDescription
 from sailpoint.v2025.models.approval_identity import ApprovalIdentity
+from sailpoint.v2025.models.approval_identity_record import ApprovalIdentityRecord
 from sailpoint.v2025.models.approval_name import ApprovalName
+from sailpoint.v2025.models.approval_reassignment_history import ApprovalReassignmentHistory
 from sailpoint.v2025.models.approval_reference import ApprovalReference
+from sailpoint.v2025.models.approval_requested_target import ApprovalRequestedTarget
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,24 +37,46 @@ class Approval(BaseModel):
     """
     Approval Object
     """ # noqa: E501
-    approval_id: Optional[StrictStr] = Field(default=None, description="The Approval ID", alias="approvalId")
+    id: Optional[StrictStr] = Field(default=None, description="The Approval ID")
+    tenant_id: Optional[StrictStr] = Field(default=None, description="The Tenant ID of the Approval", alias="tenantId")
+    type: Optional[StrictStr] = Field(default=None, description="The type of the approval, such as ENTITLEMENT_DESCRIPTIONS, CUSTOM_ACCESS_REQUEST_APPROVAL, GENERIC_APPROVAL")
     approvers: Optional[List[ApprovalIdentity]] = Field(default=None, description="Object representation of an approver of an approval")
     created_date: Optional[StrictStr] = Field(default=None, description="Date the approval was created", alias="createdDate")
-    type: Optional[StrictStr] = Field(default=None, description="Type of approval")
+    due_date: Optional[StrictStr] = Field(default=None, description="Date the approval is due", alias="dueDate")
+    escalation_step: Optional[StrictStr] = Field(default=None, description="Step in the escalation process. If set to 0, the approval is not escalated. If set to 1, the approval is escalated to the first approver in the escalation chain.", alias="escalationStep")
+    serial_step: Optional[StrictInt] = Field(default=None, description="The serial step of the approval in the approval chain. For example, serialStep 1 is the first approval to action in an approval request chain. Parallel approvals are set to 0.", alias="serialStep")
+    is_escalated: Optional[StrictBool] = Field(default=False, description="Whether or not the approval has been escalated. Will reset to false when the approval is actioned on.", alias="isEscalated")
     name: Optional[List[ApprovalName]] = Field(default=None, description="The name of the approval for a given locale")
     batch_request: Optional[Dict[str, Any]] = Field(default=None, description="The name of the approval for a given locale", alias="batchRequest")
+    approval_config: Optional[Dict[str, Any]] = Field(default=None, description="The configuration of the approval, such as the approval criteria and whether it is a parallel or serial approval", alias="approvalConfig")
     description: Optional[List[ApprovalDescription]] = Field(default=None, description="The description of the approval for a given locale")
+    medium: Optional[StrictStr] = Field(default=None, description="Signifies what medium to use when sending notifications (currently only email is utilized)")
     priority: Optional[StrictStr] = Field(default=None, description="The priority of the approval")
     requester: Optional[Dict[str, Any]] = Field(default=None, description="Object representation of the requester of the approval")
+    requestee: Optional[Dict[str, Any]] = Field(default=None, description="Object representation of the requestee of the approval")
     comments: Optional[List[ApprovalComment1]] = Field(default=None, description="Object representation of a comment on the approval")
-    approved_by: Optional[List[ApprovalIdentity]] = Field(default=None, description="Array of approvers who have approved the approval", alias="approvedBy")
-    rejected_by: Optional[List[ApprovalIdentity]] = Field(default=None, description="Array of approvers who have rejected the approval", alias="rejectedBy")
+    approved_by: Optional[List[ApprovalIdentityRecord]] = Field(default=None, description="Array of approvers who have approved the approval", alias="approvedBy")
+    rejected_by: Optional[List[ApprovalIdentityRecord]] = Field(default=None, description="Array of approvers who have rejected the approval", alias="rejectedBy")
+    assigned_to: Optional[List[ApprovalIdentity]] = Field(default=None, description="Array of identities that the approval request is currently assigned to/waiting on. For parallel approvals, this is set to all approvers left to approve.", alias="assignedTo")
     completed_date: Optional[StrictStr] = Field(default=None, description="Date the approval was completed", alias="completedDate")
-    approval_criteria: Optional[StrictStr] = Field(default=None, description="Criteria that needs to be met for an approval to be marked as approved", alias="approvalCriteria")
-    status: Optional[StrictStr] = Field(default=None, description="The current status of the approval")
+    approval_criteria: Optional[ApprovalApprovalCriteria] = Field(default=None, alias="approvalCriteria")
     additional_attributes: Optional[StrictStr] = Field(default=None, description="Json string representing additional attributes known about the object to be approved.", alias="additionalAttributes")
     reference_data: Optional[List[ApprovalReference]] = Field(default=None, description="Reference data related to the approval", alias="referenceData")
-    __properties: ClassVar[List[str]] = ["approvalId", "approvers", "createdDate", "type", "name", "batchRequest", "description", "priority", "requester", "comments", "approvedBy", "rejectedBy", "completedDate", "approvalCriteria", "status", "additionalAttributes", "referenceData"]
+    reassignment_history: Optional[List[ApprovalReassignmentHistory]] = Field(default=None, description="History of whom the approval request was assigned to", alias="reassignmentHistory")
+    static_attributes: Optional[Dict[str, Dict[str, Any]]] = Field(default=None, description="Field that can include any static additional info that may be needed by the service that the approval request originated from", alias="staticAttributes")
+    modified_date: Optional[datetime] = Field(default=None, description="Date/time that the approval request was last updated", alias="modifiedDate")
+    requested_target: Optional[List[ApprovalRequestedTarget]] = Field(default=None, description="RequestedTarget used to specify the actual object or target the approval request is for", alias="requestedTarget")
+    __properties: ClassVar[List[str]] = ["id", "tenantId", "type", "approvers", "createdDate", "dueDate", "escalationStep", "serialStep", "isEscalated", "name", "batchRequest", "approvalConfig", "description", "medium", "priority", "requester", "requestee", "comments", "approvedBy", "rejectedBy", "assignedTo", "completedDate", "approvalCriteria", "additionalAttributes", "referenceData", "reassignmentHistory", "staticAttributes", "modifiedDate", "requestedTarget"]
+
+    @field_validator('medium')
+    def medium_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['EMAIL', 'SLACK', 'TEAMS']):
+            warnings.warn(f"must be one of enum values ('EMAIL', 'SLACK', 'TEAMS') unknown value: {value}")
+        return value
 
     @field_validator('priority')
     def priority_validate_enum(cls, value):
@@ -59,26 +86,6 @@ class Approval(BaseModel):
 
         if value not in set(['HIGH', 'MEDIUM', 'LOW']):
             warnings.warn(f"must be one of enum values ('HIGH', 'MEDIUM', 'LOW') unknown value: {value}")
-        return value
-
-    @field_validator('approval_criteria')
-    def approval_criteria_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['SINGLE', 'DOUBLE', 'TRIPLE', 'QUARTER', 'HALF', 'ALL']):
-            warnings.warn(f"must be one of enum values ('SINGLE', 'DOUBLE', 'TRIPLE', 'QUARTER', 'HALF', 'ALL') unknown value: {value}")
-        return value
-
-    @field_validator('status')
-    def status_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['PENDING', 'APPROVED', 'REJECTED']):
-            warnings.warn(f"must be one of enum values ('PENDING', 'APPROVED', 'REJECTED') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -137,6 +144,9 @@ class Approval(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of batch_request
         if self.batch_request:
             _dict['batchRequest'] = self.batch_request.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of approval_config
+        if self.approval_config:
+            _dict['approvalConfig'] = self.approval_config.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in description (list)
         _items = []
         if self.description:
@@ -147,6 +157,9 @@ class Approval(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of requester
         if self.requester:
             _dict['requester'] = self.requester.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of requestee
+        if self.requestee:
+            _dict['requestee'] = self.requestee.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in comments (list)
         _items = []
         if self.comments:
@@ -168,6 +181,16 @@ class Approval(BaseModel):
                 if _item_rejected_by:
                     _items.append(_item_rejected_by.to_dict())
             _dict['rejectedBy'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in assigned_to (list)
+        _items = []
+        if self.assigned_to:
+            for _item_assigned_to in self.assigned_to:
+                if _item_assigned_to:
+                    _items.append(_item_assigned_to.to_dict())
+            _dict['assignedTo'] = _items
+        # override the default output from pydantic by calling `to_dict()` of approval_criteria
+        if self.approval_criteria:
+            _dict['approvalCriteria'] = self.approval_criteria.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in reference_data (list)
         _items = []
         if self.reference_data:
@@ -175,6 +198,20 @@ class Approval(BaseModel):
                 if _item_reference_data:
                     _items.append(_item_reference_data.to_dict())
             _dict['referenceData'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in reassignment_history (list)
+        _items = []
+        if self.reassignment_history:
+            for _item_reassignment_history in self.reassignment_history:
+                if _item_reassignment_history:
+                    _items.append(_item_reassignment_history.to_dict())
+            _dict['reassignmentHistory'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in requested_target (list)
+        _items = []
+        if self.requested_target:
+            for _item_requested_target in self.requested_target:
+                if _item_requested_target:
+                    _items.append(_item_requested_target.to_dict())
+            _dict['requestedTarget'] = _items
         return _dict
 
     @classmethod
@@ -187,23 +224,35 @@ class Approval(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "approvalId": obj.get("approvalId"),
+            "id": obj.get("id"),
+            "tenantId": obj.get("tenantId"),
+            "type": obj.get("type"),
             "approvers": [ApprovalIdentity.from_dict(_item) for _item in obj["approvers"]] if obj.get("approvers") is not None else None,
             "createdDate": obj.get("createdDate"),
-            "type": obj.get("type"),
+            "dueDate": obj.get("dueDate"),
+            "escalationStep": obj.get("escalationStep"),
+            "serialStep": obj.get("serialStep"),
+            "isEscalated": obj.get("isEscalated") if obj.get("isEscalated") is not None else False,
             "name": [ApprovalName.from_dict(_item) for _item in obj["name"]] if obj.get("name") is not None else None,
             "batchRequest": ApprovalBatch.from_dict(obj["batchRequest"]) if obj.get("batchRequest") is not None else None,
+            "approvalConfig": ApprovalConfig.from_dict(obj["approvalConfig"]) if obj.get("approvalConfig") is not None else None,
             "description": [ApprovalDescription.from_dict(_item) for _item in obj["description"]] if obj.get("description") is not None else None,
+            "medium": obj.get("medium"),
             "priority": obj.get("priority"),
             "requester": ApprovalIdentity.from_dict(obj["requester"]) if obj.get("requester") is not None else None,
+            "requestee": ApprovalIdentity.from_dict(obj["requestee"]) if obj.get("requestee") is not None else None,
             "comments": [ApprovalComment1.from_dict(_item) for _item in obj["comments"]] if obj.get("comments") is not None else None,
-            "approvedBy": [ApprovalIdentity.from_dict(_item) for _item in obj["approvedBy"]] if obj.get("approvedBy") is not None else None,
-            "rejectedBy": [ApprovalIdentity.from_dict(_item) for _item in obj["rejectedBy"]] if obj.get("rejectedBy") is not None else None,
+            "approvedBy": [ApprovalIdentityRecord.from_dict(_item) for _item in obj["approvedBy"]] if obj.get("approvedBy") is not None else None,
+            "rejectedBy": [ApprovalIdentityRecord.from_dict(_item) for _item in obj["rejectedBy"]] if obj.get("rejectedBy") is not None else None,
+            "assignedTo": [ApprovalIdentity.from_dict(_item) for _item in obj["assignedTo"]] if obj.get("assignedTo") is not None else None,
             "completedDate": obj.get("completedDate"),
-            "approvalCriteria": obj.get("approvalCriteria"),
-            "status": obj.get("status"),
+            "approvalCriteria": ApprovalApprovalCriteria.from_dict(obj["approvalCriteria"]) if obj.get("approvalCriteria") is not None else None,
             "additionalAttributes": obj.get("additionalAttributes"),
-            "referenceData": [ApprovalReference.from_dict(_item) for _item in obj["referenceData"]] if obj.get("referenceData") is not None else None
+            "referenceData": [ApprovalReference.from_dict(_item) for _item in obj["referenceData"]] if obj.get("referenceData") is not None else None,
+            "reassignmentHistory": [ApprovalReassignmentHistory.from_dict(_item) for _item in obj["reassignmentHistory"]] if obj.get("reassignmentHistory") is not None else None,
+            "staticAttributes": obj.get("staticAttributes"),
+            "modifiedDate": obj.get("modifiedDate"),
+            "requestedTarget": [ApprovalRequestedTarget.from_dict(_item) for _item in obj["requestedTarget"]] if obj.get("requestedTarget") is not None else None
         })
         return _obj
 

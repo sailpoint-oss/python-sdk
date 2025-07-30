@@ -26,6 +26,13 @@ class TestApprovalsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_approve_approval(self) -> None:
+        """Test case for approve_approval
+
+        Post Approvals Approve
+        """
+        pass
+
     def test_get_approval(self) -> None:
         """Test case for get_approval
 
@@ -37,6 +44,34 @@ class TestApprovalsApi(unittest.TestCase):
         """Test case for get_approvals
 
         Get approvals
+        """
+        pass
+
+    def test_reject_approval(self) -> None:
+        """Test case for reject_approval
+
+        Post Approvals Reject
+        """
+        pass
+
+    def test_update_approvals_attributes(self) -> None:
+        """Test case for update_approvals_attributes
+
+        Post Approvals Attributes
+        """
+        pass
+
+    def test_update_approvals_comments(self) -> None:
+        """Test case for update_approvals_comments
+
+        Post Approvals Comments
+        """
+        pass
+
+    def test_update_approvals_reassign(self) -> None:
+        """Test case for update_approvals_reassign
+
+        Post Approvals Reassign
         """
         pass
 

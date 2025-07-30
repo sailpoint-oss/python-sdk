@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,7 +29,10 @@ class ApprovalReference(BaseModel):
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Id of the reference object")
     type: Optional[StrictStr] = Field(default=None, description="What reference object does this ID correspond to")
-    __properties: ClassVar[List[str]] = ["id", "type"]
+    name: Optional[StrictStr] = Field(default=None, description="Name of the reference object")
+    email: Optional[StrictStr] = Field(default=None, description="Email associated with the reference object")
+    serial_order: Optional[StrictInt] = Field(default=None, description="The serial step of the identity in the approval. For example serialOrder 1 is the first identity to action in an approval request chain. Parallel approvals are set to 0.", alias="serialOrder")
+    __properties: ClassVar[List[str]] = ["id", "type", "name", "email", "serialOrder"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,7 +86,10 @@ class ApprovalReference(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "type": obj.get("type")
+            "type": obj.get("type"),
+            "name": obj.get("name"),
+            "email": obj.get("email"),
+            "serialOrder": obj.get("serialOrder")
         })
         return _obj
 

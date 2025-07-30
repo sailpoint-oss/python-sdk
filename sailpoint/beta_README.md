@@ -123,8 +123,6 @@ Class | Method | HTTP request | Description
 *ApplicationDiscoveryApi* | [**get_manual_discover_applications_csv_template**](sailpoint/beta/docs/ApplicationDiscoveryApi.md#get_manual_discover_applications_csv_template) | **GET** /manual-discover-applications-template | Download csv template for discovery
 *ApplicationDiscoveryApi* | [**patch_discovered_application_by_id**](sailpoint/beta/docs/ApplicationDiscoveryApi.md#patch_discovered_application_by_id) | **PATCH** /discovered-applications/{id} | Patch discovered application by id
 *ApplicationDiscoveryApi* | [**send_manual_discover_applications_csv_template**](sailpoint/beta/docs/ApplicationDiscoveryApi.md#send_manual_discover_applications_csv_template) | **POST** /manual-discover-applications | Upload csv to discover applications
-*ApprovalsApi* | [**get_approval**](sailpoint/beta/docs/ApprovalsApi.md#get_approval) | **GET** /generic-approvals/{id} | Get approval
-*ApprovalsApi* | [**get_approvals**](sailpoint/beta/docs/ApprovalsApi.md#get_approvals) | **GET** /generic-approvals | Get approvals
 *AppsApi* | [**create_source_app**](sailpoint/beta/docs/AppsApi.md#create_source_app) | **POST** /source-apps | Create source app
 *AppsApi* | [**delete_access_profiles_from_source_app_by_bulk**](sailpoint/beta/docs/AppsApi.md#delete_access_profiles_from_source_app_by_bulk) | **POST** /source-apps/{id}/access-profiles/bulk-remove | Bulk remove access profiles from the specified source app
 *AppsApi* | [**delete_source_app**](sailpoint/beta/docs/AppsApi.md#delete_source_app) | **DELETE** /source-apps/{id} | Delete source app by id
@@ -744,17 +742,10 @@ Class | Method | HTTP request | Description
  - [AdminReviewReassignReassignTo](sailpoint/beta/docs/AdminReviewReassignReassignTo.md)
  - [AppAccountDetails](sailpoint/beta/docs/AppAccountDetails.md)
  - [AppAccountDetailsSourceAccount](sailpoint/beta/docs/AppAccountDetailsSourceAccount.md)
- - [Approval](sailpoint/beta/docs/Approval.md)
- - [ApprovalBatch](sailpoint/beta/docs/ApprovalBatch.md)
- - [ApprovalComment](sailpoint/beta/docs/ApprovalComment.md)
- - [ApprovalDescription](sailpoint/beta/docs/ApprovalDescription.md)
  - [ApprovalForwardHistory](sailpoint/beta/docs/ApprovalForwardHistory.md)
- - [ApprovalIdentity](sailpoint/beta/docs/ApprovalIdentity.md)
  - [ApprovalInfoResponse](sailpoint/beta/docs/ApprovalInfoResponse.md)
  - [ApprovalItemDetails](sailpoint/beta/docs/ApprovalItemDetails.md)
  - [ApprovalItems](sailpoint/beta/docs/ApprovalItems.md)
- - [ApprovalName](sailpoint/beta/docs/ApprovalName.md)
- - [ApprovalReference](sailpoint/beta/docs/ApprovalReference.md)
  - [ApprovalReminderAndEscalationConfig](sailpoint/beta/docs/ApprovalReminderAndEscalationConfig.md)
  - [ApprovalScheme](sailpoint/beta/docs/ApprovalScheme.md)
  - [ApprovalSchemeForRole](sailpoint/beta/docs/ApprovalSchemeForRole.md)

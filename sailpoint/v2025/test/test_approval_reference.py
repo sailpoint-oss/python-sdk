@@ -36,7 +36,10 @@ class TestApprovalReference(unittest.TestCase):
         if include_optional:
             return ApprovalReference(
                 id = '64012350-8fd9-4f6c-a170-1fe123683899',
-                type = 'AccessRequestId'
+                type = 'AccessRequestId',
+                name = 'Access Request',
+                email = 'user@example.com',
+                serial_order = 0
             )
         else:
             return ApprovalReference(

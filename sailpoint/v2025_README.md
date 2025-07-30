@@ -130,8 +130,13 @@ Class | Method | HTTP request | Description
 *ApplicationDiscoveryApi* | [**get_discovered_applications**](sailpoint/v2025/docs/ApplicationDiscoveryApi.md#get_discovered_applications) | **GET** /discovered-applications | Get discovered applications for tenant
 *ApplicationDiscoveryApi* | [**get_manual_discover_applications_csv_template**](sailpoint/v2025/docs/ApplicationDiscoveryApi.md#get_manual_discover_applications_csv_template) | **GET** /manual-discover-applications-template | Download csv template for discovery
 *ApplicationDiscoveryApi* | [**send_manual_discover_applications_csv_template**](sailpoint/v2025/docs/ApplicationDiscoveryApi.md#send_manual_discover_applications_csv_template) | **POST** /manual-discover-applications | Upload csv to discover applications
+*ApprovalsApi* | [**approve_approval**](sailpoint/v2025/docs/ApprovalsApi.md#approve_approval) | **POST** /generic-approvals/{id}/approve | Post Approvals Approve
 *ApprovalsApi* | [**get_approval**](sailpoint/v2025/docs/ApprovalsApi.md#get_approval) | **GET** /generic-approvals/{id} | Get an approval
 *ApprovalsApi* | [**get_approvals**](sailpoint/v2025/docs/ApprovalsApi.md#get_approvals) | **GET** /generic-approvals | Get approvals
+*ApprovalsApi* | [**reject_approval**](sailpoint/v2025/docs/ApprovalsApi.md#reject_approval) | **POST** /generic-approvals/{id}/reject | Post Approvals Reject
+*ApprovalsApi* | [**update_approvals_attributes**](sailpoint/v2025/docs/ApprovalsApi.md#update_approvals_attributes) | **POST** /generic-approvals/{id}/attributes | Post Approvals Attributes
+*ApprovalsApi* | [**update_approvals_comments**](sailpoint/v2025/docs/ApprovalsApi.md#update_approvals_comments) | **POST** /generic-approvals/{id}/comments | Post Approvals Comments
+*ApprovalsApi* | [**update_approvals_reassign**](sailpoint/v2025/docs/ApprovalsApi.md#update_approvals_reassign) | **POST** /generic-approvals/{id}/reassign | Post Approvals Reassign
 *AppsApi* | [**create_source_app**](sailpoint/v2025/docs/AppsApi.md#create_source_app) | **POST** /source-apps | Create source app
 *AppsApi* | [**delete_access_profiles_from_source_app_by_bulk**](sailpoint/v2025/docs/AppsApi.md#delete_access_profiles_from_source_app_by_bulk) | **POST** /source-apps/{id}/access-profiles/bulk-remove | Bulk remove access profiles from the specified source app
 *AppsApi* | [**delete_source_app**](sailpoint/v2025/docs/AppsApi.md#delete_source_app) | **DELETE** /source-apps/{id} | Delete source app by id
@@ -949,19 +954,39 @@ Class | Method | HTTP request | Description
  - [AppAllOfAccount](sailpoint/v2025/docs/AppAllOfAccount.md)
  - [Approval](sailpoint/v2025/docs/Approval.md)
  - [Approval1](sailpoint/v2025/docs/Approval1.md)
+ - [ApprovalApprovalCriteria](sailpoint/v2025/docs/ApprovalApprovalCriteria.md)
+ - [ApprovalApprovalCriteriaApproval](sailpoint/v2025/docs/ApprovalApprovalCriteriaApproval.md)
+ - [ApprovalApprovalCriteriaRejection](sailpoint/v2025/docs/ApprovalApprovalCriteriaRejection.md)
+ - [ApprovalApproveRequest](sailpoint/v2025/docs/ApprovalApproveRequest.md)
+ - [ApprovalAttributesRequest](sailpoint/v2025/docs/ApprovalAttributesRequest.md)
  - [ApprovalBatch](sailpoint/v2025/docs/ApprovalBatch.md)
  - [ApprovalComment](sailpoint/v2025/docs/ApprovalComment.md)
  - [ApprovalComment1](sailpoint/v2025/docs/ApprovalComment1.md)
  - [ApprovalComment2](sailpoint/v2025/docs/ApprovalComment2.md)
+ - [ApprovalCommentsRequest](sailpoint/v2025/docs/ApprovalCommentsRequest.md)
+ - [ApprovalConfig](sailpoint/v2025/docs/ApprovalConfig.md)
+ - [ApprovalConfigCronTimezone](sailpoint/v2025/docs/ApprovalConfigCronTimezone.md)
+ - [ApprovalConfigEscalationConfig](sailpoint/v2025/docs/ApprovalConfigEscalationConfig.md)
+ - [ApprovalConfigEscalationConfigEscalationChainInner](sailpoint/v2025/docs/ApprovalConfigEscalationConfigEscalationChainInner.md)
+ - [ApprovalConfigReminderConfig](sailpoint/v2025/docs/ApprovalConfigReminderConfig.md)
+ - [ApprovalConfigSerialChainInner](sailpoint/v2025/docs/ApprovalConfigSerialChainInner.md)
+ - [ApprovalConfigTimeoutConfig](sailpoint/v2025/docs/ApprovalConfigTimeoutConfig.md)
  - [ApprovalDescription](sailpoint/v2025/docs/ApprovalDescription.md)
  - [ApprovalForwardHistory](sailpoint/v2025/docs/ApprovalForwardHistory.md)
  - [ApprovalIdentity](sailpoint/v2025/docs/ApprovalIdentity.md)
+ - [ApprovalIdentityMembersInner](sailpoint/v2025/docs/ApprovalIdentityMembersInner.md)
+ - [ApprovalIdentityOwnerOfInner](sailpoint/v2025/docs/ApprovalIdentityOwnerOfInner.md)
+ - [ApprovalIdentityRecord](sailpoint/v2025/docs/ApprovalIdentityRecord.md)
  - [ApprovalInfoResponse](sailpoint/v2025/docs/ApprovalInfoResponse.md)
  - [ApprovalItemDetails](sailpoint/v2025/docs/ApprovalItemDetails.md)
  - [ApprovalItems](sailpoint/v2025/docs/ApprovalItems.md)
  - [ApprovalName](sailpoint/v2025/docs/ApprovalName.md)
+ - [ApprovalReassignRequest](sailpoint/v2025/docs/ApprovalReassignRequest.md)
+ - [ApprovalReassignmentHistory](sailpoint/v2025/docs/ApprovalReassignmentHistory.md)
  - [ApprovalReference](sailpoint/v2025/docs/ApprovalReference.md)
+ - [ApprovalRejectRequest](sailpoint/v2025/docs/ApprovalRejectRequest.md)
  - [ApprovalReminderAndEscalationConfig](sailpoint/v2025/docs/ApprovalReminderAndEscalationConfig.md)
+ - [ApprovalRequestedTarget](sailpoint/v2025/docs/ApprovalRequestedTarget.md)
  - [ApprovalScheme](sailpoint/v2025/docs/ApprovalScheme.md)
  - [ApprovalSchemeForRole](sailpoint/v2025/docs/ApprovalSchemeForRole.md)
  - [ApprovalStatus](sailpoint/v2025/docs/ApprovalStatus.md)

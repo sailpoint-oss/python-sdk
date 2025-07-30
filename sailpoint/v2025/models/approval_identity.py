@@ -18,19 +18,25 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.v2025.models.approval_identity_members_inner import ApprovalIdentityMembersInner
+from sailpoint.v2025.models.approval_identity_owner_of_inner import ApprovalIdentityOwnerOfInner
 from typing import Optional, Set
 from typing_extensions import Self
 
 class ApprovalIdentity(BaseModel):
     """
-    Identity Object
+    Approval Identity Object
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="The identity ID")
-    type: Optional[StrictStr] = Field(default=None, description="Indication of what group the identity belongs to. Ie, IDENTITY, GOVERNANCE_GROUP, etc")
-    name: Optional[StrictStr] = Field(default=None, description="Name of the identity")
-    __properties: ClassVar[List[str]] = ["id", "type", "name"]
+    email: Optional[StrictStr] = Field(default=None, description="Email address.")
+    identity_id: Optional[StrictStr] = Field(default=None, description="Identity ID.", alias="identityID")
+    members: Optional[List[ApprovalIdentityMembersInner]] = Field(default=None, description="List of members of a governance group. Will be omitted if the identity is not a governance group.")
+    name: Optional[StrictStr] = Field(default=None, description="Name of the identity.")
+    owner_of: Optional[List[ApprovalIdentityOwnerOfInner]] = Field(default=None, description="List of owned items. For example, will show the items in which a ROLE_OWNER owns. Omitted if not an owner of anything.", alias="ownerOf")
+    serial_order: Optional[StrictInt] = Field(default=None, description="The serial step of the identity in the approval. For example serialOrder 1 is the first identity to action in an approval request chain. Parallel approvals are set to 0.", alias="serialOrder")
+    type: Optional[StrictStr] = Field(default=None, description="Type of identity.")
+    __properties: ClassVar[List[str]] = ["email", "identityID", "members", "name", "ownerOf", "serialOrder", "type"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -38,8 +44,8 @@ class ApprovalIdentity(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['IDENTITY']):
-            warnings.warn(f"must be one of enum values ('IDENTITY') unknown value: {value}")
+        if value not in set(['IDENTITY', 'MANAGER_OF', 'GOVERNANCE_GROUP', 'SOURCE_OWNER', 'ROLE_OWNER', 'ACCESS_PROFILE_OWNER', 'ENTITLEMENT_OWNER', 'APPLICATION_OWNER']):
+            warnings.warn(f"must be one of enum values ('IDENTITY', 'MANAGER_OF', 'GOVERNANCE_GROUP', 'SOURCE_OWNER', 'ROLE_OWNER', 'ACCESS_PROFILE_OWNER', 'ENTITLEMENT_OWNER', 'APPLICATION_OWNER') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -81,6 +87,20 @@ class ApprovalIdentity(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in members (list)
+        _items = []
+        if self.members:
+            for _item_members in self.members:
+                if _item_members:
+                    _items.append(_item_members.to_dict())
+            _dict['members'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in owner_of (list)
+        _items = []
+        if self.owner_of:
+            for _item_owner_of in self.owner_of:
+                if _item_owner_of:
+                    _items.append(_item_owner_of.to_dict())
+            _dict['ownerOf'] = _items
         return _dict
 
     @classmethod
@@ -93,9 +113,13 @@ class ApprovalIdentity(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "type": obj.get("type"),
-            "name": obj.get("name")
+            "email": obj.get("email"),
+            "identityID": obj.get("identityID"),
+            "members": [ApprovalIdentityMembersInner.from_dict(_item) for _item in obj["members"]] if obj.get("members") is not None else None,
+            "name": obj.get("name"),
+            "ownerOf": [ApprovalIdentityOwnerOfInner.from_dict(_item) for _item in obj["ownerOf"]] if obj.get("ownerOf") is not None else None,
+            "serialOrder": obj.get("serialOrder"),
+            "type": obj.get("type")
         })
         return _obj
 

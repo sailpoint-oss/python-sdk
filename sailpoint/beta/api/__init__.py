@@ -11,7 +11,6 @@ from sailpoint.beta.api.account_aggregations_api import AccountAggregationsApi
 from sailpoint.beta.api.account_usages_api import AccountUsagesApi
 from sailpoint.beta.api.accounts_api import AccountsApi
 from sailpoint.beta.api.application_discovery_api import ApplicationDiscoveryApi
-from sailpoint.beta.api.approvals_api import ApprovalsApi
 from sailpoint.beta.api.apps_api import AppsApi
 from sailpoint.beta.api.auth_profile_api import AuthProfileApi
 from sailpoint.beta.api.certification_campaigns_api import CertificationCampaignsApi

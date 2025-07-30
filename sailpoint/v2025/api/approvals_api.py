@@ -20,6 +20,11 @@ from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
 from sailpoint.v2025.models.approval import Approval
+from sailpoint.v2025.models.approval_approve_request import ApprovalApproveRequest
+from sailpoint.v2025.models.approval_attributes_request import ApprovalAttributesRequest
+from sailpoint.v2025.models.approval_comments_request import ApprovalCommentsRequest
+from sailpoint.v2025.models.approval_reassign_request import ApprovalReassignRequest
+from sailpoint.v2025.models.approval_reject_request import ApprovalRejectRequest
 
 from sailpoint.v2025.api_client import ApiClient, RequestSerialized
 from sailpoint.v2025.api_response import ApiResponse
@@ -37,6 +42,314 @@ class ApprovalsApi:
         if api_client is None:
             api_client = ApiClient.get_default()
         self.api_client = api_client
+
+
+    @validate_call
+    def approve_approval(
+        self,
+        id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to approve")],
+        approval_approve_request: Optional[ApprovalApproveRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> Approval:
+        """Post Approvals Approve
+
+        Currently this endpoint only supports Entitlement Description Approvals. Approves a specified approval request on behalf of the caller. This endpoint is for generic approvals, unlike the access-request-approval endpoint, and does not include access-request-approvals. The approval request must be in a state that allows it to be approved. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user.
+
+        :param id: Approval ID that correlates to an existing approval request that a user wants to approve (required)
+        :type id: str
+        :param approval_approve_request:
+        :type approval_approve_request: ApprovalApproveRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._approve_approval_serialize(
+            id=id,
+            approval_approve_request=approval_approve_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Approval",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def approve_approval_with_http_info(
+        self,
+        id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to approve")],
+        approval_approve_request: Optional[ApprovalApproveRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[Approval]:
+        """Post Approvals Approve
+
+        Currently this endpoint only supports Entitlement Description Approvals. Approves a specified approval request on behalf of the caller. This endpoint is for generic approvals, unlike the access-request-approval endpoint, and does not include access-request-approvals. The approval request must be in a state that allows it to be approved. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user.
+
+        :param id: Approval ID that correlates to an existing approval request that a user wants to approve (required)
+        :type id: str
+        :param approval_approve_request:
+        :type approval_approve_request: ApprovalApproveRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._approve_approval_serialize(
+            id=id,
+            approval_approve_request=approval_approve_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Approval",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def approve_approval_without_preload_content(
+        self,
+        id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to approve")],
+        approval_approve_request: Optional[ApprovalApproveRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Post Approvals Approve
+
+        Currently this endpoint only supports Entitlement Description Approvals. Approves a specified approval request on behalf of the caller. This endpoint is for generic approvals, unlike the access-request-approval endpoint, and does not include access-request-approvals. The approval request must be in a state that allows it to be approved. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user.
+
+        :param id: Approval ID that correlates to an existing approval request that a user wants to approve (required)
+        :type id: str
+        :param approval_approve_request:
+        :type approval_approve_request: ApprovalApproveRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._approve_approval_serialize(
+            id=id,
+            approval_approve_request=approval_approve_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Approval",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _approve_approval_serialize(
+        self,
+        id,
+        approval_approve_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if approval_approve_request is not None:
+            _body_params = approval_approve_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/generic-approvals/{id}/approve',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
 
 
     @validate_call
@@ -59,7 +372,7 @@ class ApprovalsApi:
     ) -> Approval:
         """Get an approval
 
-        Retrieve a single approval for a given approval ID. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.
+        Currently this endpoint only supports Entitlement Description Approvals. Retrieve a single approval for a given approval ID. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.
 
         :param id: ID of the approval that is to be returned (required)
         :type id: str
@@ -135,7 +448,7 @@ class ApprovalsApi:
     ) -> ApiResponse[Approval]:
         """Get an approval
 
-        Retrieve a single approval for a given approval ID. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.
+        Currently this endpoint only supports Entitlement Description Approvals. Retrieve a single approval for a given approval ID. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.
 
         :param id: ID of the approval that is to be returned (required)
         :type id: str
@@ -211,7 +524,7 @@ class ApprovalsApi:
     ) -> RESTResponseType:
         """Get an approval
 
-        Retrieve a single approval for a given approval ID. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.
+        Currently this endpoint only supports Entitlement Description Approvals. Retrieve a single approval for a given approval ID. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.
 
         :param id: ID of the approval that is to be returned (required)
         :type id: str
@@ -334,10 +647,19 @@ class ApprovalsApi:
     @validate_call
     def get_approvals(
         self,
-        mine: Annotated[Optional[StrictBool], Field(description="Returns the list of approvals for the current caller")] = None,
-        requester_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given requester ID")] = None,
-        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*  **referenceType**: *eq*")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
+        mine: Annotated[Optional[StrictBool], Field(description="Returns the list of approvals for the current caller.")] = None,
+        requester_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given requester ID. Must match the calling user's identity ID unless they are an admin.")] = None,
+        requestee_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given requesteeId ID. Must match the calling user's identity ID unless they are an admin.")] = None,
+        approver_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given approverId ID. Must match the calling user's identity ID unless they are an admin.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="Adds X-Total-Count to the header to give the amount of total approvals returned from the query.")] = None,
+        count_only: Annotated[Optional[StrictBool], Field(description="Adds X-Total-Count to the header to give the amount of total approvals returned from the query. Only returns the count and no approval objects.")] = None,
+        include_comments: Annotated[Optional[StrictBool], Field(description="If set to true in the query, the approval requests returned will include comments.")] = None,
+        include_approvers: Annotated[Optional[StrictBool], Field(description="If set to true in the query, the approval requests returned will include approvers.")] = None,
+        include_batch_info: Annotated[Optional[StrictBool], Field(description="If set to true in the query, the approval requests returned will include batch information.")] = None,
+        include_batch_info2: Annotated[Optional[StrictBool], Field(description="If set to true in the query, the approval requests returned will include batch information.")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*  **referenceType**: *eq*  **name**: *eq*  **priority**: *eq*  **type**: *eq*  **medium**: *eq*  **description**: *eq*  **batchId**: *eq*  **approvalId**: *eq*  **tenantId**: *eq*  **createdDate**: *eq*  **dueDate**: *eq*  **completedDate**: *eq*  **search**: *eq*  **referenceId**: *eq*  **referenceName**: *eq*  **requestedTargetType**: *eq*  **requestedTargetRequestType**: *eq*  **requestedTargetId**: *eq*  **modifiedDate**: *eq*  **requesterId**: *eq*  **requesteeId**: *eq*  **approverId**: *eq*")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -353,16 +675,34 @@ class ApprovalsApi:
     ) -> List[Approval]:
         """Get approvals
 
-        Retrieve a list of approvals, which can be filtered by requester ID, status, or reference type. \"Mine\" query parameter can be used and it will return all approvals for the current approver. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.  Absence of all query parameters will will default to mine=true.
+        Currently this endpoint only supports Entitlement Description Approvals. Get a list of approvals. This endpoint is for generic approvals, unlike the access-request-approval endpoint, and does not include access-request-approvals.  Absence of all query parameters for non admins will will default to mine=true. Absence of all query parameters for admins will return all approvals in the org.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
-        :param mine: Returns the list of approvals for the current caller
+        :param mine: Returns the list of approvals for the current caller.
         :type mine: bool
-        :param requester_id: Returns the list of approvals for a given requester ID
+        :param requester_id: Returns the list of approvals for a given requester ID. Must match the calling user's identity ID unless they are an admin.
         :type requester_id: str
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*  **referenceType**: *eq*
+        :param requestee_id: Returns the list of approvals for a given requesteeId ID. Must match the calling user's identity ID unless they are an admin.
+        :type requestee_id: str
+        :param approver_id: Returns the list of approvals for a given approverId ID. Must match the calling user's identity ID unless they are an admin.
+        :type approver_id: str
+        :param count: Adds X-Total-Count to the header to give the amount of total approvals returned from the query.
+        :type count: bool
+        :param count_only: Adds X-Total-Count to the header to give the amount of total approvals returned from the query. Only returns the count and no approval objects.
+        :type count_only: bool
+        :param include_comments: If set to true in the query, the approval requests returned will include comments.
+        :type include_comments: bool
+        :param include_approvers: If set to true in the query, the approval requests returned will include approvers.
+        :type include_approvers: bool
+        :param include_batch_info: If set to true in the query, the approval requests returned will include batch information.
+        :type include_batch_info: bool
+        :param include_batch_info2: If set to true in the query, the approval requests returned will include batch information.
+        :type include_batch_info2: bool
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*  **referenceType**: *eq*  **name**: *eq*  **priority**: *eq*  **type**: *eq*  **medium**: *eq*  **description**: *eq*  **batchId**: *eq*  **approvalId**: *eq*  **tenantId**: *eq*  **createdDate**: *eq*  **dueDate**: *eq*  **completedDate**: *eq*  **search**: *eq*  **referenceId**: *eq*  **referenceName**: *eq*  **requestedTargetType**: *eq*  **requestedTargetRequestType**: *eq*  **requestedTargetId**: *eq*  **modifiedDate**: *eq*  **requesterId**: *eq*  **requesteeId**: *eq*  **approverId**: *eq*
         :type filters: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -386,10 +726,19 @@ class ApprovalsApi:
         """ # noqa: E501
 
         _param = self._get_approvals_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             mine=mine,
             requester_id=requester_id,
+            requestee_id=requestee_id,
+            approver_id=approver_id,
+            count=count,
+            count_only=count_only,
+            include_comments=include_comments,
+            include_approvers=include_approvers,
+            include_batch_info=include_batch_info,
+            include_batch_info2=include_batch_info2,
             filters=filters,
+            limit=limit,
+            offset=offset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -418,10 +767,19 @@ class ApprovalsApi:
     @validate_call
     def get_approvals_with_http_info(
         self,
-        mine: Annotated[Optional[StrictBool], Field(description="Returns the list of approvals for the current caller")] = None,
-        requester_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given requester ID")] = None,
-        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*  **referenceType**: *eq*")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
+        mine: Annotated[Optional[StrictBool], Field(description="Returns the list of approvals for the current caller.")] = None,
+        requester_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given requester ID. Must match the calling user's identity ID unless they are an admin.")] = None,
+        requestee_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given requesteeId ID. Must match the calling user's identity ID unless they are an admin.")] = None,
+        approver_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given approverId ID. Must match the calling user's identity ID unless they are an admin.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="Adds X-Total-Count to the header to give the amount of total approvals returned from the query.")] = None,
+        count_only: Annotated[Optional[StrictBool], Field(description="Adds X-Total-Count to the header to give the amount of total approvals returned from the query. Only returns the count and no approval objects.")] = None,
+        include_comments: Annotated[Optional[StrictBool], Field(description="If set to true in the query, the approval requests returned will include comments.")] = None,
+        include_approvers: Annotated[Optional[StrictBool], Field(description="If set to true in the query, the approval requests returned will include approvers.")] = None,
+        include_batch_info: Annotated[Optional[StrictBool], Field(description="If set to true in the query, the approval requests returned will include batch information.")] = None,
+        include_batch_info2: Annotated[Optional[StrictBool], Field(description="If set to true in the query, the approval requests returned will include batch information.")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*  **referenceType**: *eq*  **name**: *eq*  **priority**: *eq*  **type**: *eq*  **medium**: *eq*  **description**: *eq*  **batchId**: *eq*  **approvalId**: *eq*  **tenantId**: *eq*  **createdDate**: *eq*  **dueDate**: *eq*  **completedDate**: *eq*  **search**: *eq*  **referenceId**: *eq*  **referenceName**: *eq*  **requestedTargetType**: *eq*  **requestedTargetRequestType**: *eq*  **requestedTargetId**: *eq*  **modifiedDate**: *eq*  **requesterId**: *eq*  **requesteeId**: *eq*  **approverId**: *eq*")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -437,16 +795,34 @@ class ApprovalsApi:
     ) -> ApiResponse[List[Approval]]:
         """Get approvals
 
-        Retrieve a list of approvals, which can be filtered by requester ID, status, or reference type. \"Mine\" query parameter can be used and it will return all approvals for the current approver. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.  Absence of all query parameters will will default to mine=true.
+        Currently this endpoint only supports Entitlement Description Approvals. Get a list of approvals. This endpoint is for generic approvals, unlike the access-request-approval endpoint, and does not include access-request-approvals.  Absence of all query parameters for non admins will will default to mine=true. Absence of all query parameters for admins will return all approvals in the org.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
-        :param mine: Returns the list of approvals for the current caller
+        :param mine: Returns the list of approvals for the current caller.
         :type mine: bool
-        :param requester_id: Returns the list of approvals for a given requester ID
+        :param requester_id: Returns the list of approvals for a given requester ID. Must match the calling user's identity ID unless they are an admin.
         :type requester_id: str
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*  **referenceType**: *eq*
+        :param requestee_id: Returns the list of approvals for a given requesteeId ID. Must match the calling user's identity ID unless they are an admin.
+        :type requestee_id: str
+        :param approver_id: Returns the list of approvals for a given approverId ID. Must match the calling user's identity ID unless they are an admin.
+        :type approver_id: str
+        :param count: Adds X-Total-Count to the header to give the amount of total approvals returned from the query.
+        :type count: bool
+        :param count_only: Adds X-Total-Count to the header to give the amount of total approvals returned from the query. Only returns the count and no approval objects.
+        :type count_only: bool
+        :param include_comments: If set to true in the query, the approval requests returned will include comments.
+        :type include_comments: bool
+        :param include_approvers: If set to true in the query, the approval requests returned will include approvers.
+        :type include_approvers: bool
+        :param include_batch_info: If set to true in the query, the approval requests returned will include batch information.
+        :type include_batch_info: bool
+        :param include_batch_info2: If set to true in the query, the approval requests returned will include batch information.
+        :type include_batch_info2: bool
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*  **referenceType**: *eq*  **name**: *eq*  **priority**: *eq*  **type**: *eq*  **medium**: *eq*  **description**: *eq*  **batchId**: *eq*  **approvalId**: *eq*  **tenantId**: *eq*  **createdDate**: *eq*  **dueDate**: *eq*  **completedDate**: *eq*  **search**: *eq*  **referenceId**: *eq*  **referenceName**: *eq*  **requestedTargetType**: *eq*  **requestedTargetRequestType**: *eq*  **requestedTargetId**: *eq*  **modifiedDate**: *eq*  **requesterId**: *eq*  **requesteeId**: *eq*  **approverId**: *eq*
         :type filters: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -470,10 +846,19 @@ class ApprovalsApi:
         """ # noqa: E501
 
         _param = self._get_approvals_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             mine=mine,
             requester_id=requester_id,
+            requestee_id=requestee_id,
+            approver_id=approver_id,
+            count=count,
+            count_only=count_only,
+            include_comments=include_comments,
+            include_approvers=include_approvers,
+            include_batch_info=include_batch_info,
+            include_batch_info2=include_batch_info2,
             filters=filters,
+            limit=limit,
+            offset=offset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -502,10 +887,19 @@ class ApprovalsApi:
     @validate_call
     def get_approvals_without_preload_content(
         self,
-        mine: Annotated[Optional[StrictBool], Field(description="Returns the list of approvals for the current caller")] = None,
-        requester_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given requester ID")] = None,
-        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*  **referenceType**: *eq*")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
+        mine: Annotated[Optional[StrictBool], Field(description="Returns the list of approvals for the current caller.")] = None,
+        requester_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given requester ID. Must match the calling user's identity ID unless they are an admin.")] = None,
+        requestee_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given requesteeId ID. Must match the calling user's identity ID unless they are an admin.")] = None,
+        approver_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given approverId ID. Must match the calling user's identity ID unless they are an admin.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="Adds X-Total-Count to the header to give the amount of total approvals returned from the query.")] = None,
+        count_only: Annotated[Optional[StrictBool], Field(description="Adds X-Total-Count to the header to give the amount of total approvals returned from the query. Only returns the count and no approval objects.")] = None,
+        include_comments: Annotated[Optional[StrictBool], Field(description="If set to true in the query, the approval requests returned will include comments.")] = None,
+        include_approvers: Annotated[Optional[StrictBool], Field(description="If set to true in the query, the approval requests returned will include approvers.")] = None,
+        include_batch_info: Annotated[Optional[StrictBool], Field(description="If set to true in the query, the approval requests returned will include batch information.")] = None,
+        include_batch_info2: Annotated[Optional[StrictBool], Field(description="If set to true in the query, the approval requests returned will include batch information.")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*  **referenceType**: *eq*  **name**: *eq*  **priority**: *eq*  **type**: *eq*  **medium**: *eq*  **description**: *eq*  **batchId**: *eq*  **approvalId**: *eq*  **tenantId**: *eq*  **createdDate**: *eq*  **dueDate**: *eq*  **completedDate**: *eq*  **search**: *eq*  **referenceId**: *eq*  **referenceName**: *eq*  **requestedTargetType**: *eq*  **requestedTargetRequestType**: *eq*  **requestedTargetId**: *eq*  **modifiedDate**: *eq*  **requesterId**: *eq*  **requesteeId**: *eq*  **approverId**: *eq*")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -521,16 +915,34 @@ class ApprovalsApi:
     ) -> RESTResponseType:
         """Get approvals
 
-        Retrieve a list of approvals, which can be filtered by requester ID, status, or reference type. \"Mine\" query parameter can be used and it will return all approvals for the current approver. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.  Absence of all query parameters will will default to mine=true.
+        Currently this endpoint only supports Entitlement Description Approvals. Get a list of approvals. This endpoint is for generic approvals, unlike the access-request-approval endpoint, and does not include access-request-approvals.  Absence of all query parameters for non admins will will default to mine=true. Absence of all query parameters for admins will return all approvals in the org.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
-        :param mine: Returns the list of approvals for the current caller
+        :param mine: Returns the list of approvals for the current caller.
         :type mine: bool
-        :param requester_id: Returns the list of approvals for a given requester ID
+        :param requester_id: Returns the list of approvals for a given requester ID. Must match the calling user's identity ID unless they are an admin.
         :type requester_id: str
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*  **referenceType**: *eq*
+        :param requestee_id: Returns the list of approvals for a given requesteeId ID. Must match the calling user's identity ID unless they are an admin.
+        :type requestee_id: str
+        :param approver_id: Returns the list of approvals for a given approverId ID. Must match the calling user's identity ID unless they are an admin.
+        :type approver_id: str
+        :param count: Adds X-Total-Count to the header to give the amount of total approvals returned from the query.
+        :type count: bool
+        :param count_only: Adds X-Total-Count to the header to give the amount of total approvals returned from the query. Only returns the count and no approval objects.
+        :type count_only: bool
+        :param include_comments: If set to true in the query, the approval requests returned will include comments.
+        :type include_comments: bool
+        :param include_approvers: If set to true in the query, the approval requests returned will include approvers.
+        :type include_approvers: bool
+        :param include_batch_info: If set to true in the query, the approval requests returned will include batch information.
+        :type include_batch_info: bool
+        :param include_batch_info2: If set to true in the query, the approval requests returned will include batch information.
+        :type include_batch_info2: bool
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*  **referenceType**: *eq*  **name**: *eq*  **priority**: *eq*  **type**: *eq*  **medium**: *eq*  **description**: *eq*  **batchId**: *eq*  **approvalId**: *eq*  **tenantId**: *eq*  **createdDate**: *eq*  **dueDate**: *eq*  **completedDate**: *eq*  **search**: *eq*  **referenceId**: *eq*  **referenceName**: *eq*  **requestedTargetType**: *eq*  **requestedTargetRequestType**: *eq*  **requestedTargetId**: *eq*  **modifiedDate**: *eq*  **requesterId**: *eq*  **requesteeId**: *eq*  **approverId**: *eq*
         :type filters: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -554,10 +966,19 @@ class ApprovalsApi:
         """ # noqa: E501
 
         _param = self._get_approvals_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             mine=mine,
             requester_id=requester_id,
+            requestee_id=requestee_id,
+            approver_id=approver_id,
+            count=count,
+            count_only=count_only,
+            include_comments=include_comments,
+            include_approvers=include_approvers,
+            include_batch_info=include_batch_info,
+            include_batch_info2=include_batch_info2,
             filters=filters,
+            limit=limit,
+            offset=offset,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -581,10 +1002,19 @@ class ApprovalsApi:
 
     def _get_approvals_serialize(
         self,
-        x_sail_point_experimental,
         mine,
         requester_id,
+        requestee_id,
+        approver_id,
+        count,
+        count_only,
+        include_comments,
+        include_approvers,
+        include_batch_info,
+        include_batch_info2,
         filters,
+        limit,
+        offset,
         _request_auth,
         _content_type,
         _headers,
@@ -615,13 +1045,51 @@ class ApprovalsApi:
             
             _query_params.append(('requesterId', requester_id))
             
+        if requestee_id is not None:
+            
+            _query_params.append(('requesteeId', requestee_id))
+            
+        if approver_id is not None:
+            
+            _query_params.append(('approverId', approver_id))
+            
+        if count is not None:
+            
+            _query_params.append(('count', count))
+            
+        if count_only is not None:
+            
+            _query_params.append(('countOnly', count_only))
+            
+        if include_comments is not None:
+            
+            _query_params.append(('include-comments', include_comments))
+            
+        if include_approvers is not None:
+            
+            _query_params.append(('include-approvers', include_approvers))
+            
+        if include_batch_info is not None:
+            
+            _query_params.append(('include-batch-info', include_batch_info))
+            
+        if include_batch_info2 is not None:
+            
+            _query_params.append(('include-batch-info', include_batch_info2))
+            
         if filters is not None:
             
             _query_params.append(('filters', filters))
             
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -644,6 +1112,1238 @@ class ApprovalsApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/generic-approvals',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def reject_approval(
+        self,
+        id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to reject.")],
+        approval_reject_request: Optional[ApprovalRejectRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Post Approvals Reject
+
+        Currently this endpoint only supports Entitlement Description Approvals. Rejects a specified approval request on behalf of the caller. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user.
+
+        :param id: Approval ID that correlates to an existing approval request that a user wants to reject. (required)
+        :type id: str
+        :param approval_reject_request:
+        :type approval_reject_request: ApprovalRejectRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._reject_approval_serialize(
+            id=id,
+            approval_reject_request=approval_reject_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def reject_approval_with_http_info(
+        self,
+        id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to reject.")],
+        approval_reject_request: Optional[ApprovalRejectRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Post Approvals Reject
+
+        Currently this endpoint only supports Entitlement Description Approvals. Rejects a specified approval request on behalf of the caller. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user.
+
+        :param id: Approval ID that correlates to an existing approval request that a user wants to reject. (required)
+        :type id: str
+        :param approval_reject_request:
+        :type approval_reject_request: ApprovalRejectRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._reject_approval_serialize(
+            id=id,
+            approval_reject_request=approval_reject_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def reject_approval_without_preload_content(
+        self,
+        id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to reject.")],
+        approval_reject_request: Optional[ApprovalRejectRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Post Approvals Reject
+
+        Currently this endpoint only supports Entitlement Description Approvals. Rejects a specified approval request on behalf of the caller. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user.
+
+        :param id: Approval ID that correlates to an existing approval request that a user wants to reject. (required)
+        :type id: str
+        :param approval_reject_request:
+        :type approval_reject_request: ApprovalRejectRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._reject_approval_serialize(
+            id=id,
+            approval_reject_request=approval_reject_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _reject_approval_serialize(
+        self,
+        id,
+        approval_reject_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if approval_reject_request is not None:
+            _body_params = approval_reject_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/generic-approvals/{id}/reject',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_approvals_attributes(
+        self,
+        id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to change the attributes of.")],
+        approval_attributes_request: ApprovalAttributesRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> Approval:
+        """Post Approvals Attributes
+
+        Currently this endpoint only supports Entitlement Description Approvals. Allows for the edit/addition/removal of the key/value pair additional attributes map for an existing approval request.
+
+        :param id: Approval ID that correlates to an existing approval request that a user wants to change the attributes of. (required)
+        :type id: str
+        :param approval_attributes_request: (required)
+        :type approval_attributes_request: ApprovalAttributesRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_approvals_attributes_serialize(
+            id=id,
+            approval_attributes_request=approval_attributes_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Approval",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def update_approvals_attributes_with_http_info(
+        self,
+        id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to change the attributes of.")],
+        approval_attributes_request: ApprovalAttributesRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[Approval]:
+        """Post Approvals Attributes
+
+        Currently this endpoint only supports Entitlement Description Approvals. Allows for the edit/addition/removal of the key/value pair additional attributes map for an existing approval request.
+
+        :param id: Approval ID that correlates to an existing approval request that a user wants to change the attributes of. (required)
+        :type id: str
+        :param approval_attributes_request: (required)
+        :type approval_attributes_request: ApprovalAttributesRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_approvals_attributes_serialize(
+            id=id,
+            approval_attributes_request=approval_attributes_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Approval",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def update_approvals_attributes_without_preload_content(
+        self,
+        id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to change the attributes of.")],
+        approval_attributes_request: ApprovalAttributesRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Post Approvals Attributes
+
+        Currently this endpoint only supports Entitlement Description Approvals. Allows for the edit/addition/removal of the key/value pair additional attributes map for an existing approval request.
+
+        :param id: Approval ID that correlates to an existing approval request that a user wants to change the attributes of. (required)
+        :type id: str
+        :param approval_attributes_request: (required)
+        :type approval_attributes_request: ApprovalAttributesRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_approvals_attributes_serialize(
+            id=id,
+            approval_attributes_request=approval_attributes_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Approval",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_approvals_attributes_serialize(
+        self,
+        id,
+        approval_attributes_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if approval_attributes_request is not None:
+            _body_params = approval_attributes_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/generic-approvals/{id}/attributes',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_approvals_comments(
+        self,
+        id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to add a comment to.")],
+        approval_comments_request: ApprovalCommentsRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> Approval:
+        """Post Approvals Comments
+
+        Currently this endpoint only supports Entitlement Description Approvals. Adds comments to a specified approval request.
+
+        :param id: Approval ID that correlates to an existing approval request that a user wants to add a comment to. (required)
+        :type id: str
+        :param approval_comments_request: (required)
+        :type approval_comments_request: ApprovalCommentsRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_approvals_comments_serialize(
+            id=id,
+            approval_comments_request=approval_comments_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Approval",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def update_approvals_comments_with_http_info(
+        self,
+        id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to add a comment to.")],
+        approval_comments_request: ApprovalCommentsRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[Approval]:
+        """Post Approvals Comments
+
+        Currently this endpoint only supports Entitlement Description Approvals. Adds comments to a specified approval request.
+
+        :param id: Approval ID that correlates to an existing approval request that a user wants to add a comment to. (required)
+        :type id: str
+        :param approval_comments_request: (required)
+        :type approval_comments_request: ApprovalCommentsRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_approvals_comments_serialize(
+            id=id,
+            approval_comments_request=approval_comments_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Approval",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def update_approvals_comments_without_preload_content(
+        self,
+        id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to add a comment to.")],
+        approval_comments_request: ApprovalCommentsRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Post Approvals Comments
+
+        Currently this endpoint only supports Entitlement Description Approvals. Adds comments to a specified approval request.
+
+        :param id: Approval ID that correlates to an existing approval request that a user wants to add a comment to. (required)
+        :type id: str
+        :param approval_comments_request: (required)
+        :type approval_comments_request: ApprovalCommentsRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_approvals_comments_serialize(
+            id=id,
+            approval_comments_request=approval_comments_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Approval",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_approvals_comments_serialize(
+        self,
+        id,
+        approval_comments_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if approval_comments_request is not None:
+            _body_params = approval_comments_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/generic-approvals/{id}/comments',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_approvals_reassign(
+        self,
+        id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to reassign.")],
+        approval_reassign_request: ApprovalReassignRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Post Approvals Reassign
+
+        Currently this endpoint only supports Entitlement Description Approvals. Reassigns an approval request to another identity resulting in that identity being added as an authorized approver.
+
+        :param id: Approval ID that correlates to an existing approval request that a user wants to reassign. (required)
+        :type id: str
+        :param approval_reassign_request: (required)
+        :type approval_reassign_request: ApprovalReassignRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_approvals_reassign_serialize(
+            id=id,
+            approval_reassign_request=approval_reassign_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def update_approvals_reassign_with_http_info(
+        self,
+        id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to reassign.")],
+        approval_reassign_request: ApprovalReassignRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Post Approvals Reassign
+
+        Currently this endpoint only supports Entitlement Description Approvals. Reassigns an approval request to another identity resulting in that identity being added as an authorized approver.
+
+        :param id: Approval ID that correlates to an existing approval request that a user wants to reassign. (required)
+        :type id: str
+        :param approval_reassign_request: (required)
+        :type approval_reassign_request: ApprovalReassignRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_approvals_reassign_serialize(
+            id=id,
+            approval_reassign_request=approval_reassign_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def update_approvals_reassign_without_preload_content(
+        self,
+        id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to reassign.")],
+        approval_reassign_request: ApprovalReassignRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Post Approvals Reassign
+
+        Currently this endpoint only supports Entitlement Description Approvals. Reassigns an approval request to another identity resulting in that identity being added as an authorized approver.
+
+        :param id: Approval ID that correlates to an existing approval request that a user wants to reassign. (required)
+        :type id: str
+        :param approval_reassign_request: (required)
+        :type approval_reassign_request: ApprovalReassignRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_approvals_reassign_serialize(
+            id=id,
+            approval_reassign_request=approval_reassign_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_approvals_reassign_serialize(
+        self,
+        id,
+        approval_reassign_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if approval_reassign_request is not None:
+            _body_params = approval_reassign_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/generic-approvals/{id}/reassign',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
