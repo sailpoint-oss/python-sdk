@@ -1175,6 +1175,7 @@ from sailpoint.v2025.models.workflow_body_owner import WorkflowBodyOwner
 from sailpoint.v2025.models.workflow_definition import WorkflowDefinition
 from sailpoint.v2025.models.workflow_execution import WorkflowExecution
 from sailpoint.v2025.models.workflow_execution_event import WorkflowExecutionEvent
+from sailpoint.v2025.models.workflow_execution_history import WorkflowExecutionHistory
 from sailpoint.v2025.models.workflow_library_action import WorkflowLibraryAction
 from sailpoint.v2025.models.workflow_library_action_example_output import WorkflowLibraryActionExampleOutput
 from sailpoint.v2025.models.workflow_library_form_fields import WorkflowLibraryFormFields

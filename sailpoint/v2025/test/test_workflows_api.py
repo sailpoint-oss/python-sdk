@@ -82,6 +82,13 @@ class TestWorkflowsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_workflow_execution_history_v2(self) -> None:
+        """Test case for get_workflow_execution_history_v2
+
+        Get updated workflow execution history
+        """
+        pass
+
     def test_get_workflow_executions(self) -> None:
         """Test case for get_workflow_executions
 

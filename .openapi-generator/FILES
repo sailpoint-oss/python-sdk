@@ -1355,6 +1355,7 @@ sailpoint/v2025/docs/WorkflowBodyOwner.md
 sailpoint/v2025/docs/WorkflowDefinition.md
 sailpoint/v2025/docs/WorkflowExecution.md
 sailpoint/v2025/docs/WorkflowExecutionEvent.md
+sailpoint/v2025/docs/WorkflowExecutionHistory.md
 sailpoint/v2025/docs/WorkflowLibraryAction.md
 sailpoint/v2025/docs/WorkflowLibraryActionExampleOutput.md
 sailpoint/v2025/docs/WorkflowLibraryFormFields.md
@@ -2536,6 +2537,7 @@ sailpoint/v2025/models/workflow_body_owner.py
 sailpoint/v2025/models/workflow_definition.py
 sailpoint/v2025/models/workflow_execution.py
 sailpoint/v2025/models/workflow_execution_event.py
+sailpoint/v2025/models/workflow_execution_history.py
 sailpoint/v2025/models/workflow_library_action.py
 sailpoint/v2025/models/workflow_library_action_example_output.py
 sailpoint/v2025/models/workflow_library_form_fields.py
@@ -3809,6 +3811,7 @@ sailpoint/v2025/test/test_workflow_body_owner.py
 sailpoint/v2025/test/test_workflow_definition.py
 sailpoint/v2025/test/test_workflow_execution.py
 sailpoint/v2025/test/test_workflow_execution_event.py
+sailpoint/v2025/test/test_workflow_execution_history.py
 sailpoint/v2025/test/test_workflow_library_action.py
 sailpoint/v2025/test/test_workflow_library_action_example_output.py
 sailpoint/v2025/test/test_workflow_library_form_fields.py

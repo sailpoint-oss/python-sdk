@@ -792,6 +792,7 @@ Class | Method | HTTP request | Description
 *WorkflowsApi* | [**get_workflow**](sailpoint/v2025/docs/WorkflowsApi.md#get_workflow) | **GET** /workflows/{id} | Get workflow by id
 *WorkflowsApi* | [**get_workflow_execution**](sailpoint/v2025/docs/WorkflowsApi.md#get_workflow_execution) | **GET** /workflow-executions/{id} | Get workflow execution
 *WorkflowsApi* | [**get_workflow_execution_history**](sailpoint/v2025/docs/WorkflowsApi.md#get_workflow_execution_history) | **GET** /workflow-executions/{id}/history | Get workflow execution history
+*WorkflowsApi* | [**get_workflow_execution_history_v2**](sailpoint/v2025/docs/WorkflowsApi.md#get_workflow_execution_history_v2) | **GET** /workflow-executions/{id}/history-v2 | Get updated workflow execution history
 *WorkflowsApi* | [**get_workflow_executions**](sailpoint/v2025/docs/WorkflowsApi.md#get_workflow_executions) | **GET** /workflows/{id}/executions | List workflow executions
 *WorkflowsApi* | [**list_complete_workflow_library**](sailpoint/v2025/docs/WorkflowsApi.md#list_complete_workflow_library) | **GET** /workflow-library | List complete workflow library
 *WorkflowsApi* | [**list_workflow_library_actions**](sailpoint/v2025/docs/WorkflowsApi.md#list_workflow_library_actions) | **GET** /workflow-library/actions | List workflow library actions
@@ -1967,6 +1968,7 @@ Class | Method | HTTP request | Description
  - [WorkflowDefinition](sailpoint/v2025/docs/WorkflowDefinition.md)
  - [WorkflowExecution](sailpoint/v2025/docs/WorkflowExecution.md)
  - [WorkflowExecutionEvent](sailpoint/v2025/docs/WorkflowExecutionEvent.md)
+ - [WorkflowExecutionHistory](sailpoint/v2025/docs/WorkflowExecutionHistory.md)
  - [WorkflowLibraryAction](sailpoint/v2025/docs/WorkflowLibraryAction.md)
  - [WorkflowLibraryActionExampleOutput](sailpoint/v2025/docs/WorkflowLibraryActionExampleOutput.md)
  - [WorkflowLibraryFormFields](sailpoint/v2025/docs/WorkflowLibraryFormFields.md)
