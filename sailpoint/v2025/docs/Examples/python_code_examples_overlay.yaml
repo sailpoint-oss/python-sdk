@@ -12222,6 +12222,31 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling ManagedClientsApi->get_managed_client: %s\n" % e)
+- path: /managed-clients/{id}/health-indicators
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/managed-clients#get-managed-client-health-indicators
+      source: |
+        from sailpoint.v2025.api.managed_clients_api import ManagedClientsApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.managed_client_health_indicators import ManagedClientHealthIndicators
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '4440278c-0ce2-41ee-a0a9-f5cfd5e8d3b7' # str | Managed client ID to get health indicators for. # str | Managed client ID to get health indicators for.
+          try:
+              # Get managed client health indicators
+              
+              results = ManagedClientsApi(api_client).get_managed_client_health_indicators(id=id)
+              # Below is a request that includes all optional parameters
+              # results = ManagedClientsApi(api_client).get_managed_client_health_indicators(id)
+              print("The response of ManagedClientsApi->get_managed_client_health_indicators:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ManagedClientsApi->get_managed_client_health_indicators: %s\n" % e)
 - path: /managed-clients/{id}/status
   method: GET
   xCodeSample:

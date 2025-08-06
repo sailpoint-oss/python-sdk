@@ -47,6 +47,13 @@ class TestManagedClientsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_managed_client_health_indicators(self) -> None:
+        """Test case for get_managed_client_health_indicators
+
+        Get managed client health indicators
+        """
+        pass
+
     def test_get_managed_client_status(self) -> None:
         """Test case for get_managed_client_status
 

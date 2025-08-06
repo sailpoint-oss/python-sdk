@@ -495,6 +495,8 @@ from sailpoint.v2025.models.get_personal_access_token_response import GetPersona
 from sailpoint.v2025.models.get_role_assignments200_response_inner import GetRoleAssignments200ResponseInner
 from sailpoint.v2025.models.get_tenant_context200_response_inner import GetTenantContext200ResponseInner
 from sailpoint.v2025.models.grant_type import GrantType
+from sailpoint.v2025.models.health_event import HealthEvent
+from sailpoint.v2025.models.health_indicator_category import HealthIndicatorCategory
 from sailpoint.v2025.models.hierarchical_right_set import HierarchicalRightSet
 from sailpoint.v2025.models.http_authentication_type import HttpAuthenticationType
 from sailpoint.v2025.models.http_config import HttpConfig
@@ -629,6 +631,9 @@ from sailpoint.v2025.models.machine_identity_dto_owners import MachineIdentityDt
 from sailpoint.v2025.models.mail_from_attributes import MailFromAttributes
 from sailpoint.v2025.models.mail_from_attributes_dto import MailFromAttributesDto
 from sailpoint.v2025.models.managed_client import ManagedClient
+from sailpoint.v2025.models.managed_client_health_indicators import ManagedClientHealthIndicators
+from sailpoint.v2025.models.managed_client_health_indicators_body import ManagedClientHealthIndicatorsBody
+from sailpoint.v2025.models.managed_client_health_indicators_body_health_indicators import ManagedClientHealthIndicatorsBodyHealthIndicators
 from sailpoint.v2025.models.managed_client_request import ManagedClientRequest
 from sailpoint.v2025.models.managed_client_status import ManagedClientStatus
 from sailpoint.v2025.models.managed_client_status_code import ManagedClientStatusCode

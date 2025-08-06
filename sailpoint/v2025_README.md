@@ -457,6 +457,7 @@ Class | Method | HTTP request | Description
 *ManagedClientsApi* | [**create_managed_client**](sailpoint/v2025/docs/ManagedClientsApi.md#create_managed_client) | **POST** /managed-clients | Create managed client
 *ManagedClientsApi* | [**delete_managed_client**](sailpoint/v2025/docs/ManagedClientsApi.md#delete_managed_client) | **DELETE** /managed-clients/{id} | Delete managed client
 *ManagedClientsApi* | [**get_managed_client**](sailpoint/v2025/docs/ManagedClientsApi.md#get_managed_client) | **GET** /managed-clients/{id} | Get managed client
+*ManagedClientsApi* | [**get_managed_client_health_indicators**](sailpoint/v2025/docs/ManagedClientsApi.md#get_managed_client_health_indicators) | **GET** /managed-clients/{id}/health-indicators | Get managed client health indicators
 *ManagedClientsApi* | [**get_managed_client_status**](sailpoint/v2025/docs/ManagedClientsApi.md#get_managed_client_status) | **GET** /managed-clients/{id}/status | Get managed client status
 *ManagedClientsApi* | [**get_managed_clients**](sailpoint/v2025/docs/ManagedClientsApi.md#get_managed_clients) | **GET** /managed-clients | Get managed clients
 *ManagedClientsApi* | [**update_managed_client**](sailpoint/v2025/docs/ManagedClientsApi.md#update_managed_client) | **PATCH** /managed-clients/{id} | Update managed client
@@ -1288,6 +1289,8 @@ Class | Method | HTTP request | Description
  - [GetRoleAssignments200ResponseInner](sailpoint/v2025/docs/GetRoleAssignments200ResponseInner.md)
  - [GetTenantContext200ResponseInner](sailpoint/v2025/docs/GetTenantContext200ResponseInner.md)
  - [GrantType](sailpoint/v2025/docs/GrantType.md)
+ - [HealthEvent](sailpoint/v2025/docs/HealthEvent.md)
+ - [HealthIndicatorCategory](sailpoint/v2025/docs/HealthIndicatorCategory.md)
  - [HierarchicalRightSet](sailpoint/v2025/docs/HierarchicalRightSet.md)
  - [HttpAuthenticationType](sailpoint/v2025/docs/HttpAuthenticationType.md)
  - [HttpConfig](sailpoint/v2025/docs/HttpConfig.md)
@@ -1422,6 +1425,9 @@ Class | Method | HTTP request | Description
  - [MailFromAttributes](sailpoint/v2025/docs/MailFromAttributes.md)
  - [MailFromAttributesDto](sailpoint/v2025/docs/MailFromAttributesDto.md)
  - [ManagedClient](sailpoint/v2025/docs/ManagedClient.md)
+ - [ManagedClientHealthIndicators](sailpoint/v2025/docs/ManagedClientHealthIndicators.md)
+ - [ManagedClientHealthIndicatorsBody](sailpoint/v2025/docs/ManagedClientHealthIndicatorsBody.md)
+ - [ManagedClientHealthIndicatorsBodyHealthIndicators](sailpoint/v2025/docs/ManagedClientHealthIndicatorsBodyHealthIndicators.md)
  - [ManagedClientRequest](sailpoint/v2025/docs/ManagedClientRequest.md)
  - [ManagedClientStatus](sailpoint/v2025/docs/ManagedClientStatus.md)
  - [ManagedClientStatusCode](sailpoint/v2025/docs/ManagedClientStatusCode.md)
