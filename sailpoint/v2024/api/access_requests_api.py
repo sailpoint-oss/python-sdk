@@ -2215,6 +2215,7 @@ class AccessRequestsApi:
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId**")] = None,
         request_state: Annotated[Optional[StrictStr], Field(description="Filter the results by the state of the request. The only valid value is *EXECUTING*.")] = None,
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2232,6 +2233,8 @@ class AccessRequestsApi:
 
         Use this API to get access request statuses of all the access requests in the org based on the specified query  parameters. Any user with user level ORG_ADMIN or scope idn:access-request-administration:read can access this endpoint to get  the  access request statuses
 
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param requested_for: Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
         :type requested_for: str
         :param requested_by: Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
@@ -2275,6 +2278,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._list_administrators_access_request_status_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
             requested_for=requested_for,
             requested_by=requested_by,
             regarding_identity=regarding_identity,
@@ -2323,6 +2327,7 @@ class AccessRequestsApi:
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId**")] = None,
         request_state: Annotated[Optional[StrictStr], Field(description="Filter the results by the state of the request. The only valid value is *EXECUTING*.")] = None,
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2340,6 +2345,8 @@ class AccessRequestsApi:
 
         Use this API to get access request statuses of all the access requests in the org based on the specified query  parameters. Any user with user level ORG_ADMIN or scope idn:access-request-administration:read can access this endpoint to get  the  access request statuses
 
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param requested_for: Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
         :type requested_for: str
         :param requested_by: Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
@@ -2383,6 +2390,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._list_administrators_access_request_status_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
             requested_for=requested_for,
             requested_by=requested_by,
             regarding_identity=regarding_identity,
@@ -2431,6 +2439,7 @@ class AccessRequestsApi:
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId**")] = None,
         request_state: Annotated[Optional[StrictStr], Field(description="Filter the results by the state of the request. The only valid value is *EXECUTING*.")] = None,
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2448,6 +2457,8 @@ class AccessRequestsApi:
 
         Use this API to get access request statuses of all the access requests in the org based on the specified query  parameters. Any user with user level ORG_ADMIN or scope idn:access-request-administration:read can access this endpoint to get  the  access request statuses
 
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param requested_for: Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
         :type requested_for: str
         :param requested_by: Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
@@ -2491,6 +2502,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._list_administrators_access_request_status_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
             requested_for=requested_for,
             requested_by=requested_by,
             regarding_identity=regarding_identity,
@@ -2524,6 +2536,7 @@ class AccessRequestsApi:
 
     def _list_administrators_access_request_status_serialize(
         self,
+        x_sail_point_experimental,
         requested_for,
         requested_by,
         regarding_identity,
@@ -2597,6 +2610,8 @@ class AccessRequestsApi:
             _query_params.append(('request-state', request_state))
             
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
