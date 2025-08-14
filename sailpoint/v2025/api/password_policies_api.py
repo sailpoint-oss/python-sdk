@@ -43,6 +43,7 @@ class PasswordPoliciesApi:
     def create_password_policy(
         self,
         password_policy_v3_dto: PasswordPolicyV3Dto,
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -60,6 +61,8 @@ class PasswordPoliciesApi:
 
         This API creates the specified password policy.
 
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param password_policy_v3_dto: (required)
         :type password_policy_v3_dto: PasswordPolicyV3Dto
         :param _request_timeout: timeout setting for this request. If one
@@ -85,6 +88,7 @@ class PasswordPoliciesApi:
         """ # noqa: E501
 
         _param = self._create_password_policy_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
             password_policy_v3_dto=password_policy_v3_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -116,6 +120,7 @@ class PasswordPoliciesApi:
     def create_password_policy_with_http_info(
         self,
         password_policy_v3_dto: PasswordPolicyV3Dto,
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -133,6 +138,8 @@ class PasswordPoliciesApi:
 
         This API creates the specified password policy.
 
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param password_policy_v3_dto: (required)
         :type password_policy_v3_dto: PasswordPolicyV3Dto
         :param _request_timeout: timeout setting for this request. If one
@@ -158,6 +165,7 @@ class PasswordPoliciesApi:
         """ # noqa: E501
 
         _param = self._create_password_policy_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
             password_policy_v3_dto=password_policy_v3_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -189,6 +197,7 @@ class PasswordPoliciesApi:
     def create_password_policy_without_preload_content(
         self,
         password_policy_v3_dto: PasswordPolicyV3Dto,
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -206,6 +215,8 @@ class PasswordPoliciesApi:
 
         This API creates the specified password policy.
 
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param password_policy_v3_dto: (required)
         :type password_policy_v3_dto: PasswordPolicyV3Dto
         :param _request_timeout: timeout setting for this request. If one
@@ -231,6 +242,7 @@ class PasswordPoliciesApi:
         """ # noqa: E501
 
         _param = self._create_password_policy_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
             password_policy_v3_dto=password_policy_v3_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -256,6 +268,7 @@ class PasswordPoliciesApi:
 
     def _create_password_policy_serialize(
         self,
+        x_sail_point_experimental,
         password_policy_v3_dto,
         _request_auth,
         _content_type,
@@ -280,6 +293,8 @@ class PasswordPoliciesApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if password_policy_v3_dto is not None:
@@ -336,6 +351,7 @@ class PasswordPoliciesApi:
     def delete_password_policy(
         self,
         id: Annotated[StrictStr, Field(description="The ID of password policy to delete.")],
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -355,6 +371,8 @@ class PasswordPoliciesApi:
 
         :param id: The ID of password policy to delete. (required)
         :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -379,6 +397,7 @@ class PasswordPoliciesApi:
 
         _param = self._delete_password_policy_serialize(
             id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -409,6 +428,7 @@ class PasswordPoliciesApi:
     def delete_password_policy_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of password policy to delete.")],
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -428,6 +448,8 @@ class PasswordPoliciesApi:
 
         :param id: The ID of password policy to delete. (required)
         :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -452,6 +474,7 @@ class PasswordPoliciesApi:
 
         _param = self._delete_password_policy_serialize(
             id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -482,6 +505,7 @@ class PasswordPoliciesApi:
     def delete_password_policy_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of password policy to delete.")],
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -501,6 +525,8 @@ class PasswordPoliciesApi:
 
         :param id: The ID of password policy to delete. (required)
         :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -525,6 +551,7 @@ class PasswordPoliciesApi:
 
         _param = self._delete_password_policy_serialize(
             id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -550,6 +577,7 @@ class PasswordPoliciesApi:
     def _delete_password_policy_serialize(
         self,
         id,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -575,6 +603,8 @@ class PasswordPoliciesApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -616,6 +646,7 @@ class PasswordPoliciesApi:
     def get_password_policy_by_id(
         self,
         id: Annotated[StrictStr, Field(description="The ID of password policy to retrieve.")],
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -635,6 +666,8 @@ class PasswordPoliciesApi:
 
         :param id: The ID of password policy to retrieve. (required)
         :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -659,6 +692,7 @@ class PasswordPoliciesApi:
 
         _param = self._get_password_policy_by_id_serialize(
             id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -689,6 +723,7 @@ class PasswordPoliciesApi:
     def get_password_policy_by_id_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of password policy to retrieve.")],
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -708,6 +743,8 @@ class PasswordPoliciesApi:
 
         :param id: The ID of password policy to retrieve. (required)
         :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -732,6 +769,7 @@ class PasswordPoliciesApi:
 
         _param = self._get_password_policy_by_id_serialize(
             id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -762,6 +800,7 @@ class PasswordPoliciesApi:
     def get_password_policy_by_id_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of password policy to retrieve.")],
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -781,6 +820,8 @@ class PasswordPoliciesApi:
 
         :param id: The ID of password policy to retrieve. (required)
         :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -805,6 +846,7 @@ class PasswordPoliciesApi:
 
         _param = self._get_password_policy_by_id_serialize(
             id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -830,6 +872,7 @@ class PasswordPoliciesApi:
     def _get_password_policy_by_id_serialize(
         self,
         id,
+        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -855,6 +898,8 @@ class PasswordPoliciesApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -898,6 +943,7 @@ class PasswordPoliciesApi:
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -915,6 +961,8 @@ class PasswordPoliciesApi:
 
         This gets list of all Password Policies. Requires role of ORG_ADMIN
 
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -944,6 +992,7 @@ class PasswordPoliciesApi:
         """ # noqa: E501
 
         _param = self._list_password_policies_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -978,6 +1027,7 @@ class PasswordPoliciesApi:
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -995,6 +1045,8 @@ class PasswordPoliciesApi:
 
         This gets list of all Password Policies. Requires role of ORG_ADMIN
 
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1024,6 +1076,7 @@ class PasswordPoliciesApi:
         """ # noqa: E501
 
         _param = self._list_password_policies_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -1058,6 +1111,7 @@ class PasswordPoliciesApi:
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1075,6 +1129,8 @@ class PasswordPoliciesApi:
 
         This gets list of all Password Policies. Requires role of ORG_ADMIN
 
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1104,6 +1160,7 @@ class PasswordPoliciesApi:
         """ # noqa: E501
 
         _param = self._list_password_policies_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -1130,6 +1187,7 @@ class PasswordPoliciesApi:
 
     def _list_password_policies_serialize(
         self,
+        x_sail_point_experimental,
         limit,
         offset,
         count,
@@ -1168,6 +1226,8 @@ class PasswordPoliciesApi:
             _query_params.append(('count', count))
             
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -1210,6 +1270,7 @@ class PasswordPoliciesApi:
         self,
         id: Annotated[StrictStr, Field(description="The ID of password policy to update.")],
         password_policy_v3_dto: PasswordPolicyV3Dto,
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1229,6 +1290,8 @@ class PasswordPoliciesApi:
 
         :param id: The ID of password policy to update. (required)
         :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param password_policy_v3_dto: (required)
         :type password_policy_v3_dto: PasswordPolicyV3Dto
         :param _request_timeout: timeout setting for this request. If one
@@ -1255,6 +1318,7 @@ class PasswordPoliciesApi:
 
         _param = self._set_password_policy_serialize(
             id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
             password_policy_v3_dto=password_policy_v3_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1287,6 +1351,7 @@ class PasswordPoliciesApi:
         self,
         id: Annotated[StrictStr, Field(description="The ID of password policy to update.")],
         password_policy_v3_dto: PasswordPolicyV3Dto,
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1306,6 +1371,8 @@ class PasswordPoliciesApi:
 
         :param id: The ID of password policy to update. (required)
         :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param password_policy_v3_dto: (required)
         :type password_policy_v3_dto: PasswordPolicyV3Dto
         :param _request_timeout: timeout setting for this request. If one
@@ -1332,6 +1399,7 @@ class PasswordPoliciesApi:
 
         _param = self._set_password_policy_serialize(
             id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
             password_policy_v3_dto=password_policy_v3_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1364,6 +1432,7 @@ class PasswordPoliciesApi:
         self,
         id: Annotated[StrictStr, Field(description="The ID of password policy to update.")],
         password_policy_v3_dto: PasswordPolicyV3Dto,
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1383,6 +1452,8 @@ class PasswordPoliciesApi:
 
         :param id: The ID of password policy to update. (required)
         :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param password_policy_v3_dto: (required)
         :type password_policy_v3_dto: PasswordPolicyV3Dto
         :param _request_timeout: timeout setting for this request. If one
@@ -1409,6 +1480,7 @@ class PasswordPoliciesApi:
 
         _param = self._set_password_policy_serialize(
             id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
             password_policy_v3_dto=password_policy_v3_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1435,6 +1507,7 @@ class PasswordPoliciesApi:
     def _set_password_policy_serialize(
         self,
         id,
+        x_sail_point_experimental,
         password_policy_v3_dto,
         _request_auth,
         _content_type,
@@ -1461,6 +1534,8 @@ class PasswordPoliciesApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if password_policy_v3_dto is not None:

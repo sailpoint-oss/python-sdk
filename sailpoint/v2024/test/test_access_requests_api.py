@@ -68,6 +68,13 @@ class TestAccessRequestsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_entitlement_details_for_identity(self) -> None:
+        """Test case for get_entitlement_details_for_identity
+
+        Identity entitlement details
+        """
+        pass
+
     def test_list_access_request_status(self) -> None:
         """Test case for list_access_request_status
 

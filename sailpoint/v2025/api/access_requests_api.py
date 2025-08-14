@@ -2964,6 +2964,7 @@ class AccessRequestsApi:
     def load_account_selections(
         self,
         accounts_selection_request: AccountsSelectionRequest,
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2981,6 +2982,8 @@ class AccessRequestsApi:
 
         Use this API to fetch account information for an identity against the items in an access request.  Used to fetch accountSelection for the AccessRequest prior to submitting for async processing. 
 
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param accounts_selection_request: (required)
         :type accounts_selection_request: AccountsSelectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -3006,6 +3009,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._load_account_selections_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
             accounts_selection_request=accounts_selection_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3036,6 +3040,7 @@ class AccessRequestsApi:
     def load_account_selections_with_http_info(
         self,
         accounts_selection_request: AccountsSelectionRequest,
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3053,6 +3058,8 @@ class AccessRequestsApi:
 
         Use this API to fetch account information for an identity against the items in an access request.  Used to fetch accountSelection for the AccessRequest prior to submitting for async processing. 
 
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param accounts_selection_request: (required)
         :type accounts_selection_request: AccountsSelectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -3078,6 +3085,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._load_account_selections_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
             accounts_selection_request=accounts_selection_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3108,6 +3116,7 @@ class AccessRequestsApi:
     def load_account_selections_without_preload_content(
         self,
         accounts_selection_request: AccountsSelectionRequest,
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3125,6 +3134,8 @@ class AccessRequestsApi:
 
         Use this API to fetch account information for an identity against the items in an access request.  Used to fetch accountSelection for the AccessRequest prior to submitting for async processing. 
 
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param accounts_selection_request: (required)
         :type accounts_selection_request: AccountsSelectionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -3150,6 +3161,7 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._load_account_selections_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
             accounts_selection_request=accounts_selection_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3174,6 +3186,7 @@ class AccessRequestsApi:
 
     def _load_account_selections_serialize(
         self,
+        x_sail_point_experimental,
         accounts_selection_request,
         _request_auth,
         _content_type,
@@ -3198,6 +3211,8 @@ class AccessRequestsApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if accounts_selection_request is not None:

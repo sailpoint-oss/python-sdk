@@ -45,6 +45,7 @@ sailpoint/v2025/api/identities_api.py
 sailpoint/v2025/api/identity_attributes_api.py
 sailpoint/v2025/api/identity_history_api.py
 sailpoint/v2025/api/identity_profiles_api.py
+sailpoint/v2025/api/launchers_api.py
 sailpoint/v2025/api/lifecycle_states_api.py
 sailpoint/v2025/api/machine_account_classify_api.py
 sailpoint/v2025/api/machine_account_mappings_api.py
@@ -86,6 +87,7 @@ sailpoint/v2025/api/sources_api.py
 sailpoint/v2025/api/sp_config_api.py
 sailpoint/v2025/api/suggested_entitlement_description_api.py
 sailpoint/v2025/api/tagged_objects_api.py
+sailpoint/v2025/api/tags_api.py
 sailpoint/v2025/api/task_management_api.py
 sailpoint/v2025/api/tenant_api.py
 sailpoint/v2025/api/tenant_context_api.py
@@ -606,6 +608,7 @@ sailpoint/v2025/docs/GetActiveCampaigns200ResponseInner.md
 sailpoint/v2025/docs/GetCampaign200Response.md
 sailpoint/v2025/docs/GetDiscoveredApplications200ResponseInner.md
 sailpoint/v2025/docs/GetHistoricalIdentityEvents200ResponseInner.md
+sailpoint/v2025/docs/GetLaunchers200Response.md
 sailpoint/v2025/docs/GetOAuthClientResponse.md
 sailpoint/v2025/docs/GetPersonalAccessTokenResponse.md
 sailpoint/v2025/docs/GetRoleAssignments200ResponseInner.md
@@ -718,6 +721,12 @@ sailpoint/v2025/docs/KbaAnswerRequestItem.md
 sailpoint/v2025/docs/KbaAnswerResponseItem.md
 sailpoint/v2025/docs/KbaQuestion.md
 sailpoint/v2025/docs/LatestOutlierSummary.md
+sailpoint/v2025/docs/Launcher.md
+sailpoint/v2025/docs/LauncherOwner.md
+sailpoint/v2025/docs/LauncherReference.md
+sailpoint/v2025/docs/LauncherRequest.md
+sailpoint/v2025/docs/LauncherRequestReference.md
+sailpoint/v2025/docs/LaunchersApi.md
 sailpoint/v2025/docs/License.md
 sailpoint/v2025/docs/LifecycleState.md
 sailpoint/v2025/docs/LifecycleStateDto.md
@@ -1247,6 +1256,7 @@ sailpoint/v2025/docs/SpConfigRules.md
 sailpoint/v2025/docs/SpDetails.md
 sailpoint/v2025/docs/StandardLevel.md
 sailpoint/v2025/docs/StartInvocationInput.md
+sailpoint/v2025/docs/StartLauncher200Response.md
 sailpoint/v2025/docs/StatusResponse.md
 sailpoint/v2025/docs/SubSearchAggregationSpecification.md
 sailpoint/v2025/docs/Subscription.md
@@ -1257,9 +1267,12 @@ sailpoint/v2025/docs/SubscriptionPostRequest.md
 sailpoint/v2025/docs/SubscriptionPutRequest.md
 sailpoint/v2025/docs/SubscriptionType.md
 sailpoint/v2025/docs/SuggestedEntitlementDescriptionApi.md
+sailpoint/v2025/docs/Tag.md
+sailpoint/v2025/docs/TagTagCategoryRefsInner.md
 sailpoint/v2025/docs/TaggedObject.md
 sailpoint/v2025/docs/TaggedObjectDto.md
 sailpoint/v2025/docs/TaggedObjectsApi.md
+sailpoint/v2025/docs/TagsApi.md
 sailpoint/v2025/docs/Target.md
 sailpoint/v2025/docs/TaskDefinitionSummary.md
 sailpoint/v2025/docs/TaskManagementApi.md
@@ -1857,6 +1870,7 @@ sailpoint/v2025/models/get_active_campaigns200_response_inner.py
 sailpoint/v2025/models/get_campaign200_response.py
 sailpoint/v2025/models/get_discovered_applications200_response_inner.py
 sailpoint/v2025/models/get_historical_identity_events200_response_inner.py
+sailpoint/v2025/models/get_launchers200_response.py
 sailpoint/v2025/models/get_o_auth_client_response.py
 sailpoint/v2025/models/get_personal_access_token_response.py
 sailpoint/v2025/models/get_role_assignments200_response_inner.py
@@ -1956,6 +1970,11 @@ sailpoint/v2025/models/kba_answer_request_item.py
 sailpoint/v2025/models/kba_answer_response_item.py
 sailpoint/v2025/models/kba_question.py
 sailpoint/v2025/models/latest_outlier_summary.py
+sailpoint/v2025/models/launcher.py
+sailpoint/v2025/models/launcher_owner.py
+sailpoint/v2025/models/launcher_reference.py
+sailpoint/v2025/models/launcher_request.py
+sailpoint/v2025/models/launcher_request_reference.py
 sailpoint/v2025/models/license.py
 sailpoint/v2025/models/lifecycle_state.py
 sailpoint/v2025/models/lifecycle_state_dto.py
@@ -2445,6 +2464,7 @@ sailpoint/v2025/models/sp_config_rules.py
 sailpoint/v2025/models/sp_details.py
 sailpoint/v2025/models/standard_level.py
 sailpoint/v2025/models/start_invocation_input.py
+sailpoint/v2025/models/start_launcher200_response.py
 sailpoint/v2025/models/status_response.py
 sailpoint/v2025/models/sub_search_aggregation_specification.py
 sailpoint/v2025/models/subscription.py
@@ -2454,6 +2474,8 @@ sailpoint/v2025/models/subscription_patch_request_inner_value_any_of_inner.py
 sailpoint/v2025/models/subscription_post_request.py
 sailpoint/v2025/models/subscription_put_request.py
 sailpoint/v2025/models/subscription_type.py
+sailpoint/v2025/models/tag.py
+sailpoint/v2025/models/tag_tag_category_refs_inner.py
 sailpoint/v2025/models/tagged_object.py
 sailpoint/v2025/models/tagged_object_dto.py
 sailpoint/v2025/models/target.py
@@ -3073,6 +3095,7 @@ sailpoint/v2025/test/test_get_active_campaigns200_response_inner.py
 sailpoint/v2025/test/test_get_campaign200_response.py
 sailpoint/v2025/test/test_get_discovered_applications200_response_inner.py
 sailpoint/v2025/test/test_get_historical_identity_events200_response_inner.py
+sailpoint/v2025/test/test_get_launchers200_response.py
 sailpoint/v2025/test/test_get_o_auth_client_response.py
 sailpoint/v2025/test/test_get_personal_access_token_response.py
 sailpoint/v2025/test/test_get_role_assignments200_response_inner.py
@@ -3185,6 +3208,12 @@ sailpoint/v2025/test/test_kba_answer_request_item.py
 sailpoint/v2025/test/test_kba_answer_response_item.py
 sailpoint/v2025/test/test_kba_question.py
 sailpoint/v2025/test/test_latest_outlier_summary.py
+sailpoint/v2025/test/test_launcher.py
+sailpoint/v2025/test/test_launcher_owner.py
+sailpoint/v2025/test/test_launcher_reference.py
+sailpoint/v2025/test/test_launcher_request.py
+sailpoint/v2025/test/test_launcher_request_reference.py
+sailpoint/v2025/test/test_launchers_api.py
 sailpoint/v2025/test/test_license.py
 sailpoint/v2025/test/test_lifecycle_state.py
 sailpoint/v2025/test/test_lifecycle_state_dto.py
@@ -3713,6 +3742,7 @@ sailpoint/v2025/test/test_sp_config_rules.py
 sailpoint/v2025/test/test_sp_details.py
 sailpoint/v2025/test/test_standard_level.py
 sailpoint/v2025/test/test_start_invocation_input.py
+sailpoint/v2025/test/test_start_launcher200_response.py
 sailpoint/v2025/test/test_status_response.py
 sailpoint/v2025/test/test_sub_search_aggregation_specification.py
 sailpoint/v2025/test/test_subscription.py
@@ -3723,9 +3753,12 @@ sailpoint/v2025/test/test_subscription_post_request.py
 sailpoint/v2025/test/test_subscription_put_request.py
 sailpoint/v2025/test/test_subscription_type.py
 sailpoint/v2025/test/test_suggested_entitlement_description_api.py
+sailpoint/v2025/test/test_tag.py
+sailpoint/v2025/test/test_tag_tag_category_refs_inner.py
 sailpoint/v2025/test/test_tagged_object.py
 sailpoint/v2025/test/test_tagged_object_dto.py
 sailpoint/v2025/test/test_tagged_objects_api.py
+sailpoint/v2025/test/test_tags_api.py
 sailpoint/v2025/test/test_target.py
 sailpoint/v2025/test/test_task_definition_summary.py
 sailpoint/v2025/test/test_task_management_api.py

@@ -58,6 +58,7 @@ from sailpoint.v2024.api.identities_api import IdentitiesApi
 from sailpoint.v2024.api.identity_attributes_api import IdentityAttributesApi
 from sailpoint.v2024.api.identity_history_api import IdentityHistoryApi
 from sailpoint.v2024.api.identity_profiles_api import IdentityProfilesApi
+from sailpoint.v2024.api.launchers_api import LaunchersApi
 from sailpoint.v2024.api.lifecycle_states_api import LifecycleStatesApi
 from sailpoint.v2024.api.mfa_configuration_api import MFAConfigurationApi
 from sailpoint.v2024.api.machine_account_classify_api import MachineAccountClassifyApi
@@ -99,6 +100,7 @@ from sailpoint.v2024.api.source_usages_api import SourceUsagesApi
 from sailpoint.v2024.api.sources_api import SourcesApi
 from sailpoint.v2024.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
 from sailpoint.v2024.api.tagged_objects_api import TaggedObjectsApi
+from sailpoint.v2024.api.tags_api import TagsApi
 from sailpoint.v2024.api.task_management_api import TaskManagementApi
 from sailpoint.v2024.api.tenant_api import TenantApi
 from sailpoint.v2024.api.tenant_context_api import TenantContextApi
@@ -566,6 +568,7 @@ from sailpoint.v2024.models.get_active_campaigns200_response_inner import GetAct
 from sailpoint.v2024.models.get_campaign200_response import GetCampaign200Response
 from sailpoint.v2024.models.get_discovered_applications200_response_inner import GetDiscoveredApplications200ResponseInner
 from sailpoint.v2024.models.get_historical_identity_events200_response_inner import GetHistoricalIdentityEvents200ResponseInner
+from sailpoint.v2024.models.get_launchers200_response import GetLaunchers200Response
 from sailpoint.v2024.models.get_o_auth_client_response import GetOAuthClientResponse
 from sailpoint.v2024.models.get_personal_access_token_response import GetPersonalAccessTokenResponse
 from sailpoint.v2024.models.get_role_assignments200_response_inner import GetRoleAssignments200ResponseInner
@@ -608,6 +611,10 @@ from sailpoint.v2024.models.identity_document_all_of_manager import IdentityDocu
 from sailpoint.v2024.models.identity_document_all_of_source import IdentityDocumentAllOfSource
 from sailpoint.v2024.models.identity_entities import IdentityEntities
 from sailpoint.v2024.models.identity_entities_identity_entity import IdentityEntitiesIdentityEntity
+from sailpoint.v2024.models.identity_entitlement_details import IdentityEntitlementDetails
+from sailpoint.v2024.models.identity_entitlement_details_account_target import IdentityEntitlementDetailsAccountTarget
+from sailpoint.v2024.models.identity_entitlement_details_entitlement_dto import IdentityEntitlementDetailsEntitlementDto
+from sailpoint.v2024.models.identity_entitlements import IdentityEntitlements
 from sailpoint.v2024.models.identity_exception_report_reference import IdentityExceptionReportReference
 from sailpoint.v2024.models.identity_history_response import IdentityHistoryResponse
 from sailpoint.v2024.models.identity_lifecycle_state import IdentityLifecycleState
@@ -658,6 +665,11 @@ from sailpoint.v2024.models.kba_answer_request_item import KbaAnswerRequestItem
 from sailpoint.v2024.models.kba_answer_response_item import KbaAnswerResponseItem
 from sailpoint.v2024.models.kba_question import KbaQuestion
 from sailpoint.v2024.models.latest_outlier_summary import LatestOutlierSummary
+from sailpoint.v2024.models.launcher import Launcher
+from sailpoint.v2024.models.launcher_owner import LauncherOwner
+from sailpoint.v2024.models.launcher_reference import LauncherReference
+from sailpoint.v2024.models.launcher_request import LauncherRequest
+from sailpoint.v2024.models.launcher_request_reference import LauncherRequestReference
 from sailpoint.v2024.models.license import License
 from sailpoint.v2024.models.lifecycle_state import LifecycleState
 from sailpoint.v2024.models.lifecycle_state_dto import LifecycleStateDto
@@ -1138,6 +1150,7 @@ from sailpoint.v2024.models.sp_config_rules import SpConfigRules
 from sailpoint.v2024.models.sp_details import SpDetails
 from sailpoint.v2024.models.standard_level import StandardLevel
 from sailpoint.v2024.models.start_invocation_input import StartInvocationInput
+from sailpoint.v2024.models.start_launcher200_response import StartLauncher200Response
 from sailpoint.v2024.models.status_response import StatusResponse
 from sailpoint.v2024.models.sub_search_aggregation_specification import SubSearchAggregationSpecification
 from sailpoint.v2024.models.subscription import Subscription
@@ -1147,6 +1160,8 @@ from sailpoint.v2024.models.subscription_patch_request_inner_value_any_of_inner 
 from sailpoint.v2024.models.subscription_post_request import SubscriptionPostRequest
 from sailpoint.v2024.models.subscription_put_request import SubscriptionPutRequest
 from sailpoint.v2024.models.subscription_type import SubscriptionType
+from sailpoint.v2024.models.tag import Tag
+from sailpoint.v2024.models.tag_tag_category_refs_inner import TagTagCategoryRefsInner
 from sailpoint.v2024.models.tagged_object import TaggedObject
 from sailpoint.v2024.models.tagged_object_dto import TaggedObjectDto
 from sailpoint.v2024.models.target import Target

@@ -1258,7 +1258,6 @@ class IdentityProfilesApi:
     def generate_identity_preview(
         self,
         identity_preview_request: Annotated[IdentityPreviewRequest, Field(description="Identity Preview request body.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1276,8 +1275,6 @@ class IdentityProfilesApi:
 
         This generates a non-persisted IdentityDetails object that will represent as the preview of the identities attribute when the given policy''s attribute config is applied.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identity_preview_request: Identity Preview request body. (required)
         :type identity_preview_request: IdentityPreviewRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1303,7 +1300,6 @@ class IdentityProfilesApi:
         """ # noqa: E501
 
         _param = self._generate_identity_preview_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             identity_preview_request=identity_preview_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1334,7 +1330,6 @@ class IdentityProfilesApi:
     def generate_identity_preview_with_http_info(
         self,
         identity_preview_request: Annotated[IdentityPreviewRequest, Field(description="Identity Preview request body.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1352,8 +1347,6 @@ class IdentityProfilesApi:
 
         This generates a non-persisted IdentityDetails object that will represent as the preview of the identities attribute when the given policy''s attribute config is applied.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identity_preview_request: Identity Preview request body. (required)
         :type identity_preview_request: IdentityPreviewRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1379,7 +1372,6 @@ class IdentityProfilesApi:
         """ # noqa: E501
 
         _param = self._generate_identity_preview_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             identity_preview_request=identity_preview_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1410,7 +1402,6 @@ class IdentityProfilesApi:
     def generate_identity_preview_without_preload_content(
         self,
         identity_preview_request: Annotated[IdentityPreviewRequest, Field(description="Identity Preview request body.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1428,8 +1419,6 @@ class IdentityProfilesApi:
 
         This generates a non-persisted IdentityDetails object that will represent as the preview of the identities attribute when the given policy''s attribute config is applied.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identity_preview_request: Identity Preview request body. (required)
         :type identity_preview_request: IdentityPreviewRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1455,7 +1444,6 @@ class IdentityProfilesApi:
         """ # noqa: E501
 
         _param = self._generate_identity_preview_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             identity_preview_request=identity_preview_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1480,7 +1468,6 @@ class IdentityProfilesApi:
 
     def _generate_identity_preview_serialize(
         self,
-        x_sail_point_experimental,
         identity_preview_request,
         _request_auth,
         _content_type,
@@ -1505,8 +1492,6 @@ class IdentityProfilesApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if identity_preview_request is not None:

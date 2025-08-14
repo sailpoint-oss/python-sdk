@@ -42,6 +42,7 @@ from sailpoint.v2024.api.identities_api import IdentitiesApi
 from sailpoint.v2024.api.identity_attributes_api import IdentityAttributesApi
 from sailpoint.v2024.api.identity_history_api import IdentityHistoryApi
 from sailpoint.v2024.api.identity_profiles_api import IdentityProfilesApi
+from sailpoint.v2024.api.launchers_api import LaunchersApi
 from sailpoint.v2024.api.lifecycle_states_api import LifecycleStatesApi
 from sailpoint.v2024.api.mfa_configuration_api import MFAConfigurationApi
 from sailpoint.v2024.api.machine_account_classify_api import MachineAccountClassifyApi
@@ -83,6 +84,7 @@ from sailpoint.v2024.api.source_usages_api import SourceUsagesApi
 from sailpoint.v2024.api.sources_api import SourcesApi
 from sailpoint.v2024.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
 from sailpoint.v2024.api.tagged_objects_api import TaggedObjectsApi
+from sailpoint.v2024.api.tags_api import TagsApi
 from sailpoint.v2024.api.task_management_api import TaskManagementApi
 from sailpoint.v2024.api.tenant_api import TenantApi
 from sailpoint.v2024.api.tenant_context_api import TenantContextApi

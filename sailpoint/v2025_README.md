@@ -419,6 +419,12 @@ Class | Method | HTTP request | Description
 *IdentityProfilesApi* | [**list_identity_profiles**](sailpoint/v2025/docs/IdentityProfilesApi.md#list_identity_profiles) | **GET** /identity-profiles | List identity profiles
 *IdentityProfilesApi* | [**sync_identity_profile**](sailpoint/v2025/docs/IdentityProfilesApi.md#sync_identity_profile) | **POST** /identity-profiles/{identity-profile-id}/process-identities | Process identities under profile
 *IdentityProfilesApi* | [**update_identity_profile**](sailpoint/v2025/docs/IdentityProfilesApi.md#update_identity_profile) | **PATCH** /identity-profiles/{identity-profile-id} | Update identity profile
+*LaunchersApi* | [**create_launcher**](sailpoint/v2025/docs/LaunchersApi.md#create_launcher) | **POST** /launchers | Create launcher
+*LaunchersApi* | [**delete_launcher**](sailpoint/v2025/docs/LaunchersApi.md#delete_launcher) | **DELETE** /launchers/{launcherID} | Delete launcher
+*LaunchersApi* | [**get_launcher**](sailpoint/v2025/docs/LaunchersApi.md#get_launcher) | **GET** /launchers/{launcherID} | Get launcher by id
+*LaunchersApi* | [**get_launchers**](sailpoint/v2025/docs/LaunchersApi.md#get_launchers) | **GET** /launchers | List all launchers for tenant
+*LaunchersApi* | [**put_launcher**](sailpoint/v2025/docs/LaunchersApi.md#put_launcher) | **PUT** /launchers/{launcherID} | Replace launcher
+*LaunchersApi* | [**start_launcher**](sailpoint/v2025/docs/LaunchersApi.md#start_launcher) | **POST** /launchers/{launcherID}/launch | Launch a launcher
 *LifecycleStatesApi* | [**create_lifecycle_state**](sailpoint/v2025/docs/LifecycleStatesApi.md#create_lifecycle_state) | **POST** /identity-profiles/{identity-profile-id}/lifecycle-states | Create lifecycle state
 *LifecycleStatesApi* | [**delete_lifecycle_state**](sailpoint/v2025/docs/LifecycleStatesApi.md#delete_lifecycle_state) | **DELETE** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Delete lifecycle state
 *LifecycleStatesApi* | [**get_lifecycle_state**](sailpoint/v2025/docs/LifecycleStatesApi.md#get_lifecycle_state) | **GET** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Get lifecycle state
@@ -735,6 +741,10 @@ Class | Method | HTTP request | Description
 *TaggedObjectsApi* | [**put_tagged_object**](sailpoint/v2025/docs/TaggedObjectsApi.md#put_tagged_object) | **PUT** /tagged-objects/{type}/{id} | Update tagged object
 *TaggedObjectsApi* | [**set_tag_to_object**](sailpoint/v2025/docs/TaggedObjectsApi.md#set_tag_to_object) | **POST** /tagged-objects | Add tag to object
 *TaggedObjectsApi* | [**set_tags_to_many_objects**](sailpoint/v2025/docs/TaggedObjectsApi.md#set_tags_to_many_objects) | **POST** /tagged-objects/bulk-add | Tag multiple objects
+*TagsApi* | [**create_tag**](sailpoint/v2025/docs/TagsApi.md#create_tag) | **POST** /tags | Create tag
+*TagsApi* | [**delete_tag_by_id**](sailpoint/v2025/docs/TagsApi.md#delete_tag_by_id) | **DELETE** /tags/{id} | Delete tag
+*TagsApi* | [**get_tag_by_id**](sailpoint/v2025/docs/TagsApi.md#get_tag_by_id) | **GET** /tags/{id} | Get tag by id
+*TagsApi* | [**list_tags**](sailpoint/v2025/docs/TagsApi.md#list_tags) | **GET** /tags | List tags
 *TaskManagementApi* | [**get_pending_task_headers**](sailpoint/v2025/docs/TaskManagementApi.md#get_pending_task_headers) | **HEAD** /task-status/pending-tasks | Retrieve pending task list headers
 *TaskManagementApi* | [**get_pending_tasks**](sailpoint/v2025/docs/TaskManagementApi.md#get_pending_tasks) | **GET** /task-status/pending-tasks | Retrieve pending task status list
 *TaskManagementApi* | [**get_task_status**](sailpoint/v2025/docs/TaskManagementApi.md#get_task_status) | **GET** /task-status/{id} | Get task status by id
@@ -1284,6 +1294,7 @@ Class | Method | HTTP request | Description
  - [GetCampaign200Response](sailpoint/v2025/docs/GetCampaign200Response.md)
  - [GetDiscoveredApplications200ResponseInner](sailpoint/v2025/docs/GetDiscoveredApplications200ResponseInner.md)
  - [GetHistoricalIdentityEvents200ResponseInner](sailpoint/v2025/docs/GetHistoricalIdentityEvents200ResponseInner.md)
+ - [GetLaunchers200Response](sailpoint/v2025/docs/GetLaunchers200Response.md)
  - [GetOAuthClientResponse](sailpoint/v2025/docs/GetOAuthClientResponse.md)
  - [GetPersonalAccessTokenResponse](sailpoint/v2025/docs/GetPersonalAccessTokenResponse.md)
  - [GetRoleAssignments200ResponseInner](sailpoint/v2025/docs/GetRoleAssignments200ResponseInner.md)
@@ -1383,6 +1394,11 @@ Class | Method | HTTP request | Description
  - [KbaAnswerResponseItem](sailpoint/v2025/docs/KbaAnswerResponseItem.md)
  - [KbaQuestion](sailpoint/v2025/docs/KbaQuestion.md)
  - [LatestOutlierSummary](sailpoint/v2025/docs/LatestOutlierSummary.md)
+ - [Launcher](sailpoint/v2025/docs/Launcher.md)
+ - [LauncherOwner](sailpoint/v2025/docs/LauncherOwner.md)
+ - [LauncherReference](sailpoint/v2025/docs/LauncherReference.md)
+ - [LauncherRequest](sailpoint/v2025/docs/LauncherRequest.md)
+ - [LauncherRequestReference](sailpoint/v2025/docs/LauncherRequestReference.md)
  - [License](sailpoint/v2025/docs/License.md)
  - [LifecycleState](sailpoint/v2025/docs/LifecycleState.md)
  - [LifecycleStateDto](sailpoint/v2025/docs/LifecycleStateDto.md)
@@ -1872,6 +1888,7 @@ Class | Method | HTTP request | Description
  - [SpDetails](sailpoint/v2025/docs/SpDetails.md)
  - [StandardLevel](sailpoint/v2025/docs/StandardLevel.md)
  - [StartInvocationInput](sailpoint/v2025/docs/StartInvocationInput.md)
+ - [StartLauncher200Response](sailpoint/v2025/docs/StartLauncher200Response.md)
  - [StatusResponse](sailpoint/v2025/docs/StatusResponse.md)
  - [SubSearchAggregationSpecification](sailpoint/v2025/docs/SubSearchAggregationSpecification.md)
  - [Subscription](sailpoint/v2025/docs/Subscription.md)
@@ -1881,6 +1898,8 @@ Class | Method | HTTP request | Description
  - [SubscriptionPostRequest](sailpoint/v2025/docs/SubscriptionPostRequest.md)
  - [SubscriptionPutRequest](sailpoint/v2025/docs/SubscriptionPutRequest.md)
  - [SubscriptionType](sailpoint/v2025/docs/SubscriptionType.md)
+ - [Tag](sailpoint/v2025/docs/Tag.md)
+ - [TagTagCategoryRefsInner](sailpoint/v2025/docs/TagTagCategoryRefsInner.md)
  - [TaggedObject](sailpoint/v2025/docs/TaggedObject.md)
  - [TaggedObjectDto](sailpoint/v2025/docs/TaggedObjectDto.md)
  - [Target](sailpoint/v2025/docs/Target.md)

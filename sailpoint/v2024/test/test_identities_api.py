@@ -61,6 +61,13 @@ class TestIdentitiesApi(unittest.TestCase):
         """
         pass
 
+    def test_list_entitlements_by_identity(self) -> None:
+        """Test case for list_entitlements_by_identity
+
+        List of entitlements by identity.
+        """
+        pass
+
     def test_list_identities(self) -> None:
         """Test case for list_identities
 

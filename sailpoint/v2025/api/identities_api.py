@@ -2812,6 +2812,7 @@ class IdentitiesApi:
     def start_identities_invite(
         self,
         invite_identities_request: InviteIdentitiesRequest,
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2829,6 +2830,8 @@ class IdentitiesApi:
 
         This API submits a task for inviting given identities via email to complete registration. The invitation email will include the link. After selecting the link an identity will be able to set up password and log in into the system. Invitations expire after 7 days. By default invitations send to the work identity email. It can be changed in Admin > Identities > Identity Profiles by selecting corresponding profile and editing Invitation Options.  This task will send an invitation email only for unregistered identities.  The executed task status can be checked by Task Management > [Get task status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status). 
 
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param invite_identities_request: (required)
         :type invite_identities_request: InviteIdentitiesRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2854,6 +2857,7 @@ class IdentitiesApi:
         """ # noqa: E501
 
         _param = self._start_identities_invite_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
             invite_identities_request=invite_identities_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2885,6 +2889,7 @@ class IdentitiesApi:
     def start_identities_invite_with_http_info(
         self,
         invite_identities_request: InviteIdentitiesRequest,
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2902,6 +2907,8 @@ class IdentitiesApi:
 
         This API submits a task for inviting given identities via email to complete registration. The invitation email will include the link. After selecting the link an identity will be able to set up password and log in into the system. Invitations expire after 7 days. By default invitations send to the work identity email. It can be changed in Admin > Identities > Identity Profiles by selecting corresponding profile and editing Invitation Options.  This task will send an invitation email only for unregistered identities.  The executed task status can be checked by Task Management > [Get task status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status). 
 
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param invite_identities_request: (required)
         :type invite_identities_request: InviteIdentitiesRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -2927,6 +2934,7 @@ class IdentitiesApi:
         """ # noqa: E501
 
         _param = self._start_identities_invite_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
             invite_identities_request=invite_identities_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2958,6 +2966,7 @@ class IdentitiesApi:
     def start_identities_invite_without_preload_content(
         self,
         invite_identities_request: InviteIdentitiesRequest,
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2975,6 +2984,8 @@ class IdentitiesApi:
 
         This API submits a task for inviting given identities via email to complete registration. The invitation email will include the link. After selecting the link an identity will be able to set up password and log in into the system. Invitations expire after 7 days. By default invitations send to the work identity email. It can be changed in Admin > Identities > Identity Profiles by selecting corresponding profile and editing Invitation Options.  This task will send an invitation email only for unregistered identities.  The executed task status can be checked by Task Management > [Get task status by ID](https://developer.sailpoint.com/docs/api/beta/get-task-status). 
 
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param invite_identities_request: (required)
         :type invite_identities_request: InviteIdentitiesRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -3000,6 +3011,7 @@ class IdentitiesApi:
         """ # noqa: E501
 
         _param = self._start_identities_invite_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
             invite_identities_request=invite_identities_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3025,6 +3037,7 @@ class IdentitiesApi:
 
     def _start_identities_invite_serialize(
         self,
+        x_sail_point_experimental,
         invite_identities_request,
         _request_auth,
         _content_type,
@@ -3049,6 +3062,8 @@ class IdentitiesApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if invite_identities_request is not None:
