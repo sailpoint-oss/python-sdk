@@ -419,7 +419,7 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaign",
+            '202': "Campaign",
             '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
@@ -492,7 +492,7 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaign",
+            '202': "Campaign",
             '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
@@ -565,7 +565,7 @@ class CertificationCampaignsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Campaign",
+            '202': "Campaign",
             '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
