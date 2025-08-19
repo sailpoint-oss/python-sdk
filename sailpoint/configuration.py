@@ -34,12 +34,21 @@ class ConfigurationParams:
     verify_ssl = True
 
 class Configuration:
-    def __init__(self, configurationParams: ConfigurationParams = None) -> None:
+    def __init__(self, configurationParams: ConfigurationParams = None, client_id: str = None, client_secret: str = None) -> None:
         defaultConfiguration = self.get_configuration_params()
 
         self.base_url = configurationParams.base_url if configurationParams and configurationParams.base_url else defaultConfiguration.base_url
-        self.client_id = configurationParams.client_id if configurationParams and configurationParams.client_id else defaultConfiguration.client_id
-        self.client_secret = configurationParams.client_secret if configurationParams and configurationParams.client_secret else defaultConfiguration.client_secret
+        # Allow override of client_id and client_secret
+        if client_id:
+            self.client_id = client_id
+        else:
+            self.client_id = configurationParams.client_id if configurationParams and configurationParams.client_id else defaultConfiguration.client_id
+        
+        if client_secret:
+            self.client_secret = client_secret
+        else:
+            self.client_secret = configurationParams.client_secret if configurationParams and configurationParams.client_secret else defaultConfiguration.client_secret
+        
         self.token_url = str(configurationParams.base_url) + "/oauth/token" if configurationParams and configurationParams.base_url else defaultConfiguration.token_url
         self.access_token = configurationParams.access_token if configurationParams and configurationParams.access_token else defaultConfiguration.access_token
         self.proxy = configurationParams.proxy if configurationParams and configurationParams.proxy else None
@@ -221,6 +230,18 @@ class Configuration:
         except Exception as e:
             print("Unable to fetch access token. %s" % e)
 
+    def set_credentials(self, client_id: str, client_secret: str):
+        """Set new client credentials and refresh the access token.
+        
+        :param client_id: The new client ID
+        :param client_secret: The new client secret
+        """
+        self.client_id = client_id
+        self.client_secret = client_secret
+        # Force refresh of access token with new credentials
+        url = f"{self.token_url}"
+        self.access_token = self.get_access_token(url, self.client_id, self.client_secret, self.proxy, self.proxy_headers, self.verify_ssl)
+    
     def auth_settings(self):
         """Gets Auth Settings dict for api client.
 
