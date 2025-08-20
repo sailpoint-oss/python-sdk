@@ -33,22 +33,22 @@ class FormInstanceResponse(BaseModel):
     """
     FormInstanceResponse
     """ # noqa: E501
-    created: Optional[datetime] = Field(default=None, description="Created is the date the form instance was assigned")
-    created_by: Optional[FormInstanceCreatedBy] = Field(default=None, alias="createdBy")
-    expire: Optional[StrictStr] = Field(default=None, description="Expire is the maximum amount of time that a form can be in progress. After this time is reached then the form will be moved to a CANCELED state automatically. The user will no longer be able to complete the submission. When a form instance is expires an audit log will be generated for that record")
-    form_conditions: Optional[List[FormCondition]] = Field(default=None, description="FormConditions is the conditional logic that modify the form dynamically modify the form as the recipient is interacting out the form", alias="formConditions")
-    form_data: Optional[Dict[str, Any]] = Field(default=None, description="FormData is the data provided by the form on submit. The data is in a key -> value map", alias="formData")
-    form_definition_id: Optional[StrictStr] = Field(default=None, description="FormDefinitionID is the id of the form definition that created this form", alias="formDefinitionId")
-    form_elements: Optional[List[FormElement]] = Field(default=None, description="FormElements is the configuration of the form, this would be a repeat of the fields from the form-config", alias="formElements")
-    form_errors: Optional[List[FormError]] = Field(default=None, description="FormErrors is an array of form validation errors from the last time the form instance was transitioned to the SUBMITTED state. If the form instance had validation errors then it would be moved to the IN PROGRESS state where the client can retrieve these errors", alias="formErrors")
-    form_input: Optional[Dict[str, Dict[str, Any]]] = Field(default=None, description="FormInput is an object of form input labels to value", alias="formInput")
     id: Optional[StrictStr] = Field(default=None, description="Unique guid identifying this form instance")
-    modified: Optional[datetime] = Field(default=None, description="Modified is the last date the form instance was modified")
-    recipients: Optional[List[FormInstanceRecipient]] = Field(default=None, description="Recipients references to the recipient of a form. The recipients are those who are responsible for filling out a form and completing it")
+    expire: Optional[StrictStr] = Field(default=None, description="Expire is the maximum amount of time that a form can be in progress. After this time is reached then the form will be moved to a CANCELED state automatically. The user will no longer be able to complete the submission. When a form instance is expires an audit log will be generated for that record")
+    state: Optional[StrictStr] = Field(default=None, description="State the state of the form instance ASSIGNED FormInstanceStateAssigned IN_PROGRESS FormInstanceStateInProgress SUBMITTED FormInstanceStateSubmitted COMPLETED FormInstanceStateCompleted CANCELLED FormInstanceStateCancelled")
     stand_alone_form: Optional[StrictBool] = Field(default=False, description="StandAloneForm is a boolean flag to indicate if this form should be available for users to complete via the standalone form UI or should this only be available to be completed by as an embedded form", alias="standAloneForm")
     stand_alone_form_url: Optional[StrictStr] = Field(default=None, description="StandAloneFormURL is the URL where this form may be completed by the designated recipients using the standalone form UI", alias="standAloneFormUrl")
-    state: Optional[StrictStr] = Field(default=None, description="State the state of the form instance ASSIGNED FormInstanceStateAssigned IN_PROGRESS FormInstanceStateInProgress SUBMITTED FormInstanceStateSubmitted COMPLETED FormInstanceStateCompleted CANCELLED FormInstanceStateCancelled")
-    __properties: ClassVar[List[str]] = ["created", "createdBy", "expire", "formConditions", "formData", "formDefinitionId", "formElements", "formErrors", "formInput", "id", "modified", "recipients", "standAloneForm", "standAloneFormUrl", "state"]
+    created_by: Optional[FormInstanceCreatedBy] = Field(default=None, alias="createdBy")
+    form_definition_id: Optional[StrictStr] = Field(default=None, description="FormDefinitionID is the id of the form definition that created this form", alias="formDefinitionId")
+    form_input: Optional[Dict[str, Dict[str, Any]]] = Field(default=None, description="FormInput is an object of form input labels to value", alias="formInput")
+    form_elements: Optional[List[FormElement]] = Field(default=None, description="FormElements is the configuration of the form, this would be a repeat of the fields from the form-config", alias="formElements")
+    form_data: Optional[Dict[str, Any]] = Field(default=None, description="FormData is the data provided by the form on submit. The data is in a key -> value map", alias="formData")
+    form_errors: Optional[List[FormError]] = Field(default=None, description="FormErrors is an array of form validation errors from the last time the form instance was transitioned to the SUBMITTED state. If the form instance had validation errors then it would be moved to the IN PROGRESS state where the client can retrieve these errors", alias="formErrors")
+    form_conditions: Optional[List[FormCondition]] = Field(default=None, description="FormConditions is the conditional logic that modify the form dynamically modify the form as the recipient is interacting out the form", alias="formConditions")
+    created: Optional[datetime] = Field(default=None, description="Created is the date the form instance was assigned")
+    modified: Optional[datetime] = Field(default=None, description="Modified is the last date the form instance was modified")
+    recipients: Optional[List[FormInstanceRecipient]] = Field(default=None, description="Recipients references to the recipient of a form. The recipients are those who are responsible for filling out a form and completing it")
+    __properties: ClassVar[List[str]] = ["id", "expire", "state", "standAloneForm", "standAloneFormUrl", "createdBy", "formDefinitionId", "formInput", "formElements", "formData", "formErrors", "formConditions", "created", "modified", "recipients"]
 
     @field_validator('state')
     def state_validate_enum(cls, value):
@@ -102,13 +102,6 @@ class FormInstanceResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of created_by
         if self.created_by:
             _dict['createdBy'] = self.created_by.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in form_conditions (list)
-        _items = []
-        if self.form_conditions:
-            for _item_form_conditions in self.form_conditions:
-                if _item_form_conditions:
-                    _items.append(_item_form_conditions.to_dict())
-            _dict['formConditions'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in form_elements (list)
         _items = []
         if self.form_elements:
@@ -123,6 +116,13 @@ class FormInstanceResponse(BaseModel):
                 if _item_form_errors:
                     _items.append(_item_form_errors.to_dict())
             _dict['formErrors'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in form_conditions (list)
+        _items = []
+        if self.form_conditions:
+            for _item_form_conditions in self.form_conditions:
+                if _item_form_conditions:
+                    _items.append(_item_form_conditions.to_dict())
+            _dict['formConditions'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in recipients (list)
         _items = []
         if self.recipients:
@@ -130,15 +130,15 @@ class FormInstanceResponse(BaseModel):
                 if _item_recipients:
                     _items.append(_item_recipients.to_dict())
             _dict['recipients'] = _items
-        # set to None if form_data (nullable) is None
-        # and model_fields_set contains the field
-        if self.form_data is None and "form_data" in self.model_fields_set:
-            _dict['formData'] = None
-
         # set to None if form_input (nullable) is None
         # and model_fields_set contains the field
         if self.form_input is None and "form_input" in self.model_fields_set:
             _dict['formInput'] = None
+
+        # set to None if form_data (nullable) is None
+        # and model_fields_set contains the field
+        if self.form_data is None and "form_data" in self.model_fields_set:
+            _dict['formData'] = None
 
         return _dict
 
@@ -152,21 +152,21 @@ class FormInstanceResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "created": obj.get("created"),
-            "createdBy": FormInstanceCreatedBy.from_dict(obj["createdBy"]) if obj.get("createdBy") is not None else None,
-            "expire": obj.get("expire"),
-            "formConditions": [FormCondition.from_dict(_item) for _item in obj["formConditions"]] if obj.get("formConditions") is not None else None,
-            "formData": obj.get("formData"),
-            "formDefinitionId": obj.get("formDefinitionId"),
-            "formElements": [FormElement.from_dict(_item) for _item in obj["formElements"]] if obj.get("formElements") is not None else None,
-            "formErrors": [FormError.from_dict(_item) for _item in obj["formErrors"]] if obj.get("formErrors") is not None else None,
-            "formInput": obj.get("formInput"),
             "id": obj.get("id"),
-            "modified": obj.get("modified"),
-            "recipients": [FormInstanceRecipient.from_dict(_item) for _item in obj["recipients"]] if obj.get("recipients") is not None else None,
+            "expire": obj.get("expire"),
+            "state": obj.get("state"),
             "standAloneForm": obj.get("standAloneForm") if obj.get("standAloneForm") is not None else False,
             "standAloneFormUrl": obj.get("standAloneFormUrl"),
-            "state": obj.get("state")
+            "createdBy": FormInstanceCreatedBy.from_dict(obj["createdBy"]) if obj.get("createdBy") is not None else None,
+            "formDefinitionId": obj.get("formDefinitionId"),
+            "formInput": obj.get("formInput"),
+            "formElements": [FormElement.from_dict(_item) for _item in obj["formElements"]] if obj.get("formElements") is not None else None,
+            "formData": obj.get("formData"),
+            "formErrors": [FormError.from_dict(_item) for _item in obj["formErrors"]] if obj.get("formErrors") is not None else None,
+            "formConditions": [FormCondition.from_dict(_item) for _item in obj["formConditions"]] if obj.get("formConditions") is not None else None,
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "recipients": [FormInstanceRecipient.from_dict(_item) for _item in obj["recipients"]] if obj.get("recipients") is not None else None
         })
         return _obj
 

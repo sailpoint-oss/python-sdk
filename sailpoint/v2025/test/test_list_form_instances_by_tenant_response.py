@@ -35,67 +35,64 @@ class TestListFormInstancesByTenantResponse(unittest.TestCase):
         model = ListFormInstancesByTenantResponse()
         if include_optional:
             return ListFormInstancesByTenantResponse(
-                count = 1,
-                results = [
-                    sailpoint.v2025.models.form_instance_response.FormInstanceResponse(
-                        created = '2023-07-12T20:14:57.744860Z', 
-                        created_by = sailpoint.v2025.models.form_instance_created_by.FormInstanceCreatedBy(
-                            id = '00000000-0000-0000-0000-000000000000', 
-                            type = 'WORKFLOW_EXECUTION', ), 
-                        expire = '2023-08-12T20:14:57.74486Z', 
-                        form_conditions = [
-                            sailpoint.v2025.models.form_condition.FormCondition(
-                                rule_operator = 'AND', 
-                                rules = [
-                                    sailpoint.v2025.models.condition_rule.ConditionRule(
-                                        source_type = 'ELEMENT', 
-                                        source = 'department', 
-                                        operator = 'EQ', 
-                                        value_type = 'STRING', 
-                                        value = 'Engineering', )
-                                    ], 
-                                effects = [
-                                    sailpoint.v2025.models.condition_effect.ConditionEffect(
-                                        effect_type = 'HIDE', 
-                                        config = sailpoint.v2025.models.condition_effect_config.ConditionEffect_config(
-                                            default_value_label = 'Access to Remove', 
-                                            element = '8110662963316867', ), )
-                                    ], )
+                id = '06a2d961-07fa-44d1-8d0a-2f6470e30fd2',
+                expire = '2023-08-12T20:14:57.74486Z',
+                state = 'ASSIGNED',
+                stand_alone_form = False,
+                stand_alone_form_url = 'https://my-org.identitynow.com/ui/d/forms/00000000-0000-0000-0000-000000000000',
+                created_by = sailpoint.v2025.models.form_instance_created_by.FormInstanceCreatedBy(
+                    id = '00000000-0000-0000-0000-000000000000', 
+                    type = 'WORKFLOW_EXECUTION', ),
+                form_definition_id = '49841cb8-00a5-4fbd-9888-8bbb28d48331',
+                form_input = {input1=Sales},
+                form_elements = [
+                    sailpoint.v2025.models.form_element.FormElement(
+                        id = '00000000-0000-0000-0000-000000000000', 
+                        element_type = 'TEXT', 
+                        config = {label=Department}, 
+                        key = 'department', 
+                        validations = [
+                            sailpoint.v2025.models.form_element_validations_set.FormElementValidationsSet(
+                                validation_type = 'REQUIRED', )
+                            ], )
+                    ],
+                form_data = {department=Engineering},
+                form_errors = [
+                    sailpoint.v2025.models.form_error.FormError(
+                        key = 'department', 
+                        messages = [
+                            sailpoint.v2025.models.error_message_is_the_standard_api_error_response_message_type/.ErrorMessage is the standard API error response message type.(
+                                locale = 'en-US', 
+                                locale_origin = 'DEFAULT', 
+                                text = 'This is an error', )
                             ], 
-                        form_data = {department=Engineering}, 
-                        form_definition_id = '49841cb8-00a5-4fbd-9888-8bbb28d48331', 
-                        form_elements = [
-                            sailpoint.v2025.models.form_element.FormElement(
-                                id = '00000000-0000-0000-0000-000000000000', 
-                                element_type = 'TEXT', 
-                                key = 'department', 
-                                validations = [
-                                    sailpoint.v2025.models.form_element_validations_set.FormElementValidationsSet(
-                                        validation_type = 'REQUIRED', )
-                                    ], )
+                        value = Engineering, )
+                    ],
+                form_conditions = [
+                    sailpoint.v2025.models.form_condition.FormCondition(
+                        rule_operator = 'AND', 
+                        rules = [
+                            sailpoint.v2025.models.condition_rule.ConditionRule(
+                                source_type = 'ELEMENT', 
+                                source = 'department', 
+                                operator = 'EQ', 
+                                value_type = 'STRING', 
+                                value = 'Engineering', )
                             ], 
-                        form_errors = [
-                            sailpoint.v2025.models.form_error.FormError(
-                                key = 'department', 
-                                messages = [
-                                    sailpoint.v2025.models.error_message_is_the_standard_api_error_response_message_type/.ErrorMessage is the standard API error response message type.(
-                                        locale = 'en-US', 
-                                        locale_origin = 'DEFAULT', 
-                                        text = 'This is an error', )
-                                    ], 
-                                value = Engineering, )
-                            ], 
-                        form_input = {input1=Sales}, 
-                        id = '06a2d961-07fa-44d1-8d0a-2f6470e30fd2', 
-                        modified = '2023-07-12T20:14:57.744860Z', 
-                        recipients = [
-                            sailpoint.v2025.models.form_instance_recipient.FormInstanceRecipient(
-                                id = '00000000-0000-0000-0000-000000000000', 
-                                type = 'IDENTITY', )
-                            ], 
-                        stand_alone_form = False, 
-                        stand_alone_form_url = 'https://my-org.identitynow.com/ui/d/forms/00000000-0000-0000-0000-000000000000', 
-                        state = 'ASSIGNED', )
+                        effects = [
+                            sailpoint.v2025.models.condition_effect.ConditionEffect(
+                                effect_type = 'HIDE', 
+                                config = sailpoint.v2025.models.condition_effect_config.ConditionEffect_config(
+                                    default_value_label = 'Access to Remove', 
+                                    element = '8110662963316867', ), )
+                            ], )
+                    ],
+                created = '2023-07-12T20:14:57.744860Z',
+                modified = '2023-07-12T20:14:57.744860Z',
+                recipients = [
+                    sailpoint.v2025.models.form_instance_recipient.FormInstanceRecipient(
+                        id = '00000000-0000-0000-0000-000000000000', 
+                        type = 'IDENTITY', )
                     ]
             )
         else:
