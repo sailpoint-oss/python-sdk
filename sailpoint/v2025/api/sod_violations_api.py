@@ -17,7 +17,6 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from sailpoint.v2025.models.identity_with_new_access import IdentityWithNewAccess
-from sailpoint.v2025.models.identity_with_new_access1 import IdentityWithNewAccess1
 from sailpoint.v2025.models.sod_violation_check import SodViolationCheck
 from sailpoint.v2025.models.violation_prediction import ViolationPrediction
 
@@ -336,7 +335,7 @@ class SODViolationsApi:
     @validate_call
     def start_violation_check(
         self,
-        identity_with_new_access1: IdentityWithNewAccess1,
+        identity_with_new_access: IdentityWithNewAccess,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -354,8 +353,8 @@ class SODViolationsApi:
 
         This API initiates a SOD policy verification asynchronously.
 
-        :param identity_with_new_access1: (required)
-        :type identity_with_new_access1: IdentityWithNewAccess1
+        :param identity_with_new_access: (required)
+        :type identity_with_new_access: IdentityWithNewAccess
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -379,7 +378,7 @@ class SODViolationsApi:
         """ # noqa: E501
 
         _param = self._start_violation_check_serialize(
-            identity_with_new_access1=identity_with_new_access1,
+            identity_with_new_access=identity_with_new_access,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -409,7 +408,7 @@ class SODViolationsApi:
     @validate_call
     def start_violation_check_with_http_info(
         self,
-        identity_with_new_access1: IdentityWithNewAccess1,
+        identity_with_new_access: IdentityWithNewAccess,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -427,8 +426,8 @@ class SODViolationsApi:
 
         This API initiates a SOD policy verification asynchronously.
 
-        :param identity_with_new_access1: (required)
-        :type identity_with_new_access1: IdentityWithNewAccess1
+        :param identity_with_new_access: (required)
+        :type identity_with_new_access: IdentityWithNewAccess
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -452,7 +451,7 @@ class SODViolationsApi:
         """ # noqa: E501
 
         _param = self._start_violation_check_serialize(
-            identity_with_new_access1=identity_with_new_access1,
+            identity_with_new_access=identity_with_new_access,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -482,7 +481,7 @@ class SODViolationsApi:
     @validate_call
     def start_violation_check_without_preload_content(
         self,
-        identity_with_new_access1: IdentityWithNewAccess1,
+        identity_with_new_access: IdentityWithNewAccess,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -500,8 +499,8 @@ class SODViolationsApi:
 
         This API initiates a SOD policy verification asynchronously.
 
-        :param identity_with_new_access1: (required)
-        :type identity_with_new_access1: IdentityWithNewAccess1
+        :param identity_with_new_access: (required)
+        :type identity_with_new_access: IdentityWithNewAccess
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -525,7 +524,7 @@ class SODViolationsApi:
         """ # noqa: E501
 
         _param = self._start_violation_check_serialize(
-            identity_with_new_access1=identity_with_new_access1,
+            identity_with_new_access=identity_with_new_access,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -550,7 +549,7 @@ class SODViolationsApi:
 
     def _start_violation_check_serialize(
         self,
-        identity_with_new_access1,
+        identity_with_new_access,
         _request_auth,
         _content_type,
         _headers,
@@ -576,8 +575,8 @@ class SODViolationsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if identity_with_new_access1 is not None:
-            _body_params = identity_with_new_access1
+        if identity_with_new_access is not None:
+            _body_params = identity_with_new_access
 
 
         # set the HTTP header `Accept`

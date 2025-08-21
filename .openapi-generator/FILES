@@ -538,7 +538,6 @@ sailpoint/v2025/docs/EntitlementDocumentAllOfPermissions.md
 sailpoint/v2025/docs/EntitlementDocumentAllOfSource.md
 sailpoint/v2025/docs/EntitlementOwner.md
 sailpoint/v2025/docs/EntitlementRef.md
-sailpoint/v2025/docs/EntitlementRef1.md
 sailpoint/v2025/docs/EntitlementRequestConfig.md
 sailpoint/v2025/docs/EntitlementRevocationRequestConfig.md
 sailpoint/v2025/docs/EntitlementSource.md
@@ -695,7 +694,6 @@ sailpoint/v2025/docs/IdentitySummary.md
 sailpoint/v2025/docs/IdentitySyncJob.md
 sailpoint/v2025/docs/IdentitySyncPayload.md
 sailpoint/v2025/docs/IdentityWithNewAccess.md
-sailpoint/v2025/docs/IdentityWithNewAccess1.md
 sailpoint/v2025/docs/IdentityWithNewAccessAccessRefsInner.md
 sailpoint/v2025/docs/IdpDetails.md
 sailpoint/v2025/docs/ImportAccountsRequest.md
@@ -1803,7 +1801,6 @@ sailpoint/v2025/models/entitlement_document_all_of_permissions.py
 sailpoint/v2025/models/entitlement_document_all_of_source.py
 sailpoint/v2025/models/entitlement_owner.py
 sailpoint/v2025/models/entitlement_ref.py
-sailpoint/v2025/models/entitlement_ref1.py
 sailpoint/v2025/models/entitlement_request_config.py
 sailpoint/v2025/models/entitlement_revocation_request_config.py
 sailpoint/v2025/models/entitlement_source.py
@@ -1945,7 +1942,6 @@ sailpoint/v2025/models/identity_summary.py
 sailpoint/v2025/models/identity_sync_job.py
 sailpoint/v2025/models/identity_sync_payload.py
 sailpoint/v2025/models/identity_with_new_access.py
-sailpoint/v2025/models/identity_with_new_access1.py
 sailpoint/v2025/models/identity_with_new_access_access_refs_inner.py
 sailpoint/v2025/models/idp_details.py
 sailpoint/v2025/models/import_accounts_request.py
@@ -3028,7 +3024,6 @@ sailpoint/v2025/test/test_entitlement_document_all_of_permissions.py
 sailpoint/v2025/test/test_entitlement_document_all_of_source.py
 sailpoint/v2025/test/test_entitlement_owner.py
 sailpoint/v2025/test/test_entitlement_ref.py
-sailpoint/v2025/test/test_entitlement_ref1.py
 sailpoint/v2025/test/test_entitlement_request_config.py
 sailpoint/v2025/test/test_entitlement_revocation_request_config.py
 sailpoint/v2025/test/test_entitlement_source.py
@@ -3184,7 +3179,6 @@ sailpoint/v2025/test/test_identity_summary.py
 sailpoint/v2025/test/test_identity_sync_job.py
 sailpoint/v2025/test/test_identity_sync_payload.py
 sailpoint/v2025/test/test_identity_with_new_access.py
-sailpoint/v2025/test/test_identity_with_new_access1.py
 sailpoint/v2025/test/test_identity_with_new_access_access_refs_inner.py
 sailpoint/v2025/test/test_idp_details.py
 sailpoint/v2025/test/test_import_accounts_request.py

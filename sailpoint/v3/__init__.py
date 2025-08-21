@@ -275,7 +275,6 @@ from sailpoint.v3.models.entitlement_document_all_of_permissions import Entitlem
 from sailpoint.v3.models.entitlement_document_all_of_source import EntitlementDocumentAllOfSource
 from sailpoint.v3.models.entitlement_owner import EntitlementOwner
 from sailpoint.v3.models.entitlement_ref import EntitlementRef
-from sailpoint.v3.models.entitlement_ref1 import EntitlementRef1
 from sailpoint.v3.models.entitlement_request_config import EntitlementRequestConfig
 from sailpoint.v3.models.entitlement_source import EntitlementSource
 from sailpoint.v3.models.entitlement_summary import EntitlementSummary
@@ -338,7 +337,6 @@ from sailpoint.v3.models.identity_reference import IdentityReference
 from sailpoint.v3.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
 from sailpoint.v3.models.identity_summary import IdentitySummary
 from sailpoint.v3.models.identity_with_new_access import IdentityWithNewAccess
-from sailpoint.v3.models.identity_with_new_access1 import IdentityWithNewAccess1
 from sailpoint.v3.models.identity_with_new_access_access_refs_inner import IdentityWithNewAccessAccessRefsInner
 from sailpoint.v3.models.idp_details import IdpDetails
 from sailpoint.v3.models.import_non_employee_records_in_bulk_request import ImportNonEmployeeRecordsInBulkRequest

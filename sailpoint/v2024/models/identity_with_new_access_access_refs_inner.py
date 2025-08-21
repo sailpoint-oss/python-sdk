@@ -29,8 +29,7 @@ class IdentityWithNewAccessAccessRefsInner(BaseModel):
     """ # noqa: E501
     type: Optional[StrictStr] = Field(default=None, description="Entitlement's DTO type.")
     id: Optional[StrictStr] = Field(default=None, description="Entitlement's ID.")
-    name: Optional[StrictStr] = Field(default=None, description="Entitlement's display name.")
-    __properties: ClassVar[List[str]] = ["type", "id", "name"]
+    __properties: ClassVar[List[str]] = ["type", "id"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -94,8 +93,7 @@ class IdentityWithNewAccessAccessRefsInner(BaseModel):
 
         _obj = cls.model_validate({
             "type": obj.get("type"),
-            "id": obj.get("id"),
-            "name": obj.get("name")
+            "id": obj.get("id")
         })
         return _obj
 

@@ -36,8 +36,7 @@ class TestIdentityWithNewAccessAccessRefsInner(unittest.TestCase):
         if include_optional:
             return IdentityWithNewAccessAccessRefsInner(
                 type = 'ENTITLEMENT',
-                id = '2c91809773dee32014e13e122092014e',
-                name = 'CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local'
+                id = '2c91809773dee32014e13e122092014e'
             )
         else:
             return IdentityWithNewAccessAccessRefsInner(

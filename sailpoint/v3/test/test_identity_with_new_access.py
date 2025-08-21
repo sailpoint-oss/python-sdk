@@ -36,12 +36,12 @@ class TestIdentityWithNewAccess(unittest.TestCase):
         if include_optional:
             return IdentityWithNewAccess(
                 identity_id = '2c91808568c529c60168cca6f90c1313',
-                access_refs = [{type=ENTITLEMENT, id=2c918087682f9a86016839c050861ab1, name=CN=Information Access,OU=test,OU=test-service,DC=TestAD,DC=local}, {type=ENTITLEMENT, id=2c918087682f9a86016839c0509c1ab2, name=CN=Information Technology,OU=test,OU=test-service,DC=TestAD,DC=local}]
+                access_refs = [{type=ENTITLEMENT, id=2c918087682f9a86016839c050861ab1}, {type=ENTITLEMENT, id=2c918087682f9a86016839c0509c1ab2}]
             )
         else:
             return IdentityWithNewAccess(
                 identity_id = '2c91808568c529c60168cca6f90c1313',
-                access_refs = [{type=ENTITLEMENT, id=2c918087682f9a86016839c050861ab1, name=CN=Information Access,OU=test,OU=test-service,DC=TestAD,DC=local}, {type=ENTITLEMENT, id=2c918087682f9a86016839c0509c1ab2, name=CN=Information Technology,OU=test,OU=test-service,DC=TestAD,DC=local}],
+                access_refs = [{type=ENTITLEMENT, id=2c918087682f9a86016839c050861ab1}, {type=ENTITLEMENT, id=2c918087682f9a86016839c0509c1ab2}],
         )
         """
 
