@@ -1385,6 +1385,7 @@ Class | Method | HTTP request | Description
  - [ManagedClientType](sailpoint/v2024/docs/ManagedClientType.md)
  - [ManagedCluster](sailpoint/v2024/docs/ManagedCluster.md)
  - [ManagedClusterAttributes](sailpoint/v2024/docs/ManagedClusterAttributes.md)
+ - [ManagedClusterEncryptionConfig](sailpoint/v2024/docs/ManagedClusterEncryptionConfig.md)
  - [ManagedClusterKeyPair](sailpoint/v2024/docs/ManagedClusterKeyPair.md)
  - [ManagedClusterQueue](sailpoint/v2024/docs/ManagedClusterQueue.md)
  - [ManagedClusterRedis](sailpoint/v2024/docs/ManagedClusterRedis.md)

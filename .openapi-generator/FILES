@@ -786,6 +786,7 @@ sailpoint/v2025/docs/ManagedClientType.md
 sailpoint/v2025/docs/ManagedClientsApi.md
 sailpoint/v2025/docs/ManagedCluster.md
 sailpoint/v2025/docs/ManagedClusterAttributes.md
+sailpoint/v2025/docs/ManagedClusterEncryptionConfig.md
 sailpoint/v2025/docs/ManagedClusterKeyPair.md
 sailpoint/v2025/docs/ManagedClusterQueue.md
 sailpoint/v2025/docs/ManagedClusterRedis.md
@@ -2026,6 +2027,7 @@ sailpoint/v2025/models/managed_client_status_code.py
 sailpoint/v2025/models/managed_client_type.py
 sailpoint/v2025/models/managed_cluster.py
 sailpoint/v2025/models/managed_cluster_attributes.py
+sailpoint/v2025/models/managed_cluster_encryption_config.py
 sailpoint/v2025/models/managed_cluster_key_pair.py
 sailpoint/v2025/models/managed_cluster_queue.py
 sailpoint/v2025/models/managed_cluster_redis.py
@@ -3272,6 +3274,7 @@ sailpoint/v2025/test/test_managed_client_type.py
 sailpoint/v2025/test/test_managed_clients_api.py
 sailpoint/v2025/test/test_managed_cluster.py
 sailpoint/v2025/test/test_managed_cluster_attributes.py
+sailpoint/v2025/test/test_managed_cluster_encryption_config.py
 sailpoint/v2025/test/test_managed_cluster_key_pair.py
 sailpoint/v2025/test/test_managed_cluster_queue.py
 sailpoint/v2025/test/test_managed_cluster_redis.py

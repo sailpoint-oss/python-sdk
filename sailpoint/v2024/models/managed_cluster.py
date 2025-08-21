@@ -24,6 +24,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v2024.models.client_log_configuration import ClientLogConfiguration
 from sailpoint.v2024.models.managed_client_type import ManagedClientType
 from sailpoint.v2024.models.managed_cluster_attributes import ManagedClusterAttributes
+from sailpoint.v2024.models.managed_cluster_encryption_config import ManagedClusterEncryptionConfig
 from sailpoint.v2024.models.managed_cluster_key_pair import ManagedClusterKeyPair
 from sailpoint.v2024.models.managed_cluster_redis import ManagedClusterRedis
 from sailpoint.v2024.models.managed_cluster_types import ManagedClusterTypes
@@ -47,13 +48,14 @@ class ManagedCluster(BaseModel):
     redis: Optional[ManagedClusterRedis] = None
     client_type: Optional[ManagedClientType] = Field(alias="clientType")
     ccg_version: StrictStr = Field(description="CCG version used by the ManagedCluster", alias="ccgVersion")
-    pinned_config: Optional[StrictBool] = Field(default=False, description="boolean flag indiacting whether or not the cluster configuration is pinned", alias="pinnedConfig")
+    pinned_config: Optional[StrictBool] = Field(default=False, description="boolean flag indicating whether or not the cluster configuration is pinned", alias="pinnedConfig")
     log_configuration: Optional[ClientLogConfiguration] = Field(default=None, alias="logConfiguration")
     operational: Optional[StrictBool] = Field(default=False, description="Whether or not the cluster is operational or not")
     status: Optional[StrictStr] = Field(default=None, description="Cluster status")
     public_key_certificate: Optional[StrictStr] = Field(default=None, description="Public key certificate", alias="publicKeyCertificate")
     public_key_thumbprint: Optional[StrictStr] = Field(default=None, description="Public key thumbprint", alias="publicKeyThumbprint")
     public_key: Optional[StrictStr] = Field(default=None, description="Public key", alias="publicKey")
+    encryption_configuration: Optional[ManagedClusterEncryptionConfig] = Field(default=None, alias="encryptionConfiguration")
     alert_key: Optional[StrictStr] = Field(default=None, description="Key describing any immediate cluster alerts", alias="alertKey")
     client_ids: Optional[List[StrictStr]] = Field(default=None, description="List of clients in a cluster", alias="clientIds")
     service_count: Optional[StrictInt] = Field(default=0, description="Number of services bound to a cluster", alias="serviceCount")
@@ -66,7 +68,7 @@ class ManagedCluster(BaseModel):
     update_package: Optional[StrictStr] = Field(default=None, description="New available updates for the Managed cluster", alias="updatePackage")
     is_out_of_date_notified_at: Optional[datetime] = Field(default=None, description="The time at which out of date notification was sent for the Managed cluster", alias="isOutOfDateNotifiedAt")
     consolidated_health_indicators_status: Optional[StrictStr] = Field(default=None, description="The consolidated Health Status for the Managed cluster", alias="consolidatedHealthIndicatorsStatus")
-    __properties: ClassVar[List[str]] = ["id", "name", "pod", "org", "type", "configuration", "keyPair", "attributes", "description", "redis", "clientType", "ccgVersion", "pinnedConfig", "logConfiguration", "operational", "status", "publicKeyCertificate", "publicKeyThumbprint", "publicKey", "alertKey", "clientIds", "serviceCount", "ccId", "createdAt", "updatedAt", "lastReleaseNotifiedAt", "updatePreferences", "currentInstalledReleaseVersion", "updatePackage", "isOutOfDateNotifiedAt", "consolidatedHealthIndicatorsStatus"]
+    __properties: ClassVar[List[str]] = ["id", "name", "pod", "org", "type", "configuration", "keyPair", "attributes", "description", "redis", "clientType", "ccgVersion", "pinnedConfig", "logConfiguration", "operational", "status", "publicKeyCertificate", "publicKeyThumbprint", "publicKey", "encryptionConfiguration", "alertKey", "clientIds", "serviceCount", "ccId", "createdAt", "updatedAt", "lastReleaseNotifiedAt", "updatePreferences", "currentInstalledReleaseVersion", "updatePackage", "isOutOfDateNotifiedAt", "consolidatedHealthIndicatorsStatus"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -139,6 +141,9 @@ class ManagedCluster(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of log_configuration
         if self.log_configuration:
             _dict['logConfiguration'] = self.log_configuration.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of encryption_configuration
+        if self.encryption_configuration:
+            _dict['encryptionConfiguration'] = self.encryption_configuration.to_dict()
         # override the default output from pydantic by calling `to_dict()` of update_preferences
         if self.update_preferences:
             _dict['updatePreferences'] = self.update_preferences.to_dict()
@@ -233,6 +238,7 @@ class ManagedCluster(BaseModel):
             "publicKeyCertificate": obj.get("publicKeyCertificate"),
             "publicKeyThumbprint": obj.get("publicKeyThumbprint"),
             "publicKey": obj.get("publicKey"),
+            "encryptionConfiguration": ManagedClusterEncryptionConfig.from_dict(obj["encryptionConfiguration"]) if obj.get("encryptionConfiguration") is not None else None,
             "alertKey": obj.get("alertKey"),
             "clientIds": obj.get("clientIds"),
             "serviceCount": obj.get("serviceCount") if obj.get("serviceCount") is not None else 0,

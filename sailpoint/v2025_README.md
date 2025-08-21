@@ -1450,6 +1450,7 @@ Class | Method | HTTP request | Description
  - [ManagedClientType](sailpoint/v2025/docs/ManagedClientType.md)
  - [ManagedCluster](sailpoint/v2025/docs/ManagedCluster.md)
  - [ManagedClusterAttributes](sailpoint/v2025/docs/ManagedClusterAttributes.md)
+ - [ManagedClusterEncryptionConfig](sailpoint/v2025/docs/ManagedClusterEncryptionConfig.md)
  - [ManagedClusterKeyPair](sailpoint/v2025/docs/ManagedClusterKeyPair.md)
  - [ManagedClusterQueue](sailpoint/v2025/docs/ManagedClusterQueue.md)
  - [ManagedClusterRedis](sailpoint/v2025/docs/ManagedClusterRedis.md)

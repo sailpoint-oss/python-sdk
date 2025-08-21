@@ -68,6 +68,8 @@ class TestManagedCluster(unittest.TestCase):
                 public_key_certificate = '-----BEGIN CERTIFICATE-----TCCAb2gAwIBAgIBADANBgkqhkiG9w0BAQsFADAuMQ0wCwYDVQQD-----END CERTIFICATE-----',
                 public_key_thumbprint = 'obc6pLiulGbtZ',
                 public_key = '-----BEGIN PUBLIC KEY-----jANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3WgnsxP52MDgBTfHR+5n4-----END PUBLIC KEY-----',
+                encryption_configuration = sailpoint.v3.models.managed_cluster_encryption_configuration.Managed Cluster Encryption Configuration(
+                    format = 'V3', ),
                 alert_key = 'LIMITED_RESOURCES',
                 client_ids = [1244, 1245],
                 service_count = 6,
