@@ -771,6 +771,10 @@ sailpoint/v2025/docs/MachineClassificationCriteriaOperation.md
 sailpoint/v2025/docs/MachineIdentitiesApi.md
 sailpoint/v2025/docs/MachineIdentity.md
 sailpoint/v2025/docs/MachineIdentityDtoOwners.md
+sailpoint/v2025/docs/MachineIdentityRequest.md
+sailpoint/v2025/docs/MachineIdentityRequestUserEntitlements.md
+sailpoint/v2025/docs/MachineIdentityResponse.md
+sailpoint/v2025/docs/MachineIdentityResponseUserEntitlements.md
 sailpoint/v2025/docs/MailFromAttributes.md
 sailpoint/v2025/docs/MailFromAttributesDto.md
 sailpoint/v2025/docs/ManagedClient.md
@@ -2011,6 +2015,10 @@ sailpoint/v2025/models/machine_classification_criteria_level3.py
 sailpoint/v2025/models/machine_classification_criteria_operation.py
 sailpoint/v2025/models/machine_identity.py
 sailpoint/v2025/models/machine_identity_dto_owners.py
+sailpoint/v2025/models/machine_identity_request.py
+sailpoint/v2025/models/machine_identity_request_user_entitlements.py
+sailpoint/v2025/models/machine_identity_response.py
+sailpoint/v2025/models/machine_identity_response_user_entitlements.py
 sailpoint/v2025/models/mail_from_attributes.py
 sailpoint/v2025/models/mail_from_attributes_dto.py
 sailpoint/v2025/models/managed_client.py
@@ -3255,6 +3263,10 @@ sailpoint/v2025/test/test_machine_classification_criteria_operation.py
 sailpoint/v2025/test/test_machine_identities_api.py
 sailpoint/v2025/test/test_machine_identity.py
 sailpoint/v2025/test/test_machine_identity_dto_owners.py
+sailpoint/v2025/test/test_machine_identity_request.py
+sailpoint/v2025/test/test_machine_identity_request_user_entitlements.py
+sailpoint/v2025/test/test_machine_identity_response.py
+sailpoint/v2025/test/test_machine_identity_response_user_entitlements.py
 sailpoint/v2025/test/test_mail_from_attributes.py
 sailpoint/v2025/test/test_mail_from_attributes_dto.py
 sailpoint/v2025/test/test_managed_client.py

@@ -19,15 +19,16 @@ import json
 import warnings
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v2025.models.machine_identity_dto_owners import MachineIdentityDtoOwners
+from sailpoint.v2025.models.machine_identity_response_user_entitlements import MachineIdentityResponseUserEntitlements
 from typing import Optional, Set
 from typing_extensions import Self
 
-class MachineIdentity(BaseModel):
+class MachineIdentityResponse(BaseModel):
     """
-    MachineIdentity
+    MachineIdentityResponse
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="System-generated unique ID of the Object")
     name: Optional[StrictStr] = Field(description="Name of the Object")
@@ -41,7 +42,12 @@ class MachineIdentity(BaseModel):
     source_id: Optional[StrictStr] = Field(default=None, description="The source id associated to the machine identity", alias="sourceId")
     uuid: Optional[StrictStr] = Field(default=None, description="The UUID associated to the machine identity directly aggregated from a source")
     native_identity: Optional[StrictStr] = Field(default=None, description="The native identity associated to the machine identity directly aggregated from a source", alias="nativeIdentity")
-    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "businessApplication", "description", "attributes", "subtype", "owners", "sourceId", "uuid", "nativeIdentity"]
+    manually_edited: Optional[StrictBool] = Field(default=False, description="Indicates if the machine identity has been manually edited", alias="manuallyEdited")
+    manually_created: Optional[StrictBool] = Field(default=False, description="Indicates if the machine identity has been manually created", alias="manuallyCreated")
+    source: Optional[Dict[str, Any]] = Field(default=None, description="The source of the machine identity")
+    dataset_id: Optional[StrictStr] = Field(default=None, description="The dataset id associated to the source in which the identity was retrieved from", alias="datasetId")
+    user_entitlements: Optional[List[MachineIdentityResponseUserEntitlements]] = Field(default=None, description="The user entitlements associated to the machine identity", alias="userEntitlements")
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "businessApplication", "description", "attributes", "subtype", "owners", "sourceId", "uuid", "nativeIdentity", "manuallyEdited", "manuallyCreated", "source", "datasetId", "userEntitlements"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -61,7 +67,7 @@ class MachineIdentity(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of MachineIdentity from a JSON string"""
+        """Create an instance of MachineIdentityResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -91,6 +97,13 @@ class MachineIdentity(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of owners
         if self.owners:
             _dict['owners'] = self.owners.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in user_entitlements (list)
+        _items = []
+        if self.user_entitlements:
+            for _item_user_entitlements in self.user_entitlements:
+                if _item_user_entitlements:
+                    _items.append(_item_user_entitlements.to_dict())
+            _dict['userEntitlements'] = _items
         # set to None if name (nullable) is None
         # and model_fields_set contains the field
         if self.name is None and "name" in self.model_fields_set:
@@ -100,7 +113,7 @@ class MachineIdentity(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of MachineIdentity from a dict"""
+        """Create an instance of MachineIdentityResponse from a dict"""
         if obj is None:
             return None
 
@@ -119,7 +132,12 @@ class MachineIdentity(BaseModel):
             "owners": MachineIdentityDtoOwners.from_dict(obj["owners"]) if obj.get("owners") is not None else None,
             "sourceId": obj.get("sourceId"),
             "uuid": obj.get("uuid"),
-            "nativeIdentity": obj.get("nativeIdentity")
+            "nativeIdentity": obj.get("nativeIdentity"),
+            "manuallyEdited": obj.get("manuallyEdited") if obj.get("manuallyEdited") is not None else False,
+            "manuallyCreated": obj.get("manuallyCreated") if obj.get("manuallyCreated") is not None else False,
+            "source": obj.get("source"),
+            "datasetId": obj.get("datasetId"),
+            "userEntitlements": [MachineIdentityResponseUserEntitlements.from_dict(_item) for _item in obj["userEntitlements"]] if obj.get("userEntitlements") is not None else None
         })
         return _obj
 

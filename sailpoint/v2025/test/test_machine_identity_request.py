@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2025.models.machine_identity import MachineIdentity
+from sailpoint.v2025.models.machine_identity_request import MachineIdentityRequest
 
-class TestMachineIdentity(unittest.TestCase):
-    """MachineIdentity unit test stubs"""
+class TestMachineIdentityRequest(unittest.TestCase):
+    """MachineIdentityRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,16 +25,16 @@ class TestMachineIdentity(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> MachineIdentity:
-        """Test MachineIdentity
+    def make_instance(self, include_optional) -> MachineIdentityRequest:
+        """Test MachineIdentityRequest
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `MachineIdentity`
+        # uncomment below to create an instance of `MachineIdentityRequest`
         """
-        model = MachineIdentity()
+        model = MachineIdentityRequest()
         if include_optional:
-            return MachineIdentity(
+            return MachineIdentityRequest(
                 id = 'id12345',
                 name = 'aName',
                 created = '2015-05-28T14:07:17Z',
@@ -53,18 +53,23 @@ class TestMachineIdentity(unittest.TestCase):
                         ], ),
                 source_id = '6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa',
                 uuid = 'f5dd23fe-3414-42b7-bb1c-869400ad7a10',
-                native_identity = 'abc:123:dddd'
+                native_identity = 'abc:123:dddd',
+                user_entitlements = [
+                    sailpoint.v2025.models.machine_identity_request_user_entitlements.Machine_Identity_Request_userEntitlements(
+                        entitlement_id = '6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa', 
+                        source_id = '5898b7c1-620c-49c6-cccc-cbf81eb4bddd', )
+                    ]
             )
         else:
-            return MachineIdentity(
+            return MachineIdentityRequest(
                 name = 'aName',
                 business_application = 'ADService',
                 subtype = 'Application',
         )
         """
 
-    def testMachineIdentity(self):
-        """Test MachineIdentity"""
+    def testMachineIdentityRequest(self):
+        """Test MachineIdentityRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
