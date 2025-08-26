@@ -459,6 +459,8 @@ Class | Method | HTTP request | Description
 *MachineIdentitiesApi* | [**delete_machine_identity**](sailpoint/v2025/docs/MachineIdentitiesApi.md#delete_machine_identity) | **DELETE** /machine-identities/{id} | Delete machine identity
 *MachineIdentitiesApi* | [**get_machine_identity**](sailpoint/v2025/docs/MachineIdentitiesApi.md#get_machine_identity) | **GET** /machine-identities/{id} | Machine identity details
 *MachineIdentitiesApi* | [**list_machine_identities**](sailpoint/v2025/docs/MachineIdentitiesApi.md#list_machine_identities) | **GET** /machine-identities | List machine identities
+*MachineIdentitiesApi* | [**list_machine_identity_user_entitlements**](sailpoint/v2025/docs/MachineIdentitiesApi.md#list_machine_identity_user_entitlements) | **GET** /machine-identity-user-entitlements | List machine identity&#39;s user entitlements
+*MachineIdentitiesApi* | [**start_machine_identity_aggregation**](sailpoint/v2025/docs/MachineIdentitiesApi.md#start_machine_identity_aggregation) | **POST** /sources/{sourceId}/aggregate-agents | Start Machine Identity (AI Agent) Aggregation
 *MachineIdentitiesApi* | [**update_machine_identity**](sailpoint/v2025/docs/MachineIdentitiesApi.md#update_machine_identity) | **PATCH** /machine-identities/{id} | Update a machine identity
 *ManagedClientsApi* | [**create_managed_client**](sailpoint/v2025/docs/ManagedClientsApi.md#create_managed_client) | **POST** /managed-clients | Create managed client
 *ManagedClientsApi* | [**delete_managed_client**](sailpoint/v2025/docs/ManagedClientsApi.md#delete_managed_client) | **DELETE** /managed-clients/{id} | Delete managed client
@@ -1435,11 +1437,17 @@ Class | Method | HTTP request | Description
  - [MachineClassificationCriteriaLevel3](sailpoint/v2025/docs/MachineClassificationCriteriaLevel3.md)
  - [MachineClassificationCriteriaOperation](sailpoint/v2025/docs/MachineClassificationCriteriaOperation.md)
  - [MachineIdentity](sailpoint/v2025/docs/MachineIdentity.md)
+ - [MachineIdentityAggregationRequest](sailpoint/v2025/docs/MachineIdentityAggregationRequest.md)
+ - [MachineIdentityAggregationResponse](sailpoint/v2025/docs/MachineIdentityAggregationResponse.md)
+ - [MachineIdentityAggregationResponseTarget](sailpoint/v2025/docs/MachineIdentityAggregationResponseTarget.md)
  - [MachineIdentityDtoOwners](sailpoint/v2025/docs/MachineIdentityDtoOwners.md)
  - [MachineIdentityRequest](sailpoint/v2025/docs/MachineIdentityRequest.md)
  - [MachineIdentityRequestUserEntitlements](sailpoint/v2025/docs/MachineIdentityRequestUserEntitlements.md)
  - [MachineIdentityResponse](sailpoint/v2025/docs/MachineIdentityResponse.md)
  - [MachineIdentityResponseUserEntitlements](sailpoint/v2025/docs/MachineIdentityResponseUserEntitlements.md)
+ - [MachineIdentityUserEntitlementResponse](sailpoint/v2025/docs/MachineIdentityUserEntitlementResponse.md)
+ - [MachineIdentityUserEntitlementResponseEntitlement](sailpoint/v2025/docs/MachineIdentityUserEntitlementResponseEntitlement.md)
+ - [MachineIdentityUserEntitlementResponseSource](sailpoint/v2025/docs/MachineIdentityUserEntitlementResponseSource.md)
  - [MailFromAttributes](sailpoint/v2025/docs/MailFromAttributes.md)
  - [MailFromAttributesDto](sailpoint/v2025/docs/MailFromAttributesDto.md)
  - [ManagedClient](sailpoint/v2025/docs/ManagedClient.md)
