@@ -21,9 +21,9 @@ import warnings
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.v2025.models.multi_host_integrations_owner import MultiHostIntegrationsOwner
 from sailpoint.v2025.models.source_cluster import SourceCluster
 from sailpoint.v2025.models.source_management_workgroup import SourceManagementWorkgroup
-from sailpoint.v2025.models.source_owner import SourceOwner
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -33,7 +33,7 @@ class MultiHostIntegrationsCreate(BaseModel):
     """ # noqa: E501
     name: StrictStr = Field(description="Multi-Host Integration's human-readable name.")
     description: StrictStr = Field(description="Multi-Host Integration's human-readable description.")
-    owner: SourceOwner
+    owner: MultiHostIntegrationsOwner
     cluster: Optional[SourceCluster] = None
     connector: StrictStr = Field(description="Connector script name.")
     connector_attributes: Optional[Dict[str, Any]] = Field(default=None, description="Multi-Host Integration specific configuration. User can add any number of additional attributes. e.g. maxSourcesPerAggGroup, maxAllowedSources etc.", alias="connectorAttributes")
@@ -114,7 +114,7 @@ class MultiHostIntegrationsCreate(BaseModel):
         _obj = cls.model_validate({
             "name": obj.get("name"),
             "description": obj.get("description"),
-            "owner": SourceOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "owner": MultiHostIntegrationsOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "cluster": SourceCluster.from_dict(obj["cluster"]) if obj.get("cluster") is not None else None,
             "connector": obj.get("connector"),
             "connectorAttributes": obj.get("connectorAttributes"),

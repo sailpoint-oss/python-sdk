@@ -1396,6 +1396,7 @@ Class | Method | HTTP request | Description
  - [SourceDeletedActor](sailpoint/beta/docs/SourceDeletedActor.md)
  - [SourceEntitlementRequestConfig](sailpoint/beta/docs/SourceEntitlementRequestConfig.md)
  - [SourceItemRef](sailpoint/beta/docs/SourceItemRef.md)
+ - [SourceOwner](sailpoint/beta/docs/SourceOwner.md)
  - [SourceSyncJob](sailpoint/beta/docs/SourceSyncJob.md)
  - [SourceSyncPayload](sailpoint/beta/docs/SourceSyncPayload.md)
  - [SourceUpdated](sailpoint/beta/docs/SourceUpdated.md)

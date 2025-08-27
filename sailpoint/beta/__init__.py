@@ -866,6 +866,7 @@ from sailpoint.beta.models.source_deleted import SourceDeleted
 from sailpoint.beta.models.source_deleted_actor import SourceDeletedActor
 from sailpoint.beta.models.source_entitlement_request_config import SourceEntitlementRequestConfig
 from sailpoint.beta.models.source_item_ref import SourceItemRef
+from sailpoint.beta.models.source_owner import SourceOwner
 from sailpoint.beta.models.source_sync_job import SourceSyncJob
 from sailpoint.beta.models.source_sync_payload import SourceSyncPayload
 from sailpoint.beta.models.source_updated import SourceUpdated

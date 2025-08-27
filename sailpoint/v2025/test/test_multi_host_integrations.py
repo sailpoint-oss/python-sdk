@@ -38,7 +38,7 @@ class TestMultiHostIntegrations(unittest.TestCase):
                 id = '2c91808568c529c60168cca6f90c1324',
                 name = 'My Multi-Host Integration',
                 description = 'This is a Multi-Host Integration.',
-                owner = sailpoint.v2025.models.source_owner.Source_owner(
+                owner = sailpoint.v2025.models.multi_host_integrations_owner.MultiHostIntegrations_owner(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'MyName', ),
@@ -99,7 +99,7 @@ class TestMultiHostIntegrations(unittest.TestCase):
                 id = '2c91808568c529c60168cca6f90c1324',
                 name = 'My Multi-Host Integration',
                 description = 'This is a Multi-Host Integration.',
-                owner = sailpoint.v2025.models.source_owner.Source_owner(
+                owner = sailpoint.v2025.models.multi_host_integrations_owner.MultiHostIntegrations_owner(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'MyName', ),

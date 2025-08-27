@@ -41,7 +41,7 @@ class Source(BaseModel):
     id: Optional[StrictStr] = Field(default=None, description="Source ID.")
     name: StrictStr = Field(description="Source's human-readable name.")
     description: Optional[StrictStr] = Field(default=None, description="Source's human-readable description.")
-    owner: SourceOwner
+    owner: Optional[SourceOwner]
     cluster: Optional[SourceCluster] = None
     account_correlation_config: Optional[SourceAccountCorrelationConfig] = Field(default=None, alias="accountCorrelationConfig")
     account_correlation_rule: Optional[SourceAccountCorrelationRule] = Field(default=None, alias="accountCorrelationRule")
@@ -171,6 +171,11 @@ class Source(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of management_workgroup
         if self.management_workgroup:
             _dict['managementWorkgroup'] = self.management_workgroup.to_dict()
+        # set to None if owner (nullable) is None
+        # and model_fields_set contains the field
+        if self.owner is None and "owner" in self.model_fields_set:
+            _dict['owner'] = None
+
         # set to None if cluster (nullable) is None
         # and model_fields_set contains the field
         if self.cluster is None and "cluster" in self.model_fields_set:

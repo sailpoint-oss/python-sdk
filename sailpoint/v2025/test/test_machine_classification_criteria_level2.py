@@ -44,7 +44,7 @@ class TestMachineClassificationCriteriaLevel2(unittest.TestCase):
                     sailpoint.v2025.models.machine_classification_criteria_level3.MachineClassificationCriteriaLevel3(
                         operation = 'EQUALS', 
                         case_sensitive = False, 
-                        data_type = 'This is the first level of classification criteria', 
+                        data_type = '', 
                         attribute = 'sAMAccountName', 
                         value = 'SVC', )
                     ]

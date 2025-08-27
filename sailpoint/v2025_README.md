@@ -1494,6 +1494,7 @@ Class | Method | HTTP request | Description
  - [MultiHostIntegrationsConnectorAttributesMultiHostAttributes](sailpoint/v2025/docs/MultiHostIntegrationsConnectorAttributesMultiHostAttributes.md)
  - [MultiHostIntegrationsCreate](sailpoint/v2025/docs/MultiHostIntegrationsCreate.md)
  - [MultiHostIntegrationsCreateSources](sailpoint/v2025/docs/MultiHostIntegrationsCreateSources.md)
+ - [MultiHostIntegrationsOwner](sailpoint/v2025/docs/MultiHostIntegrationsOwner.md)
  - [MultiHostSources](sailpoint/v2025/docs/MultiHostSources.md)
  - [MultiPolicyRequest](sailpoint/v2025/docs/MultiPolicyRequest.md)
  - [NativeChangeDetectionConfig](sailpoint/v2025/docs/NativeChangeDetectionConfig.md)

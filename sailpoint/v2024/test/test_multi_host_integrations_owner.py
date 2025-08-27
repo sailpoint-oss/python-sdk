@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2024.models.machine_classification_criteria_level3 import MachineClassificationCriteriaLevel3
+from sailpoint.v2024.models.multi_host_integrations_owner import MultiHostIntegrationsOwner
 
-class TestMachineClassificationCriteriaLevel3(unittest.TestCase):
-    """MachineClassificationCriteriaLevel3 unit test stubs"""
+class TestMultiHostIntegrationsOwner(unittest.TestCase):
+    """MultiHostIntegrationsOwner unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,32 +25,27 @@ class TestMachineClassificationCriteriaLevel3(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> MachineClassificationCriteriaLevel3:
-        """Test MachineClassificationCriteriaLevel3
+    def make_instance(self, include_optional) -> MultiHostIntegrationsOwner:
+        """Test MultiHostIntegrationsOwner
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `MachineClassificationCriteriaLevel3`
+        # uncomment below to create an instance of `MultiHostIntegrationsOwner`
         """
-        model = MachineClassificationCriteriaLevel3()
+        model = MultiHostIntegrationsOwner()
         if include_optional:
-            return MachineClassificationCriteriaLevel3(
-                operation = 'EQUALS',
-                case_sensitive = False,
-                data_type = '',
-                attribute = 'sAMAccountName',
-                value = 'SVC',
-                children = [
-                    ''
-                    ]
+            return MultiHostIntegrationsOwner(
+                type = 'IDENTITY',
+                id = '2c91808568c529c60168cca6f90c1313',
+                name = 'MyName'
             )
         else:
-            return MachineClassificationCriteriaLevel3(
+            return MultiHostIntegrationsOwner(
         )
         """
 
-    def testMachineClassificationCriteriaLevel3(self):
-        """Test MachineClassificationCriteriaLevel3"""
+    def testMultiHostIntegrationsOwner(self):
+        """Test MultiHostIntegrationsOwner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

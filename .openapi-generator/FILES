@@ -832,6 +832,7 @@ sailpoint/v2025/docs/MultiHostIntegrationsConnectorAttributesConnectorFileUpload
 sailpoint/v2025/docs/MultiHostIntegrationsConnectorAttributesMultiHostAttributes.md
 sailpoint/v2025/docs/MultiHostIntegrationsCreate.md
 sailpoint/v2025/docs/MultiHostIntegrationsCreateSources.md
+sailpoint/v2025/docs/MultiHostIntegrationsOwner.md
 sailpoint/v2025/docs/MultiHostSources.md
 sailpoint/v2025/docs/MultiPolicyRequest.md
 sailpoint/v2025/docs/NativeChangeDetectionConfig.md
@@ -2077,6 +2078,7 @@ sailpoint/v2025/models/multi_host_integrations_connector_attributes_connector_fi
 sailpoint/v2025/models/multi_host_integrations_connector_attributes_multi_host_attributes.py
 sailpoint/v2025/models/multi_host_integrations_create.py
 sailpoint/v2025/models/multi_host_integrations_create_sources.py
+sailpoint/v2025/models/multi_host_integrations_owner.py
 sailpoint/v2025/models/multi_host_sources.py
 sailpoint/v2025/models/multi_policy_request.py
 sailpoint/v2025/models/native_change_detection_config.py
@@ -3336,6 +3338,7 @@ sailpoint/v2025/test/test_multi_host_integrations_connector_attributes_connector
 sailpoint/v2025/test/test_multi_host_integrations_connector_attributes_multi_host_attributes.py
 sailpoint/v2025/test/test_multi_host_integrations_create.py
 sailpoint/v2025/test/test_multi_host_integrations_create_sources.py
+sailpoint/v2025/test/test_multi_host_integrations_owner.py
 sailpoint/v2025/test/test_multi_host_sources.py
 sailpoint/v2025/test/test_multi_policy_request.py
 sailpoint/v2025/test/test_native_change_detection_config.py

@@ -23,13 +23,13 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from sailpoint.v2024.models.manager_correlation_mapping import ManagerCorrelationMapping
+from sailpoint.v2024.models.multi_host_integrations_owner import MultiHostIntegrationsOwner
 from sailpoint.v2024.models.source_account_correlation_config import SourceAccountCorrelationConfig
 from sailpoint.v2024.models.source_account_correlation_rule import SourceAccountCorrelationRule
 from sailpoint.v2024.models.source_before_provisioning_rule import SourceBeforeProvisioningRule
 from sailpoint.v2024.models.source_cluster import SourceCluster
 from sailpoint.v2024.models.source_management_workgroup import SourceManagementWorkgroup
 from sailpoint.v2024.models.source_manager_correlation_rule import SourceManagerCorrelationRule
-from sailpoint.v2024.models.source_owner import SourceOwner
 from sailpoint.v2024.models.source_password_policies_inner import SourcePasswordPoliciesInner
 from sailpoint.v2024.models.source_schemas_inner import SourceSchemasInner
 from typing import Optional, Set
@@ -42,7 +42,7 @@ class MultiHostSources(BaseModel):
     id: StrictStr = Field(description="Source ID.")
     name: StrictStr = Field(description="Source's human-readable name.")
     description: Optional[StrictStr] = Field(default=None, description="Source's human-readable description.")
-    owner: SourceOwner
+    owner: MultiHostIntegrationsOwner
     cluster: Optional[SourceCluster] = None
     account_correlation_config: Optional[SourceAccountCorrelationConfig] = Field(default=None, alias="accountCorrelationConfig")
     account_correlation_rule: Optional[SourceAccountCorrelationRule] = Field(default=None, alias="accountCorrelationRule")
@@ -227,7 +227,7 @@ class MultiHostSources(BaseModel):
             "id": obj.get("id"),
             "name": obj.get("name"),
             "description": obj.get("description"),
-            "owner": SourceOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "owner": MultiHostIntegrationsOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "cluster": SourceCluster.from_dict(obj["cluster"]) if obj.get("cluster") is not None else None,
             "accountCorrelationConfig": SourceAccountCorrelationConfig.from_dict(obj["accountCorrelationConfig"]) if obj.get("accountCorrelationConfig") is not None else None,
             "accountCorrelationRule": SourceAccountCorrelationRule.from_dict(obj["accountCorrelationRule"]) if obj.get("accountCorrelationRule") is not None else None,

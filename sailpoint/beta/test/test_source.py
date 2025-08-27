@@ -38,7 +38,7 @@ class TestSource(unittest.TestCase):
                 id = '2c91808568c529c60168cca6f90c1324',
                 name = 'My Source',
                 description = 'This is the corporate directory.',
-                owner = sailpoint.beta.models.multi_host_integrations_owner.MultiHostIntegrations_owner(
+                owner = sailpoint.beta.models.source_owner.Source_owner(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'MyName', ),
@@ -93,7 +93,7 @@ class TestSource(unittest.TestCase):
         else:
             return Source(
                 name = 'My Source',
-                owner = sailpoint.beta.models.multi_host_integrations_owner.MultiHostIntegrations_owner(
+                owner = sailpoint.beta.models.source_owner.Source_owner(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'MyName', ),

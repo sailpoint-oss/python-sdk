@@ -24,13 +24,13 @@ from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.beta.models.manager_correlation_mapping import ManagerCorrelationMapping
 from sailpoint.beta.models.multi_host_integrations_cluster import MultiHostIntegrationsCluster
 from sailpoint.beta.models.multi_host_integrations_management_workgroup import MultiHostIntegrationsManagementWorkgroup
-from sailpoint.beta.models.multi_host_integrations_owner import MultiHostIntegrationsOwner
 from sailpoint.beta.models.multi_host_sources_account_correlation_config import MultiHostSourcesAccountCorrelationConfig
 from sailpoint.beta.models.multi_host_sources_account_correlation_rule import MultiHostSourcesAccountCorrelationRule
 from sailpoint.beta.models.multi_host_sources_before_provisioning_rule import MultiHostSourcesBeforeProvisioningRule
 from sailpoint.beta.models.multi_host_sources_manager_correlation_rule import MultiHostSourcesManagerCorrelationRule
 from sailpoint.beta.models.multi_host_sources_password_policies_inner import MultiHostSourcesPasswordPoliciesInner
 from sailpoint.beta.models.multi_host_sources_schemas_inner import MultiHostSourcesSchemasInner
+from sailpoint.beta.models.source_owner import SourceOwner
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -41,7 +41,7 @@ class Source(BaseModel):
     id: Optional[StrictStr] = Field(default=None, description="Source ID.")
     name: StrictStr = Field(description="Source's human-readable name.")
     description: Optional[StrictStr] = Field(default=None, description="Source's human-readable description.")
-    owner: MultiHostIntegrationsOwner
+    owner: Optional[SourceOwner]
     cluster: Optional[MultiHostIntegrationsCluster] = None
     account_correlation_config: Optional[MultiHostSourcesAccountCorrelationConfig] = Field(default=None, alias="accountCorrelationConfig")
     account_correlation_rule: Optional[MultiHostSourcesAccountCorrelationRule] = Field(default=None, alias="accountCorrelationRule")
@@ -171,6 +171,11 @@ class Source(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of management_workgroup
         if self.management_workgroup:
             _dict['managementWorkgroup'] = self.management_workgroup.to_dict()
+        # set to None if owner (nullable) is None
+        # and model_fields_set contains the field
+        if self.owner is None and "owner" in self.model_fields_set:
+            _dict['owner'] = None
+
         # set to None if cluster (nullable) is None
         # and model_fields_set contains the field
         if self.cluster is None and "cluster" in self.model_fields_set:
@@ -231,7 +236,7 @@ class Source(BaseModel):
             "id": obj.get("id"),
             "name": obj.get("name"),
             "description": obj.get("description"),
-            "owner": MultiHostIntegrationsOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "owner": SourceOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "cluster": MultiHostIntegrationsCluster.from_dict(obj["cluster"]) if obj.get("cluster") is not None else None,
             "accountCorrelationConfig": MultiHostSourcesAccountCorrelationConfig.from_dict(obj["accountCorrelationConfig"]) if obj.get("accountCorrelationConfig") is not None else None,
             "accountCorrelationRule": MultiHostSourcesAccountCorrelationRule.from_dict(obj["accountCorrelationRule"]) if obj.get("accountCorrelationRule") is not None else None,

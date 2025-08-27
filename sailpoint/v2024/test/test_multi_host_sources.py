@@ -38,7 +38,7 @@ class TestMultiHostSources(unittest.TestCase):
                 id = '2c91808568c529c60168cca6f90c1324',
                 name = 'My Source',
                 description = 'This is the Source.',
-                owner = sailpoint.v2024.models.source_owner.Source_owner(
+                owner = sailpoint.v2024.models.multi_host_integrations_owner.MultiHostIntegrations_owner(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'MyName', ),
@@ -94,7 +94,7 @@ class TestMultiHostSources(unittest.TestCase):
             return MultiHostSources(
                 id = '2c91808568c529c60168cca6f90c1324',
                 name = 'My Source',
-                owner = sailpoint.v2024.models.source_owner.Source_owner(
+                owner = sailpoint.v2024.models.multi_host_integrations_owner.MultiHostIntegrations_owner(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'MyName', ),
