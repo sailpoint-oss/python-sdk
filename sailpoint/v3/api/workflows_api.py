@@ -3859,8 +3859,8 @@ class WorkflowsApi:
     @validate_call
     def list_workflows(
         self,
-        trigger_id: Annotated[Optional[StrictStr], Field(description="Trigger ID")] = None,
-        connector_instance_id: Annotated[Optional[StrictStr], Field(description="Connector Instance ID")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **enabled**: *eq*        **connectorInstanceId**: *eq*  **triggerId**: *eq*")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **modified, name**")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
@@ -3880,10 +3880,10 @@ class WorkflowsApi:
 
         List all workflows in the tenant.
 
-        :param trigger_id: Trigger ID
-        :type trigger_id: str
-        :param connector_instance_id: Connector Instance ID
-        :type connector_instance_id: str
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **enabled**: *eq*        **connectorInstanceId**: *eq*  **triggerId**: *eq*
+        :type filters: str
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **modified, name**
+        :type sorters: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -3911,8 +3911,8 @@ class WorkflowsApi:
         """ # noqa: E501
 
         _param = self._list_workflows_serialize(
-            trigger_id=trigger_id,
-            connector_instance_id=connector_instance_id,
+            filters=filters,
+            sorters=sorters,
             limit=limit,
             offset=offset,
             _request_auth=_request_auth,
@@ -3943,8 +3943,8 @@ class WorkflowsApi:
     @validate_call
     def list_workflows_with_http_info(
         self,
-        trigger_id: Annotated[Optional[StrictStr], Field(description="Trigger ID")] = None,
-        connector_instance_id: Annotated[Optional[StrictStr], Field(description="Connector Instance ID")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **enabled**: *eq*        **connectorInstanceId**: *eq*  **triggerId**: *eq*")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **modified, name**")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
@@ -3964,10 +3964,10 @@ class WorkflowsApi:
 
         List all workflows in the tenant.
 
-        :param trigger_id: Trigger ID
-        :type trigger_id: str
-        :param connector_instance_id: Connector Instance ID
-        :type connector_instance_id: str
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **enabled**: *eq*        **connectorInstanceId**: *eq*  **triggerId**: *eq*
+        :type filters: str
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **modified, name**
+        :type sorters: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -3995,8 +3995,8 @@ class WorkflowsApi:
         """ # noqa: E501
 
         _param = self._list_workflows_serialize(
-            trigger_id=trigger_id,
-            connector_instance_id=connector_instance_id,
+            filters=filters,
+            sorters=sorters,
             limit=limit,
             offset=offset,
             _request_auth=_request_auth,
@@ -4027,8 +4027,8 @@ class WorkflowsApi:
     @validate_call
     def list_workflows_without_preload_content(
         self,
-        trigger_id: Annotated[Optional[StrictStr], Field(description="Trigger ID")] = None,
-        connector_instance_id: Annotated[Optional[StrictStr], Field(description="Connector Instance ID")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **enabled**: *eq*        **connectorInstanceId**: *eq*  **triggerId**: *eq*")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **modified, name**")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         _request_timeout: Union[
@@ -4048,10 +4048,10 @@ class WorkflowsApi:
 
         List all workflows in the tenant.
 
-        :param trigger_id: Trigger ID
-        :type trigger_id: str
-        :param connector_instance_id: Connector Instance ID
-        :type connector_instance_id: str
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **enabled**: *eq*        **connectorInstanceId**: *eq*  **triggerId**: *eq*
+        :type filters: str
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **modified, name**
+        :type sorters: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -4079,8 +4079,8 @@ class WorkflowsApi:
         """ # noqa: E501
 
         _param = self._list_workflows_serialize(
-            trigger_id=trigger_id,
-            connector_instance_id=connector_instance_id,
+            filters=filters,
+            sorters=sorters,
             limit=limit,
             offset=offset,
             _request_auth=_request_auth,
@@ -4106,8 +4106,8 @@ class WorkflowsApi:
 
     def _list_workflows_serialize(
         self,
-        trigger_id,
-        connector_instance_id,
+        filters,
+        sorters,
         limit,
         offset,
         _request_auth,
@@ -4132,13 +4132,13 @@ class WorkflowsApi:
 
         # process the path parameters
         # process the query parameters
-        if trigger_id is not None:
+        if filters is not None:
             
-            _query_params.append(('triggerId', trigger_id))
+            _query_params.append(('filters', filters))
             
-        if connector_instance_id is not None:
+        if sorters is not None:
             
-            _query_params.append(('connectorInstanceId', connector_instance_id))
+            _query_params.append(('sorters', sorters))
             
         if limit is not None:
             
