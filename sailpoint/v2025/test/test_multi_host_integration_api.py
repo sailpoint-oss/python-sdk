@@ -47,6 +47,13 @@ class TestMultiHostIntegrationApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_multi_host_sources(self) -> None:
+        """Test case for delete_multi_host_sources
+
+        Delete sources within multi-host integration
+        """
+        pass
+
     def test_get_acct_aggregation_groups(self) -> None:
         """Test case for get_acct_aggregation_groups
 
