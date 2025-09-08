@@ -3584,7 +3584,7 @@ class EntitlementsApi:
     ) -> None:
         """Bulk update an entitlement list
 
-        This API applies an update to every entitlement of the list.   The number of entitlements to update is limited to 50 items maximum.   The JsonPatch update follows the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. examples of allowed operations : `**{ \"op\": \"replace\", \"path\": \"/privileged\", \"value\": boolean }**` `**{ \"op\": \"replace\", \"path\": \"/requestable\",\"value\": boolean }**` `**{ \"op\": \"replace\", \"path\": \"/privilegeOverride/overrideLevel\",\"value\": string }**`  A token with ORG_ADMIN or API authority is required to call this API. 
+        This API applies an update to every entitlement of the list.   The number of entitlements to update is limited to 50 items maximum.   The JsonPatch update follows the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. examples of allowed operations : `**{ \"op\": \"replace\", \"path\": \"/privileged\", \"value\": boolean }**` `**{ \"op\": \"replace\", \"path\": \"/requestable\",\"value\": boolean }**`  A token with ORG_ADMIN or API authority is required to call this API. 
 
         :param entitlement_bulk_update_request: (required)
         :type entitlement_bulk_update_request: EntitlementBulkUpdateRequest
@@ -3656,7 +3656,7 @@ class EntitlementsApi:
     ) -> ApiResponse[None]:
         """Bulk update an entitlement list
 
-        This API applies an update to every entitlement of the list.   The number of entitlements to update is limited to 50 items maximum.   The JsonPatch update follows the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. examples of allowed operations : `**{ \"op\": \"replace\", \"path\": \"/privileged\", \"value\": boolean }**` `**{ \"op\": \"replace\", \"path\": \"/requestable\",\"value\": boolean }**` `**{ \"op\": \"replace\", \"path\": \"/privilegeOverride/overrideLevel\",\"value\": string }**`  A token with ORG_ADMIN or API authority is required to call this API. 
+        This API applies an update to every entitlement of the list.   The number of entitlements to update is limited to 50 items maximum.   The JsonPatch update follows the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. examples of allowed operations : `**{ \"op\": \"replace\", \"path\": \"/privileged\", \"value\": boolean }**` `**{ \"op\": \"replace\", \"path\": \"/requestable\",\"value\": boolean }**`  A token with ORG_ADMIN or API authority is required to call this API. 
 
         :param entitlement_bulk_update_request: (required)
         :type entitlement_bulk_update_request: EntitlementBulkUpdateRequest
@@ -3728,7 +3728,7 @@ class EntitlementsApi:
     ) -> RESTResponseType:
         """Bulk update an entitlement list
 
-        This API applies an update to every entitlement of the list.   The number of entitlements to update is limited to 50 items maximum.   The JsonPatch update follows the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. examples of allowed operations : `**{ \"op\": \"replace\", \"path\": \"/privileged\", \"value\": boolean }**` `**{ \"op\": \"replace\", \"path\": \"/requestable\",\"value\": boolean }**` `**{ \"op\": \"replace\", \"path\": \"/privilegeOverride/overrideLevel\",\"value\": string }**`  A token with ORG_ADMIN or API authority is required to call this API. 
+        This API applies an update to every entitlement of the list.   The number of entitlements to update is limited to 50 items maximum.   The JsonPatch update follows the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. examples of allowed operations : `**{ \"op\": \"replace\", \"path\": \"/privileged\", \"value\": boolean }**` `**{ \"op\": \"replace\", \"path\": \"/requestable\",\"value\": boolean }**`  A token with ORG_ADMIN or API authority is required to call this API. 
 
         :param entitlement_bulk_update_request: (required)
         :type entitlement_bulk_update_request: EntitlementBulkUpdateRequest
