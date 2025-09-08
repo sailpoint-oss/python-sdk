@@ -505,6 +505,7 @@ sailpoint/v2025/docs/DependantConnectionsMissingDto.md
 sailpoint/v2025/docs/DeployRequest.md
 sailpoint/v2025/docs/DeployResponse.md
 sailpoint/v2025/docs/Dimension.md
+sailpoint/v2025/docs/DimensionAttribute.md
 sailpoint/v2025/docs/DimensionBulkDeleteRequest.md
 sailpoint/v2025/docs/DimensionCriteriaKey.md
 sailpoint/v2025/docs/DimensionCriteriaKeyType.md
@@ -515,6 +516,7 @@ sailpoint/v2025/docs/DimensionCriteriaOperation.md
 sailpoint/v2025/docs/DimensionMembershipSelector.md
 sailpoint/v2025/docs/DimensionMembershipSelectorType.md
 sailpoint/v2025/docs/DimensionRef.md
+sailpoint/v2025/docs/DimensionSchema.md
 sailpoint/v2025/docs/DimensionsApi.md
 sailpoint/v2025/docs/DisplayReference.md
 sailpoint/v2025/docs/DkimAttributes.md
@@ -1780,6 +1782,7 @@ sailpoint/v2025/models/dependant_connections_missing_dto.py
 sailpoint/v2025/models/deploy_request.py
 sailpoint/v2025/models/deploy_response.py
 sailpoint/v2025/models/dimension.py
+sailpoint/v2025/models/dimension_attribute.py
 sailpoint/v2025/models/dimension_bulk_delete_request.py
 sailpoint/v2025/models/dimension_criteria_key.py
 sailpoint/v2025/models/dimension_criteria_key_type.py
@@ -1790,6 +1793,7 @@ sailpoint/v2025/models/dimension_criteria_operation.py
 sailpoint/v2025/models/dimension_membership_selector.py
 sailpoint/v2025/models/dimension_membership_selector_type.py
 sailpoint/v2025/models/dimension_ref.py
+sailpoint/v2025/models/dimension_schema.py
 sailpoint/v2025/models/display_reference.py
 sailpoint/v2025/models/dkim_attributes.py
 sailpoint/v2025/models/domain_address.py
@@ -3013,6 +3017,7 @@ sailpoint/v2025/test/test_dependant_connections_missing_dto.py
 sailpoint/v2025/test/test_deploy_request.py
 sailpoint/v2025/test/test_deploy_response.py
 sailpoint/v2025/test/test_dimension.py
+sailpoint/v2025/test/test_dimension_attribute.py
 sailpoint/v2025/test/test_dimension_bulk_delete_request.py
 sailpoint/v2025/test/test_dimension_criteria_key.py
 sailpoint/v2025/test/test_dimension_criteria_key_type.py
@@ -3023,6 +3028,7 @@ sailpoint/v2025/test/test_dimension_criteria_operation.py
 sailpoint/v2025/test/test_dimension_membership_selector.py
 sailpoint/v2025/test/test_dimension_membership_selector_type.py
 sailpoint/v2025/test/test_dimension_ref.py
+sailpoint/v2025/test/test_dimension_schema.py
 sailpoint/v2025/test/test_dimensions_api.py
 sailpoint/v2025/test/test_display_reference.py
 sailpoint/v2025/test/test_dkim_attributes.py

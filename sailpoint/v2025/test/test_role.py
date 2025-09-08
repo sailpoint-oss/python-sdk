@@ -86,7 +86,14 @@ class TestRole(unittest.TestCase):
                         sailpoint.v2025.models.approval_scheme_for_role.ApprovalSchemeForRole(
                             approver_type = 'GOVERNANCE_GROUP', 
                             approver_id = '46c79819-a69f-49a2-becb-12c971ae66c6', )
-                        ], ),
+                        ], 
+                    dimension_schema = sailpoint.v2025.models.dimension_schema.DimensionSchema(
+                        dimension_attributes = [
+                            sailpoint.v2025.models.dimension_attribute.DimensionAttribute(
+                                name = 'city', 
+                                display_name = 'City', 
+                                derived = True, )
+                            ], ), ),
                 revocation_request_config = sailpoint.v2025.models.revocability_for_role.RevocabilityForRole(
                     comments_required = False, 
                     denial_comments_required = False, 

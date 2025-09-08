@@ -21,6 +21,7 @@ import warnings
 from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v2025.models.approval_scheme_for_role import ApprovalSchemeForRole
+from sailpoint.v2025.models.dimension_schema import DimensionSchema
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,7 +33,8 @@ class RequestabilityForRole(BaseModel):
     denial_comments_required: Optional[StrictBool] = Field(default=False, description="Whether an approver must provide comments when denying the request", alias="denialCommentsRequired")
     reauthorization_required: Optional[StrictBool] = Field(default=False, description="Indicates whether reauthorization is required for the request.", alias="reauthorizationRequired")
     approval_schemes: Optional[List[ApprovalSchemeForRole]] = Field(default=None, description="List describing the steps in approving the request", alias="approvalSchemes")
-    __properties: ClassVar[List[str]] = ["commentsRequired", "denialCommentsRequired", "reauthorizationRequired", "approvalSchemes"]
+    dimension_schema: Optional[DimensionSchema] = Field(default=None, alias="dimensionSchema")
+    __properties: ClassVar[List[str]] = ["commentsRequired", "denialCommentsRequired", "reauthorizationRequired", "approvalSchemes", "dimensionSchema"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,6 +82,9 @@ class RequestabilityForRole(BaseModel):
                 if _item_approval_schemes:
                     _items.append(_item_approval_schemes.to_dict())
             _dict['approvalSchemes'] = _items
+        # override the default output from pydantic by calling `to_dict()` of dimension_schema
+        if self.dimension_schema:
+            _dict['dimensionSchema'] = self.dimension_schema.to_dict()
         # set to None if comments_required (nullable) is None
         # and model_fields_set contains the field
         if self.comments_required is None and "comments_required" in self.model_fields_set:
@@ -110,7 +115,8 @@ class RequestabilityForRole(BaseModel):
             "commentsRequired": obj.get("commentsRequired") if obj.get("commentsRequired") is not None else False,
             "denialCommentsRequired": obj.get("denialCommentsRequired") if obj.get("denialCommentsRequired") is not None else False,
             "reauthorizationRequired": obj.get("reauthorizationRequired") if obj.get("reauthorizationRequired") is not None else False,
-            "approvalSchemes": [ApprovalSchemeForRole.from_dict(_item) for _item in obj["approvalSchemes"]] if obj.get("approvalSchemes") is not None else None
+            "approvalSchemes": [ApprovalSchemeForRole.from_dict(_item) for _item in obj["approvalSchemes"]] if obj.get("approvalSchemes") is not None else None,
+            "dimensionSchema": DimensionSchema.from_dict(obj["dimensionSchema"]) if obj.get("dimensionSchema") is not None else None
         })
         return _obj
 

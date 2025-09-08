@@ -390,6 +390,7 @@ from sailpoint.v2025.models.dependant_connections_missing_dto import DependantCo
 from sailpoint.v2025.models.deploy_request import DeployRequest
 from sailpoint.v2025.models.deploy_response import DeployResponse
 from sailpoint.v2025.models.dimension import Dimension
+from sailpoint.v2025.models.dimension_attribute import DimensionAttribute
 from sailpoint.v2025.models.dimension_bulk_delete_request import DimensionBulkDeleteRequest
 from sailpoint.v2025.models.dimension_criteria_key import DimensionCriteriaKey
 from sailpoint.v2025.models.dimension_criteria_key_type import DimensionCriteriaKeyType
@@ -400,6 +401,7 @@ from sailpoint.v2025.models.dimension_criteria_operation import DimensionCriteri
 from sailpoint.v2025.models.dimension_membership_selector import DimensionMembershipSelector
 from sailpoint.v2025.models.dimension_membership_selector_type import DimensionMembershipSelectorType
 from sailpoint.v2025.models.dimension_ref import DimensionRef
+from sailpoint.v2025.models.dimension_schema import DimensionSchema
 from sailpoint.v2025.models.display_reference import DisplayReference
 from sailpoint.v2025.models.dkim_attributes import DkimAttributes
 from sailpoint.v2025.models.domain_address import DomainAddress
