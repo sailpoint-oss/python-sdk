@@ -68,7 +68,8 @@ class RequestedItemStatus(BaseModel):
     access_request_id: Optional[StrictStr] = Field(default=None, description="This is the account activity id.", alias="accessRequestId")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs, if any were included in the corresponding access request", alias="clientMetadata")
     requested_accounts: Optional[List[RequestedAccountRef]] = Field(default=None, description="The accounts selected by the user for the access to be provisioned on, in case they have multiple accounts on one or more sources.", alias="requestedAccounts")
-    __properties: ClassVar[List[str]] = ["id", "name", "type", "cancelledRequestDetails", "errorMessages", "state", "approvalDetails", "approvalIds", "manualWorkItemDetails", "accountActivityItemId", "requestType", "modified", "created", "requester", "requestedFor", "requesterComment", "sodViolationContext", "provisioningDetails", "preApprovalTriggerDetails", "accessRequestPhases", "description", "removeDate", "cancelable", "accessRequestId", "clientMetadata", "requestedAccounts"]
+    privilege_level: Optional[StrictStr] = Field(default=None, description="The privilege level of the requested access item, if applicable.", alias="privilegeLevel")
+    __properties: ClassVar[List[str]] = ["id", "name", "type", "cancelledRequestDetails", "errorMessages", "state", "approvalDetails", "approvalIds", "manualWorkItemDetails", "accountActivityItemId", "requestType", "modified", "created", "requester", "requestedFor", "requesterComment", "sodViolationContext", "provisioningDetails", "preApprovalTriggerDetails", "accessRequestPhases", "description", "removeDate", "cancelable", "accessRequestId", "clientMetadata", "requestedAccounts", "privilegeLevel"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -242,6 +243,11 @@ class RequestedItemStatus(BaseModel):
         if self.requested_accounts is None and "requested_accounts" in self.model_fields_set:
             _dict['requestedAccounts'] = None
 
+        # set to None if privilege_level (nullable) is None
+        # and model_fields_set contains the field
+        if self.privilege_level is None and "privilege_level" in self.model_fields_set:
+            _dict['privilegeLevel'] = None
+
         return _dict
 
     @classmethod
@@ -282,7 +288,8 @@ class RequestedItemStatus(BaseModel):
             "cancelable": obj.get("cancelable") if obj.get("cancelable") is not None else False,
             "accessRequestId": obj.get("accessRequestId"),
             "clientMetadata": obj.get("clientMetadata"),
-            "requestedAccounts": [RequestedAccountRef.from_dict(_item) for _item in obj["requestedAccounts"]] if obj.get("requestedAccounts") is not None else None
+            "requestedAccounts": [RequestedAccountRef.from_dict(_item) for _item in obj["requestedAccounts"]] if obj.get("requestedAccounts") is not None else None,
+            "privilegeLevel": obj.get("privilegeLevel")
         })
         return _obj
 
