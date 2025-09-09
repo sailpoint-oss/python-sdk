@@ -131,7 +131,8 @@ class TestCompletedApproval(unittest.TestCase):
                         account_uuid = '{fab7119e-004f-4822-9c33-b8d570d6c6a6}', 
                         account_id = 'CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local', 
                         source_name = 'Multi Account AD source name', )
-                    ]
+                    ],
+                privilege_level = 'High'
             )
         else:
             return CompletedApproval(
