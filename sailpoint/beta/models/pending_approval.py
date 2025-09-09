@@ -59,7 +59,8 @@ class PendingApproval(BaseModel):
     sod_violation_context: Optional[SodViolationContextCheckCompleted1] = Field(default=None, alias="sodViolationContext")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs, if any were included in the corresponding access request item", alias="clientMetadata")
     requested_accounts: Optional[List[RequestedAccountRef]] = Field(default=None, description="The accounts selected by the user for the access to be provisioned on, in case they have multiple accounts on one or more sources.", alias="requestedAccounts")
-    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "requestCreated", "requestType", "requester", "requestedFor", "owner", "requestedObject", "requesterComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "actionInProcess", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "sodViolationContext", "clientMetadata", "requestedAccounts"]
+    privilege_level: Optional[StrictStr] = Field(default=None, description="The privilege level of the requested access item, if applicable.", alias="privilegeLevel")
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "requestCreated", "requestType", "requester", "requestedFor", "owner", "requestedObject", "requesterComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "actionInProcess", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "sodViolationContext", "clientMetadata", "requestedAccounts", "privilegeLevel"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -159,6 +160,11 @@ class PendingApproval(BaseModel):
         if self.requested_accounts is None and "requested_accounts" in self.model_fields_set:
             _dict['requestedAccounts'] = None
 
+        # set to None if privilege_level (nullable) is None
+        # and model_fields_set contains the field
+        if self.privilege_level is None and "privilege_level" in self.model_fields_set:
+            _dict['privilegeLevel'] = None
+
         return _dict
 
     @classmethod
@@ -191,7 +197,8 @@ class PendingApproval(BaseModel):
             "currentRemoveDate": obj.get("currentRemoveDate"),
             "sodViolationContext": SodViolationContextCheckCompleted1.from_dict(obj["sodViolationContext"]) if obj.get("sodViolationContext") is not None else None,
             "clientMetadata": obj.get("clientMetadata"),
-            "requestedAccounts": [RequestedAccountRef.from_dict(_item) for _item in obj["requestedAccounts"]] if obj.get("requestedAccounts") is not None else None
+            "requestedAccounts": [RequestedAccountRef.from_dict(_item) for _item in obj["requestedAccounts"]] if obj.get("requestedAccounts") is not None else None,
+            "privilegeLevel": obj.get("privilegeLevel")
         })
         return _obj
 
