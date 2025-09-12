@@ -27,8 +27,8 @@ class EntitlementApprovalScheme(BaseModel):
     """
     EntitlementApprovalScheme
     """ # noqa: E501
-    approver_type: Optional[StrictStr] = Field(default=None, description="Describes the individual or group that is responsible for an approval step. Values are as follows.  **ENTITLEMENT_OWNER**: Owner of the associated Entitlement  **SOURCE_OWNER**: Owner of the associated Source  **MANAGER**: Manager of the Identity for whom the request is being made  **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field", alias="approverType")
-    approver_id: Optional[StrictStr] = Field(default=None, description="Id of the specific approver, used only when approverType is GOVERNANCE_GROUP", alias="approverId")
+    approver_type: Optional[StrictStr] = Field(default=None, description="Describes the individual or group that is responsible for an approval step. Values are as follows.  **ENTITLEMENT_OWNER**: Owner of the associated Entitlement  **SOURCE_OWNER**: Owner of the associated Source  **MANAGER**: Manager of the Identity for whom the request is being made  **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field  **WORKFLOW**: A Workflow, the ID of which is specified by the **approverId** field, Workflows are exclusive to other types of approvals and License required.     ", alias="approverType")
+    approver_id: Optional[StrictStr] = Field(default=None, description="Id of the specific approver, used only when approverType is GOVERNANCE_GROUP or WORKFLOW", alias="approverId")
     __properties: ClassVar[List[str]] = ["approverType", "approverId"]
 
     @field_validator('approver_type')
@@ -37,8 +37,8 @@ class EntitlementApprovalScheme(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['ENTITLEMENT_OWNER', 'SOURCE_OWNER', 'MANAGER', 'GOVERNANCE_GROUP']):
-            warnings.warn(f"must be one of enum values ('ENTITLEMENT_OWNER', 'SOURCE_OWNER', 'MANAGER', 'GOVERNANCE_GROUP') unknown value: {value}")
+        if value not in set(['ENTITLEMENT_OWNER', 'SOURCE_OWNER', 'MANAGER', 'GOVERNANCE_GROUP', 'WORKFLOW']):
+            warnings.warn(f"must be one of enum values ('ENTITLEMENT_OWNER', 'SOURCE_OWNER', 'MANAGER', 'GOVERNANCE_GROUP', 'WORKFLOW') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
