@@ -156,6 +156,7 @@ from sailpoint.beta.models.base_common_dto import BaseCommonDto
 from sailpoint.beta.models.base_common_dto1 import BaseCommonDto1
 from sailpoint.beta.models.base_reference_dto import BaseReferenceDto
 from sailpoint.beta.models.base_reference_dto1 import BaseReferenceDto1
+from sailpoint.beta.models.base_role_reference_dto import BaseRoleReferenceDto
 from sailpoint.beta.models.basic_auth_config import BasicAuthConfig
 from sailpoint.beta.models.bearer_token_auth_config import BearerTokenAuthConfig
 from sailpoint.beta.models.before_provisioning_rule_dto import BeforeProvisioningRuleDto
@@ -631,6 +632,8 @@ from sailpoint.beta.models.revocability import Revocability
 from sailpoint.beta.models.revocability_for_role import RevocabilityForRole
 from sailpoint.beta.models.role import Role
 from sailpoint.beta.models.role_assignment_dto import RoleAssignmentDto
+from sailpoint.beta.models.role_assignment_dto_assigner import RoleAssignmentDtoAssigner
+from sailpoint.beta.models.role_assignment_dto_assignment_context import RoleAssignmentDtoAssignmentContext
 from sailpoint.beta.models.role_assignment_ref import RoleAssignmentRef
 from sailpoint.beta.models.role_assignment_source_type import RoleAssignmentSourceType
 from sailpoint.beta.models.role_bulk_delete_request import RoleBulkDeleteRequest

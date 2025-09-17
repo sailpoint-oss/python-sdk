@@ -18,6 +18,7 @@ import re  # noqa: F401
 import json
 import warnings
 
+from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v2024.models.base_reference_dto import BaseReferenceDto
@@ -30,7 +31,8 @@ class RoleAssignmentRef(BaseModel):
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Assignment Id")
     role: Optional[BaseReferenceDto] = None
-    __properties: ClassVar[List[str]] = ["id", "role"]
+    added_date: Optional[datetime] = Field(default=None, description="Date that the assignment was added", alias="addedDate")
+    __properties: ClassVar[List[str]] = ["id", "role", "addedDate"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,7 +89,8 @@ class RoleAssignmentRef(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "role": BaseReferenceDto.from_dict(obj["role"]) if obj.get("role") is not None else None
+            "role": BaseReferenceDto.from_dict(obj["role"]) if obj.get("role") is not None else None,
+            "addedDate": obj.get("addedDate")
         })
         return _obj
 

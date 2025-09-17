@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.beta.models.role_assignment_ref import RoleAssignmentRef
+from sailpoint.beta.models.base_role_reference_dto import BaseRoleReferenceDto
 
-class TestRoleAssignmentRef(unittest.TestCase):
-    """RoleAssignmentRef unit test stubs"""
+class TestBaseRoleReferenceDto(unittest.TestCase):
+    """BaseRoleReferenceDto unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,29 +25,27 @@ class TestRoleAssignmentRef(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> RoleAssignmentRef:
-        """Test RoleAssignmentRef
+    def make_instance(self, include_optional) -> BaseRoleReferenceDto:
+        """Test BaseRoleReferenceDto
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `RoleAssignmentRef`
+        # uncomment below to create an instance of `BaseRoleReferenceDto`
         """
-        model = RoleAssignmentRef()
+        model = BaseRoleReferenceDto()
         if include_optional:
-            return RoleAssignmentRef(
-                id = '1cbb0705b38c4226b1334eadd8874086',
-                role = sailpoint.beta.models.base_reference_dto.Base Reference Dto(
-                    id = 'ff8081814d977c21014da056804a0af3', 
-                    name = 'Github', ),
-                added_date = '2025-07-11T18:45:37.098Z'
+            return BaseRoleReferenceDto(
+                type = 'ROLE',
+                id = '2c91808568c529c60168cca6f90c1313',
+                name = 'William Wilson'
             )
         else:
-            return RoleAssignmentRef(
+            return BaseRoleReferenceDto(
         )
         """
 
-    def testRoleAssignmentRef(self):
-        """Test RoleAssignmentRef"""
+    def testBaseRoleReferenceDto(self):
+        """Test BaseRoleReferenceDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

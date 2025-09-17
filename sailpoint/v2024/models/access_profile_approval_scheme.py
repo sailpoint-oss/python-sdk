@@ -27,8 +27,8 @@ class AccessProfileApprovalScheme(BaseModel):
     """
     AccessProfileApprovalScheme
     """ # noqa: E501
-    approver_type: Optional[StrictStr] = Field(default=None, description="Describes the individual or group that is responsible for an approval step. These are the possible values: **APP_OWNER**: The owner of the Application  **OWNER**: Owner of the associated Access Profile or Role  **SOURCE_OWNER**: Owner of the Source associated with an Access Profile  **MANAGER**: Manager of the Identity making the request  **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field", alias="approverType")
-    approver_id: Optional[StrictStr] = Field(default=None, description="Specific approver ID. Only use this when the `approverType` is `GOVERNANCE_GROUP`.", alias="approverId")
+    approver_type: Optional[StrictStr] = Field(default=None, description="Describes the individual or group that is responsible for an approval step. These are the possible values: **APP_OWNER**: The owner of the Application  **OWNER**: Owner of the associated Access Profile or Role  **SOURCE_OWNER**: Owner of the Source associated with an Access Profile  **MANAGER**: Manager of the Identity making the request  **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field  **WORKFLOW**: A Workflow, the ID of which is specified by the **approverId** field. Workflow is exclusive to other types of approvals and License required. ", alias="approverType")
+    approver_id: Optional[StrictStr] = Field(default=None, description="Id of the specific approver, used when approverType is GOVERNANCE_GROUP or WORKFLOW.", alias="approverId")
     __properties: ClassVar[List[str]] = ["approverType", "approverId"]
 
     @field_validator('approver_type')
@@ -37,8 +37,8 @@ class AccessProfileApprovalScheme(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['APP_OWNER', 'OWNER', 'SOURCE_OWNER', 'MANAGER', 'GOVERNANCE_GROUP']):
-            warnings.warn(f"must be one of enum values ('APP_OWNER', 'OWNER', 'SOURCE_OWNER', 'MANAGER', 'GOVERNANCE_GROUP') unknown value: {value}")
+        if value not in set(['APP_OWNER', 'OWNER', 'SOURCE_OWNER', 'MANAGER', 'GOVERNANCE_GROUP', 'WORKFLOW']):
+            warnings.warn(f"must be one of enum values ('APP_OWNER', 'OWNER', 'SOURCE_OWNER', 'MANAGER', 'GOVERNANCE_GROUP', 'WORKFLOW') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

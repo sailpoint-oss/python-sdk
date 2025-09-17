@@ -39,7 +39,8 @@ class TestRoleAssignmentRef(unittest.TestCase):
                 role = sailpoint.v2024.models.base_reference_dto.Base Reference Dto(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', )
+                    name = 'William Wilson', ),
+                added_date = '2025-07-11T18:45:37.098Z'
             )
         else:
             return RoleAssignmentRef(

@@ -18,21 +18,19 @@ import re  # noqa: F401
 import json
 import warnings
 
-from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.beta.models.base_reference_dto1 import BaseReferenceDto1
 from typing import Optional, Set
 from typing_extensions import Self
 
-class RoleAssignmentRef(BaseModel):
+class BaseRoleReferenceDto(BaseModel):
     """
-    RoleAssignmentRef
+    BaseRoleReferenceDto
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="Assignment Id")
-    role: Optional[BaseReferenceDto1] = None
-    added_date: Optional[datetime] = Field(default=None, description="Date that the assignment was added", alias="addedDate")
-    __properties: ClassVar[List[str]] = ["id", "role", "addedDate"]
+    type: Optional[StrictStr] = Field(default=None, description="DTO type")
+    id: Optional[StrictStr] = Field(default=None, description="ID of the object to which this reference applies")
+    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the object to which this reference applies")
+    __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -52,7 +50,7 @@ class RoleAssignmentRef(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of RoleAssignmentRef from a JSON string"""
+        """Create an instance of BaseRoleReferenceDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,14 +71,11 @@ class RoleAssignmentRef(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of role
-        if self.role:
-            _dict['role'] = self.role.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of RoleAssignmentRef from a dict"""
+        """Create an instance of BaseRoleReferenceDto from a dict"""
         if obj is None:
             return None
 
@@ -88,9 +83,9 @@ class RoleAssignmentRef(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "type": obj.get("type"),
             "id": obj.get("id"),
-            "role": BaseReferenceDto1.from_dict(obj["role"]) if obj.get("role") is not None else None,
-            "addedDate": obj.get("addedDate")
+            "name": obj.get("name")
         })
         return _obj
 

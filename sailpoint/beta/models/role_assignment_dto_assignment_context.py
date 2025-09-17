@@ -18,21 +18,21 @@ import re  # noqa: F401
 import json
 import warnings
 
-from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.beta.models.base_reference_dto1 import BaseReferenceDto1
+from sailpoint.beta.models.access_request_context import AccessRequestContext
+from sailpoint.beta.models.role_match_dto import RoleMatchDto
 from typing import Optional, Set
 from typing_extensions import Self
 
-class RoleAssignmentRef(BaseModel):
+class RoleAssignmentDtoAssignmentContext(BaseModel):
     """
-    RoleAssignmentRef
+    RoleAssignmentDtoAssignmentContext
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="Assignment Id")
-    role: Optional[BaseReferenceDto1] = None
-    added_date: Optional[datetime] = Field(default=None, description="Date that the assignment was added", alias="addedDate")
-    __properties: ClassVar[List[str]] = ["id", "role", "addedDate"]
+    requested: Optional[AccessRequestContext] = None
+    matched: Optional[List[RoleMatchDto]] = None
+    computed_date: Optional[StrictStr] = Field(default=None, description="Date that the assignment will was evaluated", alias="computedDate")
+    __properties: ClassVar[List[str]] = ["requested", "matched", "computedDate"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -52,7 +52,7 @@ class RoleAssignmentRef(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of RoleAssignmentRef from a JSON string"""
+        """Create an instance of RoleAssignmentDtoAssignmentContext from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,14 +73,21 @@ class RoleAssignmentRef(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of role
-        if self.role:
-            _dict['role'] = self.role.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of requested
+        if self.requested:
+            _dict['requested'] = self.requested.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in matched (list)
+        _items = []
+        if self.matched:
+            for _item_matched in self.matched:
+                if _item_matched:
+                    _items.append(_item_matched.to_dict())
+            _dict['matched'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of RoleAssignmentRef from a dict"""
+        """Create an instance of RoleAssignmentDtoAssignmentContext from a dict"""
         if obj is None:
             return None
 
@@ -88,9 +95,9 @@ class RoleAssignmentRef(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "role": BaseReferenceDto1.from_dict(obj["role"]) if obj.get("role") is not None else None,
-            "addedDate": obj.get("addedDate")
+            "requested": AccessRequestContext.from_dict(obj["requested"]) if obj.get("requested") is not None else None,
+            "matched": [RoleMatchDto.from_dict(_item) for _item in obj["matched"]] if obj.get("matched") is not None else None,
+            "computedDate": obj.get("computedDate")
         })
         return _obj
 

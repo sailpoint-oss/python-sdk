@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.beta.models.role_assignment_ref import RoleAssignmentRef
+from sailpoint.beta.models.role_assignment_dto_assigner import RoleAssignmentDtoAssigner
 
-class TestRoleAssignmentRef(unittest.TestCase):
-    """RoleAssignmentRef unit test stubs"""
+class TestRoleAssignmentDtoAssigner(unittest.TestCase):
+    """RoleAssignmentDtoAssigner unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,29 +25,27 @@ class TestRoleAssignmentRef(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> RoleAssignmentRef:
-        """Test RoleAssignmentRef
+    def make_instance(self, include_optional) -> RoleAssignmentDtoAssigner:
+        """Test RoleAssignmentDtoAssigner
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `RoleAssignmentRef`
+        # uncomment below to create an instance of `RoleAssignmentDtoAssigner`
         """
-        model = RoleAssignmentRef()
+        model = RoleAssignmentDtoAssigner()
         if include_optional:
-            return RoleAssignmentRef(
-                id = '1cbb0705b38c4226b1334eadd8874086',
-                role = sailpoint.beta.models.base_reference_dto.Base Reference Dto(
-                    id = 'ff8081814d977c21014da056804a0af3', 
-                    name = 'Github', ),
-                added_date = '2025-07-11T18:45:37.098Z'
+            return RoleAssignmentDtoAssigner(
+                type = 'IDENTITY',
+                id = '2c91808568c529c60168cca6f90c1313',
+                name = 'William Wilson'
             )
         else:
-            return RoleAssignmentRef(
+            return RoleAssignmentDtoAssigner(
         )
         """
 
-    def testRoleAssignmentRef(self):
-        """Test RoleAssignmentRef"""
+    def testRoleAssignmentDtoAssigner(self):
+        """Test RoleAssignmentDtoAssigner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

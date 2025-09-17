@@ -18,6 +18,7 @@ import re  # noqa: F401
 import json
 import warnings
 
+from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v2024.models.base_reference_dto import BaseReferenceDto
@@ -39,8 +40,9 @@ class RoleAssignmentDto(BaseModel):
     assigned_dimensions: Optional[List[BaseReferenceDto]] = Field(default=None, description="Dimensions assigned related to this role", alias="assignedDimensions")
     assignment_context: Optional[RoleAssignmentDtoAssignmentContext] = Field(default=None, alias="assignmentContext")
     account_targets: Optional[List[RoleTargetDto]] = Field(default=None, alias="accountTargets")
-    remove_date: Optional[StrictStr] = Field(default=None, description="Date that the assignment will be removed", alias="removeDate")
-    __properties: ClassVar[List[str]] = ["id", "role", "comments", "assignmentSource", "assigner", "assignedDimensions", "assignmentContext", "accountTargets", "removeDate"]
+    remove_date: Optional[datetime] = Field(default=None, description="Date that the assignment will be removed", alias="removeDate")
+    added_date: Optional[datetime] = Field(default=None, description="Date that the assignment was added", alias="addedDate")
+    __properties: ClassVar[List[str]] = ["id", "role", "comments", "assignmentSource", "assigner", "assignedDimensions", "assignmentContext", "accountTargets", "removeDate", "addedDate"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -134,7 +136,8 @@ class RoleAssignmentDto(BaseModel):
             "assignedDimensions": [BaseReferenceDto.from_dict(_item) for _item in obj["assignedDimensions"]] if obj.get("assignedDimensions") is not None else None,
             "assignmentContext": RoleAssignmentDtoAssignmentContext.from_dict(obj["assignmentContext"]) if obj.get("assignmentContext") is not None else None,
             "accountTargets": [RoleTargetDto.from_dict(_item) for _item in obj["accountTargets"]] if obj.get("accountTargets") is not None else None,
-            "removeDate": obj.get("removeDate")
+            "removeDate": obj.get("removeDate"),
+            "addedDate": obj.get("addedDate")
         })
         return _obj
 

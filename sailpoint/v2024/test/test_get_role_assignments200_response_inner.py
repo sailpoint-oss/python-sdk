@@ -40,6 +40,7 @@ class TestGetRoleAssignments200ResponseInner(unittest.TestCase):
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
+                added_date = '2025-07-11T18:45:37.098Z',
                 comments = 'I'm a new Engineer and need this role to do my work',
                 assignment_source = 'UI',
                 assigner = sailpoint.v2024.models.role_assignment_dto_assigner.RoleAssignmentDto_assigner(
@@ -60,7 +61,7 @@ class TestGetRoleAssignments200ResponseInner(unittest.TestCase):
                             uuid = '{ad9fc391-246d-40af-b248-b6556a2b7c01}', ), 
                         role_name = 'Marketing', )
                     ],
-                remove_date = 'Wed Feb 14 10:58:42'
+                remove_date = '2026-07-11T18:45:37.098Z'
             )
         else:
             return GetRoleAssignments200ResponseInner(
