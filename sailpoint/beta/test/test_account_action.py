@@ -36,7 +36,9 @@ class TestAccountAction(unittest.TestCase):
         if include_optional:
             return AccountAction(
                 action = 'ENABLE',
-                source_ids = [2c918084660f45d6016617daa9210584, 2c918084660f45d6016617daa9210500]
+                source_ids = [2c918084660f45d6016617daa9210584, 2c918084660f45d6016617daa9210500],
+                exclude_source_ids = [3b551ccf5566478b9b77f37de25303aa],
+                all_sources = True
             )
         else:
             return AccountAction(

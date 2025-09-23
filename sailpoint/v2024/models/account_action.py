@@ -27,7 +27,7 @@ class AccountAction(BaseModel):
     """
     Object for specifying Actions to be performed on a specified list of sources' account.
     """ # noqa: E501
-    action: Optional[StrictStr] = Field(default=None, description="Describes if action will be enabled or disabled")
+    action: Optional[StrictStr] = Field(default=None, description="Describes if action will be enable, disable or delete.")
     source_ids: Optional[List[StrictStr]] = Field(default=None, description="List of unique source IDs. The sources must have the ENABLE feature or flat file source. See \"/sources\" endpoint for source features.", alias="sourceIds")
     __properties: ClassVar[List[str]] = ["action", "sourceIds"]
 
@@ -37,8 +37,8 @@ class AccountAction(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['ENABLE', 'DISABLE']):
-            warnings.warn(f"must be one of enum values ('ENABLE', 'DISABLE') unknown value: {value}")
+        if value not in set(['ENABLE', 'DISABLE', 'DELETE']):
+            warnings.warn(f"must be one of enum values ('ENABLE', 'DISABLE', 'DELETE') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
