@@ -37,7 +37,7 @@ class TestManagedClient(unittest.TestCase):
             return ManagedClient(
                 id = 'aClientId',
                 alert_key = 'anAlertKey',
-                api_gateway_base_url = 'https://denali-xxx.api.cloud.sailpoint.com',
+                api_gateway_base_url = 'https://example-tenant.api.identitynow.com',
                 cc_id = 2248,
                 client_id = 'aClientApiId',
                 cluster_id = 'aClusterId',

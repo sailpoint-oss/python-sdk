@@ -3599,7 +3599,7 @@ class CertificationCampaignsApi:
     ) -> List[CampaignTemplate]:
         """(Deprecated) List campaign templates
 
-        Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/list-campaign-templates).  The endpoint returns all campaign templates matching the query parameters.  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
+        Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v2025/get-campaign-templates).  The endpoint returns all campaign templates matching the query parameters.  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -3688,7 +3688,7 @@ class CertificationCampaignsApi:
     ) -> ApiResponse[List[CampaignTemplate]]:
         """(Deprecated) List campaign templates
 
-        Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/list-campaign-templates).  The endpoint returns all campaign templates matching the query parameters.  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
+        Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v2025/get-campaign-templates).  The endpoint returns all campaign templates matching the query parameters.  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -3777,7 +3777,7 @@ class CertificationCampaignsApi:
     ) -> RESTResponseType:
         """(Deprecated) List campaign templates
 
-        Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v3/list-campaign-templates).  The endpoint returns all campaign templates matching the query parameters.  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
+        Use this API to get a list of all campaign templates. Scope can be reduced through standard V3 query params. Though this Beta endpoint has been deprecated, you can find its V3 equivalent [here](https://developer.sailpoint.com/docs/api/v2025/get-campaign-templates).  The endpoint returns all campaign templates matching the query parameters.  A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. 
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
