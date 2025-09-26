@@ -1776,7 +1776,6 @@ class AccessRequestsApi:
         self,
         identity_id: Annotated[StrictStr, Field(description="The identity ID.")],
         entitlement_id: Annotated[StrictStr, Field(description="The entitlement ID")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1794,8 +1793,6 @@ class AccessRequestsApi:
 
         Use this API to return the details for a entitlement on an identity including specific data relating to remove date and the ability to revoke the identity.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identity_id: The identity ID. (required)
         :type identity_id: str
         :param entitlement_id: The entitlement ID (required)
@@ -1823,7 +1820,6 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._get_entitlement_details_for_identity_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             identity_id=identity_id,
             entitlement_id=entitlement_id,
             _request_auth=_request_auth,
@@ -1857,7 +1853,6 @@ class AccessRequestsApi:
         self,
         identity_id: Annotated[StrictStr, Field(description="The identity ID.")],
         entitlement_id: Annotated[StrictStr, Field(description="The entitlement ID")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1875,8 +1870,6 @@ class AccessRequestsApi:
 
         Use this API to return the details for a entitlement on an identity including specific data relating to remove date and the ability to revoke the identity.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identity_id: The identity ID. (required)
         :type identity_id: str
         :param entitlement_id: The entitlement ID (required)
@@ -1904,7 +1897,6 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._get_entitlement_details_for_identity_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             identity_id=identity_id,
             entitlement_id=entitlement_id,
             _request_auth=_request_auth,
@@ -1938,7 +1930,6 @@ class AccessRequestsApi:
         self,
         identity_id: Annotated[StrictStr, Field(description="The identity ID.")],
         entitlement_id: Annotated[StrictStr, Field(description="The entitlement ID")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1956,8 +1947,6 @@ class AccessRequestsApi:
 
         Use this API to return the details for a entitlement on an identity including specific data relating to remove date and the ability to revoke the identity.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identity_id: The identity ID. (required)
         :type identity_id: str
         :param entitlement_id: The entitlement ID (required)
@@ -1985,7 +1974,6 @@ class AccessRequestsApi:
         """ # noqa: E501
 
         _param = self._get_entitlement_details_for_identity_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             identity_id=identity_id,
             entitlement_id=entitlement_id,
             _request_auth=_request_auth,
@@ -2012,7 +2000,6 @@ class AccessRequestsApi:
 
     def _get_entitlement_details_for_identity_serialize(
         self,
-        x_sail_point_experimental,
         identity_id,
         entitlement_id,
         _request_auth,
@@ -2042,8 +2029,6 @@ class AccessRequestsApi:
             _path_params['entitlementId'] = entitlement_id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
