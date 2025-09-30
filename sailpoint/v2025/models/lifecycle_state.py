@@ -44,7 +44,7 @@ class LifecycleState(BaseModel):
     access_profile_ids: Optional[List[StrictStr]] = Field(default=None, description="List of unique access-profile IDs that are associated with the lifecycle state.", alias="accessProfileIds")
     identity_state: Optional[StrictStr] = Field(default=None, description="The lifecycle state's associated identity state. This field is generally 'null'.", alias="identityState")
     access_action_configuration: Optional[AccessActionConfiguration] = Field(default=None, alias="accessActionConfiguration")
-    priority: Optional[StrictInt] = Field(default=None, description="Priority level used to determine which profile to assign when a user exists in multiple profiles. Lower numeric values have higher priority.  By default, new profiles are assigned the lowest priority. The assigned profile also controls access granted or removed during provisioning based on lifecycle state changes.")
+    priority: Optional[StrictInt] = Field(default=None, description="Used to control the order of lifecycle states when listing with `?sorters=priority`. Lower numbers appear first (ascending order). Out-of-the-box lifecycle states are assigned priorities in increments of 10.")
     __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "enabled", "technicalName", "description", "identityCount", "emailNotificationOption", "accountActions", "accessProfileIds", "identityState", "accessActionConfiguration", "priority"]
 
     @field_validator('identity_state')
