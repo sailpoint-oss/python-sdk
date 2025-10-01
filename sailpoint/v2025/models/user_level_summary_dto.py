@@ -21,7 +21,7 @@ import warnings
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2025.models.base_reference_dto import BaseReferenceDto
+from sailpoint.v2025.models.public_identity import PublicIdentity
 from sailpoint.v2025.models.right_set_dto import RightSetDTO
 from typing import Optional, Set
 from typing_extensions import Self
@@ -40,7 +40,7 @@ class UserLevelSummaryDTO(BaseModel):
     translated_name: Optional[StrictStr] = Field(default=None, description="The translated name of the UserLevel.", alias="translatedName")
     translated_grant: Optional[StrictStr] = Field(default=None, description="The translated grant message for the UserLevel.", alias="translatedGrant")
     translated_remove: Optional[StrictStr] = Field(default=None, description="The translated remove message for the UserLevel.", alias="translatedRemove")
-    owner: Optional[BaseReferenceDto] = None
+    owner: Optional[PublicIdentity] = None
     status: Optional[StrictStr] = Field(default=None, description="The status of the UserLevel.")
     created: Optional[datetime] = Field(default=None, description="The creation timestamp of the UserLevel.")
     modified: Optional[datetime] = Field(default=None, description="The last modification timestamp of the UserLevel.")
@@ -158,7 +158,7 @@ class UserLevelSummaryDTO(BaseModel):
             "translatedName": obj.get("translatedName"),
             "translatedGrant": obj.get("translatedGrant"),
             "translatedRemove": obj.get("translatedRemove"),
-            "owner": BaseReferenceDto.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "owner": PublicIdentity.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "status": obj.get("status"),
             "created": obj.get("created"),
             "modified": obj.get("modified"),

@@ -20,7 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2025.models.base_reference_dto import BaseReferenceDto
+from sailpoint.v2025.models.public_identity import PublicIdentity
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -30,7 +30,7 @@ class UserLevelRequest(BaseModel):
     """ # noqa: E501
     name: StrictStr = Field(description="The name of the user level.")
     description: StrictStr = Field(description="A brief description of the user level.")
-    owner: BaseReferenceDto
+    owner: PublicIdentity
     right_sets: Optional[List[StrictStr]] = Field(default=None, description="A list of rights associated with the user level.", alias="rightSets")
     __properties: ClassVar[List[str]] = ["name", "description", "owner", "rightSets"]
 
@@ -90,7 +90,7 @@ class UserLevelRequest(BaseModel):
         _obj = cls.model_validate({
             "name": obj.get("name"),
             "description": obj.get("description"),
-            "owner": BaseReferenceDto.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "owner": PublicIdentity.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
             "rightSets": obj.get("rightSets")
         })
         return _obj

@@ -37,20 +37,46 @@ class TestUserLevelRequest(unittest.TestCase):
             return UserLevelRequest(
                 name = 'Custom User Level Name',
                 description = 'This is a description of the custom user level.',
-                owner = sailpoint.v2025.models.base_reference_dto.Base Reference Dto(
-                    type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
+                owner = sailpoint.v2025.models.public_identity.Public Identity(
+                    id = '2c9180857182305e0171993735622948', 
+                    name = 'Alison Ferguso', 
+                    alias = 'alison.ferguso', 
+                    email = 'alison.ferguso@acme-solar.com', 
+                    status = 'Active', 
+                    identity_state = 'ACTIVE', 
+                    manager = sailpoint.v2025.models.identity_reference.Identity Reference(
+                        type = 'IDENTITY', 
+                        id = '2c9180a46faadee4016fb4e018c20639', 
+                        name = 'Thomas Edison', ), 
+                    attributes = [
+                        sailpoint.v2025.models.public_identity_attributes_inner.PublicIdentity_attributes_inner(
+                            key = 'country', 
+                            name = 'Country', 
+                            value = 'US', )
+                        ], ),
                 right_sets = [idn:ui-right-set-list-read-example, idn:ui-right-set-write-example]
             )
         else:
             return UserLevelRequest(
                 name = 'Custom User Level Name',
                 description = 'This is a description of the custom user level.',
-                owner = sailpoint.v2025.models.base_reference_dto.Base Reference Dto(
-                    type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
+                owner = sailpoint.v2025.models.public_identity.Public Identity(
+                    id = '2c9180857182305e0171993735622948', 
+                    name = 'Alison Ferguso', 
+                    alias = 'alison.ferguso', 
+                    email = 'alison.ferguso@acme-solar.com', 
+                    status = 'Active', 
+                    identity_state = 'ACTIVE', 
+                    manager = sailpoint.v2025.models.identity_reference.Identity Reference(
+                        type = 'IDENTITY', 
+                        id = '2c9180a46faadee4016fb4e018c20639', 
+                        name = 'Thomas Edison', ), 
+                    attributes = [
+                        sailpoint.v2025.models.public_identity_attributes_inner.PublicIdentity_attributes_inner(
+                            key = 'country', 
+                            name = 'Country', 
+                            value = 'US', )
+                        ], ),
         )
         """
 
