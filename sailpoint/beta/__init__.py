@@ -87,7 +87,6 @@ from sailpoint.beta.api.tenant_api import TenantApi
 from sailpoint.beta.api.transforms_api import TransformsApi
 from sailpoint.beta.api.triggers_api import TriggersApi
 from sailpoint.beta.api.ui_metadata_api import UIMetadataApi
-from sailpoint.beta.api.vendor_connector_mappings_api import VendorConnectorMappingsApi
 from sailpoint.beta.api.work_items_api import WorkItemsApi
 from sailpoint.beta.api.work_reassignment_api import WorkReassignmentApi
 from sailpoint.beta.api.workflows_api import WorkflowsApi
@@ -342,7 +341,6 @@ from sailpoint.beta.models.custom_password_instruction import CustomPasswordInst
 from sailpoint.beta.models.delete202_response import Delete202Response
 from sailpoint.beta.models.delete_campaigns_request import DeleteCampaignsRequest
 from sailpoint.beta.models.delete_non_employee_record_in_bulk_request import DeleteNonEmployeeRecordInBulkRequest
-from sailpoint.beta.models.delete_vendor_connector_mapping200_response import DeleteVendorConnectorMapping200Response
 from sailpoint.beta.models.dimension_ref import DimensionRef
 from sailpoint.beta.models.dkim_attributes import DkimAttributes
 from sailpoint.beta.models.domain_address import DomainAddress
@@ -959,11 +957,6 @@ from sailpoint.beta.models.va_cluster_status_change_event_previous_health_check_
 from sailpoint.beta.models.validate_filter_input_dto import ValidateFilterInputDto
 from sailpoint.beta.models.validate_filter_output_dto import ValidateFilterOutputDto
 from sailpoint.beta.models.value import Value
-from sailpoint.beta.models.vendor_connector_mapping import VendorConnectorMapping
-from sailpoint.beta.models.vendor_connector_mapping_deleted_at import VendorConnectorMappingDeletedAt
-from sailpoint.beta.models.vendor_connector_mapping_deleted_by import VendorConnectorMappingDeletedBy
-from sailpoint.beta.models.vendor_connector_mapping_updated_at import VendorConnectorMappingUpdatedAt
-from sailpoint.beta.models.vendor_connector_mapping_updated_by import VendorConnectorMappingUpdatedBy
 from sailpoint.beta.models.verification_poll_request import VerificationPollRequest
 from sailpoint.beta.models.verification_response import VerificationResponse
 from sailpoint.beta.models.violation_context import ViolationContext

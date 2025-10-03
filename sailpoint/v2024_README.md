@@ -745,9 +745,6 @@ Class | Method | HTTP request | Description
 *TriggersApi* | [**update_subscription**](sailpoint/v2024/docs/TriggersApi.md#update_subscription) | **PUT** /trigger-subscriptions/{id} | Update a subscription
 *UIMetadataApi* | [**get_tenant_ui_metadata**](sailpoint/v2024/docs/UIMetadataApi.md#get_tenant_ui_metadata) | **GET** /ui-metadata/tenant | Get a tenant ui metadata
 *UIMetadataApi* | [**set_tenant_ui_metadata**](sailpoint/v2024/docs/UIMetadataApi.md#set_tenant_ui_metadata) | **PUT** /ui-metadata/tenant | Update tenant ui metadata
-*VendorConnectorMappingsApi* | [**create_vendor_connector_mapping**](sailpoint/v2024/docs/VendorConnectorMappingsApi.md#create_vendor_connector_mapping) | **POST** /vendor-connector-mappings | Create vendor connector mapping
-*VendorConnectorMappingsApi* | [**delete_vendor_connector_mapping**](sailpoint/v2024/docs/VendorConnectorMappingsApi.md#delete_vendor_connector_mapping) | **DELETE** /vendor-connector-mappings | Delete vendor connector mapping
-*VendorConnectorMappingsApi* | [**get_vendor_connector_mappings**](sailpoint/v2024/docs/VendorConnectorMappingsApi.md#get_vendor_connector_mappings) | **GET** /vendor-connector-mappings | List vendor connector mappings
 *WorkItemsApi* | [**approve_approval_item**](sailpoint/v2024/docs/WorkItemsApi.md#approve_approval_item) | **POST** /work-items/{id}/approve/{approvalItemId} | Approve an approval item
 *WorkItemsApi* | [**approve_approval_items_in_bulk**](sailpoint/v2024/docs/WorkItemsApi.md#approve_approval_items_in_bulk) | **POST** /work-items/bulk-approve/{id} | Bulk approve approval items
 *WorkItemsApi* | [**complete_work_item**](sailpoint/v2024/docs/WorkItemsApi.md#complete_work_item) | **POST** /work-items/{id} | Complete a work item
@@ -1133,7 +1130,6 @@ Class | Method | HTTP request | Description
  - [DataSegment](sailpoint/v2024/docs/DataSegment.md)
  - [DeleteNonEmployeeRecordsInBulkRequest](sailpoint/v2024/docs/DeleteNonEmployeeRecordsInBulkRequest.md)
  - [DeleteSource202Response](sailpoint/v2024/docs/DeleteSource202Response.md)
- - [DeleteVendorConnectorMapping200Response](sailpoint/v2024/docs/DeleteVendorConnectorMapping200Response.md)
  - [DependantAppConnections](sailpoint/v2024/docs/DependantAppConnections.md)
  - [DependantAppConnectionsAccountSource](sailpoint/v2024/docs/DependantAppConnectionsAccountSource.md)
  - [DependantAppConnectionsAccountSourcePasswordPoliciesInner](sailpoint/v2024/docs/DependantAppConnectionsAccountSourcePasswordPoliciesInner.md)
@@ -1894,11 +1890,6 @@ Class | Method | HTTP request | Description
  - [ValidateFilterInputDto](sailpoint/v2024/docs/ValidateFilterInputDto.md)
  - [ValidateFilterOutputDto](sailpoint/v2024/docs/ValidateFilterOutputDto.md)
  - [Value](sailpoint/v2024/docs/Value.md)
- - [VendorConnectorMapping](sailpoint/v2024/docs/VendorConnectorMapping.md)
- - [VendorConnectorMappingDeletedAt](sailpoint/v2024/docs/VendorConnectorMappingDeletedAt.md)
- - [VendorConnectorMappingDeletedBy](sailpoint/v2024/docs/VendorConnectorMappingDeletedBy.md)
- - [VendorConnectorMappingUpdatedAt](sailpoint/v2024/docs/VendorConnectorMappingUpdatedAt.md)
- - [VendorConnectorMappingUpdatedBy](sailpoint/v2024/docs/VendorConnectorMappingUpdatedBy.md)
  - [ViolationContext](sailpoint/v2024/docs/ViolationContext.md)
  - [ViolationContextPolicy](sailpoint/v2024/docs/ViolationContextPolicy.md)
  - [ViolationOwnerAssignmentConfig](sailpoint/v2024/docs/ViolationOwnerAssignmentConfig.md)

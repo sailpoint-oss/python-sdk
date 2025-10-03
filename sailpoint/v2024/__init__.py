@@ -107,7 +107,6 @@ from sailpoint.v2024.api.tenant_context_api import TenantContextApi
 from sailpoint.v2024.api.transforms_api import TransformsApi
 from sailpoint.v2024.api.triggers_api import TriggersApi
 from sailpoint.v2024.api.ui_metadata_api import UIMetadataApi
-from sailpoint.v2024.api.vendor_connector_mappings_api import VendorConnectorMappingsApi
 from sailpoint.v2024.api.work_items_api import WorkItemsApi
 from sailpoint.v2024.api.work_reassignment_api import WorkReassignmentApi
 from sailpoint.v2024.api.workflows_api import WorkflowsApi
@@ -465,7 +464,6 @@ from sailpoint.v2024.models.data_access_policies_inner import DataAccessPolicies
 from sailpoint.v2024.models.data_segment import DataSegment
 from sailpoint.v2024.models.delete_non_employee_records_in_bulk_request import DeleteNonEmployeeRecordsInBulkRequest
 from sailpoint.v2024.models.delete_source202_response import DeleteSource202Response
-from sailpoint.v2024.models.delete_vendor_connector_mapping200_response import DeleteVendorConnectorMapping200Response
 from sailpoint.v2024.models.dependant_app_connections import DependantAppConnections
 from sailpoint.v2024.models.dependant_app_connections_account_source import DependantAppConnectionsAccountSource
 from sailpoint.v2024.models.dependant_app_connections_account_source_password_policies_inner import DependantAppConnectionsAccountSourcePasswordPoliciesInner
@@ -1226,11 +1224,6 @@ from sailpoint.v2024.models.va_cluster_status_change_event_previous_health_check
 from sailpoint.v2024.models.validate_filter_input_dto import ValidateFilterInputDto
 from sailpoint.v2024.models.validate_filter_output_dto import ValidateFilterOutputDto
 from sailpoint.v2024.models.value import Value
-from sailpoint.v2024.models.vendor_connector_mapping import VendorConnectorMapping
-from sailpoint.v2024.models.vendor_connector_mapping_deleted_at import VendorConnectorMappingDeletedAt
-from sailpoint.v2024.models.vendor_connector_mapping_deleted_by import VendorConnectorMappingDeletedBy
-from sailpoint.v2024.models.vendor_connector_mapping_updated_at import VendorConnectorMappingUpdatedAt
-from sailpoint.v2024.models.vendor_connector_mapping_updated_by import VendorConnectorMappingUpdatedBy
 from sailpoint.v2024.models.violation_context import ViolationContext
 from sailpoint.v2024.models.violation_context_policy import ViolationContextPolicy
 from sailpoint.v2024.models.violation_owner_assignment_config import ViolationOwnerAssignmentConfig

@@ -402,9 +402,6 @@ Class | Method | HTTP request | Description
 *TransformsApi* | [**get_transform**](sailpoint/v3/docs/TransformsApi.md#get_transform) | **GET** /transforms/{id} | Transform by id
 *TransformsApi* | [**list_transforms**](sailpoint/v3/docs/TransformsApi.md#list_transforms) | **GET** /transforms | List transforms
 *TransformsApi* | [**update_transform**](sailpoint/v3/docs/TransformsApi.md#update_transform) | **PUT** /transforms/{id} | Update a transform
-*VendorConnectorMappingsApi* | [**create_vendor_connector_mapping**](sailpoint/v3/docs/VendorConnectorMappingsApi.md#create_vendor_connector_mapping) | **POST** /vendor-connector-mappings | Create vendor connector mapping
-*VendorConnectorMappingsApi* | [**delete_vendor_connector_mapping**](sailpoint/v3/docs/VendorConnectorMappingsApi.md#delete_vendor_connector_mapping) | **DELETE** /vendor-connector-mappings | Delete vendor connector mapping
-*VendorConnectorMappingsApi* | [**get_vendor_connector_mappings**](sailpoint/v3/docs/VendorConnectorMappingsApi.md#get_vendor_connector_mappings) | **GET** /vendor-connector-mappings | List vendor connector mappings
 *WorkItemsApi* | [**approve_approval_item**](sailpoint/v3/docs/WorkItemsApi.md#approve_approval_item) | **POST** /work-items/{id}/approve/{approvalItemId} | Approve an approval item
 *WorkItemsApi* | [**approve_approval_items_in_bulk**](sailpoint/v3/docs/WorkItemsApi.md#approve_approval_items_in_bulk) | **POST** /work-items/bulk-approve/{id} | Bulk approve approval items
 *WorkItemsApi* | [**complete_work_item**](sailpoint/v3/docs/WorkItemsApi.md#complete_work_item) | **POST** /work-items/{id} | Complete a work item
@@ -617,7 +614,6 @@ Class | Method | HTTP request | Description
  - [DataAccessPoliciesInner](sailpoint/v3/docs/DataAccessPoliciesInner.md)
  - [DeleteNonEmployeeRecordsInBulkRequest](sailpoint/v3/docs/DeleteNonEmployeeRecordsInBulkRequest.md)
  - [DeleteSource202Response](sailpoint/v3/docs/DeleteSource202Response.md)
- - [DeleteVendorConnectorMapping200Response](sailpoint/v3/docs/DeleteVendorConnectorMapping200Response.md)
  - [DependantAppConnections](sailpoint/v3/docs/DependantAppConnections.md)
  - [DependantAppConnectionsAccountSource](sailpoint/v3/docs/DependantAppConnectionsAccountSource.md)
  - [DependantAppConnectionsAccountSourcePasswordPoliciesInner](sailpoint/v3/docs/DependantAppConnectionsAccountSourcePasswordPoliciesInner.md)
@@ -668,7 +664,6 @@ Class | Method | HTTP request | Description
  - [GetDiscoveredApplications200ResponseInner](sailpoint/v3/docs/GetDiscoveredApplications200ResponseInner.md)
  - [GetOAuthClientResponse](sailpoint/v3/docs/GetOAuthClientResponse.md)
  - [GetPersonalAccessTokenResponse](sailpoint/v3/docs/GetPersonalAccessTokenResponse.md)
- - [GetVendorConnectorMappings405Response](sailpoint/v3/docs/GetVendorConnectorMappings405Response.md)
  - [GrantType](sailpoint/v3/docs/GrantType.md)
  - [IdentitiesDetailsReportArguments](sailpoint/v3/docs/IdentitiesDetailsReportArguments.md)
  - [IdentitiesReportArguments](sailpoint/v3/docs/IdentitiesReportArguments.md)
@@ -1000,11 +995,6 @@ Class | Method | HTTP request | Description
  - [V3ConnectorDto](sailpoint/v3/docs/V3ConnectorDto.md)
  - [V3CreateConnectorDto](sailpoint/v3/docs/V3CreateConnectorDto.md)
  - [Value](sailpoint/v3/docs/Value.md)
- - [VendorConnectorMapping](sailpoint/v3/docs/VendorConnectorMapping.md)
- - [VendorConnectorMappingDeletedAt](sailpoint/v3/docs/VendorConnectorMappingDeletedAt.md)
- - [VendorConnectorMappingDeletedBy](sailpoint/v3/docs/VendorConnectorMappingDeletedBy.md)
- - [VendorConnectorMappingUpdatedAt](sailpoint/v3/docs/VendorConnectorMappingUpdatedAt.md)
- - [VendorConnectorMappingUpdatedBy](sailpoint/v3/docs/VendorConnectorMappingUpdatedBy.md)
  - [VerificationPollRequest](sailpoint/v3/docs/VerificationPollRequest.md)
  - [VerificationResponse](sailpoint/v3/docs/VerificationResponse.md)
  - [ViolationContext](sailpoint/v3/docs/ViolationContext.md)

@@ -64,7 +64,6 @@ from sailpoint.v3.api.source_usages_api import SourceUsagesApi
 from sailpoint.v3.api.sources_api import SourcesApi
 from sailpoint.v3.api.tagged_objects_api import TaggedObjectsApi
 from sailpoint.v3.api.transforms_api import TransformsApi
-from sailpoint.v3.api.vendor_connector_mappings_api import VendorConnectorMappingsApi
 from sailpoint.v3.api.work_items_api import WorkItemsApi
 from sailpoint.v3.api.workflows_api import WorkflowsApi
 
@@ -257,7 +256,6 @@ from sailpoint.v3.models.data_access_impact_score import DataAccessImpactScore
 from sailpoint.v3.models.data_access_policies_inner import DataAccessPoliciesInner
 from sailpoint.v3.models.delete_non_employee_records_in_bulk_request import DeleteNonEmployeeRecordsInBulkRequest
 from sailpoint.v3.models.delete_source202_response import DeleteSource202Response
-from sailpoint.v3.models.delete_vendor_connector_mapping200_response import DeleteVendorConnectorMapping200Response
 from sailpoint.v3.models.dependant_app_connections import DependantAppConnections
 from sailpoint.v3.models.dependant_app_connections_account_source import DependantAppConnectionsAccountSource
 from sailpoint.v3.models.dependant_app_connections_account_source_password_policies_inner import DependantAppConnectionsAccountSourcePasswordPoliciesInner
@@ -308,7 +306,6 @@ from sailpoint.v3.models.get_campaign200_response import GetCampaign200Response
 from sailpoint.v3.models.get_discovered_applications200_response_inner import GetDiscoveredApplications200ResponseInner
 from sailpoint.v3.models.get_o_auth_client_response import GetOAuthClientResponse
 from sailpoint.v3.models.get_personal_access_token_response import GetPersonalAccessTokenResponse
-from sailpoint.v3.models.get_vendor_connector_mappings405_response import GetVendorConnectorMappings405Response
 from sailpoint.v3.models.grant_type import GrantType
 from sailpoint.v3.models.identities_details_report_arguments import IdentitiesDetailsReportArguments
 from sailpoint.v3.models.identities_report_arguments import IdentitiesReportArguments
@@ -640,11 +637,6 @@ from sailpoint.v3.models.usage_type import UsageType
 from sailpoint.v3.models.v3_connector_dto import V3ConnectorDto
 from sailpoint.v3.models.v3_create_connector_dto import V3CreateConnectorDto
 from sailpoint.v3.models.value import Value
-from sailpoint.v3.models.vendor_connector_mapping import VendorConnectorMapping
-from sailpoint.v3.models.vendor_connector_mapping_deleted_at import VendorConnectorMappingDeletedAt
-from sailpoint.v3.models.vendor_connector_mapping_deleted_by import VendorConnectorMappingDeletedBy
-from sailpoint.v3.models.vendor_connector_mapping_updated_at import VendorConnectorMappingUpdatedAt
-from sailpoint.v3.models.vendor_connector_mapping_updated_by import VendorConnectorMappingUpdatedBy
 from sailpoint.v3.models.verification_poll_request import VerificationPollRequest
 from sailpoint.v3.models.verification_response import VerificationResponse
 from sailpoint.v3.models.violation_context import ViolationContext

@@ -587,9 +587,6 @@ Class | Method | HTTP request | Description
 *TriggersApi* | [**update_subscription**](sailpoint/beta/docs/TriggersApi.md#update_subscription) | **PUT** /trigger-subscriptions/{id} | Update a subscription
 *UIMetadataApi* | [**get_tenant_ui_metadata**](sailpoint/beta/docs/UIMetadataApi.md#get_tenant_ui_metadata) | **GET** /ui-metadata/tenant | Get a tenant ui metadata
 *UIMetadataApi* | [**set_tenant_ui_metadata**](sailpoint/beta/docs/UIMetadataApi.md#set_tenant_ui_metadata) | **PUT** /ui-metadata/tenant | Update tenant ui metadata
-*VendorConnectorMappingsApi* | [**create_vendor_connector_mapping**](sailpoint/beta/docs/VendorConnectorMappingsApi.md#create_vendor_connector_mapping) | **POST** /vendor-connector-mappings | Create vendor connector mapping
-*VendorConnectorMappingsApi* | [**delete_vendor_connector_mapping**](sailpoint/beta/docs/VendorConnectorMappingsApi.md#delete_vendor_connector_mapping) | **DELETE** /vendor-connector-mappings | Delete vendor connector mapping
-*VendorConnectorMappingsApi* | [**get_vendor_connector_mappings**](sailpoint/beta/docs/VendorConnectorMappingsApi.md#get_vendor_connector_mappings) | **GET** /vendor-connector-mappings | List vendor connector mappings
 *WorkItemsApi* | [**approve_approval_item**](sailpoint/beta/docs/WorkItemsApi.md#approve_approval_item) | **POST** /work-items/{id}/approve/{approvalItemId} | Approve an approval item
 *WorkItemsApi* | [**approve_approval_items_in_bulk**](sailpoint/beta/docs/WorkItemsApi.md#approve_approval_items_in_bulk) | **POST** /work-items/bulk-approve/{id} | Bulk approve approval items
 *WorkItemsApi* | [**complete_work_item**](sailpoint/beta/docs/WorkItemsApi.md#complete_work_item) | **POST** /work-items/{id} | Complete a work item
@@ -872,7 +869,6 @@ Class | Method | HTTP request | Description
  - [Delete202Response](sailpoint/beta/docs/Delete202Response.md)
  - [DeleteCampaignsRequest](sailpoint/beta/docs/DeleteCampaignsRequest.md)
  - [DeleteNonEmployeeRecordInBulkRequest](sailpoint/beta/docs/DeleteNonEmployeeRecordInBulkRequest.md)
- - [DeleteVendorConnectorMapping200Response](sailpoint/beta/docs/DeleteVendorConnectorMapping200Response.md)
  - [DimensionRef](sailpoint/beta/docs/DimensionRef.md)
  - [DkimAttributes](sailpoint/beta/docs/DkimAttributes.md)
  - [DomainAddress](sailpoint/beta/docs/DomainAddress.md)
@@ -1489,11 +1485,6 @@ Class | Method | HTTP request | Description
  - [ValidateFilterInputDto](sailpoint/beta/docs/ValidateFilterInputDto.md)
  - [ValidateFilterOutputDto](sailpoint/beta/docs/ValidateFilterOutputDto.md)
  - [Value](sailpoint/beta/docs/Value.md)
- - [VendorConnectorMapping](sailpoint/beta/docs/VendorConnectorMapping.md)
- - [VendorConnectorMappingDeletedAt](sailpoint/beta/docs/VendorConnectorMappingDeletedAt.md)
- - [VendorConnectorMappingDeletedBy](sailpoint/beta/docs/VendorConnectorMappingDeletedBy.md)
- - [VendorConnectorMappingUpdatedAt](sailpoint/beta/docs/VendorConnectorMappingUpdatedAt.md)
- - [VendorConnectorMappingUpdatedBy](sailpoint/beta/docs/VendorConnectorMappingUpdatedBy.md)
  - [VerificationPollRequest](sailpoint/beta/docs/VerificationPollRequest.md)
  - [VerificationResponse](sailpoint/beta/docs/VerificationResponse.md)
  - [ViolationContext](sailpoint/beta/docs/ViolationContext.md)

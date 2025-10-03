@@ -94,7 +94,6 @@ sailpoint/v2025/api/tenant_context_api.py
 sailpoint/v2025/api/transforms_api.py
 sailpoint/v2025/api/triggers_api.py
 sailpoint/v2025/api/ui_metadata_api.py
-sailpoint/v2025/api/vendor_connector_mappings_api.py
 sailpoint/v2025/api/work_items_api.py
 sailpoint/v2025/api/work_reassignment_api.py
 sailpoint/v2025/api/workflows_api.py
@@ -497,7 +496,6 @@ sailpoint/v2025/docs/DataSegment.md
 sailpoint/v2025/docs/DataSegmentationApi.md
 sailpoint/v2025/docs/DeleteNonEmployeeRecordsInBulkRequest.md
 sailpoint/v2025/docs/DeleteSource202Response.md
-sailpoint/v2025/docs/DeleteVendorConnectorMapping200Response.md
 sailpoint/v2025/docs/DependantAppConnections.md
 sailpoint/v2025/docs/DependantAppConnectionsAccountSource.md
 sailpoint/v2025/docs/DependantAppConnectionsAccountSourcePasswordPoliciesInner.md
@@ -1356,12 +1354,6 @@ sailpoint/v2025/docs/VAClusterStatusChangeEventPreviousHealthCheckResult.md
 sailpoint/v2025/docs/ValidateFilterInputDto.md
 sailpoint/v2025/docs/ValidateFilterOutputDto.md
 sailpoint/v2025/docs/Value.md
-sailpoint/v2025/docs/VendorConnectorMapping.md
-sailpoint/v2025/docs/VendorConnectorMappingDeletedAt.md
-sailpoint/v2025/docs/VendorConnectorMappingDeletedBy.md
-sailpoint/v2025/docs/VendorConnectorMappingUpdatedAt.md
-sailpoint/v2025/docs/VendorConnectorMappingUpdatedBy.md
-sailpoint/v2025/docs/VendorConnectorMappingsApi.md
 sailpoint/v2025/docs/ViolationContext.md
 sailpoint/v2025/docs/ViolationContextPolicy.md
 sailpoint/v2025/docs/ViolationOwnerAssignmentConfig.md
@@ -1774,7 +1766,6 @@ sailpoint/v2025/models/data_access_policies_inner.py
 sailpoint/v2025/models/data_segment.py
 sailpoint/v2025/models/delete_non_employee_records_in_bulk_request.py
 sailpoint/v2025/models/delete_source202_response.py
-sailpoint/v2025/models/delete_vendor_connector_mapping200_response.py
 sailpoint/v2025/models/dependant_app_connections.py
 sailpoint/v2025/models/dependant_app_connections_account_source.py
 sailpoint/v2025/models/dependant_app_connections_account_source_password_policies_inner.py
@@ -2567,11 +2558,6 @@ sailpoint/v2025/models/va_cluster_status_change_event_previous_health_check_resu
 sailpoint/v2025/models/validate_filter_input_dto.py
 sailpoint/v2025/models/validate_filter_output_dto.py
 sailpoint/v2025/models/value.py
-sailpoint/v2025/models/vendor_connector_mapping.py
-sailpoint/v2025/models/vendor_connector_mapping_deleted_at.py
-sailpoint/v2025/models/vendor_connector_mapping_deleted_by.py
-sailpoint/v2025/models/vendor_connector_mapping_updated_at.py
-sailpoint/v2025/models/vendor_connector_mapping_updated_by.py
 sailpoint/v2025/models/violation_context.py
 sailpoint/v2025/models/violation_context_policy.py
 sailpoint/v2025/models/violation_owner_assignment_config.py
@@ -3009,7 +2995,6 @@ sailpoint/v2025/test/test_data_segment.py
 sailpoint/v2025/test/test_data_segmentation_api.py
 sailpoint/v2025/test/test_delete_non_employee_records_in_bulk_request.py
 sailpoint/v2025/test/test_delete_source202_response.py
-sailpoint/v2025/test/test_delete_vendor_connector_mapping200_response.py
 sailpoint/v2025/test/test_dependant_app_connections.py
 sailpoint/v2025/test/test_dependant_app_connections_account_source.py
 sailpoint/v2025/test/test_dependant_app_connections_account_source_password_policies_inner.py
@@ -3866,12 +3851,6 @@ sailpoint/v2025/test/test_va_cluster_status_change_event_previous_health_check_r
 sailpoint/v2025/test/test_validate_filter_input_dto.py
 sailpoint/v2025/test/test_validate_filter_output_dto.py
 sailpoint/v2025/test/test_value.py
-sailpoint/v2025/test/test_vendor_connector_mapping.py
-sailpoint/v2025/test/test_vendor_connector_mapping_deleted_at.py
-sailpoint/v2025/test/test_vendor_connector_mapping_deleted_by.py
-sailpoint/v2025/test/test_vendor_connector_mapping_updated_at.py
-sailpoint/v2025/test/test_vendor_connector_mapping_updated_by.py
-sailpoint/v2025/test/test_vendor_connector_mappings_api.py
 sailpoint/v2025/test/test_violation_context.py
 sailpoint/v2025/test/test_violation_context_policy.py
 sailpoint/v2025/test/test_violation_owner_assignment_config.py
