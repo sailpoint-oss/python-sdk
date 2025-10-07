@@ -19,8 +19,9 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v3.models.identity_with_new_access_access_refs_inner import IdentityWithNewAccessAccessRefsInner
+from sailpoint.v3.models.source_id_and_native_id_to_entitlement_ids_mapping import SourceIdAndNativeIdToEntitlementIdsMapping
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -30,7 +31,8 @@ class IdentityWithNewAccess(BaseModel):
     """ # noqa: E501
     identity_id: StrictStr = Field(description="Identity id to be checked.", alias="identityId")
     access_refs: List[IdentityWithNewAccessAccessRefsInner] = Field(description="The list of entitlements to consider for possible violations in a preventive check.", alias="accessRefs")
-    __properties: ClassVar[List[str]] = ["identityId", "accessRefs"]
+    source_id_and_native_id_to_entitlement_ids_mappings: Optional[List[SourceIdAndNativeIdToEntitlementIdsMapping]] = Field(default=None, description="Mappings between sourceId and nativeId to entitlement IDs for which access is requested. This is only being used for ARM analysis in case of user having multiple accounts on the same source on which entitlement is requested. Optional parameter that helps identify which account the entitlement is requested on. For scenarios where users have a single account on the source and do not provide this field, the available account is chosen.", alias="sourceIdAndNativeIdToEntitlementIdsMappings")
+    __properties: ClassVar[List[str]] = ["identityId", "accessRefs", "sourceIdAndNativeIdToEntitlementIdsMappings"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -78,6 +80,13 @@ class IdentityWithNewAccess(BaseModel):
                 if _item_access_refs:
                     _items.append(_item_access_refs.to_dict())
             _dict['accessRefs'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in source_id_and_native_id_to_entitlement_ids_mappings (list)
+        _items = []
+        if self.source_id_and_native_id_to_entitlement_ids_mappings:
+            for _item_source_id_and_native_id_to_entitlement_ids_mappings in self.source_id_and_native_id_to_entitlement_ids_mappings:
+                if _item_source_id_and_native_id_to_entitlement_ids_mappings:
+                    _items.append(_item_source_id_and_native_id_to_entitlement_ids_mappings.to_dict())
+            _dict['sourceIdAndNativeIdToEntitlementIdsMappings'] = _items
         return _dict
 
     @classmethod
@@ -91,7 +100,8 @@ class IdentityWithNewAccess(BaseModel):
 
         _obj = cls.model_validate({
             "identityId": obj.get("identityId"),
-            "accessRefs": [IdentityWithNewAccessAccessRefsInner.from_dict(_item) for _item in obj["accessRefs"]] if obj.get("accessRefs") is not None else None
+            "accessRefs": [IdentityWithNewAccessAccessRefsInner.from_dict(_item) for _item in obj["accessRefs"]] if obj.get("accessRefs") is not None else None,
+            "sourceIdAndNativeIdToEntitlementIdsMappings": [SourceIdAndNativeIdToEntitlementIdsMapping.from_dict(_item) for _item in obj["sourceIdAndNativeIdToEntitlementIdsMappings"]] if obj.get("sourceIdAndNativeIdToEntitlementIdsMappings") is not None else None
         })
         return _obj
 

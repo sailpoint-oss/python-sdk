@@ -643,6 +643,7 @@ from sailpoint.v2024.models.multi_host_integrations_owner import MultiHostIntegr
 from sailpoint.v2024.models.multi_host_sources import MultiHostSources
 from sailpoint.v2024.models.multi_policy_request import MultiPolicyRequest
 from sailpoint.v2024.models.native_change_detection_config import NativeChangeDetectionConfig
+from sailpoint.v2024.models.native_id_to_entitlement_ids_mapping import NativeIdToEntitlementIdsMapping
 from sailpoint.v2024.models.nested_aggregation import NestedAggregation
 from sailpoint.v2024.models.network_configuration import NetworkConfiguration
 from sailpoint.v2024.models.non_employee_approval_decision import NonEmployeeApprovalDecision
@@ -1010,6 +1011,7 @@ from sailpoint.v2024.models.source_deleted import SourceDeleted
 from sailpoint.v2024.models.source_deleted_actor import SourceDeletedActor
 from sailpoint.v2024.models.source_entitlement_request_config import SourceEntitlementRequestConfig
 from sailpoint.v2024.models.source_health_dto import SourceHealthDto
+from sailpoint.v2024.models.source_id_and_native_id_to_entitlement_ids_mapping import SourceIdAndNativeIdToEntitlementIdsMapping
 from sailpoint.v2024.models.source_item_ref import SourceItemRef
 from sailpoint.v2024.models.source_management_workgroup import SourceManagementWorkgroup
 from sailpoint.v2024.models.source_manager_correlation_mapping import SourceManagerCorrelationMapping

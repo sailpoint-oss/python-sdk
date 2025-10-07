@@ -836,6 +836,7 @@ sailpoint/v2025/docs/MultiHostIntegrationsOwner.md
 sailpoint/v2025/docs/MultiHostSources.md
 sailpoint/v2025/docs/MultiPolicyRequest.md
 sailpoint/v2025/docs/NativeChangeDetectionConfig.md
+sailpoint/v2025/docs/NativeIdToEntitlementIdsMapping.md
 sailpoint/v2025/docs/NestedAggregation.md
 sailpoint/v2025/docs/NestedConfig.md
 sailpoint/v2025/docs/NetworkConfiguration.md
@@ -1234,6 +1235,7 @@ sailpoint/v2025/docs/SourceDeleted.md
 sailpoint/v2025/docs/SourceDeletedActor.md
 sailpoint/v2025/docs/SourceEntitlementRequestConfig.md
 sailpoint/v2025/docs/SourceHealthDto.md
+sailpoint/v2025/docs/SourceIdAndNativeIdToEntitlementIdsMapping.md
 sailpoint/v2025/docs/SourceItemRef.md
 sailpoint/v2025/docs/SourceManagementWorkgroup.md
 sailpoint/v2025/docs/SourceManagerCorrelationMapping.md
@@ -2077,6 +2079,7 @@ sailpoint/v2025/models/multi_host_integrations_owner.py
 sailpoint/v2025/models/multi_host_sources.py
 sailpoint/v2025/models/multi_policy_request.py
 sailpoint/v2025/models/native_change_detection_config.py
+sailpoint/v2025/models/native_id_to_entitlement_ids_mapping.py
 sailpoint/v2025/models/nested_aggregation.py
 sailpoint/v2025/models/nested_config.py
 sailpoint/v2025/models/network_configuration.py
@@ -2449,6 +2452,7 @@ sailpoint/v2025/models/source_deleted.py
 sailpoint/v2025/models/source_deleted_actor.py
 sailpoint/v2025/models/source_entitlement_request_config.py
 sailpoint/v2025/models/source_health_dto.py
+sailpoint/v2025/models/source_id_and_native_id_to_entitlement_ids_mapping.py
 sailpoint/v2025/models/source_item_ref.py
 sailpoint/v2025/models/source_management_workgroup.py
 sailpoint/v2025/models/source_manager_correlation_mapping.py
@@ -3333,6 +3337,7 @@ sailpoint/v2025/test/test_multi_host_integrations_owner.py
 sailpoint/v2025/test/test_multi_host_sources.py
 sailpoint/v2025/test/test_multi_policy_request.py
 sailpoint/v2025/test/test_native_change_detection_config.py
+sailpoint/v2025/test/test_native_id_to_entitlement_ids_mapping.py
 sailpoint/v2025/test/test_nested_aggregation.py
 sailpoint/v2025/test/test_nested_config.py
 sailpoint/v2025/test/test_network_configuration.py
@@ -3730,6 +3735,7 @@ sailpoint/v2025/test/test_source_deleted.py
 sailpoint/v2025/test/test_source_deleted_actor.py
 sailpoint/v2025/test/test_source_entitlement_request_config.py
 sailpoint/v2025/test/test_source_health_dto.py
+sailpoint/v2025/test/test_source_id_and_native_id_to_entitlement_ids_mapping.py
 sailpoint/v2025/test/test_source_item_ref.py
 sailpoint/v2025/test/test_source_management_workgroup.py
 sailpoint/v2025/test/test_source_manager_correlation_mapping.py

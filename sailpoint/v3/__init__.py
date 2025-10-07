@@ -383,6 +383,7 @@ from sailpoint.v3.models.mfa_duo_config import MfaDuoConfig
 from sailpoint.v3.models.mfa_okta_config import MfaOktaConfig
 from sailpoint.v3.models.model_schema import ModelSchema
 from sailpoint.v3.models.multi_policy_request import MultiPolicyRequest
+from sailpoint.v3.models.native_id_to_entitlement_ids_mapping import NativeIdToEntitlementIdsMapping
 from sailpoint.v3.models.nested_aggregation import NestedAggregation
 from sailpoint.v3.models.network_configuration import NetworkConfiguration
 from sailpoint.v3.models.non_employee_approval_decision import NonEmployeeApprovalDecision
@@ -599,6 +600,7 @@ from sailpoint.v3.models.source_cluster import SourceCluster
 from sailpoint.v3.models.source_cluster_dto import SourceClusterDto
 from sailpoint.v3.models.source_connections_dto import SourceConnectionsDto
 from sailpoint.v3.models.source_health_dto import SourceHealthDto
+from sailpoint.v3.models.source_id_and_native_id_to_entitlement_ids_mapping import SourceIdAndNativeIdToEntitlementIdsMapping
 from sailpoint.v3.models.source_item_ref import SourceItemRef
 from sailpoint.v3.models.source_management_workgroup import SourceManagementWorkgroup
 from sailpoint.v3.models.source_manager_correlation_mapping import SourceManagerCorrelationMapping
