@@ -749,6 +749,12 @@ from sailpoint.v2025.models.owner_dto import OwnerDto
 from sailpoint.v2025.models.owner_reference import OwnerReference
 from sailpoint.v2025.models.owner_reference_segments import OwnerReferenceSegments
 from sailpoint.v2025.models.owns import Owns
+from sailpoint.v2025.models.parameter_storage_attestation_document import ParameterStorageAttestationDocument
+from sailpoint.v2025.models.parameter_storage_json_patch import ParameterStorageJsonPatch
+from sailpoint.v2025.models.parameter_storage_new_parameter import ParameterStorageNewParameter
+from sailpoint.v2025.models.parameter_storage_parameter import ParameterStorageParameter
+from sailpoint.v2025.models.parameter_storage_reference import ParameterStorageReference
+from sailpoint.v2025.models.parameter_storage_update_parameter import ParameterStorageUpdateParameter
 from sailpoint.v2025.models.password_change_request import PasswordChangeRequest
 from sailpoint.v2025.models.password_change_response import PasswordChangeResponse
 from sailpoint.v2025.models.password_digit_token import PasswordDigitToken

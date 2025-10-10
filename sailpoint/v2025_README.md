@@ -551,6 +551,14 @@ Class | Method | HTTP request | Description
 *OrgConfigApi* | [**get_org_config**](sailpoint/v2025/docs/OrgConfigApi.md#get_org_config) | **GET** /org-config | Get org config settings
 *OrgConfigApi* | [**get_valid_time_zones**](sailpoint/v2025/docs/OrgConfigApi.md#get_valid_time_zones) | **GET** /org-config/valid-time-zones | Get valid time zones
 *OrgConfigApi* | [**patch_org_config**](sailpoint/v2025/docs/OrgConfigApi.md#patch_org_config) | **PATCH** /org-config | Patch org config
+*ParameterStorageApi* | [**create_parameter**](sailpoint/v2025/docs/ParameterStorageApi.md#create_parameter) | **POST** /parameter-storage/parameters | Add a new parameter.
+*ParameterStorageApi* | [**delete_parameter**](sailpoint/v2025/docs/ParameterStorageApi.md#delete_parameter) | **DELETE** /parameter-storage/parameters/{id} | Delete a parameter.
+*ParameterStorageApi* | [**get_attestation_document**](sailpoint/v2025/docs/ParameterStorageApi.md#get_attestation_document) | **GET** /parameter-storage/attestation | Get an attestation document.
+*ParameterStorageApi* | [**get_parameter**](sailpoint/v2025/docs/ParameterStorageApi.md#get_parameter) | **GET** /parameter-storage/parameters/{id} | Get a specific parameter.
+*ParameterStorageApi* | [**get_parameter_references**](sailpoint/v2025/docs/ParameterStorageApi.md#get_parameter_references) | **GET** /parameter-storage/parameters/{id}/references | Get parameter references.
+*ParameterStorageApi* | [**get_parameter_storage_specification**](sailpoint/v2025/docs/ParameterStorageApi.md#get_parameter_storage_specification) | **GET** /parameter-storage/specification | Get specifications for parameter types.
+*ParameterStorageApi* | [**search_parameters**](sailpoint/v2025/docs/ParameterStorageApi.md#search_parameters) | **GET** /parameter-storage/parameters | Query stored parameters.
+*ParameterStorageApi* | [**update_parameter**](sailpoint/v2025/docs/ParameterStorageApi.md#update_parameter) | **PATCH** /parameter-storage/parameters/{id} | Update a parameter.
 *PasswordConfigurationApi* | [**create_password_org_config**](sailpoint/v2025/docs/PasswordConfigurationApi.md#create_password_org_config) | **POST** /password-org-config | Create password org config
 *PasswordConfigurationApi* | [**get_password_org_config**](sailpoint/v2025/docs/PasswordConfigurationApi.md#get_password_org_config) | **GET** /password-org-config | Get password org config
 *PasswordConfigurationApi* | [**put_password_org_config**](sailpoint/v2025/docs/PasswordConfigurationApi.md#put_password_org_config) | **PUT** /password-org-config | Update password org config
@@ -1553,6 +1561,12 @@ Class | Method | HTTP request | Description
  - [OwnerReference](sailpoint/v2025/docs/OwnerReference.md)
  - [OwnerReferenceSegments](sailpoint/v2025/docs/OwnerReferenceSegments.md)
  - [Owns](sailpoint/v2025/docs/Owns.md)
+ - [ParameterStorageAttestationDocument](sailpoint/v2025/docs/ParameterStorageAttestationDocument.md)
+ - [ParameterStorageJsonPatch](sailpoint/v2025/docs/ParameterStorageJsonPatch.md)
+ - [ParameterStorageNewParameter](sailpoint/v2025/docs/ParameterStorageNewParameter.md)
+ - [ParameterStorageParameter](sailpoint/v2025/docs/ParameterStorageParameter.md)
+ - [ParameterStorageReference](sailpoint/v2025/docs/ParameterStorageReference.md)
+ - [ParameterStorageUpdateParameter](sailpoint/v2025/docs/ParameterStorageUpdateParameter.md)
  - [PasswordChangeRequest](sailpoint/v2025/docs/PasswordChangeRequest.md)
  - [PasswordChangeResponse](sailpoint/v2025/docs/PasswordChangeResponse.md)
  - [PasswordDigitToken](sailpoint/v2025/docs/PasswordDigitToken.md)

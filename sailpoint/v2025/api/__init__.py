@@ -60,6 +60,7 @@ from sailpoint.v2025.api.non_employee_lifecycle_management_api import NonEmploye
 from sailpoint.v2025.api.notifications_api import NotificationsApi
 from sailpoint.v2025.api.o_auth_clients_api import OAuthClientsApi
 from sailpoint.v2025.api.org_config_api import OrgConfigApi
+from sailpoint.v2025.api.parameter_storage_api import ParameterStorageApi
 from sailpoint.v2025.api.password_configuration_api import PasswordConfigurationApi
 from sailpoint.v2025.api.password_dictionary_api import PasswordDictionaryApi
 from sailpoint.v2025.api.password_management_api import PasswordManagementApi
