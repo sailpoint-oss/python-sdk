@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -31,9 +31,19 @@ class FieldDetailsDto(BaseModel):
     transform: Optional[Dict[str, Any]] = Field(default=None, description="The transform to apply to the field")
     attributes: Optional[Dict[str, Any]] = Field(default=None, description="Attributes required for the transform")
     is_required: Optional[StrictBool] = Field(default=False, description="Flag indicating whether or not the attribute is required.", alias="isRequired")
-    type: Optional[StrictStr] = Field(default=None, description="The type of the attribute.")
+    type: Optional[StrictStr] = Field(default=None, description="The type of the attribute.  string: For text-based data.  int: For whole numbers.  long: For larger whole numbers.  date: For date and time values.  boolean: For true/false values.  secret: For sensitive data like passwords, which will be masked and encrypted. ")
     is_multi_valued: Optional[StrictBool] = Field(default=False, description="Flag indicating whether or not the attribute is multi-valued.", alias="isMultiValued")
     __properties: ClassVar[List[str]] = ["name", "transform", "attributes", "isRequired", "type", "isMultiValued"]
+
+    @field_validator('type')
+    def type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['string', 'int', 'long', 'date', 'boolean', 'secret']):
+            warnings.warn(f"must be one of enum values ('string', 'int', 'long', 'date', 'boolean', 'secret') unknown value: {value}")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,

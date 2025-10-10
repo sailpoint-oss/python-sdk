@@ -36,18 +36,7 @@ class TestIdentityWithNewAccess(unittest.TestCase):
         if include_optional:
             return IdentityWithNewAccess(
                 identity_id = '2c91808568c529c60168cca6f90c1313',
-                access_refs = [{type=ENTITLEMENT, id=2c918087682f9a86016839c050861ab1}, {type=ENTITLEMENT, id=2c918087682f9a86016839c0509c1ab2}],
-                source_id_and_native_id_to_entitlement_ids_mappings = [
-                    sailpoint.v2025.models.source_id_and_native_id_to_entitlement_ids_mapping.SourceIdAndNativeIdToEntitlementIdsMapping(
-                        source_id = '2c91809773dee32014e13e122092014e', 
-                        native_id_to_entitlement_ids_mappings = [
-                            sailpoint.v2025.models.native_id_to_entitlement_ids_mapping.NativeIdToEntitlementIdsMapping(
-                                native_id = 'jdoe', 
-                                entitlement_ids = [
-                                    '2c91809773dee32014e13e122092014e'
-                                    ], )
-                            ], )
-                    ]
+                access_refs = [{type=ENTITLEMENT, id=2c918087682f9a86016839c050861ab1}, {type=ENTITLEMENT, id=2c918087682f9a86016839c0509c1ab2}]
             )
         else:
             return IdentityWithNewAccess(
