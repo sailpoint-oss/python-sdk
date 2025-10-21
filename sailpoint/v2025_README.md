@@ -133,6 +133,8 @@ Class | Method | HTTP request | Description
 *ApprovalsApi* | [**approve_approval**](sailpoint/v2025/docs/ApprovalsApi.md#approve_approval) | **POST** /generic-approvals/{id}/approve | Post Approvals Approve
 *ApprovalsApi* | [**get_approval**](sailpoint/v2025/docs/ApprovalsApi.md#get_approval) | **GET** /generic-approvals/{id} | Get an approval
 *ApprovalsApi* | [**get_approvals**](sailpoint/v2025/docs/ApprovalsApi.md#get_approvals) | **GET** /generic-approvals | Get approvals
+*ApprovalsApi* | [**get_approvals_config_id_type**](sailpoint/v2025/docs/ApprovalsApi.md#get_approvals_config_id_type) | **GET** /generic-approvals/config | Get Approval Config Type
+*ApprovalsApi* | [**patch_approvals_config_type**](sailpoint/v2025/docs/ApprovalsApi.md#patch_approvals_config_type) | **PATCH** /generic-approvals/config | Patch Approval Config Type
 *ApprovalsApi* | [**reject_approval**](sailpoint/v2025/docs/ApprovalsApi.md#reject_approval) | **POST** /generic-approvals/{id}/reject | Post Approvals Reject
 *ApprovalsApi* | [**update_approvals_attributes**](sailpoint/v2025/docs/ApprovalsApi.md#update_approvals_attributes) | **POST** /generic-approvals/{id}/attributes | Post Approvals Attributes
 *ApprovalsApi* | [**update_approvals_comments**](sailpoint/v2025/docs/ApprovalsApi.md#update_approvals_comments) | **POST** /generic-approvals/{id}/comments | Post Approvals Comments

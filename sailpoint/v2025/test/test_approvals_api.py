@@ -47,6 +47,20 @@ class TestApprovalsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_approvals_config_id_type(self) -> None:
+        """Test case for get_approvals_config_id_type
+
+        Get Approval Config Type
+        """
+        pass
+
+    def test_patch_approvals_config_type(self) -> None:
+        """Test case for patch_approvals_config_type
+
+        Patch Approval Config Type
+        """
+        pass
+
     def test_reject_approval(self) -> None:
         """Test case for reject_approval
 

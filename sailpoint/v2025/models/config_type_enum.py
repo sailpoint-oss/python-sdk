@@ -29,6 +29,7 @@ class ConfigTypeEnum(str, Enum):
     ACCESS_REQUESTS = 'ACCESS_REQUESTS'
     CERTIFICATIONS = 'CERTIFICATIONS'
     MANUAL_TASKS = 'MANUAL_TASKS'
+    GENERIC_APPROVALS = 'GENERIC_APPROVALS'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
