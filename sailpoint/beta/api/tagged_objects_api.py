@@ -936,7 +936,7 @@ class TaggedObjectsApi:
     ) -> List[TaggedObject]:
         """List tagged objects
 
-        This API returns a list of all tagged objects.  Any authenticated token may be used to call this API.
+        This API returns a list of all tagged objects.
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -1020,7 +1020,7 @@ class TaggedObjectsApi:
     ) -> ApiResponse[List[TaggedObject]]:
         """List tagged objects
 
-        This API returns a list of all tagged objects.  Any authenticated token may be used to call this API.
+        This API returns a list of all tagged objects.
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -1104,7 +1104,7 @@ class TaggedObjectsApi:
     ) -> RESTResponseType:
         """List tagged objects
 
-        This API returns a list of all tagged objects.  Any authenticated token may be used to call this API.
+        This API returns a list of all tagged objects.
 
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
@@ -1267,7 +1267,7 @@ class TaggedObjectsApi:
     ) -> List[TaggedObject]:
         """List tagged objects by type
 
-        This API returns a list of all tagged objects by type.  Any authenticated token may be used to call this API.
+        This API returns a list of all tagged objects by type.
 
         :param type: The type of tagged object to retrieve. (required)
         :type type: str
@@ -1355,7 +1355,7 @@ class TaggedObjectsApi:
     ) -> ApiResponse[List[TaggedObject]]:
         """List tagged objects by type
 
-        This API returns a list of all tagged objects by type.  Any authenticated token may be used to call this API.
+        This API returns a list of all tagged objects by type.
 
         :param type: The type of tagged object to retrieve. (required)
         :type type: str
@@ -1443,7 +1443,7 @@ class TaggedObjectsApi:
     ) -> RESTResponseType:
         """List tagged objects by type
 
-        This API returns a list of all tagged objects by type.  Any authenticated token may be used to call this API.
+        This API returns a list of all tagged objects by type.
 
         :param type: The type of tagged object to retrieve. (required)
         :type type: str
@@ -1928,7 +1928,7 @@ class TaggedObjectsApi:
     ) -> None:
         """Add tag to object
 
-        This adds a tag to an object.  Any authenticated token may be used to call this API.
+        This adds a tag to an object.
 
         :param tagged_object: (required)
         :type tagged_object: TaggedObject
@@ -2000,7 +2000,7 @@ class TaggedObjectsApi:
     ) -> ApiResponse[None]:
         """Add tag to object
 
-        This adds a tag to an object.  Any authenticated token may be used to call this API.
+        This adds a tag to an object.
 
         :param tagged_object: (required)
         :type tagged_object: TaggedObject
@@ -2072,7 +2072,7 @@ class TaggedObjectsApi:
     ) -> RESTResponseType:
         """Add tag to object
 
-        This adds a tag to an object.  Any authenticated token may be used to call this API.
+        This adds a tag to an object.
 
         :param tagged_object: (required)
         :type tagged_object: TaggedObject
