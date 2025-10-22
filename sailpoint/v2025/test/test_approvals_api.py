@@ -33,6 +33,20 @@ class TestApprovalsApi(unittest.TestCase):
         """
         pass
 
+    def test_approve_approval_0(self) -> None:
+        """Test case for approve_approval_0
+
+        Post Bulk Approve Approvals
+        """
+        pass
+
+    def test_cancel_approval(self) -> None:
+        """Test case for cancel_approval
+
+        Post Bulk Cancel Approvals
+        """
+        pass
+
     def test_get_approval(self) -> None:
         """Test case for get_approval
 
@@ -54,6 +68,13 @@ class TestApprovalsApi(unittest.TestCase):
         """
         pass
 
+    def test_move_approval(self) -> None:
+        """Test case for move_approval
+
+        Post Bulk Reassign Approvals
+        """
+        pass
+
     def test_patch_approvals_config_type(self) -> None:
         """Test case for patch_approvals_config_type
 
@@ -65,6 +86,13 @@ class TestApprovalsApi(unittest.TestCase):
         """Test case for reject_approval
 
         Post Approvals Reject
+        """
+        pass
+
+    def test_reject_approval_0(self) -> None:
+        """Test case for reject_approval_0
+
+        Post Bulk Reject Approvals
         """
         pass
 

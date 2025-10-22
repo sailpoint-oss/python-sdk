@@ -366,8 +366,12 @@ from sailpoint.v2025.models.bucket_aggregation import BucketAggregation
 from sailpoint.v2025.models.bucket_type import BucketType
 from sailpoint.v2025.models.bulk_add_tagged_object import BulkAddTaggedObject
 from sailpoint.v2025.models.bulk_approve_access_request import BulkApproveAccessRequest
+from sailpoint.v2025.models.bulk_approve_request_dto import BulkApproveRequestDTO
 from sailpoint.v2025.models.bulk_cancel_access_request import BulkCancelAccessRequest
+from sailpoint.v2025.models.bulk_cancel_request_dto import BulkCancelRequestDTO
 from sailpoint.v2025.models.bulk_identities_accounts_response import BulkIdentitiesAccountsResponse
+from sailpoint.v2025.models.bulk_reassign_request_dto import BulkReassignRequestDTO
+from sailpoint.v2025.models.bulk_reject_request_dto import BulkRejectRequestDTO
 from sailpoint.v2025.models.bulk_remove_tagged_object import BulkRemoveTaggedObject
 from sailpoint.v2025.models.bulk_tagged_object_response import BulkTaggedObjectResponse
 from sailpoint.v2025.models.campaign import Campaign

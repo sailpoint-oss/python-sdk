@@ -131,11 +131,15 @@ Class | Method | HTTP request | Description
 *ApplicationDiscoveryApi* | [**get_manual_discover_applications_csv_template**](sailpoint/v2025/docs/ApplicationDiscoveryApi.md#get_manual_discover_applications_csv_template) | **GET** /manual-discover-applications-template | Download csv template for discovery
 *ApplicationDiscoveryApi* | [**send_manual_discover_applications_csv_template**](sailpoint/v2025/docs/ApplicationDiscoveryApi.md#send_manual_discover_applications_csv_template) | **POST** /manual-discover-applications | Upload csv to discover applications
 *ApprovalsApi* | [**approve_approval**](sailpoint/v2025/docs/ApprovalsApi.md#approve_approval) | **POST** /generic-approvals/{id}/approve | Post Approvals Approve
+*ApprovalsApi* | [**approve_approval_0**](sailpoint/v2025/docs/ApprovalsApi.md#approve_approval_0) | **POST** /generic-approvals/bulk-approve | Post Bulk Approve Approvals
+*ApprovalsApi* | [**cancel_approval**](sailpoint/v2025/docs/ApprovalsApi.md#cancel_approval) | **POST** /generic-approvals/bulk-cancel | Post Bulk Cancel Approvals
 *ApprovalsApi* | [**get_approval**](sailpoint/v2025/docs/ApprovalsApi.md#get_approval) | **GET** /generic-approvals/{id} | Get an approval
 *ApprovalsApi* | [**get_approvals**](sailpoint/v2025/docs/ApprovalsApi.md#get_approvals) | **GET** /generic-approvals | Get approvals
 *ApprovalsApi* | [**get_approvals_config_id_type**](sailpoint/v2025/docs/ApprovalsApi.md#get_approvals_config_id_type) | **GET** /generic-approvals/config | Get Approval Config Type
+*ApprovalsApi* | [**move_approval**](sailpoint/v2025/docs/ApprovalsApi.md#move_approval) | **POST** /generic-approvals/bulk-reassign | Post Bulk Reassign Approvals
 *ApprovalsApi* | [**patch_approvals_config_type**](sailpoint/v2025/docs/ApprovalsApi.md#patch_approvals_config_type) | **PATCH** /generic-approvals/config | Patch Approval Config Type
 *ApprovalsApi* | [**reject_approval**](sailpoint/v2025/docs/ApprovalsApi.md#reject_approval) | **POST** /generic-approvals/{id}/reject | Post Approvals Reject
+*ApprovalsApi* | [**reject_approval_0**](sailpoint/v2025/docs/ApprovalsApi.md#reject_approval_0) | **POST** /generic-approvals/bulk-reject | Post Bulk Reject Approvals
 *ApprovalsApi* | [**update_approvals_attributes**](sailpoint/v2025/docs/ApprovalsApi.md#update_approvals_attributes) | **POST** /generic-approvals/{id}/attributes | Post Approvals Attributes
 *ApprovalsApi* | [**update_approvals_comments**](sailpoint/v2025/docs/ApprovalsApi.md#update_approvals_comments) | **POST** /generic-approvals/{id}/comments | Post Approvals Comments
 *ApprovalsApi* | [**update_approvals_reassign**](sailpoint/v2025/docs/ApprovalsApi.md#update_approvals_reassign) | **POST** /generic-approvals/{id}/reassign | Post Approvals Reassign
@@ -1069,8 +1073,12 @@ Class | Method | HTTP request | Description
  - [BucketType](sailpoint/v2025/docs/BucketType.md)
  - [BulkAddTaggedObject](sailpoint/v2025/docs/BulkAddTaggedObject.md)
  - [BulkApproveAccessRequest](sailpoint/v2025/docs/BulkApproveAccessRequest.md)
+ - [BulkApproveRequestDTO](sailpoint/v2025/docs/BulkApproveRequestDTO.md)
  - [BulkCancelAccessRequest](sailpoint/v2025/docs/BulkCancelAccessRequest.md)
+ - [BulkCancelRequestDTO](sailpoint/v2025/docs/BulkCancelRequestDTO.md)
  - [BulkIdentitiesAccountsResponse](sailpoint/v2025/docs/BulkIdentitiesAccountsResponse.md)
+ - [BulkReassignRequestDTO](sailpoint/v2025/docs/BulkReassignRequestDTO.md)
+ - [BulkRejectRequestDTO](sailpoint/v2025/docs/BulkRejectRequestDTO.md)
  - [BulkRemoveTaggedObject](sailpoint/v2025/docs/BulkRemoveTaggedObject.md)
  - [BulkTaggedObjectResponse](sailpoint/v2025/docs/BulkTaggedObjectResponse.md)
  - [Campaign](sailpoint/v2025/docs/Campaign.md)
