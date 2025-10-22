@@ -158,6 +158,8 @@ Class | Method | HTTP request | Description
 *AuthProfileApi* | [**patch_profile_config**](sailpoint/v2025/docs/AuthProfileApi.md#patch_profile_config) | **PATCH** /auth-profiles/{id} | Patch a specified auth profile
 *AuthUsersApi* | [**get_auth_user**](sailpoint/v2025/docs/AuthUsersApi.md#get_auth_user) | **GET** /auth-users/{id} | Auth user details
 *AuthUsersApi* | [**patch_auth_user**](sailpoint/v2025/docs/AuthUsersApi.md#patch_auth_user) | **PATCH** /auth-users/{id} | Auth user update
+*AuthorizationApi* | [**list_user_level_counts**](sailpoint/v2025/docs/AuthorizationApi.md#list_user_level_counts) | **POST** /authorization/user-levels/get-identity-count | Count user levels identities
+*AuthorizationApi* | [**list_user_level_identities**](sailpoint/v2025/docs/AuthorizationApi.md#list_user_level_identities) | **GET** /authorization/user-levels/{id}/identities | List user level identities
 *BrandingApi* | [**create_branding_item**](sailpoint/v2025/docs/BrandingApi.md#create_branding_item) | **POST** /brandings | Create a branding item
 *BrandingApi* | [**delete_branding**](sailpoint/v2025/docs/BrandingApi.md#delete_branding) | **DELETE** /brandings/{name} | Delete a branding item
 *BrandingApi* | [**get_branding**](sailpoint/v2025/docs/BrandingApi.md#get_branding) | **GET** /brandings/{name} | Get a branding item
@@ -1042,6 +1044,8 @@ Class | Method | HTTP request | Description
  - [AuthProfile](sailpoint/v2025/docs/AuthProfile.md)
  - [AuthProfileSummary](sailpoint/v2025/docs/AuthProfileSummary.md)
  - [AuthUser](sailpoint/v2025/docs/AuthUser.md)
+ - [AuthUserLevelsIdentityCount](sailpoint/v2025/docs/AuthUserLevelsIdentityCount.md)
+ - [AuthUserSlimResponse](sailpoint/v2025/docs/AuthUserSlimResponse.md)
  - [BackupOptions](sailpoint/v2025/docs/BackupOptions.md)
  - [BackupOptions1](sailpoint/v2025/docs/BackupOptions1.md)
  - [BackupResponse](sailpoint/v2025/docs/BackupResponse.md)

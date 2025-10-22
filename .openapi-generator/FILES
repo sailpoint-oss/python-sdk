@@ -16,6 +16,7 @@ sailpoint/v2025/api/approvals_api.py
 sailpoint/v2025/api/apps_api.py
 sailpoint/v2025/api/auth_profile_api.py
 sailpoint/v2025/api/auth_users_api.py
+sailpoint/v2025/api/authorization_api.py
 sailpoint/v2025/api/branding_api.py
 sailpoint/v2025/api/certification_campaign_filters_api.py
 sailpoint/v2025/api/certification_campaigns_api.py
@@ -328,7 +329,10 @@ sailpoint/v2025/docs/AuthProfile.md
 sailpoint/v2025/docs/AuthProfileApi.md
 sailpoint/v2025/docs/AuthProfileSummary.md
 sailpoint/v2025/docs/AuthUser.md
+sailpoint/v2025/docs/AuthUserLevelsIdentityCount.md
+sailpoint/v2025/docs/AuthUserSlimResponse.md
 sailpoint/v2025/docs/AuthUsersApi.md
+sailpoint/v2025/docs/AuthorizationApi.md
 sailpoint/v2025/docs/BackupOptions.md
 sailpoint/v2025/docs/BackupOptions1.md
 sailpoint/v2025/docs/BackupResponse.md
@@ -1620,6 +1624,8 @@ sailpoint/v2025/models/audit_details.py
 sailpoint/v2025/models/auth_profile.py
 sailpoint/v2025/models/auth_profile_summary.py
 sailpoint/v2025/models/auth_user.py
+sailpoint/v2025/models/auth_user_levels_identity_count.py
+sailpoint/v2025/models/auth_user_slim_response.py
 sailpoint/v2025/models/backup_options.py
 sailpoint/v2025/models/backup_options1.py
 sailpoint/v2025/models/backup_response.py
@@ -2840,7 +2846,10 @@ sailpoint/v2025/test/test_auth_profile.py
 sailpoint/v2025/test/test_auth_profile_api.py
 sailpoint/v2025/test/test_auth_profile_summary.py
 sailpoint/v2025/test/test_auth_user.py
+sailpoint/v2025/test/test_auth_user_levels_identity_count.py
+sailpoint/v2025/test/test_auth_user_slim_response.py
 sailpoint/v2025/test/test_auth_users_api.py
+sailpoint/v2025/test/test_authorization_api.py
 sailpoint/v2025/test/test_backup_options.py
 sailpoint/v2025/test/test_backup_options1.py
 sailpoint/v2025/test/test_backup_response.py
