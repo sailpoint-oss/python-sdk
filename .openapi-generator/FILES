@@ -11,6 +11,7 @@ sailpoint/v2025/api/account_activities_api.py
 sailpoint/v2025/api/account_aggregations_api.py
 sailpoint/v2025/api/account_usages_api.py
 sailpoint/v2025/api/accounts_api.py
+sailpoint/v2025/api/api_usage_api.py
 sailpoint/v2025/api/application_discovery_api.py
 sailpoint/v2025/api/approvals_api.py
 sailpoint/v2025/api/apps_api.py
@@ -253,6 +254,7 @@ sailpoint/v2025/docs/AdminReviewReassignReassignTo.md
 sailpoint/v2025/docs/AggregationResult.md
 sailpoint/v2025/docs/AggregationType.md
 sailpoint/v2025/docs/Aggregations.md
+sailpoint/v2025/docs/ApiUsageApi.md
 sailpoint/v2025/docs/App.md
 sailpoint/v2025/docs/AppAccountDetails.md
 sailpoint/v2025/docs/AppAccountDetailsSourceAccount.md
@@ -1293,6 +1295,7 @@ sailpoint/v2025/docs/SubscriptionPostRequest.md
 sailpoint/v2025/docs/SubscriptionPutRequest.md
 sailpoint/v2025/docs/SubscriptionType.md
 sailpoint/v2025/docs/SuggestedEntitlementDescriptionApi.md
+sailpoint/v2025/docs/SummaryResponse.md
 sailpoint/v2025/docs/Tag.md
 sailpoint/v2025/docs/TagTagCategoryRefsInner.md
 sailpoint/v2025/docs/TaggedObject.md
@@ -2517,6 +2520,7 @@ sailpoint/v2025/models/subscription_patch_request_inner_value_any_of_inner.py
 sailpoint/v2025/models/subscription_post_request.py
 sailpoint/v2025/models/subscription_put_request.py
 sailpoint/v2025/models/subscription_type.py
+sailpoint/v2025/models/summary_response.py
 sailpoint/v2025/models/tag.py
 sailpoint/v2025/models/tag_tag_category_refs_inner.py
 sailpoint/v2025/models/tagged_object.py
@@ -2778,6 +2782,7 @@ sailpoint/v2025/test/test_admin_review_reassign_reassign_to.py
 sailpoint/v2025/test/test_aggregation_result.py
 sailpoint/v2025/test/test_aggregation_type.py
 sailpoint/v2025/test/test_aggregations.py
+sailpoint/v2025/test/test_api_usage_api.py
 sailpoint/v2025/test/test_app.py
 sailpoint/v2025/test/test_app_account_details.py
 sailpoint/v2025/test/test_app_account_details_source_account.py
@@ -3816,6 +3821,7 @@ sailpoint/v2025/test/test_subscription_post_request.py
 sailpoint/v2025/test/test_subscription_put_request.py
 sailpoint/v2025/test/test_subscription_type.py
 sailpoint/v2025/test/test_suggested_entitlement_description_api.py
+sailpoint/v2025/test/test_summary_response.py
 sailpoint/v2025/test/test_tag.py
 sailpoint/v2025/test/test_tag_tag_category_refs_inner.py
 sailpoint/v2025/test/test_tagged_object.py

@@ -127,6 +127,8 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**submit_reload_account**](sailpoint/v2025/docs/AccountsApi.md#submit_reload_account) | **POST** /accounts/{id}/reload | Reload account
 *AccountsApi* | [**unlock_account**](sailpoint/v2025/docs/AccountsApi.md#unlock_account) | **POST** /accounts/{id}/unlock | Unlock account
 *AccountsApi* | [**update_account**](sailpoint/v2025/docs/AccountsApi.md#update_account) | **PATCH** /accounts/{id} | Update account
+*ApiUsageApi* | [**get_total_count**](sailpoint/v2025/docs/ApiUsageApi.md#get_total_count) | **GET** /api-usage/count | Total number of API requests
+*ApiUsageApi* | [**list_api_summary**](sailpoint/v2025/docs/ApiUsageApi.md#list_api_summary) | **GET** /api-usage/summary | Get Api Summary
 *ApplicationDiscoveryApi* | [**get_discovered_applications**](sailpoint/v2025/docs/ApplicationDiscoveryApi.md#get_discovered_applications) | **GET** /discovered-applications | Get discovered applications for tenant
 *ApplicationDiscoveryApi* | [**get_manual_discover_applications_csv_template**](sailpoint/v2025/docs/ApplicationDiscoveryApi.md#get_manual_discover_applications_csv_template) | **GET** /manual-discover-applications-template | Download csv template for discovery
 *ApplicationDiscoveryApi* | [**send_manual_discover_applications_csv_template**](sailpoint/v2025/docs/ApplicationDiscoveryApi.md#send_manual_discover_applications_csv_template) | **POST** /manual-discover-applications | Upload csv to discover applications
@@ -1937,6 +1939,7 @@ Class | Method | HTTP request | Description
  - [SubscriptionPostRequest](sailpoint/v2025/docs/SubscriptionPostRequest.md)
  - [SubscriptionPutRequest](sailpoint/v2025/docs/SubscriptionPutRequest.md)
  - [SubscriptionType](sailpoint/v2025/docs/SubscriptionType.md)
+ - [SummaryResponse](sailpoint/v2025/docs/SummaryResponse.md)
  - [Tag](sailpoint/v2025/docs/Tag.md)
  - [TagTagCategoryRefsInner](sailpoint/v2025/docs/TagTagCategoryRefsInner.md)
  - [TaggedObject](sailpoint/v2025/docs/TaggedObject.md)

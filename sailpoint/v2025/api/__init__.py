@@ -10,6 +10,7 @@ from sailpoint.v2025.api.account_activities_api import AccountActivitiesApi
 from sailpoint.v2025.api.account_aggregations_api import AccountAggregationsApi
 from sailpoint.v2025.api.account_usages_api import AccountUsagesApi
 from sailpoint.v2025.api.accounts_api import AccountsApi
+from sailpoint.v2025.api.api_usage_api import ApiUsageApi
 from sailpoint.v2025.api.application_discovery_api import ApplicationDiscoveryApi
 from sailpoint.v2025.api.approvals_api import ApprovalsApi
 from sailpoint.v2025.api.apps_api import AppsApi

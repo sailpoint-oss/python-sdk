@@ -1117,6 +1117,7 @@ from sailpoint.v2025.models.subscription_patch_request_inner_value_any_of_inner 
 from sailpoint.v2025.models.subscription_post_request import SubscriptionPostRequest
 from sailpoint.v2025.models.subscription_put_request import SubscriptionPutRequest
 from sailpoint.v2025.models.subscription_type import SubscriptionType
+from sailpoint.v2025.models.summary_response import SummaryResponse
 from sailpoint.v2025.models.tag import Tag
 from sailpoint.v2025.models.tag_tag_category_refs_inner import TagTagCategoryRefsInner
 from sailpoint.v2025.models.tagged_object import TaggedObject
