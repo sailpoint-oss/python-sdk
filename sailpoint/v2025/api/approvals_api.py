@@ -2272,7 +2272,7 @@ class ApprovalsApi:
 
 
     @validate_call
-    def patch_approvals_config_type(
+    def put_approvals_config_type(
         self,
         id: Annotated[StrictStr, Field(description="The ID defined by the scope field, where {id}:{scope} is the following: {approvalID}:APPROVAL_REQUEST {roleID}:ROLE {entitlementID}:ENTITLEMENT {accessProfileID}:ACCESS_PROFILE {sourceID}:SOURCE {applicationID}:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE {tenantID}:TENANT")],
         scope: Annotated[StrictStr, Field(description="The scope of the field, where {id}:{scope} is the following: {approvalID}:APPROVAL_REQUEST {roleID}:ROLE {entitlementID}:ENTITLEMENT {accessProfileID}:ACCESS_PROFILE {sourceID}:SOURCE {applicationID}:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE {tenantID}:TENANT")],
@@ -2290,9 +2290,9 @@ class ApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApprovalConfig:
-        """Patch Approval Config Type
+        """Put Approval Config Type
 
-        Updates a singular approval configuration that matches the given configID and configScope
+        Upserts a singular approval configuration that matches the given configID and configScope
 
         :param id: The ID defined by the scope field, where {id}:{scope} is the following: {approvalID}:APPROVAL_REQUEST {roleID}:ROLE {entitlementID}:ENTITLEMENT {accessProfileID}:ACCESS_PROFILE {sourceID}:SOURCE {applicationID}:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE {tenantID}:TENANT (required)
         :type id: str
@@ -2322,7 +2322,7 @@ class ApprovalsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._patch_approvals_config_type_serialize(
+        _param = self._put_approvals_config_type_serialize(
             id=id,
             scope=scope,
             approval_config=approval_config,
@@ -2353,7 +2353,7 @@ class ApprovalsApi:
 
 
     @validate_call
-    def patch_approvals_config_type_with_http_info(
+    def put_approvals_config_type_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID defined by the scope field, where {id}:{scope} is the following: {approvalID}:APPROVAL_REQUEST {roleID}:ROLE {entitlementID}:ENTITLEMENT {accessProfileID}:ACCESS_PROFILE {sourceID}:SOURCE {applicationID}:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE {tenantID}:TENANT")],
         scope: Annotated[StrictStr, Field(description="The scope of the field, where {id}:{scope} is the following: {approvalID}:APPROVAL_REQUEST {roleID}:ROLE {entitlementID}:ENTITLEMENT {accessProfileID}:ACCESS_PROFILE {sourceID}:SOURCE {applicationID}:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE {tenantID}:TENANT")],
@@ -2371,9 +2371,9 @@ class ApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ApprovalConfig]:
-        """Patch Approval Config Type
+        """Put Approval Config Type
 
-        Updates a singular approval configuration that matches the given configID and configScope
+        Upserts a singular approval configuration that matches the given configID and configScope
 
         :param id: The ID defined by the scope field, where {id}:{scope} is the following: {approvalID}:APPROVAL_REQUEST {roleID}:ROLE {entitlementID}:ENTITLEMENT {accessProfileID}:ACCESS_PROFILE {sourceID}:SOURCE {applicationID}:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE {tenantID}:TENANT (required)
         :type id: str
@@ -2403,7 +2403,7 @@ class ApprovalsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._patch_approvals_config_type_serialize(
+        _param = self._put_approvals_config_type_serialize(
             id=id,
             scope=scope,
             approval_config=approval_config,
@@ -2434,7 +2434,7 @@ class ApprovalsApi:
 
 
     @validate_call
-    def patch_approvals_config_type_without_preload_content(
+    def put_approvals_config_type_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID defined by the scope field, where {id}:{scope} is the following: {approvalID}:APPROVAL_REQUEST {roleID}:ROLE {entitlementID}:ENTITLEMENT {accessProfileID}:ACCESS_PROFILE {sourceID}:SOURCE {applicationID}:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE {tenantID}:TENANT")],
         scope: Annotated[StrictStr, Field(description="The scope of the field, where {id}:{scope} is the following: {approvalID}:APPROVAL_REQUEST {roleID}:ROLE {entitlementID}:ENTITLEMENT {accessProfileID}:ACCESS_PROFILE {sourceID}:SOURCE {applicationID}:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE {tenantID}:TENANT")],
@@ -2452,9 +2452,9 @@ class ApprovalsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Patch Approval Config Type
+        """Put Approval Config Type
 
-        Updates a singular approval configuration that matches the given configID and configScope
+        Upserts a singular approval configuration that matches the given configID and configScope
 
         :param id: The ID defined by the scope field, where {id}:{scope} is the following: {approvalID}:APPROVAL_REQUEST {roleID}:ROLE {entitlementID}:ENTITLEMENT {accessProfileID}:ACCESS_PROFILE {sourceID}:SOURCE {applicationID}:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE {tenantID}:TENANT (required)
         :type id: str
@@ -2484,7 +2484,7 @@ class ApprovalsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._patch_approvals_config_type_serialize(
+        _param = self._put_approvals_config_type_serialize(
             id=id,
             scope=scope,
             approval_config=approval_config,
@@ -2510,7 +2510,7 @@ class ApprovalsApi:
         return response_data.response
 
 
-    def _patch_approvals_config_type_serialize(
+    def _put_approvals_config_type_serialize(
         self,
         id,
         scope,
@@ -2581,7 +2581,7 @@ class ApprovalsApi:
         ]
 
         return self.api_client.param_serialize(
-            method='PATCH',
+            method='PUT',
             resource_path='/generic-approvals/config',
             path_params=_path_params,
             query_params=_query_params,

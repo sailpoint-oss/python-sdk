@@ -75,10 +75,10 @@ class TestApprovalsApi(unittest.TestCase):
         """
         pass
 
-    def test_patch_approvals_config_type(self) -> None:
-        """Test case for patch_approvals_config_type
+    def test_put_approvals_config_type(self) -> None:
+        """Test case for put_approvals_config_type
 
-        Patch Approval Config Type
+        Put Approval Config Type
         """
         pass
 
