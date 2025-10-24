@@ -30,13 +30,14 @@ class AttributeDefinition(BaseModel):
     AttributeDefinition
     """ # noqa: E501
     name: Optional[StrictStr] = Field(default=None, description="The name of the attribute.")
+    native_name: Optional[StrictStr] = Field(default=None, description="Attribute name in the native system.", alias="nativeName")
     type: Optional[AttributeDefinitionType] = None
     var_schema: Optional[AttributeDefinitionSchema] = Field(default=None, alias="schema")
     description: Optional[StrictStr] = Field(default=None, description="A human-readable description of the attribute.")
     is_multi: Optional[StrictBool] = Field(default=False, description="Flag indicating whether or not the attribute is multi-valued.", alias="isMulti")
     is_entitlement: Optional[StrictBool] = Field(default=False, description="Flag indicating whether or not the attribute is an entitlement.", alias="isEntitlement")
     is_group: Optional[StrictBool] = Field(default=False, description="Flag indicating whether or not the attribute represents a group. This can only be `true` if `isEntitlement` is also `true` **and** there is a schema defined for the attribute.. ", alias="isGroup")
-    __properties: ClassVar[List[str]] = ["name", "type", "schema", "description", "isMulti", "isEntitlement", "isGroup"]
+    __properties: ClassVar[List[str]] = ["name", "nativeName", "type", "schema", "description", "isMulti", "isEntitlement", "isGroup"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,6 +81,11 @@ class AttributeDefinition(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of var_schema
         if self.var_schema:
             _dict['schema'] = self.var_schema.to_dict()
+        # set to None if native_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.native_name is None and "native_name" in self.model_fields_set:
+            _dict['nativeName'] = None
+
         # set to None if var_schema (nullable) is None
         # and model_fields_set contains the field
         if self.var_schema is None and "var_schema" in self.model_fields_set:
@@ -98,6 +104,7 @@ class AttributeDefinition(BaseModel):
 
         _obj = cls.model_validate({
             "name": obj.get("name"),
+            "nativeName": obj.get("nativeName"),
             "type": obj.get("type"),
             "schema": AttributeDefinitionSchema.from_dict(obj["schema"]) if obj.get("schema") is not None else None,
             "description": obj.get("description"),

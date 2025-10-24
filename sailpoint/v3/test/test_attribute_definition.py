@@ -36,6 +36,7 @@ class TestAttributeDefinition(unittest.TestCase):
         if include_optional:
             return AttributeDefinition(
                 name = 'sAMAccountName',
+                native_name = 'sAMAccountName',
                 type = 'STRING',
                 var_schema = sailpoint.v3.models.attribute_definition_schema.AttributeDefinition_schema(
                     type = 'CONNECTOR_SCHEMA', 
