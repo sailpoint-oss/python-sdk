@@ -52,7 +52,7 @@ Creates a new custom user level for the tenant.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
    | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
- Body  | user_level_request | [**UserLevelRequest**](../models/user-level-request) | True  | Payload containing the details of the user level to be created.
+ Body  | user_level_request | [**UserLevelRequest**](../models/user-level-request) | True  | Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
 
 ### Return type
 [**UserLevelSummaryDTO**](../models/user-level-summary-dto)
@@ -112,7 +112,7 @@ with ApiClient(configuration) as api_client:
           "rightSets" : [ "idn:ui-right-set-list-read-example", "idn:ui-right-set-write-example" ],
           "name" : "Custom User Level Name",
           "description" : "This is a description of the custom user level."
-        }''' # UserLevelRequest | Payload containing the details of the user level to be created.
+        }''' # UserLevelRequest | Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
 
     try:
         # Create a custom user level
@@ -531,7 +531,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
    | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
 Path   | id | **str** | True  | The unique identifier of the user level.
- Body  | json_patch | [**JsonPatch**](../models/json-patch) | True  | JSON Patch payload for updating the user level.
+ Body  | json_patch | [**JsonPatch**](../models/json-patch) | True  | JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
 
 ### Return type
 [**UserLevelSummaryDTO**](../models/user-level-summary-dto)
@@ -576,7 +576,7 @@ with ApiClient(configuration) as api_client:
             "path" : "/description",
             "value" : "New description"
           } ]
-        }''' # JsonPatch | JSON Patch payload for updating the user level.
+        }''' # JsonPatch | JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
 
     try:
         # Update a user level

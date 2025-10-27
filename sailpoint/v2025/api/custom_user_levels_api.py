@@ -46,7 +46,7 @@ class CustomUserLevelsApi:
     @validate_call
     def create_custom_user_level(
         self,
-        user_level_request: Annotated[UserLevelRequest, Field(description="Payload containing the details of the user level to be created.")],
+        user_level_request: Annotated[UserLevelRequest, Field(description="Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. ")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -67,7 +67,7 @@ class CustomUserLevelsApi:
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param user_level_request: Payload containing the details of the user level to be created. (required)
+        :param user_level_request: Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case.  (required)
         :type user_level_request: UserLevelRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -123,7 +123,7 @@ class CustomUserLevelsApi:
     @validate_call
     def create_custom_user_level_with_http_info(
         self,
-        user_level_request: Annotated[UserLevelRequest, Field(description="Payload containing the details of the user level to be created.")],
+        user_level_request: Annotated[UserLevelRequest, Field(description="Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. ")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -144,7 +144,7 @@ class CustomUserLevelsApi:
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param user_level_request: Payload containing the details of the user level to be created. (required)
+        :param user_level_request: Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case.  (required)
         :type user_level_request: UserLevelRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -200,7 +200,7 @@ class CustomUserLevelsApi:
     @validate_call
     def create_custom_user_level_without_preload_content(
         self,
-        user_level_request: Annotated[UserLevelRequest, Field(description="Payload containing the details of the user level to be created.")],
+        user_level_request: Annotated[UserLevelRequest, Field(description="Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. ")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -221,7 +221,7 @@ class CustomUserLevelsApi:
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param user_level_request: Payload containing the details of the user level to be created. (required)
+        :param user_level_request: Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case.  (required)
         :type user_level_request: UserLevelRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1953,7 +1953,7 @@ class CustomUserLevelsApi:
     def update_user_level(
         self,
         id: Annotated[StrictStr, Field(description="The unique identifier of the user level.")],
-        json_patch: Annotated[JsonPatch, Field(description="JSON Patch payload for updating the user level.")],
+        json_patch: Annotated[JsonPatch, Field(description="JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. ")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -1976,7 +1976,7 @@ class CustomUserLevelsApi:
         :type x_sail_point_experimental: str
         :param id: The unique identifier of the user level. (required)
         :type id: str
-        :param json_patch: JSON Patch payload for updating the user level. (required)
+        :param json_patch: JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case.  (required)
         :type json_patch: JsonPatch
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2034,7 +2034,7 @@ class CustomUserLevelsApi:
     def update_user_level_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The unique identifier of the user level.")],
-        json_patch: Annotated[JsonPatch, Field(description="JSON Patch payload for updating the user level.")],
+        json_patch: Annotated[JsonPatch, Field(description="JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. ")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -2057,7 +2057,7 @@ class CustomUserLevelsApi:
         :type x_sail_point_experimental: str
         :param id: The unique identifier of the user level. (required)
         :type id: str
-        :param json_patch: JSON Patch payload for updating the user level. (required)
+        :param json_patch: JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case.  (required)
         :type json_patch: JsonPatch
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2115,7 +2115,7 @@ class CustomUserLevelsApi:
     def update_user_level_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The unique identifier of the user level.")],
-        json_patch: Annotated[JsonPatch, Field(description="JSON Patch payload for updating the user level.")],
+        json_patch: Annotated[JsonPatch, Field(description="JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. ")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -2138,7 +2138,7 @@ class CustomUserLevelsApi:
         :type x_sail_point_experimental: str
         :param id: The unique identifier of the user level. (required)
         :type id: str
-        :param json_patch: JSON Patch payload for updating the user level. (required)
+        :param json_patch: JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case.  (required)
         :type json_patch: JsonPatch
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
