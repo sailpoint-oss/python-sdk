@@ -54,6 +54,20 @@ class TestCustomUserLevelsApi(unittest.TestCase):
         """
         pass
 
+    def test_list_user_level_counts(self) -> None:
+        """Test case for list_user_level_counts
+
+        Count user levels identities
+        """
+        pass
+
+    def test_list_user_level_identities(self) -> None:
+        """Test case for list_user_level_identities
+
+        List user level identities
+        """
+        pass
+
     def test_list_user_levels(self) -> None:
         """Test case for list_user_levels
 

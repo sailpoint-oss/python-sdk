@@ -56,7 +56,7 @@ class TestManagedClient(unittest.TestCase):
                 created_at = '2023-08-04T20:48:01.865Z',
                 updated_at = '2023-08-04T20:48:01.865Z',
                 provision_status = 'PROVISIONED',
-                health_indicators = { "network": { "errors": [], "warnings": [] }, "memory": { "errors": [], "warnings": [] }, "cpu": { "errors": [], "warnings": [] } }
+                health_indicators = {network={errors=[], warnings=[]}, memory={errors=[], warnings=[]}, cpu={errors=[], warnings=[]}}
             )
         else:
             return ManagedClient(

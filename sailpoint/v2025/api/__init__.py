@@ -16,7 +16,6 @@ from sailpoint.v2025.api.approvals_api import ApprovalsApi
 from sailpoint.v2025.api.apps_api import AppsApi
 from sailpoint.v2025.api.auth_profile_api import AuthProfileApi
 from sailpoint.v2025.api.auth_users_api import AuthUsersApi
-from sailpoint.v2025.api.authorization_api import AuthorizationApi
 from sailpoint.v2025.api.branding_api import BrandingApi
 from sailpoint.v2025.api.certification_campaign_filters_api import CertificationCampaignFiltersApi
 from sailpoint.v2025.api.certification_campaigns_api import CertificationCampaignsApi

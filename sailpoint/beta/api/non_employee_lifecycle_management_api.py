@@ -6127,7 +6127,7 @@ class NonEmployeeLifecycleManagementApi:
     ) -> List[NonEmployeeSchemaAttribute]:
         """(Deprecated) List schema attributes non-employee source
 
-        This API gets the list of schema attributes for the specified Non-Employee SourceId. There are 8 mandatory attributes added to each new Non-Employee Source automatically. Additionaly, user can add up to 10 custom attributes. This interface returns all the mandatory attributes followed by any custom attributes. At most, a total of 18 attributes will be returned.
+        This API gets the list of schema attributes for the specified Non-Employee SourceId. There are 8 mandatory attributes added to each new Non-Employee Source automatically. Additionaly, user can add up to 10 custom attributes. This interface returns all the mandatory attributes followed by any custom attributes. At most, a total of 18 attributes will be returned. 
 
         :param source_id: The Source id (required)
         :type source_id: str
@@ -6209,7 +6209,7 @@ class NonEmployeeLifecycleManagementApi:
     ) -> ApiResponse[List[NonEmployeeSchemaAttribute]]:
         """(Deprecated) List schema attributes non-employee source
 
-        This API gets the list of schema attributes for the specified Non-Employee SourceId. There are 8 mandatory attributes added to each new Non-Employee Source automatically. Additionaly, user can add up to 10 custom attributes. This interface returns all the mandatory attributes followed by any custom attributes. At most, a total of 18 attributes will be returned.
+        This API gets the list of schema attributes for the specified Non-Employee SourceId. There are 8 mandatory attributes added to each new Non-Employee Source automatically. Additionaly, user can add up to 10 custom attributes. This interface returns all the mandatory attributes followed by any custom attributes. At most, a total of 18 attributes will be returned. 
 
         :param source_id: The Source id (required)
         :type source_id: str
@@ -6291,7 +6291,7 @@ class NonEmployeeLifecycleManagementApi:
     ) -> RESTResponseType:
         """(Deprecated) List schema attributes non-employee source
 
-        This API gets the list of schema attributes for the specified Non-Employee SourceId. There are 8 mandatory attributes added to each new Non-Employee Source automatically. Additionaly, user can add up to 10 custom attributes. This interface returns all the mandatory attributes followed by any custom attributes. At most, a total of 18 attributes will be returned.
+        This API gets the list of schema attributes for the specified Non-Employee SourceId. There are 8 mandatory attributes added to each new Non-Employee Source automatically. Additionaly, user can add up to 10 custom attributes. This interface returns all the mandatory attributes followed by any custom attributes. At most, a total of 18 attributes will be returned. 
 
         :param source_id: The Source id (required)
         :type source_id: str
