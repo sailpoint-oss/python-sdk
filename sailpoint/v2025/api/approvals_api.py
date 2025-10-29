@@ -2274,8 +2274,8 @@ class ApprovalsApi:
     @validate_call
     def put_approvals_config_type(
         self,
-        id: Annotated[StrictStr, Field(description="The ID defined by the scope field, where {id}:{scope} is the following: {approvalID}:APPROVAL_REQUEST {roleID}:ROLE {entitlementID}:ENTITLEMENT {accessProfileID}:ACCESS_PROFILE {sourceID}:SOURCE {applicationID}:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE {tenantID}:TENANT")],
-        scope: Annotated[StrictStr, Field(description="The scope of the field, where {id}:{scope} is the following: {approvalID}:APPROVAL_REQUEST {roleID}:ROLE {entitlementID}:ENTITLEMENT {accessProfileID}:ACCESS_PROFILE {sourceID}:SOURCE {applicationID}:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE {tenantID}:TENANT")],
+        id: Annotated[StrictStr, Field(description="The ID defined by the scope field, where [[id]]:[[scope]] is the following: [[approvalID]]:APPROVAL_REQUEST [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT ")],
+        scope: Annotated[StrictStr, Field(description="The scope of the field, where [[id]]:[[scope]] is the following: [[approvalID]]:APPROVAL_REQUEST [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT ")],
         approval_config: ApprovalConfig,
         _request_timeout: Union[
             None,
@@ -2294,9 +2294,9 @@ class ApprovalsApi:
 
         Upserts a singular approval configuration that matches the given configID and configScope
 
-        :param id: The ID defined by the scope field, where {id}:{scope} is the following: {approvalID}:APPROVAL_REQUEST {roleID}:ROLE {entitlementID}:ENTITLEMENT {accessProfileID}:ACCESS_PROFILE {sourceID}:SOURCE {applicationID}:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE {tenantID}:TENANT (required)
+        :param id: The ID defined by the scope field, where [[id]]:[[scope]] is the following: [[approvalID]]:APPROVAL_REQUEST [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT  (required)
         :type id: str
-        :param scope: The scope of the field, where {id}:{scope} is the following: {approvalID}:APPROVAL_REQUEST {roleID}:ROLE {entitlementID}:ENTITLEMENT {accessProfileID}:ACCESS_PROFILE {sourceID}:SOURCE {applicationID}:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE {tenantID}:TENANT (required)
+        :param scope: The scope of the field, where [[id]]:[[scope]] is the following: [[approvalID]]:APPROVAL_REQUEST [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT  (required)
         :type scope: str
         :param approval_config: (required)
         :type approval_config: ApprovalConfig
@@ -2355,8 +2355,8 @@ class ApprovalsApi:
     @validate_call
     def put_approvals_config_type_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID defined by the scope field, where {id}:{scope} is the following: {approvalID}:APPROVAL_REQUEST {roleID}:ROLE {entitlementID}:ENTITLEMENT {accessProfileID}:ACCESS_PROFILE {sourceID}:SOURCE {applicationID}:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE {tenantID}:TENANT")],
-        scope: Annotated[StrictStr, Field(description="The scope of the field, where {id}:{scope} is the following: {approvalID}:APPROVAL_REQUEST {roleID}:ROLE {entitlementID}:ENTITLEMENT {accessProfileID}:ACCESS_PROFILE {sourceID}:SOURCE {applicationID}:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE {tenantID}:TENANT")],
+        id: Annotated[StrictStr, Field(description="The ID defined by the scope field, where [[id]]:[[scope]] is the following: [[approvalID]]:APPROVAL_REQUEST [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT ")],
+        scope: Annotated[StrictStr, Field(description="The scope of the field, where [[id]]:[[scope]] is the following: [[approvalID]]:APPROVAL_REQUEST [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT ")],
         approval_config: ApprovalConfig,
         _request_timeout: Union[
             None,
@@ -2375,9 +2375,9 @@ class ApprovalsApi:
 
         Upserts a singular approval configuration that matches the given configID and configScope
 
-        :param id: The ID defined by the scope field, where {id}:{scope} is the following: {approvalID}:APPROVAL_REQUEST {roleID}:ROLE {entitlementID}:ENTITLEMENT {accessProfileID}:ACCESS_PROFILE {sourceID}:SOURCE {applicationID}:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE {tenantID}:TENANT (required)
+        :param id: The ID defined by the scope field, where [[id]]:[[scope]] is the following: [[approvalID]]:APPROVAL_REQUEST [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT  (required)
         :type id: str
-        :param scope: The scope of the field, where {id}:{scope} is the following: {approvalID}:APPROVAL_REQUEST {roleID}:ROLE {entitlementID}:ENTITLEMENT {accessProfileID}:ACCESS_PROFILE {sourceID}:SOURCE {applicationID}:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE {tenantID}:TENANT (required)
+        :param scope: The scope of the field, where [[id]]:[[scope]] is the following: [[approvalID]]:APPROVAL_REQUEST [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT  (required)
         :type scope: str
         :param approval_config: (required)
         :type approval_config: ApprovalConfig
@@ -2436,8 +2436,8 @@ class ApprovalsApi:
     @validate_call
     def put_approvals_config_type_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID defined by the scope field, where {id}:{scope} is the following: {approvalID}:APPROVAL_REQUEST {roleID}:ROLE {entitlementID}:ENTITLEMENT {accessProfileID}:ACCESS_PROFILE {sourceID}:SOURCE {applicationID}:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE {tenantID}:TENANT")],
-        scope: Annotated[StrictStr, Field(description="The scope of the field, where {id}:{scope} is the following: {approvalID}:APPROVAL_REQUEST {roleID}:ROLE {entitlementID}:ENTITLEMENT {accessProfileID}:ACCESS_PROFILE {sourceID}:SOURCE {applicationID}:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE {tenantID}:TENANT")],
+        id: Annotated[StrictStr, Field(description="The ID defined by the scope field, where [[id]]:[[scope]] is the following: [[approvalID]]:APPROVAL_REQUEST [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT ")],
+        scope: Annotated[StrictStr, Field(description="The scope of the field, where [[id]]:[[scope]] is the following: [[approvalID]]:APPROVAL_REQUEST [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT ")],
         approval_config: ApprovalConfig,
         _request_timeout: Union[
             None,
@@ -2456,9 +2456,9 @@ class ApprovalsApi:
 
         Upserts a singular approval configuration that matches the given configID and configScope
 
-        :param id: The ID defined by the scope field, where {id}:{scope} is the following: {approvalID}:APPROVAL_REQUEST {roleID}:ROLE {entitlementID}:ENTITLEMENT {accessProfileID}:ACCESS_PROFILE {sourceID}:SOURCE {applicationID}:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE {tenantID}:TENANT (required)
+        :param id: The ID defined by the scope field, where [[id]]:[[scope]] is the following: [[approvalID]]:APPROVAL_REQUEST [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT  (required)
         :type id: str
-        :param scope: The scope of the field, where {id}:{scope} is the following: {approvalID}:APPROVAL_REQUEST {roleID}:ROLE {entitlementID}:ENTITLEMENT {accessProfileID}:ACCESS_PROFILE {sourceID}:SOURCE {applicationID}:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE {tenantID}:TENANT (required)
+        :param scope: The scope of the field, where [[id]]:[[scope]] is the following: [[approvalID]]:APPROVAL_REQUEST [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE CUSTOM_ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE GENERIC_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT  (required)
         :type scope: str
         :param approval_config: (required)
         :type approval_config: ApprovalConfig
