@@ -284,10 +284,10 @@ Class | Method | HTTP request | Description
 *CustomUserLevelsApi* | [**delete_user_level**](sailpoint/v2025/docs/CustomUserLevelsApi.md#delete_user_level) | **DELETE** /authorization/custom-user-levels/{id} | Delete a user level
 *CustomUserLevelsApi* | [**get_user_level**](sailpoint/v2025/docs/CustomUserLevelsApi.md#get_user_level) | **GET** /authorization/custom-user-levels/{id} | Retrieve a user level
 *CustomUserLevelsApi* | [**list_all_authorization_right_sets**](sailpoint/v2025/docs/CustomUserLevelsApi.md#list_all_authorization_right_sets) | **GET** /authorization/authorization-assignable-right-sets | List all uiAssignable right sets
-*CustomUserLevelsApi* | [**list_user_level_counts**](sailpoint/v2025/docs/CustomUserLevelsApi.md#list_user_level_counts) | **POST** /authorization/user-levels/get-identity-count | Count user levels identities
 *CustomUserLevelsApi* | [**list_user_level_identities**](sailpoint/v2025/docs/CustomUserLevelsApi.md#list_user_level_identities) | **GET** /authorization/user-levels/{id}/identities | List user level identities
 *CustomUserLevelsApi* | [**list_user_levels**](sailpoint/v2025/docs/CustomUserLevelsApi.md#list_user_levels) | **GET** /authorization/custom-user-levels | List user levels
 *CustomUserLevelsApi* | [**publish_custom_user_level**](sailpoint/v2025/docs/CustomUserLevelsApi.md#publish_custom_user_level) | **POST** /authorization/custom-user-levels/{id}/publish | Publish a custom user level
+*CustomUserLevelsApi* | [**show_user_level_counts**](sailpoint/v2025/docs/CustomUserLevelsApi.md#show_user_level_counts) | **POST** /authorization/user-levels/get-identity-count | Count user levels identities
 *CustomUserLevelsApi* | [**update_user_level**](sailpoint/v2025/docs/CustomUserLevelsApi.md#update_user_level) | **PATCH** /authorization/custom-user-levels/{id} | Update a user level
 *DataSegmentationApi* | [**create_data_segment**](sailpoint/v2025/docs/DataSegmentationApi.md#create_data_segment) | **POST** /data-segments | Create segment
 *DataSegmentationApi* | [**delete_data_segment**](sailpoint/v2025/docs/DataSegmentationApi.md#delete_data_segment) | **DELETE** /data-segments/{segmentId} | Delete segment by id
