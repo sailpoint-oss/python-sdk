@@ -61,10 +61,10 @@ class TestApprovalsApi(unittest.TestCase):
         """
         pass
 
-    def test_get_approvals_config_id_type(self) -> None:
-        """Test case for get_approvals_config_id_type
+    def test_get_approvals_config(self) -> None:
+        """Test case for get_approvals_config
 
-        Get Approval Config Type
+        Get Approval Config
         """
         pass
 
@@ -75,10 +75,10 @@ class TestApprovalsApi(unittest.TestCase):
         """
         pass
 
-    def test_put_approvals_config_type(self) -> None:
-        """Test case for put_approvals_config_type
+    def test_put_approvals_config(self) -> None:
+        """Test case for put_approvals_config
 
-        Put Approval Config Type
+        Put Approval Config
         """
         pass
 

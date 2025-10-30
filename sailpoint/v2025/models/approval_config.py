@@ -34,7 +34,7 @@ class ApprovalConfig(BaseModel):
     """ # noqa: E501
     tenant_id: Optional[StrictStr] = Field(default=None, description="Tenant ID of the approval configuration.", alias="tenantId")
     id: Optional[StrictStr] = Field(default=None, description="ID of the approval configuration.")
-    scope: Optional[StrictStr] = Field(default=None, description="The type/scope of the configuration. Ie APPROVAL_REQUEST, DOMAIN_OBJECT, APPROVAL_TYPE, TENANT")
+    scope: Optional[StrictStr] = Field(default=None, description="The type/scope of the configuration. Ie DOMAIN_OBJECT, APPROVAL_TYPE, TENANT")
     reminder_config: Optional[ApprovalConfigReminderConfig] = Field(default=None, alias="reminderConfig")
     escalation_config: Optional[ApprovalConfigEscalationConfig] = Field(default=None, alias="escalationConfig")
     timeout_config: Optional[ApprovalConfigTimeoutConfig] = Field(default=None, alias="timeoutConfig")

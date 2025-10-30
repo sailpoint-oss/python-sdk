@@ -137,9 +137,9 @@ Class | Method | HTTP request | Description
 *ApprovalsApi* | [**cancel_approval**](sailpoint/v2025/docs/ApprovalsApi.md#cancel_approval) | **POST** /generic-approvals/bulk-cancel | Post Bulk Cancel Approvals
 *ApprovalsApi* | [**get_approval**](sailpoint/v2025/docs/ApprovalsApi.md#get_approval) | **GET** /generic-approvals/{id} | Get an approval
 *ApprovalsApi* | [**get_approvals**](sailpoint/v2025/docs/ApprovalsApi.md#get_approvals) | **GET** /generic-approvals | Get approvals
-*ApprovalsApi* | [**get_approvals_config_id_type**](sailpoint/v2025/docs/ApprovalsApi.md#get_approvals_config_id_type) | **GET** /generic-approvals/config | Get Approval Config Type
+*ApprovalsApi* | [**get_approvals_config**](sailpoint/v2025/docs/ApprovalsApi.md#get_approvals_config) | **GET** /generic-approvals/config/{id} | Get Approval Config
 *ApprovalsApi* | [**move_approval**](sailpoint/v2025/docs/ApprovalsApi.md#move_approval) | **POST** /generic-approvals/bulk-reassign | Post Bulk Reassign Approvals
-*ApprovalsApi* | [**put_approvals_config_type**](sailpoint/v2025/docs/ApprovalsApi.md#put_approvals_config_type) | **PUT** /generic-approvals/config | Put Approval Config Type
+*ApprovalsApi* | [**put_approvals_config**](sailpoint/v2025/docs/ApprovalsApi.md#put_approvals_config) | **PUT** /generic-approvals/config | Put Approval Config
 *ApprovalsApi* | [**reject_approval**](sailpoint/v2025/docs/ApprovalsApi.md#reject_approval) | **POST** /generic-approvals/{id}/reject | Post Approvals Reject
 *ApprovalsApi* | [**reject_approval_0**](sailpoint/v2025/docs/ApprovalsApi.md#reject_approval_0) | **POST** /generic-approvals/bulk-reject | Post Bulk Reject Approvals
 *ApprovalsApi* | [**update_approvals_attributes**](sailpoint/v2025/docs/ApprovalsApi.md#update_approvals_attributes) | **POST** /generic-approvals/{id}/attributes | Post Approvals Attributes
