@@ -1493,9 +1493,9 @@ class WorkflowsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[WorkflowExecutionEvent]:
-        """Get workflow execution history
+        """(Deprecated) Get workflow execution history
 
-        Get a detailed history of a single workflow execution.  Workflow executions are available for up to 90 days before being archived.  If you attempt to access a workflow execution that has been archived, you will receive a 404 Not Found.
+        [Deprecated] This endpoint will be removed in October 2027. Please use `/workflow-executions/{id}/history-v2` instead. Retrieves the detailed history of a single workflow execution. Workflow executions are available for up to 90 days before being archived; accessing an archived execution will return a 404 Not Found.
 
         :param id: Id of the workflow execution (required)
         :type id: str
@@ -1520,6 +1520,7 @@ class WorkflowsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /workflow-executions/{id}/history is deprecated.", DeprecationWarning)
 
         _param = self._get_workflow_execution_history_serialize(
             id=id,
@@ -1566,9 +1567,9 @@ class WorkflowsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[WorkflowExecutionEvent]]:
-        """Get workflow execution history
+        """(Deprecated) Get workflow execution history
 
-        Get a detailed history of a single workflow execution.  Workflow executions are available for up to 90 days before being archived.  If you attempt to access a workflow execution that has been archived, you will receive a 404 Not Found.
+        [Deprecated] This endpoint will be removed in October 2027. Please use `/workflow-executions/{id}/history-v2` instead. Retrieves the detailed history of a single workflow execution. Workflow executions are available for up to 90 days before being archived; accessing an archived execution will return a 404 Not Found.
 
         :param id: Id of the workflow execution (required)
         :type id: str
@@ -1593,6 +1594,7 @@ class WorkflowsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /workflow-executions/{id}/history is deprecated.", DeprecationWarning)
 
         _param = self._get_workflow_execution_history_serialize(
             id=id,
@@ -1639,9 +1641,9 @@ class WorkflowsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get workflow execution history
+        """(Deprecated) Get workflow execution history
 
-        Get a detailed history of a single workflow execution.  Workflow executions are available for up to 90 days before being archived.  If you attempt to access a workflow execution that has been archived, you will receive a 404 Not Found.
+        [Deprecated] This endpoint will be removed in October 2027. Please use `/workflow-executions/{id}/history-v2` instead. Retrieves the detailed history of a single workflow execution. Workflow executions are available for up to 90 days before being archived; accessing an archived execution will return a 404 Not Found.
 
         :param id: Id of the workflow execution (required)
         :type id: str
@@ -1666,6 +1668,7 @@ class WorkflowsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /workflow-executions/{id}/history is deprecated.", DeprecationWarning)
 
         _param = self._get_workflow_execution_history_serialize(
             id=id,
