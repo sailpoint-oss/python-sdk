@@ -3,7 +3,7 @@ packageName: sailpoint.v3
 packageVersion: 1.3.9
 apiVersion: v3
 generateSourceCodeOnly: true
-functionPrefix: V3
+functionPrefix:
 subModuleName: V3
 files:
   developerSite_code_examples.mustache:

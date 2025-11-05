@@ -130,7 +130,7 @@ jobs:
 
       - name: After SDK Build
         id: buildSDK
-        if: steps.buildV2025.outcome == 'success'
+        if: steps.buildV2026.outcome == 'success'
         shell: pwsh
         run: |
           pip install -r requirements.txt
