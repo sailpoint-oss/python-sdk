@@ -1,17 +1,17 @@
 templateDir: ./sdk-resources/resources
-packageName: sailpoint.v2025
+packageName: sailpoint.v2026
 packageVersion: 1.3.9
-apiVersion: v2025
+apiVersion: v2026
 generateSourceCodeOnly: true
-functionPrefix: V2025
-subModuleName: V2025
+functionPrefix: V2026
+subModuleName: V2026
 files:
   developerSite_code_examples.mustache:
     templateType: SupportingFiles
-    destinationFilename: sailpoint/v2025/docs/Examples/python_code_examples_overlay.yaml
+    destinationFilename: sailpoint/v2026/docs/Examples/python_code_examples_overlay.yaml
   docs_methods_index.mustache:
     templateType: SupportingFiles
-    destinationFilename: sailpoint/v2025/docs/Methods/Index.md
+    destinationFilename: sailpoint/v2026/docs/Methods/Index.md
   docs_models_index.mustache:
     templateType: SupportingFiles
-    destinationFilename: sailpoint/v2025/Index.md
+    destinationFilename: sailpoint/v2026/Index.md

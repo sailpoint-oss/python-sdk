@@ -3,7 +3,7 @@ packageName: sailpoint.beta
 packageVersion: 1.3.9
 apiVersion: beta
 generateSourceCodeOnly: true
-funtionPrefix: Beta
+functionPrefix: Beta
 subModuleName: Beta
 files:
   developerSite_code_examples.mustache:

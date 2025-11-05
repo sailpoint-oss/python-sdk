@@ -1,10 +1,13 @@
 import unittest
-import sailpoint.v2024
-import sailpoint.v3
+
 import sailpoint.beta
-from sailpoint.v3.models.search import Search
+import sailpoint.v3
+import sailpoint.v2024
+import sailpoint.v2026
 from sailpoint.configuration import Configuration, ConfigurationParams
 from sailpoint.paginator import Paginator
+from sailpoint.v3.models.search import Search
+
 
 class TestPythonSDK(unittest.TestCase):
 
@@ -13,6 +16,7 @@ class TestPythonSDK(unittest.TestCase):
     beta_api_client = sailpoint.beta.ApiClient(configuration)
     configuration.experimental = True
     v2024_api_client = sailpoint.v2024.ApiClient(configuration)
+    v2026_api_client = sailpoint.v2026.ApiClient(configuration)
 
 
     def test_manual_configuration(self):
@@ -79,6 +83,11 @@ class TestPythonSDK(unittest.TestCase):
         identities = sailpoint.v2024.IdentitiesApi(self.v2024_api_client).list_identities_with_http_info()
         self.assertIsNotNone(identities.data)
         self.assertEqual(200, identities.status_code)
+
+    def test_list_identities_with_v2026_endpoint(self):
+        tasks = sailpoint.v2026.TaskManagementApi(self.v2026_api_client).get_task_status_list_with_http_info()
+        self.assertIsNotNone(tasks.data)
+        self.assertEqual(200, tasks.status_code)
 
 if __name__ == '__main__':
     unittest.main()
