@@ -3,7 +3,7 @@ packageName: sailpoint.v2024
 packageVersion: 1.3.9
 apiVersion: v2024
 generateSourceCodeOnly: true
-funtionPrefix: V2024
+functionPrefix: V2024
 subModuleName: V2024
 files:
   developerSite_code_examples.mustache:
