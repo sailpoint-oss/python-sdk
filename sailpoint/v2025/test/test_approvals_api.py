@@ -33,8 +33,8 @@ class TestApprovalsApi(unittest.TestCase):
         """
         pass
 
-    def test_approve_approval_0(self) -> None:
-        """Test case for approve_approval_0
+    def test_approve_approval_in_bulk(self) -> None:
+        """Test case for approve_approval_in_bulk
 
         Post Bulk Approve Approvals
         """
@@ -89,8 +89,8 @@ class TestApprovalsApi(unittest.TestCase):
         """
         pass
 
-    def test_reject_approval_0(self) -> None:
-        """Test case for reject_approval_0
+    def test_reject_approval_in_bulk(self) -> None:
+        """Test case for reject_approval_in_bulk
 
         Post Bulk Reject Approvals
         """

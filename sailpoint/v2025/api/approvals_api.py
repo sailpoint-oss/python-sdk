@@ -358,7 +358,7 @@ class ApprovalsApi:
 
 
     @validate_call
-    def approve_approval_0(
+    def approve_approval_in_bulk(
         self,
         bulk_approve_request_dto: BulkApproveRequestDTO,
         _request_timeout: Union[
@@ -402,7 +402,7 @@ class ApprovalsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._approve_approval_0_serialize(
+        _param = self._approve_approval_in_bulk_serialize(
             bulk_approve_request_dto=bulk_approve_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -431,7 +431,7 @@ class ApprovalsApi:
 
 
     @validate_call
-    def approve_approval_0_with_http_info(
+    def approve_approval_in_bulk_with_http_info(
         self,
         bulk_approve_request_dto: BulkApproveRequestDTO,
         _request_timeout: Union[
@@ -475,7 +475,7 @@ class ApprovalsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._approve_approval_0_serialize(
+        _param = self._approve_approval_in_bulk_serialize(
             bulk_approve_request_dto=bulk_approve_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -504,7 +504,7 @@ class ApprovalsApi:
 
 
     @validate_call
-    def approve_approval_0_without_preload_content(
+    def approve_approval_in_bulk_without_preload_content(
         self,
         bulk_approve_request_dto: BulkApproveRequestDTO,
         _request_timeout: Union[
@@ -548,7 +548,7 @@ class ApprovalsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._approve_approval_0_serialize(
+        _param = self._approve_approval_in_bulk_serialize(
             bulk_approve_request_dto=bulk_approve_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -572,7 +572,7 @@ class ApprovalsApi:
         return response_data.response
 
 
-    def _approve_approval_0_serialize(
+    def _approve_approval_in_bulk_serialize(
         self,
         bulk_approve_request_dto,
         _request_auth,
@@ -2907,7 +2907,7 @@ class ApprovalsApi:
 
 
     @validate_call
-    def reject_approval_0(
+    def reject_approval_in_bulk(
         self,
         bulk_reject_request_dto: BulkRejectRequestDTO,
         _request_timeout: Union[
@@ -2951,7 +2951,7 @@ class ApprovalsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._reject_approval_0_serialize(
+        _param = self._reject_approval_in_bulk_serialize(
             bulk_reject_request_dto=bulk_reject_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2980,7 +2980,7 @@ class ApprovalsApi:
 
 
     @validate_call
-    def reject_approval_0_with_http_info(
+    def reject_approval_in_bulk_with_http_info(
         self,
         bulk_reject_request_dto: BulkRejectRequestDTO,
         _request_timeout: Union[
@@ -3024,7 +3024,7 @@ class ApprovalsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._reject_approval_0_serialize(
+        _param = self._reject_approval_in_bulk_serialize(
             bulk_reject_request_dto=bulk_reject_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3053,7 +3053,7 @@ class ApprovalsApi:
 
 
     @validate_call
-    def reject_approval_0_without_preload_content(
+    def reject_approval_in_bulk_without_preload_content(
         self,
         bulk_reject_request_dto: BulkRejectRequestDTO,
         _request_timeout: Union[
@@ -3097,7 +3097,7 @@ class ApprovalsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._reject_approval_0_serialize(
+        _param = self._reject_approval_in_bulk_serialize(
             bulk_reject_request_dto=bulk_reject_request_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3121,7 +3121,7 @@ class ApprovalsApi:
         return response_data.response
 
 
-    def _reject_approval_0_serialize(
+    def _reject_approval_in_bulk_serialize(
         self,
         bulk_reject_request_dto,
         _request_auth,
