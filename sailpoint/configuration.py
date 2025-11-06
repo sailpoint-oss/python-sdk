@@ -204,6 +204,7 @@ class Configuration:
                 pool_args["cert_reqs"] = cert_reqs
                 http = urllib3.ProxyManager(**pool_args)
         else:
+            pool_args["cert_reqs"] = cert_reqs
             http = urllib3.PoolManager(**pool_args)
 
         try:
