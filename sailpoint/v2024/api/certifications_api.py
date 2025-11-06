@@ -344,7 +344,7 @@ class CertificationsApi:
     ) -> IdentityCertificationDto:
         """Identity certification by id
 
-        This API returns a single identity campaign certification by its ID. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
+        This API returns a single identity campaign certification by its ID. Reviewers for this certification can also call this API.
 
         :param id: The certification id (required)
         :type id: str
@@ -417,7 +417,7 @@ class CertificationsApi:
     ) -> ApiResponse[IdentityCertificationDto]:
         """Identity certification by id
 
-        This API returns a single identity campaign certification by its ID. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
+        This API returns a single identity campaign certification by its ID. Reviewers for this certification can also call this API.
 
         :param id: The certification id (required)
         :type id: str
@@ -490,7 +490,7 @@ class CertificationsApi:
     ) -> RESTResponseType:
         """Identity certification by id
 
-        This API returns a single identity campaign certification by its ID. Reviewers for this certification can also call this API. This API does not support requests for certifications assigned to Governance Groups.
+        This API returns a single identity campaign certification by its ID. Reviewers for this certification can also call this API.
 
         :param id: The certification id (required)
         :type id: str
