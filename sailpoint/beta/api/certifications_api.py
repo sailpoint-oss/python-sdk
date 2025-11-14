@@ -426,7 +426,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[IdentityCertificationTask]:
-        """Pending certification tasks
+        """(Deprecated) Pending certification tasks
 
         This API returns the status of all pending (`QUEUED` or `IN_PROGRESS`) tasks for an identity campaign certification. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
 
@@ -453,6 +453,7 @@ class CertificationsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /certifications/{id}/tasks-pending is deprecated.", DeprecationWarning)
 
         _param = self._get_identity_certification_pending_tasks_serialize(
             id=id,
@@ -499,7 +500,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[IdentityCertificationTask]]:
-        """Pending certification tasks
+        """(Deprecated) Pending certification tasks
 
         This API returns the status of all pending (`QUEUED` or `IN_PROGRESS`) tasks for an identity campaign certification. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
 
@@ -526,6 +527,7 @@ class CertificationsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /certifications/{id}/tasks-pending is deprecated.", DeprecationWarning)
 
         _param = self._get_identity_certification_pending_tasks_serialize(
             id=id,
@@ -572,7 +574,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Pending certification tasks
+        """(Deprecated) Pending certification tasks
 
         This API returns the status of all pending (`QUEUED` or `IN_PROGRESS`) tasks for an identity campaign certification. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
 
@@ -599,6 +601,7 @@ class CertificationsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /certifications/{id}/tasks-pending is deprecated.", DeprecationWarning)
 
         _param = self._get_identity_certification_pending_tasks_serialize(
             id=id,
@@ -707,7 +710,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IdentityCertificationTask:
-        """Certification task status
+        """(Deprecated) Certification task status
 
         This API returns the status of a certification task. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
 
@@ -736,6 +739,7 @@ class CertificationsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /certifications/{id}/tasks/{taskId} is deprecated.", DeprecationWarning)
 
         _param = self._get_identity_certification_task_status_serialize(
             id=id,
@@ -784,7 +788,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IdentityCertificationTask]:
-        """Certification task status
+        """(Deprecated) Certification task status
 
         This API returns the status of a certification task. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
 
@@ -813,6 +817,7 @@ class CertificationsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /certifications/{id}/tasks/{taskId} is deprecated.", DeprecationWarning)
 
         _param = self._get_identity_certification_task_status_serialize(
             id=id,
@@ -861,7 +866,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Certification task status
+        """(Deprecated) Certification task status
 
         This API returns the status of a certification task. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
 
@@ -890,6 +895,7 @@ class CertificationsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /certifications/{id}/tasks/{taskId} is deprecated.", DeprecationWarning)
 
         _param = self._get_identity_certification_task_status_serialize(
             id=id,
@@ -1374,7 +1380,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[CertificationDto]:
-        """Certifications by ids
+        """(Deprecated) Certifications by ids
 
         This API returns a list of certifications that satisfy the given query parameters. Any authenticated token can call this API, but only certifications you are authorized to review will be returned.
 
@@ -1411,6 +1417,7 @@ class CertificationsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /certifications is deprecated.", DeprecationWarning)
 
         _param = self._list_certifications_serialize(
             reviewer_identitiy=reviewer_identitiy,
@@ -1466,7 +1473,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[CertificationDto]]:
-        """Certifications by ids
+        """(Deprecated) Certifications by ids
 
         This API returns a list of certifications that satisfy the given query parameters. Any authenticated token can call this API, but only certifications you are authorized to review will be returned.
 
@@ -1503,6 +1510,7 @@ class CertificationsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /certifications is deprecated.", DeprecationWarning)
 
         _param = self._list_certifications_serialize(
             reviewer_identitiy=reviewer_identitiy,
@@ -1558,7 +1566,7 @@ class CertificationsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Certifications by ids
+        """(Deprecated) Certifications by ids
 
         This API returns a list of certifications that satisfy the given query parameters. Any authenticated token can call this API, but only certifications you are authorized to review will be returned.
 
@@ -1595,6 +1603,7 @@ class CertificationsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /certifications is deprecated.", DeprecationWarning)
 
         _param = self._list_certifications_serialize(
             reviewer_identitiy=reviewer_identitiy,
