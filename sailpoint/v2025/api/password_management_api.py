@@ -898,6 +898,8 @@ class PasswordManagementApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth', 
             'applicationAuth'
         ]
 
@@ -1187,6 +1189,8 @@ class PasswordManagementApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth', 
             'applicationAuth'
         ]
 

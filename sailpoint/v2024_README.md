@@ -50,6 +50,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
 
 # Enter a context with an instance of the API client
 with sailpoint.v2024.ApiClient(configuration) as api_client:

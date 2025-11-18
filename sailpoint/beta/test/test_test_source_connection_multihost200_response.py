@@ -37,7 +37,7 @@ class TestTestSourceConnectionMultihost200Response(unittest.TestCase):
             return TestSourceConnectionMultihost200Response(
                 success = True,
                 message = 'Tes.',
-                timing = 56,
+                timing = 30437,
                 result_type = SOURCE_STATE_HEALTHY,
                 test_connection_details = ''
             )
