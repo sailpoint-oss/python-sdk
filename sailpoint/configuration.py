@@ -44,7 +44,7 @@ class Configuration:
         self.access_token = configurationParams.access_token if configurationParams and configurationParams.access_token else defaultConfiguration.access_token
         self.proxy = configurationParams.proxy if configurationParams and configurationParams.proxy else None
         self.proxy_headers = configurationParams.proxy_headers if configurationParams and configurationParams.proxy_headers else None
-        self.verify_ssl = configurationParams.verify_ssl if configurationParams and configurationParams.verify_ssl else True
+        self.verify_ssl = configurationParams.verify_ssl if configurationParams and not configurationParams.verify_ssl else True
 
         url = f"{self.token_url}"
         if self.access_token == None:
@@ -204,6 +204,7 @@ class Configuration:
                 pool_args["cert_reqs"] = cert_reqs
                 http = urllib3.ProxyManager(**pool_args)
         else:
+            pool_args["cert_reqs"] = cert_reqs
             http = urllib3.PoolManager(**pool_args)
 
         try:
