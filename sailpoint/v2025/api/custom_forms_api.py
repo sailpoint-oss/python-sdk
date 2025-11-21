@@ -4589,6 +4589,7 @@ class CustomFormsApi:
     @validate_call
     def search_form_instances_by_tenant(
         self,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **formDefinitionId**: *eq*")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4604,8 +4605,10 @@ class CustomFormsApi:
     ) -> List[ListFormInstancesByTenantResponse]:
         """List form instances by tenant.
 
-        No parameters required.
+        Returns a list of form instances for the tenant. Optionally filter by form definition ID.
 
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **formDefinitionId**: *eq*
+        :type filters: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4629,6 +4632,7 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._search_form_instances_by_tenant_serialize(
+            filters=filters,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4657,6 +4661,7 @@ class CustomFormsApi:
     @validate_call
     def search_form_instances_by_tenant_with_http_info(
         self,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **formDefinitionId**: *eq*")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4672,8 +4677,10 @@ class CustomFormsApi:
     ) -> ApiResponse[List[ListFormInstancesByTenantResponse]]:
         """List form instances by tenant.
 
-        No parameters required.
+        Returns a list of form instances for the tenant. Optionally filter by form definition ID.
 
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **formDefinitionId**: *eq*
+        :type filters: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4697,6 +4704,7 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._search_form_instances_by_tenant_serialize(
+            filters=filters,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4725,6 +4733,7 @@ class CustomFormsApi:
     @validate_call
     def search_form_instances_by_tenant_without_preload_content(
         self,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **formDefinitionId**: *eq*")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4740,8 +4749,10 @@ class CustomFormsApi:
     ) -> RESTResponseType:
         """List form instances by tenant.
 
-        No parameters required.
+        Returns a list of form instances for the tenant. Optionally filter by form definition ID.
 
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **formDefinitionId**: *eq*
+        :type filters: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4765,6 +4776,7 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._search_form_instances_by_tenant_serialize(
+            filters=filters,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4788,6 +4800,7 @@ class CustomFormsApi:
 
     def _search_form_instances_by_tenant_serialize(
         self,
+        filters,
         _request_auth,
         _content_type,
         _headers,
@@ -4810,6 +4823,10 @@ class CustomFormsApi:
 
         # process the path parameters
         # process the query parameters
+        if filters is not None:
+            
+            _query_params.append(('filters', filters))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
