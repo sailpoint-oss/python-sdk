@@ -37,7 +37,7 @@ class TestEntitlementSource(unittest.TestCase):
             return EntitlementSource(
                 id = '2c9180827ca885d7017ca8ce28a000eb',
                 type = 'SOURCE',
-                name = 'ODS-AD-Source'
+                name = 'Corporate Active Directory'
             )
         else:
             return EntitlementSource(
