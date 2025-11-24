@@ -291,6 +291,16 @@ Class | Method | HTTP request | Description
 *CustomUserLevelsApi* | [**publish_custom_user_level**](sailpoint/v2025/docs/CustomUserLevelsApi.md#publish_custom_user_level) | **POST** /authorization/custom-user-levels/{id}/publish | Publish a custom user level
 *CustomUserLevelsApi* | [**show_user_level_counts**](sailpoint/v2025/docs/CustomUserLevelsApi.md#show_user_level_counts) | **POST** /authorization/user-levels/get-identity-count | Count user levels identities
 *CustomUserLevelsApi* | [**update_user_level**](sailpoint/v2025/docs/CustomUserLevelsApi.md#update_user_level) | **PATCH** /authorization/custom-user-levels/{id} | Update a user level
+*DataAccessSecurityApi* | [**cancel_task**](sailpoint/v2025/docs/DataAccessSecurityApi.md#cancel_task) | **POST** /das/tasks/cancel/{id} | Cancel a DAS task.
+*DataAccessSecurityApi* | [**create_schedule**](sailpoint/v2025/docs/DataAccessSecurityApi.md#create_schedule) | **POST** /das/tasks/schedules | Create a new schedule.
+*DataAccessSecurityApi* | [**delete_schedule**](sailpoint/v2025/docs/DataAccessSecurityApi.md#delete_schedule) | **DELETE** /das/tasks/schedules/{id} | Delete a DAS schedule.
+*DataAccessSecurityApi* | [**delete_task**](sailpoint/v2025/docs/DataAccessSecurityApi.md#delete_task) | **DELETE** /das/tasks/{id} | Delete a DAS task.
+*DataAccessSecurityApi* | [**get_schedule**](sailpoint/v2025/docs/DataAccessSecurityApi.md#get_schedule) | **GET** /das/tasks/schedules/{id} | Get a DAS schedule.
+*DataAccessSecurityApi* | [**get_schedules**](sailpoint/v2025/docs/DataAccessSecurityApi.md#get_schedules) | **GET** /das/tasks/schedules | List all schedules.
+*DataAccessSecurityApi* | [**get_task**](sailpoint/v2025/docs/DataAccessSecurityApi.md#get_task) | **GET** /das/tasks/{id} | Get a DAS task.
+*DataAccessSecurityApi* | [**get_tasks**](sailpoint/v2025/docs/DataAccessSecurityApi.md#get_tasks) | **GET** /das/tasks | Lists all DAS tasks.
+*DataAccessSecurityApi* | [**put_schedule**](sailpoint/v2025/docs/DataAccessSecurityApi.md#put_schedule) | **PUT** /das/tasks/schedules/{id} | Update a schedule.
+*DataAccessSecurityApi* | [**start_task_rerun**](sailpoint/v2025/docs/DataAccessSecurityApi.md#start_task_rerun) | **POST** /das/tasks/rerun/{id} | Rerun a DAS task.
 *DataSegmentationApi* | [**create_data_segment**](sailpoint/v2025/docs/DataSegmentationApi.md#create_data_segment) | **POST** /data-segments | Create segment
 *DataSegmentationApi* | [**delete_data_segment**](sailpoint/v2025/docs/DataSegmentationApi.md#delete_data_segment) | **DELETE** /data-segments/{segmentId} | Delete segment by id
 *DataSegmentationApi* | [**get_data_segment**](sailpoint/v2025/docs/DataSegmentationApi.md#get_data_segment) | **GET** /data-segments/{segmentId} | Get segment by id
@@ -1200,6 +1210,7 @@ Class | Method | HTTP request | Description
  - [CreatePersonalAccessTokenRequest](sailpoint/v2025/docs/CreatePersonalAccessTokenRequest.md)
  - [CreatePersonalAccessTokenResponse](sailpoint/v2025/docs/CreatePersonalAccessTokenResponse.md)
  - [CreateSavedSearchRequest](sailpoint/v2025/docs/CreateSavedSearchRequest.md)
+ - [CreateScheduleRequest](sailpoint/v2025/docs/CreateScheduleRequest.md)
  - [CreateScheduledSearchRequest](sailpoint/v2025/docs/CreateScheduledSearchRequest.md)
  - [CreateUploadedConfigurationRequest](sailpoint/v2025/docs/CreateUploadedConfigurationRequest.md)
  - [CreateWorkflowRequest](sailpoint/v2025/docs/CreateWorkflowRequest.md)
@@ -1789,6 +1800,7 @@ Class | Method | HTTP request | Description
  - [Schedule2Months](sailpoint/v2025/docs/Schedule2Months.md)
  - [ScheduleDays](sailpoint/v2025/docs/ScheduleDays.md)
  - [ScheduleHours](sailpoint/v2025/docs/ScheduleHours.md)
+ - [ScheduleInfo](sailpoint/v2025/docs/ScheduleInfo.md)
  - [ScheduleMonths](sailpoint/v2025/docs/ScheduleMonths.md)
  - [ScheduleType](sailpoint/v2025/docs/ScheduleType.md)
  - [ScheduledActionPayload](sailpoint/v2025/docs/ScheduledActionPayload.md)
@@ -1948,6 +1960,7 @@ Class | Method | HTTP request | Description
  - [TaggedObjectDto](sailpoint/v2025/docs/TaggedObjectDto.md)
  - [Target](sailpoint/v2025/docs/Target.md)
  - [TaskDefinitionSummary](sailpoint/v2025/docs/TaskDefinitionSummary.md)
+ - [TaskInfo](sailpoint/v2025/docs/TaskInfo.md)
  - [TaskResultDetails](sailpoint/v2025/docs/TaskResultDetails.md)
  - [TaskResultDetailsMessagesInner](sailpoint/v2025/docs/TaskResultDetailsMessagesInner.md)
  - [TaskResultDetailsReturnsInner](sailpoint/v2025/docs/TaskResultDetailsReturnsInner.md)
@@ -1993,6 +2006,7 @@ Class | Method | HTTP request | Description
  - [UpdateDetail](sailpoint/v2025/docs/UpdateDetail.md)
  - [UpdateMultiHostSourcesRequestInner](sailpoint/v2025/docs/UpdateMultiHostSourcesRequestInner.md)
  - [UpdateMultiHostSourcesRequestInnerValue](sailpoint/v2025/docs/UpdateMultiHostSourcesRequestInnerValue.md)
+ - [UpdateScheduleRequest](sailpoint/v2025/docs/UpdateScheduleRequest.md)
  - [UsageType](sailpoint/v2025/docs/UsageType.md)
  - [UserApp](sailpoint/v2025/docs/UserApp.md)
  - [UserAppAccount](sailpoint/v2025/docs/UserAppAccount.md)

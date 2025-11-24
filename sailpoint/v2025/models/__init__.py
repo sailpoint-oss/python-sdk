@@ -376,6 +376,7 @@ from sailpoint.v2025.models.create_o_auth_client_response import CreateOAuthClie
 from sailpoint.v2025.models.create_personal_access_token_request import CreatePersonalAccessTokenRequest
 from sailpoint.v2025.models.create_personal_access_token_response import CreatePersonalAccessTokenResponse
 from sailpoint.v2025.models.create_saved_search_request import CreateSavedSearchRequest
+from sailpoint.v2025.models.create_schedule_request import CreateScheduleRequest
 from sailpoint.v2025.models.create_scheduled_search_request import CreateScheduledSearchRequest
 from sailpoint.v2025.models.create_uploaded_configuration_request import CreateUploadedConfigurationRequest
 from sailpoint.v2025.models.create_workflow_request import CreateWorkflowRequest
@@ -965,6 +966,7 @@ from sailpoint.v2025.models.schedule2_hours import Schedule2Hours
 from sailpoint.v2025.models.schedule2_months import Schedule2Months
 from sailpoint.v2025.models.schedule_days import ScheduleDays
 from sailpoint.v2025.models.schedule_hours import ScheduleHours
+from sailpoint.v2025.models.schedule_info import ScheduleInfo
 from sailpoint.v2025.models.schedule_months import ScheduleMonths
 from sailpoint.v2025.models.schedule_type import ScheduleType
 from sailpoint.v2025.models.scheduled_action_payload import ScheduledActionPayload
@@ -1124,6 +1126,7 @@ from sailpoint.v2025.models.tagged_object import TaggedObject
 from sailpoint.v2025.models.tagged_object_dto import TaggedObjectDto
 from sailpoint.v2025.models.target import Target
 from sailpoint.v2025.models.task_definition_summary import TaskDefinitionSummary
+from sailpoint.v2025.models.task_info import TaskInfo
 from sailpoint.v2025.models.task_result_details import TaskResultDetails
 from sailpoint.v2025.models.task_result_details_messages_inner import TaskResultDetailsMessagesInner
 from sailpoint.v2025.models.task_result_details_returns_inner import TaskResultDetailsReturnsInner
@@ -1169,6 +1172,7 @@ from sailpoint.v2025.models.update_access_profiles_in_bulk412_response import Up
 from sailpoint.v2025.models.update_detail import UpdateDetail
 from sailpoint.v2025.models.update_multi_host_sources_request_inner import UpdateMultiHostSourcesRequestInner
 from sailpoint.v2025.models.update_multi_host_sources_request_inner_value import UpdateMultiHostSourcesRequestInnerValue
+from sailpoint.v2025.models.update_schedule_request import UpdateScheduleRequest
 from sailpoint.v2025.models.usage_type import UsageType
 from sailpoint.v2025.models.user_app import UserApp
 from sailpoint.v2025.models.user_app_account import UserAppAccount
