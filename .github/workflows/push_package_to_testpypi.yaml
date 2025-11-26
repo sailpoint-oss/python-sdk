@@ -14,13 +14,13 @@ jobs:
 
       # Setup Python
       - name: Checkout PR branch
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.ref }}
           token: ${{secrets.DEVREL_SERVICE_TOKEN}}
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
             python-version: '3.x'
 
