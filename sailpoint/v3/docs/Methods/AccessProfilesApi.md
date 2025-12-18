@@ -124,6 +124,15 @@ with ApiClient(configuration) as api_client:
             "type" : "SOURCE"
           },
           "enabled" : true,
+          "additionalOwners" : [ {
+            "name" : "support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          }, {
+            "name" : "support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          } ],
           "revocationRequestConfig" : {
             "approvalSchemes" : [ {
               "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
@@ -144,7 +153,12 @@ with ApiClient(configuration) as api_client:
               "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
               "approverType" : "GOVERNANCE_GROUP"
             } ],
-            "denialCommentsRequired" : true
+            "denialCommentsRequired" : true,
+            "requireEndDate" : true,
+            "maxPermittedAccessDuration" : {
+              "value" : 6,
+              "timeUnit" : "MONTHS"
+            }
           },
           "name" : "Employee-database-read-write",
           "provisioningCriteria" : {
@@ -184,6 +198,22 @@ with ApiClient(configuration) as api_client:
             "value" : "carlee.cert1c9f9b6fd@mailinator.com"
           },
           "modified" : "2021-03-02T20:22:28.104Z",
+          "accessModelMetadata" : {
+            "attributes" : [ {
+              "key" : "iscPrivacy",
+              "name" : "Privacy",
+              "multiselect" : false,
+              "status" : "active",
+              "type" : "governance",
+              "objectTypes" : [ "all" ],
+              "description" : "Specifies the level of privacy associated with an access item.",
+              "values" : [ {
+                "value" : "public",
+                "name" : "Public",
+                "status" : "active"
+              } ]
+            } ]
+          },
           "id" : "2c91808a7190d06e01719938fcd20792",
           "requestable" : true
         }''' # AccessProfile | 

@@ -60,6 +60,10 @@ class TestAccessProfile(unittest.TestCase):
                     comments_required = True, 
                     denial_comments_required = True, 
                     reauthorization_required = True, 
+                    require_end_date = True, 
+                    max_permitted_access_duration = sailpoint.beta.models.access_duration.AccessDuration(
+                        value = 6, 
+                        time_unit = 'MONTHS', ), 
                     approval_schemes = [
                         sailpoint.beta.models.access_profile_approval_scheme.AccessProfileApprovalScheme(
                             approver_type = 'GOVERNANCE_GROUP', 
@@ -72,6 +76,8 @@ class TestAccessProfile(unittest.TestCase):
                             approver_id = '46c79819-a69f-49a2-becb-12c971ae66c6', )
                         ], ),
                 segments = [f7b1b8a3-5fed-4fd4-ad29-82014e137e19, 29cb6c06-1da8-43ea-8be4-b3125f248f2a],
+                access_model_metadata = sailpoint.beta.models.attribute_dto_list.AttributeDTOList(
+                    attributes = [{key=iscPrivacy, name=Privacy, multiselect=false, status=active, type=governance, objectTypes=[all], description=Specifies the level of privacy associated with an access item., values=[{value=public, name=Public, status=active}]}], ),
                 provisioning_criteria = sailpoint.beta.models.provisioning_criteria_level1.ProvisioningCriteriaLevel1(
                     operation = 'EQUALS', 
                     attribute = 'email', 
@@ -80,7 +86,13 @@ class TestAccessProfile(unittest.TestCase):
                         sailpoint.beta.models.provisioning_criteria_level2.ProvisioningCriteriaLevel2(
                             attribute = 'email', 
                             value = 'carlee.cert1c9f9b6fd@mailinator.com', )
-                        ], )
+                        ], ),
+                additional_owners = [
+                    sailpoint.beta.models.owner_reference.OwnerReference(
+                        type = 'IDENTITY', 
+                        id = '2c9180a46faadee4016fb4e018c20639', 
+                        name = 'support', )
+                    ]
             )
         else:
             return AccessProfile(

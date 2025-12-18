@@ -19,6 +19,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
+from sailpoint.v2025.models.create_machine_account_subtype_request import CreateMachineAccountSubtypeRequest
 from sailpoint.v2025.models.machine_account import MachineAccount
 from sailpoint.v2025.models.source_subtype import SourceSubtype
 
@@ -44,7 +45,7 @@ class MachineAccountsApi:
     def create_machine_account_subtype(
         self,
         source_id: Annotated[StrictStr, Field(description="The ID of the source.")],
-        source_subtype: SourceSubtype,
+        create_machine_account_subtype_request: CreateMachineAccountSubtypeRequest,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -67,8 +68,8 @@ class MachineAccountsApi:
         :type source_id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param source_subtype: (required)
-        :type source_subtype: SourceSubtype
+        :param create_machine_account_subtype_request: (required)
+        :type create_machine_account_subtype_request: CreateMachineAccountSubtypeRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -94,7 +95,7 @@ class MachineAccountsApi:
         _param = self._create_machine_account_subtype_serialize(
             source_id=source_id,
             x_sail_point_experimental=x_sail_point_experimental,
-            source_subtype=source_subtype,
+            create_machine_account_subtype_request=create_machine_account_subtype_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -124,7 +125,7 @@ class MachineAccountsApi:
     def create_machine_account_subtype_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="The ID of the source.")],
-        source_subtype: SourceSubtype,
+        create_machine_account_subtype_request: CreateMachineAccountSubtypeRequest,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -147,8 +148,8 @@ class MachineAccountsApi:
         :type source_id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param source_subtype: (required)
-        :type source_subtype: SourceSubtype
+        :param create_machine_account_subtype_request: (required)
+        :type create_machine_account_subtype_request: CreateMachineAccountSubtypeRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -174,7 +175,7 @@ class MachineAccountsApi:
         _param = self._create_machine_account_subtype_serialize(
             source_id=source_id,
             x_sail_point_experimental=x_sail_point_experimental,
-            source_subtype=source_subtype,
+            create_machine_account_subtype_request=create_machine_account_subtype_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -204,7 +205,7 @@ class MachineAccountsApi:
     def create_machine_account_subtype_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="The ID of the source.")],
-        source_subtype: SourceSubtype,
+        create_machine_account_subtype_request: CreateMachineAccountSubtypeRequest,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -227,8 +228,8 @@ class MachineAccountsApi:
         :type source_id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param source_subtype: (required)
-        :type source_subtype: SourceSubtype
+        :param create_machine_account_subtype_request: (required)
+        :type create_machine_account_subtype_request: CreateMachineAccountSubtypeRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -254,7 +255,7 @@ class MachineAccountsApi:
         _param = self._create_machine_account_subtype_serialize(
             source_id=source_id,
             x_sail_point_experimental=x_sail_point_experimental,
-            source_subtype=source_subtype,
+            create_machine_account_subtype_request=create_machine_account_subtype_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -280,7 +281,7 @@ class MachineAccountsApi:
         self,
         source_id,
         x_sail_point_experimental,
-        source_subtype,
+        create_machine_account_subtype_request,
         _request_auth,
         _content_type,
         _headers,
@@ -310,8 +311,8 @@ class MachineAccountsApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if source_subtype is not None:
-            _body_params = source_subtype
+        if create_machine_account_subtype_request is not None:
+            _body_params = create_machine_account_subtype_request
 
 
         # set the HTTP header `Accept`
@@ -364,7 +365,7 @@ class MachineAccountsApi:
     @validate_call
     def delete_machine_account_subtype(
         self,
-        subtype_id: Annotated[StrictStr, Field(description="The ID of the machine account subtype.")],
+        source_id: Annotated[StrictStr, Field(description="The ID of the source.")],
         technical_name: Annotated[StrictStr, Field(description="The technical name of the subtype.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
@@ -382,10 +383,10 @@ class MachineAccountsApi:
     ) -> None:
         """Delete subtype
 
-        Delete a machine account subtype by its ID.
+        Delete a machine account subtype by source ID and technical name.
 
-        :param subtype_id: The ID of the machine account subtype. (required)
-        :type subtype_id: str
+        :param source_id: The ID of the source. (required)
+        :type source_id: str
         :param technical_name: The technical name of the subtype. (required)
         :type technical_name: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
@@ -413,7 +414,7 @@ class MachineAccountsApi:
         """ # noqa: E501
 
         _param = self._delete_machine_account_subtype_serialize(
-            subtype_id=subtype_id,
+            source_id=source_id,
             technical_name=technical_name,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
@@ -444,7 +445,7 @@ class MachineAccountsApi:
     @validate_call
     def delete_machine_account_subtype_with_http_info(
         self,
-        subtype_id: Annotated[StrictStr, Field(description="The ID of the machine account subtype.")],
+        source_id: Annotated[StrictStr, Field(description="The ID of the source.")],
         technical_name: Annotated[StrictStr, Field(description="The technical name of the subtype.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
@@ -462,10 +463,10 @@ class MachineAccountsApi:
     ) -> ApiResponse[None]:
         """Delete subtype
 
-        Delete a machine account subtype by its ID.
+        Delete a machine account subtype by source ID and technical name.
 
-        :param subtype_id: The ID of the machine account subtype. (required)
-        :type subtype_id: str
+        :param source_id: The ID of the source. (required)
+        :type source_id: str
         :param technical_name: The technical name of the subtype. (required)
         :type technical_name: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
@@ -493,7 +494,7 @@ class MachineAccountsApi:
         """ # noqa: E501
 
         _param = self._delete_machine_account_subtype_serialize(
-            subtype_id=subtype_id,
+            source_id=source_id,
             technical_name=technical_name,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
@@ -524,7 +525,7 @@ class MachineAccountsApi:
     @validate_call
     def delete_machine_account_subtype_without_preload_content(
         self,
-        subtype_id: Annotated[StrictStr, Field(description="The ID of the machine account subtype.")],
+        source_id: Annotated[StrictStr, Field(description="The ID of the source.")],
         technical_name: Annotated[StrictStr, Field(description="The technical name of the subtype.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
@@ -542,10 +543,10 @@ class MachineAccountsApi:
     ) -> RESTResponseType:
         """Delete subtype
 
-        Delete a machine account subtype by its ID.
+        Delete a machine account subtype by source ID and technical name.
 
-        :param subtype_id: The ID of the machine account subtype. (required)
-        :type subtype_id: str
+        :param source_id: The ID of the source. (required)
+        :type source_id: str
         :param technical_name: The technical name of the subtype. (required)
         :type technical_name: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
@@ -573,7 +574,7 @@ class MachineAccountsApi:
         """ # noqa: E501
 
         _param = self._delete_machine_account_subtype_serialize(
-            subtype_id=subtype_id,
+            source_id=source_id,
             technical_name=technical_name,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
@@ -599,7 +600,7 @@ class MachineAccountsApi:
 
     def _delete_machine_account_subtype_serialize(
         self,
-        subtype_id,
+        source_id,
         technical_name,
         x_sail_point_experimental,
         _request_auth,
@@ -623,8 +624,8 @@ class MachineAccountsApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if subtype_id is not None:
-            _path_params['subtypeId'] = subtype_id
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
         if technical_name is not None:
             _path_params['technicalName'] = technical_name
         # process the query parameters
@@ -1241,7 +1242,7 @@ class MachineAccountsApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/sources/subtype/{subtypeId}',
+            resource_path='/sources/subtypes/{subtypeId}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1569,7 +1570,7 @@ class MachineAccountsApi:
     def list_machine_account_subtypes(
         self,
         source_id: Annotated[StrictStr, Field(description="The ID of the source.")],
-        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)   Filtering is supported for the following fields and operators:   **displayName**: *eq, sw*   **technicalName**: *eq, sw* ")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **displayName**: *eq, sw*  **technicalName**: *eq, sw*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, technicalName**")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
@@ -1596,7 +1597,7 @@ class MachineAccountsApi:
         :type source_id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)   Filtering is supported for the following fields and operators:   **displayName**: *eq, sw*   **technicalName**: *eq, sw* 
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **displayName**: *eq, sw*  **technicalName**: *eq, sw*
         :type filters: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, technicalName**
         :type sorters: str
@@ -1665,7 +1666,7 @@ class MachineAccountsApi:
     def list_machine_account_subtypes_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="The ID of the source.")],
-        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)   Filtering is supported for the following fields and operators:   **displayName**: *eq, sw*   **technicalName**: *eq, sw* ")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **displayName**: *eq, sw*  **technicalName**: *eq, sw*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, technicalName**")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
@@ -1692,7 +1693,7 @@ class MachineAccountsApi:
         :type source_id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)   Filtering is supported for the following fields and operators:   **displayName**: *eq, sw*   **technicalName**: *eq, sw* 
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **displayName**: *eq, sw*  **technicalName**: *eq, sw*
         :type filters: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, technicalName**
         :type sorters: str
@@ -1761,7 +1762,7 @@ class MachineAccountsApi:
     def list_machine_account_subtypes_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="The ID of the source.")],
-        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)   Filtering is supported for the following fields and operators:   **displayName**: *eq, sw*   **technicalName**: *eq, sw* ")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **displayName**: *eq, sw*  **technicalName**: *eq, sw*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, technicalName**")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
@@ -1788,7 +1789,7 @@ class MachineAccountsApi:
         :type source_id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)   Filtering is supported for the following fields and operators:   **displayName**: *eq, sw*   **technicalName**: *eq, sw* 
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **displayName**: *eq, sw*  **technicalName**: *eq, sw*
         :type filters: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, technicalName**
         :type sorters: str
@@ -2311,9 +2312,9 @@ class MachineAccountsApi:
     @validate_call
     def patch_machine_account_subtype(
         self,
-        subtype_id: Annotated[StrictStr, Field(description="The ID of the machine account subtype.")],
+        source_id: Annotated[StrictStr, Field(description="The ID of the source.")],
         technical_name: Annotated[StrictStr, Field(description="The technical name of the subtype.")],
-        source_subtype: SourceSubtype,
+        request_body: Annotated[List[Dict[str, Any]], Field(description="A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -2330,16 +2331,16 @@ class MachineAccountsApi:
     ) -> SourceSubtype:
         """Patch subtype
 
-        Update fields of a machine account subtype by its ID. Patchable fields include: `displayName`, `description`, `technicalName`.
+        Update fields of a machine account subtype by source ID and technical name. Patchable fields include: `displayName`, `description`.
 
-        :param subtype_id: The ID of the machine account subtype. (required)
-        :type subtype_id: str
+        :param source_id: The ID of the source. (required)
+        :type source_id: str
         :param technical_name: The technical name of the subtype. (required)
         :type technical_name: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param source_subtype: (required)
-        :type source_subtype: SourceSubtype
+        :param request_body: A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :type request_body: List[object]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2363,10 +2364,10 @@ class MachineAccountsApi:
         """ # noqa: E501
 
         _param = self._patch_machine_account_subtype_serialize(
-            subtype_id=subtype_id,
+            source_id=source_id,
             technical_name=technical_name,
             x_sail_point_experimental=x_sail_point_experimental,
-            source_subtype=source_subtype,
+            request_body=request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2395,9 +2396,9 @@ class MachineAccountsApi:
     @validate_call
     def patch_machine_account_subtype_with_http_info(
         self,
-        subtype_id: Annotated[StrictStr, Field(description="The ID of the machine account subtype.")],
+        source_id: Annotated[StrictStr, Field(description="The ID of the source.")],
         technical_name: Annotated[StrictStr, Field(description="The technical name of the subtype.")],
-        source_subtype: SourceSubtype,
+        request_body: Annotated[List[Dict[str, Any]], Field(description="A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -2414,16 +2415,16 @@ class MachineAccountsApi:
     ) -> ApiResponse[SourceSubtype]:
         """Patch subtype
 
-        Update fields of a machine account subtype by its ID. Patchable fields include: `displayName`, `description`, `technicalName`.
+        Update fields of a machine account subtype by source ID and technical name. Patchable fields include: `displayName`, `description`.
 
-        :param subtype_id: The ID of the machine account subtype. (required)
-        :type subtype_id: str
+        :param source_id: The ID of the source. (required)
+        :type source_id: str
         :param technical_name: The technical name of the subtype. (required)
         :type technical_name: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param source_subtype: (required)
-        :type source_subtype: SourceSubtype
+        :param request_body: A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :type request_body: List[object]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2447,10 +2448,10 @@ class MachineAccountsApi:
         """ # noqa: E501
 
         _param = self._patch_machine_account_subtype_serialize(
-            subtype_id=subtype_id,
+            source_id=source_id,
             technical_name=technical_name,
             x_sail_point_experimental=x_sail_point_experimental,
-            source_subtype=source_subtype,
+            request_body=request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2479,9 +2480,9 @@ class MachineAccountsApi:
     @validate_call
     def patch_machine_account_subtype_without_preload_content(
         self,
-        subtype_id: Annotated[StrictStr, Field(description="The ID of the machine account subtype.")],
+        source_id: Annotated[StrictStr, Field(description="The ID of the source.")],
         technical_name: Annotated[StrictStr, Field(description="The technical name of the subtype.")],
-        source_subtype: SourceSubtype,
+        request_body: Annotated[List[Dict[str, Any]], Field(description="A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -2498,16 +2499,16 @@ class MachineAccountsApi:
     ) -> RESTResponseType:
         """Patch subtype
 
-        Update fields of a machine account subtype by its ID. Patchable fields include: `displayName`, `description`, `technicalName`.
+        Update fields of a machine account subtype by source ID and technical name. Patchable fields include: `displayName`, `description`.
 
-        :param subtype_id: The ID of the machine account subtype. (required)
-        :type subtype_id: str
+        :param source_id: The ID of the source. (required)
+        :type source_id: str
         :param technical_name: The technical name of the subtype. (required)
         :type technical_name: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param source_subtype: (required)
-        :type source_subtype: SourceSubtype
+        :param request_body: A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. (required)
+        :type request_body: List[object]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2531,10 +2532,10 @@ class MachineAccountsApi:
         """ # noqa: E501
 
         _param = self._patch_machine_account_subtype_serialize(
-            subtype_id=subtype_id,
+            source_id=source_id,
             technical_name=technical_name,
             x_sail_point_experimental=x_sail_point_experimental,
-            source_subtype=source_subtype,
+            request_body=request_body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2558,10 +2559,10 @@ class MachineAccountsApi:
 
     def _patch_machine_account_subtype_serialize(
         self,
-        subtype_id,
+        source_id,
         technical_name,
         x_sail_point_experimental,
-        source_subtype,
+        request_body,
         _request_auth,
         _content_type,
         _headers,
@@ -2571,6 +2572,7 @@ class MachineAccountsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'request_body': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2583,8 +2585,8 @@ class MachineAccountsApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if subtype_id is not None:
-            _path_params['subtypeId'] = subtype_id
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
         if technical_name is not None:
             _path_params['technicalName'] = technical_name
         # process the query parameters
@@ -2593,8 +2595,8 @@ class MachineAccountsApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if source_subtype is not None:
-            _body_params = source_subtype
+        if request_body is not None:
+            _body_params = request_body
 
 
         # set the HTTP header `Accept`
@@ -2612,7 +2614,7 @@ class MachineAccountsApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/json'
+                        'application/json-patch+json'
                     ]
                 )
             )

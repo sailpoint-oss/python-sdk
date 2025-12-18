@@ -30,7 +30,9 @@ Name | Type | Description | Notes
 **access_request_config** | [**Requestability**](requestability) |  | [optional] 
 **revocation_request_config** | [**Revocability**](revocability) |  | [optional] 
 **segments** | **[]str** | List of segment IDs, if any, that the access profile is assigned to. | [optional] 
+**access_model_metadata** | [**AttributeDTOList**](attribute-dto-list) |  | [optional] 
 **provisioning_criteria** | [**ProvisioningCriteriaLevel1**](provisioning-criteria-level1) |  | [optional] 
+**additional_owners** | [**[]OwnerReference**](owner-reference) |  | [optional] 
 }
 
 ## Example
@@ -64,6 +66,10 @@ access_request_config=sailpoint.v2025.models.requestability.Requestability(
                     comments_required = True, 
                     denial_comments_required = True, 
                     reauthorization_required = True, 
+                    require_end_date = True, 
+                    max_permitted_access_duration = sailpoint.v2025.models.access_duration.AccessDuration(
+                        value = 6, 
+                        time_unit = 'MONTHS', ), 
                     approval_schemes = [
                         sailpoint.v2025.models.access_profile_approval_scheme.AccessProfileApprovalScheme(
                             approver_type = 'GOVERNANCE_GROUP', 
@@ -76,6 +82,8 @@ revocation_request_config=sailpoint.v2025.models.revocability.Revocability(
                             approver_id = '46c79819-a69f-49a2-becb-12c971ae66c6', )
                         ], ),
 segments=[f7b1b8a3-5fed-4fd4-ad29-82014e137e19, 29cb6c06-1da8-43ea-8be4-b3125f248f2a],
+access_model_metadata=sailpoint.v2025.models.attribute_dto_list.AttributeDTOList(
+                    attributes = [{key=iscPrivacy, name=Privacy, multiselect=false, status=active, type=governance, objectTypes=[all], description=Specifies the level of privacy associated with an access item., values=[{value=public, name=Public, status=active}]}], ),
 provisioning_criteria=sailpoint.v2025.models.provisioning_criteria_level1.ProvisioningCriteriaLevel1(
                     operation = 'EQUALS', 
                     attribute = 'email', 
@@ -84,7 +92,13 @@ provisioning_criteria=sailpoint.v2025.models.provisioning_criteria_level1.Provis
                         sailpoint.v2025.models.provisioning_criteria_level2.ProvisioningCriteriaLevel2(
                             attribute = 'email', 
                             value = 'carlee.cert1c9f9b6fd@mailinator.com', )
-                        ], )
+                        ], ),
+additional_owners=[
+                    sailpoint.v2025.models.owner_reference.OwnerReference(
+                        type = 'IDENTITY', 
+                        id = '2c9180a46faadee4016fb4e018c20639', 
+                        name = 'support', )
+                    ]
 )
 
 ```

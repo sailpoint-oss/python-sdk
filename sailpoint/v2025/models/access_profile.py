@@ -22,6 +22,7 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v2025.models.access_profile_source_ref import AccessProfileSourceRef
+from sailpoint.v2025.models.attribute_dto_list import AttributeDTOList
 from sailpoint.v2025.models.entitlement_ref import EntitlementRef
 from sailpoint.v2025.models.owner_reference import OwnerReference
 from sailpoint.v2025.models.provisioning_criteria_level1 import ProvisioningCriteriaLevel1
@@ -47,8 +48,10 @@ class AccessProfile(BaseModel):
     access_request_config: Optional[Requestability] = Field(default=None, alias="accessRequestConfig")
     revocation_request_config: Optional[Revocability] = Field(default=None, alias="revocationRequestConfig")
     segments: Optional[List[StrictStr]] = Field(default=None, description="List of segment IDs, if any, that the access profile is assigned to.")
+    access_model_metadata: Optional[AttributeDTOList] = Field(default=None, alias="accessModelMetadata")
     provisioning_criteria: Optional[ProvisioningCriteriaLevel1] = Field(default=None, alias="provisioningCriteria")
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "created", "modified", "enabled", "owner", "source", "entitlements", "requestable", "accessRequestConfig", "revocationRequestConfig", "segments", "provisioningCriteria"]
+    additional_owners: Optional[List[Optional[OwnerReference]]] = Field(default=None, alias="additionalOwners")
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "created", "modified", "enabled", "owner", "source", "entitlements", "requestable", "accessRequestConfig", "revocationRequestConfig", "segments", "accessModelMetadata", "provisioningCriteria", "additionalOwners"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -114,9 +117,19 @@ class AccessProfile(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of revocation_request_config
         if self.revocation_request_config:
             _dict['revocationRequestConfig'] = self.revocation_request_config.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of access_model_metadata
+        if self.access_model_metadata:
+            _dict['accessModelMetadata'] = self.access_model_metadata.to_dict()
         # override the default output from pydantic by calling `to_dict()` of provisioning_criteria
         if self.provisioning_criteria:
             _dict['provisioningCriteria'] = self.provisioning_criteria.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in additional_owners (list)
+        _items = []
+        if self.additional_owners:
+            for _item_additional_owners in self.additional_owners:
+                if _item_additional_owners:
+                    _items.append(_item_additional_owners.to_dict())
+            _dict['additionalOwners'] = _items
         # set to None if description (nullable) is None
         # and model_fields_set contains the field
         if self.description is None and "description" in self.model_fields_set:
@@ -152,6 +165,11 @@ class AccessProfile(BaseModel):
         if self.provisioning_criteria is None and "provisioning_criteria" in self.model_fields_set:
             _dict['provisioningCriteria'] = None
 
+        # set to None if additional_owners (nullable) is None
+        # and model_fields_set contains the field
+        if self.additional_owners is None and "additional_owners" in self.model_fields_set:
+            _dict['additionalOwners'] = None
+
         return _dict
 
     @classmethod
@@ -177,7 +195,9 @@ class AccessProfile(BaseModel):
             "accessRequestConfig": Requestability.from_dict(obj["accessRequestConfig"]) if obj.get("accessRequestConfig") is not None else None,
             "revocationRequestConfig": Revocability.from_dict(obj["revocationRequestConfig"]) if obj.get("revocationRequestConfig") is not None else None,
             "segments": obj.get("segments"),
-            "provisioningCriteria": ProvisioningCriteriaLevel1.from_dict(obj["provisioningCriteria"]) if obj.get("provisioningCriteria") is not None else None
+            "accessModelMetadata": AttributeDTOList.from_dict(obj["accessModelMetadata"]) if obj.get("accessModelMetadata") is not None else None,
+            "provisioningCriteria": ProvisioningCriteriaLevel1.from_dict(obj["provisioningCriteria"]) if obj.get("provisioningCriteria") is not None else None,
+            "additionalOwners": [OwnerReference.from_dict(_item) for _item in obj["additionalOwners"]] if obj.get("additionalOwners") is not None else None
         })
         return _obj
 

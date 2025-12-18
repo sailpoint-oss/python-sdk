@@ -35,7 +35,8 @@ class SourceSubtype(BaseModel):
     description: StrictStr = Field(description="Description of the subtype.")
     created: Optional[datetime] = Field(default=None, description="Creation timestamp.")
     modified: Optional[datetime] = Field(default=None, description="Last modified timestamp.")
-    __properties: ClassVar[List[str]] = ["id", "sourceId", "technicalName", "displayName", "description", "created", "modified"]
+    type: Optional[StrictStr] = Field(default=None, description="Type of the subtype. Either MACHINE OR null.")
+    __properties: ClassVar[List[str]] = ["id", "sourceId", "technicalName", "displayName", "description", "created", "modified", "type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,7 +97,8 @@ class SourceSubtype(BaseModel):
             "displayName": obj.get("displayName"),
             "description": obj.get("description"),
             "created": obj.get("created"),
-            "modified": obj.get("modified")
+            "modified": obj.get("modified"),
+            "type": obj.get("type")
         })
         return _obj
 

@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **description** | **str** | Description of the subtype. | [required]
 **created** | **datetime** | Creation timestamp. | [optional] 
 **modified** | **datetime** | Last modified timestamp. | [optional] 
+**type** | **str** | Type of the subtype. Either MACHINE OR null. | [optional] 
 }
 
 ## Example
@@ -37,7 +38,8 @@ technical_name='foo',
 display_name='Mr Foo',
 description='fighters',
 created='2025-07-28T16:13:42.801300Z',
-modified='2025-07-28T16:13:42.750850Z'
+modified='2025-07-28T16:13:42.750850Z',
+type='MACHINE'
 )
 
 ```

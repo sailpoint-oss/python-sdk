@@ -43,7 +43,26 @@ class TestSlimDiscoveredApplications(unittest.TestCase):
                 recommended_connectors = [ConnectorA, ConnectorB],
                 discovered_at = '2023-01-01T12:00Z',
                 created_at = '2023-01-01T12:00Z',
-                status = 'ACTIVE'
+                status = 'ACTIVE',
+                operational_status = 'Operational',
+                discovery_source_category = 'sso',
+                license_count = 175,
+                is_sanctioned = True,
+                logo = 'https://spdojtest1.oktapreview.com/api/v1/apps/0oaeuef9hiipHcMgR0h7/logo',
+                app_url = 'https://spdojtest1.oktapreview.com/home/salesforce/0oaeuef9hiipHcMgR0h7/24',
+                groups = [{map={id=id, name=JIRA Users, nativeIdentifiers={map={distinguishedName=CN=Engineering users,OU=Engineering,DC=corp,DC=example,DC=com, id=nativeId, objectSid=S-1-5-21-717838489-685202119-709183397-1177}}, type=EXTERNAL_GROUP|LOCAL_GROUP}}],
+                users_count = '175',
+                application_owner = [owner1@example.com, owner2@example.com],
+                it_application_owner = [itowner1@example.com, itowner2@example.com],
+                business_criticality = 'High',
+                data_classification = 'Restricted',
+                business_unit = 'Finance',
+                install_type = 'On Premise',
+                environment = 'Production',
+                risk_score = 'ANY',
+                is_privileged = False,
+                warranty_expiration = '2023-09-25T14:07:27.000+0000',
+                attributes = {features=[IMPORT_PROFILE_UPDATES, IMPORT_USER_SCHEMA, IMPORT_NEW_USERS], identityStack=NOT_SHARED, selfService=false, signOnMode=SAML_2_0}
             )
         else:
             return SlimDiscoveredApplications(

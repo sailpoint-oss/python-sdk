@@ -1309,7 +1309,7 @@ class AccessModelMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AccessModelMetadataBulkUpdateResponse:
-        """Metadata Attribute update by filter
+        """(Deprecated) Metadata Attribute update by filter
 
         Bulk update Access Model Metadata Attribute Values using a filter
 
@@ -1336,6 +1336,7 @@ class AccessModelMetadataApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /access-model-metadata/bulk-update/filter is deprecated.", DeprecationWarning)
 
         _param = self._update_access_model_metadata_by_filter_serialize(
             entitlement_attribute_bulk_update_filter_request=entitlement_attribute_bulk_update_filter_request,
@@ -1381,7 +1382,7 @@ class AccessModelMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AccessModelMetadataBulkUpdateResponse]:
-        """Metadata Attribute update by filter
+        """(Deprecated) Metadata Attribute update by filter
 
         Bulk update Access Model Metadata Attribute Values using a filter
 
@@ -1408,6 +1409,7 @@ class AccessModelMetadataApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /access-model-metadata/bulk-update/filter is deprecated.", DeprecationWarning)
 
         _param = self._update_access_model_metadata_by_filter_serialize(
             entitlement_attribute_bulk_update_filter_request=entitlement_attribute_bulk_update_filter_request,
@@ -1453,7 +1455,7 @@ class AccessModelMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Metadata Attribute update by filter
+        """(Deprecated) Metadata Attribute update by filter
 
         Bulk update Access Model Metadata Attribute Values using a filter
 
@@ -1480,6 +1482,7 @@ class AccessModelMetadataApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /access-model-metadata/bulk-update/filter is deprecated.", DeprecationWarning)
 
         _param = self._update_access_model_metadata_by_filter_serialize(
             entitlement_attribute_bulk_update_filter_request=entitlement_attribute_bulk_update_filter_request,
@@ -1599,7 +1602,7 @@ class AccessModelMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AccessModelMetadataBulkUpdateResponse:
-        """Metadata Attribute update by ids
+        """(Deprecated) Metadata Attribute update by ids
 
         Bulk update Access Model Metadata Attribute Values using ids.
 
@@ -1626,6 +1629,7 @@ class AccessModelMetadataApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /access-model-metadata/bulk-update/ids is deprecated.", DeprecationWarning)
 
         _param = self._update_access_model_metadata_by_ids_serialize(
             entitlement_attribute_bulk_update_ids_request=entitlement_attribute_bulk_update_ids_request,
@@ -1671,7 +1675,7 @@ class AccessModelMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AccessModelMetadataBulkUpdateResponse]:
-        """Metadata Attribute update by ids
+        """(Deprecated) Metadata Attribute update by ids
 
         Bulk update Access Model Metadata Attribute Values using ids.
 
@@ -1698,6 +1702,7 @@ class AccessModelMetadataApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /access-model-metadata/bulk-update/ids is deprecated.", DeprecationWarning)
 
         _param = self._update_access_model_metadata_by_ids_serialize(
             entitlement_attribute_bulk_update_ids_request=entitlement_attribute_bulk_update_ids_request,
@@ -1743,7 +1748,7 @@ class AccessModelMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Metadata Attribute update by ids
+        """(Deprecated) Metadata Attribute update by ids
 
         Bulk update Access Model Metadata Attribute Values using ids.
 
@@ -1770,6 +1775,7 @@ class AccessModelMetadataApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /access-model-metadata/bulk-update/ids is deprecated.", DeprecationWarning)
 
         _param = self._update_access_model_metadata_by_ids_serialize(
             entitlement_attribute_bulk_update_ids_request=entitlement_attribute_bulk_update_ids_request,
@@ -1889,7 +1895,7 @@ class AccessModelMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AccessModelMetadataBulkUpdateResponse:
-        """Metadata Attribute update by query
+        """(Deprecated) Metadata Attribute update by query
 
         Bulk update Access Model Metadata Attribute Values using a query
 
@@ -1916,6 +1922,7 @@ class AccessModelMetadataApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /access-model-metadata/bulk-update/query is deprecated.", DeprecationWarning)
 
         _param = self._update_access_model_metadata_by_query_serialize(
             entitlement_attribute_bulk_update_query_request=entitlement_attribute_bulk_update_query_request,
@@ -1961,7 +1968,7 @@ class AccessModelMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AccessModelMetadataBulkUpdateResponse]:
-        """Metadata Attribute update by query
+        """(Deprecated) Metadata Attribute update by query
 
         Bulk update Access Model Metadata Attribute Values using a query
 
@@ -1988,6 +1995,7 @@ class AccessModelMetadataApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /access-model-metadata/bulk-update/query is deprecated.", DeprecationWarning)
 
         _param = self._update_access_model_metadata_by_query_serialize(
             entitlement_attribute_bulk_update_query_request=entitlement_attribute_bulk_update_query_request,
@@ -2033,7 +2041,7 @@ class AccessModelMetadataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Metadata Attribute update by query
+        """(Deprecated) Metadata Attribute update by query
 
         Bulk update Access Model Metadata Attribute Values using a query
 
@@ -2060,6 +2068,7 @@ class AccessModelMetadataApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /access-model-metadata/bulk-update/query is deprecated.", DeprecationWarning)
 
         _param = self._update_access_model_metadata_by_query_serialize(
             entitlement_attribute_bulk_update_query_request=entitlement_attribute_bulk_update_query_request,

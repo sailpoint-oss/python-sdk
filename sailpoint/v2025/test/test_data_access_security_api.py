@@ -33,10 +33,24 @@ class TestDataAccessSecurityApi(unittest.TestCase):
         """
         pass
 
+    def test_create_application(self) -> None:
+        """Test case for create_application
+
+        Create application
+        """
+        pass
+
     def test_create_schedule(self) -> None:
         """Test case for create_schedule
 
         Create a new schedule.
+        """
+        pass
+
+    def test_delete_application(self) -> None:
+        """Test case for delete_application
+
+        Delete an application by identifier.
         """
         pass
 
@@ -51,6 +65,20 @@ class TestDataAccessSecurityApi(unittest.TestCase):
         """Test case for delete_task
 
         Delete a DAS task.
+        """
+        pass
+
+    def test_get_application(self) -> None:
+        """Test case for get_application
+
+        Retrieve application details by identifier.
+        """
+        pass
+
+    def test_get_applications(self) -> None:
+        """Test case for get_applications
+
+        Search applications in DAS.
         """
         pass
 
@@ -79,6 +107,13 @@ class TestDataAccessSecurityApi(unittest.TestCase):
         """Test case for get_tasks
 
         Lists all DAS tasks.
+        """
+        pass
+
+    def test_put_application(self) -> None:
+        """Test case for put_application
+
+        Update application by identifier.
         """
         pass
 

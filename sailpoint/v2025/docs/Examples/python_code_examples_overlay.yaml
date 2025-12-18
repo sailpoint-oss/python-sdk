@@ -363,6 +363,15 @@
             "type" : "SOURCE"
           },
           "enabled" : true,
+          "additionalOwners" : [ {
+            "name" : "support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          }, {
+            "name" : "support",
+            "id" : "2c9180a46faadee4016fb4e018c20639",
+            "type" : "IDENTITY"
+          } ],
           "revocationRequestConfig" : {
             "approvalSchemes" : [ {
               "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
@@ -383,7 +392,12 @@
               "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
               "approverType" : "GOVERNANCE_GROUP"
             } ],
-            "denialCommentsRequired" : true
+            "denialCommentsRequired" : true,
+            "requireEndDate" : true,
+            "maxPermittedAccessDuration" : {
+              "value" : 6,
+              "timeUnit" : "MONTHS"
+            }
           },
           "name" : "Employee-database-read-write",
           "provisioningCriteria" : {
@@ -423,6 +437,22 @@
             "value" : "carlee.cert1c9f9b6fd@mailinator.com"
           },
           "modified" : "2021-03-02T20:22:28.104Z",
+          "accessModelMetadata" : {
+            "attributes" : [ {
+              "key" : "iscPrivacy",
+              "name" : "Privacy",
+              "multiselect" : false,
+              "status" : "active",
+              "type" : "governance",
+              "objectTypes" : [ "all" ],
+              "description" : "Specifies the level of privacy associated with an access item.",
+              "values" : [ {
+                "value" : "public",
+                "name" : "Public",
+                "status" : "active"
+              } ]
+            } ]
+          },
           "id" : "2c91808a7190d06e01719938fcd20792",
           "requestable" : true
         }''' # AccessProfile | 
@@ -2079,8 +2109,8 @@
           limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
           offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           detail = 'FULL' # str | Determines whether slim, or increased level of detail is provided for each discovered application in the returned list. SLIM is the default behavior. (optional) # str | Determines whether slim, or increased level of detail is provided for each discovered application in the returned list. SLIM is the default behavior. (optional)
-          filter = 'name eq \"Okta\" and description co \"Okta\" and discoverySource in (\"csv\", \"Okta Saas\")' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)       Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co*  **createdAtStart**: *eq, le, ge*  **createdAtEnd**: *eq, le, ge*  **discoveredAtStart**: *eq, le, ge*  **discoveredAtEnd**: *eq, le, ge*  **discoverySource**: *eq, in*  (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)       Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co*  **createdAtStart**: *eq, le, ge*  **createdAtEnd**: *eq, le, ge*  **discoveredAtStart**: *eq, le, ge*  **discoveredAtEnd**: *eq, le, ge*  **discoverySource**: *eq, in*  (optional)
-          sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, discoveredAt, discoverySource** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, discoveredAt, discoverySource** (optional)
+          filter = 'name eq \"Okta\" and description co \"Okta\" and discoverySource in (\"csv\", \"Okta Saas\")' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co*  **createdAtStart**: *eq, le, ge*  **createdAtEnd**: *eq, le, ge*  **discoveredAtStart**: *eq, le, ge*  **discoveredAtEnd**: *eq, le, ge*  **discoverySource**: *eq, in*  **discoverySourceName**: *eq, in*  **discoverySourceCategory**: *eq, in*  (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co*  **createdAtStart**: *eq, le, ge*  **createdAtEnd**: *eq, le, ge*  **discoveredAtStart**: *eq, le, ge*  **discoveredAtEnd**: *eq, le, ge*  **discoverySource**: *eq, in*  **discoverySourceName**: *eq, in*  **discoverySourceCategory**: *eq, in*  (optional)
+          sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, discoveredAt, discoverySource, discoverySourceName, discoverySourceCategory** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, discoveredAt, discoverySource, discoverySourceName, discoverySourceCategory** (optional)
           try:
               # Get discovered applications for tenant
               
@@ -2138,6 +2168,36 @@
               # ApplicationDiscoveryApi(api_client).send_manual_discover_applications_csv_template(file)
           except Exception as e:
               print("Exception when calling ApplicationDiscoveryApi->send_manual_discover_applications_csv_template: %s\n" % e)
+- path: /sources/{sourceId}/discover-applications
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/application-discovery#start-application-discovery
+      source: |
+        from sailpoint.v2025.api.application_discovery_api import ApplicationDiscoveryApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.application_discovery_request import ApplicationDiscoveryRequest
+        from sailpoint.v2025.models.application_discovery_response import ApplicationDiscoveryResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          application_discovery_request = '''{
+          "datasetIds" : [ "source:datasetId12345", "source:datasetId12345" ]
+        }''' # ApplicationDiscoveryRequest | 
+          try:
+              # Start Application Discovery
+              new_application_discovery_request = ApplicationDiscoveryRequest.from_json(application_discovery_request)
+              results = ApplicationDiscoveryApi(api_client).start_application_discovery(x_sail_point_experimental=x_sail_point_experimental, application_discovery_request=new_application_discovery_request)
+              # Below is a request that includes all optional parameters
+              # results = ApplicationDiscoveryApi(api_client).start_application_discovery(x_sail_point_experimental, new_application_discovery_request)
+              print("The response of ApplicationDiscoveryApi->start_application_discovery:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ApplicationDiscoveryApi->start_application_discovery: %s\n" % e)
 - path: /generic-approvals/{id}/approve
   method: POST
   xCodeSample:
@@ -7103,6 +7163,75 @@
               # DataAccessSecurityApi(api_client).cancel_task(id)
           except Exception as e:
               print("Exception when calling DataAccessSecurityApi->cancel_task: %s\n" % e)
+- path: /das/applications
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/data-access-security#create-application
+      source: |
+        from sailpoint.v2025.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.base_create_application_request import BaseCreateApplicationRequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          base_create_application_request = '''{
+          "adIdentityCollectorId" : 987654321,
+          "applicationType" : 9,
+          "nisIdentityCollectorId" : 192837465,
+          "executeNow" : false,
+          "name" : "HR File Server",
+          "description" : "Stores HR documents and employee records.",
+          "dataClassificationSettings" : {
+            "isEnabled" : true,
+            "clusterId" : "cluster-001"
+          },
+          "activityConfigurationSettings" : {
+            "excludeFolders" : [ "/tmp", "/archive" ],
+            "excludeFileExtensions" : [ ".log", ".bak" ],
+            "excludeActions" : [ "delete", "move" ],
+            "isEnabled" : true,
+            "retentionTimePeriod" : 30,
+            "retentionTimeType" : "days",
+            "clusterId" : "cluster-001",
+            "excludeUsers" : [ "user1", "user2" ]
+          },
+          "applicationCrawlerSettings" : {
+            "calculateResourceSize" : 2,
+            "excludedResources" : [ "resourceA", "resourceB" ],
+            "crawlPublicFolders" : true,
+            "excludedPathsByRegex" : "^/archive/.*",
+            "isEnabled" : true,
+            "crawlSnapshotsFolder" : true,
+            "crawlMailboxes" : false,
+            "crawlTopLevelShares" : [ "share1", "share2" ],
+            "clusterId" : "cluster-001",
+            "includeResources" : [ "resourceX", "resourceY" ]
+          },
+          "identityCollectorId" : 123456789,
+          "permissionCollectorSettings" : {
+            "analyzeUniquePermissions" : true,
+            "calculateRiskiestPermissions" : false,
+            "isEnabled" : true,
+            "calculateEffectivePermissions" : true,
+            "clusterId" : "cluster-001",
+            "effectivePermissionsSource" : "S3"
+          },
+          "tags" : [ {
+            "key" : 1,
+            "value" : "Confidential"
+          } ]
+        }''' # BaseCreateApplicationRequest | Request body containing the details required to create a new application.
+          try:
+              # Create application
+              new_base_create_application_request = BaseCreateApplicationRequest.from_json(base_create_application_request)
+              DataAccessSecurityApi(api_client).create_application(base_create_application_request=new_base_create_application_request)
+              # Below is a request that includes all optional parameters
+              # DataAccessSecurityApi(api_client).create_application(new_base_create_application_request)
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->create_application: %s\n" % e)
 - path: /das/tasks/schedules
   method: POST
   xCodeSample:
@@ -7139,6 +7268,28 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling DataAccessSecurityApi->create_schedule: %s\n" % e)
+- path: /das/applications/{id}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/data-access-security#delete-application
+      source: |
+        from sailpoint.v2025.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 12345 # int | The unique identifier of the application to delete. # int | The unique identifier of the application to delete.
+          try:
+              # Delete an application by identifier.
+              
+              DataAccessSecurityApi(api_client).delete_application(id=id)
+              # Below is a request that includes all optional parameters
+              # DataAccessSecurityApi(api_client).delete_application(id)
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->delete_application: %s\n" % e)
 - path: /das/tasks/schedules/{id}
   method: DELETE
   xCodeSample:
@@ -7183,6 +7334,60 @@
               # DataAccessSecurityApi(api_client).delete_task(id)
           except Exception as e:
               print("Exception when calling DataAccessSecurityApi->delete_task: %s\n" % e)
+- path: /das/applications/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/data-access-security#get-application
+      source: |
+        from sailpoint.v2025.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.application_item import ApplicationItem
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 12345 # int | The unique identifier of the application to retrieve. # int | The unique identifier of the application to retrieve.
+          try:
+              # Retrieve application details by identifier.
+              
+              results = DataAccessSecurityApi(api_client).get_application(id=id)
+              # Below is a request that includes all optional parameters
+              # results = DataAccessSecurityApi(api_client).get_application(id)
+              print("The response of DataAccessSecurityApi->get_application:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->get_application: %s\n" % e)
+- path: /das/applications
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/data-access-security#get-applications
+      source: |
+        from sailpoint.v2025.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.application_item import ApplicationItem
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          filters = 'AppType eq \'ActiveDirectory\' and Statuses eq \'Passed\'' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **appIds**: *eq, in*  **tagIds**: *eq, in*  **statuses**: *eq, in*  **groupCodes**: *eq, in*  **virtualAppId**: *eq*  **appName**: *eq*  **supportsValidation**: *eq*  Supported composite operators are *and, or* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **appIds**: *eq, in*  **tagIds**: *eq, in*  **statuses**: *eq, in*  **groupCodes**: *eq, in*  **virtualAppId**: *eq*  **appName**: *eq*  **supportsValidation**: *eq*  Supported composite operators are *and, or* (optional)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          try:
+              # Search applications in DAS.
+              
+              results = DataAccessSecurityApi(api_client).get_applications()
+              # Below is a request that includes all optional parameters
+              # results = DataAccessSecurityApi(api_client).get_applications(filters, limit, offset, count)
+              print("The response of DataAccessSecurityApi->get_applications:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->get_applications: %s\n" % e)
 - path: /das/tasks/schedules/{id}
   method: GET
   xCodeSample:
@@ -7291,6 +7496,76 @@
                   print(item.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling DataAccessSecurityApi->get_tasks: %s\n" % e)
+- path: /das/applications/{id}
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/data-access-security#put-application
+      source: |
+        from sailpoint.v2025.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.base_create_application_request import BaseCreateApplicationRequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 12345 # int | The unique identifier of the application to update. # int | The unique identifier of the application to update.
+          base_create_application_request = '''{
+          "adIdentityCollectorId" : 987654321,
+          "applicationType" : 9,
+          "nisIdentityCollectorId" : 192837465,
+          "executeNow" : false,
+          "name" : "HR File Server",
+          "description" : "Stores HR documents and employee records.",
+          "dataClassificationSettings" : {
+            "isEnabled" : true,
+            "clusterId" : "cluster-001"
+          },
+          "activityConfigurationSettings" : {
+            "excludeFolders" : [ "/tmp", "/archive" ],
+            "excludeFileExtensions" : [ ".log", ".bak" ],
+            "excludeActions" : [ "delete", "move" ],
+            "isEnabled" : true,
+            "retentionTimePeriod" : 30,
+            "retentionTimeType" : "days",
+            "clusterId" : "cluster-001",
+            "excludeUsers" : [ "user1", "user2" ]
+          },
+          "applicationCrawlerSettings" : {
+            "calculateResourceSize" : 2,
+            "excludedResources" : [ "resourceA", "resourceB" ],
+            "crawlPublicFolders" : true,
+            "excludedPathsByRegex" : "^/archive/.*",
+            "isEnabled" : true,
+            "crawlSnapshotsFolder" : true,
+            "crawlMailboxes" : false,
+            "crawlTopLevelShares" : [ "share1", "share2" ],
+            "clusterId" : "cluster-001",
+            "includeResources" : [ "resourceX", "resourceY" ]
+          },
+          "identityCollectorId" : 123456789,
+          "permissionCollectorSettings" : {
+            "analyzeUniquePermissions" : true,
+            "calculateRiskiestPermissions" : false,
+            "isEnabled" : true,
+            "calculateEffectivePermissions" : true,
+            "clusterId" : "cluster-001",
+            "effectivePermissionsSource" : "S3"
+          },
+          "tags" : [ {
+            "key" : 1,
+            "value" : "Confidential"
+          } ]
+        }''' # BaseCreateApplicationRequest | Request body containing the updated details for the application.
+          try:
+              # Update application by identifier.
+              new_base_create_application_request = BaseCreateApplicationRequest.from_json(base_create_application_request)
+              DataAccessSecurityApi(api_client).put_application(id=id, base_create_application_request=new_base_create_application_request)
+              # Below is a request that includes all optional parameters
+              # DataAccessSecurityApi(api_client).put_application(id, new_base_create_application_request)
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->put_application: %s\n" % e)
 - path: /das/tasks/schedules/{id}
   method: PUT
   xCodeSample:
@@ -12406,6 +12681,7 @@
       source: |
         from sailpoint.v2025.api.machine_accounts_api import MachineAccountsApi
         from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.create_machine_account_subtype_request import CreateMachineAccountSubtypeRequest
         from sailpoint.v2025.models.source_subtype import SourceSubtype
         from sailpoint.configuration import Configuration
         configuration = Configuration()
@@ -12415,21 +12691,13 @@
         with ApiClient(configuration) as api_client:
           source_id = '6d0458373bec4b4b80460992b76016da' # str | The ID of the source. # str | The ID of the source.
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
-          source_subtype = '''{
-          "sourceId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
-          "displayName" : "Mr Foo",
-          "created" : "2025-07-28T16:13:42.8013Z",
-          "description" : "fighters",
-          "modified" : "2025-07-28T16:13:42.75085Z",
-          "id" : "43bdd144-4b17-4fce-a744-17c7fd3e717b",
-          "technicalName" : "foo"
-        }''' # SourceSubtype | 
+          create_machine_account_subtype_request = '''{technicalName=foo, displayName=Mr Foo, description=fighters, type=MACHINE}''' # CreateMachineAccountSubtypeRequest | 
           try:
               # Create subtype
-              new_source_subtype = SourceSubtype.from_json(source_subtype)
-              results = MachineAccountsApi(api_client).create_machine_account_subtype(source_id=source_id, x_sail_point_experimental=x_sail_point_experimental, source_subtype=new_source_subtype)
+              new_create_machine_account_subtype_request = CreateMachineAccountSubtypeRequest.from_json(create_machine_account_subtype_request)
+              results = MachineAccountsApi(api_client).create_machine_account_subtype(source_id=source_id, x_sail_point_experimental=x_sail_point_experimental, create_machine_account_subtype_request=new_create_machine_account_subtype_request)
               # Below is a request that includes all optional parameters
-              # results = MachineAccountsApi(api_client).create_machine_account_subtype(source_id, x_sail_point_experimental, new_source_subtype)
+              # results = MachineAccountsApi(api_client).create_machine_account_subtype(source_id, x_sail_point_experimental, new_create_machine_account_subtype_request)
               print("The response of MachineAccountsApi->create_machine_account_subtype:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -12448,15 +12716,15 @@
         configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          subtype_id = '43bdd144-4b17-4fce-a744-17c7fd3e717b' # str | The ID of the machine account subtype. # str | The ID of the machine account subtype.
+          source_id = '6d0458373bec4b4b80460992b76016da' # str | The ID of the source. # str | The ID of the source.
           technical_name = 'foo' # str | The technical name of the subtype. # str | The technical name of the subtype.
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           try:
               # Delete subtype
               
-              MachineAccountsApi(api_client).delete_machine_account_subtype(subtype_id=subtype_id, technical_name=technical_name, x_sail_point_experimental=x_sail_point_experimental)
+              MachineAccountsApi(api_client).delete_machine_account_subtype(source_id=source_id, technical_name=technical_name, x_sail_point_experimental=x_sail_point_experimental)
               # Below is a request that includes all optional parameters
-              # MachineAccountsApi(api_client).delete_machine_account_subtype(subtype_id, technical_name, x_sail_point_experimental)
+              # MachineAccountsApi(api_client).delete_machine_account_subtype(source_id, technical_name, x_sail_point_experimental)
           except Exception as e:
               print("Exception when calling MachineAccountsApi->delete_machine_account_subtype: %s\n" % e)
 - path: /machine-accounts/{id}
@@ -12486,7 +12754,7 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling MachineAccountsApi->get_machine_account: %s\n" % e)
-- path: /sources/subtype/{subtypeId}
+- path: /sources/subtypes/{subtypeId}
   method: GET
   xCodeSample:
     - lang: Python
@@ -12558,7 +12826,7 @@
         with ApiClient(configuration) as api_client:
           source_id = '6d0458373bec4b4b80460992b76016da' # str | The ID of the source. # str | The ID of the source.
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
-          filters = 'identityId eq \"2c9180858082150f0180893dbaf44201\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)   Filtering is supported for the following fields and operators:   **displayName**: *eq, sw*   **technicalName**: *eq, sw*  (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)   Filtering is supported for the following fields and operators:   **displayName**: *eq, sw*   **technicalName**: *eq, sw*  (optional)
+          filters = 'displayName eq \"sail\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **displayName**: *eq, sw*  **technicalName**: *eq, sw* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **displayName**: *eq, sw*  **technicalName**: *eq, sw* (optional)
           sorters = 'displayName' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, technicalName** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, technicalName** (optional)
           count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
           limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
@@ -12621,24 +12889,16 @@
         configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          subtype_id = '43bdd144-4b17-4fce-a744-17c7fd3e717b' # str | The ID of the machine account subtype. # str | The ID of the machine account subtype.
+          source_id = '6d0458373bec4b4b80460992b76016da' # str | The ID of the source. # str | The ID of the source.
           technical_name = 'foo' # str | The technical name of the subtype. # str | The technical name of the subtype.
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
-          source_subtype = '''{
-          "sourceId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
-          "displayName" : "Mr Foo",
-          "created" : "2025-07-28T16:13:42.8013Z",
-          "description" : "fighters",
-          "modified" : "2025-07-28T16:13:42.75085Z",
-          "id" : "43bdd144-4b17-4fce-a744-17c7fd3e717b",
-          "technicalName" : "foo"
-        }''' # SourceSubtype | 
+          request_body = '''[{op=replace, path=/displayName, value=Test New DisplayName}]''' # List[object] | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
           try:
               # Patch subtype
-              new_source_subtype = SourceSubtype.from_json(source_subtype)
-              results = MachineAccountsApi(api_client).patch_machine_account_subtype(subtype_id=subtype_id, technical_name=technical_name, x_sail_point_experimental=x_sail_point_experimental, source_subtype=new_source_subtype)
+              new_request_body = RequestBody.from_json(request_body)
+              results = MachineAccountsApi(api_client).patch_machine_account_subtype(source_id=source_id, technical_name=technical_name, x_sail_point_experimental=x_sail_point_experimental, request_body=new_request_body)
               # Below is a request that includes all optional parameters
-              # results = MachineAccountsApi(api_client).patch_machine_account_subtype(subtype_id, technical_name, x_sail_point_experimental, new_source_subtype)
+              # results = MachineAccountsApi(api_client).patch_machine_account_subtype(source_id, technical_name, x_sail_point_experimental, new_request_body)
               print("The response of MachineAccountsApi->patch_machine_account_subtype:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -15592,7 +15852,7 @@
 
 
         with ApiClient(configuration) as api_client:
-          key = 'cHVibGljIGtleSBnb2VzIGhlcmU=' # str | Base64Url encoded public key # str | Base64Url encoded public key
+          key = 'BLdV-KA7nSRXx2XkksQX7bmOAShARsB3CCVWodKr4dOJj_puru76wy6drBTVlSytW_rDheLwepm9xdrRuqUI7p81wMP576frFBbsjndBKyRm3eouPbDcW8MAz0XRH1BB3w==' # str | Base64Url encoded NIST P-384 public key # str | Base64Url encoded NIST P-384 public key
           try:
               # Get an attestation document.
               
@@ -21193,6 +21453,35 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling SourcesApi->import_uncorrelated_accounts: %s\n" % e)
+- path: /sources/{sourceId}/password-policies
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/sources#list-password-policy-holders-on-source
+      source: |
+        from sailpoint.v2025.api.sources_api import SourcesApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.password_policy_holders_dto_inner import PasswordPolicyHoldersDtoInner
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          source_id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id # str | The Source id
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          try:
+              # Get Password Policy for source
+              
+              results = SourcesApi(api_client).list_password_policy_holders_on_source(source_id=source_id)
+              # Below is a request that includes all optional parameters
+              # results = SourcesApi(api_client).list_password_policy_holders_on_source(source_id, offset, limit, count)
+              print("The response of SourcesApi->list_password_policy_holders_on_source:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SourcesApi->list_password_policy_holders_on_source: %s\n" % e)
 - path: /sources/{sourceId}/provisioning-policies
   method: GET
   xCodeSample:
@@ -22605,7 +22894,7 @@
           limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
           offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
-          filters = 'completionStatus eq \"Success\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in*  **type**: *eq, in* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in*  **type**: *eq, in* (optional)
+          filters = 'completionStatus eq \"Success\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION (optional)
           sorters = '-created' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created** (optional)
           try:
               # Retrieve task status list

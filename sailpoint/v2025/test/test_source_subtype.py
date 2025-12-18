@@ -41,7 +41,8 @@ class TestSourceSubtype(unittest.TestCase):
                 display_name = 'Mr Foo',
                 description = 'fighters',
                 created = '2025-07-28T16:13:42.801300Z',
-                modified = '2025-07-28T16:13:42.750850Z'
+                modified = '2025-07-28T16:13:42.750850Z',
+                type = 'MACHINE'
             )
         else:
             return SourceSubtype(

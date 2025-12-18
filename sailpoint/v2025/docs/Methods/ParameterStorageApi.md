@@ -167,7 +167,7 @@ with ApiClient(configuration) as api_client:
 
 ## get-attestation-document
 Get an attestation document.
-Get an attestation document, and perform x25519 handshake to enabled end-to-end encrypted transport of parameter private fields.
+Get an attestation document containing a NIST P-384 service public key for an ECDHE handshake, enabling the end-to-end-encrypted transport of parameter private fields.
 
 [API Spec](https://developer.sailpoint.com/docs/api/v2025/get-attestation-document)
 
@@ -175,7 +175,7 @@ Get an attestation document, and perform x25519 handshake to enabled end-to-end 
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
-  Query | key | **str** | True  | Base64Url encoded public key
+  Query | key | **str** | True  | Base64Url encoded NIST P-384 public key
 
 ### Return type
 [**ParameterStorageAttestationDocument**](../models/parameter-storage-attestation-document)
@@ -205,7 +205,7 @@ configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    key = 'cHVibGljIGtleSBnb2VzIGhlcmU=' # str | Base64Url encoded public key # str | Base64Url encoded public key
+    key = 'BLdV-KA7nSRXx2XkksQX7bmOAShARsB3CCVWodKr4dOJj_puru76wy6drBTVlSytW_rDheLwepm9xdrRuqUI7p81wMP576frFBbsjndBKyRm3eouPbDcW8MAz0XRH1BB3w==' # str | Base64Url encoded NIST P-384 public key # str | Base64Url encoded NIST P-384 public key
 
     try:
         # Get an attestation document.

@@ -620,7 +620,7 @@ class ParameterStorageApi:
     @validate_call
     def get_attestation_document(
         self,
-        key: Annotated[StrictStr, Field(description="Base64Url encoded public key")],
+        key: Annotated[StrictStr, Field(description="Base64Url encoded NIST P-384 public key")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -636,9 +636,9 @@ class ParameterStorageApi:
     ) -> ParameterStorageAttestationDocument:
         """Get an attestation document.
 
-        Get an attestation document, and perform x25519 handshake to enabled end-to-end encrypted transport of parameter private fields.
+        Get an attestation document containing a NIST P-384 service public key for an ECDHE handshake, enabling the end-to-end-encrypted transport of parameter private fields.
 
-        :param key: Base64Url encoded public key (required)
+        :param key: Base64Url encoded NIST P-384 public key (required)
         :type key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -692,7 +692,7 @@ class ParameterStorageApi:
     @validate_call
     def get_attestation_document_with_http_info(
         self,
-        key: Annotated[StrictStr, Field(description="Base64Url encoded public key")],
+        key: Annotated[StrictStr, Field(description="Base64Url encoded NIST P-384 public key")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -708,9 +708,9 @@ class ParameterStorageApi:
     ) -> ApiResponse[ParameterStorageAttestationDocument]:
         """Get an attestation document.
 
-        Get an attestation document, and perform x25519 handshake to enabled end-to-end encrypted transport of parameter private fields.
+        Get an attestation document containing a NIST P-384 service public key for an ECDHE handshake, enabling the end-to-end-encrypted transport of parameter private fields.
 
-        :param key: Base64Url encoded public key (required)
+        :param key: Base64Url encoded NIST P-384 public key (required)
         :type key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -764,7 +764,7 @@ class ParameterStorageApi:
     @validate_call
     def get_attestation_document_without_preload_content(
         self,
-        key: Annotated[StrictStr, Field(description="Base64Url encoded public key")],
+        key: Annotated[StrictStr, Field(description="Base64Url encoded NIST P-384 public key")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -780,9 +780,9 @@ class ParameterStorageApi:
     ) -> RESTResponseType:
         """Get an attestation document.
 
-        Get an attestation document, and perform x25519 handshake to enabled end-to-end encrypted transport of parameter private fields.
+        Get an attestation document containing a NIST P-384 service public key for an ECDHE handshake, enabling the end-to-end-encrypted transport of parameter private fields.
 
-        :param key: Base64Url encoded public key (required)
+        :param key: Base64Url encoded NIST P-384 public key (required)
         :type key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

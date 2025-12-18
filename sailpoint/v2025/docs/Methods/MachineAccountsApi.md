@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**create-machine-account-subtype**](#create-machine-account-subtype) | **POST** `/sources/{sourceId}/subtypes` | Create subtype
 [**delete-machine-account-subtype**](#delete-machine-account-subtype) | **DELETE** `/sources/{sourceId}/subtypes/{technicalName}` | Delete subtype
 [**get-machine-account**](#get-machine-account) | **GET** `/machine-accounts/{id}` | Machine account details
-[**get-machine-account-subtype-by-id**](#get-machine-account-subtype-by-id) | **GET** `/sources/subtype/{subtypeId}` | Retrieve subtype by subtype id
+[**get-machine-account-subtype-by-id**](#get-machine-account-subtype-by-id) | **GET** `/sources/subtypes/{subtypeId}` | Retrieve subtype by subtype id
 [**get-machine-account-subtype-by-technical-name**](#get-machine-account-subtype-by-technical-name) | **GET** `/sources/{sourceId}/subtypes/{technicalName}` | Retrieve subtype by source and technicalName
 [**list-machine-account-subtypes**](#list-machine-account-subtypes) | **GET** `/sources/{sourceId}/subtypes` | Retrieve all subtypes by source
 [**list-machine-accounts**](#list-machine-accounts) | **GET** `/machine-accounts` | Machine accounts list
@@ -49,7 +49,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | The ID of the source.
    | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
- Body  | source_subtype | [**SourceSubtype**](../models/source-subtype) | True  | 
+ Body  | create_machine_account_subtype_request | [**CreateMachineAccountSubtypeRequest**](../models/create-machine-account-subtype-request) | True  | 
 
 ### Return type
 [**SourceSubtype**](../models/source-subtype)
@@ -73,6 +73,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.v2025.api.machine_accounts_api import MachineAccountsApi
 from sailpoint.v2025.api_client import ApiClient
+from sailpoint.v2025.models.create_machine_account_subtype_request import CreateMachineAccountSubtypeRequest
 from sailpoint.v2025.models.source_subtype import SourceSubtype
 from sailpoint.configuration import Configuration
 configuration = Configuration()
@@ -82,22 +83,14 @@ configuration.experimental = True
 with ApiClient(configuration) as api_client:
     source_id = '6d0458373bec4b4b80460992b76016da' # str | The ID of the source. # str | The ID of the source.
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
-    source_subtype = '''{
-          "sourceId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
-          "displayName" : "Mr Foo",
-          "created" : "2025-07-28T16:13:42.8013Z",
-          "description" : "fighters",
-          "modified" : "2025-07-28T16:13:42.75085Z",
-          "id" : "43bdd144-4b17-4fce-a744-17c7fd3e717b",
-          "technicalName" : "foo"
-        }''' # SourceSubtype | 
+    create_machine_account_subtype_request = '''{technicalName=foo, displayName=Mr Foo, description=fighters, type=MACHINE}''' # CreateMachineAccountSubtypeRequest | 
 
     try:
         # Create subtype
-        new_source_subtype = SourceSubtype.from_json(source_subtype)
-        results = MachineAccountsApi(api_client).create_machine_account_subtype(source_id=source_id, x_sail_point_experimental=x_sail_point_experimental, source_subtype=new_source_subtype)
+        new_create_machine_account_subtype_request = CreateMachineAccountSubtypeRequest.from_json(create_machine_account_subtype_request)
+        results = MachineAccountsApi(api_client).create_machine_account_subtype(source_id=source_id, x_sail_point_experimental=x_sail_point_experimental, create_machine_account_subtype_request=new_create_machine_account_subtype_request)
         # Below is a request that includes all optional parameters
-        # results = MachineAccountsApi(api_client).create_machine_account_subtype(source_id, x_sail_point_experimental, new_source_subtype)
+        # results = MachineAccountsApi(api_client).create_machine_account_subtype(source_id, x_sail_point_experimental, new_create_machine_account_subtype_request)
         print("The response of MachineAccountsApi->create_machine_account_subtype:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -121,7 +114,7 @@ This API is currently in an experimental state. The API is subject to change bas
  ```
 :::
 Delete subtype
-Delete a machine account subtype by its ID.
+Delete a machine account subtype by source ID and technical name.
 
 [API Spec](https://developer.sailpoint.com/docs/api/v2025/delete-machine-account-subtype)
 
@@ -129,7 +122,7 @@ Delete a machine account subtype by its ID.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
-Path   | subtype_id | **str** | True  | The ID of the machine account subtype.
+Path   | source_id | **str** | True  | The ID of the source.
 Path   | technical_name | **str** | True  | The technical name of the subtype.
    | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
 
@@ -161,16 +154,16 @@ configuration = Configuration()
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    subtype_id = '43bdd144-4b17-4fce-a744-17c7fd3e717b' # str | The ID of the machine account subtype. # str | The ID of the machine account subtype.
+    source_id = '6d0458373bec4b4b80460992b76016da' # str | The ID of the source. # str | The ID of the source.
     technical_name = 'foo' # str | The technical name of the subtype. # str | The technical name of the subtype.
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
         # Delete subtype
         
-        MachineAccountsApi(api_client).delete_machine_account_subtype(subtype_id=subtype_id, technical_name=technical_name, x_sail_point_experimental=x_sail_point_experimental)
+        MachineAccountsApi(api_client).delete_machine_account_subtype(source_id=source_id, technical_name=technical_name, x_sail_point_experimental=x_sail_point_experimental)
         # Below is a request that includes all optional parameters
-        # MachineAccountsApi(api_client).delete_machine_account_subtype(subtype_id, technical_name, x_sail_point_experimental)
+        # MachineAccountsApi(api_client).delete_machine_account_subtype(source_id, technical_name, x_sail_point_experimental)
     except Exception as e:
         print("Exception when calling MachineAccountsApi->delete_machine_account_subtype: %s\n" % e)
 ```
@@ -421,7 +414,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | The ID of the source.
    | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
-  Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)   Filtering is supported for the following fields and operators:   **displayName**: *eq, sw*   **technicalName**: *eq, sw* 
+  Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **displayName**: *eq, sw*  **technicalName**: *eq, sw*
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, technicalName**
   Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | limit | **int** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -458,7 +451,7 @@ configuration.experimental = True
 with ApiClient(configuration) as api_client:
     source_id = '6d0458373bec4b4b80460992b76016da' # str | The ID of the source. # str | The ID of the source.
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
-    filters = 'identityId eq \"2c9180858082150f0180893dbaf44201\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)   Filtering is supported for the following fields and operators:   **displayName**: *eq, sw*   **technicalName**: *eq, sw*  (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)   Filtering is supported for the following fields and operators:   **displayName**: *eq, sw*   **technicalName**: *eq, sw*  (optional)
+    filters = 'displayName eq \"sail\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **displayName**: *eq, sw*  **technicalName**: *eq, sw* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **displayName**: *eq, sw*  **technicalName**: *eq, sw* (optional)
     sorters = 'displayName' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, technicalName** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, technicalName** (optional)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
@@ -576,8 +569,8 @@ This API is currently in an experimental state. The API is subject to change bas
  ```
 :::
 Patch subtype
-Update fields of a machine account subtype by its ID.
-Patchable fields include: `displayName`, `description`, `technicalName`.
+Update fields of a machine account subtype by source ID and technical name.
+Patchable fields include: `displayName`, `description`.
 
 [API Spec](https://developer.sailpoint.com/docs/api/v2025/patch-machine-account-subtype)
 
@@ -585,10 +578,10 @@ Patchable fields include: `displayName`, `description`, `technicalName`.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
-Path   | subtype_id | **str** | True  | The ID of the machine account subtype.
+Path   | source_id | **str** | True  | The ID of the source.
 Path   | technical_name | **str** | True  | The technical name of the subtype.
    | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
- Body  | source_subtype | [**SourceSubtype**](../models/source-subtype) | True  | 
+ Body  | request_body | **[]object** | True  | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
 ### Return type
 [**SourceSubtype**](../models/source-subtype)
@@ -604,7 +597,7 @@ Code | Description  | Data Type | Response headers |
 500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
 
 ### HTTP request headers
- - **Content-Type**: application/json
+ - **Content-Type**: application/json-patch+json
  - **Accept**: application/json
 
 ### Example
@@ -619,25 +612,17 @@ configuration = Configuration()
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    subtype_id = '43bdd144-4b17-4fce-a744-17c7fd3e717b' # str | The ID of the machine account subtype. # str | The ID of the machine account subtype.
+    source_id = '6d0458373bec4b4b80460992b76016da' # str | The ID of the source. # str | The ID of the source.
     technical_name = 'foo' # str | The technical name of the subtype. # str | The technical name of the subtype.
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
-    source_subtype = '''{
-          "sourceId" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
-          "displayName" : "Mr Foo",
-          "created" : "2025-07-28T16:13:42.8013Z",
-          "description" : "fighters",
-          "modified" : "2025-07-28T16:13:42.75085Z",
-          "id" : "43bdd144-4b17-4fce-a744-17c7fd3e717b",
-          "technicalName" : "foo"
-        }''' # SourceSubtype | 
+    request_body = '''[{op=replace, path=/displayName, value=Test New DisplayName}]''' # List[object] | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
     try:
         # Patch subtype
-        new_source_subtype = SourceSubtype.from_json(source_subtype)
-        results = MachineAccountsApi(api_client).patch_machine_account_subtype(subtype_id=subtype_id, technical_name=technical_name, x_sail_point_experimental=x_sail_point_experimental, source_subtype=new_source_subtype)
+        new_request_body = RequestBody.from_json(request_body)
+        results = MachineAccountsApi(api_client).patch_machine_account_subtype(source_id=source_id, technical_name=technical_name, x_sail_point_experimental=x_sail_point_experimental, request_body=new_request_body)
         # Below is a request that includes all optional parameters
-        # results = MachineAccountsApi(api_client).patch_machine_account_subtype(subtype_id, technical_name, x_sail_point_experimental, new_source_subtype)
+        # results = MachineAccountsApi(api_client).patch_machine_account_subtype(source_id, technical_name, x_sail_point_experimental, new_request_body)
         print("The response of MachineAccountsApi->patch_machine_account_subtype:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

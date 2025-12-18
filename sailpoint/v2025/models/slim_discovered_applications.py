@@ -19,7 +19,7 @@ import json
 import warnings
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -37,7 +37,26 @@ class SlimDiscoveredApplications(BaseModel):
     discovered_at: Optional[datetime] = Field(default=None, description="The timestamp when the application was last received via an entitlement aggregation invocation  or a manual csv upload, in ISO 8601 format.", alias="discoveredAt")
     created_at: Optional[datetime] = Field(default=None, description="The timestamp when the application was first discovered, in ISO 8601 format.", alias="createdAt")
     status: Optional[StrictStr] = Field(default=None, description="The status of an application within the discovery source.  By default this field is set to \"ACTIVE\" when the application is discovered.  If an application has been deleted from within the discovery source, the status will be set to \"INACTIVE\".")
-    __properties: ClassVar[List[str]] = ["id", "name", "discoverySource", "discoveredVendor", "description", "recommendedConnectors", "discoveredAt", "createdAt", "status"]
+    operational_status: Optional[StrictStr] = Field(default=None, description="The operational status of the application.", alias="operationalStatus")
+    discovery_source_category: Optional[StrictStr] = Field(default=None, description="The category of the discovery source.", alias="discoverySourceCategory")
+    license_count: Optional[StrictInt] = Field(default=None, description="The number of licenses associated with the application.", alias="licenseCount")
+    is_sanctioned: Optional[StrictBool] = Field(default=False, description="Indicates whether the application is sanctioned.", alias="isSanctioned")
+    logo: Optional[StrictStr] = Field(default=None, description="URL of the application's logo.")
+    app_url: Optional[StrictStr] = Field(default=None, description="The URL of the application.", alias="appUrl")
+    groups: Optional[List[Dict[str, Any]]] = Field(default=None, description="List of groups associated with the application.")
+    users_count: Optional[StrictStr] = Field(default=None, description="The count of users associated with the application.", alias="usersCount")
+    application_owner: Optional[List[StrictStr]] = Field(default=None, description="The owners of the application.", alias="applicationOwner")
+    it_application_owner: Optional[List[StrictStr]] = Field(default=None, description="The IT owners of the application.", alias="itApplicationOwner")
+    business_criticality: Optional[StrictStr] = Field(default=None, description="The business criticality level of the application.", alias="businessCriticality")
+    data_classification: Optional[StrictStr] = Field(default=None, description="The data classification level of the application.", alias="dataClassification")
+    business_unit: Optional[StrictStr] = Field(default=None, description="The business unit associated with the application.", alias="businessUnit")
+    install_type: Optional[StrictStr] = Field(default=None, description="The installation type of the application.", alias="installType")
+    environment: Optional[StrictStr] = Field(default=None, description="The environment in which the application operates.")
+    risk_score: Optional[StrictStr] = Field(default=None, description="The risk score of the application.", alias="riskScore")
+    is_privileged: Optional[StrictBool] = Field(default=False, description="Indicates whether the application has privileged access.", alias="isPrivileged")
+    warranty_expiration: Optional[StrictStr] = Field(default=None, description="The warranty expiration date of the application.", alias="warrantyExpiration")
+    attributes: Optional[Dict[str, Any]] = Field(default=None, description="Additional attributes of the application useful for visibility of governance posture.")
+    __properties: ClassVar[List[str]] = ["id", "name", "discoverySource", "discoveredVendor", "description", "recommendedConnectors", "discoveredAt", "createdAt", "status", "operationalStatus", "discoverySourceCategory", "licenseCount", "isSanctioned", "logo", "appUrl", "groups", "usersCount", "applicationOwner", "itApplicationOwner", "businessCriticality", "dataClassification", "businessUnit", "installType", "environment", "riskScore", "isPrivileged", "warrantyExpiration", "attributes"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -98,7 +117,26 @@ class SlimDiscoveredApplications(BaseModel):
             "recommendedConnectors": obj.get("recommendedConnectors"),
             "discoveredAt": obj.get("discoveredAt"),
             "createdAt": obj.get("createdAt"),
-            "status": obj.get("status")
+            "status": obj.get("status"),
+            "operationalStatus": obj.get("operationalStatus"),
+            "discoverySourceCategory": obj.get("discoverySourceCategory"),
+            "licenseCount": obj.get("licenseCount"),
+            "isSanctioned": obj.get("isSanctioned") if obj.get("isSanctioned") is not None else False,
+            "logo": obj.get("logo"),
+            "appUrl": obj.get("appUrl"),
+            "groups": obj.get("groups"),
+            "usersCount": obj.get("usersCount"),
+            "applicationOwner": obj.get("applicationOwner"),
+            "itApplicationOwner": obj.get("itApplicationOwner"),
+            "businessCriticality": obj.get("businessCriticality"),
+            "dataClassification": obj.get("dataClassification"),
+            "businessUnit": obj.get("businessUnit"),
+            "installType": obj.get("installType"),
+            "environment": obj.get("environment"),
+            "riskScore": obj.get("riskScore"),
+            "isPrivileged": obj.get("isPrivileged") if obj.get("isPrivileged") is not None else False,
+            "warrantyExpiration": obj.get("warrantyExpiration"),
+            "attributes": obj.get("attributes")
         })
         return _obj
 

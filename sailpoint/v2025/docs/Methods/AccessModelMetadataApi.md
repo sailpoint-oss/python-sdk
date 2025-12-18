@@ -285,6 +285,9 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## update-access-model-metadata-by-filter
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 Metadata Attribute update by filter
 Bulk update Access Model Metadata Attribute Values using a filter
 
@@ -352,6 +355,9 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## update-access-model-metadata-by-ids
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 Metadata Attribute update by ids
 Bulk update Access Model Metadata Attribute Values using ids.
 
@@ -419,6 +425,9 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## update-access-model-metadata-by-query
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 Metadata Attribute update by query
 Bulk update Access Model Metadata Attribute Values using a query
 

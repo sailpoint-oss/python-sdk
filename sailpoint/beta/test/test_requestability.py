@@ -38,6 +38,10 @@ class TestRequestability(unittest.TestCase):
                 comments_required = True,
                 denial_comments_required = True,
                 reauthorization_required = True,
+                require_end_date = True,
+                max_permitted_access_duration = sailpoint.beta.models.access_duration.AccessDuration(
+                    value = 6, 
+                    time_unit = 'MONTHS', ),
                 approval_schemes = [
                     sailpoint.beta.models.access_profile_approval_scheme.AccessProfileApprovalScheme(
                         approver_type = 'GOVERNANCE_GROUP', 

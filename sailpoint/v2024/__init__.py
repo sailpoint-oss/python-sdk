@@ -129,6 +129,7 @@ from sailpoint.v2024.models.access_apps_owner import AccessAppsOwner
 from sailpoint.v2024.models.access_constraint import AccessConstraint
 from sailpoint.v2024.models.access_criteria import AccessCriteria
 from sailpoint.v2024.models.access_criteria_criteria_list_inner import AccessCriteriaCriteriaListInner
+from sailpoint.v2024.models.access_duration import AccessDuration
 from sailpoint.v2024.models.access_item_access_profile_response import AccessItemAccessProfileResponse
 from sailpoint.v2024.models.access_item_access_profile_response_app_refs_inner import AccessItemAccessProfileResponseAppRefsInner
 from sailpoint.v2024.models.access_item_account_response import AccessItemAccountResponse

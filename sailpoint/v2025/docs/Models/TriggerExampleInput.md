@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **requested_items** | [**[]AccessRequestPreApprovalRequestedItemsInner**](access-request-pre-approval-requested-items-inner) | Details of the access items being requested. | [required]
 **requested_by** | [**AccessItemRequesterDto**](access-item-requester-dto) |  | [required]
 **requested_items_status** | [**[]AccessRequestPostApprovalRequestedItemsStatusInner**](access-request-post-approval-requested-items-status-inner) | Details on the outcome of each access item. | [required]
-**source** | [**AccountUncorrelatedSource**](account-uncorrelated-source) |  | [required]
+**source** | [**AccountSourceReference**](account-source-reference) |  | [required]
 **status** |  **Enum** [  'Success',    'Failed',    'Terminated' ] | The overall status of the collection. | [required]
 **started** | **datetime** | The date and time when the account collection started. | [required]
 **completed** | **datetime** | The date and time when the account collection finished. | [required]
@@ -30,12 +30,22 @@ Name | Type | Description | Notes
 **warnings** | **[]str** | A list of any accumulated warning messages that occurred during provisioning. | [required]
 **stats** | [**AccountsCollectedForAggregationStats**](accounts-collected-for-aggregation-stats) |  | [required]
 **identity** | [**IdentityDeletedIdentity**](identity-deleted-identity) |  | [required]
-**account** | [**AccountUncorrelatedAccount**](account-uncorrelated-account) |  | [required]
+**account** | [**AccountV2**](account-v2) |  | [required]
 **changes** | [**[]IdentityAttributesChangedChangesInner**](identity-attributes-changed-changes-inner) | A list of one or more identity attributes that changed on the identity. | [required]
 **attributes** | **map[string]object** | The attributes of the account. The contents of attributes depends on the account schema for the source. | [required]
 **entitlement_count** | **int** | The number of entitlements associated with this account. | [optional] 
+**event** | [**AccountUpdatedEvent**](account-updated-event) |  | [required]
+**account_change_types** | **[]str** | The types of changes that occurred to the account. | [required]
+**single_value_attribute_changes** | [**[]MachineIdentityUpdatedSingleValueAttributeChangesInner**](machine-identity-updated-single-value-attribute-changes-inner) | Details about the single-value attribute changes that occurred. | [required]
+**multi_value_attribute_changes** | [**[]AccountUpdatedMultiValueAttributeChangesInner**](account-updated-multi-value-attribute-changes-inner) | Details about the multi-value attribute changes that occurred to the account. | [required]
+**entitlement_changes** | [**[]AccountUpdatedEntitlementChangesInner**](account-updated-entitlement-changes-inner) | Details about the entitlement changes that occurred to the account. | [required]
 **campaign** | [**CampaignGeneratedCampaign**](campaign-generated-campaign) |  | [required]
 **certification** | [**CertificationSignedOffCertification**](certification-signed-off-certification) |  | [required]
+**event_type** |  **Enum** [  'MACHINE_IDENTITY_DELETED' ] | Type of the event. | [required]
+**machine_identity** | [**MachineIdentityDeletedMachineIdentity**](machine-identity-deleted-machine-identity) |  | [required]
+**machine_identity_change_types** | **[]str** | Types of changes that occurred to the machine identity. | [required]
+**user_entitlement_changes** | [**MachineIdentityUpdatedUserEntitlementChanges**](machine-identity-updated-user-entitlement-changes) |  | [required]
+**owner_changes** | [**MachineIdentityUpdatedOwnerChanges**](machine-identity-updated-owner-changes) |  | [required]
 **tracking_number** | **str** | The reference number of the provisioning request. Useful for tracking status in the Account Activity search interface. | [required]
 **sources** | **str** | One or more sources that the provisioning transaction(s) were done against.  Sources are comma separated. | [required]
 **action** | **str** | Origin of where the provisioning request came from. | [optional] 
@@ -112,10 +122,16 @@ requested_items_status=[
                                     type = IDENTITY, ), )
                             ], )
                     ],
-source=sailpoint.v2025.models.account_uncorrelated_source.AccountUncorrelated_source(
-                    type = 'SOURCE', 
-                    id = '2c6180835d191a86015d28455b4b231b', 
-                    name = 'Corporate Directory', ),
+source=sailpoint.v2025.models.account_source_reference.AccountSourceReference(
+                    id = '2c918082814e693601816e09471b29b6', 
+                    name = 'Active Directory', 
+                    alias = 'AD', 
+                    owner = sailpoint.v2025.models.account_source_reference_owner.AccountSourceReference_owner(
+                        id = 'owner-123', 
+                        name = 'owner-name', ), 
+                    governance_group = sailpoint.v2025.models.account_source_reference_governance_group.AccountSourceReference_governanceGroup(
+                        id = 'group-456', 
+                        name = 'governance-group-name', ), ),
 status=Success,
 started='2020-06-29T22:01:50.474Z',
 completed='2020-06-29T22:02:04.090Z',
@@ -135,12 +151,15 @@ identity=sailpoint.v2025.models.identity_deleted_identity.IdentityDeleted_identi
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', ),
-account=sailpoint.v2025.models.account_uncorrelated_account.AccountUncorrelated_account(
-                    type = ACCOUNT, 
-                    id = '4dd497e3723e439991cb6d0e478375dd', 
-                    name = 'Sadie Jensen', 
-                    native_identity = 'cn=john.doe,ou=users,dc=acme,dc=com', 
-                    uuid = '1cb1f07d-3e5a-4431-becd-234fa4306108', ),
+account=sailpoint.v2025.models.account_v2.AccountV2(
+                    id = '2c9180835d2e5168015d32f890ca1581', 
+                    name = 'john.doe', 
+                    native_identity = 'CN=John Doe,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com', 
+                    uuid = 'b7264868-7201-415f-9118-b581d431c688', 
+                    correlated = True, 
+                    is_machine = False, 
+                    origin = 'Active Directory', 
+                    attributes = {firstname=John, lastname=Doe}, ),
 changes=[
                     sailpoint.v2025.models.identity_attributes_changed_changes_inner.IdentityAttributesChanged_changes_inner(
                         attribute = 'department', 
@@ -149,6 +168,30 @@ changes=[
                     ],
 attributes={firstname=John, lastname=Doe, email=john.doe@gmail.com, department=Sales, displayName=John Doe, created=2020-04-27T16:48:33.597Z, employeeNumber=E009, uid=E009, inactive=true, phone=null, identificationNumber=E009},
 entitlement_count=0,
+event=sailpoint.v2025.models.account_updated_event.AccountUpdated_event(
+                    type = 'ACCOUNT_UPDATED_V2', 
+                    cause = 'AGGREGATION', ),
+account_change_types=[
+                    'ATTRIBUTES_CHANGED'
+                    ],
+single_value_attribute_changes=[
+                    sailpoint.v2025.models.machine_identity_updated_single_value_attribute_changes_inner.MachineIdentityUpdated_singleValueAttributeChanges_inner(
+                        name = 'displayName', 
+                        old_value = John Doe, 
+                        new_value = John A. Doe, )
+                    ],
+multi_value_attribute_changes=[
+                    sailpoint.v2025.models.account_updated_multi_value_attribute_changes_inner.AccountUpdated_multiValueAttributeChanges_inner(
+                        name = 'memberOf', 
+                        added_values = [CN=Sales,OU=Groups,DC=acme,DC=com, CN=AllEmployees,OU=Groups,DC=acme,DC=com], 
+                        removed_values = [CN=AllEmployees,OU=Groups,DC=acme,DC=com, CN=Contractors,OU=Groups,DC=acme,DC=com], )
+                    ],
+entitlement_changes=[
+                    sailpoint.v2025.models.account_updated_entitlement_changes_inner.AccountUpdated_entitlementChanges_inner(
+                        attribute_name = 'roles', 
+                        added = [{id=2c9180835d2e5168015d32f890ca1581, name=Admin, owner={id=2c9180835d2e5168015d32f890ca1581, name=Owner Name, type=Primary}, value=Admin}, {id=2c9180835d2e5168015d32f890ca1582, name=User, owner={id=2c9180835d2e5168015d32f890ca1582, name=Owner Name 2, type=Secondary}, value=User}], 
+                        removed = [{id=2c9180835d2e5168015d32f890ca1583, name=Group, owner={id=2c9180835d2e5168015d32f890ca1583, name=Owner Name 3, type=Primary}, value=Group}], )
+                    ],
 campaign=sailpoint.v2025.models.campaign_generated_campaign.CampaignGenerated_campaign(
                     id = '2c91808576f886190176f88cac5a0010', 
                     name = 'Manager Access Campaign', 
@@ -167,6 +210,47 @@ certification=sailpoint.v2025.models.certification_signed_off_certification.Cert
                     name = 'Manager Access Review for Alice Baker', 
                     created = '2020-02-16T03:04:45.815Z', 
                     modified = '2020-02-16T03:06:45.815Z', ),
+event_type='MACHINE_IDENTITY_DELETED',
+machine_identity=sailpoint.v2025.models.machine_identity_deleted_machine_identity.MachineIdentityDeleted_machineIdentity(
+                    id = '8cd6c945-0057-4a6e-ad65-9cbf3b3c71b6', 
+                    name = 'TestName', 
+                    created = '2025-08-08T12:42:21.491666Z', 
+                    modified = '2025-09-01T06:36:54.401476Z', 
+                    business_application = 'MyBusinessApplication2', 
+                    description = 'test description event', 
+                    attributes = {botUserId=005KV00000BLoMCYA1}, 
+                    subtype = 'AI Agent', 
+                    owners = [
+                        {type=IDENTITY, id=84d8c1b819144608b8b8bc3b84ddbb7b, name=Jerrie admin3cf084, isPrimary=true}
+                        ], 
+                    source_id = 'c0201251a6ce4d268aba536cdd60a7f2', 
+                    uuid = 'f5dd23fe-3414-42b7-bb1c-869400ad7a10', 
+                    native_identity = 'abc:123:dddd1', 
+                    manually_edited = True, 
+                    manually_created = True, 
+                    dataset_id = 'agentforce:agents', 
+                    source = {type=SOURCE, id=c0201251a6ce4d268aba536cdd60a7f2, name=IdentityNow}, 
+                    user_entitlements = [
+                        {entitlementId=2509f650c20a3ab5956be70f6f136fbc, displayName=CN=Engineering-test-org3,OU=megapod-useast1-test-org3,OU=org-data-service,DC=TestAutomationAD,DC=local, source={type=SOURCE, id=7443d0ffb1304bbcbdf4c07b5c09d4f2, name=ODS-AD-Source}}
+                        ], 
+                    exists_on_source = 'NOT_APPLICABLE', ),
+machine_identity_change_types=[ATTRIBUTES_CHANGED, USER_ENTITLEMENTS_ADDED, USER_ENTITLEMENTS_REMOVED, OWNERS_ADDED, OWNERS_REMOVED],
+user_entitlement_changes=sailpoint.v2025.models.machine_identity_updated_user_entitlement_changes.MachineIdentityUpdated_userEntitlementChanges(
+                    attribute_name = 'userEntitlements', 
+                    added = [
+                        {entitlementId=2509f650c20a3ab5956be70f6f136fbc, displayName=CN=Engineering-test-org3,OU=megapod-useast1-test-org3,OU=org-data-service,DC=TestAutomationAD,DC=local, source={type=SOURCE, id=7443d0ffb1304bbcbdf4c07b5c09d4f2, name=ODS-AD-Source}}
+                        ], 
+                    removed = [
+                        {entitlementId=2509f650c20a3ab5956be70f6f136fbc, displayName=CN=Engineering-test-org3,OU=megapod-useast1-test-org3,OU=org-data-service,DC=TestAutomationAD,DC=local, source={type=SOURCE, id=7443d0ffb1304bbcbdf4c07b5c09d4f2, name=ODS-AD-Source}}
+                        ], ),
+owner_changes=sailpoint.v2025.models.machine_identity_updated_owner_changes.MachineIdentityUpdated_ownerChanges(
+                    attribute_name = 'owners', 
+                    added = [
+                        {type=IDENTITY, id=84d8c1b819144608b8b8bc3b84ddbb7b, name=Jerrie admin3cf084, isPrimary=true}
+                        ], 
+                    removed = [
+                        {type=IDENTITY, id=84d8c1b819144608b8b8bc3b84ddbb7b, name=Jerrie admin3cf084, isPrimary=true}
+                        ], ),
 tracking_number='4b4d982dddff4267ab12f0f1e72b5a6d',
 sources='Corp AD, Corp LDAP, Corp Salesforce',
 action='IdentityRefresh',

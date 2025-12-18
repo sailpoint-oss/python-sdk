@@ -73,10 +73,16 @@ class TestTriggerExampleInput(unittest.TestCase):
                                     type = IDENTITY, ), )
                             ], )
                     ],
-                source = sailpoint.v2025.models.account_uncorrelated_source.AccountUncorrelated_source(
-                    type = 'SOURCE', 
-                    id = '2c6180835d191a86015d28455b4b231b', 
-                    name = 'Corporate Directory', ),
+                source = sailpoint.v2025.models.account_source_reference.AccountSourceReference(
+                    id = '2c918082814e693601816e09471b29b6', 
+                    name = 'Active Directory', 
+                    alias = 'AD', 
+                    owner = sailpoint.v2025.models.account_source_reference_owner.AccountSourceReference_owner(
+                        id = 'owner-123', 
+                        name = 'owner-name', ), 
+                    governance_group = sailpoint.v2025.models.account_source_reference_governance_group.AccountSourceReference_governanceGroup(
+                        id = 'group-456', 
+                        name = 'governance-group-name', ), ),
                 status = Success,
                 started = '2020-06-29T22:01:50.474Z',
                 completed = '2020-06-29T22:02:04.090Z',
@@ -96,12 +102,15 @@ class TestTriggerExampleInput(unittest.TestCase):
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', ),
-                account = sailpoint.v2025.models.account_uncorrelated_account.AccountUncorrelated_account(
-                    type = ACCOUNT, 
-                    id = '4dd497e3723e439991cb6d0e478375dd', 
-                    name = 'Sadie Jensen', 
-                    native_identity = 'cn=john.doe,ou=users,dc=acme,dc=com', 
-                    uuid = '1cb1f07d-3e5a-4431-becd-234fa4306108', ),
+                account = sailpoint.v2025.models.account_v2.AccountV2(
+                    id = '2c9180835d2e5168015d32f890ca1581', 
+                    name = 'john.doe', 
+                    native_identity = 'CN=John Doe,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com', 
+                    uuid = 'b7264868-7201-415f-9118-b581d431c688', 
+                    correlated = True, 
+                    is_machine = False, 
+                    origin = 'Active Directory', 
+                    attributes = {firstname=John, lastname=Doe}, ),
                 changes = [
                     sailpoint.v2025.models.identity_attributes_changed_changes_inner.IdentityAttributesChanged_changes_inner(
                         attribute = 'department', 
@@ -110,6 +119,30 @@ class TestTriggerExampleInput(unittest.TestCase):
                     ],
                 attributes = {firstname=John, lastname=Doe, email=john.doe@gmail.com, department=Sales, displayName=John Doe, created=2020-04-27T16:48:33.597Z, employeeNumber=E009, uid=E009, inactive=true, phone=null, identificationNumber=E009},
                 entitlement_count = 0,
+                event = sailpoint.v2025.models.account_updated_event.AccountUpdated_event(
+                    type = 'ACCOUNT_UPDATED_V2', 
+                    cause = 'AGGREGATION', ),
+                account_change_types = [
+                    'ATTRIBUTES_CHANGED'
+                    ],
+                single_value_attribute_changes = [
+                    sailpoint.v2025.models.machine_identity_updated_single_value_attribute_changes_inner.MachineIdentityUpdated_singleValueAttributeChanges_inner(
+                        name = 'displayName', 
+                        old_value = John Doe, 
+                        new_value = John A. Doe, )
+                    ],
+                multi_value_attribute_changes = [
+                    sailpoint.v2025.models.account_updated_multi_value_attribute_changes_inner.AccountUpdated_multiValueAttributeChanges_inner(
+                        name = 'memberOf', 
+                        added_values = [CN=Sales,OU=Groups,DC=acme,DC=com, CN=AllEmployees,OU=Groups,DC=acme,DC=com], 
+                        removed_values = [CN=AllEmployees,OU=Groups,DC=acme,DC=com, CN=Contractors,OU=Groups,DC=acme,DC=com], )
+                    ],
+                entitlement_changes = [
+                    sailpoint.v2025.models.account_updated_entitlement_changes_inner.AccountUpdated_entitlementChanges_inner(
+                        attribute_name = 'roles', 
+                        added = [{id=2c9180835d2e5168015d32f890ca1581, name=Admin, owner={id=2c9180835d2e5168015d32f890ca1581, name=Owner Name, type=Primary}, value=Admin}, {id=2c9180835d2e5168015d32f890ca1582, name=User, owner={id=2c9180835d2e5168015d32f890ca1582, name=Owner Name 2, type=Secondary}, value=User}], 
+                        removed = [{id=2c9180835d2e5168015d32f890ca1583, name=Group, owner={id=2c9180835d2e5168015d32f890ca1583, name=Owner Name 3, type=Primary}, value=Group}], )
+                    ],
                 campaign = sailpoint.v2025.models.campaign_generated_campaign.CampaignGenerated_campaign(
                     id = '2c91808576f886190176f88cac5a0010', 
                     name = 'Manager Access Campaign', 
@@ -128,6 +161,47 @@ class TestTriggerExampleInput(unittest.TestCase):
                     name = 'Manager Access Review for Alice Baker', 
                     created = '2020-02-16T03:04:45.815Z', 
                     modified = '2020-02-16T03:06:45.815Z', ),
+                event_type = 'MACHINE_IDENTITY_DELETED',
+                machine_identity = sailpoint.v2025.models.machine_identity_deleted_machine_identity.MachineIdentityDeleted_machineIdentity(
+                    id = '8cd6c945-0057-4a6e-ad65-9cbf3b3c71b6', 
+                    name = 'TestName', 
+                    created = '2025-08-08T12:42:21.491666Z', 
+                    modified = '2025-09-01T06:36:54.401476Z', 
+                    business_application = 'MyBusinessApplication2', 
+                    description = 'test description event', 
+                    attributes = {botUserId=005KV00000BLoMCYA1}, 
+                    subtype = 'AI Agent', 
+                    owners = [
+                        {type=IDENTITY, id=84d8c1b819144608b8b8bc3b84ddbb7b, name=Jerrie admin3cf084, isPrimary=true}
+                        ], 
+                    source_id = 'c0201251a6ce4d268aba536cdd60a7f2', 
+                    uuid = 'f5dd23fe-3414-42b7-bb1c-869400ad7a10', 
+                    native_identity = 'abc:123:dddd1', 
+                    manually_edited = True, 
+                    manually_created = True, 
+                    dataset_id = 'agentforce:agents', 
+                    source = {type=SOURCE, id=c0201251a6ce4d268aba536cdd60a7f2, name=IdentityNow}, 
+                    user_entitlements = [
+                        {entitlementId=2509f650c20a3ab5956be70f6f136fbc, displayName=CN=Engineering-test-org3,OU=megapod-useast1-test-org3,OU=org-data-service,DC=TestAutomationAD,DC=local, source={type=SOURCE, id=7443d0ffb1304bbcbdf4c07b5c09d4f2, name=ODS-AD-Source}}
+                        ], 
+                    exists_on_source = 'NOT_APPLICABLE', ),
+                machine_identity_change_types = [ATTRIBUTES_CHANGED, USER_ENTITLEMENTS_ADDED, USER_ENTITLEMENTS_REMOVED, OWNERS_ADDED, OWNERS_REMOVED],
+                user_entitlement_changes = sailpoint.v2025.models.machine_identity_updated_user_entitlement_changes.MachineIdentityUpdated_userEntitlementChanges(
+                    attribute_name = 'userEntitlements', 
+                    added = [
+                        {entitlementId=2509f650c20a3ab5956be70f6f136fbc, displayName=CN=Engineering-test-org3,OU=megapod-useast1-test-org3,OU=org-data-service,DC=TestAutomationAD,DC=local, source={type=SOURCE, id=7443d0ffb1304bbcbdf4c07b5c09d4f2, name=ODS-AD-Source}}
+                        ], 
+                    removed = [
+                        {entitlementId=2509f650c20a3ab5956be70f6f136fbc, displayName=CN=Engineering-test-org3,OU=megapod-useast1-test-org3,OU=org-data-service,DC=TestAutomationAD,DC=local, source={type=SOURCE, id=7443d0ffb1304bbcbdf4c07b5c09d4f2, name=ODS-AD-Source}}
+                        ], ),
+                owner_changes = sailpoint.v2025.models.machine_identity_updated_owner_changes.MachineIdentityUpdated_ownerChanges(
+                    attribute_name = 'owners', 
+                    added = [
+                        {type=IDENTITY, id=84d8c1b819144608b8b8bc3b84ddbb7b, name=Jerrie admin3cf084, isPrimary=true}
+                        ], 
+                    removed = [
+                        {type=IDENTITY, id=84d8c1b819144608b8b8bc3b84ddbb7b, name=Jerrie admin3cf084, isPrimary=true}
+                        ], ),
                 tracking_number = '4b4d982dddff4267ab12f0f1e72b5a6d',
                 sources = 'Corp AD, Corp LDAP, Corp Salesforce',
                 action = 'IdentityRefresh',
@@ -252,10 +326,16 @@ class TestTriggerExampleInput(unittest.TestCase):
                                     type = IDENTITY, ), )
                             ], )
                     ],
-                source = sailpoint.v2025.models.account_uncorrelated_source.AccountUncorrelated_source(
-                    type = 'SOURCE', 
-                    id = '2c6180835d191a86015d28455b4b231b', 
-                    name = 'Corporate Directory', ),
+                source = sailpoint.v2025.models.account_source_reference.AccountSourceReference(
+                    id = '2c918082814e693601816e09471b29b6', 
+                    name = 'Active Directory', 
+                    alias = 'AD', 
+                    owner = sailpoint.v2025.models.account_source_reference_owner.AccountSourceReference_owner(
+                        id = 'owner-123', 
+                        name = 'owner-name', ), 
+                    governance_group = sailpoint.v2025.models.account_source_reference_governance_group.AccountSourceReference_governanceGroup(
+                        id = 'group-456', 
+                        name = 'governance-group-name', ), ),
                 status = Success,
                 started = '2020-06-29T22:01:50.474Z',
                 completed = '2020-06-29T22:02:04.090Z',
@@ -275,12 +355,15 @@ class TestTriggerExampleInput(unittest.TestCase):
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', ),
-                account = sailpoint.v2025.models.account_uncorrelated_account.AccountUncorrelated_account(
-                    type = ACCOUNT, 
-                    id = '4dd497e3723e439991cb6d0e478375dd', 
-                    name = 'Sadie Jensen', 
-                    native_identity = 'cn=john.doe,ou=users,dc=acme,dc=com', 
-                    uuid = '1cb1f07d-3e5a-4431-becd-234fa4306108', ),
+                account = sailpoint.v2025.models.account_v2.AccountV2(
+                    id = '2c9180835d2e5168015d32f890ca1581', 
+                    name = 'john.doe', 
+                    native_identity = 'CN=John Doe,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com', 
+                    uuid = 'b7264868-7201-415f-9118-b581d431c688', 
+                    correlated = True, 
+                    is_machine = False, 
+                    origin = 'Active Directory', 
+                    attributes = {firstname=John, lastname=Doe}, ),
                 changes = [
                     sailpoint.v2025.models.identity_attributes_changed_changes_inner.IdentityAttributesChanged_changes_inner(
                         attribute = 'department', 
@@ -288,6 +371,30 @@ class TestTriggerExampleInput(unittest.TestCase):
                         new_value = marketing, )
                     ],
                 attributes = {firstname=John, lastname=Doe, email=john.doe@gmail.com, department=Sales, displayName=John Doe, created=2020-04-27T16:48:33.597Z, employeeNumber=E009, uid=E009, inactive=true, phone=null, identificationNumber=E009},
+                event = sailpoint.v2025.models.account_updated_event.AccountUpdated_event(
+                    type = 'ACCOUNT_UPDATED_V2', 
+                    cause = 'AGGREGATION', ),
+                account_change_types = [
+                    'ATTRIBUTES_CHANGED'
+                    ],
+                single_value_attribute_changes = [
+                    sailpoint.v2025.models.machine_identity_updated_single_value_attribute_changes_inner.MachineIdentityUpdated_singleValueAttributeChanges_inner(
+                        name = 'displayName', 
+                        old_value = John Doe, 
+                        new_value = John A. Doe, )
+                    ],
+                multi_value_attribute_changes = [
+                    sailpoint.v2025.models.account_updated_multi_value_attribute_changes_inner.AccountUpdated_multiValueAttributeChanges_inner(
+                        name = 'memberOf', 
+                        added_values = [CN=Sales,OU=Groups,DC=acme,DC=com, CN=AllEmployees,OU=Groups,DC=acme,DC=com], 
+                        removed_values = [CN=AllEmployees,OU=Groups,DC=acme,DC=com, CN=Contractors,OU=Groups,DC=acme,DC=com], )
+                    ],
+                entitlement_changes = [
+                    sailpoint.v2025.models.account_updated_entitlement_changes_inner.AccountUpdated_entitlementChanges_inner(
+                        attribute_name = 'roles', 
+                        added = [{id=2c9180835d2e5168015d32f890ca1581, name=Admin, owner={id=2c9180835d2e5168015d32f890ca1581, name=Owner Name, type=Primary}, value=Admin}, {id=2c9180835d2e5168015d32f890ca1582, name=User, owner={id=2c9180835d2e5168015d32f890ca1582, name=Owner Name 2, type=Secondary}, value=User}], 
+                        removed = [{id=2c9180835d2e5168015d32f890ca1583, name=Group, owner={id=2c9180835d2e5168015d32f890ca1583, name=Owner Name 3, type=Primary}, value=Group}], )
+                    ],
                 campaign = sailpoint.v2025.models.campaign_generated_campaign.CampaignGenerated_campaign(
                     id = '2c91808576f886190176f88cac5a0010', 
                     name = 'Manager Access Campaign', 
@@ -306,6 +413,47 @@ class TestTriggerExampleInput(unittest.TestCase):
                     name = 'Manager Access Review for Alice Baker', 
                     created = '2020-02-16T03:04:45.815Z', 
                     modified = '2020-02-16T03:06:45.815Z', ),
+                event_type = 'MACHINE_IDENTITY_DELETED',
+                machine_identity = sailpoint.v2025.models.machine_identity_deleted_machine_identity.MachineIdentityDeleted_machineIdentity(
+                    id = '8cd6c945-0057-4a6e-ad65-9cbf3b3c71b6', 
+                    name = 'TestName', 
+                    created = '2025-08-08T12:42:21.491666Z', 
+                    modified = '2025-09-01T06:36:54.401476Z', 
+                    business_application = 'MyBusinessApplication2', 
+                    description = 'test description event', 
+                    attributes = {botUserId=005KV00000BLoMCYA1}, 
+                    subtype = 'AI Agent', 
+                    owners = [
+                        {type=IDENTITY, id=84d8c1b819144608b8b8bc3b84ddbb7b, name=Jerrie admin3cf084, isPrimary=true}
+                        ], 
+                    source_id = 'c0201251a6ce4d268aba536cdd60a7f2', 
+                    uuid = 'f5dd23fe-3414-42b7-bb1c-869400ad7a10', 
+                    native_identity = 'abc:123:dddd1', 
+                    manually_edited = True, 
+                    manually_created = True, 
+                    dataset_id = 'agentforce:agents', 
+                    source = {type=SOURCE, id=c0201251a6ce4d268aba536cdd60a7f2, name=IdentityNow}, 
+                    user_entitlements = [
+                        {entitlementId=2509f650c20a3ab5956be70f6f136fbc, displayName=CN=Engineering-test-org3,OU=megapod-useast1-test-org3,OU=org-data-service,DC=TestAutomationAD,DC=local, source={type=SOURCE, id=7443d0ffb1304bbcbdf4c07b5c09d4f2, name=ODS-AD-Source}}
+                        ], 
+                    exists_on_source = 'NOT_APPLICABLE', ),
+                machine_identity_change_types = [ATTRIBUTES_CHANGED, USER_ENTITLEMENTS_ADDED, USER_ENTITLEMENTS_REMOVED, OWNERS_ADDED, OWNERS_REMOVED],
+                user_entitlement_changes = sailpoint.v2025.models.machine_identity_updated_user_entitlement_changes.MachineIdentityUpdated_userEntitlementChanges(
+                    attribute_name = 'userEntitlements', 
+                    added = [
+                        {entitlementId=2509f650c20a3ab5956be70f6f136fbc, displayName=CN=Engineering-test-org3,OU=megapod-useast1-test-org3,OU=org-data-service,DC=TestAutomationAD,DC=local, source={type=SOURCE, id=7443d0ffb1304bbcbdf4c07b5c09d4f2, name=ODS-AD-Source}}
+                        ], 
+                    removed = [
+                        {entitlementId=2509f650c20a3ab5956be70f6f136fbc, displayName=CN=Engineering-test-org3,OU=megapod-useast1-test-org3,OU=org-data-service,DC=TestAutomationAD,DC=local, source={type=SOURCE, id=7443d0ffb1304bbcbdf4c07b5c09d4f2, name=ODS-AD-Source}}
+                        ], ),
+                owner_changes = sailpoint.v2025.models.machine_identity_updated_owner_changes.MachineIdentityUpdated_ownerChanges(
+                    attribute_name = 'owners', 
+                    added = [
+                        {type=IDENTITY, id=84d8c1b819144608b8b8bc3b84ddbb7b, name=Jerrie admin3cf084, isPrimary=true}
+                        ], 
+                    removed = [
+                        {type=IDENTITY, id=84d8c1b819144608b8b8bc3b84ddbb7b, name=Jerrie admin3cf084, isPrimary=true}
+                        ], ),
                 tracking_number = '4b4d982dddff4267ab12f0f1e72b5a6d',
                 sources = 'Corp AD, Corp LDAP, Corp Salesforce',
                 recipient = sailpoint.v2025.models.provisioning_completed_recipient.ProvisioningCompleted_recipient(

@@ -87,6 +87,7 @@ from sailpoint.v3.models.access_criteria import AccessCriteria
 from sailpoint.v3.models.access_criteria_criteria_list_inner import AccessCriteriaCriteriaListInner
 from sailpoint.v3.models.access_criteria_request import AccessCriteriaRequest
 from sailpoint.v3.models.access_criteria_request_criteria_list_inner import AccessCriteriaRequestCriteriaListInner
+from sailpoint.v3.models.access_duration import AccessDuration
 from sailpoint.v3.models.access_item_requested_for import AccessItemRequestedFor
 from sailpoint.v3.models.access_item_requester import AccessItemRequester
 from sailpoint.v3.models.access_item_reviewed_by import AccessItemReviewedBy

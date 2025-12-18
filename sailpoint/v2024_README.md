@@ -797,6 +797,7 @@ Class | Method | HTTP request | Description
  - [AccessConstraint](sailpoint/v2024/docs/AccessConstraint.md)
  - [AccessCriteria](sailpoint/v2024/docs/AccessCriteria.md)
  - [AccessCriteriaCriteriaListInner](sailpoint/v2024/docs/AccessCriteriaCriteriaListInner.md)
+ - [AccessDuration](sailpoint/v2024/docs/AccessDuration.md)
  - [AccessItemAccessProfileResponse](sailpoint/v2024/docs/AccessItemAccessProfileResponse.md)
  - [AccessItemAccessProfileResponseAppRefsInner](sailpoint/v2024/docs/AccessItemAccessProfileResponseAppRefsInner.md)
  - [AccessItemAccountResponse](sailpoint/v2024/docs/AccessItemAccountResponse.md)

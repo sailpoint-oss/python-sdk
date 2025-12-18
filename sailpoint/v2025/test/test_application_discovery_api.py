@@ -47,6 +47,13 @@ class TestApplicationDiscoveryApi(unittest.TestCase):
         """
         pass
 
+    def test_start_application_discovery(self) -> None:
+        """Test case for start_application_discovery
+
+        Start Application Discovery
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

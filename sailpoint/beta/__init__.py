@@ -106,6 +106,7 @@ from sailpoint.beta.exceptions import ApiException
 from sailpoint.beta.models.access_constraint import AccessConstraint
 from sailpoint.beta.models.access_criteria import AccessCriteria
 from sailpoint.beta.models.access_criteria_criteria_list_inner import AccessCriteriaCriteriaListInner
+from sailpoint.beta.models.access_duration import AccessDuration
 from sailpoint.beta.models.access_item_access_profile_response import AccessItemAccessProfileResponse
 from sailpoint.beta.models.access_item_access_profile_response_app_refs_inner import AccessItemAccessProfileResponseAppRefsInner
 from sailpoint.beta.models.access_item_account_response import AccessItemAccountResponse

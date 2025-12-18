@@ -134,6 +134,7 @@ Class | Method | HTTP request | Description
 *ApplicationDiscoveryApi* | [**get_discovered_applications**](sailpoint/v2025/docs/ApplicationDiscoveryApi.md#get_discovered_applications) | **GET** /discovered-applications | Get discovered applications for tenant
 *ApplicationDiscoveryApi* | [**get_manual_discover_applications_csv_template**](sailpoint/v2025/docs/ApplicationDiscoveryApi.md#get_manual_discover_applications_csv_template) | **GET** /manual-discover-applications-template | Download csv template for discovery
 *ApplicationDiscoveryApi* | [**send_manual_discover_applications_csv_template**](sailpoint/v2025/docs/ApplicationDiscoveryApi.md#send_manual_discover_applications_csv_template) | **POST** /manual-discover-applications | Upload csv to discover applications
+*ApplicationDiscoveryApi* | [**start_application_discovery**](sailpoint/v2025/docs/ApplicationDiscoveryApi.md#start_application_discovery) | **POST** /sources/{sourceId}/discover-applications | Start Application Discovery
 *ApprovalsApi* | [**approve_approval**](sailpoint/v2025/docs/ApprovalsApi.md#approve_approval) | **POST** /generic-approvals/{id}/approve | Post Approvals Approve
 *ApprovalsApi* | [**approve_approval_in_bulk**](sailpoint/v2025/docs/ApprovalsApi.md#approve_approval_in_bulk) | **POST** /generic-approvals/bulk-approve | Post Bulk Approve Approvals
 *ApprovalsApi* | [**cancel_approval**](sailpoint/v2025/docs/ApprovalsApi.md#cancel_approval) | **POST** /generic-approvals/bulk-cancel | Post Bulk Cancel Approvals
@@ -292,13 +293,18 @@ Class | Method | HTTP request | Description
 *CustomUserLevelsApi* | [**show_user_level_counts**](sailpoint/v2025/docs/CustomUserLevelsApi.md#show_user_level_counts) | **POST** /authorization/user-levels/get-identity-count | Count user levels identities
 *CustomUserLevelsApi* | [**update_user_level**](sailpoint/v2025/docs/CustomUserLevelsApi.md#update_user_level) | **PATCH** /authorization/custom-user-levels/{id} | Update a user level
 *DataAccessSecurityApi* | [**cancel_task**](sailpoint/v2025/docs/DataAccessSecurityApi.md#cancel_task) | **POST** /das/tasks/cancel/{id} | Cancel a DAS task.
+*DataAccessSecurityApi* | [**create_application**](sailpoint/v2025/docs/DataAccessSecurityApi.md#create_application) | **POST** /das/applications | Create application
 *DataAccessSecurityApi* | [**create_schedule**](sailpoint/v2025/docs/DataAccessSecurityApi.md#create_schedule) | **POST** /das/tasks/schedules | Create a new schedule.
+*DataAccessSecurityApi* | [**delete_application**](sailpoint/v2025/docs/DataAccessSecurityApi.md#delete_application) | **DELETE** /das/applications/{id} | Delete an application by identifier.
 *DataAccessSecurityApi* | [**delete_schedule**](sailpoint/v2025/docs/DataAccessSecurityApi.md#delete_schedule) | **DELETE** /das/tasks/schedules/{id} | Delete a DAS schedule.
 *DataAccessSecurityApi* | [**delete_task**](sailpoint/v2025/docs/DataAccessSecurityApi.md#delete_task) | **DELETE** /das/tasks/{id} | Delete a DAS task.
+*DataAccessSecurityApi* | [**get_application**](sailpoint/v2025/docs/DataAccessSecurityApi.md#get_application) | **GET** /das/applications/{id} | Retrieve application details by identifier.
+*DataAccessSecurityApi* | [**get_applications**](sailpoint/v2025/docs/DataAccessSecurityApi.md#get_applications) | **GET** /das/applications | Search applications in DAS.
 *DataAccessSecurityApi* | [**get_schedule**](sailpoint/v2025/docs/DataAccessSecurityApi.md#get_schedule) | **GET** /das/tasks/schedules/{id} | Get a DAS schedule.
 *DataAccessSecurityApi* | [**get_schedules**](sailpoint/v2025/docs/DataAccessSecurityApi.md#get_schedules) | **GET** /das/tasks/schedules | List all schedules.
 *DataAccessSecurityApi* | [**get_task**](sailpoint/v2025/docs/DataAccessSecurityApi.md#get_task) | **GET** /das/tasks/{id} | Get a DAS task.
 *DataAccessSecurityApi* | [**get_tasks**](sailpoint/v2025/docs/DataAccessSecurityApi.md#get_tasks) | **GET** /das/tasks | Lists all DAS tasks.
+*DataAccessSecurityApi* | [**put_application**](sailpoint/v2025/docs/DataAccessSecurityApi.md#put_application) | **PUT** /das/applications/{id} | Update application by identifier.
 *DataAccessSecurityApi* | [**put_schedule**](sailpoint/v2025/docs/DataAccessSecurityApi.md#put_schedule) | **PUT** /das/tasks/schedules/{id} | Update a schedule.
 *DataAccessSecurityApi* | [**start_task_rerun**](sailpoint/v2025/docs/DataAccessSecurityApi.md#start_task_rerun) | **POST** /das/tasks/rerun/{id} | Rerun a DAS task.
 *DataSegmentationApi* | [**create_data_segment**](sailpoint/v2025/docs/DataSegmentationApi.md#create_data_segment) | **POST** /data-segments | Create segment
@@ -468,7 +474,7 @@ Class | Method | HTTP request | Description
 *MachineAccountsApi* | [**create_machine_account_subtype**](sailpoint/v2025/docs/MachineAccountsApi.md#create_machine_account_subtype) | **POST** /sources/{sourceId}/subtypes | Create subtype
 *MachineAccountsApi* | [**delete_machine_account_subtype**](sailpoint/v2025/docs/MachineAccountsApi.md#delete_machine_account_subtype) | **DELETE** /sources/{sourceId}/subtypes/{technicalName} | Delete subtype
 *MachineAccountsApi* | [**get_machine_account**](sailpoint/v2025/docs/MachineAccountsApi.md#get_machine_account) | **GET** /machine-accounts/{id} | Machine account details
-*MachineAccountsApi* | [**get_machine_account_subtype_by_id**](sailpoint/v2025/docs/MachineAccountsApi.md#get_machine_account_subtype_by_id) | **GET** /sources/subtype/{subtypeId} | Retrieve subtype by subtype id
+*MachineAccountsApi* | [**get_machine_account_subtype_by_id**](sailpoint/v2025/docs/MachineAccountsApi.md#get_machine_account_subtype_by_id) | **GET** /sources/subtypes/{subtypeId} | Retrieve subtype by subtype id
 *MachineAccountsApi* | [**get_machine_account_subtype_by_technical_name**](sailpoint/v2025/docs/MachineAccountsApi.md#get_machine_account_subtype_by_technical_name) | **GET** /sources/{sourceId}/subtypes/{technicalName} | Retrieve subtype by source and technicalName
 *MachineAccountsApi* | [**list_machine_account_subtypes**](sailpoint/v2025/docs/MachineAccountsApi.md#list_machine_account_subtypes) | **GET** /sources/{sourceId}/subtypes | Retrieve all subtypes by source
 *MachineAccountsApi* | [**list_machine_accounts**](sailpoint/v2025/docs/MachineAccountsApi.md#list_machine_accounts) | **GET** /machine-accounts | Machine accounts list
@@ -739,6 +745,7 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**import_entitlements**](sailpoint/v2025/docs/SourcesApi.md#import_entitlements) | **POST** /sources/{sourceId}/load-entitlements | Entitlement aggregation
 *SourcesApi* | [**import_entitlements_schema**](sailpoint/v2025/docs/SourcesApi.md#import_entitlements_schema) | **POST** /sources/{id}/schemas/entitlements | Uploads source entitlements schema template
 *SourcesApi* | [**import_uncorrelated_accounts**](sailpoint/v2025/docs/SourcesApi.md#import_uncorrelated_accounts) | **POST** /sources/{id}/load-uncorrelated-accounts | Process uncorrelated accounts
+*SourcesApi* | [**list_password_policy_holders_on_source**](sailpoint/v2025/docs/SourcesApi.md#list_password_policy_holders_on_source) | **GET** /sources/{sourceId}/password-policies | Get Password Policy for source
 *SourcesApi* | [**list_provisioning_policies**](sailpoint/v2025/docs/SourcesApi.md#list_provisioning_policies) | **GET** /sources/{sourceId}/provisioning-policies | Lists provisioningpolicies
 *SourcesApi* | [**list_sources**](sailpoint/v2025/docs/SourcesApi.md#list_sources) | **GET** /sources | Lists all sources in identitynow.
 *SourcesApi* | [**ping_cluster**](sailpoint/v2025/docs/SourcesApi.md#ping_cluster) | **POST** /sources/{sourceId}/connector/ping-cluster | Ping cluster for source connector
@@ -855,6 +862,7 @@ Class | Method | HTTP request | Description
  - [AccessConstraint](sailpoint/v2025/docs/AccessConstraint.md)
  - [AccessCriteria](sailpoint/v2025/docs/AccessCriteria.md)
  - [AccessCriteriaCriteriaListInner](sailpoint/v2025/docs/AccessCriteriaCriteriaListInner.md)
+ - [AccessDuration](sailpoint/v2025/docs/AccessDuration.md)
  - [AccessItemAccessProfileResponse](sailpoint/v2025/docs/AccessItemAccessProfileResponse.md)
  - [AccessItemAccessProfileResponseAppRefsInner](sailpoint/v2025/docs/AccessItemAccessProfileResponseAppRefsInner.md)
  - [AccessItemAccountResponse](sailpoint/v2025/docs/AccessItemAccountResponse.md)
@@ -958,6 +966,10 @@ Class | Method | HTTP request | Description
  - [AccountCorrelatedAccount](sailpoint/v2025/docs/AccountCorrelatedAccount.md)
  - [AccountCorrelatedIdentity](sailpoint/v2025/docs/AccountCorrelatedIdentity.md)
  - [AccountCorrelatedSource](sailpoint/v2025/docs/AccountCorrelatedSource.md)
+ - [AccountCreated](sailpoint/v2025/docs/AccountCreated.md)
+ - [AccountCreatedEvent](sailpoint/v2025/docs/AccountCreatedEvent.md)
+ - [AccountDeleted](sailpoint/v2025/docs/AccountDeleted.md)
+ - [AccountDeletedEvent](sailpoint/v2025/docs/AccountDeletedEvent.md)
  - [AccountInfoDto](sailpoint/v2025/docs/AccountInfoDto.md)
  - [AccountInfoRef](sailpoint/v2025/docs/AccountInfoRef.md)
  - [AccountItemRef](sailpoint/v2025/docs/AccountItemRef.md)
@@ -965,6 +977,9 @@ Class | Method | HTTP request | Description
  - [AccountRequestInfo](sailpoint/v2025/docs/AccountRequestInfo.md)
  - [AccountRequestResult](sailpoint/v2025/docs/AccountRequestResult.md)
  - [AccountSource](sailpoint/v2025/docs/AccountSource.md)
+ - [AccountSourceReference](sailpoint/v2025/docs/AccountSourceReference.md)
+ - [AccountSourceReferenceGovernanceGroup](sailpoint/v2025/docs/AccountSourceReferenceGovernanceGroup.md)
+ - [AccountSourceReferenceOwner](sailpoint/v2025/docs/AccountSourceReferenceOwner.md)
  - [AccountStatusChanged](sailpoint/v2025/docs/AccountStatusChanged.md)
  - [AccountStatusChangedAccount](sailpoint/v2025/docs/AccountStatusChangedAccount.md)
  - [AccountStatusChangedStatusChange](sailpoint/v2025/docs/AccountStatusChangedStatusChange.md)
@@ -974,7 +989,18 @@ Class | Method | HTTP request | Description
  - [AccountUncorrelatedIdentity](sailpoint/v2025/docs/AccountUncorrelatedIdentity.md)
  - [AccountUncorrelatedSource](sailpoint/v2025/docs/AccountUncorrelatedSource.md)
  - [AccountUnlockRequest](sailpoint/v2025/docs/AccountUnlockRequest.md)
+ - [AccountUpdated](sailpoint/v2025/docs/AccountUpdated.md)
+ - [AccountUpdatedEntitlementChangesInner](sailpoint/v2025/docs/AccountUpdatedEntitlementChangesInner.md)
+ - [AccountUpdatedEntitlementChangesInnerAddedInner](sailpoint/v2025/docs/AccountUpdatedEntitlementChangesInnerAddedInner.md)
+ - [AccountUpdatedEntitlementChangesInnerAddedInnerOwner](sailpoint/v2025/docs/AccountUpdatedEntitlementChangesInnerAddedInnerOwner.md)
+ - [AccountUpdatedEvent](sailpoint/v2025/docs/AccountUpdatedEvent.md)
+ - [AccountUpdatedMultiValueAttributeChangesInner](sailpoint/v2025/docs/AccountUpdatedMultiValueAttributeChangesInner.md)
+ - [AccountUpdatedMultiValueAttributeChangesInnerAddedValuesInner](sailpoint/v2025/docs/AccountUpdatedMultiValueAttributeChangesInnerAddedValuesInner.md)
+ - [AccountUpdatedSingleValueAttributeChangesInner](sailpoint/v2025/docs/AccountUpdatedSingleValueAttributeChangesInner.md)
+ - [AccountUpdatedSingleValueAttributeChangesInnerNewValue](sailpoint/v2025/docs/AccountUpdatedSingleValueAttributeChangesInnerNewValue.md)
+ - [AccountUpdatedSingleValueAttributeChangesInnerOldValue](sailpoint/v2025/docs/AccountUpdatedSingleValueAttributeChangesInnerOldValue.md)
  - [AccountUsage](sailpoint/v2025/docs/AccountUsage.md)
+ - [AccountV2](sailpoint/v2025/docs/AccountV2.md)
  - [AccountsAsyncResult](sailpoint/v2025/docs/AccountsAsyncResult.md)
  - [AccountsCollectedForAggregation](sailpoint/v2025/docs/AccountsCollectedForAggregation.md)
  - [AccountsCollectedForAggregationSource](sailpoint/v2025/docs/AccountsCollectedForAggregationSource.md)
@@ -983,6 +1009,7 @@ Class | Method | HTTP request | Description
  - [AccountsSelectionRequest](sailpoint/v2025/docs/AccountsSelectionRequest.md)
  - [AccountsSelectionResponse](sailpoint/v2025/docs/AccountsSelectionResponse.md)
  - [ActivateCampaignOptions](sailpoint/v2025/docs/ActivateCampaignOptions.md)
+ - [ActivityConfigurationSettings](sailpoint/v2025/docs/ActivityConfigurationSettings.md)
  - [ActivityIdentity](sailpoint/v2025/docs/ActivityIdentity.md)
  - [ActivityInsights](sailpoint/v2025/docs/ActivityInsights.md)
  - [AdminReviewReassign](sailpoint/v2025/docs/AdminReviewReassign.md)
@@ -994,6 +1021,12 @@ Class | Method | HTTP request | Description
  - [AppAccountDetails](sailpoint/v2025/docs/AppAccountDetails.md)
  - [AppAccountDetailsSourceAccount](sailpoint/v2025/docs/AppAccountDetailsSourceAccount.md)
  - [AppAllOfAccount](sailpoint/v2025/docs/AppAllOfAccount.md)
+ - [ApplicationCrawlerSettings](sailpoint/v2025/docs/ApplicationCrawlerSettings.md)
+ - [ApplicationDiscoveryRequest](sailpoint/v2025/docs/ApplicationDiscoveryRequest.md)
+ - [ApplicationDiscoveryResponse](sailpoint/v2025/docs/ApplicationDiscoveryResponse.md)
+ - [ApplicationDiscoveryResponseTarget](sailpoint/v2025/docs/ApplicationDiscoveryResponseTarget.md)
+ - [ApplicationItem](sailpoint/v2025/docs/ApplicationItem.md)
+ - [ApplicationType](sailpoint/v2025/docs/ApplicationType.md)
  - [Approval](sailpoint/v2025/docs/Approval.md)
  - [Approval1](sailpoint/v2025/docs/Approval1.md)
  - [ApprovalApprovalCriteria](sailpoint/v2025/docs/ApprovalApprovalCriteria.md)
@@ -1073,10 +1106,12 @@ Class | Method | HTTP request | Description
  - [BaseAccessProfile](sailpoint/v2025/docs/BaseAccessProfile.md)
  - [BaseAccount](sailpoint/v2025/docs/BaseAccount.md)
  - [BaseCommonDto](sailpoint/v2025/docs/BaseCommonDto.md)
+ - [BaseCreateApplicationRequest](sailpoint/v2025/docs/BaseCreateApplicationRequest.md)
  - [BaseDocument](sailpoint/v2025/docs/BaseDocument.md)
  - [BaseEntitlement](sailpoint/v2025/docs/BaseEntitlement.md)
  - [BaseReferenceDto](sailpoint/v2025/docs/BaseReferenceDto.md)
  - [BaseSegment](sailpoint/v2025/docs/BaseSegment.md)
+ - [BaseSettings](sailpoint/v2025/docs/BaseSettings.md)
  - [BasicAuthConfig](sailpoint/v2025/docs/BasicAuthConfig.md)
  - [BearerTokenAuthConfig](sailpoint/v2025/docs/BearerTokenAuthConfig.md)
  - [BeforeProvisioningRuleDto](sailpoint/v2025/docs/BeforeProvisioningRuleDto.md)
@@ -1199,12 +1234,14 @@ Class | Method | HTTP request | Description
  - [CorrelatedGovernanceEvent](sailpoint/v2025/docs/CorrelatedGovernanceEvent.md)
  - [CorrelationConfig](sailpoint/v2025/docs/CorrelationConfig.md)
  - [CorrelationConfigAttributeAssignmentsInner](sailpoint/v2025/docs/CorrelationConfigAttributeAssignmentsInner.md)
+ - [CrawlResourcesSizesOptions](sailpoint/v2025/docs/CrawlResourcesSizesOptions.md)
  - [CreateDomainDkim405Response](sailpoint/v2025/docs/CreateDomainDkim405Response.md)
  - [CreateExternalExecuteWorkflow200Response](sailpoint/v2025/docs/CreateExternalExecuteWorkflow200Response.md)
  - [CreateExternalExecuteWorkflowRequest](sailpoint/v2025/docs/CreateExternalExecuteWorkflowRequest.md)
  - [CreateFormDefinitionFileRequestRequest](sailpoint/v2025/docs/CreateFormDefinitionFileRequestRequest.md)
  - [CreateFormDefinitionRequest](sailpoint/v2025/docs/CreateFormDefinitionRequest.md)
  - [CreateFormInstanceRequest](sailpoint/v2025/docs/CreateFormInstanceRequest.md)
+ - [CreateMachineAccountSubtypeRequest](sailpoint/v2025/docs/CreateMachineAccountSubtypeRequest.md)
  - [CreateOAuthClientRequest](sailpoint/v2025/docs/CreateOAuthClientRequest.md)
  - [CreateOAuthClientResponse](sailpoint/v2025/docs/CreateOAuthClientResponse.md)
  - [CreatePersonalAccessTokenRequest](sailpoint/v2025/docs/CreatePersonalAccessTokenRequest.md)
@@ -1220,6 +1257,7 @@ Class | Method | HTTP request | Description
  - [DataAccessCategoriesInner](sailpoint/v2025/docs/DataAccessCategoriesInner.md)
  - [DataAccessImpactScore](sailpoint/v2025/docs/DataAccessImpactScore.md)
  - [DataAccessPoliciesInner](sailpoint/v2025/docs/DataAccessPoliciesInner.md)
+ - [DataClassificationSettings](sailpoint/v2025/docs/DataClassificationSettings.md)
  - [DataSegment](sailpoint/v2025/docs/DataSegment.md)
  - [DeleteNonEmployeeRecordsInBulkRequest](sailpoint/v2025/docs/DeleteNonEmployeeRecordsInBulkRequest.md)
  - [DeleteSource202Response](sailpoint/v2025/docs/DeleteSource202Response.md)
@@ -1399,6 +1437,7 @@ Class | Method | HTTP request | Description
  - [IdentityProfileIdentityErrorReportArguments](sailpoint/v2025/docs/IdentityProfileIdentityErrorReportArguments.md)
  - [IdentityProfilesConnections](sailpoint/v2025/docs/IdentityProfilesConnections.md)
  - [IdentityReference](sailpoint/v2025/docs/IdentityReference.md)
+ - [IdentityReference1](sailpoint/v2025/docs/IdentityReference1.md)
  - [IdentityReferenceWithNameAndEmail](sailpoint/v2025/docs/IdentityReferenceWithNameAndEmail.md)
  - [IdentitySnapshotSummaryResponse](sailpoint/v2025/docs/IdentitySnapshotSummaryResponse.md)
  - [IdentitySummary](sailpoint/v2025/docs/IdentitySummary.md)
@@ -1419,6 +1458,7 @@ Class | Method | HTTP request | Description
  - [ImportSpConfigRequest](sailpoint/v2025/docs/ImportSpConfigRequest.md)
  - [Index](sailpoint/v2025/docs/Index.md)
  - [InnerHit](sailpoint/v2025/docs/InnerHit.md)
+ - [Int64StringKeyValuePair](sailpoint/v2025/docs/Int64StringKeyValuePair.md)
  - [InviteIdentitiesRequest](sailpoint/v2025/docs/InviteIdentitiesRequest.md)
  - [Invocation](sailpoint/v2025/docs/Invocation.md)
  - [InvocationStatus](sailpoint/v2025/docs/InvocationStatus.md)
@@ -1476,14 +1516,28 @@ Class | Method | HTTP request | Description
  - [MachineIdentityAggregationRequest](sailpoint/v2025/docs/MachineIdentityAggregationRequest.md)
  - [MachineIdentityAggregationResponse](sailpoint/v2025/docs/MachineIdentityAggregationResponse.md)
  - [MachineIdentityAggregationResponseTarget](sailpoint/v2025/docs/MachineIdentityAggregationResponseTarget.md)
+ - [MachineIdentityCreated](sailpoint/v2025/docs/MachineIdentityCreated.md)
+ - [MachineIdentityCreatedMachineIdentity](sailpoint/v2025/docs/MachineIdentityCreatedMachineIdentity.md)
+ - [MachineIdentityDeleted](sailpoint/v2025/docs/MachineIdentityDeleted.md)
+ - [MachineIdentityDeletedMachineIdentity](sailpoint/v2025/docs/MachineIdentityDeletedMachineIdentity.md)
  - [MachineIdentityDtoOwners](sailpoint/v2025/docs/MachineIdentityDtoOwners.md)
+ - [MachineIdentityOwnerReference](sailpoint/v2025/docs/MachineIdentityOwnerReference.md)
  - [MachineIdentityRequest](sailpoint/v2025/docs/MachineIdentityRequest.md)
  - [MachineIdentityRequestUserEntitlements](sailpoint/v2025/docs/MachineIdentityRequestUserEntitlements.md)
  - [MachineIdentityResponse](sailpoint/v2025/docs/MachineIdentityResponse.md)
  - [MachineIdentityResponseUserEntitlements](sailpoint/v2025/docs/MachineIdentityResponseUserEntitlements.md)
+ - [MachineIdentitySourceReference](sailpoint/v2025/docs/MachineIdentitySourceReference.md)
+ - [MachineIdentityUpdated](sailpoint/v2025/docs/MachineIdentityUpdated.md)
+ - [MachineIdentityUpdatedMachineIdentity](sailpoint/v2025/docs/MachineIdentityUpdatedMachineIdentity.md)
+ - [MachineIdentityUpdatedOwnerChanges](sailpoint/v2025/docs/MachineIdentityUpdatedOwnerChanges.md)
+ - [MachineIdentityUpdatedSingleValueAttributeChangesInner](sailpoint/v2025/docs/MachineIdentityUpdatedSingleValueAttributeChangesInner.md)
+ - [MachineIdentityUpdatedSingleValueAttributeChangesInnerNewValue](sailpoint/v2025/docs/MachineIdentityUpdatedSingleValueAttributeChangesInnerNewValue.md)
+ - [MachineIdentityUpdatedSingleValueAttributeChangesInnerOldValue](sailpoint/v2025/docs/MachineIdentityUpdatedSingleValueAttributeChangesInnerOldValue.md)
+ - [MachineIdentityUpdatedUserEntitlementChanges](sailpoint/v2025/docs/MachineIdentityUpdatedUserEntitlementChanges.md)
  - [MachineIdentityUserEntitlementResponse](sailpoint/v2025/docs/MachineIdentityUserEntitlementResponse.md)
  - [MachineIdentityUserEntitlementResponseEntitlement](sailpoint/v2025/docs/MachineIdentityUserEntitlementResponseEntitlement.md)
  - [MachineIdentityUserEntitlementResponseSource](sailpoint/v2025/docs/MachineIdentityUserEntitlementResponseSource.md)
+ - [MachineIdentityUserEntitlements](sailpoint/v2025/docs/MachineIdentityUserEntitlements.md)
  - [MailFromAttributes](sailpoint/v2025/docs/MailFromAttributes.md)
  - [MailFromAttributesDto](sailpoint/v2025/docs/MailFromAttributesDto.md)
  - [ManagedClient](sailpoint/v2025/docs/ManagedClient.md)
@@ -1616,6 +1670,7 @@ Class | Method | HTTP request | Description
  - [PendingApproval](sailpoint/v2025/docs/PendingApproval.md)
  - [PendingApprovalAction](sailpoint/v2025/docs/PendingApprovalAction.md)
  - [PendingApprovalOwner](sailpoint/v2025/docs/PendingApprovalOwner.md)
+ - [PermissionCollectorSettings](sailpoint/v2025/docs/PermissionCollectorSettings.md)
  - [PermissionDto](sailpoint/v2025/docs/PermissionDto.md)
  - [PreApprovalTriggerDetails](sailpoint/v2025/docs/PreApprovalTriggerDetails.md)
  - [PreferencesDto](sailpoint/v2025/docs/PreferencesDto.md)
@@ -1955,6 +2010,7 @@ Class | Method | HTTP request | Description
  - [SubscriptionType](sailpoint/v2025/docs/SubscriptionType.md)
  - [SummaryResponse](sailpoint/v2025/docs/SummaryResponse.md)
  - [Tag](sailpoint/v2025/docs/Tag.md)
+ - [Tag1](sailpoint/v2025/docs/Tag1.md)
  - [TagTagCategoryRefsInner](sailpoint/v2025/docs/TagTagCategoryRefsInner.md)
  - [TaggedObject](sailpoint/v2025/docs/TaggedObject.md)
  - [TaggedObjectDto](sailpoint/v2025/docs/TaggedObjectDto.md)

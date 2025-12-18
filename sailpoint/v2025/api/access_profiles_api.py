@@ -314,8 +314,7 @@ class AccessProfilesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth', 
-            'applicationAuth'
+            'userAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -592,8 +591,7 @@ class AccessProfilesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth', 
-            'applicationAuth'
+            'userAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -886,8 +884,7 @@ class AccessProfilesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth', 
-            'applicationAuth'
+            'userAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1164,8 +1161,7 @@ class AccessProfilesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth', 
-            'applicationAuth'
+            'userAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1527,8 +1523,7 @@ class AccessProfilesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth', 
-            'applicationAuth'
+            'userAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1926,8 +1921,7 @@ class AccessProfilesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth', 
-            'applicationAuth'
+            'userAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -2233,8 +2227,7 @@ class AccessProfilesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth', 
-            'applicationAuth'
+            'userAuth'
         ]
 
         return self.api_client.param_serialize(

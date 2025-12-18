@@ -50,8 +50,6 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
 
 # Enter a context with an instance of the API client
 with sailpoint.v3.ApiClient(configuration) as api_client:
@@ -445,6 +443,7 @@ Class | Method | HTTP request | Description
  - [AccessCriteriaCriteriaListInner](sailpoint/v3/docs/AccessCriteriaCriteriaListInner.md)
  - [AccessCriteriaRequest](sailpoint/v3/docs/AccessCriteriaRequest.md)
  - [AccessCriteriaRequestCriteriaListInner](sailpoint/v3/docs/AccessCriteriaRequestCriteriaListInner.md)
+ - [AccessDuration](sailpoint/v3/docs/AccessDuration.md)
  - [AccessItemRequestedFor](sailpoint/v3/docs/AccessItemRequestedFor.md)
  - [AccessItemRequester](sailpoint/v3/docs/AccessItemRequester.md)
  - [AccessItemReviewedBy](sailpoint/v3/docs/AccessItemReviewedBy.md)
