@@ -1660,7 +1660,7 @@ class CustomUserLevelsApi:
         detail_level: Annotated[Optional[StrictStr], Field(description="Specifies the level of detail for the user levels.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *co*    **owner**: *co*    **status**: *eq*  **description**: *co*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, description, status, owner**")] = None,
-        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
@@ -1688,7 +1688,7 @@ class CustomUserLevelsApi:
         :type filters: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, description, status, owner**
         :type sorters: str
-        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :param limit: Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
@@ -1753,7 +1753,7 @@ class CustomUserLevelsApi:
         detail_level: Annotated[Optional[StrictStr], Field(description="Specifies the level of detail for the user levels.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *co*    **owner**: *co*    **status**: *eq*  **description**: *co*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, description, status, owner**")] = None,
-        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
@@ -1781,7 +1781,7 @@ class CustomUserLevelsApi:
         :type filters: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, description, status, owner**
         :type sorters: str
-        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :param limit: Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
@@ -1846,7 +1846,7 @@ class CustomUserLevelsApi:
         detail_level: Annotated[Optional[StrictStr], Field(description="Specifies the level of detail for the user levels.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *co*    **owner**: *co*    **status**: *eq*  **description**: *co*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, description, status, owner**")] = None,
-        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
@@ -1874,7 +1874,7 @@ class CustomUserLevelsApi:
         :type filters: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, description, status, owner**
         :type sorters: str
-        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :param limit: Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
