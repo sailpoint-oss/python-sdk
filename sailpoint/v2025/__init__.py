@@ -344,6 +344,7 @@ from sailpoint.v2025.models.approval_status_dto_original_owner import ApprovalSt
 from sailpoint.v2025.models.approval_summary import ApprovalSummary
 from sailpoint.v2025.models.argument import Argument
 from sailpoint.v2025.models.array_inner import ArrayInner
+from sailpoint.v2025.models.assign_resource_owner_request import AssignResourceOwnerRequest
 from sailpoint.v2025.models.assignment_context_dto import AssignmentContextDto
 from sailpoint.v2025.models.attr_sync_source import AttrSyncSource
 from sailpoint.v2025.models.attr_sync_source_attribute_config import AttrSyncSourceAttributeConfig
@@ -403,6 +404,7 @@ from sailpoint.v2025.models.bulk_reassign_request_dto import BulkReassignRequest
 from sailpoint.v2025.models.bulk_reject_request_dto import BulkRejectRequestDTO
 from sailpoint.v2025.models.bulk_remove_tagged_object import BulkRemoveTaggedObject
 from sailpoint.v2025.models.bulk_tagged_object_response import BulkTaggedObjectResponse
+from sailpoint.v2025.models.business_service_type import BusinessServiceType
 from sailpoint.v2025.models.campaign import Campaign
 from sailpoint.v2025.models.campaign_activated import CampaignActivated
 from sailpoint.v2025.models.campaign_activated_campaign import CampaignActivatedCampaign
@@ -531,6 +533,7 @@ from sailpoint.v2025.models.data_access_categories_inner import DataAccessCatego
 from sailpoint.v2025.models.data_access_impact_score import DataAccessImpactScore
 from sailpoint.v2025.models.data_access_policies_inner import DataAccessPoliciesInner
 from sailpoint.v2025.models.data_classification_settings import DataClassificationSettings
+from sailpoint.v2025.models.data_owner_model import DataOwnerModel
 from sailpoint.v2025.models.data_segment import DataSegment
 from sailpoint.v2025.models.delete_non_employee_records_in_bulk_request import DeleteNonEmployeeRecordsInBulkRequest
 from sailpoint.v2025.models.delete_source202_response import DeleteSource202Response
@@ -995,6 +998,7 @@ from sailpoint.v2025.models.recommendation_response import RecommendationRespons
 from sailpoint.v2025.models.recommendation_response_dto import RecommendationResponseDto
 from sailpoint.v2025.models.recommender_calculations import RecommenderCalculations
 from sailpoint.v2025.models.recommender_calculations_identity_attributes_value import RecommenderCalculationsIdentityAttributesValue
+from sailpoint.v2025.models.reelect_request import ReelectRequest
 from sailpoint.v2025.models.ref import Ref
 from sailpoint.v2025.models.reference import Reference
 from sailpoint.v2025.models.remediation_item_details import RemediationItemDetails
@@ -1025,6 +1029,7 @@ from sailpoint.v2025.models.requested_item_status_request_state import Requested
 from sailpoint.v2025.models.requested_item_status_requested_for import RequestedItemStatusRequestedFor
 from sailpoint.v2025.models.requested_item_status_requester_comment import RequestedItemStatusRequesterComment
 from sailpoint.v2025.models.requested_item_status_sod_violation_context import RequestedItemStatusSodViolationContext
+from sailpoint.v2025.models.resource_model import ResourceModel
 from sailpoint.v2025.models.resource_object import ResourceObject
 from sailpoint.v2025.models.resource_objects_request import ResourceObjectsRequest
 from sailpoint.v2025.models.resource_objects_response import ResourceObjectsResponse

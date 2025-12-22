@@ -47,6 +47,41 @@ class TestDataAccessSecurityApi(unittest.TestCase):
         """
         pass
 
+    def test_das_owners_assign_post(self) -> None:
+        """Test case for das_owners_assign_post
+
+        Assign owner to application resource.
+        """
+        pass
+
+    def test_das_owners_owner_identity_id_resources_get(self) -> None:
+        """Test case for das_owners_owner_identity_id_resources_get
+
+        List resources for owner.
+        """
+        pass
+
+    def test_das_owners_reelect_post(self) -> None:
+        """Test case for das_owners_reelect_post
+
+        Re-elect resource owner.
+        """
+        pass
+
+    def test_das_owners_resources_resource_id_get(self) -> None:
+        """Test case for das_owners_resources_resource_id_get
+
+        List owners for resource.
+        """
+        pass
+
+    def test_das_owners_source_identity_id_reassign_destination_identity_id_post(self) -> None:
+        """Test case for das_owners_source_identity_id_reassign_destination_identity_id_post
+
+        Reassign resource owner.
+        """
+        pass
+
     def test_delete_application(self) -> None:
         """Test case for delete_application
 
@@ -79,6 +114,13 @@ class TestDataAccessSecurityApi(unittest.TestCase):
         """Test case for get_applications
 
         Search applications in DAS.
+        """
+        pass
+
+    def test_get_owners(self) -> None:
+        """Test case for get_owners
+
+        Retrieve owners per application.
         """
         pass
 

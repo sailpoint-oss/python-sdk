@@ -10,7 +10,8 @@ tags: ['SDK', 'Software Development Kit', 'Data_Access_Security', 'V2025Data_Acc
 ---
 
 # sailpoint.v2025.DataAccessSecurityApi
-  Use this API to trigger and manage DAS tasks such as starting them on demand, updating configurations or schedules, and retrieving statuses. Additionally, you can onboard and manage applications at scale by creating and configuring them, setting scanning schedules, retrieving metadata, and associating them with Virtual Appliances and Identity Collectors.
+  Use this API to enable data ownership election campaigns, assign resource owners, and respond to identity lifecycle events to maintain continuous accountability.
+This API can also trigger and manage DAS tasks such as scans-starting them on demand, updating configurations or schedules, and retrieving statuses. Additionally, you can onboard and manage applications at scale by creating and configuring them, setting scanning schedules, retrieving metadata, and associating them with Virtual Appliances and Identity Collectors.
  
 All URIs are relative to *https://sailpoint.api.identitynow.com/v2025*
 
@@ -19,11 +20,17 @@ Method | HTTP request | Description
 [**cancel-task**](#cancel-task) | **POST** `/das/tasks/cancel/{id}` | Cancel a DAS task.
 [**create-application**](#create-application) | **POST** `/das/applications` | Create application
 [**create-schedule**](#create-schedule) | **POST** `/das/tasks/schedules` | Create a new schedule.
+[**das-owners-assign-post**](#das-owners-assign-post) | **POST** `/das/owners/assign` | Assign owner to application resource.
+[**das-owners-owner-identity-id-resources-get**](#das-owners-owner-identity-id-resources-get) | **GET** `/das/owners/{ownerIdentityId}/resources` | List resources for owner.
+[**das-owners-reelect-post**](#das-owners-reelect-post) | **POST** `/das/owners/reelect` | Re-elect resource owner.
+[**das-owners-resources-resource-id-get**](#das-owners-resources-resource-id-get) | **GET** `/das/owners/resources/{resourceId}` | List owners for resource.
+[**das-owners-source-identity-id-reassign-destination-identity-id-post**](#das-owners-source-identity-id-reassign-destination-identity-id-post) | **POST** `/das/owners/{sourceIdentityId}/reassign/{destinationIdentityId}` | Reassign resource owner.
 [**delete-application**](#delete-application) | **DELETE** `/das/applications/{id}` | Delete an application by identifier.
 [**delete-schedule**](#delete-schedule) | **DELETE** `/das/tasks/schedules/{id}` | Delete a DAS schedule.
 [**delete-task**](#delete-task) | **DELETE** `/das/tasks/{id}` | Delete a DAS task.
 [**get-application**](#get-application) | **GET** `/das/applications/{id}` | Retrieve application details by identifier.
 [**get-applications**](#get-applications) | **GET** `/das/applications` | Search applications in DAS.
+[**get-owners**](#get-owners) | **GET** `/das/owners/applications/{appId}` | Retrieve owners per application.
 [**get-schedule**](#get-schedule) | **GET** `/das/tasks/schedules/{id}` | Get a DAS schedule.
 [**get-schedules**](#get-schedules) | **GET** `/das/tasks/schedules` | List all schedules.
 [**get-task**](#get-task) | **GET** `/das/tasks/{id}` | Get a DAS task.
@@ -256,6 +263,319 @@ with ApiClient(configuration) as api_client:
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling DataAccessSecurityApi->create_schedule: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## das-owners-assign-post
+Assign owner to application resource.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/das-owners-assign-post)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | assign_resource_owner_request | [**AssignResourceOwnerRequest**](../models/assign-resource-owner-request) | True  | 
+
+### Return type
+**int**
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | 1 - success, otherwise failure. | int |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2025.api.data_access_security_api import DataAccessSecurityApi
+from sailpoint.v2025.api_client import ApiClient
+from sailpoint.v2025.models.assign_resource_owner_request import AssignResourceOwnerRequest
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    assign_resource_owner_request = '''{
+          "fullPath" : "/shared/hr/documents/employee-records.pdf",
+          "identityId" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+          "appId" : 12345
+        }''' # AssignResourceOwnerRequest | 
+
+    try:
+        # Assign owner to application resource.
+        new_assign_resource_owner_request = AssignResourceOwnerRequest.from_json(assign_resource_owner_request)
+        results = DataAccessSecurityApi(api_client).das_owners_assign_post(assign_resource_owner_request=new_assign_resource_owner_request)
+        # Below is a request that includes all optional parameters
+        # results = DataAccessSecurityApi(api_client).das_owners_assign_post(new_assign_resource_owner_request)
+        print("The response of DataAccessSecurityApi->das_owners_assign_post:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling DataAccessSecurityApi->das_owners_assign_post: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## das-owners-owner-identity-id-resources-get
+List resources for owner.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/das-owners-owner-identity-id-resources-get)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | owner_identity_id | **str** | True  | Unique identifier for the owner. This should be a UUID representing the owner's identity.
+  Query | limit | **int** |   (optional) (default to 250) | Not applicable for this endpoint. Do not use.
+  Query | offset | **int** |   (optional) (default to 0) | Not applicable for this endpoint. Do not use.
+
+### Return type
+[**List[ResourceModel]**](../models/resource-model)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | A list of resources owned by the specified identity was retrieved successfully. | List[ResourceModel] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2025.api.data_access_security_api import DataAccessSecurityApi
+from sailpoint.v2025.api_client import ApiClient
+from sailpoint.v2025.models.resource_model import ResourceModel
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    owner_identity_id = 'a3f1c2d4-5678-4e9b-8c2d-123456789abc' # str | Unique identifier for the owner. This should be a UUID representing the owner's identity. # str | Unique identifier for the owner. This should be a UUID representing the owner's identity.
+    limit = 250 # int | Not applicable for this endpoint. Do not use. (optional) (default to 250) # int | Not applicable for this endpoint. Do not use. (optional) (default to 250)
+    offset = 0 # int | Not applicable for this endpoint. Do not use. (optional) (default to 0) # int | Not applicable for this endpoint. Do not use. (optional) (default to 0)
+
+    try:
+        # List resources for owner.
+        
+        results = DataAccessSecurityApi(api_client).das_owners_owner_identity_id_resources_get(owner_identity_id=owner_identity_id)
+        # Below is a request that includes all optional parameters
+        # results = DataAccessSecurityApi(api_client).das_owners_owner_identity_id_resources_get(owner_identity_id, limit, offset)
+        print("The response of DataAccessSecurityApi->das_owners_owner_identity_id_resources_get:\n")
+        for item in results:
+            print(item.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling DataAccessSecurityApi->das_owners_owner_identity_id_resources_get: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## das-owners-reelect-post
+Re-elect resource owner.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/das-owners-reelect-post)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | reelect_request | [**ReelectRequest**](../models/reelect-request) | True  | The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds.
+
+### Return type
+**int**
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | The number of elections CREATED. In case of failure, some elections may not be STARTED. | int |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2025.api.data_access_security_api import DataAccessSecurityApi
+from sailpoint.v2025.api_client import ApiClient
+from sailpoint.v2025.models.reelect_request import ReelectRequest
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    reelect_request = '''{
+          "ownerId" : "c1a2b3d4-e5f6-7890-abcd-1234567890ab",
+          "campaignName" : "Annual Resource Owner Election",
+          "reviewers" : [ "d4e5f6a7-b8c9-0123-4567-89abcdef0123", "e7f8g9h0-i1j2-3456-7890-klmnopqrstuv" ]
+        }''' # ReelectRequest | The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds.
+
+    try:
+        # Re-elect resource owner.
+        new_reelect_request = ReelectRequest.from_json(reelect_request)
+        results = DataAccessSecurityApi(api_client).das_owners_reelect_post(reelect_request=new_reelect_request)
+        # Below is a request that includes all optional parameters
+        # results = DataAccessSecurityApi(api_client).das_owners_reelect_post(new_reelect_request)
+        print("The response of DataAccessSecurityApi->das_owners_reelect_post:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling DataAccessSecurityApi->das_owners_reelect_post: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## das-owners-resources-resource-id-get
+List owners for resource.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/das-owners-resources-resource-id-get)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | resource_id | **int** | True  | Unique identifier for the resource.
+  Query | limit | **int** |   (optional) (default to 250) | Not applicable for this endpoint. Do not use.
+  Query | offset | **int** |   (optional) (default to 0) | Not applicable for this endpoint. Do not use.
+
+### Return type
+**List[str]**
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | A list of owner identity UUIDs for the specified resource was retrieved successfully. | List[str] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2025.api.data_access_security_api import DataAccessSecurityApi
+from sailpoint.v2025.api_client import ApiClient
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    resource_id = 101 # int | Unique identifier for the resource. # int | Unique identifier for the resource.
+    limit = 250 # int | Not applicable for this endpoint. Do not use. (optional) (default to 250) # int | Not applicable for this endpoint. Do not use. (optional) (default to 250)
+    offset = 0 # int | Not applicable for this endpoint. Do not use. (optional) (default to 0) # int | Not applicable for this endpoint. Do not use. (optional) (default to 0)
+
+    try:
+        # List owners for resource.
+        
+        results = DataAccessSecurityApi(api_client).das_owners_resources_resource_id_get(resource_id=resource_id)
+        # Below is a request that includes all optional parameters
+        # results = DataAccessSecurityApi(api_client).das_owners_resources_resource_id_get(resource_id, limit, offset)
+        print("The response of DataAccessSecurityApi->das_owners_resources_resource_id_get:\n")
+        for item in results:
+            print(item.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling DataAccessSecurityApi->das_owners_resources_resource_id_get: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## das-owners-source-identity-id-reassign-destination-identity-id-post
+Reassign resource owner.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/das-owners-source-identity-id-reassign-destination-identity-id-post)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | source_identity_id | **str** | True  | Unique identifier for the source owner. This should be a UUID representing the identity to reassign from.
+Path   | destination_identity_id | **str** | True  | Unique identifier for the destination owner. This should be a UUID representing the identity to reassign to.
+
+### Return type
+**int**
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | The number of resources whose owners were overwritten. | int |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2025.api.data_access_security_api import DataAccessSecurityApi
+from sailpoint.v2025.api_client import ApiClient
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    source_identity_id = 'a3f1c2d4-5678-4e9b-8c2d-123456789abc' # str | Unique identifier for the source owner. This should be a UUID representing the identity to reassign from. # str | Unique identifier for the source owner. This should be a UUID representing the identity to reassign from.
+    destination_identity_id = 'b4e2d3c5-6789-4f0a-9d3e-234567890bcd' # str | Unique identifier for the destination owner. This should be a UUID representing the identity to reassign to. # str | Unique identifier for the destination owner. This should be a UUID representing the identity to reassign to.
+
+    try:
+        # Reassign resource owner.
+        
+        results = DataAccessSecurityApi(api_client).das_owners_source_identity_id_reassign_destination_identity_id_post(source_identity_id=source_identity_id, destination_identity_id=destination_identity_id)
+        # Below is a request that includes all optional parameters
+        # results = DataAccessSecurityApi(api_client).das_owners_source_identity_id_reassign_destination_identity_id_post(source_identity_id, destination_identity_id)
+        print("The response of DataAccessSecurityApi->das_owners_source_identity_id_reassign_destination_identity_id_post:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling DataAccessSecurityApi->das_owners_source_identity_id_reassign_destination_identity_id_post: %s\n" % e)
 ```
 
 
@@ -550,6 +870,70 @@ with ApiClient(configuration) as api_client:
             print(item.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling DataAccessSecurityApi->get_applications: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## get-owners
+Retrieve owners per application.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/get-owners)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | app_id | **int** | True  | The unique identifier of the application for which to retrieve owners.
+  Query | limit | **int** |   (optional) (default to 250) | Not applicable for this endpoint. Do not use.
+  Query | offset | **int** |   (optional) (default to 0) | Not applicable for this endpoint. Do not use.
+
+### Return type
+[**List[DataOwnerModel]**](../models/data-owner-model)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | OK. Returns a list of DataOwnerModel objects. | List[DataOwnerModel] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2025.api.data_access_security_api import DataAccessSecurityApi
+from sailpoint.v2025.api_client import ApiClient
+from sailpoint.v2025.models.data_owner_model import DataOwnerModel
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    app_id = 2001 # int | The unique identifier of the application for which to retrieve owners. # int | The unique identifier of the application for which to retrieve owners.
+    limit = 250 # int | Not applicable for this endpoint. Do not use. (optional) (default to 250) # int | Not applicable for this endpoint. Do not use. (optional) (default to 250)
+    offset = 0 # int | Not applicable for this endpoint. Do not use. (optional) (default to 0) # int | Not applicable for this endpoint. Do not use. (optional) (default to 0)
+
+    try:
+        # Retrieve owners per application.
+        
+        results = DataAccessSecurityApi(api_client).get_owners(app_id=app_id)
+        # Below is a request that includes all optional parameters
+        # results = DataAccessSecurityApi(api_client).get_owners(app_id, limit, offset)
+        print("The response of DataAccessSecurityApi->get_owners:\n")
+        for item in results:
+            print(item.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling DataAccessSecurityApi->get_owners: %s\n" % e)
 ```
 
 

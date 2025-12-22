@@ -7268,6 +7268,144 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling DataAccessSecurityApi->create_schedule: %s\n" % e)
+- path: /das/owners/assign
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/data-access-security#das-owners-assign-post
+      source: |
+        from sailpoint.v2025.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.assign_resource_owner_request import AssignResourceOwnerRequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          assign_resource_owner_request = '''{
+          "fullPath" : "/shared/hr/documents/employee-records.pdf",
+          "identityId" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+          "appId" : 12345
+        }''' # AssignResourceOwnerRequest | 
+          try:
+              # Assign owner to application resource.
+              new_assign_resource_owner_request = AssignResourceOwnerRequest.from_json(assign_resource_owner_request)
+              results = DataAccessSecurityApi(api_client).das_owners_assign_post(assign_resource_owner_request=new_assign_resource_owner_request)
+              # Below is a request that includes all optional parameters
+              # results = DataAccessSecurityApi(api_client).das_owners_assign_post(new_assign_resource_owner_request)
+              print("The response of DataAccessSecurityApi->das_owners_assign_post:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->das_owners_assign_post: %s\n" % e)
+- path: /das/owners/{ownerIdentityId}/resources
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/data-access-security#das-owners-owner-identity-id-resources-get
+      source: |
+        from sailpoint.v2025.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.resource_model import ResourceModel
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          owner_identity_id = 'a3f1c2d4-5678-4e9b-8c2d-123456789abc' # str | Unique identifier for the owner. This should be a UUID representing the owner's identity. # str | Unique identifier for the owner. This should be a UUID representing the owner's identity.
+          limit = 250 # int | Not applicable for this endpoint. Do not use. (optional) (default to 250) # int | Not applicable for this endpoint. Do not use. (optional) (default to 250)
+          offset = 0 # int | Not applicable for this endpoint. Do not use. (optional) (default to 0) # int | Not applicable for this endpoint. Do not use. (optional) (default to 0)
+          try:
+              # List resources for owner.
+              
+              results = DataAccessSecurityApi(api_client).das_owners_owner_identity_id_resources_get(owner_identity_id=owner_identity_id)
+              # Below is a request that includes all optional parameters
+              # results = DataAccessSecurityApi(api_client).das_owners_owner_identity_id_resources_get(owner_identity_id, limit, offset)
+              print("The response of DataAccessSecurityApi->das_owners_owner_identity_id_resources_get:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->das_owners_owner_identity_id_resources_get: %s\n" % e)
+- path: /das/owners/reelect
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/data-access-security#das-owners-reelect-post
+      source: |
+        from sailpoint.v2025.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.reelect_request import ReelectRequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          reelect_request = '''{
+          "ownerId" : "c1a2b3d4-e5f6-7890-abcd-1234567890ab",
+          "campaignName" : "Annual Resource Owner Election",
+          "reviewers" : [ "d4e5f6a7-b8c9-0123-4567-89abcdef0123", "e7f8g9h0-i1j2-3456-7890-klmnopqrstuv" ]
+        }''' # ReelectRequest | The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds.
+          try:
+              # Re-elect resource owner.
+              new_reelect_request = ReelectRequest.from_json(reelect_request)
+              results = DataAccessSecurityApi(api_client).das_owners_reelect_post(reelect_request=new_reelect_request)
+              # Below is a request that includes all optional parameters
+              # results = DataAccessSecurityApi(api_client).das_owners_reelect_post(new_reelect_request)
+              print("The response of DataAccessSecurityApi->das_owners_reelect_post:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->das_owners_reelect_post: %s\n" % e)
+- path: /das/owners/resources/{resourceId}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/data-access-security#das-owners-resources-resource-id-get
+      source: |
+        from sailpoint.v2025.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          resource_id = 101 # int | Unique identifier for the resource. # int | Unique identifier for the resource.
+          limit = 250 # int | Not applicable for this endpoint. Do not use. (optional) (default to 250) # int | Not applicable for this endpoint. Do not use. (optional) (default to 250)
+          offset = 0 # int | Not applicable for this endpoint. Do not use. (optional) (default to 0) # int | Not applicable for this endpoint. Do not use. (optional) (default to 0)
+          try:
+              # List owners for resource.
+              
+              results = DataAccessSecurityApi(api_client).das_owners_resources_resource_id_get(resource_id=resource_id)
+              # Below is a request that includes all optional parameters
+              # results = DataAccessSecurityApi(api_client).das_owners_resources_resource_id_get(resource_id, limit, offset)
+              print("The response of DataAccessSecurityApi->das_owners_resources_resource_id_get:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->das_owners_resources_resource_id_get: %s\n" % e)
+- path: /das/owners/{sourceIdentityId}/reassign/{destinationIdentityId}
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/data-access-security#das-owners-source-identity-id-reassign-destination-identity-id-post
+      source: |
+        from sailpoint.v2025.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          source_identity_id = 'a3f1c2d4-5678-4e9b-8c2d-123456789abc' # str | Unique identifier for the source owner. This should be a UUID representing the identity to reassign from. # str | Unique identifier for the source owner. This should be a UUID representing the identity to reassign from.
+          destination_identity_id = 'b4e2d3c5-6789-4f0a-9d3e-234567890bcd' # str | Unique identifier for the destination owner. This should be a UUID representing the identity to reassign to. # str | Unique identifier for the destination owner. This should be a UUID representing the identity to reassign to.
+          try:
+              # Reassign resource owner.
+              
+              results = DataAccessSecurityApi(api_client).das_owners_source_identity_id_reassign_destination_identity_id_post(source_identity_id=source_identity_id, destination_identity_id=destination_identity_id)
+              # Below is a request that includes all optional parameters
+              # results = DataAccessSecurityApi(api_client).das_owners_source_identity_id_reassign_destination_identity_id_post(source_identity_id, destination_identity_id)
+              print("The response of DataAccessSecurityApi->das_owners_source_identity_id_reassign_destination_identity_id_post:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->das_owners_source_identity_id_reassign_destination_identity_id_post: %s\n" % e)
 - path: /das/applications/{id}
   method: DELETE
   xCodeSample:
@@ -7388,6 +7526,34 @@
                   print(item.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling DataAccessSecurityApi->get_applications: %s\n" % e)
+- path: /das/owners/applications/{appId}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/data-access-security#get-owners
+      source: |
+        from sailpoint.v2025.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.data_owner_model import DataOwnerModel
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          app_id = 2001 # int | The unique identifier of the application for which to retrieve owners. # int | The unique identifier of the application for which to retrieve owners.
+          limit = 250 # int | Not applicable for this endpoint. Do not use. (optional) (default to 250) # int | Not applicable for this endpoint. Do not use. (optional) (default to 250)
+          offset = 0 # int | Not applicable for this endpoint. Do not use. (optional) (default to 0) # int | Not applicable for this endpoint. Do not use. (optional) (default to 0)
+          try:
+              # Retrieve owners per application.
+              
+              results = DataAccessSecurityApi(api_client).get_owners(app_id=app_id)
+              # Below is a request that includes all optional parameters
+              # results = DataAccessSecurityApi(api_client).get_owners(app_id, limit, offset)
+              print("The response of DataAccessSecurityApi->get_owners:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->get_owners: %s\n" % e)
 - path: /das/tasks/schedules/{id}
   method: GET
   xCodeSample:

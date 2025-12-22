@@ -295,11 +295,17 @@ Class | Method | HTTP request | Description
 *DataAccessSecurityApi* | [**cancel_task**](sailpoint/v2025/docs/DataAccessSecurityApi.md#cancel_task) | **POST** /das/tasks/cancel/{id} | Cancel a DAS task.
 *DataAccessSecurityApi* | [**create_application**](sailpoint/v2025/docs/DataAccessSecurityApi.md#create_application) | **POST** /das/applications | Create application
 *DataAccessSecurityApi* | [**create_schedule**](sailpoint/v2025/docs/DataAccessSecurityApi.md#create_schedule) | **POST** /das/tasks/schedules | Create a new schedule.
+*DataAccessSecurityApi* | [**das_owners_assign_post**](sailpoint/v2025/docs/DataAccessSecurityApi.md#das_owners_assign_post) | **POST** /das/owners/assign | Assign owner to application resource.
+*DataAccessSecurityApi* | [**das_owners_owner_identity_id_resources_get**](sailpoint/v2025/docs/DataAccessSecurityApi.md#das_owners_owner_identity_id_resources_get) | **GET** /das/owners/{ownerIdentityId}/resources | List resources for owner.
+*DataAccessSecurityApi* | [**das_owners_reelect_post**](sailpoint/v2025/docs/DataAccessSecurityApi.md#das_owners_reelect_post) | **POST** /das/owners/reelect | Re-elect resource owner.
+*DataAccessSecurityApi* | [**das_owners_resources_resource_id_get**](sailpoint/v2025/docs/DataAccessSecurityApi.md#das_owners_resources_resource_id_get) | **GET** /das/owners/resources/{resourceId} | List owners for resource.
+*DataAccessSecurityApi* | [**das_owners_source_identity_id_reassign_destination_identity_id_post**](sailpoint/v2025/docs/DataAccessSecurityApi.md#das_owners_source_identity_id_reassign_destination_identity_id_post) | **POST** /das/owners/{sourceIdentityId}/reassign/{destinationIdentityId} | Reassign resource owner.
 *DataAccessSecurityApi* | [**delete_application**](sailpoint/v2025/docs/DataAccessSecurityApi.md#delete_application) | **DELETE** /das/applications/{id} | Delete an application by identifier.
 *DataAccessSecurityApi* | [**delete_schedule**](sailpoint/v2025/docs/DataAccessSecurityApi.md#delete_schedule) | **DELETE** /das/tasks/schedules/{id} | Delete a DAS schedule.
 *DataAccessSecurityApi* | [**delete_task**](sailpoint/v2025/docs/DataAccessSecurityApi.md#delete_task) | **DELETE** /das/tasks/{id} | Delete a DAS task.
 *DataAccessSecurityApi* | [**get_application**](sailpoint/v2025/docs/DataAccessSecurityApi.md#get_application) | **GET** /das/applications/{id} | Retrieve application details by identifier.
 *DataAccessSecurityApi* | [**get_applications**](sailpoint/v2025/docs/DataAccessSecurityApi.md#get_applications) | **GET** /das/applications | Search applications in DAS.
+*DataAccessSecurityApi* | [**get_owners**](sailpoint/v2025/docs/DataAccessSecurityApi.md#get_owners) | **GET** /das/owners/applications/{appId} | Retrieve owners per application.
 *DataAccessSecurityApi* | [**get_schedule**](sailpoint/v2025/docs/DataAccessSecurityApi.md#get_schedule) | **GET** /das/tasks/schedules/{id} | Get a DAS schedule.
 *DataAccessSecurityApi* | [**get_schedules**](sailpoint/v2025/docs/DataAccessSecurityApi.md#get_schedules) | **GET** /das/tasks/schedules | List all schedules.
 *DataAccessSecurityApi* | [**get_task**](sailpoint/v2025/docs/DataAccessSecurityApi.md#get_task) | **GET** /das/tasks/{id} | Get a DAS task.
@@ -1071,6 +1077,7 @@ Class | Method | HTTP request | Description
  - [ApprovalSummary](sailpoint/v2025/docs/ApprovalSummary.md)
  - [Argument](sailpoint/v2025/docs/Argument.md)
  - [ArrayInner](sailpoint/v2025/docs/ArrayInner.md)
+ - [AssignResourceOwnerRequest](sailpoint/v2025/docs/AssignResourceOwnerRequest.md)
  - [AssignmentContextDto](sailpoint/v2025/docs/AssignmentContextDto.md)
  - [AttrSyncSource](sailpoint/v2025/docs/AttrSyncSource.md)
  - [AttrSyncSourceAttributeConfig](sailpoint/v2025/docs/AttrSyncSourceAttributeConfig.md)
@@ -1130,6 +1137,7 @@ Class | Method | HTTP request | Description
  - [BulkRejectRequestDTO](sailpoint/v2025/docs/BulkRejectRequestDTO.md)
  - [BulkRemoveTaggedObject](sailpoint/v2025/docs/BulkRemoveTaggedObject.md)
  - [BulkTaggedObjectResponse](sailpoint/v2025/docs/BulkTaggedObjectResponse.md)
+ - [BusinessServiceType](sailpoint/v2025/docs/BusinessServiceType.md)
  - [Campaign](sailpoint/v2025/docs/Campaign.md)
  - [CampaignActivated](sailpoint/v2025/docs/CampaignActivated.md)
  - [CampaignActivatedCampaign](sailpoint/v2025/docs/CampaignActivatedCampaign.md)
@@ -1258,6 +1266,7 @@ Class | Method | HTTP request | Description
  - [DataAccessImpactScore](sailpoint/v2025/docs/DataAccessImpactScore.md)
  - [DataAccessPoliciesInner](sailpoint/v2025/docs/DataAccessPoliciesInner.md)
  - [DataClassificationSettings](sailpoint/v2025/docs/DataClassificationSettings.md)
+ - [DataOwnerModel](sailpoint/v2025/docs/DataOwnerModel.md)
  - [DataSegment](sailpoint/v2025/docs/DataSegment.md)
  - [DeleteNonEmployeeRecordsInBulkRequest](sailpoint/v2025/docs/DeleteNonEmployeeRecordsInBulkRequest.md)
  - [DeleteSource202Response](sailpoint/v2025/docs/DeleteSource202Response.md)
@@ -1722,6 +1731,7 @@ Class | Method | HTTP request | Description
  - [RecommendationResponseDto](sailpoint/v2025/docs/RecommendationResponseDto.md)
  - [RecommenderCalculations](sailpoint/v2025/docs/RecommenderCalculations.md)
  - [RecommenderCalculationsIdentityAttributesValue](sailpoint/v2025/docs/RecommenderCalculationsIdentityAttributesValue.md)
+ - [ReelectRequest](sailpoint/v2025/docs/ReelectRequest.md)
  - [Ref](sailpoint/v2025/docs/Ref.md)
  - [Reference](sailpoint/v2025/docs/Reference.md)
  - [RemediationItemDetails](sailpoint/v2025/docs/RemediationItemDetails.md)
@@ -1752,6 +1762,7 @@ Class | Method | HTTP request | Description
  - [RequestedItemStatusRequestedFor](sailpoint/v2025/docs/RequestedItemStatusRequestedFor.md)
  - [RequestedItemStatusRequesterComment](sailpoint/v2025/docs/RequestedItemStatusRequesterComment.md)
  - [RequestedItemStatusSodViolationContext](sailpoint/v2025/docs/RequestedItemStatusSodViolationContext.md)
+ - [ResourceModel](sailpoint/v2025/docs/ResourceModel.md)
  - [ResourceObject](sailpoint/v2025/docs/ResourceObject.md)
  - [ResourceObjectsRequest](sailpoint/v2025/docs/ResourceObjectsRequest.md)
  - [ResourceObjectsResponse](sailpoint/v2025/docs/ResourceObjectsResponse.md)
