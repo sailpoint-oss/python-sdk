@@ -18,30 +18,20 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.beta.models.sod_violation_check_result1 import SodViolationCheckResult1
+from sailpoint.beta.models.locale_origin import LocaleOrigin
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SodViolationContextCheckCompleted1(BaseModel):
+class ErrorMessageDto1(BaseModel):
     """
-    An object referencing a completed SOD violation check
+    ErrorMessageDto1
     """ # noqa: E501
-    state: Optional[StrictStr] = Field(default=None, description="The status of SOD violation check")
-    uuid: Optional[StrictStr] = Field(default=None, description="The id of the Violation check event")
-    violation_check_result: Optional[SodViolationCheckResult1] = Field(default=None, alias="violationCheckResult")
-    __properties: ClassVar[List[str]] = ["state", "uuid", "violationCheckResult"]
-
-    @field_validator('state')
-    def state_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['SUCCESS', 'ERROR']):
-            warnings.warn(f"must be one of enum values ('SUCCESS', 'ERROR') unknown value: {value}")
-        return value
+    locale: Optional[StrictStr] = Field(default=None, description="The locale for the message text, a BCP 47 language tag.")
+    locale_origin: Optional[LocaleOrigin] = Field(default=None, alias="localeOrigin")
+    text: Optional[StrictStr] = Field(default=None, description="Actual text of the error message in the indicated locale.")
+    __properties: ClassVar[List[str]] = ["locale", "localeOrigin", "text"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -61,7 +51,7 @@ class SodViolationContextCheckCompleted1(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SodViolationContextCheckCompleted1 from a JSON string"""
+        """Create an instance of ErrorMessageDto1 from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -82,24 +72,21 @@ class SodViolationContextCheckCompleted1(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of violation_check_result
-        if self.violation_check_result:
-            _dict['violationCheckResult'] = self.violation_check_result.to_dict()
-        # set to None if state (nullable) is None
+        # set to None if locale (nullable) is None
         # and model_fields_set contains the field
-        if self.state is None and "state" in self.model_fields_set:
-            _dict['state'] = None
+        if self.locale is None and "locale" in self.model_fields_set:
+            _dict['locale'] = None
 
-        # set to None if uuid (nullable) is None
+        # set to None if locale_origin (nullable) is None
         # and model_fields_set contains the field
-        if self.uuid is None and "uuid" in self.model_fields_set:
-            _dict['uuid'] = None
+        if self.locale_origin is None and "locale_origin" in self.model_fields_set:
+            _dict['localeOrigin'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SodViolationContextCheckCompleted1 from a dict"""
+        """Create an instance of ErrorMessageDto1 from a dict"""
         if obj is None:
             return None
 
@@ -107,9 +94,9 @@ class SodViolationContextCheckCompleted1(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "state": obj.get("state"),
-            "uuid": obj.get("uuid"),
-            "violationCheckResult": SodViolationCheckResult1.from_dict(obj["violationCheckResult"]) if obj.get("violationCheckResult") is not None else None
+            "locale": obj.get("locale"),
+            "localeOrigin": obj.get("localeOrigin"),
+            "text": obj.get("text")
         })
         return _obj
 

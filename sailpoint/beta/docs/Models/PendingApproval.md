@@ -34,7 +34,7 @@ Name | Type | Description | Notes
 **remove_date** | **datetime** | The date the role or access profile or entitlement is no longer assigned to the specified identity. | [optional] 
 **remove_date_update_requested** | **bool** | If true, then the request is to change the remove date or sunset date. | [optional] [default to False]
 **current_remove_date** | **datetime** | The remove date or sunset date that was assigned at the time of the request. | [optional] 
-**sod_violation_context** | [**SodViolationContextCheckCompleted1**](sod-violation-context-check-completed1) |  | [optional] 
+**sod_violation_context** | [**SodViolationContextCheckCompleted2**](sod-violation-context-check-completed2) |  | [optional] 
 **client_metadata** | **map[string]str** | Arbitrary key-value pairs, if any were included in the corresponding access request item | [optional] 
 **requested_accounts** | [**[]RequestedAccountRef**](requested-account-ref) | The accounts selected by the user for the access to be provisioned on, in case they have multiple accounts on one or more sources. | [optional] 
 **privilege_level** | **str** | The privilege level of the requested access item, if applicable. | [optional] 
@@ -114,8 +114,8 @@ sod_violation_context=sailpoint.beta.models.sod_violation_context_check_complete
                                     type = 'SOD_POLICY', 
                                     id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde', 
                                     name = 'Business SOD Policy', ), 
-                                conflicting_access_criteria = sailpoint.beta.models.sod_violation_context_1_conflicting_access_criteria.SodViolationContext_1_conflictingAccessCriteria(
-                                    left_criteria = sailpoint.beta.models.sod_violation_context_1_conflicting_access_criteria_left_criteria.SodViolationContext_1_conflictingAccessCriteria_leftCriteria(
+                                conflicting_access_criteria = sailpoint.beta.models.sod_violation_context_2_conflicting_access_criteria.SodViolationContext_2_conflictingAccessCriteria(
+                                    left_criteria = sailpoint.beta.models.sod_violation_context_2_conflicting_access_criteria_left_criteria.SodViolationContext_2_conflictingAccessCriteria_leftCriteria(
                                         criteria_list = [
                                             sailpoint.beta.models.sod_exempt_criteria.Sod Exempt Criteria(
                                                 existing = True, 
@@ -123,7 +123,7 @@ sod_violation_context=sailpoint.beta.models.sod_violation_context_check_complete
                                                 id = '2c918085771e9d3301773b3cb66f6398', 
                                                 name = 'My HR Entitlement', )
                                             ], ), 
-                                    right_criteria = sailpoint.beta.models.sod_violation_context_1_conflicting_access_criteria_left_criteria.SodViolationContext_1_conflictingAccessCriteria_leftCriteria(), ), )
+                                    right_criteria = sailpoint.beta.models.sod_violation_context_2_conflicting_access_criteria_left_criteria.SodViolationContext_2_conflictingAccessCriteria_leftCriteria(), ), )
                             ], 
                         violated_policies = [
                             sailpoint.beta.models.sod_policy_dto.Sod Policy Dto(

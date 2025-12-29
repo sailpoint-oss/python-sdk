@@ -20,6 +20,7 @@ from pydantic import Field, StrictBool, StrictStr
 from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
 from sailpoint.beta.models.access_request import AccessRequest
+from sailpoint.beta.models.access_request_admin_item_status import AccessRequestAdminItemStatus
 from sailpoint.beta.models.access_request_config import AccessRequestConfig
 from sailpoint.beta.models.access_request_response import AccessRequestResponse
 from sailpoint.beta.models.cancel_access_request import CancelAccessRequest
@@ -1596,6 +1597,453 @@ class AccessRequestsApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/access-request-status',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def list_administrators_access_request_status(
+        self,
+        requested_for: Annotated[Optional[StrictStr], Field(description="Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*.")] = None,
+        requested_by: Annotated[Optional[StrictStr], Field(description="Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.")] = None,
+        regarding_identity: Annotated[Optional[StrictStr], Field(description="Filter the results by the specified identity who is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*.")] = None,
+        assigned_to: Annotated[Optional[StrictStr], Field(description="Filter the results by the specified identity who is the owner of the Identity Request Work Item. *me* indicates the current user.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified.")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw*")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId**")] = None,
+        request_state: Annotated[Optional[StrictStr], Field(description="Filter the results by the state of the request. The only valid value is *EXECUTING*.")] = None,
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[AccessRequestAdminItemStatus]:
+        """Access request status for administrators
+
+        Use this API to get access request statuses of all the access requests in the org based on the specified query  parameters. Any user with user level ORG_ADMIN or scope idn:access-request-administration:read can access this endpoint to get  the  access request statuses
+
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
+        :param requested_for: Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
+        :type requested_for: str
+        :param requested_by: Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
+        :type requested_by: str
+        :param regarding_identity: Filter the results by the specified identity who is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*.
+        :type regarding_identity: str
+        :param assigned_to: Filter the results by the specified identity who is the owner of the Identity Request Work Item. *me* indicates the current user.
+        :type assigned_to: str
+        :param count: If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored.
+        :type count: bool
+        :param limit: Max number of results to return.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified.
+        :type offset: int
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
+        :type filters: str
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId**
+        :type sorters: str
+        :param request_state: Filter the results by the state of the request. The only valid value is *EXECUTING*.
+        :type request_state: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_administrators_access_request_status_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
+            requested_for=requested_for,
+            requested_by=requested_by,
+            regarding_identity=regarding_identity,
+            assigned_to=assigned_to,
+            count=count,
+            limit=limit,
+            offset=offset,
+            filters=filters,
+            sorters=sorters,
+            request_state=request_state,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[AccessRequestAdminItemStatus]",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def list_administrators_access_request_status_with_http_info(
+        self,
+        requested_for: Annotated[Optional[StrictStr], Field(description="Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*.")] = None,
+        requested_by: Annotated[Optional[StrictStr], Field(description="Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.")] = None,
+        regarding_identity: Annotated[Optional[StrictStr], Field(description="Filter the results by the specified identity who is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*.")] = None,
+        assigned_to: Annotated[Optional[StrictStr], Field(description="Filter the results by the specified identity who is the owner of the Identity Request Work Item. *me* indicates the current user.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified.")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw*")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId**")] = None,
+        request_state: Annotated[Optional[StrictStr], Field(description="Filter the results by the state of the request. The only valid value is *EXECUTING*.")] = None,
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[AccessRequestAdminItemStatus]]:
+        """Access request status for administrators
+
+        Use this API to get access request statuses of all the access requests in the org based on the specified query  parameters. Any user with user level ORG_ADMIN or scope idn:access-request-administration:read can access this endpoint to get  the  access request statuses
+
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
+        :param requested_for: Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
+        :type requested_for: str
+        :param requested_by: Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
+        :type requested_by: str
+        :param regarding_identity: Filter the results by the specified identity who is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*.
+        :type regarding_identity: str
+        :param assigned_to: Filter the results by the specified identity who is the owner of the Identity Request Work Item. *me* indicates the current user.
+        :type assigned_to: str
+        :param count: If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored.
+        :type count: bool
+        :param limit: Max number of results to return.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified.
+        :type offset: int
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
+        :type filters: str
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId**
+        :type sorters: str
+        :param request_state: Filter the results by the state of the request. The only valid value is *EXECUTING*.
+        :type request_state: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_administrators_access_request_status_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
+            requested_for=requested_for,
+            requested_by=requested_by,
+            regarding_identity=regarding_identity,
+            assigned_to=assigned_to,
+            count=count,
+            limit=limit,
+            offset=offset,
+            filters=filters,
+            sorters=sorters,
+            request_state=request_state,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[AccessRequestAdminItemStatus]",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def list_administrators_access_request_status_without_preload_content(
+        self,
+        requested_for: Annotated[Optional[StrictStr], Field(description="Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*.")] = None,
+        requested_by: Annotated[Optional[StrictStr], Field(description="Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.")] = None,
+        regarding_identity: Annotated[Optional[StrictStr], Field(description="Filter the results by the specified identity who is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*.")] = None,
+        assigned_to: Annotated[Optional[StrictStr], Field(description="Filter the results by the specified identity who is the owner of the Identity Request Work Item. *me* indicates the current user.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified.")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw*")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId**")] = None,
+        request_state: Annotated[Optional[StrictStr], Field(description="Filter the results by the state of the request. The only valid value is *EXECUTING*.")] = None,
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Access request status for administrators
+
+        Use this API to get access request statuses of all the access requests in the org based on the specified query  parameters. Any user with user level ORG_ADMIN or scope idn:access-request-administration:read can access this endpoint to get  the  access request statuses
+
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
+        :param requested_for: Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
+        :type requested_for: str
+        :param requested_by: Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
+        :type requested_by: str
+        :param regarding_identity: Filter the results by the specified identity who is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*.
+        :type regarding_identity: str
+        :param assigned_to: Filter the results by the specified identity who is the owner of the Identity Request Work Item. *me* indicates the current user.
+        :type assigned_to: str
+        :param count: If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored.
+        :type count: bool
+        :param limit: Max number of results to return.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified.
+        :type offset: int
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
+        :type filters: str
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId**
+        :type sorters: str
+        :param request_state: Filter the results by the state of the request. The only valid value is *EXECUTING*.
+        :type request_state: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_administrators_access_request_status_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
+            requested_for=requested_for,
+            requested_by=requested_by,
+            regarding_identity=regarding_identity,
+            assigned_to=assigned_to,
+            count=count,
+            limit=limit,
+            offset=offset,
+            filters=filters,
+            sorters=sorters,
+            request_state=request_state,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[AccessRequestAdminItemStatus]",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessModelMetadataAttribute401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessModelMetadataAttribute429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _list_administrators_access_request_status_serialize(
+        self,
+        x_sail_point_experimental,
+        requested_for,
+        requested_by,
+        regarding_identity,
+        assigned_to,
+        count,
+        limit,
+        offset,
+        filters,
+        sorters,
+        request_state,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if requested_for is not None:
+            
+            _query_params.append(('requested-for', requested_for))
+            
+        if requested_by is not None:
+            
+            _query_params.append(('requested-by', requested_by))
+            
+        if regarding_identity is not None:
+            
+            _query_params.append(('regarding-identity', regarding_identity))
+            
+        if assigned_to is not None:
+            
+            _query_params.append(('assigned-to', assigned_to))
+            
+        if count is not None:
+            
+            _query_params.append(('count', count))
+            
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
+        if filters is not None:
+            
+            _query_params.append(('filters', filters))
+            
+        if sorters is not None:
+            
+            _query_params.append(('sorters', sorters))
+            
+        if request_state is not None:
+            
+            _query_params.append(('request-state', request_state))
+            
+        # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/access-request-administration',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

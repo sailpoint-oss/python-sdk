@@ -20,20 +20,20 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.beta.models.error_message_dto1 import ErrorMessageDto1
+from sailpoint.beta.models.error_message_dto import ErrorMessageDto
 from sailpoint.beta.models.sod_policy_dto1 import SodPolicyDto1
-from sailpoint.beta.models.sod_violation_context1 import SodViolationContext1
+from sailpoint.beta.models.sod_violation_context2 import SodViolationContext2
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SodViolationCheckResult1(BaseModel):
+class SodViolationCheckResult2(BaseModel):
     """
     The inner object representing the completed SOD Violation check
     """ # noqa: E501
-    message: Optional[ErrorMessageDto1] = None
+    message: Optional[ErrorMessageDto] = None
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check.", alias="clientMetadata")
-    violation_contexts: Optional[List[SodViolationContext1]] = Field(default=None, alias="violationContexts")
-    violated_policies: Optional[List[SodPolicyDto1]] = Field(default=None, description="A list of the SOD policies that were violated.", alias="violatedPolicies")
+    violation_contexts: Optional[List[SodViolationContext2]] = Field(default=None, alias="violationContexts")
+    violated_policies: Optional[List[SodPolicyDto1]] = Field(default=None, description="A list of the Policies that were violated.", alias="violatedPolicies")
     __properties: ClassVar[List[str]] = ["message", "clientMetadata", "violationContexts", "violatedPolicies"]
 
     model_config = ConfigDict(
@@ -54,7 +54,7 @@ class SodViolationCheckResult1(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SodViolationCheckResult1 from a JSON string"""
+        """Create an instance of SodViolationCheckResult2 from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -92,26 +92,11 @@ class SodViolationCheckResult1(BaseModel):
                 if _item_violated_policies:
                     _items.append(_item_violated_policies.to_dict())
             _dict['violatedPolicies'] = _items
-        # set to None if client_metadata (nullable) is None
-        # and model_fields_set contains the field
-        if self.client_metadata is None and "client_metadata" in self.model_fields_set:
-            _dict['clientMetadata'] = None
-
-        # set to None if violation_contexts (nullable) is None
-        # and model_fields_set contains the field
-        if self.violation_contexts is None and "violation_contexts" in self.model_fields_set:
-            _dict['violationContexts'] = None
-
-        # set to None if violated_policies (nullable) is None
-        # and model_fields_set contains the field
-        if self.violated_policies is None and "violated_policies" in self.model_fields_set:
-            _dict['violatedPolicies'] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SodViolationCheckResult1 from a dict"""
+        """Create an instance of SodViolationCheckResult2 from a dict"""
         if obj is None:
             return None
 
@@ -119,9 +104,9 @@ class SodViolationCheckResult1(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "message": ErrorMessageDto1.from_dict(obj["message"]) if obj.get("message") is not None else None,
+            "message": ErrorMessageDto.from_dict(obj["message"]) if obj.get("message") is not None else None,
             "clientMetadata": obj.get("clientMetadata"),
-            "violationContexts": [SodViolationContext1.from_dict(_item) for _item in obj["violationContexts"]] if obj.get("violationContexts") is not None else None,
+            "violationContexts": [SodViolationContext2.from_dict(_item) for _item in obj["violationContexts"]] if obj.get("violationContexts") is not None else None,
             "violatedPolicies": [SodPolicyDto1.from_dict(_item) for _item in obj["violatedPolicies"]] if obj.get("violatedPolicies") is not None else None
         })
         return _obj

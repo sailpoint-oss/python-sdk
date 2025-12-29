@@ -18,30 +18,24 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.beta.models.sod_violation_check_result1 import SodViolationCheckResult1
+from sailpoint.beta.models.reassignment_type import ReassignmentType
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SodViolationContextCheckCompleted1(BaseModel):
+class ApprovalForwardHistory1(BaseModel):
     """
-    An object referencing a completed SOD violation check
+    ApprovalForwardHistory1
     """ # noqa: E501
-    state: Optional[StrictStr] = Field(default=None, description="The status of SOD violation check")
-    uuid: Optional[StrictStr] = Field(default=None, description="The id of the Violation check event")
-    violation_check_result: Optional[SodViolationCheckResult1] = Field(default=None, alias="violationCheckResult")
-    __properties: ClassVar[List[str]] = ["state", "uuid", "violationCheckResult"]
-
-    @field_validator('state')
-    def state_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['SUCCESS', 'ERROR']):
-            warnings.warn(f"must be one of enum values ('SUCCESS', 'ERROR') unknown value: {value}")
-        return value
+    old_approver_name: Optional[StrictStr] = Field(default=None, description="Display name of approver from whom the approval was forwarded.", alias="oldApproverName")
+    new_approver_name: Optional[StrictStr] = Field(default=None, description="Display name of approver to whom the approval was forwarded.", alias="newApproverName")
+    comment: Optional[StrictStr] = Field(default=None, description="Comment made while forwarding.")
+    modified: Optional[datetime] = Field(default=None, description="Time at which approval was forwarded.")
+    forwarder_name: Optional[StrictStr] = Field(default=None, description="Display name of forwarder who forwarded the approval.", alias="forwarderName")
+    reassignment_type: Optional[ReassignmentType] = Field(default=None, alias="reassignmentType")
+    __properties: ClassVar[List[str]] = ["oldApproverName", "newApproverName", "comment", "modified", "forwarderName", "reassignmentType"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -61,7 +55,7 @@ class SodViolationContextCheckCompleted1(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SodViolationContextCheckCompleted1 from a JSON string"""
+        """Create an instance of ApprovalForwardHistory1 from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -82,24 +76,21 @@ class SodViolationContextCheckCompleted1(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of violation_check_result
-        if self.violation_check_result:
-            _dict['violationCheckResult'] = self.violation_check_result.to_dict()
-        # set to None if state (nullable) is None
+        # set to None if comment (nullable) is None
         # and model_fields_set contains the field
-        if self.state is None and "state" in self.model_fields_set:
-            _dict['state'] = None
+        if self.comment is None and "comment" in self.model_fields_set:
+            _dict['comment'] = None
 
-        # set to None if uuid (nullable) is None
+        # set to None if forwarder_name (nullable) is None
         # and model_fields_set contains the field
-        if self.uuid is None and "uuid" in self.model_fields_set:
-            _dict['uuid'] = None
+        if self.forwarder_name is None and "forwarder_name" in self.model_fields_set:
+            _dict['forwarderName'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SodViolationContextCheckCompleted1 from a dict"""
+        """Create an instance of ApprovalForwardHistory1 from a dict"""
         if obj is None:
             return None
 
@@ -107,9 +98,12 @@ class SodViolationContextCheckCompleted1(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "state": obj.get("state"),
-            "uuid": obj.get("uuid"),
-            "violationCheckResult": SodViolationCheckResult1.from_dict(obj["violationCheckResult"]) if obj.get("violationCheckResult") is not None else None
+            "oldApproverName": obj.get("oldApproverName"),
+            "newApproverName": obj.get("newApproverName"),
+            "comment": obj.get("comment"),
+            "modified": obj.get("modified"),
+            "forwarderName": obj.get("forwarderName"),
+            "reassignmentType": obj.get("reassignmentType")
         })
         return _obj
 

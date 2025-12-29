@@ -24,9 +24,9 @@ from sailpoint.beta.models.sod_violation_check_result1 import SodViolationCheckR
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SodViolationContextCheckCompleted1(BaseModel):
+class AccessRequestAdminItemStatusSodViolationContext(BaseModel):
     """
-    An object referencing a completed SOD violation check
+    AccessRequestAdminItemStatusSodViolationContext
     """ # noqa: E501
     state: Optional[StrictStr] = Field(default=None, description="The status of SOD violation check")
     uuid: Optional[StrictStr] = Field(default=None, description="The id of the Violation check event")
@@ -61,7 +61,7 @@ class SodViolationContextCheckCompleted1(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SodViolationContextCheckCompleted1 from a JSON string"""
+        """Create an instance of AccessRequestAdminItemStatusSodViolationContext from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -99,7 +99,7 @@ class SodViolationContextCheckCompleted1(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SodViolationContextCheckCompleted1 from a dict"""
+        """Create an instance of AccessRequestAdminItemStatusSodViolationContext from a dict"""
         if obj is None:
             return None
 

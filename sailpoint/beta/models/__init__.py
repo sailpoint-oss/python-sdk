@@ -51,6 +51,9 @@ from sailpoint.beta.models.access_profile_usage import AccessProfileUsage
 from sailpoint.beta.models.access_profile_usage_used_by_inner import AccessProfileUsageUsedByInner
 from sailpoint.beta.models.access_recommendation_message import AccessRecommendationMessage
 from sailpoint.beta.models.access_request import AccessRequest
+from sailpoint.beta.models.access_request_admin_item_status import AccessRequestAdminItemStatus
+from sailpoint.beta.models.access_request_admin_item_status_cancelled_request_details import AccessRequestAdminItemStatusCancelledRequestDetails
+from sailpoint.beta.models.access_request_admin_item_status_sod_violation_context import AccessRequestAdminItemStatusSodViolationContext
 from sailpoint.beta.models.access_request_config import AccessRequestConfig
 from sailpoint.beta.models.access_request_context import AccessRequestContext
 from sailpoint.beta.models.access_request_dynamic_approver import AccessRequestDynamicApprover
@@ -124,6 +127,7 @@ from sailpoint.beta.models.admin_review_reassign_reassign_to import AdminReviewR
 from sailpoint.beta.models.app_account_details import AppAccountDetails
 from sailpoint.beta.models.app_account_details_source_account import AppAccountDetailsSourceAccount
 from sailpoint.beta.models.approval_forward_history import ApprovalForwardHistory
+from sailpoint.beta.models.approval_forward_history1 import ApprovalForwardHistory1
 from sailpoint.beta.models.approval_info_response import ApprovalInfoResponse
 from sailpoint.beta.models.approval_item_details import ApprovalItemDetails
 from sailpoint.beta.models.approval_items import ApprovalItems
@@ -132,6 +136,7 @@ from sailpoint.beta.models.approval_scheme import ApprovalScheme
 from sailpoint.beta.models.approval_scheme_for_role import ApprovalSchemeForRole
 from sailpoint.beta.models.approval_status import ApprovalStatus
 from sailpoint.beta.models.approval_status_dto import ApprovalStatusDto
+from sailpoint.beta.models.approval_status_dto1 import ApprovalStatusDto1
 from sailpoint.beta.models.approval_status_dto_current_owner import ApprovalStatusDtoCurrentOwner
 from sailpoint.beta.models.approval_status_dto_original_owner import ApprovalStatusDtoOriginalOwner
 from sailpoint.beta.models.approval_summary import ApprovalSummary
@@ -182,6 +187,7 @@ from sailpoint.beta.models.campaign_template_owner_ref import CampaignTemplateOw
 from sailpoint.beta.models.cancel_access_request import CancelAccessRequest
 from sailpoint.beta.models.cancelable_account_activity import CancelableAccountActivity
 from sailpoint.beta.models.cancelled_request_details import CancelledRequestDetails
+from sailpoint.beta.models.cancelled_request_details1 import CancelledRequestDetails1
 from sailpoint.beta.models.certification_dto import CertificationDto
 from sailpoint.beta.models.certification_phase import CertificationPhase
 from sailpoint.beta.models.certification_reference import CertificationReference
@@ -278,6 +284,7 @@ from sailpoint.beta.models.entity_created_by_dto import EntityCreatedByDTO
 from sailpoint.beta.models.error import Error
 from sailpoint.beta.models.error_message import ErrorMessage
 from sailpoint.beta.models.error_message_dto import ErrorMessageDto
+from sailpoint.beta.models.error_message_dto1 import ErrorMessageDto1
 from sailpoint.beta.models.error_response_dto import ErrorResponseDto
 from sailpoint.beta.models.evaluate_response import EvaluateResponse
 from sailpoint.beta.models.event_attributes import EventAttributes
@@ -468,6 +475,7 @@ from sailpoint.beta.models.manager_correlation_mapping import ManagerCorrelation
 from sailpoint.beta.models.manual_discover_applications import ManualDiscoverApplications
 from sailpoint.beta.models.manual_discover_applications_template import ManualDiscoverApplicationsTemplate
 from sailpoint.beta.models.manual_work_item_details import ManualWorkItemDetails
+from sailpoint.beta.models.manual_work_item_details1 import ManualWorkItemDetails1
 from sailpoint.beta.models.manual_work_item_details_current_owner import ManualWorkItemDetailsCurrentOwner
 from sailpoint.beta.models.manual_work_item_details_original_owner import ManualWorkItemDetailsOriginalOwner
 from sailpoint.beta.models.manual_work_item_state import ManualWorkItemState
@@ -741,6 +749,7 @@ from sailpoint.beta.models.slim_discovered_applications import SlimDiscoveredApp
 from sailpoint.beta.models.slimcampaign import Slimcampaign
 from sailpoint.beta.models.sod_exempt_criteria import SodExemptCriteria
 from sailpoint.beta.models.sod_exempt_criteria1 import SodExemptCriteria1
+from sailpoint.beta.models.sod_exempt_criteria2 import SodExemptCriteria2
 from sailpoint.beta.models.sod_policy import SodPolicy
 from sailpoint.beta.models.sod_policy_conflicting_access_criteria import SodPolicyConflictingAccessCriteria
 from sailpoint.beta.models.sod_policy_dto import SodPolicyDto
@@ -751,12 +760,17 @@ from sailpoint.beta.models.sod_recipient import SodRecipient
 from sailpoint.beta.models.sod_report_result_dto import SodReportResultDto
 from sailpoint.beta.models.sod_violation_check_result import SodViolationCheckResult
 from sailpoint.beta.models.sod_violation_check_result1 import SodViolationCheckResult1
+from sailpoint.beta.models.sod_violation_check_result2 import SodViolationCheckResult2
 from sailpoint.beta.models.sod_violation_context import SodViolationContext
 from sailpoint.beta.models.sod_violation_context1 import SodViolationContext1
 from sailpoint.beta.models.sod_violation_context1_conflicting_access_criteria import SodViolationContext1ConflictingAccessCriteria
 from sailpoint.beta.models.sod_violation_context1_conflicting_access_criteria_left_criteria import SodViolationContext1ConflictingAccessCriteriaLeftCriteria
+from sailpoint.beta.models.sod_violation_context2 import SodViolationContext2
+from sailpoint.beta.models.sod_violation_context2_conflicting_access_criteria import SodViolationContext2ConflictingAccessCriteria
+from sailpoint.beta.models.sod_violation_context2_conflicting_access_criteria_left_criteria import SodViolationContext2ConflictingAccessCriteriaLeftCriteria
 from sailpoint.beta.models.sod_violation_context_check_completed import SodViolationContextCheckCompleted
 from sailpoint.beta.models.sod_violation_context_check_completed1 import SodViolationContextCheckCompleted1
+from sailpoint.beta.models.sod_violation_context_check_completed2 import SodViolationContextCheckCompleted2
 from sailpoint.beta.models.sod_violation_context_conflicting_access_criteria import SodViolationContextConflictingAccessCriteria
 from sailpoint.beta.models.sod_violation_context_conflicting_access_criteria_left_criteria import SodViolationContextConflictingAccessCriteriaLeftCriteria
 from sailpoint.beta.models.source import Source

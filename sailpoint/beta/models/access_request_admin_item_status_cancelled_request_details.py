@@ -18,30 +18,21 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.beta.models.sod_violation_check_result1 import SodViolationCheckResult1
+from sailpoint.beta.models.owner_dto import OwnerDto
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SodViolationContextCheckCompleted1(BaseModel):
+class AccessRequestAdminItemStatusCancelledRequestDetails(BaseModel):
     """
-    An object referencing a completed SOD violation check
+    AccessRequestAdminItemStatusCancelledRequestDetails
     """ # noqa: E501
-    state: Optional[StrictStr] = Field(default=None, description="The status of SOD violation check")
-    uuid: Optional[StrictStr] = Field(default=None, description="The id of the Violation check event")
-    violation_check_result: Optional[SodViolationCheckResult1] = Field(default=None, alias="violationCheckResult")
-    __properties: ClassVar[List[str]] = ["state", "uuid", "violationCheckResult"]
-
-    @field_validator('state')
-    def state_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['SUCCESS', 'ERROR']):
-            warnings.warn(f"must be one of enum values ('SUCCESS', 'ERROR') unknown value: {value}")
-        return value
+    comment: Optional[StrictStr] = Field(default=None, description="Comment made by the owner when cancelling the associated request.")
+    owner: Optional[OwnerDto] = None
+    modified: Optional[datetime] = Field(default=None, description="Date comment was added by the owner when cancelling the associated request.")
+    __properties: ClassVar[List[str]] = ["comment", "owner", "modified"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -61,7 +52,7 @@ class SodViolationContextCheckCompleted1(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SodViolationContextCheckCompleted1 from a JSON string"""
+        """Create an instance of AccessRequestAdminItemStatusCancelledRequestDetails from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -82,24 +73,14 @@ class SodViolationContextCheckCompleted1(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of violation_check_result
-        if self.violation_check_result:
-            _dict['violationCheckResult'] = self.violation_check_result.to_dict()
-        # set to None if state (nullable) is None
-        # and model_fields_set contains the field
-        if self.state is None and "state" in self.model_fields_set:
-            _dict['state'] = None
-
-        # set to None if uuid (nullable) is None
-        # and model_fields_set contains the field
-        if self.uuid is None and "uuid" in self.model_fields_set:
-            _dict['uuid'] = None
-
+        # override the default output from pydantic by calling `to_dict()` of owner
+        if self.owner:
+            _dict['owner'] = self.owner.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SodViolationContextCheckCompleted1 from a dict"""
+        """Create an instance of AccessRequestAdminItemStatusCancelledRequestDetails from a dict"""
         if obj is None:
             return None
 
@@ -107,9 +88,9 @@ class SodViolationContextCheckCompleted1(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "state": obj.get("state"),
-            "uuid": obj.get("uuid"),
-            "violationCheckResult": SodViolationCheckResult1.from_dict(obj["violationCheckResult"]) if obj.get("violationCheckResult") is not None else None
+            "comment": obj.get("comment"),
+            "owner": OwnerDto.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "modified": obj.get("modified")
         })
         return _obj
 

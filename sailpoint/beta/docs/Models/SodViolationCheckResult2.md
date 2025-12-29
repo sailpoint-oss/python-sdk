@@ -1,15 +1,15 @@
 ---
-id: beta-sod-violation-check-result1
-title: SodViolationCheckResult1
-pagination_label: SodViolationCheckResult1
-sidebar_label: SodViolationCheckResult1
+id: beta-sod-violation-check-result2
+title: SodViolationCheckResult2
+pagination_label: SodViolationCheckResult2
+sidebar_label: SodViolationCheckResult2
 sidebar_class_name: pythonsdk
-keywords: ['python', 'Python', 'sdk', 'SodViolationCheckResult1', 'BetaSodViolationCheckResult1'] 
-slug: /tools/sdk/python/beta/models/sod-violation-check-result1
-tags: ['SDK', 'Software Development Kit', 'SodViolationCheckResult1', 'BetaSodViolationCheckResult1']
+keywords: ['python', 'Python', 'sdk', 'SodViolationCheckResult2', 'BetaSodViolationCheckResult2'] 
+slug: /tools/sdk/python/beta/models/sod-violation-check-result2
+tags: ['SDK', 'Software Development Kit', 'SodViolationCheckResult2', 'BetaSodViolationCheckResult2']
 ---
 
-# SodViolationCheckResult1
+# SodViolationCheckResult2
 
 The inner object representing the completed SOD Violation check
 
@@ -17,18 +17,18 @@ The inner object representing the completed SOD Violation check
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**message** | [**ErrorMessageDto1**](error-message-dto1) |  | [optional] 
+**message** | [**ErrorMessageDto**](error-message-dto) |  | [optional] 
 **client_metadata** | **map[string]str** | Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check. | [optional] 
-**violation_contexts** | [**[]SodViolationContext1**](sod-violation-context1) |  | [optional] 
-**violated_policies** | [**[]SodPolicyDto1**](sod-policy-dto1) | A list of the SOD policies that were violated. | [optional] 
+**violation_contexts** | [**[]SodViolationContext2**](sod-violation-context2) |  | [optional] 
+**violated_policies** | [**[]SodPolicyDto1**](sod-policy-dto1) | A list of the Policies that were violated. | [optional] 
 }
 
 ## Example
 
 ```python
-from sailpoint.beta.models.sod_violation_check_result1 import SodViolationCheckResult1
+from sailpoint.beta.models.sod_violation_check_result2 import SodViolationCheckResult2
 
-sod_violation_check_result1 = SodViolationCheckResult1(
+sod_violation_check_result2 = SodViolationCheckResult2(
 message=sailpoint.beta.models.error_message_dto.Error Message Dto(
                     locale = 'en-US', 
                     locale_origin = 'DEFAULT', 
@@ -40,8 +40,8 @@ violation_contexts=[
                             type = 'SOD_POLICY', 
                             id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde', 
                             name = 'Business SOD Policy', ), 
-                        conflicting_access_criteria = sailpoint.beta.models.sod_violation_context_1_conflicting_access_criteria.SodViolationContext_1_conflictingAccessCriteria(
-                            left_criteria = sailpoint.beta.models.sod_violation_context_1_conflicting_access_criteria_left_criteria.SodViolationContext_1_conflictingAccessCriteria_leftCriteria(
+                        conflicting_access_criteria = sailpoint.beta.models.sod_violation_context_2_conflicting_access_criteria.SodViolationContext_2_conflictingAccessCriteria(
+                            left_criteria = sailpoint.beta.models.sod_violation_context_2_conflicting_access_criteria_left_criteria.SodViolationContext_2_conflictingAccessCriteria_leftCriteria(
                                 criteria_list = [
                                     sailpoint.beta.models.sod_exempt_criteria.Sod Exempt Criteria(
                                         existing = True, 
@@ -49,7 +49,7 @@ violation_contexts=[
                                         id = '2c918085771e9d3301773b3cb66f6398', 
                                         name = 'My HR Entitlement', )
                                     ], ), 
-                            right_criteria = sailpoint.beta.models.sod_violation_context_1_conflicting_access_criteria_left_criteria.SodViolationContext_1_conflictingAccessCriteria_leftCriteria(), ), )
+                            right_criteria = sailpoint.beta.models.sod_violation_context_2_conflicting_access_criteria_left_criteria.SodViolationContext_2_conflictingAccessCriteria_leftCriteria(), ), )
                     ],
 violated_policies=[
                     sailpoint.beta.models.sod_policy_dto.Sod Policy Dto(

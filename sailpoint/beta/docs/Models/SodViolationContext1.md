@@ -11,7 +11,7 @@ tags: ['SDK', 'Software Development Kit', 'SodViolationContext1', 'BetaSodViolat
 
 # SodViolationContext1
 
-The contextual information of the violated criteria.
+The contextual information of the violated criteria
 
 ## Properties
 

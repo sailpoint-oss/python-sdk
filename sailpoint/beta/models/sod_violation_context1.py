@@ -27,7 +27,7 @@ from typing_extensions import Self
 
 class SodViolationContext1(BaseModel):
     """
-    The contextual information of the violated criteria.
+    The contextual information of the violated criteria
     """ # noqa: E501
     policy: Optional[SodPolicyDto1] = None
     conflicting_access_criteria: Optional[SodViolationContext1ConflictingAccessCriteria] = Field(default=None, alias="conflictingAccessCriteria")

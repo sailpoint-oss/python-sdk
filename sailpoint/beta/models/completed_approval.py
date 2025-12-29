@@ -33,7 +33,7 @@ from sailpoint.beta.models.completed_approval_state import CompletedApprovalStat
 from sailpoint.beta.models.requestable_object_reference import RequestableObjectReference
 from sailpoint.beta.models.requested_account_ref import RequestedAccountRef
 from sailpoint.beta.models.requested_item_status_requested_for import RequestedItemStatusRequestedFor
-from sailpoint.beta.models.sod_violation_context_check_completed1 import SodViolationContextCheckCompleted1
+from sailpoint.beta.models.sod_violation_context_check_completed2 import SodViolationContextCheckCompleted2
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -61,7 +61,7 @@ class CompletedApproval(BaseModel):
     remove_date: Optional[datetime] = Field(default=None, description="The date the role or access profile or entitlement is no longer assigned to the specified identity.", alias="removeDate")
     remove_date_update_requested: Optional[StrictBool] = Field(default=False, description="If true, then the request was to change the remove date or sunset date.", alias="removeDateUpdateRequested")
     current_remove_date: Optional[datetime] = Field(default=None, description="The remove date or sunset date that was assigned at the time of the request.", alias="currentRemoveDate")
-    sod_violation_context: Optional[SodViolationContextCheckCompleted1] = Field(default=None, alias="sodViolationContext")
+    sod_violation_context: Optional[SodViolationContextCheckCompleted2] = Field(default=None, alias="sodViolationContext")
     pre_approval_trigger_result: Optional[CompletedApprovalPreApprovalTriggerResult] = Field(default=None, alias="preApprovalTriggerResult")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs provided during the request.", alias="clientMetadata")
     requested_accounts: Optional[List[RequestedAccountRef]] = Field(default=None, description="The accounts selected by the user for the access to be provisioned on, in case they have multiple accounts on one or more sources.", alias="requestedAccounts")
@@ -227,7 +227,7 @@ class CompletedApproval(BaseModel):
             "removeDate": obj.get("removeDate"),
             "removeDateUpdateRequested": obj.get("removeDateUpdateRequested") if obj.get("removeDateUpdateRequested") is not None else False,
             "currentRemoveDate": obj.get("currentRemoveDate"),
-            "sodViolationContext": SodViolationContextCheckCompleted1.from_dict(obj["sodViolationContext"]) if obj.get("sodViolationContext") is not None else None,
+            "sodViolationContext": SodViolationContextCheckCompleted2.from_dict(obj["sodViolationContext"]) if obj.get("sodViolationContext") is not None else None,
             "preApprovalTriggerResult": CompletedApprovalPreApprovalTriggerResult.from_dict(obj["preApprovalTriggerResult"]) if obj.get("preApprovalTriggerResult") is not None else None,
             "clientMetadata": obj.get("clientMetadata"),
             "requestedAccounts": [RequestedAccountRef.from_dict(_item) for _item in obj["requestedAccounts"]] if obj.get("requestedAccounts") is not None else None,

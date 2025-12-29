@@ -18,30 +18,18 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.beta.models.sod_violation_check_result1 import SodViolationCheckResult1
+from sailpoint.beta.models.sod_exempt_criteria2 import SodExemptCriteria2
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SodViolationContextCheckCompleted1(BaseModel):
+class SodViolationContext2ConflictingAccessCriteriaLeftCriteria(BaseModel):
     """
-    An object referencing a completed SOD violation check
+    SodViolationContext2ConflictingAccessCriteriaLeftCriteria
     """ # noqa: E501
-    state: Optional[StrictStr] = Field(default=None, description="The status of SOD violation check")
-    uuid: Optional[StrictStr] = Field(default=None, description="The id of the Violation check event")
-    violation_check_result: Optional[SodViolationCheckResult1] = Field(default=None, alias="violationCheckResult")
-    __properties: ClassVar[List[str]] = ["state", "uuid", "violationCheckResult"]
-
-    @field_validator('state')
-    def state_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['SUCCESS', 'ERROR']):
-            warnings.warn(f"must be one of enum values ('SUCCESS', 'ERROR') unknown value: {value}")
-        return value
+    criteria_list: Optional[List[SodExemptCriteria2]] = Field(default=None, alias="criteriaList")
+    __properties: ClassVar[List[str]] = ["criteriaList"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -61,7 +49,7 @@ class SodViolationContextCheckCompleted1(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SodViolationContextCheckCompleted1 from a JSON string"""
+        """Create an instance of SodViolationContext2ConflictingAccessCriteriaLeftCriteria from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -82,24 +70,18 @@ class SodViolationContextCheckCompleted1(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of violation_check_result
-        if self.violation_check_result:
-            _dict['violationCheckResult'] = self.violation_check_result.to_dict()
-        # set to None if state (nullable) is None
-        # and model_fields_set contains the field
-        if self.state is None and "state" in self.model_fields_set:
-            _dict['state'] = None
-
-        # set to None if uuid (nullable) is None
-        # and model_fields_set contains the field
-        if self.uuid is None and "uuid" in self.model_fields_set:
-            _dict['uuid'] = None
-
+        # override the default output from pydantic by calling `to_dict()` of each item in criteria_list (list)
+        _items = []
+        if self.criteria_list:
+            for _item_criteria_list in self.criteria_list:
+                if _item_criteria_list:
+                    _items.append(_item_criteria_list.to_dict())
+            _dict['criteriaList'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SodViolationContextCheckCompleted1 from a dict"""
+        """Create an instance of SodViolationContext2ConflictingAccessCriteriaLeftCriteria from a dict"""
         if obj is None:
             return None
 
@@ -107,9 +89,7 @@ class SodViolationContextCheckCompleted1(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "state": obj.get("state"),
-            "uuid": obj.get("uuid"),
-            "violationCheckResult": SodViolationCheckResult1.from_dict(obj["violationCheckResult"]) if obj.get("violationCheckResult") is not None else None
+            "criteriaList": [SodExemptCriteria2.from_dict(_item) for _item in obj["criteriaList"]] if obj.get("criteriaList") is not None else None
         })
         return _obj
 
