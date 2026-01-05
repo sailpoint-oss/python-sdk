@@ -47,6 +47,7 @@ from sailpoint.v2025.api.custom_password_instructions_api import CustomPasswordI
 from sailpoint.v2025.api.custom_user_levels_api import CustomUserLevelsApi
 from sailpoint.v2025.api.data_access_security_api import DataAccessSecurityApi
 from sailpoint.v2025.api.data_segmentation_api import DataSegmentationApi
+from sailpoint.v2025.api.declassify_source_api import DeclassifySourceApi
 from sailpoint.v2025.api.dimensions_api import DimensionsApi
 from sailpoint.v2025.api.entitlements_api import EntitlementsApi
 from sailpoint.v2025.api.global_tenant_security_settings_api import GlobalTenantSecuritySettingsApi

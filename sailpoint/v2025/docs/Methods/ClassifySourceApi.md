@@ -147,7 +147,7 @@ A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
-Path   | id | **str** | True  | Source ID.
+Path   | source_id | **str** | True  | Source ID.
 
 ### Return type
 [**SendClassifyMachineAccountFromSource200Response**](../models/send-classify-machine-account-from-source200-response)
@@ -177,14 +177,14 @@ configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID. # str | Source ID.
+    source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID. # str | Source ID.
 
     try:
         # Classify source's all accounts
         
-        results = ClassifySourceApi(api_client).send_classify_machine_account_from_source(id=id)
+        results = ClassifySourceApi(api_client).send_classify_machine_account_from_source(source_id=source_id)
         # Below is a request that includes all optional parameters
-        # results = ClassifySourceApi(api_client).send_classify_machine_account_from_source(id)
+        # results = ClassifySourceApi(api_client).send_classify_machine_account_from_source(source_id)
         print("The response of ClassifySourceApi->send_classify_machine_account_from_source:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

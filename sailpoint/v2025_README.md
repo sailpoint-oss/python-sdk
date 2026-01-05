@@ -321,6 +321,7 @@ Class | Method | HTTP request | Description
 *DataSegmentationApi* | [**list_data_segments**](sailpoint/v2025/docs/DataSegmentationApi.md#list_data_segments) | **GET** /data-segments | Get segments
 *DataSegmentationApi* | [**patch_data_segment**](sailpoint/v2025/docs/DataSegmentationApi.md#patch_data_segment) | **PATCH** /data-segments/{segmentId} | Update segment
 *DataSegmentationApi* | [**publish_data_segment**](sailpoint/v2025/docs/DataSegmentationApi.md#publish_data_segment) | **POST** /data-segments/{segmentId} | Publish segment by id
+*DeclassifySourceApi* | [**send_declassify_machine_account_from_source**](sailpoint/v2025/docs/DeclassifySourceApi.md#send_declassify_machine_account_from_source) | **POST** /sources/{sourceId}/declassify | Declassify source&#39;s all accounts
 *DimensionsApi* | [**create_dimension**](sailpoint/v2025/docs/DimensionsApi.md#create_dimension) | **POST** /roles/{roleId}/dimensions | Create a dimension
 *DimensionsApi* | [**delete_bulk_dimensions**](sailpoint/v2025/docs/DimensionsApi.md#delete_bulk_dimensions) | **POST** /roles/{roleId}/dimensions/bulk-delete | Delete dimension(s)
 *DimensionsApi* | [**delete_dimension**](sailpoint/v2025/docs/DimensionsApi.md#delete_dimension) | **DELETE** /roles/{roleId}/dimensions/{dimensionId} | Delete a dimension

@@ -4863,13 +4863,13 @@
 
 
         with ApiClient(configuration) as api_client:
-          id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID. # str | Source ID.
+          source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID. # str | Source ID.
           try:
               # Classify source's all accounts
               
-              results = ClassifySourceApi(api_client).send_classify_machine_account_from_source(id=id)
+              results = ClassifySourceApi(api_client).send_classify_machine_account_from_source(source_id=source_id)
               # Below is a request that includes all optional parameters
-              # results = ClassifySourceApi(api_client).send_classify_machine_account_from_source(id)
+              # results = ClassifySourceApi(api_client).send_classify_machine_account_from_source(source_id)
               print("The response of ClassifySourceApi->send_classify_machine_account_from_source:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -8005,6 +8005,28 @@
               # DataSegmentationApi(api_client).publish_data_segment(x_sail_point_experimental, new_request_body, publish_all)
           except Exception as e:
               print("Exception when calling DataSegmentationApi->publish_data_segment: %s\n" % e)
+- path: /sources/{sourceId}/declassify
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/declassify-source#send-declassify-machine-account-from-source
+      source: |
+        from sailpoint.v2025.api.declassify_source_api import DeclassifySourceApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID. # str | Source ID.
+          try:
+              # Declassify source's all accounts
+              
+              DeclassifySourceApi(api_client).send_declassify_machine_account_from_source(source_id=source_id)
+              # Below is a request that includes all optional parameters
+              # DeclassifySourceApi(api_client).send_declassify_machine_account_from_source(source_id)
+          except Exception as e:
+              print("Exception when calling DeclassifySourceApi->send_declassify_machine_account_from_source: %s\n" % e)
 - path: /roles/{roleId}/dimensions
   method: POST
   xCodeSample:
