@@ -1,12 +1,12 @@
 ---
-id: v2024-managed-cluster-update-preferences
+id: v2025-managed-cluster-update-preferences
 title: ManagedClusterUpdatePreferences
 pagination_label: ManagedClusterUpdatePreferences
 sidebar_label: ManagedClusterUpdatePreferences
 sidebar_class_name: pythonsdk
-keywords: ['python', 'Python', 'sdk', 'ManagedClusterUpdatePreferences', 'V2024ManagedClusterUpdatePreferences'] 
-slug: /tools/sdk/python/v2024/models/managed-cluster-update-preferences
-tags: ['SDK', 'Software Development Kit', 'ManagedClusterUpdatePreferences', 'V2024ManagedClusterUpdatePreferences']
+keywords: ['python', 'Python', 'sdk', 'ManagedClusterUpdatePreferences', 'V2025ManagedClusterUpdatePreferences'] 
+slug: /tools/sdk/python/v2025/models/managed-cluster-update-preferences
+tags: ['SDK', 'Software Development Kit', 'ManagedClusterUpdatePreferences', 'V2025ManagedClusterUpdatePreferences']
 ---
 
 # ManagedClusterUpdatePreferences
@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from sailpoint.v2024.models.managed_cluster_update_preferences import ManagedClusterUpdatePreferences
+from sailpoint.v2025.models.managed_cluster_update_preferences import ManagedClusterUpdatePreferences
 
 managed_cluster_update_preferences = ManagedClusterUpdatePreferences(
 process_groups='processGroup1',

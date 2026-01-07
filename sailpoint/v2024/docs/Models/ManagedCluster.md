@@ -100,11 +100,11 @@ created_at='2023-08-04T20:48:01.865Z',
 updated_at='2023-08-04T20:48:01.865Z',
 last_release_notified_at='2025-03-11T07:00:13.729721Z',
 update_preferences=sailpoint.v2024.models.managed_cluster_update_preferences.ManagedCluster_updatePreferences(
-                    process_groups = '', 
+                    process_groups = 'processGroup1', 
                     update_state = 'DISABLED', 
                     notification_email = 'test@mail.com', ),
 current_installed_release_version='123.1',
-update_package='',
+update_package='123.1.2',
 is_out_of_date_notified_at='2025-03-11T07:00:13.734393Z',
 consolidated_health_indicators_status='ERROR'
 )

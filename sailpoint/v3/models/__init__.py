@@ -305,6 +305,7 @@ from sailpoint.v3.models.managed_cluster_queue import ManagedClusterQueue
 from sailpoint.v3.models.managed_cluster_redis import ManagedClusterRedis
 from sailpoint.v3.models.managed_cluster_request import ManagedClusterRequest
 from sailpoint.v3.models.managed_cluster_types import ManagedClusterTypes
+from sailpoint.v3.models.managed_cluster_update_preferences import ManagedClusterUpdatePreferences
 from sailpoint.v3.models.manager_correlation_mapping import ManagerCorrelationMapping
 from sailpoint.v3.models.manual_discover_applications import ManualDiscoverApplications
 from sailpoint.v3.models.manual_discover_applications_template import ManualDiscoverApplicationsTemplate

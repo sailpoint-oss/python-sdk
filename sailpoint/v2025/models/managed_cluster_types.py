@@ -20,7 +20,7 @@ from typing_extensions import Self
 
 class ManagedClusterTypes(str, Enum):
     """
-    The Type of Cluster
+    The Type of Cluster: * `idn` - IDN VA type * `iai` - IAI harvester VA * `spConnectCluster` - Saas 2.0 connector cluster (this should be one per org) * `sqsCluster` - This should be unused * `das-rc` - Data Access Security Resources Collector * `das-pc` - Data Access Security Permissions Collector * `das-dc` - Data Access Security Data Classification Collector * `pag` - Privilege Action Gateway VA * `das-am` - Data Access Security Activity Monitor * `standard` - Standard Cluster type for running multiple products 
     """
 
     """
@@ -28,6 +28,14 @@ class ManagedClusterTypes(str, Enum):
     """
     IDN = 'idn'
     IAI = 'iai'
+    SPCONNECTCLUSTER = 'spConnectCluster'
+    SQSCLUSTER = 'sqsCluster'
+    DAS_MINUS_RC = 'das-rc'
+    DAS_MINUS_PC = 'das-pc'
+    DAS_MINUS_DC = 'das-dc'
+    PAG = 'pag'
+    DAS_MINUS_AM = 'das-am'
+    STANDARD = 'standard'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

@@ -556,10 +556,12 @@ from sailpoint.beta.models.managed_client_status_enum import ManagedClientStatus
 from sailpoint.beta.models.managed_client_type import ManagedClientType
 from sailpoint.beta.models.managed_cluster import ManagedCluster
 from sailpoint.beta.models.managed_cluster_attributes import ManagedClusterAttributes
+from sailpoint.beta.models.managed_cluster_encryption_config import ManagedClusterEncryptionConfig
 from sailpoint.beta.models.managed_cluster_key_pair import ManagedClusterKeyPair
 from sailpoint.beta.models.managed_cluster_queue import ManagedClusterQueue
 from sailpoint.beta.models.managed_cluster_redis import ManagedClusterRedis
 from sailpoint.beta.models.managed_cluster_types import ManagedClusterTypes
+from sailpoint.beta.models.managed_cluster_update_preferences import ManagedClusterUpdatePreferences
 from sailpoint.beta.models.manager_correlation_mapping import ManagerCorrelationMapping
 from sailpoint.beta.models.manual_discover_applications import ManualDiscoverApplications
 from sailpoint.beta.models.manual_discover_applications_template import ManualDiscoverApplicationsTemplate

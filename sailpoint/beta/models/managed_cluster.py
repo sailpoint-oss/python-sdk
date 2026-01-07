@@ -19,14 +19,16 @@ import json
 import warnings
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.beta.models.client_log_configuration import ClientLogConfiguration
 from sailpoint.beta.models.managed_client_type import ManagedClientType
 from sailpoint.beta.models.managed_cluster_attributes import ManagedClusterAttributes
+from sailpoint.beta.models.managed_cluster_encryption_config import ManagedClusterEncryptionConfig
 from sailpoint.beta.models.managed_cluster_key_pair import ManagedClusterKeyPair
 from sailpoint.beta.models.managed_cluster_redis import ManagedClusterRedis
 from sailpoint.beta.models.managed_cluster_types import ManagedClusterTypes
+from sailpoint.beta.models.managed_cluster_update_preferences import ManagedClusterUpdatePreferences
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -59,7 +61,24 @@ class ManagedCluster(BaseModel):
     cc_id: Optional[StrictStr] = Field(default='0', description="CC ID only used in calling CC, will be removed without notice when Migration to CEGS is finished", alias="ccId")
     created_at: Optional[datetime] = Field(default=None, description="The date/time this cluster was created", alias="createdAt")
     updated_at: Optional[datetime] = Field(default=None, description="The date/time this cluster was last updated", alias="updatedAt")
-    __properties: ClassVar[List[str]] = ["id", "name", "pod", "org", "type", "configuration", "keyPair", "attributes", "description", "redis", "clientType", "ccgVersion", "pinnedConfig", "logConfiguration", "operational", "status", "publicKeyCertificate", "publicKeyThumbprint", "publicKey", "alertKey", "clientIds", "serviceCount", "ccId", "createdAt", "updatedAt"]
+    last_release_notified_at: Optional[datetime] = Field(default=None, description="The date/time this cluster was notified for the last release", alias="lastReleaseNotifiedAt")
+    update_preferences: Optional[ManagedClusterUpdatePreferences] = Field(default=None, alias="updatePreferences")
+    current_installed_release_version: Optional[StrictStr] = Field(default=None, description="The current installed release on the Managed cluster", alias="currentInstalledReleaseVersion")
+    update_package: Optional[StrictStr] = Field(default=None, description="New available updates for the Managed cluster", alias="updatePackage")
+    is_out_of_date_notified_at: Optional[datetime] = Field(default=None, description="The time at which out of date notification was sent for the Managed cluster", alias="isOutOfDateNotifiedAt")
+    consolidated_health_indicators_status: Optional[StrictStr] = Field(default=None, description="The consolidated Health Status for the Managed cluster", alias="consolidatedHealthIndicatorsStatus")
+    encryption_configuration: Optional[ManagedClusterEncryptionConfig] = Field(default=None, alias="encryptionConfiguration")
+    __properties: ClassVar[List[str]] = ["id", "name", "pod", "org", "type", "configuration", "keyPair", "attributes", "description", "redis", "clientType", "ccgVersion", "pinnedConfig", "logConfiguration", "operational", "status", "publicKeyCertificate", "publicKeyThumbprint", "publicKey", "alertKey", "clientIds", "serviceCount", "ccId", "createdAt", "updatedAt", "lastReleaseNotifiedAt", "updatePreferences", "currentInstalledReleaseVersion", "updatePackage", "isOutOfDateNotifiedAt", "consolidatedHealthIndicatorsStatus", "encryptionConfiguration"]
+
+    @field_validator('consolidated_health_indicators_status')
+    def consolidated_health_indicators_status_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['NORMAL', 'WARNING', 'ERROR']):
+            warnings.warn(f"must be one of enum values ('NORMAL', 'WARNING', 'ERROR') unknown value: {value}")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -112,6 +131,12 @@ class ManagedCluster(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of log_configuration
         if self.log_configuration:
             _dict['logConfiguration'] = self.log_configuration.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of update_preferences
+        if self.update_preferences:
+            _dict['updatePreferences'] = self.update_preferences.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of encryption_configuration
+        if self.encryption_configuration:
+            _dict['encryptionConfiguration'] = self.encryption_configuration.to_dict()
         # set to None if client_type (nullable) is None
         # and model_fields_set contains the field
         if self.client_type is None and "client_type" in self.model_fields_set:
@@ -146,6 +171,31 @@ class ManagedCluster(BaseModel):
         # and model_fields_set contains the field
         if self.updated_at is None and "updated_at" in self.model_fields_set:
             _dict['updatedAt'] = None
+
+        # set to None if last_release_notified_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.last_release_notified_at is None and "last_release_notified_at" in self.model_fields_set:
+            _dict['lastReleaseNotifiedAt'] = None
+
+        # set to None if current_installed_release_version (nullable) is None
+        # and model_fields_set contains the field
+        if self.current_installed_release_version is None and "current_installed_release_version" in self.model_fields_set:
+            _dict['currentInstalledReleaseVersion'] = None
+
+        # set to None if update_package (nullable) is None
+        # and model_fields_set contains the field
+        if self.update_package is None and "update_package" in self.model_fields_set:
+            _dict['updatePackage'] = None
+
+        # set to None if is_out_of_date_notified_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.is_out_of_date_notified_at is None and "is_out_of_date_notified_at" in self.model_fields_set:
+            _dict['isOutOfDateNotifiedAt'] = None
+
+        # set to None if consolidated_health_indicators_status (nullable) is None
+        # and model_fields_set contains the field
+        if self.consolidated_health_indicators_status is None and "consolidated_health_indicators_status" in self.model_fields_set:
+            _dict['consolidatedHealthIndicatorsStatus'] = None
 
         return _dict
 
@@ -183,7 +233,14 @@ class ManagedCluster(BaseModel):
             "serviceCount": obj.get("serviceCount") if obj.get("serviceCount") is not None else 0,
             "ccId": obj.get("ccId") if obj.get("ccId") is not None else '0',
             "createdAt": obj.get("createdAt"),
-            "updatedAt": obj.get("updatedAt")
+            "updatedAt": obj.get("updatedAt"),
+            "lastReleaseNotifiedAt": obj.get("lastReleaseNotifiedAt"),
+            "updatePreferences": ManagedClusterUpdatePreferences.from_dict(obj["updatePreferences"]) if obj.get("updatePreferences") is not None else None,
+            "currentInstalledReleaseVersion": obj.get("currentInstalledReleaseVersion"),
+            "updatePackage": obj.get("updatePackage"),
+            "isOutOfDateNotifiedAt": obj.get("isOutOfDateNotifiedAt"),
+            "consolidatedHealthIndicatorsStatus": obj.get("consolidatedHealthIndicatorsStatus"),
+            "encryptionConfiguration": ManagedClusterEncryptionConfig.from_dict(obj["encryptionConfiguration"]) if obj.get("encryptionConfiguration") is not None else None
         })
         return _obj
 

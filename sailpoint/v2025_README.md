@@ -1567,6 +1567,7 @@ Class | Method | HTTP request | Description
  - [ManagedClusterRequest](sailpoint/v2025/docs/ManagedClusterRequest.md)
  - [ManagedClusterType](sailpoint/v2025/docs/ManagedClusterType.md)
  - [ManagedClusterTypes](sailpoint/v2025/docs/ManagedClusterTypes.md)
+ - [ManagedClusterUpdatePreferences](sailpoint/v2025/docs/ManagedClusterUpdatePreferences.md)
  - [ManagerCorrelationMapping](sailpoint/v2025/docs/ManagerCorrelationMapping.md)
  - [ManualDiscoverApplications](sailpoint/v2025/docs/ManualDiscoverApplications.md)
  - [ManualDiscoverApplicationsTemplate](sailpoint/v2025/docs/ManualDiscoverApplicationsTemplate.md)
