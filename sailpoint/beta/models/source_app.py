@@ -36,10 +36,10 @@ class SourceApp(BaseModel):
     created: Optional[datetime] = Field(default=None, description="Time when the source app was created")
     modified: Optional[datetime] = Field(default=None, description="Time when the source app was last modified")
     enabled: Optional[StrictBool] = Field(default=False, description="True if the source app is enabled")
-    provision_request_enabled: Optional[StrictBool] = Field(default=False, description="True if the source app is provision request enabled", alias="provisionRequestEnabled")
+    provision_request_enabled: Optional[StrictBool] = Field(default=False, description="True if the app allows access request", alias="provisionRequestEnabled")
     description: Optional[StrictStr] = Field(default=None, description="The description of the source app")
     match_all_accounts: Optional[StrictBool] = Field(default=False, description="True if the source app match all accounts", alias="matchAllAccounts")
-    app_center_enabled: Optional[StrictBool] = Field(default=True, description="True if the source app is shown in the app center", alias="appCenterEnabled")
+    app_center_enabled: Optional[StrictBool] = Field(default=True, description="True if the app is visible in the request center", alias="appCenterEnabled")
     account_source: Optional[SourceAppAccountSource] = Field(default=None, alias="accountSource")
     owner: Optional[BaseReferenceDto] = Field(default=None, description="The owner of source app")
     __properties: ClassVar[List[str]] = ["id", "cloudAppId", "name", "created", "modified", "enabled", "provisionRequestEnabled", "description", "matchAllAccounts", "appCenterEnabled", "accountSource", "owner"]

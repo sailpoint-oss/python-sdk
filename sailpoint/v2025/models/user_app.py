@@ -37,8 +37,8 @@ class UserApp(BaseModel):
     modified: Optional[datetime] = Field(default=None, description="Time when the user app was last modified")
     has_multiple_accounts: Optional[StrictBool] = Field(default=False, description="True if the owner has multiple accounts for the source", alias="hasMultipleAccounts")
     use_for_password_management: Optional[StrictBool] = Field(default=False, description="True if the source has password feature", alias="useForPasswordManagement")
-    provision_request_enabled: Optional[StrictBool] = Field(default=False, description="True if the source app related to the user app is provision request enabled", alias="provisionRequestEnabled")
-    app_center_enabled: Optional[StrictBool] = Field(default=True, description="True if the source app related to the user app is shown in the app center", alias="appCenterEnabled")
+    provision_request_enabled: Optional[StrictBool] = Field(default=False, description="True if the app allows access request", alias="provisionRequestEnabled")
+    app_center_enabled: Optional[StrictBool] = Field(default=True, description="True if the app is visible in the request center", alias="appCenterEnabled")
     source_app: Optional[UserAppSourceApp] = Field(default=None, alias="sourceApp")
     source: Optional[UserAppSource] = None
     account: Optional[UserAppAccount] = None
