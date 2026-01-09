@@ -872,8 +872,6 @@ class ScheduledSearchApi:
 
         # authentication setting
         _auth_settings: List[str] = [
-            'userAuth', 
-            'userAuth'
         ]
 
         return self.api_client.param_serialize(
