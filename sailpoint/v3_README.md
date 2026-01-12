@@ -797,6 +797,7 @@ Class | Method | HTTP request | Description
  - [PatOwner](sailpoint/v3/docs/PatOwner.md)
  - [PendingApproval](sailpoint/v3/docs/PendingApproval.md)
  - [PendingApprovalAction](sailpoint/v3/docs/PendingApprovalAction.md)
+ - [PendingApprovalMaxPermittedAccessDuration](sailpoint/v3/docs/PendingApprovalMaxPermittedAccessDuration.md)
  - [PendingApprovalOwner](sailpoint/v3/docs/PendingApprovalOwner.md)
  - [PermissionDto](sailpoint/v3/docs/PermissionDto.md)
  - [PreApprovalTriggerDetails](sailpoint/v3/docs/PreApprovalTriggerDetails.md)

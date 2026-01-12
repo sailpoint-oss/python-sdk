@@ -1495,6 +1495,7 @@ Class | Method | HTTP request | Description
  - [PeerGroupMember](sailpoint/v2024/docs/PeerGroupMember.md)
  - [PendingApproval](sailpoint/v2024/docs/PendingApproval.md)
  - [PendingApprovalAction](sailpoint/v2024/docs/PendingApprovalAction.md)
+ - [PendingApprovalMaxPermittedAccessDuration](sailpoint/v2024/docs/PendingApprovalMaxPermittedAccessDuration.md)
  - [PendingApprovalOwner](sailpoint/v2024/docs/PendingApprovalOwner.md)
  - [PermissionDto](sailpoint/v2024/docs/PermissionDto.md)
  - [PreApprovalTriggerDetails](sailpoint/v2024/docs/PreApprovalTriggerDetails.md)

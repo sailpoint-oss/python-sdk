@@ -376,6 +376,7 @@ from sailpoint.v3.models.password_sync_group import PasswordSyncGroup
 from sailpoint.v3.models.pat_owner import PatOwner
 from sailpoint.v3.models.pending_approval import PendingApproval
 from sailpoint.v3.models.pending_approval_action import PendingApprovalAction
+from sailpoint.v3.models.pending_approval_max_permitted_access_duration import PendingApprovalMaxPermittedAccessDuration
 from sailpoint.v3.models.pending_approval_owner import PendingApprovalOwner
 from sailpoint.v3.models.permission_dto import PermissionDto
 from sailpoint.v3.models.pre_approval_trigger_details import PreApprovalTriggerDetails

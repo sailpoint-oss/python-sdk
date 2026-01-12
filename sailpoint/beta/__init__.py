@@ -657,6 +657,7 @@ from sailpoint.beta.models.patch_potential_role_request_inner import PatchPotent
 from sailpoint.beta.models.peer_group_member import PeerGroupMember
 from sailpoint.beta.models.pending_approval import PendingApproval
 from sailpoint.beta.models.pending_approval_action import PendingApprovalAction
+from sailpoint.beta.models.pending_approval_max_permitted_access_duration import PendingApprovalMaxPermittedAccessDuration
 from sailpoint.beta.models.permission_dto import PermissionDto
 from sailpoint.beta.models.post_external_execute_workflow200_response import PostExternalExecuteWorkflow200Response
 from sailpoint.beta.models.post_external_execute_workflow_request import PostExternalExecuteWorkflowRequest

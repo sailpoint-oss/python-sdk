@@ -718,6 +718,7 @@ from sailpoint.v2024.models.patch_potential_role_request_inner import PatchPoten
 from sailpoint.v2024.models.peer_group_member import PeerGroupMember
 from sailpoint.v2024.models.pending_approval import PendingApproval
 from sailpoint.v2024.models.pending_approval_action import PendingApprovalAction
+from sailpoint.v2024.models.pending_approval_max_permitted_access_duration import PendingApprovalMaxPermittedAccessDuration
 from sailpoint.v2024.models.pending_approval_owner import PendingApprovalOwner
 from sailpoint.v2024.models.permission_dto import PermissionDto
 from sailpoint.v2024.models.pre_approval_trigger_details import PreApprovalTriggerDetails
