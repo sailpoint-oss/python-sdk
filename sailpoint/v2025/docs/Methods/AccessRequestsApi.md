@@ -1051,7 +1051,12 @@ with ApiClient(configuration) as api_client:
                 "approverType" : "GOVERNANCE_GROUP"
               } ],
               "reauthorizationRequired" : false,
-              "requestCommentRequired" : true
+              "requestCommentRequired" : true,
+              "requireEndDate" : true,
+              "maxPermittedAccessDuration" : {
+                "value" : 5,
+                "timeUnit" : "DAYS"
+              }
             },
             "revocationRequestConfig" : {
               "approvalSchemes" : [ {

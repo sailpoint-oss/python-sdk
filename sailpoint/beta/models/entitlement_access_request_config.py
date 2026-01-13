@@ -21,6 +21,7 @@ import warnings
 from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.beta.models.entitlement_approval_scheme import EntitlementApprovalScheme
+from sailpoint.beta.models.pending_approval_max_permitted_access_duration import PendingApprovalMaxPermittedAccessDuration
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,7 +33,9 @@ class EntitlementAccessRequestConfig(BaseModel):
     request_comment_required: Optional[StrictBool] = Field(default=False, description="If the requester must provide a comment during access request.", alias="requestCommentRequired")
     denial_comment_required: Optional[StrictBool] = Field(default=False, description="If the reviewer must provide a comment when denying the access request.", alias="denialCommentRequired")
     reauthorization_required: Optional[StrictBool] = Field(default=False, description="Is Reauthorization Required", alias="reauthorizationRequired")
-    __properties: ClassVar[List[str]] = ["approvalSchemes", "requestCommentRequired", "denialCommentRequired", "reauthorizationRequired"]
+    require_end_date: Optional[StrictBool] = Field(default=False, description="If true, then remove date or sunset date is required in access request of the entitlement.", alias="requireEndDate")
+    max_permitted_access_duration: Optional[PendingApprovalMaxPermittedAccessDuration] = Field(default=None, alias="maxPermittedAccessDuration")
+    __properties: ClassVar[List[str]] = ["approvalSchemes", "requestCommentRequired", "denialCommentRequired", "reauthorizationRequired", "requireEndDate", "maxPermittedAccessDuration"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,6 +83,14 @@ class EntitlementAccessRequestConfig(BaseModel):
                 if _item_approval_schemes:
                     _items.append(_item_approval_schemes.to_dict())
             _dict['approvalSchemes'] = _items
+        # override the default output from pydantic by calling `to_dict()` of max_permitted_access_duration
+        if self.max_permitted_access_duration:
+            _dict['maxPermittedAccessDuration'] = self.max_permitted_access_duration.to_dict()
+        # set to None if max_permitted_access_duration (nullable) is None
+        # and model_fields_set contains the field
+        if self.max_permitted_access_duration is None and "max_permitted_access_duration" in self.model_fields_set:
+            _dict['maxPermittedAccessDuration'] = None
+
         return _dict
 
     @classmethod
@@ -95,7 +106,9 @@ class EntitlementAccessRequestConfig(BaseModel):
             "approvalSchemes": [EntitlementApprovalScheme.from_dict(_item) for _item in obj["approvalSchemes"]] if obj.get("approvalSchemes") is not None else None,
             "requestCommentRequired": obj.get("requestCommentRequired") if obj.get("requestCommentRequired") is not None else False,
             "denialCommentRequired": obj.get("denialCommentRequired") if obj.get("denialCommentRequired") is not None else False,
-            "reauthorizationRequired": obj.get("reauthorizationRequired") if obj.get("reauthorizationRequired") is not None else False
+            "reauthorizationRequired": obj.get("reauthorizationRequired") if obj.get("reauthorizationRequired") is not None else False,
+            "requireEndDate": obj.get("requireEndDate") if obj.get("requireEndDate") is not None else False,
+            "maxPermittedAccessDuration": PendingApprovalMaxPermittedAccessDuration.from_dict(obj["maxPermittedAccessDuration"]) if obj.get("maxPermittedAccessDuration") is not None else None
         })
         return _obj
 

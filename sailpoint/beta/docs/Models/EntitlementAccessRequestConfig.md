@@ -20,6 +20,8 @@ Name | Type | Description | Notes
 **request_comment_required** | **bool** | If the requester must provide a comment during access request. | [optional] [default to False]
 **denial_comment_required** | **bool** | If the reviewer must provide a comment when denying the access request. | [optional] [default to False]
 **reauthorization_required** | **bool** | Is Reauthorization Required | [optional] [default to False]
+**require_end_date** | **bool** | If true, then remove date or sunset date is required in access request of the entitlement. | [optional] [default to False]
+**max_permitted_access_duration** | [**PendingApprovalMaxPermittedAccessDuration**](pending-approval-max-permitted-access-duration) |  | [optional] 
 }
 
 ## Example
@@ -35,7 +37,11 @@ approval_schemes=[
                     ],
 request_comment_required=True,
 denial_comment_required=False,
-reauthorization_required=False
+reauthorization_required=False,
+require_end_date=True,
+max_permitted_access_duration=sailpoint.beta.models.pending_approval_max_permitted_access_duration.PendingApproval_maxPermittedAccessDuration(
+                    value = 5, 
+                    time_unit = 'DAYS', )
 )
 
 ```

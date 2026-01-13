@@ -59,7 +59,11 @@ class TestAccessRequestConfig(unittest.TestCase):
                             ], 
                         request_comment_required = True, 
                         denial_comment_required = False, 
-                        reauthorization_required = False, ), 
+                        reauthorization_required = False, 
+                        require_end_date = True, 
+                        max_permitted_access_duration = sailpoint.v2025.models.pending_approval_max_permitted_access_duration.PendingApproval_maxPermittedAccessDuration(
+                            value = 5, 
+                            time_unit = 'DAYS', ), ), 
                     revocation_request_config = sailpoint.v2025.models.entitlement_revocation_request_config.Entitlement Revocation Request Config(), )
             )
         else:
