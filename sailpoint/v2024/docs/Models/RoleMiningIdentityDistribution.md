@@ -17,7 +17,7 @@ tags: ['SDK', 'Software Development Kit', 'RoleMiningIdentityDistribution', 'V20
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **attribute_name** | **str** | Id of the potential role | [optional] 
-**distribution** | **[]Dict[str, object]** |  | [optional] 
+**distribution** | [**[]RoleMiningIdentityDistributionDistributionInner**](role-mining-identity-distribution-distribution-inner) |  | [optional] 
 }
 
 ## Example
@@ -27,7 +27,11 @@ from sailpoint.v2024.models.role_mining_identity_distribution import RoleMiningI
 
 role_mining_identity_distribution = RoleMiningIdentityDistribution(
 attribute_name='department',
-distribution=[{attributeValue=NM Tier 3, count=6}]
+distribution=[
+                    sailpoint.v2024.models.role_mining_identity_distribution_distribution_inner.RoleMiningIdentityDistribution_distribution_inner(
+                        attribute_value = 'NM Tier 3', 
+                        count = 6, )
+                    ]
 )
 
 ```

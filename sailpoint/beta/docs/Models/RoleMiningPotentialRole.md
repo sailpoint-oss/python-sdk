@@ -53,7 +53,11 @@ identity_count=25,
 identity_distribution=[
                     sailpoint.beta.models.role_mining_identity_distribution.Role Mining Identity Distribution(
                         attribute_name = 'department', 
-                        distribution = [{attributeValue=NM Tier 3, count=6}], )
+                        distribution = [
+                            sailpoint.beta.models.role_mining_identity_distribution_distribution_inner.RoleMiningIdentityDistribution_distribution_inner(
+                                attribute_value = 'NM Tier 3', 
+                                count = 6, )
+                            ], )
                     ],
 identity_ids=[07a0b4e2, 13b4e2a0],
 name='Saved Potential Role - 07/10',

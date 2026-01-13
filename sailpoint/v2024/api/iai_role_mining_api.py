@@ -7605,11 +7605,13 @@ class IAIRoleMiningApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth'
         ]
 
         return self.api_client.param_serialize(
             method='PATCH',
-            resource_path='/role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}',
+            resource_path='/role-mining-potential-roles/{potentialRoleId}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -7626,11 +7628,11 @@ class IAIRoleMiningApi:
 
 
     @validate_call
-    def patch_potential_role_0(
+    def patch_potential_role_session(
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="The potential role summary id")],
-        patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner],
+        json_patch_operation: List[JsonPatchOperation],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -7645,7 +7647,7 @@ class IAIRoleMiningApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """Update a potential role
+        """Update a potential role session
 
         The method updates an existing potential role using.  The following fields can be modified:  * `description`  * `name`  * `saved`   >**NOTE: All other fields cannot be modified.** 
 
@@ -7655,8 +7657,8 @@ class IAIRoleMiningApi:
         :type potential_role_id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param patch_potential_role_request_inner: (required)
-        :type patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7679,11 +7681,11 @@ class IAIRoleMiningApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._patch_potential_role_0_serialize(
+        _param = self._patch_potential_role_session_serialize(
             session_id=session_id,
             potential_role_id=potential_role_id,
             x_sail_point_experimental=x_sail_point_experimental,
-            patch_potential_role_request_inner=patch_potential_role_request_inner,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7711,11 +7713,11 @@ class IAIRoleMiningApi:
 
 
     @validate_call
-    def patch_potential_role_0_with_http_info(
+    def patch_potential_role_session_with_http_info(
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="The potential role summary id")],
-        patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner],
+        json_patch_operation: List[JsonPatchOperation],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -7730,7 +7732,7 @@ class IAIRoleMiningApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """Update a potential role
+        """Update a potential role session
 
         The method updates an existing potential role using.  The following fields can be modified:  * `description`  * `name`  * `saved`   >**NOTE: All other fields cannot be modified.** 
 
@@ -7740,8 +7742,8 @@ class IAIRoleMiningApi:
         :type potential_role_id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param patch_potential_role_request_inner: (required)
-        :type patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7764,11 +7766,11 @@ class IAIRoleMiningApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._patch_potential_role_0_serialize(
+        _param = self._patch_potential_role_session_serialize(
             session_id=session_id,
             potential_role_id=potential_role_id,
             x_sail_point_experimental=x_sail_point_experimental,
-            patch_potential_role_request_inner=patch_potential_role_request_inner,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7796,11 +7798,11 @@ class IAIRoleMiningApi:
 
 
     @validate_call
-    def patch_potential_role_0_without_preload_content(
+    def patch_potential_role_session_without_preload_content(
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="The potential role summary id")],
-        patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner],
+        json_patch_operation: List[JsonPatchOperation],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -7815,7 +7817,7 @@ class IAIRoleMiningApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update a potential role
+        """Update a potential role session
 
         The method updates an existing potential role using.  The following fields can be modified:  * `description`  * `name`  * `saved`   >**NOTE: All other fields cannot be modified.** 
 
@@ -7825,8 +7827,8 @@ class IAIRoleMiningApi:
         :type potential_role_id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param patch_potential_role_request_inner: (required)
-        :type patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7849,11 +7851,11 @@ class IAIRoleMiningApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._patch_potential_role_0_serialize(
+        _param = self._patch_potential_role_session_serialize(
             session_id=session_id,
             potential_role_id=potential_role_id,
             x_sail_point_experimental=x_sail_point_experimental,
-            patch_potential_role_request_inner=patch_potential_role_request_inner,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7876,12 +7878,12 @@ class IAIRoleMiningApi:
         return response_data.response
 
 
-    def _patch_potential_role_0_serialize(
+    def _patch_potential_role_session_serialize(
         self,
         session_id,
         potential_role_id,
         x_sail_point_experimental,
-        patch_potential_role_request_inner,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -7891,7 +7893,7 @@ class IAIRoleMiningApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'PatchPotentialRoleRequestInner': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -7914,8 +7916,8 @@ class IAIRoleMiningApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if patch_potential_role_request_inner is not None:
-            _body_params = patch_potential_role_request_inner
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -7943,12 +7945,13 @@ class IAIRoleMiningApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
             method='PATCH',
-            resource_path='/role-mining-potential-roles/{potentialRoleId}',
+            resource_path='/role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

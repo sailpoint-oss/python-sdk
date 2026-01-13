@@ -36,8 +36,8 @@ class JsonPatchOperation(BaseModel):
     @field_validator('op')
     def op_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['add', 'remove', 'replace', 'move', 'copy', 'test']):
-            warnings.warn(f"must be one of enum values ('add', 'remove', 'replace', 'move', 'copy', 'test') unknown value: {value}")
+        if value not in set(['remove', 'replace']):
+            warnings.warn(f"must be one of enum values ('remove', 'replace') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

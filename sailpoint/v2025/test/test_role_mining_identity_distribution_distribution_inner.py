@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2025.models.role_mining_identity_distribution import RoleMiningIdentityDistribution
+from sailpoint.v2025.models.role_mining_identity_distribution_distribution_inner import RoleMiningIdentityDistributionDistributionInner
 
-class TestRoleMiningIdentityDistribution(unittest.TestCase):
-    """RoleMiningIdentityDistribution unit test stubs"""
+class TestRoleMiningIdentityDistributionDistributionInner(unittest.TestCase):
+    """RoleMiningIdentityDistributionDistributionInner unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,30 +25,26 @@ class TestRoleMiningIdentityDistribution(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> RoleMiningIdentityDistribution:
-        """Test RoleMiningIdentityDistribution
+    def make_instance(self, include_optional) -> RoleMiningIdentityDistributionDistributionInner:
+        """Test RoleMiningIdentityDistributionDistributionInner
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `RoleMiningIdentityDistribution`
+        # uncomment below to create an instance of `RoleMiningIdentityDistributionDistributionInner`
         """
-        model = RoleMiningIdentityDistribution()
+        model = RoleMiningIdentityDistributionDistributionInner()
         if include_optional:
-            return RoleMiningIdentityDistribution(
-                attribute_name = 'department',
-                distribution = [
-                    sailpoint.v2025.models.role_mining_identity_distribution_distribution_inner.RoleMiningIdentityDistribution_distribution_inner(
-                        attribute_value = 'NM Tier 3', 
-                        count = 6, )
-                    ]
+            return RoleMiningIdentityDistributionDistributionInner(
+                attribute_value = 'NM Tier 3',
+                count = 6
             )
         else:
-            return RoleMiningIdentityDistribution(
+            return RoleMiningIdentityDistributionDistributionInner(
         )
         """
 
-    def testRoleMiningIdentityDistribution(self):
-        """Test RoleMiningIdentityDistribution"""
+    def testRoleMiningIdentityDistributionDistributionInner(self):
+        """Test RoleMiningIdentityDistributionDistributionInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

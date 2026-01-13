@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.beta.models.patch_potential_role_request_inner import PatchPotentialRoleRequestInner
+from sailpoint.beta.models.role_mining_identity_distribution_distribution_inner import RoleMiningIdentityDistributionDistributionInner
 
-class TestPatchPotentialRoleRequestInner(unittest.TestCase):
-    """PatchPotentialRoleRequestInner unit test stubs"""
+class TestRoleMiningIdentityDistributionDistributionInner(unittest.TestCase):
+    """RoleMiningIdentityDistributionDistributionInner unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,28 +25,26 @@ class TestPatchPotentialRoleRequestInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> PatchPotentialRoleRequestInner:
-        """Test PatchPotentialRoleRequestInner
+    def make_instance(self, include_optional) -> RoleMiningIdentityDistributionDistributionInner:
+        """Test RoleMiningIdentityDistributionDistributionInner
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `PatchPotentialRoleRequestInner`
+        # uncomment below to create an instance of `RoleMiningIdentityDistributionDistributionInner`
         """
-        model = PatchPotentialRoleRequestInner()
+        model = RoleMiningIdentityDistributionDistributionInner()
         if include_optional:
-            return PatchPotentialRoleRequestInner(
-                op = 'replace',
-                path = '/description',
-                value = New description
+            return RoleMiningIdentityDistributionDistributionInner(
+                attribute_value = 'NM Tier 3',
+                count = 6
             )
         else:
-            return PatchPotentialRoleRequestInner(
-                path = '/description',
+            return RoleMiningIdentityDistributionDistributionInner(
         )
         """
 
-    def testPatchPotentialRoleRequestInner(self):
-        """Test PatchPotentialRoleRequestInner"""
+    def testRoleMiningIdentityDistributionDistributionInner(self):
+        """Test RoleMiningIdentityDistributionDistributionInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

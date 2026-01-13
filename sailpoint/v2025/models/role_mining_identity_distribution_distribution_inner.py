@@ -18,19 +18,18 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2025.models.role_mining_identity_distribution_distribution_inner import RoleMiningIdentityDistributionDistributionInner
 from typing import Optional, Set
 from typing_extensions import Self
 
-class RoleMiningIdentityDistribution(BaseModel):
+class RoleMiningIdentityDistributionDistributionInner(BaseModel):
     """
-    RoleMiningIdentityDistribution
+    RoleMiningIdentityDistributionDistributionInner
     """ # noqa: E501
-    attribute_name: Optional[StrictStr] = Field(default=None, description="Id of the potential role", alias="attributeName")
-    distribution: Optional[List[RoleMiningIdentityDistributionDistributionInner]] = None
-    __properties: ClassVar[List[str]] = ["attributeName", "distribution"]
+    attribute_value: Optional[StrictStr] = Field(default=None, description="The attribute value that identities are grouped by", alias="attributeValue")
+    count: Optional[StrictInt] = Field(default=None, description="The number of identities that have this attribute value")
+    __properties: ClassVar[List[str]] = ["attributeValue", "count"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +49,7 @@ class RoleMiningIdentityDistribution(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of RoleMiningIdentityDistribution from a JSON string"""
+        """Create an instance of RoleMiningIdentityDistributionDistributionInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,18 +70,11 @@ class RoleMiningIdentityDistribution(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in distribution (list)
-        _items = []
-        if self.distribution:
-            for _item_distribution in self.distribution:
-                if _item_distribution:
-                    _items.append(_item_distribution.to_dict())
-            _dict['distribution'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of RoleMiningIdentityDistribution from a dict"""
+        """Create an instance of RoleMiningIdentityDistributionDistributionInner from a dict"""
         if obj is None:
             return None
 
@@ -90,8 +82,8 @@ class RoleMiningIdentityDistribution(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "attributeName": obj.get("attributeName"),
-            "distribution": [RoleMiningIdentityDistributionDistributionInner.from_dict(_item) for _item in obj["distribution"]] if obj.get("distribution") is not None else None
+            "attributeValue": obj.get("attributeValue"),
+            "count": obj.get("count")
         })
         return _obj
 

@@ -653,7 +653,7 @@ from sailpoint.beta.models.password_policy_v3_dto import PasswordPolicyV3Dto
 from sailpoint.beta.models.password_status import PasswordStatus
 from sailpoint.beta.models.password_sync_group import PasswordSyncGroup
 from sailpoint.beta.models.pat_owner import PatOwner
-from sailpoint.beta.models.patch_potential_role_request_inner import PatchPotentialRoleRequestInner
+from sailpoint.beta.models.patch_role_mining_potential_role_request_inner import PatchRoleMiningPotentialRoleRequestInner
 from sailpoint.beta.models.peer_group_member import PeerGroupMember
 from sailpoint.beta.models.pending_approval import PendingApproval
 from sailpoint.beta.models.pending_approval_action import PendingApprovalAction
@@ -760,6 +760,7 @@ from sailpoint.beta.models.role_mining_entitlement import RoleMiningEntitlement
 from sailpoint.beta.models.role_mining_entitlement_ref import RoleMiningEntitlementRef
 from sailpoint.beta.models.role_mining_identity import RoleMiningIdentity
 from sailpoint.beta.models.role_mining_identity_distribution import RoleMiningIdentityDistribution
+from sailpoint.beta.models.role_mining_identity_distribution_distribution_inner import RoleMiningIdentityDistributionDistributionInner
 from sailpoint.beta.models.role_mining_potential_role import RoleMiningPotentialRole
 from sailpoint.beta.models.role_mining_potential_role_application import RoleMiningPotentialRoleApplication
 from sailpoint.beta.models.role_mining_potential_role_edit_entitlements import RoleMiningPotentialRoleEditEntitlements

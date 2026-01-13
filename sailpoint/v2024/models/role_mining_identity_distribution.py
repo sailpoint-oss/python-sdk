@@ -20,6 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.v2024.models.role_mining_identity_distribution_distribution_inner import RoleMiningIdentityDistributionDistributionInner
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +29,7 @@ class RoleMiningIdentityDistribution(BaseModel):
     RoleMiningIdentityDistribution
     """ # noqa: E501
     attribute_name: Optional[StrictStr] = Field(default=None, description="Id of the potential role", alias="attributeName")
-    distribution: Optional[List[Dict[str, Any]]] = None
+    distribution: Optional[List[RoleMiningIdentityDistributionDistributionInner]] = None
     __properties: ClassVar[List[str]] = ["attributeName", "distribution"]
 
     model_config = ConfigDict(
@@ -70,6 +71,13 @@ class RoleMiningIdentityDistribution(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in distribution (list)
+        _items = []
+        if self.distribution:
+            for _item_distribution in self.distribution:
+                if _item_distribution:
+                    _items.append(_item_distribution.to_dict())
+            _dict['distribution'] = _items
         return _dict
 
     @classmethod
@@ -83,7 +91,7 @@ class RoleMiningIdentityDistribution(BaseModel):
 
         _obj = cls.model_validate({
             "attributeName": obj.get("attributeName"),
-            "distribution": obj.get("distribution")
+            "distribution": [RoleMiningIdentityDistributionDistributionInner.from_dict(_item) for _item in obj["distribution"]] if obj.get("distribution") is not None else None
         })
         return _obj
 

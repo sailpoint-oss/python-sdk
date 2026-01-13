@@ -10741,7 +10741,7 @@
                   print(item.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling IAIRoleMiningApi->get_saved_potential_roles: %s\n" % e)
-- path: /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}
+- path: /role-mining-potential-roles/{potentialRoleId}
   method: PATCH
   xCodeSample:
     - lang: Python
@@ -10770,15 +10770,15 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling IAIRoleMiningApi->patch_potential_role: %s\n" % e)
-- path: /role-mining-potential-roles/{potentialRoleId}
+- path: /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}
   method: PATCH
   xCodeSample:
     - lang: Python
-      label: SDK_tools/sdk/python/v2025/methods/iai-role-mining#patch-potential-role-0
+      label: SDK_tools/sdk/python/v2025/methods/iai-role-mining#patch-potential-role-session
       source: |
         from sailpoint.v2025.api.iai_role_mining_api import IAIRoleMiningApi
         from sailpoint.v2025.api_client import ApiClient
-        from sailpoint.v2025.models.patch_potential_role_request_inner import PatchPotentialRoleRequestInner
+        from sailpoint.v2025.models.json_patch_operation import JsonPatchOperation
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -10788,17 +10788,17 @@
           session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id # str | The role mining session id
           potential_role_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The potential role summary id # str | The potential role summary id
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
-          patch_potential_role_request_inner = '''[{op=remove, path=/description}, {op=replace, path=/description, value=Acct I - Potential Role}, {op=remove, path=/saved}, {op=replace, path=/saved, value=false}, {op=remove, path=/name}, {op=replace, path=/name, value=Potential Role Accounting}]''' # List[PatchPotentialRoleRequestInner] | 
+          json_patch_operation = '''[{op=remove, path=/description}, {op=replace, path=/description, value=Acct I - Potential Role}, {op=remove, path=/saved}, {op=replace, path=/saved, value=false}, {op=remove, path=/name}, {op=replace, path=/name, value=Potential Role Accounting}]''' # List[JsonPatchOperation] | 
           try:
-              # Update a potential role
-              new_patch_potential_role_request_inner = PatchPotentialRoleRequestInner.from_json(patch_potential_role_request_inner)
-              results = IAIRoleMiningApi(api_client).patch_potential_role_0(session_id=session_id, potential_role_id=potential_role_id, x_sail_point_experimental=x_sail_point_experimental, patch_potential_role_request_inner=new_patch_potential_role_request_inner)
+              # Update a potential role session
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              results = IAIRoleMiningApi(api_client).patch_potential_role_session(session_id=session_id, potential_role_id=potential_role_id, x_sail_point_experimental=x_sail_point_experimental, json_patch_operation=new_json_patch_operation)
               # Below is a request that includes all optional parameters
-              # results = IAIRoleMiningApi(api_client).patch_potential_role_0(session_id, potential_role_id, x_sail_point_experimental, new_patch_potential_role_request_inner)
-              print("The response of IAIRoleMiningApi->patch_potential_role_0:\n")
+              # results = IAIRoleMiningApi(api_client).patch_potential_role_session(session_id, potential_role_id, x_sail_point_experimental, new_json_patch_operation)
+              print("The response of IAIRoleMiningApi->patch_potential_role_session:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
-              print("Exception when calling IAIRoleMiningApi->patch_potential_role_0: %s\n" % e)
+              print("Exception when calling IAIRoleMiningApi->patch_potential_role_session: %s\n" % e)
 - path: /role-mining-sessions/{sessionId}
   method: PATCH
   xCodeSample:

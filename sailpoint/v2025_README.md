@@ -408,8 +408,8 @@ Class | Method | HTTP request | Description
 *IAIRoleMiningApi* | [**get_role_mining_session_status**](sailpoint/v2025/docs/IAIRoleMiningApi.md#get_role_mining_session_status) | **GET** /role-mining-sessions/{sessionId}/status | Get role mining session status state
 *IAIRoleMiningApi* | [**get_role_mining_sessions**](sailpoint/v2025/docs/IAIRoleMiningApi.md#get_role_mining_sessions) | **GET** /role-mining-sessions | Retrieves all role mining sessions
 *IAIRoleMiningApi* | [**get_saved_potential_roles**](sailpoint/v2025/docs/IAIRoleMiningApi.md#get_saved_potential_roles) | **GET** /role-mining-potential-roles/saved | Retrieves all saved potential roles
-*IAIRoleMiningApi* | [**patch_potential_role**](sailpoint/v2025/docs/IAIRoleMiningApi.md#patch_potential_role) | **PATCH** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Update a potential role
-*IAIRoleMiningApi* | [**patch_potential_role_0**](sailpoint/v2025/docs/IAIRoleMiningApi.md#patch_potential_role_0) | **PATCH** /role-mining-potential-roles/{potentialRoleId} | Update a potential role
+*IAIRoleMiningApi* | [**patch_potential_role**](sailpoint/v2025/docs/IAIRoleMiningApi.md#patch_potential_role) | **PATCH** /role-mining-potential-roles/{potentialRoleId} | Update a potential role
+*IAIRoleMiningApi* | [**patch_potential_role_session**](sailpoint/v2025/docs/IAIRoleMiningApi.md#patch_potential_role_session) | **PATCH** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Update a potential role session
 *IAIRoleMiningApi* | [**patch_role_mining_session**](sailpoint/v2025/docs/IAIRoleMiningApi.md#patch_role_mining_session) | **PATCH** /role-mining-sessions/{sessionId} | Patch a role mining session
 *IAIRoleMiningApi* | [**update_entitlements_potential_role**](sailpoint/v2025/docs/IAIRoleMiningApi.md#update_entitlements_potential_role) | **POST** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements | Edit entitlements for a potential role to exclude some entitlements
 *IconsApi* | [**delete_icon**](sailpoint/v2025/docs/IconsApi.md#delete_icon) | **DELETE** /icons/{objectType}/{objectId} | Delete an icon
@@ -1827,6 +1827,7 @@ Class | Method | HTTP request | Description
  - [RoleMiningEntitlementRef](sailpoint/v2025/docs/RoleMiningEntitlementRef.md)
  - [RoleMiningIdentity](sailpoint/v2025/docs/RoleMiningIdentity.md)
  - [RoleMiningIdentityDistribution](sailpoint/v2025/docs/RoleMiningIdentityDistribution.md)
+ - [RoleMiningIdentityDistributionDistributionInner](sailpoint/v2025/docs/RoleMiningIdentityDistributionDistributionInner.md)
  - [RoleMiningPotentialRole](sailpoint/v2025/docs/RoleMiningPotentialRole.md)
  - [RoleMiningPotentialRoleApplication](sailpoint/v2025/docs/RoleMiningPotentialRoleApplication.md)
  - [RoleMiningPotentialRoleEditEntitlements](sailpoint/v2025/docs/RoleMiningPotentialRoleEditEntitlements.md)

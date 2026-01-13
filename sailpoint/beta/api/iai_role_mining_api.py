@@ -20,7 +20,7 @@ from pydantic import Field, StrictBool, StrictBytes, StrictInt, StrictStr
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
-from sailpoint.beta.models.patch_potential_role_request_inner import PatchPotentialRoleRequestInner
+from sailpoint.beta.models.patch_role_mining_potential_role_request_inner import PatchRoleMiningPotentialRoleRequestInner
 from sailpoint.beta.models.role_mining_entitlement import RoleMiningEntitlement
 from sailpoint.beta.models.role_mining_identity import RoleMiningIdentity
 from sailpoint.beta.models.role_mining_potential_role import RoleMiningPotentialRole
@@ -6974,11 +6974,11 @@ class IAIRoleMiningApi:
 
 
     @validate_call
-    def patch_potential_role(
+    def patch_potential_role_session(
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="The potential role summary id")],
-        patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner],
+        json_patch_operation: List[JsonPatchOperation],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7000,8 +7000,8 @@ class IAIRoleMiningApi:
         :type session_id: str
         :param potential_role_id: The potential role summary id (required)
         :type potential_role_id: str
-        :param patch_potential_role_request_inner: (required)
-        :type patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7024,10 +7024,10 @@ class IAIRoleMiningApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._patch_potential_role_serialize(
+        _param = self._patch_potential_role_session_serialize(
             session_id=session_id,
             potential_role_id=potential_role_id,
-            patch_potential_role_request_inner=patch_potential_role_request_inner,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7055,11 +7055,11 @@ class IAIRoleMiningApi:
 
 
     @validate_call
-    def patch_potential_role_with_http_info(
+    def patch_potential_role_session_with_http_info(
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="The potential role summary id")],
-        patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner],
+        json_patch_operation: List[JsonPatchOperation],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7081,8 +7081,8 @@ class IAIRoleMiningApi:
         :type session_id: str
         :param potential_role_id: The potential role summary id (required)
         :type potential_role_id: str
-        :param patch_potential_role_request_inner: (required)
-        :type patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7105,10 +7105,10 @@ class IAIRoleMiningApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._patch_potential_role_serialize(
+        _param = self._patch_potential_role_session_serialize(
             session_id=session_id,
             potential_role_id=potential_role_id,
-            patch_potential_role_request_inner=patch_potential_role_request_inner,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7136,11 +7136,11 @@ class IAIRoleMiningApi:
 
 
     @validate_call
-    def patch_potential_role_without_preload_content(
+    def patch_potential_role_session_without_preload_content(
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="The potential role summary id")],
-        patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner],
+        json_patch_operation: List[JsonPatchOperation],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7162,8 +7162,8 @@ class IAIRoleMiningApi:
         :type session_id: str
         :param potential_role_id: The potential role summary id (required)
         :type potential_role_id: str
-        :param patch_potential_role_request_inner: (required)
-        :type patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner]
+        :param json_patch_operation: (required)
+        :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7186,10 +7186,10 @@ class IAIRoleMiningApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._patch_potential_role_serialize(
+        _param = self._patch_potential_role_session_serialize(
             session_id=session_id,
             potential_role_id=potential_role_id,
-            patch_potential_role_request_inner=patch_potential_role_request_inner,
+            json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7212,11 +7212,11 @@ class IAIRoleMiningApi:
         return response_data.response
 
 
-    def _patch_potential_role_serialize(
+    def _patch_potential_role_session_serialize(
         self,
         session_id,
         potential_role_id,
-        patch_potential_role_request_inner,
+        json_patch_operation,
         _request_auth,
         _content_type,
         _headers,
@@ -7226,7 +7226,7 @@ class IAIRoleMiningApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'PatchPotentialRoleRequestInner': '',
+            'JsonPatchOperation': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -7247,8 +7247,8 @@ class IAIRoleMiningApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if patch_potential_role_request_inner is not None:
-            _body_params = patch_potential_role_request_inner
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
 
 
         # set the HTTP header `Accept`
@@ -7275,6 +7275,9 @@ class IAIRoleMiningApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -7299,7 +7302,7 @@ class IAIRoleMiningApi:
     def patch_role_mining_potential_role(
         self,
         potential_role_id: Annotated[StrictStr, Field(description="The potential role summary id")],
-        patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner],
+        patch_role_mining_potential_role_request_inner: List[PatchRoleMiningPotentialRoleRequestInner],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7319,8 +7322,8 @@ class IAIRoleMiningApi:
 
         :param potential_role_id: The potential role summary id (required)
         :type potential_role_id: str
-        :param patch_potential_role_request_inner: (required)
-        :type patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner]
+        :param patch_role_mining_potential_role_request_inner: (required)
+        :type patch_role_mining_potential_role_request_inner: List[PatchRoleMiningPotentialRoleRequestInner]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7345,7 +7348,7 @@ class IAIRoleMiningApi:
 
         _param = self._patch_role_mining_potential_role_serialize(
             potential_role_id=potential_role_id,
-            patch_potential_role_request_inner=patch_potential_role_request_inner,
+            patch_role_mining_potential_role_request_inner=patch_role_mining_potential_role_request_inner,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7376,7 +7379,7 @@ class IAIRoleMiningApi:
     def patch_role_mining_potential_role_with_http_info(
         self,
         potential_role_id: Annotated[StrictStr, Field(description="The potential role summary id")],
-        patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner],
+        patch_role_mining_potential_role_request_inner: List[PatchRoleMiningPotentialRoleRequestInner],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7396,8 +7399,8 @@ class IAIRoleMiningApi:
 
         :param potential_role_id: The potential role summary id (required)
         :type potential_role_id: str
-        :param patch_potential_role_request_inner: (required)
-        :type patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner]
+        :param patch_role_mining_potential_role_request_inner: (required)
+        :type patch_role_mining_potential_role_request_inner: List[PatchRoleMiningPotentialRoleRequestInner]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7422,7 +7425,7 @@ class IAIRoleMiningApi:
 
         _param = self._patch_role_mining_potential_role_serialize(
             potential_role_id=potential_role_id,
-            patch_potential_role_request_inner=patch_potential_role_request_inner,
+            patch_role_mining_potential_role_request_inner=patch_role_mining_potential_role_request_inner,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7453,7 +7456,7 @@ class IAIRoleMiningApi:
     def patch_role_mining_potential_role_without_preload_content(
         self,
         potential_role_id: Annotated[StrictStr, Field(description="The potential role summary id")],
-        patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner],
+        patch_role_mining_potential_role_request_inner: List[PatchRoleMiningPotentialRoleRequestInner],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7473,8 +7476,8 @@ class IAIRoleMiningApi:
 
         :param potential_role_id: The potential role summary id (required)
         :type potential_role_id: str
-        :param patch_potential_role_request_inner: (required)
-        :type patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner]
+        :param patch_role_mining_potential_role_request_inner: (required)
+        :type patch_role_mining_potential_role_request_inner: List[PatchRoleMiningPotentialRoleRequestInner]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7499,7 +7502,7 @@ class IAIRoleMiningApi:
 
         _param = self._patch_role_mining_potential_role_serialize(
             potential_role_id=potential_role_id,
-            patch_potential_role_request_inner=patch_potential_role_request_inner,
+            patch_role_mining_potential_role_request_inner=patch_role_mining_potential_role_request_inner,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7525,7 +7528,7 @@ class IAIRoleMiningApi:
     def _patch_role_mining_potential_role_serialize(
         self,
         potential_role_id,
-        patch_potential_role_request_inner,
+        patch_role_mining_potential_role_request_inner,
         _request_auth,
         _content_type,
         _headers,
@@ -7535,7 +7538,7 @@ class IAIRoleMiningApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'PatchPotentialRoleRequestInner': '',
+            'PatchRoleMiningPotentialRoleRequestInner': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -7554,8 +7557,8 @@ class IAIRoleMiningApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if patch_potential_role_request_inner is not None:
-            _body_params = patch_potential_role_request_inner
+        if patch_role_mining_potential_role_request_inner is not None:
+            _body_params = patch_role_mining_potential_role_request_inner
 
 
         # set the HTTP header `Accept`
