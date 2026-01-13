@@ -132,7 +132,10 @@ class TestCompletedApproval(unittest.TestCase):
                         account_id = 'CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local', 
                         source_name = 'Multi Account AD source name', )
                     ],
-                privilege_level = 'High'
+                privilege_level = 'High',
+                max_permitted_access_duration = sailpoint.v2025.models.pending_approval_max_permitted_access_duration.PendingApproval_maxPermittedAccessDuration(
+                    value = 5, 
+                    time_unit = 'DAYS', )
             )
         else:
             return CompletedApproval(

@@ -30,6 +30,7 @@ from sailpoint.beta.models.comment_dto1 import CommentDto1
 from sailpoint.beta.models.completed_approval_pre_approval_trigger_result import CompletedApprovalPreApprovalTriggerResult
 from sailpoint.beta.models.completed_approval_reviewed_by import CompletedApprovalReviewedBy
 from sailpoint.beta.models.completed_approval_state import CompletedApprovalState
+from sailpoint.beta.models.pending_approval_max_permitted_access_duration import PendingApprovalMaxPermittedAccessDuration
 from sailpoint.beta.models.requestable_object_reference import RequestableObjectReference
 from sailpoint.beta.models.requested_account_ref import RequestedAccountRef
 from sailpoint.beta.models.requested_item_status_requested_for import RequestedItemStatusRequestedFor
@@ -66,7 +67,8 @@ class CompletedApproval(BaseModel):
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs provided during the request.", alias="clientMetadata")
     requested_accounts: Optional[List[RequestedAccountRef]] = Field(default=None, description="The accounts selected by the user for the access to be provisioned on, in case they have multiple accounts on one or more sources.", alias="requestedAccounts")
     privilege_level: Optional[StrictStr] = Field(default=None, description="The privilege level of the requested access item, if applicable.", alias="privilegeLevel")
-    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "requestCreated", "requestType", "requester", "requestedFor", "reviewedBy", "owner", "requestedObject", "requesterComment", "reviewerComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "state", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "sodViolationContext", "preApprovalTriggerResult", "clientMetadata", "requestedAccounts", "privilegeLevel"]
+    max_permitted_access_duration: Optional[PendingApprovalMaxPermittedAccessDuration] = Field(default=None, alias="maxPermittedAccessDuration")
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "requestCreated", "requestType", "requester", "requestedFor", "reviewedBy", "owner", "requestedObject", "requesterComment", "reviewerComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "state", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "sodViolationContext", "preApprovalTriggerResult", "clientMetadata", "requestedAccounts", "privilegeLevel", "maxPermittedAccessDuration"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -155,6 +157,9 @@ class CompletedApproval(BaseModel):
                 if _item_requested_accounts:
                     _items.append(_item_requested_accounts.to_dict())
             _dict['requestedAccounts'] = _items
+        # override the default output from pydantic by calling `to_dict()` of max_permitted_access_duration
+        if self.max_permitted_access_duration:
+            _dict['maxPermittedAccessDuration'] = self.max_permitted_access_duration.to_dict()
         # set to None if request_type (nullable) is None
         # and model_fields_set contains the field
         if self.request_type is None and "request_type" in self.model_fields_set:
@@ -195,6 +200,11 @@ class CompletedApproval(BaseModel):
         if self.privilege_level is None and "privilege_level" in self.model_fields_set:
             _dict['privilegeLevel'] = None
 
+        # set to None if max_permitted_access_duration (nullable) is None
+        # and model_fields_set contains the field
+        if self.max_permitted_access_duration is None and "max_permitted_access_duration" in self.model_fields_set:
+            _dict['maxPermittedAccessDuration'] = None
+
         return _dict
 
     @classmethod
@@ -231,7 +241,8 @@ class CompletedApproval(BaseModel):
             "preApprovalTriggerResult": CompletedApprovalPreApprovalTriggerResult.from_dict(obj["preApprovalTriggerResult"]) if obj.get("preApprovalTriggerResult") is not None else None,
             "clientMetadata": obj.get("clientMetadata"),
             "requestedAccounts": [RequestedAccountRef.from_dict(_item) for _item in obj["requestedAccounts"]] if obj.get("requestedAccounts") is not None else None,
-            "privilegeLevel": obj.get("privilegeLevel")
+            "privilegeLevel": obj.get("privilegeLevel"),
+            "maxPermittedAccessDuration": PendingApprovalMaxPermittedAccessDuration.from_dict(obj["maxPermittedAccessDuration"]) if obj.get("maxPermittedAccessDuration") is not None else None
         })
         return _obj
 
