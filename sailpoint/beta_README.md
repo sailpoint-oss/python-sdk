@@ -57,15 +57,15 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.AccessModelMetadataApi(api_client)
-    key = 'iscPrivacy' # str | Technical name of the Attribute.
+    attribute_dto = sailpoint.beta.AttributeDTO() # AttributeDTO | Attribute to create
 
     try:
-        # Get access model metadata attribute
-        api_response = api_instance.get_access_model_metadata_attribute(key)
-        print("The response of AccessModelMetadataApi->get_access_model_metadata_attribute:\n")
+        # Create access model metadata attribute
+        api_response = api_instance.create_access_model_metadata_attribute(attribute_dto)
+        print("The response of AccessModelMetadataApi->create_access_model_metadata_attribute:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling AccessModelMetadataApi->get_access_model_metadata_attribute: %s\n" % e)
+        print("Exception when calling AccessModelMetadataApi->create_access_model_metadata_attribute: %s\n" % e)
 
 ```
 
@@ -75,10 +75,14 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AccessModelMetadataApi* | [**create_access_model_metadata_attribute**](sailpoint/beta/docs/AccessModelMetadataApi.md#create_access_model_metadata_attribute) | **POST** /access-model-metadata/attributes | Create access model metadata attribute
+*AccessModelMetadataApi* | [**create_access_model_metadata_attribute_value**](sailpoint/beta/docs/AccessModelMetadataApi.md#create_access_model_metadata_attribute_value) | **POST** /access-model-metadata/attributes/{key}/values | Create access model metadata value
 *AccessModelMetadataApi* | [**get_access_model_metadata_attribute**](sailpoint/beta/docs/AccessModelMetadataApi.md#get_access_model_metadata_attribute) | **GET** /access-model-metadata/attributes/{key} | Get access model metadata attribute
 *AccessModelMetadataApi* | [**get_access_model_metadata_attribute_value**](sailpoint/beta/docs/AccessModelMetadataApi.md#get_access_model_metadata_attribute_value) | **GET** /access-model-metadata/attributes/{key}/values/{value} | Get access model metadata value
 *AccessModelMetadataApi* | [**list_access_model_metadata_attribute**](sailpoint/beta/docs/AccessModelMetadataApi.md#list_access_model_metadata_attribute) | **GET** /access-model-metadata/attributes | List access model metadata attributes
 *AccessModelMetadataApi* | [**list_access_model_metadata_attribute_value**](sailpoint/beta/docs/AccessModelMetadataApi.md#list_access_model_metadata_attribute_value) | **GET** /access-model-metadata/attributes/{key}/values | List access model metadata values
+*AccessModelMetadataApi* | [**update_access_model_metadata_attribute**](sailpoint/beta/docs/AccessModelMetadataApi.md#update_access_model_metadata_attribute) | **PATCH** /access-model-metadata/attributes/{key} | Update access model metadata attribute
+*AccessModelMetadataApi* | [**update_access_model_metadata_attribute_value**](sailpoint/beta/docs/AccessModelMetadataApi.md#update_access_model_metadata_attribute_value) | **PATCH** /access-model-metadata/attributes/{key}/values/{value} | Update access model metadata value
 *AccessProfilesApi* | [**create_access_profile**](sailpoint/beta/docs/AccessProfilesApi.md#create_access_profile) | **POST** /access-profiles | Create access profile
 *AccessProfilesApi* | [**delete_access_profile**](sailpoint/beta/docs/AccessProfilesApi.md#delete_access_profile) | **DELETE** /access-profiles/{id} | Delete the specified access profile
 *AccessProfilesApi* | [**delete_access_profiles_in_bulk**](sailpoint/beta/docs/AccessProfilesApi.md#delete_access_profiles_in_bulk) | **POST** /access-profiles/bulk-delete | Delete access profile(s)

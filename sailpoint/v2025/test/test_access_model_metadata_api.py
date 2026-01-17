@@ -26,6 +26,20 @@ class TestAccessModelMetadataApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_create_access_model_metadata_attribute(self) -> None:
+        """Test case for create_access_model_metadata_attribute
+
+        Create access model metadata attribute
+        """
+        pass
+
+    def test_create_access_model_metadata_attribute_value(self) -> None:
+        """Test case for create_access_model_metadata_attribute_value
+
+        Create access model metadata value
+        """
+        pass
+
     def test_get_access_model_metadata_attribute(self) -> None:
         """Test case for get_access_model_metadata_attribute
 
@@ -51,6 +65,20 @@ class TestAccessModelMetadataApi(unittest.TestCase):
         """Test case for list_access_model_metadata_attribute_value
 
         List access model metadata values
+        """
+        pass
+
+    def test_update_access_model_metadata_attribute(self) -> None:
+        """Test case for update_access_model_metadata_attribute
+
+        Update access model metadata attribute
+        """
+        pass
+
+    def test_update_access_model_metadata_attribute_value(self) -> None:
+        """Test case for update_access_model_metadata_attribute_value
+
+        Update access model metadata value
         """
         pass
 

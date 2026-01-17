@@ -57,15 +57,15 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with sailpoint.v2025.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.v2025.AccessModelMetadataApi(api_client)
-    key = 'iscPrivacy' # str | Technical name of the Attribute.
+    attribute_dto = sailpoint.v2025.AttributeDTO() # AttributeDTO | Attribute to create
 
     try:
-        # Get access model metadata attribute
-        api_response = api_instance.get_access_model_metadata_attribute(key)
-        print("The response of AccessModelMetadataApi->get_access_model_metadata_attribute:\n")
+        # Create access model metadata attribute
+        api_response = api_instance.create_access_model_metadata_attribute(attribute_dto)
+        print("The response of AccessModelMetadataApi->create_access_model_metadata_attribute:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling AccessModelMetadataApi->get_access_model_metadata_attribute: %s\n" % e)
+        print("Exception when calling AccessModelMetadataApi->create_access_model_metadata_attribute: %s\n" % e)
 
 ```
 
@@ -75,10 +75,14 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2025*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AccessModelMetadataApi* | [**create_access_model_metadata_attribute**](sailpoint/v2025/docs/AccessModelMetadataApi.md#create_access_model_metadata_attribute) | **POST** /access-model-metadata/attributes | Create access model metadata attribute
+*AccessModelMetadataApi* | [**create_access_model_metadata_attribute_value**](sailpoint/v2025/docs/AccessModelMetadataApi.md#create_access_model_metadata_attribute_value) | **POST** /access-model-metadata/attributes/{key}/values | Create access model metadata value
 *AccessModelMetadataApi* | [**get_access_model_metadata_attribute**](sailpoint/v2025/docs/AccessModelMetadataApi.md#get_access_model_metadata_attribute) | **GET** /access-model-metadata/attributes/{key} | Get access model metadata attribute
 *AccessModelMetadataApi* | [**get_access_model_metadata_attribute_value**](sailpoint/v2025/docs/AccessModelMetadataApi.md#get_access_model_metadata_attribute_value) | **GET** /access-model-metadata/attributes/{key}/values/{value} | Get access model metadata value
 *AccessModelMetadataApi* | [**list_access_model_metadata_attribute**](sailpoint/v2025/docs/AccessModelMetadataApi.md#list_access_model_metadata_attribute) | **GET** /access-model-metadata/attributes | List access model metadata attributes
 *AccessModelMetadataApi* | [**list_access_model_metadata_attribute_value**](sailpoint/v2025/docs/AccessModelMetadataApi.md#list_access_model_metadata_attribute_value) | **GET** /access-model-metadata/attributes/{key}/values | List access model metadata values
+*AccessModelMetadataApi* | [**update_access_model_metadata_attribute**](sailpoint/v2025/docs/AccessModelMetadataApi.md#update_access_model_metadata_attribute) | **PATCH** /access-model-metadata/attributes/{key} | Update access model metadata attribute
+*AccessModelMetadataApi* | [**update_access_model_metadata_attribute_value**](sailpoint/v2025/docs/AccessModelMetadataApi.md#update_access_model_metadata_attribute_value) | **PATCH** /access-model-metadata/attributes/{key}/values/{value} | Update access model metadata value
 *AccessModelMetadataApi* | [**update_access_model_metadata_by_filter**](sailpoint/v2025/docs/AccessModelMetadataApi.md#update_access_model_metadata_by_filter) | **POST** /access-model-metadata/bulk-update/filter | Metadata Attribute update by filter
 *AccessModelMetadataApi* | [**update_access_model_metadata_by_ids**](sailpoint/v2025/docs/AccessModelMetadataApi.md#update_access_model_metadata_by_ids) | **POST** /access-model-metadata/bulk-update/ids | Metadata Attribute update by ids
 *AccessModelMetadataApi* | [**update_access_model_metadata_by_query**](sailpoint/v2025/docs/AccessModelMetadataApi.md#update_access_model_metadata_by_query) | **POST** /access-model-metadata/bulk-update/query | Metadata Attribute update by query
