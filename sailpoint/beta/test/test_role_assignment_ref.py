@@ -39,7 +39,8 @@ class TestRoleAssignmentRef(unittest.TestCase):
                 role = sailpoint.beta.models.base_reference_dto.Base Reference Dto(
                     id = 'ff8081814d977c21014da056804a0af3', 
                     name = 'Github', ),
-                added_date = '2025-07-11T18:45:37.098Z'
+                added_date = '2025-07-11T18:45:37.098Z',
+                remove_date = '2026-01-23T19:15Z'
             )
         else:
             return RoleAssignmentRef(
