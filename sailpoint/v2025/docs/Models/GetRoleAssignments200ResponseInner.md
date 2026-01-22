@@ -19,13 +19,13 @@ Name | Type | Description | Notes
 **id** | **str** | Assignment Id | [optional] 
 **role** | [**BaseReferenceDto**](base-reference-dto) |  | [optional] 
 **added_date** | **datetime** | Date that the assignment was added | [optional] 
+**remove_date** | **datetime** | Date that the assignment will be removed | [optional] 
 **comments** | **str** | Comments added by the user when the assignment was made | [optional] 
 **assignment_source** | **str** | Source describing how this assignment was made | [optional] 
 **assigner** | [**RoleAssignmentDtoAssigner**](role-assignment-dto-assigner) |  | [optional] 
 **assigned_dimensions** | [**[]BaseReferenceDto**](base-reference-dto) | Dimensions assigned related to this role | [optional] 
 **assignment_context** | [**RoleAssignmentDtoAssignmentContext**](role-assignment-dto-assignment-context) |  | [optional] 
 **account_targets** | [**[]RoleTargetDto**](role-target-dto) |  | [optional] 
-**remove_date** | **datetime** | Date that the assignment will be removed | [optional] 
 }
 
 ## Example
@@ -40,6 +40,7 @@ role=sailpoint.v2025.models.base_reference_dto.Base Reference Dto(
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
 added_date='2025-07-11T18:45:37.098Z',
+remove_date='2026-07-11T18:45:37.098Z',
 comments='I'm a new Engineer and need this role to do my work',
 assignment_source='UI',
 assigner=sailpoint.v2025.models.role_assignment_dto_assigner.RoleAssignmentDto_assigner(
@@ -59,8 +60,7 @@ account_targets=[
                             display_name = 'Abby.Smith', 
                             uuid = '{ad9fc391-246d-40af-b248-b6556a2b7c01}', ), 
                         role_name = 'Marketing', )
-                    ],
-remove_date='2026-07-11T18:45:37.098Z'
+                    ]
 )
 
 ```

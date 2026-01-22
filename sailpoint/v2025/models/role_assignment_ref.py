@@ -32,7 +32,8 @@ class RoleAssignmentRef(BaseModel):
     id: Optional[StrictStr] = Field(default=None, description="Assignment Id")
     role: Optional[BaseReferenceDto] = None
     added_date: Optional[datetime] = Field(default=None, description="Date that the assignment was added", alias="addedDate")
-    __properties: ClassVar[List[str]] = ["id", "role", "addedDate"]
+    remove_date: Optional[datetime] = Field(default=None, description="Date that the assignment will be removed", alias="removeDate")
+    __properties: ClassVar[List[str]] = ["id", "role", "addedDate", "removeDate"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -76,6 +77,11 @@ class RoleAssignmentRef(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of role
         if self.role:
             _dict['role'] = self.role.to_dict()
+        # set to None if remove_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.remove_date is None and "remove_date" in self.model_fields_set:
+            _dict['removeDate'] = None
+
         return _dict
 
     @classmethod
@@ -90,7 +96,8 @@ class RoleAssignmentRef(BaseModel):
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "role": BaseReferenceDto.from_dict(obj["role"]) if obj.get("role") is not None else None,
-            "addedDate": obj.get("addedDate")
+            "addedDate": obj.get("addedDate"),
+            "removeDate": obj.get("removeDate")
         })
         return _obj
 
