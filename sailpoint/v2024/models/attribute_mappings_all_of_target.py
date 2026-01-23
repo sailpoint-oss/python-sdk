@@ -38,8 +38,8 @@ class AttributeMappingsAllOfTarget(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['IDENTITY']):
-            warnings.warn(f"must be one of enum values ('IDENTITY') unknown value: {value}")
+        if value not in set(['ACCOUNT', 'IDENTITY', 'OWNER_ACCOUNT', 'OWNER_IDENTITY']):
+            warnings.warn(f"must be one of enum values ('ACCOUNT', 'IDENTITY', 'OWNER_ACCOUNT', 'OWNER_IDENTITY') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

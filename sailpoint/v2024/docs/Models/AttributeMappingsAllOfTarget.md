@@ -17,7 +17,7 @@ Targeted Entity
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** |  **Enum** [  'IDENTITY' ] | The type of target entity | [optional] 
+**type** |  **Enum** [  'ACCOUNT',    'IDENTITY',    'OWNER_ACCOUNT',    'OWNER_IDENTITY' ] | The type of target entity | [optional] 
 **attribute_name** | **str** | Name of the targeted attribute | [optional] 
 **source_id** | **str** | The ID of Source | [optional] 
 }
