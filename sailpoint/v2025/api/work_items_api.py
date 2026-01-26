@@ -930,7 +930,6 @@ class WorkItemsApi:
         self,
         id: Annotated[StrictStr, Field(description="The ID of the work item")],
         work_item_forward: WorkItemForward,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -950,8 +949,6 @@ class WorkItemsApi:
 
         :param id: The ID of the work item (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param work_item_forward: (required)
         :type work_item_forward: WorkItemForward
         :param _request_timeout: timeout setting for this request. If one
@@ -978,7 +975,6 @@ class WorkItemsApi:
 
         _param = self._forward_work_item_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             work_item_forward=work_item_forward,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1010,7 +1006,6 @@ class WorkItemsApi:
         self,
         id: Annotated[StrictStr, Field(description="The ID of the work item")],
         work_item_forward: WorkItemForward,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1030,8 +1025,6 @@ class WorkItemsApi:
 
         :param id: The ID of the work item (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param work_item_forward: (required)
         :type work_item_forward: WorkItemForward
         :param _request_timeout: timeout setting for this request. If one
@@ -1058,7 +1051,6 @@ class WorkItemsApi:
 
         _param = self._forward_work_item_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             work_item_forward=work_item_forward,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1090,7 +1082,6 @@ class WorkItemsApi:
         self,
         id: Annotated[StrictStr, Field(description="The ID of the work item")],
         work_item_forward: WorkItemForward,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1110,8 +1101,6 @@ class WorkItemsApi:
 
         :param id: The ID of the work item (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param work_item_forward: (required)
         :type work_item_forward: WorkItemForward
         :param _request_timeout: timeout setting for this request. If one
@@ -1138,7 +1127,6 @@ class WorkItemsApi:
 
         _param = self._forward_work_item_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             work_item_forward=work_item_forward,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1164,7 +1152,6 @@ class WorkItemsApi:
     def _forward_work_item_serialize(
         self,
         id,
-        x_sail_point_experimental,
         work_item_forward,
         _request_auth,
         _content_type,
@@ -1191,8 +1178,6 @@ class WorkItemsApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if work_item_forward is not None:
@@ -1579,7 +1564,6 @@ class WorkItemsApi:
     def get_count_completed_work_items(
         self,
         owner_id: Annotated[Optional[StrictStr], Field(description="ID of the work item owner.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1597,8 +1581,6 @@ class WorkItemsApi:
 
         This gets a count of completed work items belonging to either the specified user(admin required), or the current user.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param owner_id: ID of the work item owner.
         :type owner_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1624,7 +1606,6 @@ class WorkItemsApi:
         """ # noqa: E501
 
         _param = self._get_count_completed_work_items_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             owner_id=owner_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1653,7 +1634,6 @@ class WorkItemsApi:
     def get_count_completed_work_items_with_http_info(
         self,
         owner_id: Annotated[Optional[StrictStr], Field(description="ID of the work item owner.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1671,8 +1651,6 @@ class WorkItemsApi:
 
         This gets a count of completed work items belonging to either the specified user(admin required), or the current user.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param owner_id: ID of the work item owner.
         :type owner_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1698,7 +1676,6 @@ class WorkItemsApi:
         """ # noqa: E501
 
         _param = self._get_count_completed_work_items_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             owner_id=owner_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1727,7 +1704,6 @@ class WorkItemsApi:
     def get_count_completed_work_items_without_preload_content(
         self,
         owner_id: Annotated[Optional[StrictStr], Field(description="ID of the work item owner.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1745,8 +1721,6 @@ class WorkItemsApi:
 
         This gets a count of completed work items belonging to either the specified user(admin required), or the current user.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param owner_id: ID of the work item owner.
         :type owner_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1772,7 +1746,6 @@ class WorkItemsApi:
         """ # noqa: E501
 
         _param = self._get_count_completed_work_items_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             owner_id=owner_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1795,7 +1768,6 @@ class WorkItemsApi:
 
     def _get_count_completed_work_items_serialize(
         self,
-        x_sail_point_experimental,
         owner_id,
         _request_auth,
         _content_type,
@@ -1824,8 +1796,6 @@ class WorkItemsApi:
             _query_params.append(('ownerId', owner_id))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 

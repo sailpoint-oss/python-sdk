@@ -226,17 +226,6 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## forward-work-item
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 Forward a work item
 This API forwards a work item to a new owner. Either an admin, or the owning/current user must make this request.
 
@@ -247,7 +236,6 @@ This API forwards a work item to a new owner. Either an admin, or the owning/cur
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The ID of the work item
-   | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
  Body  | work_item_forward | [**WorkItemForward**](../models/work-item-forward) | True  | 
 
 ### Return type
@@ -276,11 +264,9 @@ from sailpoint.v2025.models.work_item_forward import WorkItemForward
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
-configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item # str | The ID of the work item
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
     work_item_forward = '''{
           "targetOwnerId" : "2c9180835d2e5168015d32f890ca1581",
           "comment" : "I'm going on vacation.",
@@ -290,9 +276,9 @@ with ApiClient(configuration) as api_client:
     try:
         # Forward a work item
         new_work_item_forward = WorkItemForward.from_json(work_item_forward)
-        WorkItemsApi(api_client).forward_work_item(id=id, x_sail_point_experimental=x_sail_point_experimental, work_item_forward=new_work_item_forward)
+        WorkItemsApi(api_client).forward_work_item(id=id, work_item_forward=new_work_item_forward)
         # Below is a request that includes all optional parameters
-        # WorkItemsApi(api_client).forward_work_item(id, x_sail_point_experimental, new_work_item_forward)
+        # WorkItemsApi(api_client).forward_work_item(id, new_work_item_forward)
     except Exception as e:
         print("Exception when calling WorkItemsApi->forward_work_item: %s\n" % e)
 ```
@@ -367,17 +353,6 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## get-count-completed-work-items
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 Count completed work items
 This gets a count of completed work items belonging to either the specified user(admin required), or the current user.
 
@@ -387,7 +362,6 @@ This gets a count of completed work items belonging to either the specified user
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
-   | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
   Query | owner_id | **str** |   (optional) | ID of the work item owner.
 
 ### Return type
@@ -414,18 +388,16 @@ from sailpoint.v2025.models.work_items_count import WorkItemsCount
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
-configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
     owner_id = 'owner_id_example' # str | ID of the work item owner. (optional) # str | ID of the work item owner. (optional)
 
     try:
         # Count completed work items
         
-        results = WorkItemsApi(api_client).get_count_completed_work_items(x_sail_point_experimental=x_sail_point_experimental)
+        results = WorkItemsApi(api_client).get_count_completed_work_items()
         # Below is a request that includes all optional parameters
-        # results = WorkItemsApi(api_client).get_count_completed_work_items(x_sail_point_experimental, owner_id)
+        # results = WorkItemsApi(api_client).get_count_completed_work_items(owner_id)
         print("The response of WorkItemsApi->get_count_completed_work_items:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
