@@ -106,7 +106,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlement",
+            '201': "Entitlement",
             '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
@@ -186,7 +186,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlement",
+            '201': "Entitlement",
             '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
@@ -266,7 +266,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlement",
+            '201': "Entitlement",
             '400': "ErrorResponseDto",
             '401': "ListAccessModelMetadataAttribute401Response",
             '403': "ErrorResponseDto",
