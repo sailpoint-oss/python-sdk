@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **comments_required** | **bool** | Whether the requester of the containing object must provide comments justifying the request | [optional] [default to False]
 **denial_comments_required** | **bool** | Whether an approver must provide comments when denying the request | [optional] [default to False]
 **reauthorization_required** | **bool** | Indicates whether reauthorization is required for the request. | [optional] [default to False]
+**require_end_date** | **bool** | Indicates whether the requester of the containing object must provide access end date. | [optional] [default to False]
+**max_permitted_access_duration** | [**AccessDuration**](access-duration) |  | [optional] 
 **approval_schemes** | [**[]ApprovalSchemeForRole**](approval-scheme-for-role) | List describing the steps in approving the request | [optional] 
 }
 
@@ -31,6 +33,10 @@ requestability_for_role = RequestabilityForRole(
 comments_required=True,
 denial_comments_required=True,
 reauthorization_required=True,
+require_end_date=True,
+max_permitted_access_duration=sailpoint.beta.models.access_duration.AccessDuration(
+                    value = 6, 
+                    time_unit = 'MONTHS', ),
 approval_schemes=[
                     sailpoint.beta.models.approval_scheme_for_role.ApprovalSchemeForRole(
                         approver_type = 'GOVERNANCE_GROUP', 

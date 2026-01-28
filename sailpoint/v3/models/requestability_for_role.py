@@ -20,6 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.v3.models.access_duration import AccessDuration
 from sailpoint.v3.models.approval_scheme_for_role import ApprovalSchemeForRole
 from typing import Optional, Set
 from typing_extensions import Self
@@ -31,8 +32,10 @@ class RequestabilityForRole(BaseModel):
     comments_required: Optional[StrictBool] = Field(default=False, description="Whether the requester of the containing object must provide comments justifying the request", alias="commentsRequired")
     denial_comments_required: Optional[StrictBool] = Field(default=False, description="Whether an approver must provide comments when denying the request", alias="denialCommentsRequired")
     reauthorization_required: Optional[StrictBool] = Field(default=False, description="Indicates whether reauthorization is required for the request.", alias="reauthorizationRequired")
+    require_end_date: Optional[StrictBool] = Field(default=False, description="Indicates whether the requester of the containing object must provide access end date.", alias="requireEndDate")
+    max_permitted_access_duration: Optional[AccessDuration] = Field(default=None, alias="maxPermittedAccessDuration")
     approval_schemes: Optional[List[ApprovalSchemeForRole]] = Field(default=None, description="List describing the steps in approving the request", alias="approvalSchemes")
-    __properties: ClassVar[List[str]] = ["commentsRequired", "denialCommentsRequired", "reauthorizationRequired", "approvalSchemes"]
+    __properties: ClassVar[List[str]] = ["commentsRequired", "denialCommentsRequired", "reauthorizationRequired", "requireEndDate", "maxPermittedAccessDuration", "approvalSchemes"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -73,6 +76,9 @@ class RequestabilityForRole(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of max_permitted_access_duration
+        if self.max_permitted_access_duration:
+            _dict['maxPermittedAccessDuration'] = self.max_permitted_access_duration.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in approval_schemes (list)
         _items = []
         if self.approval_schemes:
@@ -95,6 +101,11 @@ class RequestabilityForRole(BaseModel):
         if self.reauthorization_required is None and "reauthorization_required" in self.model_fields_set:
             _dict['reauthorizationRequired'] = None
 
+        # set to None if max_permitted_access_duration (nullable) is None
+        # and model_fields_set contains the field
+        if self.max_permitted_access_duration is None and "max_permitted_access_duration" in self.model_fields_set:
+            _dict['maxPermittedAccessDuration'] = None
+
         return _dict
 
     @classmethod
@@ -110,6 +121,8 @@ class RequestabilityForRole(BaseModel):
             "commentsRequired": obj.get("commentsRequired") if obj.get("commentsRequired") is not None else False,
             "denialCommentsRequired": obj.get("denialCommentsRequired") if obj.get("denialCommentsRequired") is not None else False,
             "reauthorizationRequired": obj.get("reauthorizationRequired") if obj.get("reauthorizationRequired") is not None else False,
+            "requireEndDate": obj.get("requireEndDate") if obj.get("requireEndDate") is not None else False,
+            "maxPermittedAccessDuration": AccessDuration.from_dict(obj["maxPermittedAccessDuration"]) if obj.get("maxPermittedAccessDuration") is not None else None,
             "approvalSchemes": [ApprovalSchemeForRole.from_dict(_item) for _item in obj["approvalSchemes"]] if obj.get("approvalSchemes") is not None else None
         })
         return _obj

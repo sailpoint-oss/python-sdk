@@ -82,6 +82,10 @@ class TestRole(unittest.TestCase):
                     comments_required = True, 
                     denial_comments_required = True, 
                     reauthorization_required = True, 
+                    require_end_date = True, 
+                    max_permitted_access_duration = sailpoint.v2025.models.access_duration.AccessDuration(
+                        value = 6, 
+                        time_unit = 'MONTHS', ), 
                     approval_schemes = [
                         sailpoint.v2025.models.approval_scheme_for_role.ApprovalSchemeForRole(
                             approver_type = 'GOVERNANCE_GROUP', 
