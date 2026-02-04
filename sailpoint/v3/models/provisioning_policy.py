@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v3.models.field_details_dto import FieldDetailsDto
 from sailpoint.v3.models.usage_type import UsageType
 from typing import Optional, Set
@@ -31,7 +31,7 @@ class ProvisioningPolicy(BaseModel):
     """ # noqa: E501
     name: Optional[StrictStr] = Field(description="the provisioning policy name")
     description: Optional[StrictStr] = Field(default=None, description="the description of the provisioning policy")
-    usage_type: Optional[Union[UsageType, str]] = Field(default=None, alias="usageType")
+    usage_type: Optional[UsageType] = Field(default=None, alias="usageType")
     fields: Optional[List[FieldDetailsDto]] = None
     __properties: ClassVar[List[str]] = ["name", "description", "usageType", "fields"]
 

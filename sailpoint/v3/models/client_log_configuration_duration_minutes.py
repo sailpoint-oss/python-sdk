@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from sailpoint.v3.models.standard_level import StandardLevel
 from typing import Optional, Set
@@ -31,8 +31,8 @@ class ClientLogConfigurationDurationMinutes(BaseModel):
     """ # noqa: E501
     client_id: Optional[StrictStr] = Field(default=None, description="Log configuration's client ID", alias="clientId")
     duration_minutes: Optional[Annotated[int, Field(le=1440, strict=True, ge=5)]] = Field(default=240, description="Duration in minutes for log configuration to remain in effect before resetting to defaults.", alias="durationMinutes")
-    root_level: Union[StandardLevel, str] = Field(alias="rootLevel")
-    log_levels: Optional[Dict[str, Union[StandardLevel, str]]] = Field(default=None, description="Mapping of identifiers to Standard Log Level values", alias="logLevels")
+    root_level: StandardLevel = Field(alias="rootLevel")
+    log_levels: Optional[Dict[str, StandardLevel]] = Field(default=None, description="Mapping of identifiers to Standard Log Level values", alias="logLevels")
     __properties: ClassVar[List[str]] = ["clientId", "durationMinutes", "rootLevel", "logLevels"]
 
     model_config = ConfigDict(

@@ -20,7 +20,7 @@ import warnings
 
 from datetime import date, datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v3.models.approval_status import ApprovalStatus
 from sailpoint.v3.models.non_employee_identity_reference_with_id import NonEmployeeIdentityReferenceWithId
 from sailpoint.v3.models.non_employee_source_lite_with_schema_attributes import NonEmployeeSourceLiteWithSchemaAttributes
@@ -41,7 +41,7 @@ class NonEmployeeRequestWithoutApprovalItem(BaseModel):
     manager: Optional[StrictStr] = Field(default=None, description="The account ID of a valid identity to serve as this non-employee's manager.")
     non_employee_source: Optional[NonEmployeeSourceLiteWithSchemaAttributes] = Field(default=None, alias="nonEmployeeSource")
     data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Additional attributes for a non-employee. Up to 10 custom attributes can be added.")
-    approval_status: Optional[Union[ApprovalStatus, str]] = Field(default=None, alias="approvalStatus")
+    approval_status: Optional[ApprovalStatus] = Field(default=None, alias="approvalStatus")
     comment: Optional[StrictStr] = Field(default=None, description="Comment of requester")
     completion_date: Optional[datetime] = Field(default=None, description="When the request was completely approved.", alias="completionDate")
     start_date: Optional[date] = Field(default=None, description="Non-Employee employment start date.", alias="startDate")

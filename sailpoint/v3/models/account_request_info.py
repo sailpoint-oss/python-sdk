@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v3.models.requestable_object_type import RequestableObjectType
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,7 +30,7 @@ class AccountRequestInfo(BaseModel):
     """ # noqa: E501
     requested_object_id: Optional[StrictStr] = Field(default=None, description="Id of requested object", alias="requestedObjectId")
     requested_object_name: Optional[StrictStr] = Field(default=None, description="Human-readable name of requested object", alias="requestedObjectName")
-    requested_object_type: Optional[Union[RequestableObjectType, str]] = Field(default=None, alias="requestedObjectType")
+    requested_object_type: Optional[RequestableObjectType] = Field(default=None, alias="requestedObjectType")
     __properties: ClassVar[List[str]] = ["requestedObjectId", "requestedObjectName", "requestedObjectType"]
 
     model_config = ConfigDict(

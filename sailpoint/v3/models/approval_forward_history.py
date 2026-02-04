@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v3.models.reassignment_type import ReassignmentType
 from typing import Optional, Set
 from typing_extensions import Self
@@ -34,7 +34,7 @@ class ApprovalForwardHistory(BaseModel):
     comment: Optional[StrictStr] = Field(default=None, description="Comment made while forwarding.")
     modified: Optional[datetime] = Field(default=None, description="Time at which approval was forwarded.")
     forwarder_name: Optional[StrictStr] = Field(default=None, description="Display name of forwarder who forwarded the approval.", alias="forwarderName")
-    reassignment_type: Optional[Union[ReassignmentType, str]] = Field(default=None, alias="reassignmentType")
+    reassignment_type: Optional[ReassignmentType] = Field(default=None, alias="reassignmentType")
     __properties: ClassVar[List[str]] = ["oldApproverName", "newApproverName", "comment", "modified", "forwarderName", "reassignmentType"]
 
     model_config = ConfigDict(
