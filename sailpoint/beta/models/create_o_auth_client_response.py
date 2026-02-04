@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.beta.models.access_type import AccessType
 from sailpoint.beta.models.client_type import ClientType
 from sailpoint.beta.models.grant_type import GrantType
@@ -40,8 +40,8 @@ class CreateOAuthClientResponse(BaseModel):
     access_token_validity_seconds: StrictInt = Field(description="The number of seconds an access token generated for this API Client is valid for", alias="accessTokenValiditySeconds")
     refresh_token_validity_seconds: StrictInt = Field(description="The number of seconds a refresh token generated for this API Client is valid for", alias="refreshTokenValiditySeconds")
     redirect_uris: List[StrictStr] = Field(description="A list of the approved redirect URIs used with the authorization_code flow", alias="redirectUris")
-    grant_types: List[GrantType] = Field(description="A list of OAuth 2.0 grant types this API Client can be used with", alias="grantTypes")
-    access_type: AccessType = Field(alias="accessType")
+    grant_types: List[Union[GrantType, str]] = Field(description="A list of OAuth 2.0 grant types this API Client can be used with", alias="grantTypes")
+    access_type: Union[AccessType, str] = Field(alias="accessType")
     type: ClientType
     internal: StrictBool = Field(description="An indicator of whether the API Client can be used for requests internal to IDN")
     enabled: StrictBool = Field(description="An indicator of whether the API Client is enabled for use")

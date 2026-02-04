@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.beta.models.work_item_state import WorkItemState
 from typing import Optional, Set
 from typing_extensions import Self
@@ -34,7 +34,7 @@ class ApprovalItemDetails(BaseModel):
     name: Optional[StrictStr] = Field(default=None, description="The attribute's name")
     operation: Optional[StrictStr] = Field(default=None, description="The attribute's operation")
     value: Optional[StrictStr] = Field(default=None, description="The attribute's value")
-    state: Optional[WorkItemState] = None
+    state: Optional[Union[WorkItemState, str]] = None
     __properties: ClassVar[List[str]] = ["id", "account", "application", "name", "operation", "value", "state"]
 
     model_config = ConfigDict(

@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2025.models.report_type import ReportType
 from typing import Optional, Set
 from typing_extensions import Self
@@ -33,7 +33,7 @@ class CampaignReport(BaseModel):
     id: Optional[StrictStr] = Field(default=None, description="SOD policy violation report result ID.")
     name: Optional[StrictStr] = Field(default=None, description="Human-readable name of the SOD policy violation report result.")
     status: Optional[StrictStr] = Field(default=None, description="Status of a SOD policy violation report.")
-    report_type: ReportType = Field(alias="reportType")
+    report_type: Union[ReportType, str] = Field(alias="reportType")
     last_run_at: Optional[datetime] = Field(default=None, description="The most recent date and time this report was run", alias="lastRunAt")
     __properties: ClassVar[List[str]] = ["type", "id", "name", "status", "reportType", "lastRunAt"]
 

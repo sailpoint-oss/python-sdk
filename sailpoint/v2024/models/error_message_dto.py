@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2024.models.locale_origin import LocaleOrigin
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,7 +29,7 @@ class ErrorMessageDto(BaseModel):
     ErrorMessageDto
     """ # noqa: E501
     locale: Optional[StrictStr] = Field(default=None, description="The locale for the message text, a BCP 47 language tag.")
-    locale_origin: Optional[LocaleOrigin] = Field(default=None, alias="localeOrigin")
+    locale_origin: Optional[Union[LocaleOrigin, str]] = Field(default=None, alias="localeOrigin")
     text: Optional[StrictStr] = Field(default=None, description="Actual text of the error message in the indicated locale.")
     __properties: ClassVar[List[str]] = ["locale", "localeOrigin", "text"]
 

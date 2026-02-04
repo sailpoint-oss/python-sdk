@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v3.models.role_criteria_key import RoleCriteriaKey
 from sailpoint.v3.models.role_criteria_operation import RoleCriteriaOperation
 from typing import Optional, Set
@@ -29,7 +29,7 @@ class RoleCriteriaLevel3(BaseModel):
     """
     Defines STANDARD type Role membership
     """ # noqa: E501
-    operation: Optional[RoleCriteriaOperation] = None
+    operation: Optional[Union[RoleCriteriaOperation, str]] = None
     key: Optional[RoleCriteriaKey] = None
     string_value: Optional[StrictStr] = Field(default=None, description="String value to test the Identity attribute, Account attribute, or Entitlement specified in the key w/r/t the specified operation. If this criteria is a leaf node, that is, if the operation is one of EQUALS, NOT_EQUALS, CONTAINS, STARTS_WITH, or ENDS_WITH, this field is required. Otherwise, specifying it is an error.", alias="stringValue")
     __properties: ClassVar[List[str]] = ["operation", "key", "stringValue"]

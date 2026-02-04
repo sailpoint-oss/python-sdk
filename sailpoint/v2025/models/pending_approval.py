@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2025.models.access_item_requested_for import AccessItemRequestedFor
 from sailpoint.v2025.models.access_item_requester import AccessItemRequester
 from sailpoint.v2025.models.access_request_type import AccessRequestType
@@ -45,7 +45,7 @@ class PendingApproval(BaseModel):
     created: Optional[datetime] = Field(default=None, description="When the approval was created.")
     modified: Optional[datetime] = Field(default=None, description="When the approval was modified last time.")
     request_created: Optional[datetime] = Field(default=None, description="When the access-request was created.", alias="requestCreated")
-    request_type: Optional[AccessRequestType] = Field(default=None, alias="requestType")
+    request_type: Optional[Union[AccessRequestType, str]] = Field(default=None, alias="requestType")
     requester: Optional[AccessItemRequester] = None
     requested_for: Optional[AccessItemRequestedFor] = Field(default=None, alias="requestedFor")
     owner: Optional[PendingApprovalOwner] = None
@@ -54,7 +54,7 @@ class PendingApproval(BaseModel):
     previous_reviewers_comments: Optional[List[CommentDto]] = Field(default=None, description="The history of the previous reviewers comments.", alias="previousReviewersComments")
     forward_history: Optional[List[ApprovalForwardHistory]] = Field(default=None, description="The history of approval forward action.", alias="forwardHistory")
     comment_required_when_rejected: Optional[StrictBool] = Field(default=False, description="When true the rejector has to provide comments when rejecting", alias="commentRequiredWhenRejected")
-    action_in_process: Optional[PendingApprovalAction] = Field(default=None, alias="actionInProcess")
+    action_in_process: Optional[Union[PendingApprovalAction, str]] = Field(default=None, alias="actionInProcess")
     remove_date: Optional[datetime] = Field(default=None, description="The date the role or access profile or entitlement is no longer assigned to the specified identity.", alias="removeDate")
     remove_date_update_requested: Optional[StrictBool] = Field(default=False, description="If true, then the request is to change the remove date or sunset date.", alias="removeDateUpdateRequested")
     current_remove_date: Optional[datetime] = Field(default=None, description="The remove date or sunset date that was assigned at the time of the request.", alias="currentRemoveDate")

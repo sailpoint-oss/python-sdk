@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2025.models.account_activity_approval_status import AccountActivityApprovalStatus
 from sailpoint.v2025.models.account_activity_item_operation import AccountActivityItemOperation
 from sailpoint.v2025.models.account_request_info import AccountRequestInfo
@@ -37,12 +37,12 @@ class AccountActivityItem(BaseModel):
     id: Optional[StrictStr] = Field(default=None, description="Item id")
     name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of item")
     requested: Optional[datetime] = Field(default=None, description="Date and time item was requested")
-    approval_status: Optional[AccountActivityApprovalStatus] = Field(default=None, alias="approvalStatus")
-    provisioning_status: Optional[ProvisioningState] = Field(default=None, alias="provisioningStatus")
+    approval_status: Optional[Union[AccountActivityApprovalStatus, str]] = Field(default=None, alias="approvalStatus")
+    provisioning_status: Optional[Union[ProvisioningState, str]] = Field(default=None, alias="provisioningStatus")
     requester_comment: Optional[Comment] = Field(default=None, alias="requesterComment")
     reviewer_identity_summary: Optional[IdentitySummary] = Field(default=None, alias="reviewerIdentitySummary")
     reviewer_comment: Optional[Comment] = Field(default=None, alias="reviewerComment")
-    operation: Optional[AccountActivityItemOperation] = None
+    operation: Optional[Union[AccountActivityItemOperation, str]] = None
     attribute: Optional[StrictStr] = Field(default=None, description="Attribute to which account activity applies")
     value: Optional[StrictStr] = Field(default=None, description="Value of attribute")
     native_identity: Optional[StrictStr] = Field(default=None, description="Native identity in the target system to which the account activity applies", alias="nativeIdentity")

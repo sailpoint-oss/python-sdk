@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.beta.models.managed_client_status_enum import ManagedClientStatusEnum
 from sailpoint.beta.models.managed_client_type import ManagedClientType
 from typing import Optional, Set
@@ -32,7 +32,7 @@ class ManagedClientStatus(BaseModel):
     """ # noqa: E501
     body: Dict[str, Any] = Field(description="ManagedClientStatus body information")
     status: ManagedClientStatusEnum
-    type: Optional[ManagedClientType]
+    type: Optional[Union[ManagedClientType, str]]
     timestamp: datetime = Field(description="timestamp on the Client Status update")
     __properties: ClassVar[List[str]] = ["body", "status", "type", "timestamp"]
 

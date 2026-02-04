@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v3.models.role_assignment_source_type import RoleAssignmentSourceType
 from typing import Optional, Set
 from typing_extensions import Self
@@ -32,7 +32,7 @@ class RoleIdentity(BaseModel):
     alias_name: Optional[StrictStr] = Field(default=None, description="The alias / username of the Identity", alias="aliasName")
     name: Optional[StrictStr] = Field(default=None, description="The human-readable display name of the Identity")
     email: Optional[StrictStr] = Field(default=None, description="Email address of the Identity")
-    role_assignment_source: Optional[RoleAssignmentSourceType] = Field(default=None, alias="roleAssignmentSource")
+    role_assignment_source: Optional[Union[RoleAssignmentSourceType, str]] = Field(default=None, alias="roleAssignmentSource")
     __properties: ClassVar[List[str]] = ["id", "aliasName", "name", "email", "roleAssignmentSource"]
 
     model_config = ConfigDict(

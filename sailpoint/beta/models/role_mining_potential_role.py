@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.beta.models.role_mining_identity_distribution import RoleMiningIdentityDistribution
 from sailpoint.beta.models.role_mining_potential_role_provision_state import RoleMiningPotentialRoleProvisionState
 from sailpoint.beta.models.role_mining_role_type import RoleMiningRoleType
@@ -43,12 +43,12 @@ class RoleMiningPotentialRole(BaseModel):
     identity_distribution: Optional[List[RoleMiningIdentityDistribution]] = Field(default=None, description="Identity attribute distribution.", alias="identityDistribution")
     identity_ids: Optional[List[StrictStr]] = Field(default=None, description="The list of ids in a potential role.", alias="identityIds")
     name: Optional[StrictStr] = Field(default=None, description="Name of the potential role.")
-    provision_state: Optional[RoleMiningPotentialRoleProvisionState] = Field(default=None, alias="provisionState")
+    provision_state: Optional[Union[RoleMiningPotentialRoleProvisionState, str]] = Field(default=None, alias="provisionState")
     quality: Optional[StrictInt] = Field(default=None, description="The quality of a potential role.")
     role_id: Optional[StrictStr] = Field(default=None, description="The roleId of a potential role.", alias="roleId")
     saved: Optional[StrictBool] = Field(default=None, description="The potential role's saved status.")
     session: Optional[RoleMiningSessionParametersDto] = None
-    type: Optional[RoleMiningRoleType] = None
+    type: Optional[Union[RoleMiningRoleType, str]] = None
     id: Optional[StrictStr] = Field(default=None, description="Id of the potential role")
     created_date: Optional[datetime] = Field(default=None, description="The date-time when this potential role was created.", alias="createdDate")
     modified_date: Optional[datetime] = Field(default=None, description="The date-time when this potential role was modified.", alias="modifiedDate")

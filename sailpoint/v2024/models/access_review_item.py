@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2024.models.access_summary import AccessSummary
 from sailpoint.v2024.models.certification_decision import CertificationDecision
 from sailpoint.v2024.models.certification_identity_summary import CertificationIdentitySummary
@@ -35,7 +35,7 @@ class AccessReviewItem(BaseModel):
     id: Optional[StrictStr] = Field(default=None, description="The review item's id")
     completed: Optional[StrictBool] = Field(default=None, description="Whether the review item is complete")
     new_access: Optional[StrictBool] = Field(default=None, description="Indicates whether the review item is for new access to a source", alias="newAccess")
-    decision: Optional[CertificationDecision] = None
+    decision: Optional[Union[CertificationDecision, str]] = None
     comments: Optional[StrictStr] = Field(default=None, description="Comments for this review item")
     __properties: ClassVar[List[str]] = ["accessSummary", "identitySummary", "id", "completed", "newAccess", "decision", "comments"]
 

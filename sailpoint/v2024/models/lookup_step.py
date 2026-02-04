@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2024.models.reassignment_type_enum import ReassignmentTypeEnum
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,7 +30,7 @@ class LookupStep(BaseModel):
     """ # noqa: E501
     reassigned_to_id: Optional[StrictStr] = Field(default=None, description="The ID of the Identity who work is reassigned to", alias="reassignedToId")
     reassigned_from_id: Optional[StrictStr] = Field(default=None, description="The ID of the Identity who work is reassigned from", alias="reassignedFromId")
-    reassignment_type: Optional[ReassignmentTypeEnum] = Field(default=None, alias="reassignmentType")
+    reassignment_type: Optional[Union[ReassignmentTypeEnum, str]] = Field(default=None, alias="reassignmentType")
     __properties: ClassVar[List[str]] = ["reassignedToId", "reassignedFromId", "reassignmentType"]
 
     model_config = ConfigDict(

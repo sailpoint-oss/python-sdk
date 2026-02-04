@@ -152,14 +152,29 @@ const fixFiles = async function (myArray) {
   console.log(`Fixed ${fixCheck} files`);
 };
 
+const { spawnSync } = require('child_process');
+
+const runLenientEnumPostprocess = (sdkPath) => {
+  const scriptPath = path.join(__dirname, 'lenient-enum-postprocess.js');
+  const result = spawnSync(process.execPath, [scriptPath, sdkPath], {
+    stdio: 'inherit',
+    cwd: path.resolve(__dirname, '..')
+  });
+  if (result.status !== 0) {
+    throw new Error(`lenient-enum-postprocess.js exited with code ${result.status}`);
+  }
+};
+
 const main = async () => {
   let myArray = [];
+  const sdkPath = process.argv[2];
 
-  await processDirectory(path.join(process.argv[2], '/docs'));
-  await renameFileToIndices(path.join(process.argv[2], '/docs/Models/Index.md'));
-  await getAllFiles(process.argv[2], myArray);
+  await processDirectory(path.join(sdkPath, '/docs'));
+  await renameFileToIndices(path.join(sdkPath, '/docs/Models/Index.md'));
+  await getAllFiles(sdkPath, myArray);
   await fixFiles(myArray);
-  await moveFiles(process.argv[2], path.join(process.argv[2], '/docs/Models'), "Index.md");
+  await moveFiles(sdkPath, path.join(sdkPath, '/docs/Models'), "Index.md");
+  runLenientEnumPostprocess(path.resolve(sdkPath));
 };
 
 main().catch((error) => {

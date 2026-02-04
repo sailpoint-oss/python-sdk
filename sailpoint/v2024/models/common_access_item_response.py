@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2024.models.common_access_item_access import CommonAccessItemAccess
 from sailpoint.v2024.models.common_access_item_state import CommonAccessItemState
 from typing import Optional, Set
@@ -31,7 +31,7 @@ class CommonAccessItemResponse(BaseModel):
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Common Access Item ID")
     access: Optional[CommonAccessItemAccess] = None
-    status: Optional[CommonAccessItemState] = None
+    status: Optional[Union[CommonAccessItemState, str]] = None
     last_updated: Optional[StrictStr] = Field(default=None, alias="lastUpdated")
     reviewed_by_user: Optional[StrictBool] = Field(default=None, alias="reviewedByUser")
     last_reviewed: Optional[StrictStr] = Field(default=None, alias="lastReviewed")

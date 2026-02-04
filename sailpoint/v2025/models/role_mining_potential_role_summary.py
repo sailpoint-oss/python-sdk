@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2025.models.role_mining_potential_role_provision_state import RoleMiningPotentialRoleProvisionState
 from sailpoint.v2025.models.role_mining_potential_role_ref import RoleMiningPotentialRoleRef
 from sailpoint.v2025.models.role_mining_potential_role_summary_created_by import RoleMiningPotentialRoleSummaryCreatedBy
@@ -39,12 +39,12 @@ class RoleMiningPotentialRoleSummary(BaseModel):
     identity_count: Optional[StrictInt] = Field(default=None, description="The number of identities in a potential role.", alias="identityCount")
     entitlement_count: Optional[StrictInt] = Field(default=None, description="The number of entitlements in a potential role.", alias="entitlementCount")
     identity_group_status: Optional[StrictStr] = Field(default=None, description="The status for this identity group which can be \"REQUESTED\" or \"OBTAINED\"", alias="identityGroupStatus")
-    provision_state: Optional[RoleMiningPotentialRoleProvisionState] = Field(default=None, alias="provisionState")
+    provision_state: Optional[Union[RoleMiningPotentialRoleProvisionState, str]] = Field(default=None, alias="provisionState")
     role_id: Optional[StrictStr] = Field(default=None, description="ID of the provisioned role in IIQ or IDN.  Null if this potential role has not been provisioned.", alias="roleId")
     density: Optional[StrictInt] = Field(default=None, description="The density metric (0-100) of this potential role. Higher density values indicate higher similarity amongst the identities.")
     freshness: Optional[StrictInt] = Field(default=None, description="The freshness metric (0-100) of this potential role. Higher freshness values indicate this potential role is more distinctive compared to existing roles.")
     quality: Optional[StrictInt] = Field(default=None, description="The quality metric (0-100) of this potential role. Higher quality values indicate this potential role has high density and freshness.")
-    type: Optional[RoleMiningRoleType] = None
+    type: Optional[Union[RoleMiningRoleType, str]] = None
     created_by: Optional[RoleMiningPotentialRoleSummaryCreatedBy] = Field(default=None, alias="createdBy")
     created_date: Optional[datetime] = Field(default=None, description="The date-time when this potential role was created.", alias="createdDate")
     saved: Optional[StrictBool] = Field(default=False, description="The potential role's saved status")

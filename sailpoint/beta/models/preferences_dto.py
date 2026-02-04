@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.beta.models.medium import Medium
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,7 +30,7 @@ class PreferencesDto(BaseModel):
     Maps an Identity's attribute key to a list of preferred notification mediums.
     """ # noqa: E501
     key: Optional[StrictStr] = Field(default=None, description="The template notification key.")
-    mediums: Optional[List[Medium]] = Field(default=None, description="List of preferred notification mediums, i.e., the mediums (or method) for which notifications are enabled. More mediums may be added in the future.")
+    mediums: Optional[List[Union[Medium, str]]] = Field(default=None, description="List of preferred notification mediums, i.e., the mediums (or method) for which notifications are enabled. More mediums may be added in the future.")
     modified: Optional[datetime] = Field(default=None, description="Modified date of preference")
     __properties: ClassVar[List[str]] = ["key", "mediums", "modified"]
 

@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2025.models.account_info_ref import AccountInfoRef
 from sailpoint.v2025.models.dto_type import DtoType
 from typing import Optional, Set
@@ -29,7 +29,7 @@ class SourceAccountSelections(BaseModel):
     """
     SourceAccountSelections
     """ # noqa: E501
-    type: Optional[DtoType] = None
+    type: Optional[Union[DtoType, str]] = None
     id: Optional[StrictStr] = Field(default=None, description="The source id")
     name: Optional[StrictStr] = Field(default=None, description="The source name")
     accounts: Optional[List[AccountInfoRef]] = Field(default=None, description="The accounts information for a particular source in the requested item")

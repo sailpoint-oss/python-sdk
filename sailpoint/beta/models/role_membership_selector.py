@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.beta.models.role_criteria_level1 import RoleCriteriaLevel1
 from sailpoint.beta.models.role_membership_identity import RoleMembershipIdentity
 from sailpoint.beta.models.role_membership_selector_type import RoleMembershipSelectorType
@@ -30,7 +30,7 @@ class RoleMembershipSelector(BaseModel):
     """
     When present, specifies that the Role is to be granted to Identities which either satisfy specific criteria or which are members of a given list of Identities.
     """ # noqa: E501
-    type: Optional[RoleMembershipSelectorType] = None
+    type: Optional[Union[RoleMembershipSelectorType, str]] = None
     criteria: Optional[RoleCriteriaLevel1] = None
     identities: Optional[List[RoleMembershipIdentity]] = Field(default=None, description="Defines role membership as being exclusive to the specified Identities, when type is IDENTITY_LIST.")
     __properties: ClassVar[List[str]] = ["type", "criteria", "identities"]

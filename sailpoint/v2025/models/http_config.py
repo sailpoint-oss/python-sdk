@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2025.models.basic_auth_config import BasicAuthConfig
 from sailpoint.v2025.models.bearer_token_auth_config import BearerTokenAuthConfig
 from sailpoint.v2025.models.http_authentication_type import HttpAuthenticationType
@@ -32,8 +32,8 @@ class HttpConfig(BaseModel):
     HttpConfig
     """ # noqa: E501
     url: StrictStr = Field(description="URL of the external/custom integration.")
-    http_dispatch_mode: HttpDispatchMode = Field(alias="httpDispatchMode")
-    http_authentication_type: Optional[HttpAuthenticationType] = Field(default=HttpAuthenticationType.NO_AUTH, alias="httpAuthenticationType")
+    http_dispatch_mode: Union[HttpDispatchMode, str] = Field(alias="httpDispatchMode")
+    http_authentication_type: Optional[Union[HttpAuthenticationType, str]] = Field(default=HttpAuthenticationType.NO_AUTH, alias="httpAuthenticationType")
     basic_auth_config: Optional[BasicAuthConfig] = Field(default=None, alias="basicAuthConfig")
     bearer_token_auth_config: Optional[BearerTokenAuthConfig] = Field(default=None, alias="bearerTokenAuthConfig")
     __properties: ClassVar[List[str]] = ["url", "httpDispatchMode", "httpAuthenticationType", "basicAuthConfig", "bearerTokenAuthConfig"]

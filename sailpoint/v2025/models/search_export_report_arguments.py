@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2025.models.index import Index
 from typing import Optional, Set
 from typing_extensions import Self
@@ -28,7 +28,7 @@ class SearchExportReportArguments(BaseModel):
     """
     Arguments for Search Export report (SEARCH_EXPORT)  The report file generated will be a zip file containing csv files of the search results. 
     """ # noqa: E501
-    indices: Optional[List[Index]] = Field(default=None, description="The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched.")
+    indices: Optional[List[Union[Index, str]]] = Field(default=None, description="The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched.")
     query: StrictStr = Field(description="The query using the Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string) syntax from the Query DSL extended by SailPoint to support Nested queries.")
     columns: Optional[StrictStr] = Field(default=None, description="Comma separated string consisting of technical attribute names of fields to include in report.  Use `access.spread`, `apps.spread`, `accounts.spread` to include respective identity access details.  Use `accessProfiles.spread` to unclude access profile details.  Use `entitlements.spread` to include entitlement details. ")
     sort: Optional[List[StrictStr]] = Field(default=None, description="The fields to be used to sort the search results. Use + or - to specify the sort direction.")

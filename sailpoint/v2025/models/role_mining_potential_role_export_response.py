@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2025.models.role_mining_potential_role_export_state import RoleMiningPotentialRoleExportState
 from typing import Optional, Set
 from typing_extensions import Self
@@ -31,7 +31,7 @@ class RoleMiningPotentialRoleExportResponse(BaseModel):
     min_entitlement_popularity: Optional[StrictInt] = Field(default=None, description="The minimum popularity among identities in the role which an entitlement must have to be included in the report", alias="minEntitlementPopularity")
     include_common_access: Optional[StrictBool] = Field(default=None, description="If false, do not include entitlements that are highly popular among the entire orginization", alias="includeCommonAccess")
     export_id: Optional[StrictStr] = Field(default=None, description="ID used to reference this export", alias="exportId")
-    status: Optional[RoleMiningPotentialRoleExportState] = None
+    status: Optional[Union[RoleMiningPotentialRoleExportState, str]] = None
     __properties: ClassVar[List[str]] = ["minEntitlementPopularity", "includeCommonAccess", "exportId", "status"]
 
     model_config = ConfigDict(

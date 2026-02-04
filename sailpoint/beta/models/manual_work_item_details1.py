@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.beta.models.approval_forward_history1 import ApprovalForwardHistory1
 from sailpoint.beta.models.manual_work_item_details_current_owner import ManualWorkItemDetailsCurrentOwner
 from sailpoint.beta.models.manual_work_item_details_original_owner import ManualWorkItemDetailsOriginalOwner
@@ -36,7 +36,7 @@ class ManualWorkItemDetails1(BaseModel):
     original_owner: Optional[ManualWorkItemDetailsOriginalOwner] = Field(default=None, alias="originalOwner")
     current_owner: Optional[ManualWorkItemDetailsCurrentOwner] = Field(default=None, alias="currentOwner")
     modified: Optional[datetime] = Field(default=None, description="Time at which item was modified.")
-    status: Optional[ManualWorkItemState] = None
+    status: Optional[Union[ManualWorkItemState, str]] = None
     forward_history: Optional[List[ApprovalForwardHistory1]] = Field(default=None, description="The history of approval forward action.", alias="forwardHistory")
     __properties: ClassVar[List[str]] = ["forwarded", "originalOwner", "currentOwner", "modified", "status", "forwardHistory"]
 

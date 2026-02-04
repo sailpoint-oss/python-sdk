@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2025.models.dto_type import DtoType
 from sailpoint.v2025.models.requested_item_account_selections import RequestedItemAccountSelections
 from typing import Optional, Set
@@ -31,7 +31,7 @@ class IdentityAccountSelections(BaseModel):
     """ # noqa: E501
     requested_items: Optional[List[RequestedItemAccountSelections]] = Field(default=None, description="Available account selections for the identity, per requested item", alias="requestedItems")
     accounts_selection_required: Optional[StrictBool] = Field(default=False, description="A boolean indicating whether any account selections will be required for the user to raise an access request", alias="accountsSelectionRequired")
-    type: Optional[DtoType] = None
+    type: Optional[Union[DtoType, str]] = None
     id: Optional[StrictStr] = Field(default=None, description="The identity id for the user")
     name: Optional[StrictStr] = Field(default=None, description="The name of the identity")
     __properties: ClassVar[List[str]] = ["requestedItems", "accountsSelectionRequired", "type", "id", "name"]

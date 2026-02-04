@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.beta.models.attribute_definition_schema import AttributeDefinitionSchema
 from sailpoint.beta.models.attribute_definition_type import AttributeDefinitionType
 from typing import Optional, Set
@@ -31,7 +31,7 @@ class AttributeDefinition(BaseModel):
     """ # noqa: E501
     name: Optional[StrictStr] = Field(default=None, description="The name of the attribute.")
     native_name: Optional[StrictStr] = Field(default=None, description="Attribute name in the native system.", alias="nativeName")
-    type: Optional[AttributeDefinitionType] = None
+    type: Optional[Union[AttributeDefinitionType, str]] = None
     var_schema: Optional[AttributeDefinitionSchema] = Field(default=None, alias="schema")
     description: Optional[StrictStr] = Field(default=None, description="A human-readable description of the attribute.")
     is_multi: Optional[StrictBool] = Field(default=False, description="Flag indicating whether or not the attribute is multi-valued.", alias="isMulti")

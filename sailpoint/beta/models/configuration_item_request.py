@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.beta.models.config_type_enum import ConfigTypeEnum
 from typing import Optional, Set
 from typing_extensions import Self
@@ -31,7 +31,7 @@ class ConfigurationItemRequest(BaseModel):
     """ # noqa: E501
     reassigned_from_id: Optional[StrictStr] = Field(default=None, description="The identity id to reassign an item from", alias="reassignedFromId")
     reassigned_to_id: Optional[StrictStr] = Field(default=None, description="The identity id to reassign an item to", alias="reassignedToId")
-    config_type: Optional[ConfigTypeEnum] = Field(default=None, alias="configType")
+    config_type: Optional[Union[ConfigTypeEnum, str]] = Field(default=None, alias="configType")
     start_date: Optional[datetime] = Field(default=None, description="The date from which to start reassigning work items", alias="startDate")
     end_date: Optional[datetime] = Field(default=None, description="The date from which to stop reassigning work items.  If this is an null string it indicates a permanent reassignment.", alias="endDate")
     __properties: ClassVar[List[str]] = ["reassignedFromId", "reassignedToId", "configType", "startDate", "endDate"]

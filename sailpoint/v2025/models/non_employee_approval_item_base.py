@@ -33,7 +33,7 @@ class NonEmployeeApprovalItemBase(BaseModel):
     id: Optional[StrictStr] = Field(default=None, description="Non-Employee approval item id")
     approver: Optional[NonEmployeeIdentityReferenceWithId] = None
     account_name: Optional[StrictStr] = Field(default=None, description="Requested identity account name", alias="accountName")
-    approval_status: Optional[ApprovalStatus] = Field(default=None, alias="approvalStatus")
+    approval_status: Optional[Union[ApprovalStatus, str]] = Field(default=None, alias="approvalStatus")
     approval_order: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Approval order", alias="approvalOrder")
     comment: Optional[StrictStr] = Field(default=None, description="comment of approver")
     modified: Optional[datetime] = Field(default=None, description="When the request was last modified.")

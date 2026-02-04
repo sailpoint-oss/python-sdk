@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v3.models.search_filter_type import SearchFilterType
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,7 +29,7 @@ class FilterAggregation(BaseModel):
     An additional filter to constrain the results of the search query.
     """ # noqa: E501
     name: StrictStr = Field(description="The name of the filter aggregate to be included in the result.")
-    type: Optional[SearchFilterType] = SearchFilterType.TERM
+    type: Optional[Union[SearchFilterType, str]] = SearchFilterType.TERM
     var_field: StrictStr = Field(description="The search field to apply the filter to.  Prefix the field name with '@' to reference a nested object. ", alias="field")
     value: StrictStr = Field(description="The value to filter on.")
     __properties: ClassVar[List[str]] = ["name", "type", "field", "value"]

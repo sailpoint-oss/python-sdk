@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2024.models.client_log_configuration import ClientLogConfiguration
 from sailpoint.v2024.models.managed_client_type import ManagedClientType
 from sailpoint.v2024.models.managed_cluster_attributes import ManagedClusterAttributes
@@ -40,13 +40,13 @@ class ManagedCluster(BaseModel):
     name: Optional[StrictStr] = Field(default=None, description="ManagedCluster name")
     pod: Optional[StrictStr] = Field(default=None, description="ManagedCluster pod")
     org: Optional[StrictStr] = Field(default=None, description="ManagedCluster org")
-    type: Optional[ManagedClusterTypes] = None
+    type: Optional[Union[ManagedClusterTypes, str]] = None
     configuration: Optional[Dict[str, Optional[StrictStr]]] = Field(default=None, description="ManagedProcess configuration map")
     key_pair: Optional[ManagedClusterKeyPair] = Field(default=None, alias="keyPair")
     attributes: Optional[ManagedClusterAttributes] = None
     description: Optional[StrictStr] = Field(default='q', description="ManagedCluster description")
     redis: Optional[ManagedClusterRedis] = None
-    client_type: Optional[ManagedClientType] = Field(alias="clientType")
+    client_type: Optional[Union[ManagedClientType, str]] = Field(alias="clientType")
     ccg_version: StrictStr = Field(description="CCG version used by the ManagedCluster", alias="ccgVersion")
     pinned_config: Optional[StrictBool] = Field(default=False, description="boolean flag indicating whether or not the cluster configuration is pinned", alias="pinnedConfig")
     log_configuration: Optional[ClientLogConfiguration] = Field(default=None, alias="logConfiguration")

@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2024.models.managed_cluster_types import ManagedClusterTypes
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,7 +29,7 @@ class ManagedClusterRequest(BaseModel):
     Request to create Managed Cluster
     """ # noqa: E501
     name: StrictStr = Field(description="ManagedCluster name")
-    type: Optional[ManagedClusterTypes] = None
+    type: Optional[Union[ManagedClusterTypes, str]] = None
     configuration: Optional[Dict[str, StrictStr]] = Field(default=None, description="ManagedProcess configuration map")
     description: Optional[StrictStr] = Field(default=None, description="ManagedCluster description")
     __properties: ClassVar[List[str]] = ["name", "type", "configuration", "description"]

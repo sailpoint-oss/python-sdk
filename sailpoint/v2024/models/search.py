@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2024.models.aggregation_type import AggregationType
 from sailpoint.v2024.models.filter import Filter
 from sailpoint.v2024.models.index import Index
@@ -36,8 +36,8 @@ class Search(BaseModel):
     """
     Search
     """ # noqa: E501
-    indices: Optional[List[Index]] = Field(default=None, description="The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched.")
-    query_type: Optional[QueryType] = Field(default=QueryType.SAILPOINT, alias="queryType")
+    indices: Optional[List[Union[Index, str]]] = Field(default=None, description="The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched.")
+    query_type: Optional[Union[QueryType, str]] = Field(default=QueryType.SAILPOINT, alias="queryType")
     query_version: Optional[Any] = Field(default=None, alias="queryVersion")
     query: Optional[Query] = None
     query_dsl: Optional[Dict[str, Any]] = Field(default=None, description="The search query using the Elasticsearch [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/7.10/query-dsl.html) syntax.", alias="queryDsl")
@@ -45,7 +45,7 @@ class Search(BaseModel):
     type_ahead_query: Optional[TypeAheadQuery] = Field(default=None, alias="typeAheadQuery")
     include_nested: Optional[StrictBool] = Field(default=True, description="Indicates whether nested objects from returned search results should be included.", alias="includeNested")
     query_result_filter: Optional[QueryResultFilter] = Field(default=None, alias="queryResultFilter")
-    aggregation_type: Optional[AggregationType] = Field(default=AggregationType.DSL, alias="aggregationType")
+    aggregation_type: Optional[Union[AggregationType, str]] = Field(default=AggregationType.DSL, alias="aggregationType")
     aggregations_version: Optional[Any] = Field(default=None, alias="aggregationsVersion")
     aggregations_dsl: Optional[Dict[str, Any]] = Field(default=None, description="The aggregation search query using Elasticsearch [Aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-aggregations.html) syntax.", alias="aggregationsDsl")
     aggregations: Optional[SearchAggregationSpecification] = None

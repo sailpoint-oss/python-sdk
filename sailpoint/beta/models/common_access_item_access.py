@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.beta.models.common_access_type import CommonAccessType
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,7 +29,7 @@ class CommonAccessItemAccess(BaseModel):
     CommonAccessItemAccess
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Common access ID")
-    type: Optional[CommonAccessType] = None
+    type: Optional[Union[CommonAccessType, str]] = None
     name: Optional[StrictStr] = Field(default=None, description="Common access name")
     description: Optional[StrictStr] = Field(default=None, description="Common access description")
     owner_name: Optional[StrictStr] = Field(default=None, description="Common access owner name", alias="ownerName")

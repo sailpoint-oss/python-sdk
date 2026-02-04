@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2025.models.ref import Ref
 from sailpoint.v2025.models.scope_type import ScopeType
 from sailpoint.v2025.models.scope_visibility_type import ScopeVisibilityType
@@ -31,8 +31,8 @@ class Scope(BaseModel):
     """
     This defines what access the segment is giving
     """ # noqa: E501
-    scope: Optional[ScopeType] = None
-    visibility: Optional[ScopeVisibilityType] = None
+    scope: Optional[Union[ScopeType, str]] = None
+    visibility: Optional[Union[ScopeVisibilityType, str]] = None
     scope_filter: Optional[VisibilityCriteria] = Field(default=None, alias="scopeFilter")
     scope_selection: Optional[List[Ref]] = Field(default=None, description="List of Identities that are assigned to the segment", alias="scopeSelection")
     __properties: ClassVar[List[str]] = ["scope", "visibility", "scopeFilter", "scopeSelection"]

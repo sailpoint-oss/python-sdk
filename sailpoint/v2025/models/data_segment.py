@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2025.models.membership_type import MembershipType
 from sailpoint.v2025.models.ref import Ref
 from sailpoint.v2025.models.scope import Scope
@@ -40,7 +40,7 @@ class DataSegment(BaseModel):
     scopes: Optional[List[Scope]] = Field(default=None, description="List of Scopes that are assigned to the segment")
     member_selection: Optional[List[Ref]] = Field(default=None, description="List of Identities that are assigned to the segment", alias="memberSelection")
     member_filter: Optional[VisibilityCriteria] = Field(default=None, alias="memberFilter")
-    membership: Optional[MembershipType] = None
+    membership: Optional[Union[MembershipType, str]] = None
     enabled: Optional[StrictBool] = Field(default=False, description="This boolean indicates whether the segment is currently active. Inactive segments have no effect.")
     published: Optional[StrictBool] = Field(default=False, description="This boolean indicates whether the segment is being applied to the accounts. If unpublished its being actively modified to until published")
     __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "scopes", "memberSelection", "memberFilter", "membership", "enabled", "published"]

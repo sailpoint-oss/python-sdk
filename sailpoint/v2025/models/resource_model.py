@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2025.models.business_service_type import BusinessServiceType
 from typing import Optional, Set
 from typing_extensions import Self
@@ -32,7 +32,7 @@ class ResourceModel(BaseModel):
     name: Optional[StrictStr] = Field(default=None, description="The display name or label for the resource.")
     full_path: Optional[StrictStr] = Field(default=None, description="The full path to the resource within the system or application.", alias="fullPath")
     application_id: Optional[StrictInt] = Field(default=None, description="The unique identifier of the application to which this resource belongs.", alias="applicationId")
-    type: Optional[BusinessServiceType] = None
+    type: Optional[Union[BusinessServiceType, str]] = None
     owners: Optional[List[StrictStr]] = Field(default=None, description="A list of UUIDs representing the owners of the resource.")
     __properties: ClassVar[List[str]] = ["id", "name", "fullPath", "applicationId", "type", "owners"]
 

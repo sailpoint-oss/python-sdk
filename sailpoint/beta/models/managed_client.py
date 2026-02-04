@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.beta.models.managed_client_status_enum import ManagedClientStatusEnum
 from typing import Optional, Set
 from typing_extensions import Self
@@ -41,7 +41,7 @@ class ManagedClient(BaseModel):
     last_seen: Optional[datetime] = Field(default=None, description="When the ManagedClient was last seen by the server", alias="lastSeen")
     name: Optional[StrictStr] = Field(default=None, description="ManagedClient name")
     since_last_seen: Optional[StrictStr] = Field(default=None, description="Milliseconds since the ManagedClient has polled the server", alias="sinceLastSeen")
-    status: Optional[ManagedClientStatusEnum] = Field(default=None, description="Status of the ManagedClient")
+    status: Optional[Union[ManagedClientStatusEnum, str]] = Field(default=None, description="Status of the ManagedClient")
     type: StrictStr = Field(description="Type of the ManagedClient (VA, CCG)")
     va_download_url: Optional[StrictStr] = Field(default=None, description="ManagedClient VA download URL", alias="vaDownloadUrl")
     va_version: Optional[StrictStr] = Field(default=None, description="Version that the ManagedClient's VA is running", alias="vaVersion")

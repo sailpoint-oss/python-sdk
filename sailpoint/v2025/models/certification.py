@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2025.models.campaign_reference import CampaignReference
 from sailpoint.v2025.models.certification_phase import CertificationPhase
 from sailpoint.v2025.models.reassignment import Reassignment
@@ -48,7 +48,7 @@ class Certification(BaseModel):
     reassignment: Optional[Reassignment] = None
     has_errors: Optional[StrictBool] = Field(default=None, description="Identifies if the certification has an error", alias="hasErrors")
     error_message: Optional[StrictStr] = Field(default=None, description="Description of the certification error", alias="errorMessage")
-    phase: Optional[CertificationPhase] = None
+    phase: Optional[Union[CertificationPhase, str]] = None
     __properties: ClassVar[List[str]] = ["id", "name", "campaign", "completed", "identitiesCompleted", "identitiesTotal", "created", "modified", "decisionsMade", "decisionsTotal", "due", "signed", "reviewer", "reassignment", "hasErrors", "errorMessage", "phase"]
 
     model_config = ConfigDict(

@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2025.models.role_mining_role_type import RoleMiningRoleType
 from sailpoint.v2025.models.role_mining_session_scope import RoleMiningSessionScope
 from sailpoint.v2025.models.role_mining_session_scoping_method import RoleMiningSessionScopingMethod
@@ -37,9 +37,9 @@ class RoleMiningSessionParametersDto(BaseModel):
     prune_threshold: Optional[StrictInt] = Field(default=None, description="The prune threshold to be used or null to calculate prescribedPruneThreshold", alias="pruneThreshold")
     saved: Optional[StrictBool] = Field(default=True, description="The session's saved status")
     scope: Optional[RoleMiningSessionScope] = None
-    type: Optional[RoleMiningRoleType] = None
-    state: Optional[RoleMiningSessionState] = None
-    scoping_method: Optional[RoleMiningSessionScopingMethod] = Field(default=None, alias="scopingMethod")
+    type: Optional[Union[RoleMiningRoleType, str]] = None
+    state: Optional[Union[RoleMiningSessionState, str]] = None
+    scoping_method: Optional[Union[RoleMiningSessionScopingMethod, str]] = Field(default=None, alias="scopingMethod")
     __properties: ClassVar[List[str]] = ["id", "name", "minNumIdentitiesInPotentialRole", "pruneThreshold", "saved", "scope", "type", "state", "scopingMethod"]
 
     model_config = ConfigDict(

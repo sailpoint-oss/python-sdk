@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2025.models.dimension_criteria_level1 import DimensionCriteriaLevel1
 from sailpoint.v2025.models.dimension_membership_selector_type import DimensionMembershipSelectorType
 from typing import Optional, Set
@@ -29,7 +29,7 @@ class DimensionMembershipSelector(BaseModel):
     """
     When present, specifies that the Dimension is to be granted to Identities which either satisfy specific criteria.
     """ # noqa: E501
-    type: Optional[DimensionMembershipSelectorType] = None
+    type: Optional[Union[DimensionMembershipSelectorType, str]] = None
     criteria: Optional[DimensionCriteriaLevel1] = None
     __properties: ClassVar[List[str]] = ["type", "criteria"]
 
