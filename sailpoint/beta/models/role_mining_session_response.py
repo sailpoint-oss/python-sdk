@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.beta.models.role_mining_role_type import RoleMiningRoleType
 from sailpoint.beta.models.role_mining_session_response_created_by import RoleMiningSessionResponseCreatedBy
 from sailpoint.beta.models.role_mining_session_scope import RoleMiningSessionScope
@@ -49,7 +49,7 @@ class RoleMiningSessionResponse(BaseModel):
     id: Optional[StrictStr] = Field(default=None, description="Session Id for this role mining session")
     created_date: Optional[datetime] = Field(default=None, description="The date-time when this role mining session was created.", alias="createdDate")
     modified_date: Optional[datetime] = Field(default=None, description="The date-time when this role mining session was completed.", alias="modifiedDate")
-    type: Optional[RoleMiningRoleType] = None
+    type: Optional[Union[RoleMiningRoleType, str]] = None
     __properties: ClassVar[List[str]] = ["scope", "minNumIdentitiesInPotentialRole", "scopingMethod", "prescribedPruneThreshold", "pruneThreshold", "potentialRoleCount", "potentialRolesReadyCount", "status", "emailRecipientId", "createdBy", "identityCount", "saved", "name", "dataFilePath", "id", "createdDate", "modifiedDate", "type"]
 
     model_config = ConfigDict(

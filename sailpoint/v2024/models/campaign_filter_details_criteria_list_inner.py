@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2024.models.criteria_type import CriteriaType
 from sailpoint.v2024.models.operation import Operation
 from typing import Optional, Set
@@ -30,7 +30,7 @@ class CampaignFilterDetailsCriteriaListInner(BaseModel):
     CampaignFilterDetailsCriteriaListInner
     """ # noqa: E501
     type: CriteriaType
-    operation: Optional[Operation] = None
+    operation: Optional[Union[Operation, str]] = None
     var_property: Optional[StrictStr] = Field(description="Specified key from the type of criteria.", alias="property")
     value: Optional[StrictStr] = Field(description="Value for the specified key from the type of criteria.")
     negate_result: Optional[StrictBool] = Field(default=False, description="If true, the filter will negate the result of the criteria.", alias="negateResult")

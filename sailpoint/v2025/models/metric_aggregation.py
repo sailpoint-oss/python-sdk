@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2025.models.metric_type import MetricType
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,7 +29,7 @@ class MetricAggregation(BaseModel):
     The calculation done on the results of the query
     """ # noqa: E501
     name: StrictStr = Field(description="The name of the metric aggregate to be included in the result. If the metric aggregation is omitted, the resulting aggregation will be a count of the documents in the search results.")
-    type: Optional[MetricType] = MetricType.UNIQUE_COUNT
+    type: Optional[Union[MetricType, str]] = MetricType.UNIQUE_COUNT
     var_field: StrictStr = Field(description="The field the calculation is performed on.  Prefix the field name with '@' to reference a nested object. ", alias="field")
     __properties: ClassVar[List[str]] = ["name", "type", "field"]
 

@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v3.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
 from sailpoint.v3.models.requestable_object_type import RequestableObjectType
 from typing import Optional, Set
@@ -35,7 +35,7 @@ class RequestableObject(BaseModel):
     created: Optional[datetime] = Field(default=None, description="The time when the requestable object was created")
     modified: Optional[datetime] = Field(default=None, description="The time when the requestable object was last modified")
     description: Optional[StrictStr] = Field(default=None, description="Description of the requestable object.")
-    type: Optional[RequestableObjectType] = None
+    type: Optional[Union[RequestableObjectType, str]] = None
     request_status: Optional[Any] = Field(default=None, alias="requestStatus")
     identity_request_id: Optional[StrictStr] = Field(default=None, description="If *requestStatus* is *PENDING*, indicates the id of the associated account activity.", alias="identityRequestId")
     owner_ref: Optional[IdentityReferenceWithNameAndEmail] = Field(default=None, alias="ownerRef")

@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2024.models.dimension_criteria_key import DimensionCriteriaKey
 from sailpoint.v2024.models.dimension_criteria_level2 import DimensionCriteriaLevel2
 from sailpoint.v2024.models.dimension_criteria_operation import DimensionCriteriaOperation
@@ -30,7 +30,7 @@ class DimensionCriteriaLevel1(BaseModel):
     """
     Defines STANDARD type Dimension membership
     """ # noqa: E501
-    operation: Optional[DimensionCriteriaOperation] = None
+    operation: Optional[Union[DimensionCriteriaOperation, str]] = None
     key: Optional[DimensionCriteriaKey] = None
     string_value: Optional[StrictStr] = Field(default=None, description="String value to test the Identity attribute specified in the key w/r/t the specified operation. If this criteria is a leaf node, that is, if the operation is  EQUALS, this field is required. Otherwise, specifying it is an error.", alias="stringValue")
     children: Optional[List[Optional[DimensionCriteriaLevel2]]] = Field(default=None, description="Array of child criteria. Required if the operation is AND or OR, otherwise it must be left null. A maximum of three levels of criteria are supported, including leaf nodes. Additionally, AND nodes can only be children or OR nodes and vice-versa.")

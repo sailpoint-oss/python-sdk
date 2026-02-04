@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.beta.models.config_type_enum import ConfigTypeEnum
 from sailpoint.beta.models.config_type_enum_camel import ConfigTypeEnumCamel
 from typing import Optional, Set
@@ -30,8 +30,8 @@ class ConfigType(BaseModel):
     Type of Reassignment Configuration.
     """ # noqa: E501
     priority: Optional[StrictInt] = None
-    internal_name: Optional[ConfigTypeEnumCamel] = Field(default=None, alias="internalName")
-    internal_name_camel: Optional[ConfigTypeEnum] = Field(default=None, alias="internalNameCamel")
+    internal_name: Optional[Union[ConfigTypeEnumCamel, str]] = Field(default=None, alias="internalName")
+    internal_name_camel: Optional[Union[ConfigTypeEnum, str]] = Field(default=None, alias="internalNameCamel")
     display_name: Optional[StrictStr] = Field(default=None, description="Human readable display name of the type to be shown on UI", alias="displayName")
     description: Optional[StrictStr] = Field(default=None, description="Description of the type of work to be reassigned, displayed by the UI.")
     __properties: ClassVar[List[str]] = ["priority", "internalName", "internalNameCamel", "displayName", "description"]

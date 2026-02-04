@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2025.models.activity_configuration_settings import ActivityConfigurationSettings
 from sailpoint.v2025.models.application_crawler_settings import ApplicationCrawlerSettings
 from sailpoint.v2025.models.application_type import ApplicationType
@@ -33,7 +33,7 @@ class BaseCreateApplicationRequest(BaseModel):
     """
     BaseCreateApplicationRequest
     """ # noqa: E501
-    application_type: ApplicationType = Field(alias="applicationType")
+    application_type: Union[ApplicationType, str] = Field(alias="applicationType")
     name: StrictStr = Field(description="The display name of the application.")
     description: Optional[StrictStr] = Field(default=None, description="A brief description of the application and its purpose.")
     tags: Optional[List[Int64StringKeyValuePair]] = Field(default=None, description="A list of tags to categorize or identify the application.")

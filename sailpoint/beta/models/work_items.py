@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.beta.models.approval_item_details import ApprovalItemDetails
 from sailpoint.beta.models.form_details import FormDetails
 from sailpoint.beta.models.remediation_item_details import RemediationItemDetails
@@ -41,8 +41,8 @@ class WorkItems(BaseModel):
     created: Optional[datetime] = None
     modified: Optional[datetime] = None
     description: Optional[StrictStr] = Field(default=None, description="The description of the work item")
-    state: Optional[WorkItemState] = None
-    type: Optional[WorkItemType] = None
+    state: Optional[Union[WorkItemState, str]] = None
+    type: Optional[Union[WorkItemType, str]] = None
     remediation_items: Optional[List[RemediationItemDetails]] = Field(default=None, alias="remediationItems")
     approval_items: Optional[List[ApprovalItemDetails]] = Field(default=None, alias="approvalItems")
     name: Optional[StrictStr] = Field(default=None, description="The work item name")

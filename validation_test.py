@@ -89,5 +89,64 @@ class TestPythonSDK(unittest.TestCase):
         self.assertIsNotNone(tasks.data)
         self.assertEqual(200, tasks.status_code)
 
+
+class TestLenientEnumsV2025(unittest.TestCase):
+    """
+    Validate that enum refs use Union[EnumType, str] so unknown values from the API
+    are accepted as plain strings (lenient enum validation).
+    Uses RequestedItemStatus and RequestedItemStatusRequestState as the main example.
+    """
+
+    def test_requested_item_status_accepts_known_state_enum(self):
+        """Known state value is coerced to RequestedItemStatusRequestState enum member."""
+        from sailpoint.v2025.models.requested_item_status import RequestedItemStatus
+        from sailpoint.v2025.models.requested_item_status_request_state import RequestedItemStatusRequestState
+
+        obj = RequestedItemStatus.model_validate({"state": "EXECUTING"})
+        self.assertIsNotNone(obj.state)
+        self.assertEqual(obj.state, RequestedItemStatusRequestState.EXECUTING)
+
+    def test_requested_item_status_accepts_unknown_state_as_str(self):
+        """Unknown state value is accepted as plain str (lenient enum)."""
+        from sailpoint.v2025.models.requested_item_status import RequestedItemStatus
+
+        unknown_state = "FUTURE_STATE_NOT_IN_SPEC"
+        obj = RequestedItemStatus.model_validate({"state": unknown_state})
+        self.assertIsNotNone(obj.state)
+        self.assertEqual(obj.state, unknown_state)
+        self.assertIsInstance(obj.state, str)
+
+    def test_requested_item_status_accepts_known_request_type_enum(self):
+        """Known request_type value is coerced to AccessRequestType enum member."""
+        from sailpoint.v2025.models.requested_item_status import RequestedItemStatus
+        from sailpoint.v2025.models.access_request_type import AccessRequestType
+
+        obj = RequestedItemStatus.model_validate({"requestType": "GRANT_ACCESS"})
+        self.assertIsNotNone(obj.request_type)
+        self.assertEqual(obj.request_type, AccessRequestType.GRANT_ACCESS)
+
+    def test_requested_item_status_accepts_unknown_request_type_as_str(self):
+        """Unknown request_type value is accepted as plain str (lenient enum)."""
+        from sailpoint.v2025.models.requested_item_status import RequestedItemStatus
+
+        unknown_type = "FUTURE_REQUEST_TYPE"
+        obj = RequestedItemStatus.model_validate({"requestType": unknown_type})
+        self.assertIsNotNone(obj.request_type)
+        self.assertEqual(obj.request_type, unknown_type)
+        self.assertIsInstance(obj.request_type, str)
+
+    def test_requested_item_status_unknown_state_round_trips_in_dict(self):
+        """Unknown state serializes and deserializes correctly (e.g. for API responses)."""
+        from sailpoint.v2025.models.requested_item_status import RequestedItemStatus
+
+        unknown_state = "PENDING_NEW_BACKEND"
+        obj = RequestedItemStatus.model_validate({"state": unknown_state})
+        d = obj.model_dump(by_alias=True)
+        self.assertIn("state", d)
+        self.assertEqual(d["state"], unknown_state)
+        obj2 = RequestedItemStatus.model_validate(d)
+        self.assertEqual(obj2.state, unknown_state)
+
+
 if __name__ == '__main__':
     unittest.main()

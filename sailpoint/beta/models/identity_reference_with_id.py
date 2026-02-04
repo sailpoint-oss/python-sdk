@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.beta.models.dto_type import DtoType
 from typing import Optional, Set
 from typing_extensions import Self
@@ -28,7 +28,7 @@ class IdentityReferenceWithId(BaseModel):
     """
     IdentityReferenceWithId
     """ # noqa: E501
-    type: Optional[DtoType] = None
+    type: Optional[Union[DtoType, str]] = None
     id: Optional[StrictStr] = Field(default=None, description="Identity id")
     __properties: ClassVar[List[str]] = ["type", "id"]
 

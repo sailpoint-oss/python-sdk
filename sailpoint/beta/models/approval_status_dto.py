@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.beta.models.approval_scheme import ApprovalScheme
 from sailpoint.beta.models.approval_status_dto_current_owner import ApprovalStatusDtoCurrentOwner
 from sailpoint.beta.models.approval_status_dto_original_owner import ApprovalStatusDtoOriginalOwner
@@ -38,8 +38,8 @@ class ApprovalStatusDto(BaseModel):
     original_owner: Optional[ApprovalStatusDtoOriginalOwner] = Field(default=None, alias="originalOwner")
     current_owner: Optional[ApprovalStatusDtoCurrentOwner] = Field(default=None, alias="currentOwner")
     modified: Optional[datetime] = Field(default=None, description="Time at which item was modified.")
-    status: Optional[ManualWorkItemState] = None
-    scheme: Optional[ApprovalScheme] = None
+    status: Optional[Union[ManualWorkItemState, str]] = None
+    scheme: Optional[Union[ApprovalScheme, str]] = None
     error_messages: Optional[List[ErrorMessageDto]] = Field(default=None, description="If the request failed, includes any error messages that were generated.", alias="errorMessages")
     comment: Optional[StrictStr] = Field(default=None, description="Comment, if any, provided by the approver.")
     remove_date: Optional[datetime] = Field(default=None, description="The date the role or access profile or entitlement is no longer assigned to the specified identity.", alias="removeDate")

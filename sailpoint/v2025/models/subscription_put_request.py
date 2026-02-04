@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2025.models.event_bridge_config import EventBridgeConfig
 from sailpoint.v2025.models.http_config import HttpConfig
 from sailpoint.v2025.models.subscription_type import SubscriptionType
@@ -32,7 +32,7 @@ class SubscriptionPutRequest(BaseModel):
     """ # noqa: E501
     name: Optional[StrictStr] = Field(default=None, description="Subscription name.")
     description: Optional[StrictStr] = Field(default=None, description="Subscription description.")
-    type: Optional[SubscriptionType] = None
+    type: Optional[Union[SubscriptionType, str]] = None
     response_deadline: Optional[StrictStr] = Field(default='PT1H', description="Deadline for completing REQUEST_RESPONSE trigger invocation, represented in ISO-8601 duration format.", alias="responseDeadline")
     http_config: Optional[HttpConfig] = Field(default=None, alias="httpConfig")
     event_bridge_config: Optional[EventBridgeConfig] = Field(default=None, alias="eventBridgeConfig")

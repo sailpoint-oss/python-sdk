@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2024.models.bucket_type import BucketType
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,7 +29,7 @@ class BucketAggregation(BaseModel):
     The bucket to group the results of the aggregation query by.
     """ # noqa: E501
     name: StrictStr = Field(description="The name of the bucket aggregate to be included in the result.")
-    type: Optional[BucketType] = BucketType.TERMS
+    type: Optional[Union[BucketType, str]] = BucketType.TERMS
     var_field: StrictStr = Field(description="The field to bucket on. Prefix the field name with '@' to reference a nested object.", alias="field")
     size: Optional[StrictInt] = Field(default=None, description="Maximum number of buckets to include.")
     min_doc_count: Optional[StrictInt] = Field(default=None, description="Minimum number of documents a bucket should have.", alias="minDocCount")

@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2024.models.dto_type import DtoType
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,7 +29,7 @@ class SodExemptCriteria(BaseModel):
     Details of the Entitlement criteria
     """ # noqa: E501
     existing: Optional[StrictBool] = Field(default=False, description="If the entitlement already belonged to the user or not.")
-    type: Optional[DtoType] = None
+    type: Optional[Union[DtoType, str]] = None
     id: Optional[StrictStr] = Field(default=None, description="Entitlement ID")
     name: Optional[StrictStr] = Field(default=None, description="Entitlement name")
     __properties: ClassVar[List[str]] = ["existing", "type", "id", "name"]

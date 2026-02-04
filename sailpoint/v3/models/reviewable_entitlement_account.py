@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v3.models.activity_insights import ActivityInsights
 from sailpoint.v3.models.dto_type import DtoType
 from sailpoint.v3.models.reviewable_entitlement_account_owner import ReviewableEntitlementAccountOwner
@@ -34,7 +34,7 @@ class ReviewableEntitlementAccount(BaseModel):
     native_identity: Optional[StrictStr] = Field(default=None, description="The native identity for this account", alias="nativeIdentity")
     disabled: Optional[StrictBool] = Field(default=False, description="Indicates whether this account is currently disabled")
     locked: Optional[StrictBool] = Field(default=False, description="Indicates whether this account is currently locked")
-    type: Optional[DtoType] = None
+    type: Optional[Union[DtoType, str]] = None
     id: Optional[StrictStr] = Field(default=None, description="The id associated with the account")
     name: Optional[StrictStr] = Field(default=None, description="The account name")
     created: Optional[datetime] = Field(default=None, description="When the account was created")

@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2025.models.crawl_resources_sizes_options import CrawlResourcesSizesOptions
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,7 +30,7 @@ class ApplicationCrawlerSettings(BaseModel):
     """ # noqa: E501
     is_enabled: Optional[StrictBool] = Field(default=False, description="Indicates whether the feature or configuration is enabled.", alias="isEnabled")
     cluster_id: Optional[StrictStr] = Field(default=None, description="The identifier of the cluster associated with this configuration, if applicable.", alias="clusterId")
-    calculate_resource_size: Optional[CrawlResourcesSizesOptions] = Field(default=None, alias="calculateResourceSize")
+    calculate_resource_size: Optional[Union[CrawlResourcesSizesOptions, str]] = Field(default=None, alias="calculateResourceSize")
     crawl_snapshots_folder: Optional[StrictBool] = Field(default=False, description="Indicates whether to crawl the snapshots folder.", alias="crawlSnapshotsFolder")
     crawl_mailboxes: Optional[StrictBool] = Field(default=False, description="Indicates whether to crawl mailboxes.", alias="crawlMailboxes")
     crawl_public_folders: Optional[StrictBool] = Field(default=False, description="Indicates whether to crawl public folders.", alias="crawlPublicFolders")

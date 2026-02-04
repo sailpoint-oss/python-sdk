@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2024.models.dimension_criteria_key import DimensionCriteriaKey
 from sailpoint.v2024.models.dimension_criteria_operation import DimensionCriteriaOperation
 from typing import Optional, Set
@@ -29,7 +29,7 @@ class DimensionCriteriaLevel3(BaseModel):
     """
     Defines STANDARD type Dimension membership
     """ # noqa: E501
-    operation: Optional[DimensionCriteriaOperation] = None
+    operation: Optional[Union[DimensionCriteriaOperation, str]] = None
     key: Optional[DimensionCriteriaKey] = None
     string_value: Optional[StrictStr] = Field(default=None, description="String value to test the Identity attribute specified in the key w/r/t the specified operation. If this criteria is a leaf node, that is, if the operation is one of EQUALS, this field is required. Otherwise, specifying it is an error.", alias="stringValue")
     __properties: ClassVar[List[str]] = ["operation", "key", "stringValue"]

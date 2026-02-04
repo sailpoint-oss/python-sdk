@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2025.models.machine_classification_criteria_operation import MachineClassificationCriteriaOperation
 from typing import Optional, Set
 from typing_extensions import Self
@@ -28,7 +28,7 @@ class MachineClassificationCriteriaLevel3(BaseModel):
     """
     MachineClassificationCriteriaLevel3
     """ # noqa: E501
-    operation: Optional[MachineClassificationCriteriaOperation] = None
+    operation: Optional[Union[MachineClassificationCriteriaOperation, str]] = None
     case_sensitive: Optional[StrictBool] = Field(default=False, description="Indicates whether or not case matters when evaluating the criteria", alias="caseSensitive")
     data_type: Optional[StrictStr] = Field(default=None, description="The data type of the attribute being evaluated", alias="dataType")
     attribute: Optional[StrictStr] = Field(default=None, description="The attribute to evaluate in the classification criteria")

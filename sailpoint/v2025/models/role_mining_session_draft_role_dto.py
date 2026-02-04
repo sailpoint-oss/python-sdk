@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2025.models.role_mining_role_type import RoleMiningRoleType
 from typing import Optional, Set
 from typing_extensions import Self
@@ -35,7 +35,7 @@ class RoleMiningSessionDraftRoleDto(BaseModel):
     entitlement_ids: Optional[List[StrictStr]] = Field(default=None, description="The list of entitlement ids for this role mining session.", alias="entitlementIds")
     excluded_entitlements: Optional[List[StrictStr]] = Field(default=None, description="The list of excluded entitlement ids.", alias="excludedEntitlements")
     modified: Optional[datetime] = Field(default=None, description="Last modified date")
-    type: Optional[RoleMiningRoleType] = None
+    type: Optional[Union[RoleMiningRoleType, str]] = None
     id: Optional[StrictStr] = Field(default=None, description="Id of the potential draft role")
     created_date: Optional[datetime] = Field(default=None, description="The date-time when this potential draft role was created.", alias="createdDate")
     modified_date: Optional[datetime] = Field(default=None, description="The date-time when this potential draft role was modified.", alias="modifiedDate")

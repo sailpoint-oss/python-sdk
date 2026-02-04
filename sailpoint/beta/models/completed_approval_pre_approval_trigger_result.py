@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.beta.models.completed_approval_state import CompletedApprovalState
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,7 +30,7 @@ class CompletedApprovalPreApprovalTriggerResult(BaseModel):
     If the access request submitted event trigger is configured and this access request was intercepted by it, then this is the result of the trigger's decision to either approve or deny the request.
     """ # noqa: E501
     comment: Optional[StrictStr] = Field(default=None, description="The comment from the trigger")
-    decision: Optional[CompletedApprovalState] = None
+    decision: Optional[Union[CompletedApprovalState, str]] = None
     reviewer: Optional[StrictStr] = Field(default=None, description="The name of the approver")
     var_date: Optional[datetime] = Field(default=None, description="The date and time the trigger decided on the request", alias="date")
     __properties: ClassVar[List[str]] = ["comment", "decision", "reviewer", "date"]

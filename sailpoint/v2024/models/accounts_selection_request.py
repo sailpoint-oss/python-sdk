@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
 from sailpoint.v2024.models.access_request_item import AccessRequestItem
 from sailpoint.v2024.models.access_request_type import AccessRequestType
@@ -31,7 +31,7 @@ class AccountsSelectionRequest(BaseModel):
     AccountsSelectionRequest
     """ # noqa: E501
     requested_for: List[StrictStr] = Field(description="A list of Identity IDs for whom the Access is requested.", alias="requestedFor")
-    request_type: Optional[AccessRequestType] = Field(default=None, alias="requestType")
+    request_type: Optional[Union[AccessRequestType, str]] = Field(default=None, alias="requestType")
     requested_items: Annotated[List[AccessRequestItem], Field(min_length=1, max_length=25)] = Field(alias="requestedItems")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities.  ", alias="clientMetadata")
     __properties: ClassVar[List[str]] = ["requestedFor", "requestType", "requestedItems", "clientMetadata"]

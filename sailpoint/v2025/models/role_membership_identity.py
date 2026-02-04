@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2025.models.dto_type import DtoType
 from typing import Optional, Set
 from typing_extensions import Self
@@ -28,7 +28,7 @@ class RoleMembershipIdentity(BaseModel):
     """
     A reference to an Identity in an IDENTITY_LIST role membership criteria.
     """ # noqa: E501
-    type: Optional[DtoType] = None
+    type: Optional[Union[DtoType, str]] = None
     id: Optional[StrictStr] = Field(default=None, description="Identity id")
     name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the Identity.")
     alias_name: Optional[StrictStr] = Field(default=None, description="User name of the Identity", alias="aliasName")

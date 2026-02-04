@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2024.models.role_criteria_key import RoleCriteriaKey
 from sailpoint.v2024.models.role_criteria_level2 import RoleCriteriaLevel2
 from sailpoint.v2024.models.role_criteria_operation import RoleCriteriaOperation
@@ -30,7 +30,7 @@ class RoleCriteriaLevel1(BaseModel):
     """
     Defines STANDARD type Role membership
     """ # noqa: E501
-    operation: Optional[RoleCriteriaOperation] = None
+    operation: Optional[Union[RoleCriteriaOperation, str]] = None
     key: Optional[RoleCriteriaKey] = None
     string_value: Optional[StrictStr] = Field(default=None, description="String value to test the Identity attribute, Account attribute, or Entitlement specified in the key w/r/t the specified operation. If this criteria is a leaf node, that is, if the operation is one of EQUALS, NOT_EQUALS, CONTAINS, STARTS_WITH, or ENDS_WITH, this field is required. Otherwise, specifying it is an error.", alias="stringValue")
     children: Optional[List[Optional[RoleCriteriaLevel2]]] = Field(default=None, description="Array of child criteria. Required if the operation is AND or OR, otherwise it must be left null. A maximum of three levels of criteria are supported, including leaf nodes. Additionally, AND nodes can only be children or OR nodes and vice-versa.")

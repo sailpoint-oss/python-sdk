@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.beta.models.access_request_recommendation_item_type import AccessRequestRecommendationItemType
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,7 +29,7 @@ class AccessRequestRecommendationItem(BaseModel):
     AccessRequestRecommendationItem
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="ID of access item being recommended.")
-    type: Optional[AccessRequestRecommendationItemType] = None
+    type: Optional[Union[AccessRequestRecommendationItemType, str]] = None
     __properties: ClassVar[List[str]] = ["id", "type"]
 
     model_config = ConfigDict(

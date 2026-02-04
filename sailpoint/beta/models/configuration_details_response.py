@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.beta.models.audit_details import AuditDetails
 from sailpoint.beta.models.config_type_enum import ConfigTypeEnum
 from sailpoint.beta.models.identity1 import Identity1
@@ -31,7 +31,7 @@ class ConfigurationDetailsResponse(BaseModel):
     """
     The request body of Reassignment Configuration Details for a specific identity and config type
     """ # noqa: E501
-    config_type: Optional[ConfigTypeEnum] = Field(default=None, alias="configType")
+    config_type: Optional[Union[ConfigTypeEnum, str]] = Field(default=None, alias="configType")
     target_identity: Optional[Identity1] = Field(default=None, alias="targetIdentity")
     start_date: Optional[datetime] = Field(default=None, description="The date from which to start reassigning work items", alias="startDate")
     end_date: Optional[datetime] = Field(default=None, description="The date from which to stop reassigning work items.  If this is an empty string it indicates a permanent reassignment.", alias="endDate")

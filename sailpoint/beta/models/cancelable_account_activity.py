@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.beta.models.account_activity_item import AccountActivityItem
 from sailpoint.beta.models.comment import Comment
 from sailpoint.beta.models.completion_status import CompletionStatus
@@ -38,14 +38,14 @@ class CancelableAccountActivity(BaseModel):
     created: Optional[datetime] = None
     modified: Optional[datetime] = None
     completed: Optional[datetime] = None
-    completion_status: Optional[CompletionStatus] = Field(default=None, alias="completionStatus")
+    completion_status: Optional[Union[CompletionStatus, str]] = Field(default=None, alias="completionStatus")
     type: Optional[StrictStr] = None
     requester_identity_summary: Optional[IdentitySummary] = Field(default=None, alias="requesterIdentitySummary")
     target_identity_summary: Optional[IdentitySummary] = Field(default=None, alias="targetIdentitySummary")
     errors: Optional[List[StrictStr]] = None
     warnings: Optional[List[StrictStr]] = None
     items: Optional[List[AccountActivityItem]] = None
-    execution_status: Optional[ExecutionStatus] = Field(default=None, alias="executionStatus")
+    execution_status: Optional[Union[ExecutionStatus, str]] = Field(default=None, alias="executionStatus")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs, if any were included in the corresponding access request", alias="clientMetadata")
     cancelable: Optional[StrictBool] = Field(default=None, description="Whether the account activity can be canceled before completion")
     cancel_comment: Optional[Comment] = Field(default=None, alias="cancelComment")

@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2024.models.role_mining_role_type import RoleMiningRoleType
 from sailpoint.v2024.models.role_mining_session_scope import RoleMiningSessionScope
 from typing import Optional, Set
@@ -35,7 +35,7 @@ class RoleMiningSessionDto(BaseModel):
     min_num_identities_in_potential_role: Optional[StrictInt] = Field(default=None, description="Minimum number of identities in a potential role", alias="minNumIdentitiesInPotentialRole")
     potential_role_count: Optional[StrictInt] = Field(default=None, description="Number of potential roles", alias="potentialRoleCount")
     potential_roles_ready_count: Optional[StrictInt] = Field(default=None, description="Number of potential roles ready", alias="potentialRolesReadyCount")
-    type: Optional[RoleMiningRoleType] = None
+    type: Optional[Union[RoleMiningRoleType, str]] = None
     email_recipient_id: Optional[StrictStr] = Field(default=None, description="The id of the user who will receive an email about the role mining session", alias="emailRecipientId")
     identity_count: Optional[StrictInt] = Field(default=None, description="Number of identities in the population which meet the search criteria or identity list provided", alias="identityCount")
     saved: Optional[StrictBool] = Field(default=False, description="The session's saved status")

@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2025.models.dto_type import DtoType
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,7 +29,7 @@ class RequestedAccountRef(BaseModel):
     RequestedAccountRef
     """ # noqa: E501
     name: Optional[StrictStr] = Field(default=None, description="Display name of the account for the user")
-    type: Optional[DtoType] = None
+    type: Optional[Union[DtoType, str]] = None
     account_uuid: Optional[StrictStr] = Field(default=None, description="The uuid for the account", alias="accountUuid")
     account_id: Optional[StrictStr] = Field(default=None, description="The native identity for the account", alias="accountId")
     source_name: Optional[StrictStr] = Field(default=None, description="Display name of the source for the account", alias="sourceName")

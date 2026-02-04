@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2025.models.non_employee_identity_dto_type import NonEmployeeIdentityDtoType
 from typing import Optional, Set
 from typing_extensions import Self
@@ -28,7 +28,7 @@ class NonEmployeeIdentityReferenceWithId(BaseModel):
     """
     NonEmployeeIdentityReferenceWithId
     """ # noqa: E501
-    type: Optional[NonEmployeeIdentityDtoType] = None
+    type: Optional[Union[NonEmployeeIdentityDtoType, str]] = None
     id: Optional[StrictStr] = Field(default=None, description="Identity id")
     __properties: ClassVar[List[str]] = ["type", "id"]
 

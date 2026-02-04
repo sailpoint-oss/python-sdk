@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.beta.models.access_item_requester import AccessItemRequester
 from sailpoint.beta.models.access_request_phases import AccessRequestPhases
 from sailpoint.beta.models.access_request_type import AccessRequestType
@@ -47,12 +47,12 @@ class RequestedItemStatus(BaseModel):
     type: Optional[StrictStr] = Field(default=None, description="Type of requested object.")
     cancelled_request_details: Optional[RequestedItemStatusCancelledRequestDetails] = Field(default=None, alias="cancelledRequestDetails")
     error_messages: Optional[List[List[ErrorMessageDto]]] = Field(default=None, description="List of list of localized error messages, if any, encountered during the approval/provisioning process.", alias="errorMessages")
-    state: Optional[RequestedItemStatusRequestState] = None
+    state: Optional[Union[RequestedItemStatusRequestState, str]] = None
     approval_details: Optional[List[ApprovalStatusDto]] = Field(default=None, description="Approval details for each item.", alias="approvalDetails")
     approval_ids: Optional[List[StrictStr]] = Field(default=None, description="List of approval IDs associated with the request.", alias="approvalIds")
     manual_work_item_details: Optional[List[ManualWorkItemDetails]] = Field(default=None, description="Manual work items created for provisioning the item.", alias="manualWorkItemDetails")
     account_activity_item_id: Optional[StrictStr] = Field(default=None, description="Id of associated account activity item.", alias="accountActivityItemId")
-    request_type: Optional[AccessRequestType] = Field(default=None, alias="requestType")
+    request_type: Optional[Union[AccessRequestType, str]] = Field(default=None, alias="requestType")
     modified: Optional[datetime] = Field(default=None, description="When the request was last modified.")
     created: Optional[datetime] = Field(default=None, description="When the request was created.")
     requester: Optional[AccessItemRequester] = None

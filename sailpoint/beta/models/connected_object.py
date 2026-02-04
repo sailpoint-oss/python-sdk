@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.beta.models.connected_object_type import ConnectedObjectType
 from typing import Optional, Set
 from typing_extensions import Self
@@ -28,7 +28,7 @@ class ConnectedObject(BaseModel):
     """
     ConnectedObject
     """ # noqa: E501
-    type: Optional[ConnectedObjectType] = None
+    type: Optional[Union[ConnectedObjectType, str]] = None
     id: Optional[StrictStr] = Field(default=None, description="ID of the object to which this reference applies")
     name: Optional[StrictStr] = Field(default=None, description="Human-readable name of Connected object")
     description: Optional[StrictStr] = Field(default=None, description="Description of the Connected object.")
