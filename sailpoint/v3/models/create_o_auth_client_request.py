@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v3.models.access_type import AccessType
 from sailpoint.v3.models.client_type import ClientType
 from sailpoint.v3.models.grant_type import GrantType
@@ -37,9 +37,9 @@ class CreateOAuthClientRequest(BaseModel):
     access_token_validity_seconds: StrictInt = Field(description="The number of seconds an access token generated for this API Client is valid for", alias="accessTokenValiditySeconds")
     refresh_token_validity_seconds: Optional[StrictInt] = Field(default=None, description="The number of seconds a refresh token generated for this API Client is valid for", alias="refreshTokenValiditySeconds")
     redirect_uris: Optional[List[StrictStr]] = Field(default=None, description="A list of the approved redirect URIs. Provide one or more URIs when assigning the AUTHORIZATION_CODE grant type to a new OAuth Client.", alias="redirectUris")
-    grant_types: Optional[List[GrantType]] = Field(description="A list of OAuth 2.0 grant types this API Client can be used with", alias="grantTypes")
-    access_type: AccessType = Field(alias="accessType")
-    type: Optional[ClientType] = None
+    grant_types: Optional[List[Union[GrantType, str]]] = Field(description="A list of OAuth 2.0 grant types this API Client can be used with", alias="grantTypes")
+    access_type: Union[AccessType, str] = Field(alias="accessType")
+    type: Optional[Union[ClientType, str]] = None
     internal: Optional[StrictBool] = Field(default=None, description="An indicator of whether the API Client can be used for requests internal within the product.")
     enabled: StrictBool = Field(description="An indicator of whether the API Client is enabled for use")
     strong_auth_supported: Optional[StrictBool] = Field(default=None, description="An indicator of whether the API Client supports strong authentication", alias="strongAuthSupported")

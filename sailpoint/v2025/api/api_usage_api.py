@@ -59,7 +59,7 @@ class ApiUsageApi:
     ) -> object:
         """Total number of API requests
 
-        This API gets an aggregated number of all API calls from an org in a given timespan.
+        This API gets an aggregated number of all API calls from an org in a specific timespan. Unless specified, the results are aggregated between the first day of the current month and today.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -135,7 +135,7 @@ class ApiUsageApi:
     ) -> ApiResponse[object]:
         """Total number of API requests
 
-        This API gets an aggregated number of all API calls from an org in a given timespan.
+        This API gets an aggregated number of all API calls from an org in a specific timespan. Unless specified, the results are aggregated between the first day of the current month and today.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -211,7 +211,7 @@ class ApiUsageApi:
     ) -> RESTResponseType:
         """Total number of API requests
 
-        This API gets an aggregated number of all API calls from an org in a given timespan.
+        This API gets an aggregated number of all API calls from an org in a specific timespan. Unless specified, the results are aggregated between the first day of the current month and today.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -356,7 +356,7 @@ class ApiUsageApi:
     ) -> List[SummaryResponse]:
         """Get Api Summary
 
-        This API gets a list of APIs called by the org in a specific timespan, sorted by number of calls.
+        This API gets a list of APIs called by the org in a specific timespan, sorted by number of calls. Unless specified,  the results are aggregated between the first day of the current month and today.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -440,7 +440,7 @@ class ApiUsageApi:
     ) -> ApiResponse[List[SummaryResponse]]:
         """Get Api Summary
 
-        This API gets a list of APIs called by the org in a specific timespan, sorted by number of calls.
+        This API gets a list of APIs called by the org in a specific timespan, sorted by number of calls. Unless specified,  the results are aggregated between the first day of the current month and today.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -524,7 +524,7 @@ class ApiUsageApi:
     ) -> RESTResponseType:
         """Get Api Summary
 
-        This API gets a list of APIs called by the org in a specific timespan, sorted by number of calls.
+        This API gets a list of APIs called by the org in a specific timespan, sorted by number of calls. Unless specified,  the results are aggregated between the first day of the current month and today.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
