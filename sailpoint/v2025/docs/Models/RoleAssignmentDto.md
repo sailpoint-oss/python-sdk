@@ -57,7 +57,9 @@ account_targets=[
                             native_identity = 'CN=Abby Smith,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com', 
                             display_name = 'Abby.Smith', 
                             uuid = '{ad9fc391-246d-40af-b248-b6556a2b7c01}', ), 
-                        role_name = 'Marketing', )
+                        role = sailpoint.v2025.models.base_reference_dto.Base Reference Dto(
+                            id = '2c91808568c529c60168cca6f90c1313', 
+                            name = 'William Wilson', ), )
                     ],
 remove_date='2026-07-11T18:45:37.098Z',
 added_date='2025-07-11T18:45:37.098Z'

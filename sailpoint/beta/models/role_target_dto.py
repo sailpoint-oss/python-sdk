@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.beta.models.account_info_dto import AccountInfoDto
 from sailpoint.beta.models.base_reference_dto1 import BaseReferenceDto1
@@ -31,8 +31,8 @@ class RoleTargetDto(BaseModel):
     """ # noqa: E501
     source: Optional[BaseReferenceDto1] = None
     account_info: Optional[AccountInfoDto] = Field(default=None, alias="accountInfo")
-    role_name: Optional[StrictStr] = Field(default=None, description="Specific role name for this target if using multiple accounts", alias="roleName")
-    __properties: ClassVar[List[str]] = ["source", "accountInfo", "roleName"]
+    role: Optional[BaseReferenceDto1] = None
+    __properties: ClassVar[List[str]] = ["source", "accountInfo", "role"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -79,6 +79,9 @@ class RoleTargetDto(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of account_info
         if self.account_info:
             _dict['accountInfo'] = self.account_info.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of role
+        if self.role:
+            _dict['role'] = self.role.to_dict()
         return _dict
 
     @classmethod
@@ -93,7 +96,7 @@ class RoleTargetDto(BaseModel):
         _obj = cls.model_validate({
             "source": BaseReferenceDto1.from_dict(obj["source"]) if obj.get("source") is not None else None,
             "accountInfo": AccountInfoDto.from_dict(obj["accountInfo"]) if obj.get("accountInfo") is not None else None,
-            "roleName": obj.get("roleName")
+            "role": BaseReferenceDto1.from_dict(obj["role"]) if obj.get("role") is not None else None
         })
         return _obj
 

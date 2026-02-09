@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **source** | [**BaseReferenceDto1**](base-reference-dto1) |  | [optional] 
 **account_info** | [**AccountInfoDto**](account-info-dto) |  | [optional] 
-**role_name** | **str** | Specific role name for this target if using multiple accounts | [optional] 
+**role** | [**BaseReferenceDto1**](base-reference-dto1) |  | [optional] 
 }
 
 ## Example
@@ -34,7 +34,9 @@ account_info=sailpoint.beta.models.account_info_dto.Account Info Dto(
                     native_identity = 'CN=Abby Smith,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com', 
                     display_name = 'Abby.Smith', 
                     uuid = '{ad9fc391-246d-40af-b248-b6556a2b7c01}', ),
-role_name='Marketing'
+role=sailpoint.beta.models.base_reference_dto.Base Reference Dto(
+                    id = 'ff8081814d977c21014da056804a0af3', 
+                    name = 'Github', )
 )
 
 ```

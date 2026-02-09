@@ -42,7 +42,9 @@ class TestRoleTargetDto(unittest.TestCase):
                     native_identity = 'CN=Abby Smith,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com', 
                     display_name = 'Abby.Smith', 
                     uuid = '{ad9fc391-246d-40af-b248-b6556a2b7c01}', ),
-                role_name = 'Marketing'
+                role = sailpoint.beta.models.base_reference_dto.Base Reference Dto(
+                    id = 'ff8081814d977c21014da056804a0af3', 
+                    name = 'Github', )
             )
         else:
             return RoleTargetDto(
