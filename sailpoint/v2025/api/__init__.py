@@ -75,6 +75,7 @@ from sailpoint.v2025.api.public_identities_config_api import PublicIdentitiesCon
 from sailpoint.v2025.api.reports_data_extraction_api import ReportsDataExtractionApi
 from sailpoint.v2025.api.requestable_objects_api import RequestableObjectsApi
 from sailpoint.v2025.api.role_insights_api import RoleInsightsApi
+from sailpoint.v2025.api.role_propagation_api import RolePropagationApi
 from sailpoint.v2025.api.roles_api import RolesApi
 from sailpoint.v2025.api.sim_integrations_api import SIMIntegrationsApi
 from sailpoint.v2025.api.sod_policies_api import SODPoliciesApi

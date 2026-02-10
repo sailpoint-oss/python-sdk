@@ -17521,6 +17521,109 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling RoleInsightsApi->get_role_insights_summary: %s\n" % e)
+- path: /role-propagation/terminate
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/role-propagation#cancel-role-propagation
+      source: |
+        from sailpoint.v2025.api.role_propagation_api import RolePropagationApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          try:
+              # Terminate Role Propagation process
+              
+              RolePropagationApi(api_client).cancel_role_propagation(x_sail_point_experimental=x_sail_point_experimental)
+              # Below is a request that includes all optional parameters
+              # RolePropagationApi(api_client).cancel_role_propagation(x_sail_point_experimental)
+          except Exception as e:
+              print("Exception when calling RolePropagationApi->cancel_role_propagation: %s\n" % e)
+- path: /role-propagation/is-running
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/role-propagation#get-ongoing-role-propagation
+      source: |
+        from sailpoint.v2025.api.role_propagation_api import RolePropagationApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.role_propagation_ongoing_response import RolePropagationOngoingResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          try:
+              # Get ongoing Role Propagation process
+              
+              results = RolePropagationApi(api_client).get_ongoing_role_propagation(x_sail_point_experimental=x_sail_point_experimental)
+              # Below is a request that includes all optional parameters
+              # results = RolePropagationApi(api_client).get_ongoing_role_propagation(x_sail_point_experimental)
+              print("The response of RolePropagationApi->get_ongoing_role_propagation:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolePropagationApi->get_ongoing_role_propagation: %s\n" % e)
+- path: /role-propagation/{rolePropagationId}/status
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/role-propagation#get-role-propagation-status
+      source: |
+        from sailpoint.v2025.api.role_propagation_api import RolePropagationApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.role_propagation_status_response import RolePropagationStatusResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          role_propagation_id = '47b9fb02-e12e-42ba-8bfe-1860d78c88eb' # str | The ID of the role propagation process to retrieve the status for. # str | The ID of the role propagation process to retrieve the status for.
+          try:
+              # Get status of Role-Propagation process
+              
+              results = RolePropagationApi(api_client).get_role_propagation_status(x_sail_point_experimental=x_sail_point_experimental, role_propagation_id=role_propagation_id)
+              # Below is a request that includes all optional parameters
+              # results = RolePropagationApi(api_client).get_role_propagation_status(x_sail_point_experimental, role_propagation_id)
+              print("The response of RolePropagationApi->get_role_propagation_status:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolePropagationApi->get_role_propagation_status: %s\n" % e)
+- path: /role-propagation
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/role-propagation#start-role-propagation
+      source: |
+        from sailpoint.v2025.api.role_propagation_api import RolePropagationApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.role_propagation_response import RolePropagationResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          skip_role_refresh = False # bool | When true, the role refresh is not performed. Keeping it false is recommended. (optional) (default to False) # bool | When true, the role refresh is not performed. Keeping it false is recommended. (optional) (default to False)
+          try:
+              # Initiate Role Propagation process
+              
+              results = RolePropagationApi(api_client).start_role_propagation(x_sail_point_experimental=x_sail_point_experimental)
+              # Below is a request that includes all optional parameters
+              # results = RolePropagationApi(api_client).start_role_propagation(x_sail_point_experimental, skip_role_refresh)
+              print("The response of RolePropagationApi->start_role_propagation:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolePropagationApi->start_role_propagation: %s\n" % e)
 - path: /roles
   method: POST
   xCodeSample:

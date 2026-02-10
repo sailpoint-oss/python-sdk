@@ -638,6 +638,10 @@ Class | Method | HTTP request | Description
 *RoleInsightsApi* | [**get_role_insights_entitlements_changes**](sailpoint/v2025/docs/RoleInsightsApi.md#get_role_insights_entitlements_changes) | **GET** /role-insights/{insightId}/entitlement-changes | Get entitlement insights for a role
 *RoleInsightsApi* | [**get_role_insights_requests**](sailpoint/v2025/docs/RoleInsightsApi.md#get_role_insights_requests) | **GET** /role-insights/requests/{id} | Returns metadata from prior request.
 *RoleInsightsApi* | [**get_role_insights_summary**](sailpoint/v2025/docs/RoleInsightsApi.md#get_role_insights_summary) | **GET** /role-insights/summary | Get role insights summary information
+*RolePropagationApi* | [**cancel_role_propagation**](sailpoint/v2025/docs/RolePropagationApi.md#cancel_role_propagation) | **POST** /role-propagation/terminate | Terminate Role Propagation process
+*RolePropagationApi* | [**get_ongoing_role_propagation**](sailpoint/v2025/docs/RolePropagationApi.md#get_ongoing_role_propagation) | **GET** /role-propagation/is-running | Get ongoing Role Propagation process
+*RolePropagationApi* | [**get_role_propagation_status**](sailpoint/v2025/docs/RolePropagationApi.md#get_role_propagation_status) | **GET** /role-propagation/{rolePropagationId}/status | Get status of Role-Propagation process
+*RolePropagationApi* | [**start_role_propagation**](sailpoint/v2025/docs/RolePropagationApi.md#start_role_propagation) | **POST** /role-propagation | Initiate Role Propagation process
 *RolesApi* | [**create_role**](sailpoint/v2025/docs/RolesApi.md#create_role) | **POST** /roles | Create a role
 *RolesApi* | [**delete_bulk_roles**](sailpoint/v2025/docs/RolesApi.md#delete_bulk_roles) | **POST** /roles/bulk-delete | Delete role(s)
 *RolesApi* | [**delete_metadata_from_role_by_key_and_value**](sailpoint/v2025/docs/RolesApi.md#delete_metadata_from_role_by_key_and_value) | **DELETE** /roles/{id}/access-model-metadata/{attributeKey}/values/{attributeValue} | Remove a metadata from role.
@@ -1855,6 +1859,12 @@ Class | Method | HTTP request | Description
  - [RoleMiningSessionScopingMethod](sailpoint/v2025/docs/RoleMiningSessionScopingMethod.md)
  - [RoleMiningSessionState](sailpoint/v2025/docs/RoleMiningSessionState.md)
  - [RoleMiningSessionStatus](sailpoint/v2025/docs/RoleMiningSessionStatus.md)
+ - [RolePropagationOngoingResponse](sailpoint/v2025/docs/RolePropagationOngoingResponse.md)
+ - [RolePropagationOngoingResponseRolePropagationDetails](sailpoint/v2025/docs/RolePropagationOngoingResponseRolePropagationDetails.md)
+ - [RolePropagationResponse](sailpoint/v2025/docs/RolePropagationResponse.md)
+ - [RolePropagationStatusResponse](sailpoint/v2025/docs/RolePropagationStatusResponse.md)
+ - [RolePropagationStatusResponseLaunchedBy](sailpoint/v2025/docs/RolePropagationStatusResponseLaunchedBy.md)
+ - [RolePropagationStatusResponseTerminatedBy](sailpoint/v2025/docs/RolePropagationStatusResponseTerminatedBy.md)
  - [RoleSummary](sailpoint/v2025/docs/RoleSummary.md)
  - [RoleTargetDto](sailpoint/v2025/docs/RoleTargetDto.md)
  - [SavedSearch](sailpoint/v2025/docs/SavedSearch.md)

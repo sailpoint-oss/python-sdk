@@ -91,6 +91,7 @@ from sailpoint.v2025.api.public_identities_config_api import PublicIdentitiesCon
 from sailpoint.v2025.api.reports_data_extraction_api import ReportsDataExtractionApi
 from sailpoint.v2025.api.requestable_objects_api import RequestableObjectsApi
 from sailpoint.v2025.api.role_insights_api import RoleInsightsApi
+from sailpoint.v2025.api.role_propagation_api import RolePropagationApi
 from sailpoint.v2025.api.roles_api import RolesApi
 from sailpoint.v2025.api.sim_integrations_api import SIMIntegrationsApi
 from sailpoint.v2025.api.sod_policies_api import SODPoliciesApi
@@ -1118,6 +1119,12 @@ from sailpoint.v2025.models.role_mining_session_scope import RoleMiningSessionSc
 from sailpoint.v2025.models.role_mining_session_scoping_method import RoleMiningSessionScopingMethod
 from sailpoint.v2025.models.role_mining_session_state import RoleMiningSessionState
 from sailpoint.v2025.models.role_mining_session_status import RoleMiningSessionStatus
+from sailpoint.v2025.models.role_propagation_ongoing_response import RolePropagationOngoingResponse
+from sailpoint.v2025.models.role_propagation_ongoing_response_role_propagation_details import RolePropagationOngoingResponseRolePropagationDetails
+from sailpoint.v2025.models.role_propagation_response import RolePropagationResponse
+from sailpoint.v2025.models.role_propagation_status_response import RolePropagationStatusResponse
+from sailpoint.v2025.models.role_propagation_status_response_launched_by import RolePropagationStatusResponseLaunchedBy
+from sailpoint.v2025.models.role_propagation_status_response_terminated_by import RolePropagationStatusResponseTerminatedBy
 from sailpoint.v2025.models.role_summary import RoleSummary
 from sailpoint.v2025.models.role_target_dto import RoleTargetDto
 from sailpoint.v2025.models.saved_search import SavedSearch
