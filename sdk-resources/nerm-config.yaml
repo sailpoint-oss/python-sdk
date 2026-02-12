@@ -1,0 +1,18 @@
+templateDir: ./sdk-resources/resources
+packageName: sailpoint.nerm
+packageVersion: 1.4.1
+apiVersion: 
+generateSourceCodeOnly: true
+functionPrefix: 
+subModuleName:
+nerm: true
+files:
+  developerSite_code_examples.mustache:
+    templateType: SupportingFiles
+    destinationFilename: sailpoint/nerm/docs/Examples/python_code_examples_overlay.yaml
+  docs_methods_index.mustache:
+    templateType: SupportingFiles
+    destinationFilename: sailpoint/nerm/docs/Methods/Index.md
+  docs_models_index.mustache:
+    templateType: SupportingFiles
+    destinationFilename: sailpoint/nerm/Index.md

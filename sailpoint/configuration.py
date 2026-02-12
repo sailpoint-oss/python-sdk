@@ -6,7 +6,6 @@ import multiprocessing
 import os
 import ssl
 import sys
-
 import urllib3
 
 SUPPORTED_SOCKS_PROXIES = {"socks5", "socks5h", "socks4", "socks4a"}
@@ -28,6 +27,7 @@ class ConfigurationParams:
     client_secret = None
     token_url = None
     access_token = None
+    nerm_base_url = None
     ssl_ca_cert = None
     proxy = None
     proxy_headers = None
@@ -45,6 +45,11 @@ class Configuration:
         self.proxy = configurationParams.proxy if configurationParams and configurationParams.proxy else None
         self.proxy_headers = configurationParams.proxy_headers if configurationParams and configurationParams.proxy_headers else None
         self.verify_ssl = configurationParams.verify_ssl if configurationParams and configurationParams.verify_ssl else True
+        self.nerm_base_url = (
+            configurationParams.nerm_base_url
+            if configurationParams and configurationParams.nerm_base_url is not None
+            else defaultConfiguration.nerm_base_url
+        )
 
         url = f"{self.token_url}"
         if self.access_token == None:
@@ -163,6 +168,11 @@ class Configuration:
             else None
         )
         config.token_url = str(config.base_url) + "/oauth/token"
+        config.nerm_base_url = (
+            os.environ.get("SAIL_NERM_BASE_URL")
+            if os.environ.get("SAIL_NERM_BASE_URL")
+            else None
+        )
 
         return config
 
@@ -177,6 +187,7 @@ class Configuration:
                 config.client_id = data["ClientId"]
                 config.client_secret = data["ClientSecret"]
                 config.token_url = config.base_url + "/oauth/token"
+                config.nerm_base_url = data.get("NermBaseUrl")
         
         return config
 
