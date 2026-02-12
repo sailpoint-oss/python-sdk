@@ -20,7 +20,7 @@ from typing_extensions import Self
 
 class AccessRequestType(str, Enum):
     """
-    Access request type. Defaults to GRANT_ACCESS. REVOKE_ACCESS type can only have a single Identity ID in the requestedFor field.
+    Access request type. Defaults to GRANT_ACCESS. REVOKE_ACCESS type can only have a single Identity ID in the requestedFor field. MODIFY_ACCESS type is used for updating access expiration dates or other access modifications.
     """
 
     """
@@ -28,6 +28,7 @@ class AccessRequestType(str, Enum):
     """
     GRANT_ACCESS = 'GRANT_ACCESS'
     REVOKE_ACCESS = 'REVOKE_ACCESS'
+    MODIFY_ACCESS = 'MODIFY_ACCESS'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
