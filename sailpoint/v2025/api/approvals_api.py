@@ -2275,8 +2275,6 @@ class ApprovalsApi:
     def put_approvals_config(
         self,
         approval_config: ApprovalConfig,
-        id: Annotated[Optional[StrictStr], Field(description="The ID defined by the scope field, where [[id]]:[[scope]] is the following:  [[roleID]]:ROLE  [[entitlementID]]:ENTITLEMENT  [[accessProfileID]]:ACCESS_PROFILE  [[sourceID]]:SOURCE  [[applicationID]]:APPLICATION  ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE  ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE  [[tenantID]]:TENANT ")] = None,
-        scope: Annotated[Optional[StrictStr], Field(description="The scope of the field, where [[id]]:[[scope]] is the following:  [[roleID]]:ROLE  [[entitlementID]]:ENTITLEMENT  [[accessProfileID]]:ACCESS_PROFILE  [[sourceID]]:SOURCE  [[applicationID]]:APPLICATION  ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE  ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE  [[tenantID]]:TENANT ")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2296,10 +2294,6 @@ class ApprovalsApi:
 
         :param approval_config: (required)
         :type approval_config: ApprovalConfig
-        :param id: The ID defined by the scope field, where [[id]]:[[scope]] is the following:  [[roleID]]:ROLE  [[entitlementID]]:ENTITLEMENT  [[accessProfileID]]:ACCESS_PROFILE  [[sourceID]]:SOURCE  [[applicationID]]:APPLICATION  ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE  ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE  [[tenantID]]:TENANT 
-        :type id: str
-        :param scope: The scope of the field, where [[id]]:[[scope]] is the following:  [[roleID]]:ROLE  [[entitlementID]]:ENTITLEMENT  [[accessProfileID]]:ACCESS_PROFILE  [[sourceID]]:SOURCE  [[applicationID]]:APPLICATION  ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE  ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE  [[tenantID]]:TENANT 
-        :type scope: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2324,8 +2318,6 @@ class ApprovalsApi:
 
         _param = self._put_approvals_config_serialize(
             approval_config=approval_config,
-            id=id,
-            scope=scope,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2356,8 +2348,6 @@ class ApprovalsApi:
     def put_approvals_config_with_http_info(
         self,
         approval_config: ApprovalConfig,
-        id: Annotated[Optional[StrictStr], Field(description="The ID defined by the scope field, where [[id]]:[[scope]] is the following:  [[roleID]]:ROLE  [[entitlementID]]:ENTITLEMENT  [[accessProfileID]]:ACCESS_PROFILE  [[sourceID]]:SOURCE  [[applicationID]]:APPLICATION  ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE  ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE  [[tenantID]]:TENANT ")] = None,
-        scope: Annotated[Optional[StrictStr], Field(description="The scope of the field, where [[id]]:[[scope]] is the following:  [[roleID]]:ROLE  [[entitlementID]]:ENTITLEMENT  [[accessProfileID]]:ACCESS_PROFILE  [[sourceID]]:SOURCE  [[applicationID]]:APPLICATION  ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE  ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE  [[tenantID]]:TENANT ")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2377,10 +2367,6 @@ class ApprovalsApi:
 
         :param approval_config: (required)
         :type approval_config: ApprovalConfig
-        :param id: The ID defined by the scope field, where [[id]]:[[scope]] is the following:  [[roleID]]:ROLE  [[entitlementID]]:ENTITLEMENT  [[accessProfileID]]:ACCESS_PROFILE  [[sourceID]]:SOURCE  [[applicationID]]:APPLICATION  ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE  ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE  [[tenantID]]:TENANT 
-        :type id: str
-        :param scope: The scope of the field, where [[id]]:[[scope]] is the following:  [[roleID]]:ROLE  [[entitlementID]]:ENTITLEMENT  [[accessProfileID]]:ACCESS_PROFILE  [[sourceID]]:SOURCE  [[applicationID]]:APPLICATION  ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE  ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE  [[tenantID]]:TENANT 
-        :type scope: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2405,8 +2391,6 @@ class ApprovalsApi:
 
         _param = self._put_approvals_config_serialize(
             approval_config=approval_config,
-            id=id,
-            scope=scope,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2437,8 +2421,6 @@ class ApprovalsApi:
     def put_approvals_config_without_preload_content(
         self,
         approval_config: ApprovalConfig,
-        id: Annotated[Optional[StrictStr], Field(description="The ID defined by the scope field, where [[id]]:[[scope]] is the following:  [[roleID]]:ROLE  [[entitlementID]]:ENTITLEMENT  [[accessProfileID]]:ACCESS_PROFILE  [[sourceID]]:SOURCE  [[applicationID]]:APPLICATION  ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE  ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE  [[tenantID]]:TENANT ")] = None,
-        scope: Annotated[Optional[StrictStr], Field(description="The scope of the field, where [[id]]:[[scope]] is the following:  [[roleID]]:ROLE  [[entitlementID]]:ENTITLEMENT  [[accessProfileID]]:ACCESS_PROFILE  [[sourceID]]:SOURCE  [[applicationID]]:APPLICATION  ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE  ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE  [[tenantID]]:TENANT ")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2458,10 +2440,6 @@ class ApprovalsApi:
 
         :param approval_config: (required)
         :type approval_config: ApprovalConfig
-        :param id: The ID defined by the scope field, where [[id]]:[[scope]] is the following:  [[roleID]]:ROLE  [[entitlementID]]:ENTITLEMENT  [[accessProfileID]]:ACCESS_PROFILE  [[sourceID]]:SOURCE  [[applicationID]]:APPLICATION  ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE  ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE  [[tenantID]]:TENANT 
-        :type id: str
-        :param scope: The scope of the field, where [[id]]:[[scope]] is the following:  [[roleID]]:ROLE  [[entitlementID]]:ENTITLEMENT  [[accessProfileID]]:ACCESS_PROFILE  [[sourceID]]:SOURCE  [[applicationID]]:APPLICATION  ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE  ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE  [[tenantID]]:TENANT 
-        :type scope: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2486,8 +2464,6 @@ class ApprovalsApi:
 
         _param = self._put_approvals_config_serialize(
             approval_config=approval_config,
-            id=id,
-            scope=scope,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2513,8 +2489,6 @@ class ApprovalsApi:
     def _put_approvals_config_serialize(
         self,
         approval_config,
-        id,
-        scope,
         _request_auth,
         _content_type,
         _headers,
@@ -2537,14 +2511,6 @@ class ApprovalsApi:
 
         # process the path parameters
         # process the query parameters
-        if id is not None:
-            
-            _query_params.append(('id', id))
-            
-        if scope is not None:
-            
-            _query_params.append(('scope', scope))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter

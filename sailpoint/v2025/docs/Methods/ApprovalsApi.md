@@ -522,8 +522,6 @@ Upserts a singular approval configuration that matches the given configID and co
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
  Body  | approval_config | [**ApprovalConfig**](../models/approval-config) | True  | 
-  Query | id | **str** |   (optional) | The ID defined by the scope field, where [[id]]:[[scope]] is the following:  [[roleID]]:ROLE  [[entitlementID]]:ENTITLEMENT  [[accessProfileID]]:ACCESS_PROFILE  [[sourceID]]:SOURCE  [[applicationID]]:APPLICATION  ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE  ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE  [[tenantID]]:TENANT 
-  Query | scope | **str** |   (optional) | The scope of the field, where [[id]]:[[scope]] is the following:  [[roleID]]:ROLE  [[entitlementID]]:ENTITLEMENT  [[accessProfileID]]:ACCESS_PROFILE  [[sourceID]]:SOURCE  [[applicationID]]:APPLICATION  ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE  ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE  [[tenantID]]:TENANT 
 
 ### Return type
 [**ApprovalConfig**](../models/approval-config)
@@ -630,15 +628,13 @@ with ApiClient(configuration) as api_client:
           } ],
           "autoApprove" : "false"
         }''' # ApprovalConfig | 
-    id = '38453251-6be2-5f8f-df93-5ce19e295837' # str | The ID defined by the scope field, where [[id]]:[[scope]] is the following:  [[roleID]]:ROLE  [[entitlementID]]:ENTITLEMENT  [[accessProfileID]]:ACCESS_PROFILE  [[sourceID]]:SOURCE  [[applicationID]]:APPLICATION  ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE  ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE  [[tenantID]]:TENANT  (optional) # str | The ID defined by the scope field, where [[id]]:[[scope]] is the following:  [[roleID]]:ROLE  [[entitlementID]]:ENTITLEMENT  [[accessProfileID]]:ACCESS_PROFILE  [[sourceID]]:SOURCE  [[applicationID]]:APPLICATION  ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE  ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE  [[tenantID]]:TENANT  (optional)
-    scope = 'ROLE' # str | The scope of the field, where [[id]]:[[scope]] is the following:  [[roleID]]:ROLE  [[entitlementID]]:ENTITLEMENT  [[accessProfileID]]:ACCESS_PROFILE  [[sourceID]]:SOURCE  [[applicationID]]:APPLICATION  ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE  ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE  [[tenantID]]:TENANT  (optional) # str | The scope of the field, where [[id]]:[[scope]] is the following:  [[roleID]]:ROLE  [[entitlementID]]:ENTITLEMENT  [[accessProfileID]]:ACCESS_PROFILE  [[sourceID]]:SOURCE  [[applicationID]]:APPLICATION  ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE  ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE  [[tenantID]]:TENANT  (optional)
 
     try:
         # Put Approval Config
         new_approval_config = ApprovalConfig.from_json(approval_config)
         results = ApprovalsApi(api_client).put_approvals_config(approval_config=new_approval_config)
         # Below is a request that includes all optional parameters
-        # results = ApprovalsApi(api_client).put_approvals_config(new_approval_config, id, scope)
+        # results = ApprovalsApi(api_client).put_approvals_config(new_approval_config)
         print("The response of ApprovalsApi->put_approvals_config:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

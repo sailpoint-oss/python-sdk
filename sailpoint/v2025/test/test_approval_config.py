@@ -92,6 +92,8 @@ class TestApprovalConfig(unittest.TestCase):
             )
         else:
             return ApprovalConfig(
+                id = '5804e7d6-e04b-400f-9fb8-dff894419a2f',
+                scope = 'DOMAIN_OBJECT',
         )
         """
 

@@ -18,8 +18,8 @@ Approval config Object
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tenant_id** | **str** | Tenant ID of the approval configuration. | [optional] 
-**id** | **str** | ID of the approval configuration. | [optional] 
-**scope** | **str** | The type/scope of the configuration. Ie DOMAIN_OBJECT, APPROVAL_TYPE, TENANT | [optional] 
+**id** | **str** | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT | [required]
+**scope** | **str** | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT | [required]
 **reminder_config** | [**ApprovalConfigReminderConfig**](approval-config-reminder-config) |  | [optional] 
 **escalation_config** | [**ApprovalConfigEscalationConfig**](approval-config-escalation-config) |  | [optional] 
 **timeout_config** | [**ApprovalConfigTimeoutConfig**](approval-config-timeout-config) |  | [optional] 
