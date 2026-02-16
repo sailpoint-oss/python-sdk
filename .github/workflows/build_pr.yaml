@@ -11,6 +11,10 @@ on:
       - main
   workflow_dispatch:
 
+concurrency:
+  group: pr-build-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build_python_sdk:
     name: Build Python SDK
