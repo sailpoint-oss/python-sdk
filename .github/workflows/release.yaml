@@ -134,7 +134,8 @@ jobs:
         run: |
           LATEST="${{ steps.version.outputs.latest }}"
           NEW="${{ steps.version.outputs.new }}"
-          sed -e "s/VERSION = \"${LATEST}\"/VERSION = \"${NEW}\"/g" setup.py > setup.py.tmp && mv setup.py.tmp setup.py
+          LATEST_ESCAPED="${LATEST//./\\.}"
+          sed -e "s/VERSION = \"${LATEST_ESCAPED}\"/VERSION = \"${NEW}\"/g" setup.py > setup.py.tmp && mv setup.py.tmp setup.py
 
       - name: Build SDK
         uses: ./.github/actions/build-sdk
