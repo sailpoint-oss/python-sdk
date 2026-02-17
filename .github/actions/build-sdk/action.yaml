@@ -1,0 +1,103 @@
+name: "Build Python SDK"
+description: "Build all API versions of the Python SDK from OpenAPI specs"
+
+inputs:
+  api-specs-path:
+    description: "Path to the checked-out api-specs repository"
+    required: false
+    default: "api-specs"
+  skip-tests:
+    description: "Skip running tests after building"
+    required: false
+    default: "false"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Node
+      uses: actions/setup-node@v6
+      with:
+        node-version: "24"
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.x"
+
+    - name: Download OpenAPI Generator
+      shell: bash
+      run: |
+        wget -q https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.12.0/openapi-generator-cli-7.12.0.jar -O openapi-generator-cli.jar
+
+    - name: Run Prescript
+      shell: bash
+      run: node sdk-resources/prescript.js ${{ inputs.api-specs-path }}/idn
+
+    - name: Build V3 SDK
+      shell: bash
+      run: |
+        rm -rf ./sailpoint/v3
+        java -jar openapi-generator-cli.jar generate \
+          -i ${{ inputs.api-specs-path }}/idn/sailpoint-api.v3.yaml \
+          -g python -o . \
+          --global-property skipFormModel=false,apiDocs=true,modelDocs=true \
+          --config sdk-resources/v3-config.yaml \
+          --enable-post-process-file
+        node sdk-resources/postscript.js ./sailpoint/v3
+
+    - name: Build Beta SDK
+      shell: bash
+      run: |
+        rm -rf ./sailpoint/beta
+        java -jar openapi-generator-cli.jar generate \
+          -i ${{ inputs.api-specs-path }}/idn/sailpoint-api.beta.yaml \
+          -g python -o . \
+          --global-property skipFormModel=false,apiDocs=true,modelDocs=true \
+          --config sdk-resources/beta-config.yaml \
+          --enable-post-process-file
+        node sdk-resources/postscript.js ./sailpoint/beta
+
+    - name: Build V2024 SDK
+      shell: bash
+      run: |
+        rm -rf ./sailpoint/v2024
+        java -jar openapi-generator-cli.jar generate \
+          -i ${{ inputs.api-specs-path }}/idn/sailpoint-api.v2024.yaml \
+          -g python -o . \
+          --global-property skipFormModel=false,apiDocs=true,modelDocs=true \
+          --config sdk-resources/v2024-config.yaml \
+          --enable-post-process-file
+        node sdk-resources/postscript.js ./sailpoint/v2024
+
+    - name: Build V2025 SDK
+      shell: bash
+      run: |
+        rm -rf ./sailpoint/v2025
+        java -jar openapi-generator-cli.jar generate \
+          -i ${{ inputs.api-specs-path }}/idn/sailpoint-api.v2025.yaml \
+          -g python -o . \
+          --global-property skipFormModel=false,apiDocs=true,modelDocs=true \
+          --config sdk-resources/v2025-config.yaml \
+          --enable-post-process-file
+        node sdk-resources/postscript.js ./sailpoint/v2025
+
+    - name: Build V2026 SDK
+      shell: bash
+      run: |
+        rm -rf ./sailpoint/v2026
+        java -jar openapi-generator-cli.jar generate \
+          -i ${{ inputs.api-specs-path }}/idn/sailpoint-api.v2026.yaml \
+          -g python -o . \
+          --global-property skipFormModel=false,apiDocs=true,modelDocs=true \
+          --config sdk-resources/v2026-config.yaml \
+          --enable-post-process-file
+        node sdk-resources/postscript.js ./sailpoint/v2026
+
+    - name: Build and Test
+      shell: bash
+      run: |
+        pip install -r requirements.txt
+        pip install -e .
+        if [ "${{ inputs.skip-tests }}" != "true" ]; then
+          python validation_test.py -v
+        fi
