@@ -38,15 +38,17 @@ jobs:
         if: github.event_name == 'schedule'
         uses: actions/checkout@v6
         with:
-          fetch-depth: 0
+          ref: ${{ github.ref }}
 
       - name: Checkout API Specs
         if: github.event_name == 'schedule'
         uses: actions/checkout@v6
         with:
-          repository: sailpoint-oss/api-specs
-          path: api-specs
-          ref: main
+          python-version: "3.x"
+      - name: Install build package
+        id: requirements
+        run: |
+          python -m pip install --upgrade build
 
       - name: Determine whether to proceed
         id: check
@@ -56,78 +58,6 @@ jobs:
             echo "proceed=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-
-          LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1) 2>/dev/null || echo "v0.0.0")
-          TAG_DATE=$(git log -1 --format=%aI "$LATEST_TAG" 2>/dev/null || echo "1970-01-01")
-          SPEC_CHANGES=$(cd api-specs && git log --after="$TAG_DATE" --oneline | wc -l)
-
-          if [ "$SPEC_CHANGES" -eq 0 ]; then
-            echo "No spec changes since $LATEST_TAG ($TAG_DATE). Skipping release."
-            echo "proceed=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "Found $SPEC_CHANGES spec changes since $LATEST_TAG. Proceeding."
-            echo "proceed=true" >> "$GITHUB_OUTPUT"
-          fi
-
-  release:
-    name: Release Python SDK
-    needs: check-changes
-    if: needs.check-changes.outputs.proceed == 'true'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-        with:
-          ref: main
-          fetch-depth: 0
-          token: ${{ secrets.DEVREL_SERVICE_TOKEN }}
-
-      - name: Checkout API Specs
-        uses: actions/checkout@v6
-        with:
-          repository: sailpoint-oss/api-specs
-          path: api-specs
-          ref: main
-
-      - name: Set up yq
-        uses: frenck/action-setup-yq@v1
-
-      - name: Determine version
-        id: version
-        shell: bash
-        run: |
-          LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1) 2>/dev/null || echo "v0.0.0")
-          LATEST_VERSION="${LATEST_TAG#v}"
-          echo "latest=$LATEST_VERSION" >> "$GITHUB_OUTPUT"
-
-          if [ -n "${{ github.event.inputs.version }}" ]; then
-            NEW_VERSION="${{ github.event.inputs.version }}"
-          else
-            IFS='.' read -r MAJOR MINOR PATCH <<< "$LATEST_VERSION"
-            PATCH=$((PATCH + 1))
-            NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
-          fi
-
-          function ver { printf "%03d%03d%03d%03d" $(echo "$1" | tr '.' ' '); }
-          if [ "$(ver "$LATEST_VERSION")" -ge "$(ver "$NEW_VERSION")" ]; then
-            echo "::error::New version $NEW_VERSION is not greater than current version $LATEST_VERSION"
-            exit 1
-          fi
-
-          echo "new=$NEW_VERSION" >> "$GITHUB_OUTPUT"
-          echo "Releasing version $NEW_VERSION (previous: $LATEST_VERSION)"
-
-      - name: Update config files with new version
-        shell: bash
-        run: |
-          VERSION="${{ steps.version.outputs.new }}"
-          yq -i ".packageVersion = \"$VERSION\"" sdk-resources/v3-config.yaml
-          yq -i ".packageVersion = \"$VERSION\"" sdk-resources/beta-config.yaml
-          yq -i ".packageVersion = \"$VERSION\"" sdk-resources/v2024-config.yaml
-          yq -i ".packageVersion = \"$VERSION\"" sdk-resources/v2025-config.yaml
-          yq -i ".packageVersion = \"$VERSION\"" sdk-resources/v2026-config.yaml
 
       - name: Update setup.py version
         shell: bash
@@ -150,9 +80,8 @@ jobs:
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          token: ${{ secrets.DEVREL_SERVICE_TOKEN }}
           tag_name: "v${{ steps.version.outputs.new }}"
           name: "v${{ steps.version.outputs.new }}"
           draft: false

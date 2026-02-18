@@ -2,8 +2,12 @@ name: "Publish to PyPI"
 
 on:
   release:
-    types: [created]
+    types: [published]
   workflow_dispatch:
+
+concurrency:
+  group: publish-${{ github.repository }}
+  cancel-in-progress: false
 
 jobs:
   pypi-publish:
