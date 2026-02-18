@@ -47,6 +47,13 @@ class TestApprovalsApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_approval_config_request(self) -> None:
+        """Test case for delete_approval_config_request
+
+        Delete Approval Configuration
+        """
+        pass
+
     def test_get_approval(self) -> None:
         """Test case for get_approval
 

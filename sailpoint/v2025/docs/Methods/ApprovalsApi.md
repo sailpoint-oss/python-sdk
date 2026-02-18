@@ -21,11 +21,12 @@ Method | HTTP request | Description
 [**approve-approval**](#approve-approval) | **POST** `/generic-approvals/{id}/approve` | Post Approvals Approve
 [**approve-approval-in-bulk**](#approve-approval-in-bulk) | **POST** `/generic-approvals/bulk-approve` | Post Bulk Approve Approvals
 [**cancel-approval**](#cancel-approval) | **POST** `/generic-approvals/bulk-cancel` | Post Bulk Cancel Approvals
+[**delete-approval-config-request**](#delete-approval-config-request) | **DELETE** `/generic-approvals/config/{id}/{scope}` | Delete Approval Configuration
 [**get-approval**](#get-approval) | **GET** `/generic-approvals/{id}` | Get an approval
 [**get-approvals**](#get-approvals) | **GET** `/generic-approvals` | Get approvals
 [**get-approvals-config**](#get-approvals-config) | **GET** `/generic-approvals/config/{id}` | Get Approval Config
 [**move-approval**](#move-approval) | **POST** `/generic-approvals/bulk-reassign` | Post Bulk Reassign Approvals
-[**put-approvals-config**](#put-approvals-config) | **PUT** `/generic-approvals/config` | Put Approval Config
+[**put-approvals-config**](#put-approvals-config) | **PUT** `/generic-approvals/config/{id}/{scope}` | Put Approval Config
 [**reject-approval**](#reject-approval) | **POST** `/generic-approvals/{id}/reject` | Post Approvals Reject
 [**reject-approval-in-bulk**](#reject-approval-in-bulk) | **POST** `/generic-approvals/bulk-reject` | Post Bulk Reject Approvals
 [**update-approvals-attributes**](#update-approvals-attributes) | **POST** `/generic-approvals/{id}/attributes` | Post Approvals Attributes
@@ -226,6 +227,65 @@ with ApiClient(configuration) as api_client:
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling ApprovalsApi->cancel_approval: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## delete-approval-config-request
+Delete Approval Configuration
+Deletes an approval configuration.
+Configurations at the APPROVAL_REQUEST scope cannot be deleted.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/delete-approval-config-request)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **str** | True  | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
+Path   | scope | **str** | True  | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
+
+### Return type
+ (empty response body)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2025.api.approvals_api import ApprovalsApi
+from sailpoint.v2025.api_client import ApiClient
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    id = '38453251-6be2-5f8f-df93-5ce19e295837' # str | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # str | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
+    scope = 'DOMAIN_OBJECT' # str | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # str | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
+
+    try:
+        # Delete Approval Configuration
+        
+        ApprovalsApi(api_client).delete_approval_config_request(id=id, scope=scope)
+        # Below is a request that includes all optional parameters
+        # ApprovalsApi(api_client).delete_approval_config_request(id, scope)
+    except Exception as e:
+        print("Exception when calling ApprovalsApi->delete_approval_config_request: %s\n" % e)
 ```
 
 
@@ -521,6 +581,8 @@ Upserts a singular approval configuration that matches the given configID and co
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **str** | True  | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
+Path   | scope | **str** | True  | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
  Body  | approval_config | [**ApprovalConfig**](../models/approval-config) | True  | 
 
 ### Return type
@@ -552,6 +614,8 @@ configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
+    id = '38453251-6be2-5f8f-df93-5ce19e295837' # str | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # str | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
+    scope = 'DOMAIN_OBJECT' # str | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # str | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
     approval_config = '''{
           "timeoutConfig" : {
             "daysUntilTimeout" : 2,
@@ -632,9 +696,9 @@ with ApiClient(configuration) as api_client:
     try:
         # Put Approval Config
         new_approval_config = ApprovalConfig.from_json(approval_config)
-        results = ApprovalsApi(api_client).put_approvals_config(approval_config=new_approval_config)
+        results = ApprovalsApi(api_client).put_approvals_config(id=id, scope=scope, approval_config=new_approval_config)
         # Below is a request that includes all optional parameters
-        # results = ApprovalsApi(api_client).put_approvals_config(new_approval_config)
+        # results = ApprovalsApi(api_client).put_approvals_config(id, scope, new_approval_config)
         print("The response of ApprovalsApi->put_approvals_config:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
