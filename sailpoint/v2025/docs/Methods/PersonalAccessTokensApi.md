@@ -35,6 +35,14 @@ Method | HTTP request | Description
 ## create-personal-access-token
 Create personal access token
 This creates a personal access token.
+**expirationDate and userAwareTokenNeverExpires Relationship:**
+**Important:** When `expirationDate` is `null` or empty (not included in the request body), the token will never expire.
+**Required Validation:** If `expirationDate` is `null` or empty, `userAwareTokenNeverExpires` must be set to `true`. This is a required validation rule.
+The valid values for `expirationDate` depend on the value provided for `userAwareTokenNeverExpires`:
+* **When `userAwareTokenNeverExpires` is `true` (or required to be `true`):** `expirationDate` can be `null` or omitted from the request body. When `expirationDate` is `null` or empty, the token will never expire. This creates a PAT that never expires and serves as an explicit acknowledgment that the user is aware of the security implications of creating a non-expiring token. * **When `userAwareTokenNeverExpires` is `false` or omitted:** `expirationDate` must be provided and must be a valid date-time string representing a future date (there is no upper limit). `expirationDate` cannot be `null` in this case. In this scenario, `userAwareTokenNeverExpires` can be omitted.
+**Validation Rules:** * **If `expirationDate` is `null` or not included in the request body:** `userAwareTokenNeverExpires` must be set to `true` (required). The token will never expire. * **If `expirationDate` is provided and is not `null`:** `userAwareTokenNeverExpires` can be omitted.
+**Security Considerations:** The `userAwareTokenNeverExpires` field is designed to ensure that users explicitly acknowledge the security implications of creating tokens that never expire. Setting this field to `true` indicates that the user understands the increased security risks and has made an informed decision to proceed.
+**Note:** The `userAwareTokenNeverExpires` field indicates that the user acknowledges they are creating a token that will never expire. It does not affect token behavior beyond indicating this acknowledgment.
 
 [API Spec](https://developer.sailpoint.com/docs/api/v2025/create-personal-access-token)
 
@@ -42,7 +50,7 @@ This creates a personal access token.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | create_personal_access_token_request | [**CreatePersonalAccessTokenRequest**](../models/create-personal-access-token-request) | True  | Name and scope of personal access token.
+ Body  | create_personal_access_token_request | [**CreatePersonalAccessTokenRequest**](../models/create-personal-access-token-request) | True  | Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`.
 
 ### Return type
 [**CreatePersonalAccessTokenResponse**](../models/create-personal-access-token-response)
@@ -77,8 +85,9 @@ with ApiClient(configuration) as api_client:
           "scope" : [ "demo:personal-access-token-scope:first", "demo:personal-access-token-scope:second" ],
           "accessTokenValiditySeconds" : 36900,
           "name" : "NodeJS Integration",
-          "expirationDate" : "2018-01-11T18:45:37.098Z"
-        }''' # CreatePersonalAccessTokenRequest | Name and scope of personal access token.
+          "userAwareTokenNeverExpires" : false,
+          "expirationDate" : "2026-12-31T23:59:59.999Z"
+        }''' # CreatePersonalAccessTokenRequest | Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`.
 
     try:
         # Create personal access token
@@ -217,6 +226,14 @@ with ApiClient(configuration) as api_client:
 Patch personal access token
 This performs a targeted update to the field(s) of a Personal Access Token.
 Changing scopes for a Personal Access Token does not impact existing bearer tokens. You will need to create a new bearer token to have the new scopes. Please note that it can take up to 20 minutes for scope changes to be seen on new bearer tokens.
+**expirationDate and userAwareTokenNeverExpires Relationship:**
+**Important:** When `expirationDate` is `null` or empty (replaced to `null` or omitted from the patch request), the token will never expire.
+**Required Validation:** If `expirationDate` is being replaced to `null` or is empty, `userAwareTokenNeverExpires` must be set to `true` in the patch request. This is a required validation rule.
+When patching `expirationDate` and `userAwareTokenNeverExpires`, the valid values for `expirationDate` depend on the value provided for `userAwareTokenNeverExpires`:
+* **When `userAwareTokenNeverExpires` is being set to `true` (or required to be `true`):** `expirationDate` can be replaced to `null` or omitted from the patch request. When `expirationDate` is `null` or empty, the token will never expire. This sets the PAT to never expire and serves as an explicit acknowledgment that the user is aware of the security implications of creating a non-expiring token. * **When `userAwareTokenNeverExpires` is `false` or omitted:** `expirationDate` must be provided and must be a valid date-time string representing a future date (there is no upper limit). `expirationDate` cannot be `null` in this case. In this scenario, `userAwareTokenNeverExpires` can be omitted.
+**Validation Rules:** * **If `expirationDate` is being replaced to `null`:** `userAwareTokenNeverExpires` must also be present in the patch request with a value of `true` (required). The token will never expire. * **If `expirationDate` is not being replaced to `null` (i.e., set to a future date):** `userAwareTokenNeverExpires` can be omitted.
+**Security Considerations:** The `userAwareTokenNeverExpires` field is designed to ensure that users explicitly acknowledge the security implications of creating tokens that never expire. Setting this field to `true` indicates that the user understands the increased security risks and has made an informed decision to proceed.
+**Note:** The `userAwareTokenNeverExpires` field indicates that the user acknowledges they are creating a token that will never expire. It does not affect token behavior beyond indicating this acknowledgment.
 
 [API Spec](https://developer.sailpoint.com/docs/api/v2025/patch-personal-access-token)
 
@@ -225,7 +242,7 @@ Changing scopes for a Personal Access Token does not impact existing bearer toke
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | The Personal Access Token id
- Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope 
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`. 
 
 ### Return type
 [**GetPersonalAccessTokenResponse**](../models/get-personal-access-token-response)
@@ -258,7 +275,7 @@ configuration = Configuration()
 
 with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Personal Access Token id # str | The Personal Access Token id
-    json_patch_operation = '''[{op=replace, path=/name, value=New name}, {op=replace, path=/scope, value=[sp:scopes:all]}]''' # List[JsonPatchOperation] | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope 
+    json_patch_operation = '''[{op=replace, path=/name, value=New name}, {op=replace, path=/scope, value=[sp:scopes:all]}, {op=replace, path=/expirationDate, value=2027-12-31T23:59:59.999Z}]''' # List[JsonPatchOperation] | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`. 
 
     try:
         # Patch personal access token

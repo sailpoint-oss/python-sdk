@@ -37,8 +37,9 @@ class GetPersonalAccessTokenResponse(BaseModel):
     last_used: Optional[datetime] = Field(default=None, description="The date and time, down to the millisecond, when this personal access token was last used to generate an access token. This timestamp does not get updated on every PAT usage, but only once a day. This property can be useful for identifying which PATs are no longer actively used and can be removed.", alias="lastUsed")
     managed: Optional[StrictBool] = Field(default=False, description="If true, this token is managed by the SailPoint platform, and is not visible in the user interface. For example, Workflows will create managed personal access tokens for users who create workflows.")
     access_token_validity_seconds: Optional[StrictInt] = Field(default=43200, description="Number of seconds an access token is valid when generated using this Personal Access Token. If no value is specified, the token will be created with the default value of 43200.", alias="accessTokenValiditySeconds")
-    expiration_date: Optional[datetime] = Field(default=None, description="Date and time, down to the millisecond, when this personal access token will expire. If not provided, the token will expire 6 months after its creation date. The value must be a valid date-time string between the current date and 6 months from the creation date.", alias="expirationDate")
-    __properties: ClassVar[List[str]] = ["id", "name", "scope", "owner", "created", "lastUsed", "managed", "accessTokenValiditySeconds", "expirationDate"]
+    expiration_date: Optional[datetime] = Field(default=None, description="Date and time, down to the millisecond, when this personal access token will expire. **Important:** When `expirationDate` is `null` or empty, the token will never expire (and `userAwareTokenNeverExpires` will be `true`). When `expirationDate` is provided, this value must be a future date. There is no upper limit on how far in the future the expiration date can be set.", alias="expirationDate")
+    user_aware_token_never_expires: Optional[StrictBool] = Field(default=False, description="Indicates that the user who created or updated this Personal Access Token is aware of and acknowledges the security implications of creating a token that will never expire. When `true`, this flag confirms that the user understood the security risks associated with non-expiring tokens at the time of creation or update. **Security Awareness:** This field serves as a record that the user acknowledged: * Tokens that never expire pose a greater security risk if compromised * Non-expiring tokens should be used only when necessary and with appropriate security measures * Regular rotation and monitoring of non-expiring tokens is recommended **Behavior:** * When `true`: Indicates that the user acknowledged they were creating a token that will never expire. When `expirationDate` is `null`, the token will never expire. * When `false`: The token follows normal expiration rules based on the `expirationDate` field and `accessTokenValiditySeconds` setting.", alias="userAwareTokenNeverExpires")
+    __properties: ClassVar[List[str]] = ["id", "name", "scope", "owner", "created", "lastUsed", "managed", "accessTokenValiditySeconds", "expirationDate", "userAwareTokenNeverExpires"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -92,6 +93,11 @@ class GetPersonalAccessTokenResponse(BaseModel):
         if self.last_used is None and "last_used" in self.model_fields_set:
             _dict['lastUsed'] = None
 
+        # set to None if expiration_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.expiration_date is None and "expiration_date" in self.model_fields_set:
+            _dict['expirationDate'] = None
+
         return _dict
 
     @classmethod
@@ -112,7 +118,8 @@ class GetPersonalAccessTokenResponse(BaseModel):
             "lastUsed": obj.get("lastUsed"),
             "managed": obj.get("managed") if obj.get("managed") is not None else False,
             "accessTokenValiditySeconds": obj.get("accessTokenValiditySeconds") if obj.get("accessTokenValiditySeconds") is not None else 43200,
-            "expirationDate": obj.get("expirationDate")
+            "expirationDate": obj.get("expirationDate"),
+            "userAwareTokenNeverExpires": obj.get("userAwareTokenNeverExpires") if obj.get("userAwareTokenNeverExpires") is not None else False
         })
         return _obj
 

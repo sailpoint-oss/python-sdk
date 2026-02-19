@@ -46,7 +46,8 @@ class TestGetPersonalAccessTokenResponse(unittest.TestCase):
                 last_used = '2017-07-11T18:45:37.098Z',
                 managed = False,
                 access_token_validity_seconds = 36900,
-                expiration_date = '2018-01-11T18:45:37.098Z'
+                expiration_date = '2026-12-31T23:59:59.999Z',
+                user_aware_token_never_expires = False
             )
         else:
             return GetPersonalAccessTokenResponse(

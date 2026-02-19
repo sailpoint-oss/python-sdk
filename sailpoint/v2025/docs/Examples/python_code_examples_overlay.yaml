@@ -16960,8 +16960,9 @@
           "scope" : [ "demo:personal-access-token-scope:first", "demo:personal-access-token-scope:second" ],
           "accessTokenValiditySeconds" : 36900,
           "name" : "NodeJS Integration",
-          "expirationDate" : "2018-01-11T18:45:37.098Z"
-        }''' # CreatePersonalAccessTokenRequest | Name and scope of personal access token.
+          "userAwareTokenNeverExpires" : false,
+          "expirationDate" : "2026-12-31T23:59:59.999Z"
+        }''' # CreatePersonalAccessTokenRequest | Configuration for creating a personal access token, including name, scope, expiration settings, and user acknowledgment of never-expiring tokens. **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`.
           try:
               # Create personal access token
               new_create_personal_access_token_request = CreatePersonalAccessTokenRequest.from_json(create_personal_access_token_request)
@@ -17037,7 +17038,7 @@
 
         with ApiClient(configuration) as api_client:
           id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Personal Access Token id # str | The Personal Access Token id
-          json_patch_operation = '''[{op=replace, path=/name, value=New name}, {op=replace, path=/scope, value=[sp:scopes:all]}]''' # List[JsonPatchOperation] | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope 
+          json_patch_operation = '''[{op=replace, path=/name, value=New name}, {op=replace, path=/scope, value=[sp:scopes:all]}, {op=replace, path=/expirationDate, value=2027-12-31T23:59:59.999Z}]''' # List[JsonPatchOperation] | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope * expirationDate * userAwareTokenNeverExpires  **Important:** See the endpoint description for validation rules regarding the relationship between `expirationDate` and `userAwareTokenNeverExpires`. 
           try:
               # Patch personal access token
               new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
