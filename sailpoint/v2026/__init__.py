@@ -14,11 +14,12 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.9"
+__version__ = "1.4.10"
 
 # import apis into sdk package
 from sailpoint.v2026.api.account_deletion_requests_api import AccountDeletionRequestsApi
 from sailpoint.v2026.api.delete_account_api import DeleteAccountApi
+from sailpoint.v2026.api.entitlements_api import EntitlementsApi
 from sailpoint.v2026.api.human_account_deletion_approval_config_api import HumanAccountDeletionApprovalConfigApi
 from sailpoint.v2026.api.machine_account_deletion_approval_config_api import MachineAccountDeletionApprovalConfigApi
 from sailpoint.v2026.api.machine_subtype_approval_config_api import MachineSubtypeApprovalConfigApi
@@ -36,6 +37,8 @@ from sailpoint.v2026.exceptions import ApiAttributeError
 from sailpoint.v2026.exceptions import ApiException
 
 # import models into sdk package
+from sailpoint.v2026.models.access_model_metadata import AccessModelMetadata
+from sailpoint.v2026.models.access_model_metadata_values_inner import AccessModelMetadataValuesInner
 from sailpoint.v2026.models.account_action_request_dto import AccountActionRequestDto
 from sailpoint.v2026.models.account_action_request_dto_account_details import AccountActionRequestDtoAccountDetails
 from sailpoint.v2026.models.account_action_request_dto_correlated_identity import AccountActionRequestDtoCorrelatedIdentity
@@ -54,18 +57,25 @@ from sailpoint.v2026.models.approver_reference import ApproverReference
 from sailpoint.v2026.models.array_inner import ArrayInner
 from sailpoint.v2026.models.base_reference_dto import BaseReferenceDto
 from sailpoint.v2026.models.dto_type import DtoType
+from sailpoint.v2026.models.entitlement import Entitlement
+from sailpoint.v2026.models.entitlement_access_model_metadata import EntitlementAccessModelMetadata
+from sailpoint.v2026.models.entitlement_bulk_update_request import EntitlementBulkUpdateRequest
+from sailpoint.v2026.models.entitlement_owner import EntitlementOwner
+from sailpoint.v2026.models.entitlement_privilege_level import EntitlementPrivilegeLevel
+from sailpoint.v2026.models.entitlement_source import EntitlementSource
 from sailpoint.v2026.models.error_message_dto import ErrorMessageDto
 from sailpoint.v2026.models.error_response_dto import ErrorResponseDto
-from sailpoint.v2026.models.get_task_status401_response import GetTaskStatus401Response
-from sailpoint.v2026.models.get_task_status429_response import GetTaskStatus429Response
 from sailpoint.v2026.models.identity_reference import IdentityReference
 from sailpoint.v2026.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v2026.models.json_patch_operation_value import JsonPatchOperationValue
+from sailpoint.v2026.models.list_entitlements401_response import ListEntitlements401Response
+from sailpoint.v2026.models.list_entitlements429_response import ListEntitlements429Response
 from sailpoint.v2026.models.locale_origin import LocaleOrigin
 from sailpoint.v2026.models.localized_message import LocalizedMessage
 from sailpoint.v2026.models.machine_account_sub_type_config_dto import MachineAccountSubTypeConfigDto
 from sailpoint.v2026.models.machine_account_sub_type_config_dto_machine_account_create import MachineAccountSubTypeConfigDtoMachineAccountCreate
 from sailpoint.v2026.models.machine_account_sub_type_config_dto_machine_account_delete import MachineAccountSubTypeConfigDtoMachineAccountDelete
+from sailpoint.v2026.models.permission_dto import PermissionDto
 from sailpoint.v2026.models.target import Target
 from sailpoint.v2026.models.task_definition_summary import TaskDefinitionSummary
 from sailpoint.v2026.models.task_return_details import TaskReturnDetails

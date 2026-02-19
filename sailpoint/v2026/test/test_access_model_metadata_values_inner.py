@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2026.models.get_task_status429_response import GetTaskStatus429Response
+from sailpoint.v2026.models.access_model_metadata_values_inner import AccessModelMetadataValuesInner
 
-class TestGetTaskStatus429Response(unittest.TestCase):
-    """GetTaskStatus429Response unit test stubs"""
+class TestAccessModelMetadataValuesInner(unittest.TestCase):
+    """AccessModelMetadataValuesInner unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,25 +25,27 @@ class TestGetTaskStatus429Response(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> GetTaskStatus429Response:
-        """Test GetTaskStatus429Response
+    def make_instance(self, include_optional) -> AccessModelMetadataValuesInner:
+        """Test AccessModelMetadataValuesInner
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `GetTaskStatus429Response`
+        # uncomment below to create an instance of `AccessModelMetadataValuesInner`
         """
-        model = GetTaskStatus429Response()
+        model = AccessModelMetadataValuesInner()
         if include_optional:
-            return GetTaskStatus429Response(
-                message =  Rate Limit Exceeded 
+            return AccessModelMetadataValuesInner(
+                value = 'development',
+                name = 'Development',
+                status = 'active'
             )
         else:
-            return GetTaskStatus429Response(
+            return AccessModelMetadataValuesInner(
         )
         """
 
-    def testGetTaskStatus429Response(self):
-        """Test GetTaskStatus429Response"""
+    def testAccessModelMetadataValuesInner(self):
+        """Test AccessModelMetadataValuesInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

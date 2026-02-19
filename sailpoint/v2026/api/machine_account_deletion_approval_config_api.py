@@ -100,10 +100,10 @@ class MachineAccountDeletionApprovalConfigApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AccountDeleteConfigDto",
             '400': "ErrorResponseDto",
-            '401': "GetTaskStatus401Response",
+            '401': "ListEntitlements401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "GetTaskStatus429Response",
+            '429': "ListEntitlements429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -177,10 +177,10 @@ class MachineAccountDeletionApprovalConfigApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AccountDeleteConfigDto",
             '400': "ErrorResponseDto",
-            '401': "GetTaskStatus401Response",
+            '401': "ListEntitlements401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "GetTaskStatus429Response",
+            '429': "ListEntitlements429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -254,10 +254,10 @@ class MachineAccountDeletionApprovalConfigApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "AccountDeleteConfigDto",
             '400': "ErrorResponseDto",
-            '401': "GetTaskStatus401Response",
+            '401': "ListEntitlements401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "GetTaskStatus429Response",
+            '429': "ListEntitlements429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -401,8 +401,8 @@ class MachineAccountDeletionApprovalConfigApi:
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '401': "GetTaskStatus401Response",
-            '429': "GetTaskStatus429Response",
+            '401': "ListEntitlements401Response",
+            '429': "ListEntitlements429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -482,8 +482,8 @@ class MachineAccountDeletionApprovalConfigApi:
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '401': "GetTaskStatus401Response",
-            '429': "GetTaskStatus429Response",
+            '401': "ListEntitlements401Response",
+            '429': "ListEntitlements429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -563,8 +563,8 @@ class MachineAccountDeletionApprovalConfigApi:
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '401': "GetTaskStatus401Response",
-            '429': "GetTaskStatus429Response",
+            '401': "ListEntitlements401Response",
+            '429': "ListEntitlements429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(

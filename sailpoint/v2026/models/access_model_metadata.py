@@ -18,17 +18,25 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.v2026.models.access_model_metadata_values_inner import AccessModelMetadataValuesInner
 from typing import Optional, Set
 from typing_extensions import Self
 
-class GetTaskStatus429Response(BaseModel):
+class AccessModelMetadata(BaseModel):
     """
-    GetTaskStatus429Response
+    Metadata that describes an access item
     """ # noqa: E501
-    message: Optional[Dict[str, Any]] = Field(default=None, description="A message describing the error")
-    __properties: ClassVar[List[str]] = ["message"]
+    key: Optional[StrictStr] = Field(default=None, description="Unique identifier for the metadata type")
+    name: Optional[StrictStr] = Field(default=None, description="Human readable name of the metadata type")
+    multiselect: Optional[StrictBool] = Field(default=False, description="Allows selecting multiple values")
+    status: Optional[StrictStr] = Field(default=None, description="The state of the metadata item")
+    type: Optional[StrictStr] = Field(default=None, description="The type of the metadata item")
+    object_types: Optional[List[StrictStr]] = Field(default=None, description="The types of objects", alias="objectTypes")
+    description: Optional[StrictStr] = Field(default=None, description="Describes the metadata item")
+    values: Optional[List[AccessModelMetadataValuesInner]] = Field(default=None, description="The value to assign to the metadata item")
+    __properties: ClassVar[List[str]] = ["key", "name", "multiselect", "status", "type", "objectTypes", "description", "values"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +56,7 @@ class GetTaskStatus429Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of GetTaskStatus429Response from a JSON string"""
+        """Create an instance of AccessModelMetadata from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -69,11 +77,18 @@ class GetTaskStatus429Response(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in values (list)
+        _items = []
+        if self.values:
+            for _item_values in self.values:
+                if _item_values:
+                    _items.append(_item_values.to_dict())
+            _dict['values'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of GetTaskStatus429Response from a dict"""
+        """Create an instance of AccessModelMetadata from a dict"""
         if obj is None:
             return None
 
@@ -81,7 +96,14 @@ class GetTaskStatus429Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "message": obj.get("message")
+            "key": obj.get("key"),
+            "name": obj.get("name"),
+            "multiselect": obj.get("multiselect") if obj.get("multiselect") is not None else False,
+            "status": obj.get("status"),
+            "type": obj.get("type"),
+            "objectTypes": obj.get("objectTypes"),
+            "description": obj.get("description"),
+            "values": [AccessModelMetadataValuesInner.from_dict(_item) for _item in obj["values"]] if obj.get("values") is not None else None
         })
         return _obj
 

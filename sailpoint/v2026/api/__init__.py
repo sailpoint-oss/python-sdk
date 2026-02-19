@@ -3,6 +3,7 @@
 # import apis into api package
 from sailpoint.v2026.api.account_deletion_requests_api import AccountDeletionRequestsApi
 from sailpoint.v2026.api.delete_account_api import DeleteAccountApi
+from sailpoint.v2026.api.entitlements_api import EntitlementsApi
 from sailpoint.v2026.api.human_account_deletion_approval_config_api import HumanAccountDeletionApprovalConfigApi
 from sailpoint.v2026.api.machine_account_deletion_approval_config_api import MachineAccountDeletionApprovalConfigApi
 from sailpoint.v2026.api.machine_subtype_approval_config_api import MachineSubtypeApprovalConfigApi

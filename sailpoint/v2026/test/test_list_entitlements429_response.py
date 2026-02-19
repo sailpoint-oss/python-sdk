@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2026.models.get_task_status401_response import GetTaskStatus401Response
+from sailpoint.v2026.models.list_entitlements429_response import ListEntitlements429Response
 
-class TestGetTaskStatus401Response(unittest.TestCase):
-    """GetTaskStatus401Response unit test stubs"""
+class TestListEntitlements429Response(unittest.TestCase):
+    """ListEntitlements429Response unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,25 +25,25 @@ class TestGetTaskStatus401Response(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> GetTaskStatus401Response:
-        """Test GetTaskStatus401Response
+    def make_instance(self, include_optional) -> ListEntitlements429Response:
+        """Test ListEntitlements429Response
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `GetTaskStatus401Response`
+        # uncomment below to create an instance of `ListEntitlements429Response`
         """
-        model = GetTaskStatus401Response()
+        model = ListEntitlements429Response()
         if include_optional:
-            return GetTaskStatus401Response(
-                error = JWT validation failed: JWT is expired
+            return ListEntitlements429Response(
+                message =  Rate Limit Exceeded 
             )
         else:
-            return GetTaskStatus401Response(
+            return ListEntitlements429Response(
         )
         """
 
-    def testGetTaskStatus401Response(self):
-        """Test GetTaskStatus401Response"""
+    def testListEntitlements429Response(self):
+        """Test ListEntitlements429Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
