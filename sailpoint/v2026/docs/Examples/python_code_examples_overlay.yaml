@@ -1,3 +1,233 @@
+- path: /account-requests/deletion
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/account-deletion-requests#get-account-deletion-requests
+      source: |
+        from sailpoint.v2026.api.account_deletion_requests_api import AccountDeletionRequestsApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.account_action_request_dto import AccountActionRequestDto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          mine = False # bool | Determines whether to return only the account deletion requests initiated by the currently authenticated user. If set to true, the response includes only deletion requests created by the logged-in user. If set to false or not provided, the response includes all deletion requests for the tenant, regardless of the initiator. This parameter allows users to view their own requests, while administrators can view all requests within the tenant. (optional) (default to False) # bool | Determines whether to return only the account deletion requests initiated by the currently authenticated user. If set to true, the response includes only deletion requests created by the logged-in user. If set to false or not provided, the response includes all deletion requests for the tenant, regardless of the initiator. This parameter allows users to view their own requests, while administrators can view all requests within the tenant. (optional) (default to False)
+          try:
+              # List of Account Deletion Requests
+              
+              results = AccountDeletionRequestsApi(api_client).get_account_deletion_requests(x_sail_point_experimental=x_sail_point_experimental)
+              # Below is a request that includes all optional parameters
+              # results = AccountDeletionRequestsApi(api_client).get_account_deletion_requests(x_sail_point_experimental, limit, offset, count, mine)
+              print("The response of AccountDeletionRequestsApi->get_account_deletion_requests:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccountDeletionRequestsApi->get_account_deletion_requests: %s\n" % e)
+- path: /account-requests/account/{accountId}/delete
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/delete-account#delete-account-request
+      source: |
+        from sailpoint.v2026.api.delete_account_api import DeleteAccountApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.account_delete_async_result import AccountDeleteAsyncResult
+        from sailpoint.v2026.models.account_delete_request_input import AccountDeleteRequestInput
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          account_id = 'ef38f94347e94562b5bb8424a56498d8' # str | Account ID. # str | Account ID.
+          account_delete_request_input = '''{
+          "comments" : "Requesting account deletion request"
+        }''' # AccountDeleteRequestInput |  (optional)
+          try:
+              # Delete account
+              
+              results = DeleteAccountApi(api_client).delete_account_request(x_sail_point_experimental=x_sail_point_experimental, account_id=account_id)
+              # Below is a request that includes all optional parameters
+              # results = DeleteAccountApi(api_client).delete_account_request(x_sail_point_experimental, account_id, new_account_delete_request_input)
+              print("The response of DeleteAccountApi->delete_account_request:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DeleteAccountApi->delete_account_request: %s\n" % e)
+- path: /sources/{sourceId}/approval-config/account-delete
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/human-account-deletion-approval-config#get-account-delete-approval-config
+      source: |
+        from sailpoint.v2026.api.human_account_deletion_approval_config_api import HumanAccountDeletionApprovalConfigApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.account_delete_config_dto import AccountDeleteConfigDto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          source_id = 'ha38f94347e94562b5bb8424a56498d8' # str | The Source id # str | The Source id
+          try:
+              # Human Account Deletion Approval Config
+              
+              results = HumanAccountDeletionApprovalConfigApi(api_client).get_account_delete_approval_config(x_sail_point_experimental=x_sail_point_experimental, source_id=source_id)
+              # Below is a request that includes all optional parameters
+              # results = HumanAccountDeletionApprovalConfigApi(api_client).get_account_delete_approval_config(x_sail_point_experimental, source_id)
+              print("The response of HumanAccountDeletionApprovalConfigApi->get_account_delete_approval_config:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling HumanAccountDeletionApprovalConfigApi->get_account_delete_approval_config: %s\n" % e)
+- path: /sources/{sourceId}/approval-config/account-delete
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/human-account-deletion-approval-config#update-account-deletion-approval-config
+      source: |
+        from sailpoint.v2026.api.human_account_deletion_approval_config_api import HumanAccountDeletionApprovalConfigApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.account_delete_config_dto import AccountDeleteConfigDto
+        from sailpoint.v2026.models.json_patch_operation import JsonPatchOperation
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          source_id = '00eebcf881994e419d72e757fd30dc0e' # str | Human account source ID. # str | Human account source ID.
+          json_patch_operation = '''[sailpoint.v2026.JsonPatchOperation()]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the object.
+          try:
+              # Human Account Deletion Approval Config
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              results = HumanAccountDeletionApprovalConfigApi(api_client).update_account_deletion_approval_config(x_sail_point_experimental=x_sail_point_experimental, source_id=source_id, json_patch_operation=new_json_patch_operation)
+              # Below is a request that includes all optional parameters
+              # results = HumanAccountDeletionApprovalConfigApi(api_client).update_account_deletion_approval_config(x_sail_point_experimental, source_id, new_json_patch_operation)
+              print("The response of HumanAccountDeletionApprovalConfigApi->update_account_deletion_approval_config:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling HumanAccountDeletionApprovalConfigApi->update_account_deletion_approval_config: %s\n" % e)
+- path: /sources/{sourceId}/approval-config/machine-account-delete
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/machine-account-deletion-approval-config#get-machine-account-deletion-approval-config-by-source
+      source: |
+        from sailpoint.v2026.api.machine_account_deletion_approval_config_api import MachineAccountDeletionApprovalConfigApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.account_delete_config_dto import AccountDeleteConfigDto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          source_id = 'gt38f94347e94562b5bb8424a56498d8' # str | source id. # str | source id.
+          try:
+              # Machine Account Deletion Approval Config
+              
+              results = MachineAccountDeletionApprovalConfigApi(api_client).get_machine_account_deletion_approval_config_by_source(x_sail_point_experimental=x_sail_point_experimental, source_id=source_id)
+              # Below is a request that includes all optional parameters
+              # results = MachineAccountDeletionApprovalConfigApi(api_client).get_machine_account_deletion_approval_config_by_source(x_sail_point_experimental, source_id)
+              print("The response of MachineAccountDeletionApprovalConfigApi->get_machine_account_deletion_approval_config_by_source:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineAccountDeletionApprovalConfigApi->get_machine_account_deletion_approval_config_by_source: %s\n" % e)
+- path: /sources/{sourceId}/approval-config/machine-account-delete
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/machine-account-deletion-approval-config#update-machine-account-deletion-approval-config
+      source: |
+        from sailpoint.v2026.api.machine_account_deletion_approval_config_api import MachineAccountDeletionApprovalConfigApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.account_delete_config_dto import AccountDeleteConfigDto
+        from sailpoint.v2026.models.json_patch_operation import JsonPatchOperation
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          source_id = '00eebcf881994e419d72e757fd30dc0e' # str | machine account source ID. # str | machine account source ID.
+          json_patch_operation = '''[sailpoint.v2026.JsonPatchOperation()]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the object.
+          try:
+              # Machine Account Deletion Approval Config
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              results = MachineAccountDeletionApprovalConfigApi(api_client).update_machine_account_deletion_approval_config(x_sail_point_experimental=x_sail_point_experimental, source_id=source_id, json_patch_operation=new_json_patch_operation)
+              # Below is a request that includes all optional parameters
+              # results = MachineAccountDeletionApprovalConfigApi(api_client).update_machine_account_deletion_approval_config(x_sail_point_experimental, source_id, new_json_patch_operation)
+              print("The response of MachineAccountDeletionApprovalConfigApi->update_machine_account_deletion_approval_config:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineAccountDeletionApprovalConfigApi->update_machine_account_deletion_approval_config: %s\n" % e)
+- path: /source-subtypes/{subtypeId}/machine-config
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/machine-subtype-approval-config#get-machine-account-deletion-sub-type-approval-config
+      source: |
+        from sailpoint.v2026.api.machine_subtype_approval_config_api import MachineSubtypeApprovalConfigApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.machine_account_sub_type_config_dto import MachineAccountSubTypeConfigDto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          subtype_id = 'ef38f94347e94562b5bb8424a56498d8' # str | machine subtype id. # str | machine subtype id.
+          try:
+              # Machine Subtype Approval Config
+              
+              results = MachineSubtypeApprovalConfigApi(api_client).get_machine_account_deletion_sub_type_approval_config(x_sail_point_experimental=x_sail_point_experimental, subtype_id=subtype_id)
+              # Below is a request that includes all optional parameters
+              # results = MachineSubtypeApprovalConfigApi(api_client).get_machine_account_deletion_sub_type_approval_config(x_sail_point_experimental, subtype_id)
+              print("The response of MachineSubtypeApprovalConfigApi->get_machine_account_deletion_sub_type_approval_config:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineSubtypeApprovalConfigApi->get_machine_account_deletion_sub_type_approval_config: %s\n" % e)
+- path: /source-subtypes/{subtypeId}/machine-config
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/machine-subtype-approval-config#update-machine-account-deletion-by-sub-type-approval-config
+      source: |
+        from sailpoint.v2026.api.machine_subtype_approval_config_api import MachineSubtypeApprovalConfigApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.json_patch_operation import JsonPatchOperation
+        from sailpoint.v2026.models.machine_account_sub_type_config_dto import MachineAccountSubTypeConfigDto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          subtype_id = '00eebcf881994e419d72e757fd30dc0e' # str | machine account subtype ID. # str | machine account subtype ID.
+          json_patch_operation = '''[sailpoint.v2026.JsonPatchOperation()]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the object.
+          try:
+              # Machine Subtype Approval Config
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              results = MachineSubtypeApprovalConfigApi(api_client).update_machine_account_deletion_by_sub_type_approval_config(x_sail_point_experimental=x_sail_point_experimental, subtype_id=subtype_id, json_patch_operation=new_json_patch_operation)
+              # Below is a request that includes all optional parameters
+              # results = MachineSubtypeApprovalConfigApi(api_client).update_machine_account_deletion_by_sub_type_approval_config(x_sail_point_experimental, subtype_id, new_json_patch_operation)
+              print("The response of MachineSubtypeApprovalConfigApi->update_machine_account_deletion_by_sub_type_approval_config:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineSubtypeApprovalConfigApi->update_machine_account_deletion_by_sub_type_approval_config: %s\n" % e)
 - path: /task-status/pending-tasks
   method: HEAD
   xCodeSample:
