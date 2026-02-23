@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.12"
+__version__ = "1.4.13"
 
 # import apis into sdk package
 from sailpoint.v2025.api.access_model_metadata_api import AccessModelMetadataApi
@@ -86,6 +86,8 @@ from sailpoint.v2025.api.password_management_api import PasswordManagementApi
 from sailpoint.v2025.api.password_policies_api import PasswordPoliciesApi
 from sailpoint.v2025.api.password_sync_groups_api import PasswordSyncGroupsApi
 from sailpoint.v2025.api.personal_access_tokens_api import PersonalAccessTokensApi
+from sailpoint.v2025.api.privilege_criteria_api import PrivilegeCriteriaApi
+from sailpoint.v2025.api.privilege_criteria_configuration_api import PrivilegeCriteriaConfigurationApi
 from sailpoint.v2025.api.public_identities_api import PublicIdentitiesApi
 from sailpoint.v2025.api.public_identities_config_api import PublicIdentitiesConfigApi
 from sailpoint.v2025.api.reports_data_extraction_api import ReportsDataExtractionApi
@@ -523,6 +525,9 @@ from sailpoint.v2025.models.create_o_auth_client_request import CreateOAuthClien
 from sailpoint.v2025.models.create_o_auth_client_response import CreateOAuthClientResponse
 from sailpoint.v2025.models.create_personal_access_token_request import CreatePersonalAccessTokenRequest
 from sailpoint.v2025.models.create_personal_access_token_response import CreatePersonalAccessTokenResponse
+from sailpoint.v2025.models.create_privilege_criteria_request import CreatePrivilegeCriteriaRequest
+from sailpoint.v2025.models.create_privilege_criteria_request_groups_inner import CreatePrivilegeCriteriaRequestGroupsInner
+from sailpoint.v2025.models.create_privilege_criteria_request_groups_inner_criteria_items_inner import CreatePrivilegeCriteriaRequestGroupsInnerCriteriaItemsInner
 from sailpoint.v2025.models.create_saved_search_request import CreateSavedSearchRequest
 from sailpoint.v2025.models.create_schedule_request import CreateScheduleRequest
 from sailpoint.v2025.models.create_scheduled_search_request import CreateScheduledSearchRequest
@@ -955,6 +960,10 @@ from sailpoint.v2025.models.permission_dto import PermissionDto
 from sailpoint.v2025.models.pre_approval_trigger_details import PreApprovalTriggerDetails
 from sailpoint.v2025.models.preferences_dto import PreferencesDto
 from sailpoint.v2025.models.preview_data_source_response import PreviewDataSourceResponse
+from sailpoint.v2025.models.privilege_criteria_config_dto import PrivilegeCriteriaConfigDTO
+from sailpoint.v2025.models.privilege_criteria_dto import PrivilegeCriteriaDTO
+from sailpoint.v2025.models.privilege_criteria_dto_groups_inner import PrivilegeCriteriaDTOGroupsInner
+from sailpoint.v2025.models.privilege_criteria_dto_groups_inner_criteria_items_inner import PrivilegeCriteriaDTOGroupsInnerCriteriaItemsInner
 from sailpoint.v2025.models.process_identities_request import ProcessIdentitiesRequest
 from sailpoint.v2025.models.processing_details import ProcessingDetails
 from sailpoint.v2025.models.product import Product

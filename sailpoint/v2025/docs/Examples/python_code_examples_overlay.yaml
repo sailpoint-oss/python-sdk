@@ -17049,6 +17049,276 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling PersonalAccessTokensApi->patch_personal_access_token: %s\n" % e)
+- path: /criteria/privilege
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/privilege-criteria#create-custom-privilege-criteria
+      source: |
+        from sailpoint.v2025.api.privilege_criteria_api import PrivilegeCriteriaApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.create_privilege_criteria_request import CreatePrivilegeCriteriaRequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          create_privilege_criteria_request = '''{
+          "sourceId" : "c42c45d8d7c04d2da64d215cd8c32f21",
+          "privilegeLevel" : "HIGH",
+          "groups" : [ {
+            "criteriaItems" : [ {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "targetType" : "group",
+              "operator" : "IN"
+            }, {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "targetType" : "group",
+              "operator" : "IN"
+            } ],
+            "operator" : "AND"
+          }, {
+            "criteriaItems" : [ {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "targetType" : "group",
+              "operator" : "IN"
+            }, {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "targetType" : "group",
+              "operator" : "IN"
+            } ],
+            "operator" : "AND"
+          } ],
+          "type" : "CUSTOM",
+          "operator" : "AND"
+        }''' # CreatePrivilegeCriteriaRequest | Create custom privilege criteria request body.
+          try:
+              # Create custom privilege criteria
+              new_create_privilege_criteria_request = CreatePrivilegeCriteriaRequest.from_json(create_privilege_criteria_request)
+              results = PrivilegeCriteriaApi(api_client).create_custom_privilege_criteria(create_privilege_criteria_request=new_create_privilege_criteria_request)
+              # Below is a request that includes all optional parameters
+              # results = PrivilegeCriteriaApi(api_client).create_custom_privilege_criteria(new_create_privilege_criteria_request)
+              print("The response of PrivilegeCriteriaApi->create_custom_privilege_criteria:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling PrivilegeCriteriaApi->create_custom_privilege_criteria: %s\n" % e)
+- path: /criteria/privilege/{criteriaId}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/privilege-criteria#delete-custom-privilege-criteria
+      source: |
+        from sailpoint.v2025.api.privilege_criteria_api import PrivilegeCriteriaApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          criteria_id = '6d123044-5834-4e8d-a49f-9c70089b0de1' # str | The Id of the custom privilege criteria to delete. # str | The Id of the custom privilege criteria to delete.
+          try:
+              # Delete privilege criteria
+              
+              PrivilegeCriteriaApi(api_client).delete_custom_privilege_criteria(criteria_id=criteria_id)
+              # Below is a request that includes all optional parameters
+              # PrivilegeCriteriaApi(api_client).delete_custom_privilege_criteria(criteria_id)
+          except Exception as e:
+              print("Exception when calling PrivilegeCriteriaApi->delete_custom_privilege_criteria: %s\n" % e)
+- path: /criteria/privilege/{criteriaId}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/privilege-criteria#get-privilege-criteria
+      source: |
+        from sailpoint.v2025.api.privilege_criteria_api import PrivilegeCriteriaApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.privilege_criteria_dto import PrivilegeCriteriaDTO
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          criteria_id = '6d123044-5834-4e8d-a49f-9c70089b0de1' # str | The Id of the privilege criteria record to return. # str | The Id of the privilege criteria record to return.
+          try:
+              # Get privilege criteria
+              
+              results = PrivilegeCriteriaApi(api_client).get_privilege_criteria(criteria_id=criteria_id)
+              # Below is a request that includes all optional parameters
+              # results = PrivilegeCriteriaApi(api_client).get_privilege_criteria(criteria_id)
+              print("The response of PrivilegeCriteriaApi->get_privilege_criteria:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling PrivilegeCriteriaApi->get_privilege_criteria: %s\n" % e)
+- path: /criteria/privilege
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/privilege-criteria#list-privilege-criteria
+      source: |
+        from sailpoint.v2025.api.privilege_criteria_api import PrivilegeCriteriaApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.privilege_criteria_dto import PrivilegeCriteriaDTO
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          filters = 'type eq \"CUSTOM\" and sourceId eq \"c42c45d8d7c04d2da64d215cd8c32f21\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **type**: *eq*  **sourceId**: *eq*  **privilegeLevel**: *eq*  **Supported composite operators**: *and*  All filter values are case-sensitive for this API.  For example, the following is valid: `?filters=type eq \"CUSTOM\" and sourceId eq \"2c91809175e6c63f0175fb5570220569\"` # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **type**: *eq*  **sourceId**: *eq*  **privilegeLevel**: *eq*  **Supported composite operators**: *and*  All filter values are case-sensitive for this API.  For example, the following is valid: `?filters=type eq \"CUSTOM\" and sourceId eq \"2c91809175e6c63f0175fb5570220569\"`
+          try:
+              # List privilege criteria
+              
+              results = PrivilegeCriteriaApi(api_client).list_privilege_criteria(filters=filters)
+              # Below is a request that includes all optional parameters
+              # results = PrivilegeCriteriaApi(api_client).list_privilege_criteria(filters)
+              print("The response of PrivilegeCriteriaApi->list_privilege_criteria:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling PrivilegeCriteriaApi->list_privilege_criteria: %s\n" % e)
+- path: /criteria/privilege/{criteriaId}
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/privilege-criteria#put-custom-privilege-criteria-value
+      source: |
+        from sailpoint.v2025.api.privilege_criteria_api import PrivilegeCriteriaApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.privilege_criteria_dto import PrivilegeCriteriaDTO
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          criteria_id = '6d123044-5834-4e8d-a49f-9c70089b0de1' # str | The Id of the privilege criteria record to return. # str | The Id of the privilege criteria record to return.
+          privilege_criteria_dto = '''{
+          "sourceId" : "c42c45d8d7c04d2da64d215cd8c32f21",
+          "privilegeLevel" : "HIGH",
+          "groups" : [ {
+            "criteriaItems" : [ {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "property" : "property",
+              "targetType" : "group",
+              "operator" : "IN"
+            }, {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "property" : "property",
+              "targetType" : "group",
+              "operator" : "IN"
+            } ],
+            "operator" : "AND"
+          }, {
+            "criteriaItems" : [ {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "property" : "property",
+              "targetType" : "group",
+              "operator" : "IN"
+            }, {
+              "ignoreCase" : true,
+              "values" : [ "admin", "superuser" ],
+              "property" : "property",
+              "targetType" : "group",
+              "operator" : "IN"
+            } ],
+            "operator" : "AND"
+          } ],
+          "id" : "2c9180867817ac4d017817c491119a20",
+          "type" : "CUSTOM",
+          "operator" : "AND"
+        }''' # PrivilegeCriteriaDTO | The new version of the custom privilege criteria. This overwrites the existing privilege criteria.
+          try:
+              # Update privilege criteria
+              new_privilege_criteria_dto = PrivilegeCriteriaDto.from_json(privilege_criteria_dto)
+              results = PrivilegeCriteriaApi(api_client).put_custom_privilege_criteria_value(criteria_id=criteria_id, privilege_criteria_dto=new_privilege_criteria_dto)
+              # Below is a request that includes all optional parameters
+              # results = PrivilegeCriteriaApi(api_client).put_custom_privilege_criteria_value(criteria_id, new_privilege_criteria_dto)
+              print("The response of PrivilegeCriteriaApi->put_custom_privilege_criteria_value:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling PrivilegeCriteriaApi->put_custom_privilege_criteria_value: %s\n" % e)
+- path: /criteria-config/privilege/{criteriaConfigId}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/privilege-criteria-configuration#get-privilege-criteria-config
+      source: |
+        from sailpoint.v2025.api.privilege_criteria_configuration_api import PrivilegeCriteriaConfigurationApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.privilege_criteria_config_dto import PrivilegeCriteriaConfigDTO
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          criteria_config_id = '6d123044-5834-4e8d-a49f-9c70089b0de1' # str | The Id of the privilege criteria configuration record to retrieve. # str | The Id of the privilege criteria configuration record to retrieve.
+          try:
+              # Get privilege criteria config
+              
+              results = PrivilegeCriteriaConfigurationApi(api_client).get_privilege_criteria_config(criteria_config_id=criteria_config_id)
+              # Below is a request that includes all optional parameters
+              # results = PrivilegeCriteriaConfigurationApi(api_client).get_privilege_criteria_config(criteria_config_id)
+              print("The response of PrivilegeCriteriaConfigurationApi->get_privilege_criteria_config:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling PrivilegeCriteriaConfigurationApi->get_privilege_criteria_config: %s\n" % e)
+- path: /criteria-config/privilege
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/privilege-criteria-configuration#list-privilege-criteria-config
+      source: |
+        from sailpoint.v2025.api.privilege_criteria_configuration_api import PrivilegeCriteriaConfigurationApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.privilege_criteria_config_dto import PrivilegeCriteriaConfigDTO
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          filters = 'sourceId eq \"c42c45d8d7c04d2da64d215cd8c32f21\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  All filter values are case-sensitive for this API.  For example, the following is valid: `?filters=sourceId eq \"2c91809175e6c63f0175fb5570220569\"` # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  All filter values are case-sensitive for this API.  For example, the following is valid: `?filters=sourceId eq \"2c91809175e6c63f0175fb5570220569\"`
+          try:
+              # List privilege criteria config
+              
+              results = PrivilegeCriteriaConfigurationApi(api_client).list_privilege_criteria_config(filters=filters)
+              # Below is a request that includes all optional parameters
+              # results = PrivilegeCriteriaConfigurationApi(api_client).list_privilege_criteria_config(filters)
+              print("The response of PrivilegeCriteriaConfigurationApi->list_privilege_criteria_config:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling PrivilegeCriteriaConfigurationApi->list_privilege_criteria_config: %s\n" % e)
+- path: /criteria-config/privilege/{criteriaConfigId}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/privilege-criteria-configuration#patch-privilege-criteria-config
+      source: |
+        from sailpoint.v2025.api.privilege_criteria_configuration_api import PrivilegeCriteriaConfigurationApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.privilege_criteria_config_dto import PrivilegeCriteriaConfigDTO
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          criteria_config_id = '6d123044-5834-4e8d-a49f-9c70089b0de1' # str | The Id of the privilege criteria configuration to update. # str | The Id of the privilege criteria configuration to update.
+          request_body = '''[{op=replace, path=/config/privilegeClassificationMode, value=SINGLE_PRIVILEGE_LEVEL}, {op=replace, path=/config/criteriaPrivilegeLevel/connectorMediumEnabled, value=true}]''' # List[object] | A list of criteria configuration operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+          try:
+              # Update privilege criteria configuration
+              new_request_body = RequestBody.from_json(request_body)
+              results = PrivilegeCriteriaConfigurationApi(api_client).patch_privilege_criteria_config(criteria_config_id=criteria_config_id, request_body=new_request_body)
+              # Below is a request that includes all optional parameters
+              # results = PrivilegeCriteriaConfigurationApi(api_client).patch_privilege_criteria_config(criteria_config_id, new_request_body)
+              print("The response of PrivilegeCriteriaConfigurationApi->patch_privilege_criteria_config:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling PrivilegeCriteriaConfigurationApi->patch_privilege_criteria_config: %s\n" % e)
 - path: /public-identities
   method: GET
   xCodeSample:
