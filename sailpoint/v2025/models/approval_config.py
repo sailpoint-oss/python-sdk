@@ -33,8 +33,8 @@ class ApprovalConfig(BaseModel):
     Approval config Object
     """ # noqa: E501
     tenant_id: Optional[StrictStr] = Field(default=None, description="Tenant ID of the approval configuration.", alias="tenantId")
-    id: Optional[StrictStr] = Field(default=None, description="The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")
-    scope: Optional[StrictStr] = Field(default=None, description="The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE [[sourceID]]:SOURCE [[applicationID]]:APPLICATION ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")
+    id: Optional[StrictStr] = Field(default=None, description="The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")
+    scope: Optional[StrictStr] = Field(default=None, description="The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")
     reminder_config: Optional[ApprovalConfigReminderConfig] = Field(default=None, alias="reminderConfig")
     escalation_config: Optional[ApprovalConfigEscalationConfig] = Field(default=None, alias="escalationConfig")
     timeout_config: Optional[ApprovalConfigTimeoutConfig] = Field(default=None, alias="timeoutConfig")

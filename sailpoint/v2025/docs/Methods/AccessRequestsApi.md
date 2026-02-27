@@ -307,9 +307,9 @@ with ApiClient(configuration) as api_client:
 
 ## create-access-request
 Submit access request
->**Required scopes:** ORG_ADMIN requires idn:access-request:manage. USER level requires idn:access-request-self:manage (Personal Access Token only).
-
 Use this API to submit an access request in Identity Security Cloud (ISC), where it follows any ISC approval processes.
+
+>**Security:** idn:access-request:manage is for ORG_ADMIN level. idn:access-request-self:manage is for USER level.
 
 :::info
 The ability to request access using this API is constrained by the Access Request Segments defined in the API token's user context.
