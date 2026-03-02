@@ -143,6 +143,7 @@ from sailpoint.beta.models.approval_summary import ApprovalSummary
 from sailpoint.beta.models.argument import Argument
 from sailpoint.beta.models.array_inner import ArrayInner
 from sailpoint.beta.models.array_inner1 import ArrayInner1
+from sailpoint.beta.models.array_inner2 import ArrayInner2
 from sailpoint.beta.models.assignment_context_dto import AssignmentContextDto
 from sailpoint.beta.models.attr_sync_source import AttrSyncSource
 from sailpoint.beta.models.attr_sync_source_attribute_config import AttrSyncSourceAttributeConfig
@@ -419,6 +420,8 @@ from sailpoint.beta.models.invocation_status import InvocationStatus
 from sailpoint.beta.models.invocation_status_type import InvocationStatusType
 from sailpoint.beta.models.json_patch import JsonPatch
 from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
+from sailpoint.beta.models.json_patch_operation_role_mining import JsonPatchOperationRoleMining
+from sailpoint.beta.models.json_patch_operation_role_mining_value import JsonPatchOperationRoleMiningValue
 from sailpoint.beta.models.json_patch_operations import JsonPatchOperations
 from sailpoint.beta.models.json_patch_operations_value import JsonPatchOperationsValue
 from sailpoint.beta.models.kba_answer_request_item import KbaAnswerRequestItem
@@ -564,7 +567,6 @@ from sailpoint.beta.models.password_policy_v3_dto import PasswordPolicyV3Dto
 from sailpoint.beta.models.password_status import PasswordStatus
 from sailpoint.beta.models.password_sync_group import PasswordSyncGroup
 from sailpoint.beta.models.pat_owner import PatOwner
-from sailpoint.beta.models.patch_role_mining_potential_role_request_inner import PatchRoleMiningPotentialRoleRequestInner
 from sailpoint.beta.models.peer_group_member import PeerGroupMember
 from sailpoint.beta.models.pending_approval import PendingApproval
 from sailpoint.beta.models.pending_approval_action import PendingApprovalAction
@@ -679,6 +681,7 @@ from sailpoint.beta.models.role_mining_potential_role_entitlements import RoleMi
 from sailpoint.beta.models.role_mining_potential_role_export_request import RoleMiningPotentialRoleExportRequest
 from sailpoint.beta.models.role_mining_potential_role_export_response import RoleMiningPotentialRoleExportResponse
 from sailpoint.beta.models.role_mining_potential_role_export_state import RoleMiningPotentialRoleExportState
+from sailpoint.beta.models.role_mining_potential_role_potential_role_ref import RoleMiningPotentialRolePotentialRoleRef
 from sailpoint.beta.models.role_mining_potential_role_provision_request import RoleMiningPotentialRoleProvisionRequest
 from sailpoint.beta.models.role_mining_potential_role_provision_state import RoleMiningPotentialRoleProvisionState
 from sailpoint.beta.models.role_mining_potential_role_ref import RoleMiningPotentialRoleRef
@@ -822,7 +825,6 @@ from sailpoint.beta.models.status_response import StatusResponse
 from sailpoint.beta.models.subscription import Subscription
 from sailpoint.beta.models.subscription_patch_request_inner import SubscriptionPatchRequestInner
 from sailpoint.beta.models.subscription_patch_request_inner_value import SubscriptionPatchRequestInnerValue
-from sailpoint.beta.models.subscription_patch_request_inner_value_any_of_inner import SubscriptionPatchRequestInnerValueAnyOfInner
 from sailpoint.beta.models.subscription_post_request import SubscriptionPostRequest
 from sailpoint.beta.models.subscription_put_request import SubscriptionPutRequest
 from sailpoint.beta.models.subscription_type import SubscriptionType

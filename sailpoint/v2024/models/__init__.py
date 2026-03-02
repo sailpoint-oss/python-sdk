@@ -180,6 +180,7 @@ from sailpoint.v2024.models.approval_status_dto_original_owner import ApprovalSt
 from sailpoint.v2024.models.approval_summary import ApprovalSummary
 from sailpoint.v2024.models.argument import Argument
 from sailpoint.v2024.models.array_inner import ArrayInner
+from sailpoint.v2024.models.array_inner1 import ArrayInner1
 from sailpoint.v2024.models.assignment_context_dto import AssignmentContextDto
 from sailpoint.v2024.models.attr_sync_source import AttrSyncSource
 from sailpoint.v2024.models.attr_sync_source_attribute_config import AttrSyncSourceAttributeConfig
@@ -549,6 +550,8 @@ from sailpoint.v2024.models.invocation_status_type import InvocationStatusType
 from sailpoint.v2024.models.jit_configuration import JITConfiguration
 from sailpoint.v2024.models.json_patch import JsonPatch
 from sailpoint.v2024.models.json_patch_operation import JsonPatchOperation
+from sailpoint.v2024.models.json_patch_operation_role_mining import JsonPatchOperationRoleMining
+from sailpoint.v2024.models.json_patch_operation_role_mining_value import JsonPatchOperationRoleMiningValue
 from sailpoint.v2024.models.kba_answer_request_item import KbaAnswerRequestItem
 from sailpoint.v2024.models.kba_answer_response_item import KbaAnswerResponseItem
 from sailpoint.v2024.models.kba_question import KbaQuestion
@@ -714,7 +717,6 @@ from sailpoint.v2024.models.password_policy_v3_dto import PasswordPolicyV3Dto
 from sailpoint.v2024.models.password_status import PasswordStatus
 from sailpoint.v2024.models.password_sync_group import PasswordSyncGroup
 from sailpoint.v2024.models.pat_owner import PatOwner
-from sailpoint.v2024.models.patch_potential_role_request_inner import PatchPotentialRoleRequestInner
 from sailpoint.v2024.models.peer_group_member import PeerGroupMember
 from sailpoint.v2024.models.pending_approval import PendingApproval
 from sailpoint.v2024.models.pending_approval_action import PendingApprovalAction
@@ -869,6 +871,7 @@ from sailpoint.v2024.models.role_mining_potential_role_entitlements import RoleM
 from sailpoint.v2024.models.role_mining_potential_role_export_request import RoleMiningPotentialRoleExportRequest
 from sailpoint.v2024.models.role_mining_potential_role_export_response import RoleMiningPotentialRoleExportResponse
 from sailpoint.v2024.models.role_mining_potential_role_export_state import RoleMiningPotentialRoleExportState
+from sailpoint.v2024.models.role_mining_potential_role_potential_role_ref import RoleMiningPotentialRolePotentialRoleRef
 from sailpoint.v2024.models.role_mining_potential_role_provision_request import RoleMiningPotentialRoleProvisionRequest
 from sailpoint.v2024.models.role_mining_potential_role_provision_state import RoleMiningPotentialRoleProvisionState
 from sailpoint.v2024.models.role_mining_potential_role_ref import RoleMiningPotentialRoleRef
@@ -1048,7 +1051,6 @@ from sailpoint.v2024.models.sub_search_aggregation_specification import SubSearc
 from sailpoint.v2024.models.subscription import Subscription
 from sailpoint.v2024.models.subscription_patch_request_inner import SubscriptionPatchRequestInner
 from sailpoint.v2024.models.subscription_patch_request_inner_value import SubscriptionPatchRequestInnerValue
-from sailpoint.v2024.models.subscription_patch_request_inner_value_any_of_inner import SubscriptionPatchRequestInnerValueAnyOfInner
 from sailpoint.v2024.models.subscription_post_request import SubscriptionPostRequest
 from sailpoint.v2024.models.subscription_put_request import SubscriptionPutRequest
 from sailpoint.v2024.models.subscription_type import SubscriptionType

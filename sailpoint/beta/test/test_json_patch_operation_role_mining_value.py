@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.beta.models.subscription_patch_request_inner_value_any_of_inner import SubscriptionPatchRequestInnerValueAnyOfInner
+from sailpoint.beta.models.json_patch_operation_role_mining_value import JsonPatchOperationRoleMiningValue
 
-class TestSubscriptionPatchRequestInnerValueAnyOfInner(unittest.TestCase):
-    """SubscriptionPatchRequestInnerValueAnyOfInner unit test stubs"""
+class TestJsonPatchOperationRoleMiningValue(unittest.TestCase):
+    """JsonPatchOperationRoleMiningValue unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,24 +25,24 @@ class TestSubscriptionPatchRequestInnerValueAnyOfInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SubscriptionPatchRequestInnerValueAnyOfInner:
-        """Test SubscriptionPatchRequestInnerValueAnyOfInner
+    def make_instance(self, include_optional) -> JsonPatchOperationRoleMiningValue:
+        """Test JsonPatchOperationRoleMiningValue
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `SubscriptionPatchRequestInnerValueAnyOfInner`
+        # uncomment below to create an instance of `JsonPatchOperationRoleMiningValue`
         """
-        model = SubscriptionPatchRequestInnerValueAnyOfInner()
+        model = JsonPatchOperationRoleMiningValue()
         if include_optional:
-            return SubscriptionPatchRequestInnerValueAnyOfInner(
+            return JsonPatchOperationRoleMiningValue(
             )
         else:
-            return SubscriptionPatchRequestInnerValueAnyOfInner(
+            return JsonPatchOperationRoleMiningValue(
         )
         """
 
-    def testSubscriptionPatchRequestInnerValueAnyOfInner(self):
-        """Test SubscriptionPatchRequestInnerValueAnyOfInner"""
+    def testJsonPatchOperationRoleMiningValue(self):
+        """Test JsonPatchOperationRoleMiningValue"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

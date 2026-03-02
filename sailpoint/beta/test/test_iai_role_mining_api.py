@@ -176,7 +176,7 @@ class TestIAIRoleMiningApi(unittest.TestCase):
     def test_patch_potential_role_session(self) -> None:
         """Test case for patch_potential_role_session
 
-        Update a potential role in session
+        Update potential role in session
         """
         pass
 

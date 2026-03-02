@@ -36,7 +36,7 @@ Method | HTTP request | Description
 [**get-role-mining-session-status**](#get-role-mining-session-status) | **GET** `/role-mining-sessions/{sessionId}/status` | Get role mining session status state
 [**get-role-mining-sessions**](#get-role-mining-sessions) | **GET** `/role-mining-sessions` | Retrieves all role mining sessions
 [**get-saved-potential-roles**](#get-saved-potential-roles) | **GET** `/role-mining-potential-roles/saved` | Retrieves all saved potential roles
-[**patch-potential-role-session**](#patch-potential-role-session) | **PATCH** `/role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}` | Update a potential role in session
+[**patch-potential-role-session**](#patch-potential-role-session) | **PATCH** `/role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}` | Update potential role in session
 [**patch-role-mining-potential-role**](#patch-role-mining-potential-role) | **PATCH** `/role-mining-potential-roles/{potentialRoleId}` | Update a potential role
 [**patch-role-mining-session**](#patch-role-mining-session) | **PATCH** `/role-mining-sessions/{sessionId}` | Patch a role mining session
 [**update-entitlements-potential-role**](#update-entitlements-potential-role) | **POST** `/role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements` | Edit entitlements for a potential role to exclude some entitlements
@@ -1432,7 +1432,7 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## patch-potential-role-session
-Update a potential role in session
+Update potential role in session
 This method updates an existing potential role using the role mining session id and the potential role summary id.
 
 The following fields can be modified:
@@ -1455,7 +1455,7 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | session_id | **str** | True  | The role mining session id
 Path   | potential_role_id | **str** | True  | The potential role summary id
- Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | 
+ Body  | json_patch_operation_role_mining | [**[]JsonPatchOperationRoleMining**](../models/json-patch-operation-role-mining) | True  | 
 
 ### Return type
 **object**
@@ -1480,7 +1480,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.beta.api.iai_role_mining_api import IAIRoleMiningApi
 from sailpoint.beta.api_client import ApiClient
-from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
+from sailpoint.beta.models.json_patch_operation_role_mining import JsonPatchOperationRoleMining
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -1488,14 +1488,14 @@ configuration = Configuration()
 with ApiClient(configuration) as api_client:
     session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id # str | The role mining session id
     potential_role_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The potential role summary id # str | The potential role summary id
-    json_patch_operation = '''[{op=remove, path=/description}, {op=replace, path=/description, value=Acct I - Potential Role}, {op=remove, path=/saved}, {op=replace, path=/saved, value=false}, {op=remove, path=/name}, {op=replace, path=/name, value=Potential Role Accounting}]''' # List[JsonPatchOperation] | 
+    json_patch_operation_role_mining = '''[{op=remove, path=/description}, {op=replace, path=/description, value=Acct I - Potential Role}, {op=remove, path=/saved}, {op=replace, path=/saved, value=false}, {op=remove, path=/name}, {op=replace, path=/name, value=Potential Role Accounting}]''' # List[JsonPatchOperationRoleMining] | 
 
     try:
-        # Update a potential role in session
-        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
-        results = IAIRoleMiningApi(api_client).patch_potential_role_session(session_id=session_id, potential_role_id=potential_role_id, json_patch_operation=new_json_patch_operation)
+        # Update potential role in session
+        new_json_patch_operation_role_mining = JsonPatchOperationRoleMining.from_json(json_patch_operation_role_mining)
+        results = IAIRoleMiningApi(api_client).patch_potential_role_session(session_id=session_id, potential_role_id=potential_role_id, json_patch_operation_role_mining=new_json_patch_operation_role_mining)
         # Below is a request that includes all optional parameters
-        # results = IAIRoleMiningApi(api_client).patch_potential_role_session(session_id, potential_role_id, new_json_patch_operation)
+        # results = IAIRoleMiningApi(api_client).patch_potential_role_session(session_id, potential_role_id, new_json_patch_operation_role_mining)
         print("The response of IAIRoleMiningApi->patch_potential_role_session:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -1529,7 +1529,7 @@ The following fields can be modified:
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | potential_role_id | **str** | True  | The potential role summary id
- Body  | patch_role_mining_potential_role_request_inner | [**[]PatchRoleMiningPotentialRoleRequestInner**](../models/patch-role-mining-potential-role-request-inner) | True  | 
+ Body  | json_patch_operation_role_mining | [**[]JsonPatchOperationRoleMining**](../models/json-patch-operation-role-mining) | True  | 
 
 ### Return type
 **object**
@@ -1554,21 +1554,21 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.beta.api.iai_role_mining_api import IAIRoleMiningApi
 from sailpoint.beta.api_client import ApiClient
-from sailpoint.beta.models.patch_role_mining_potential_role_request_inner import PatchRoleMiningPotentialRoleRequestInner
+from sailpoint.beta.models.json_patch_operation_role_mining import JsonPatchOperationRoleMining
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     potential_role_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The potential role summary id # str | The potential role summary id
-    patch_role_mining_potential_role_request_inner = '''[{op=remove, path=/description}, {op=replace, path=/description, value=Acct I - Potential Role}, {op=remove, path=/saved}, {op=replace, path=/saved, value=false}, {op=remove, path=/name}, {op=replace, path=/name, value=Potential Role Accounting}]''' # List[PatchRoleMiningPotentialRoleRequestInner] | 
+    json_patch_operation_role_mining = '''[{op=remove, path=/description}, {op=replace, path=/description, value=Acct I - Potential Role}, {op=remove, path=/saved}, {op=replace, path=/saved, value=false}, {op=remove, path=/name}, {op=replace, path=/name, value=Potential Role Accounting}]''' # List[JsonPatchOperationRoleMining] | 
 
     try:
         # Update a potential role
-        new_patch_role_mining_potential_role_request_inner = PatchRoleMiningPotentialRoleRequestInner.from_json(patch_role_mining_potential_role_request_inner)
-        results = IAIRoleMiningApi(api_client).patch_role_mining_potential_role(potential_role_id=potential_role_id, patch_role_mining_potential_role_request_inner=new_patch_role_mining_potential_role_request_inner)
+        new_json_patch_operation_role_mining = JsonPatchOperationRoleMining.from_json(json_patch_operation_role_mining)
+        results = IAIRoleMiningApi(api_client).patch_role_mining_potential_role(potential_role_id=potential_role_id, json_patch_operation_role_mining=new_json_patch_operation_role_mining)
         # Below is a request that includes all optional parameters
-        # results = IAIRoleMiningApi(api_client).patch_role_mining_potential_role(potential_role_id, new_patch_role_mining_potential_role_request_inner)
+        # results = IAIRoleMiningApi(api_client).patch_role_mining_potential_role(potential_role_id, new_json_patch_operation_role_mining)
         print("The response of IAIRoleMiningApi->patch_role_mining_potential_role:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

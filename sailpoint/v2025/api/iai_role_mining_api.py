@@ -20,7 +20,7 @@ from pydantic import Field, StrictBool, StrictBytes, StrictInt, StrictStr
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from sailpoint.v2025.models.json_patch_operation import JsonPatchOperation
-from sailpoint.v2025.models.patch_potential_role_request_inner import PatchPotentialRoleRequestInner
+from sailpoint.v2025.models.json_patch_operation_role_mining import JsonPatchOperationRoleMining
 from sailpoint.v2025.models.role_mining_entitlement import RoleMiningEntitlement
 from sailpoint.v2025.models.role_mining_identity import RoleMiningIdentity
 from sailpoint.v2025.models.role_mining_potential_role import RoleMiningPotentialRole
@@ -7293,7 +7293,7 @@ class IAIRoleMiningApi:
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="The potential role summary id")],
-        patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner],
+        json_patch_operation_role_mining: List[JsonPatchOperationRoleMining],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -7318,8 +7318,8 @@ class IAIRoleMiningApi:
         :type potential_role_id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param patch_potential_role_request_inner: (required)
-        :type patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner]
+        :param json_patch_operation_role_mining: (required)
+        :type json_patch_operation_role_mining: List[JsonPatchOperationRoleMining]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7346,7 +7346,7 @@ class IAIRoleMiningApi:
             session_id=session_id,
             potential_role_id=potential_role_id,
             x_sail_point_experimental=x_sail_point_experimental,
-            patch_potential_role_request_inner=patch_potential_role_request_inner,
+            json_patch_operation_role_mining=json_patch_operation_role_mining,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7378,7 +7378,7 @@ class IAIRoleMiningApi:
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="The potential role summary id")],
-        patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner],
+        json_patch_operation_role_mining: List[JsonPatchOperationRoleMining],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -7403,8 +7403,8 @@ class IAIRoleMiningApi:
         :type potential_role_id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param patch_potential_role_request_inner: (required)
-        :type patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner]
+        :param json_patch_operation_role_mining: (required)
+        :type json_patch_operation_role_mining: List[JsonPatchOperationRoleMining]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7431,7 +7431,7 @@ class IAIRoleMiningApi:
             session_id=session_id,
             potential_role_id=potential_role_id,
             x_sail_point_experimental=x_sail_point_experimental,
-            patch_potential_role_request_inner=patch_potential_role_request_inner,
+            json_patch_operation_role_mining=json_patch_operation_role_mining,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7463,7 +7463,7 @@ class IAIRoleMiningApi:
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="The potential role summary id")],
-        patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner],
+        json_patch_operation_role_mining: List[JsonPatchOperationRoleMining],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -7488,8 +7488,8 @@ class IAIRoleMiningApi:
         :type potential_role_id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param patch_potential_role_request_inner: (required)
-        :type patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner]
+        :param json_patch_operation_role_mining: (required)
+        :type json_patch_operation_role_mining: List[JsonPatchOperationRoleMining]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7516,7 +7516,7 @@ class IAIRoleMiningApi:
             session_id=session_id,
             potential_role_id=potential_role_id,
             x_sail_point_experimental=x_sail_point_experimental,
-            patch_potential_role_request_inner=patch_potential_role_request_inner,
+            json_patch_operation_role_mining=json_patch_operation_role_mining,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7544,7 +7544,7 @@ class IAIRoleMiningApi:
         session_id,
         potential_role_id,
         x_sail_point_experimental,
-        patch_potential_role_request_inner,
+        json_patch_operation_role_mining,
         _request_auth,
         _content_type,
         _headers,
@@ -7554,7 +7554,7 @@ class IAIRoleMiningApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'PatchPotentialRoleRequestInner': '',
+            'JsonPatchOperationRoleMining': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -7577,8 +7577,8 @@ class IAIRoleMiningApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if patch_potential_role_request_inner is not None:
-            _body_params = patch_potential_role_request_inner
+        if json_patch_operation_role_mining is not None:
+            _body_params = json_patch_operation_role_mining
 
 
         # set the HTTP header `Accept`
@@ -7606,7 +7606,8 @@ class IAIRoleMiningApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -7632,7 +7633,7 @@ class IAIRoleMiningApi:
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="The potential role summary id")],
-        json_patch_operation: List[JsonPatchOperation],
+        json_patch_operation_role_mining: List[JsonPatchOperationRoleMining],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -7657,8 +7658,8 @@ class IAIRoleMiningApi:
         :type potential_role_id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param json_patch_operation: (required)
-        :type json_patch_operation: List[JsonPatchOperation]
+        :param json_patch_operation_role_mining: (required)
+        :type json_patch_operation_role_mining: List[JsonPatchOperationRoleMining]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7685,7 +7686,7 @@ class IAIRoleMiningApi:
             session_id=session_id,
             potential_role_id=potential_role_id,
             x_sail_point_experimental=x_sail_point_experimental,
-            json_patch_operation=json_patch_operation,
+            json_patch_operation_role_mining=json_patch_operation_role_mining,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7717,7 +7718,7 @@ class IAIRoleMiningApi:
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="The potential role summary id")],
-        json_patch_operation: List[JsonPatchOperation],
+        json_patch_operation_role_mining: List[JsonPatchOperationRoleMining],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -7742,8 +7743,8 @@ class IAIRoleMiningApi:
         :type potential_role_id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param json_patch_operation: (required)
-        :type json_patch_operation: List[JsonPatchOperation]
+        :param json_patch_operation_role_mining: (required)
+        :type json_patch_operation_role_mining: List[JsonPatchOperationRoleMining]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7770,7 +7771,7 @@ class IAIRoleMiningApi:
             session_id=session_id,
             potential_role_id=potential_role_id,
             x_sail_point_experimental=x_sail_point_experimental,
-            json_patch_operation=json_patch_operation,
+            json_patch_operation_role_mining=json_patch_operation_role_mining,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7802,7 +7803,7 @@ class IAIRoleMiningApi:
         self,
         session_id: Annotated[StrictStr, Field(description="The role mining session id")],
         potential_role_id: Annotated[StrictStr, Field(description="The potential role summary id")],
-        json_patch_operation: List[JsonPatchOperation],
+        json_patch_operation_role_mining: List[JsonPatchOperationRoleMining],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -7827,8 +7828,8 @@ class IAIRoleMiningApi:
         :type potential_role_id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
-        :param json_patch_operation: (required)
-        :type json_patch_operation: List[JsonPatchOperation]
+        :param json_patch_operation_role_mining: (required)
+        :type json_patch_operation_role_mining: List[JsonPatchOperationRoleMining]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7855,7 +7856,7 @@ class IAIRoleMiningApi:
             session_id=session_id,
             potential_role_id=potential_role_id,
             x_sail_point_experimental=x_sail_point_experimental,
-            json_patch_operation=json_patch_operation,
+            json_patch_operation_role_mining=json_patch_operation_role_mining,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7883,7 +7884,7 @@ class IAIRoleMiningApi:
         session_id,
         potential_role_id,
         x_sail_point_experimental,
-        json_patch_operation,
+        json_patch_operation_role_mining,
         _request_auth,
         _content_type,
         _headers,
@@ -7893,7 +7894,7 @@ class IAIRoleMiningApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'JsonPatchOperation': '',
+            'JsonPatchOperationRoleMining': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -7916,8 +7917,8 @@ class IAIRoleMiningApi:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
-        if json_patch_operation is not None:
-            _body_params = json_patch_operation
+        if json_patch_operation_role_mining is not None:
+            _body_params = json_patch_operation_role_mining
 
 
         # set the HTTP header `Accept`

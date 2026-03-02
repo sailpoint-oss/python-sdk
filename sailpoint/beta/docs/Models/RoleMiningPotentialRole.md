@@ -25,11 +25,13 @@ Name | Type | Description | Notes
 **identity_count** | **int** | The number of identities in a potential role. | [optional] 
 **identity_distribution** | [**[]RoleMiningIdentityDistribution**](role-mining-identity-distribution) | Identity attribute distribution. | [optional] 
 **identity_ids** | **[]str** | The list of ids in a potential role. | [optional] 
+**identity_group_status** | **str** | The status for this identity group which can be OBTAINED or COMPRESSED | [optional] 
 **name** | **str** | Name of the potential role. | [optional] 
+**potential_role_ref** | [**RoleMiningPotentialRolePotentialRoleRef**](role-mining-potential-role-potential-role-ref) |  | [optional] 
 **provision_state** | [**RoleMiningPotentialRoleProvisionState**](role-mining-potential-role-provision-state) |  | [optional] 
 **quality** | **int** | The quality of a potential role. | [optional] 
 **role_id** | **str** | The roleId of a potential role. | [optional] 
-**saved** | **bool** | The potential role's saved status. | [optional] 
+**saved** | **bool** | The potential role's saved status. | [optional] [default to False]
 **session** | [**RoleMiningSessionParametersDto**](role-mining-session-parameters-dto) |  | [optional] 
 **type** | [**RoleMiningRoleType**](role-mining-role-type) |  | [optional] 
 **id** | **str** | Id of the potential role | [optional] 
@@ -60,7 +62,11 @@ identity_distribution=[
                             ], )
                     ],
 identity_ids=[07a0b4e2, 13b4e2a0],
+identity_group_status='OBTAINED',
 name='Saved Potential Role - 07/10',
+potential_role_ref=sailpoint.beta.models.role_mining_potential_role_potential_role_ref.RoleMiningPotentialRole_potentialRoleRef(
+                    id = 'e0cc5d7d-bf7f-4f81-b2af-8885b09d9923', 
+                    name = 'Saved Potential Role - 07/10', ),
 provision_state='POTENTIAL',
 quality=100,
 role_id='07a0b4e2-7a76-44fa-bd0b-c64654b66519',
@@ -80,8 +86,8 @@ session=sailpoint.beta.models.role_mining_session_parameters_dto.Role Mining Ses
                     scoping_method = 'MANUAL', ),
 type='SPECIALIZED',
 id='e0cc5d7d-bf7f-4f81-b2af-8885b09d9923',
-created_date=datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-modified_date=datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
+created_date='2020-01-01T00:00Z',
+modified_date='2020-01-01T00:00Z'
 )
 
 ```

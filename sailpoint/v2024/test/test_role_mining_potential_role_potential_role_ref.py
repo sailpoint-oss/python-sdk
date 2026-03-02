@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2024.models.subscription_patch_request_inner_value_any_of_inner import SubscriptionPatchRequestInnerValueAnyOfInner
+from sailpoint.v2024.models.role_mining_potential_role_potential_role_ref import RoleMiningPotentialRolePotentialRoleRef
 
-class TestSubscriptionPatchRequestInnerValueAnyOfInner(unittest.TestCase):
-    """SubscriptionPatchRequestInnerValueAnyOfInner unit test stubs"""
+class TestRoleMiningPotentialRolePotentialRoleRef(unittest.TestCase):
+    """RoleMiningPotentialRolePotentialRoleRef unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,24 +25,26 @@ class TestSubscriptionPatchRequestInnerValueAnyOfInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SubscriptionPatchRequestInnerValueAnyOfInner:
-        """Test SubscriptionPatchRequestInnerValueAnyOfInner
+    def make_instance(self, include_optional) -> RoleMiningPotentialRolePotentialRoleRef:
+        """Test RoleMiningPotentialRolePotentialRoleRef
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `SubscriptionPatchRequestInnerValueAnyOfInner`
+        # uncomment below to create an instance of `RoleMiningPotentialRolePotentialRoleRef`
         """
-        model = SubscriptionPatchRequestInnerValueAnyOfInner()
+        model = RoleMiningPotentialRolePotentialRoleRef()
         if include_optional:
-            return SubscriptionPatchRequestInnerValueAnyOfInner(
+            return RoleMiningPotentialRolePotentialRoleRef(
+                id = 'e0cc5d7d-bf7f-4f81-b2af-8885b09d9923',
+                name = 'Saved Potential Role - 07/10'
             )
         else:
-            return SubscriptionPatchRequestInnerValueAnyOfInner(
+            return RoleMiningPotentialRolePotentialRoleRef(
         )
         """
 
-    def testSubscriptionPatchRequestInnerValueAnyOfInner(self):
-        """Test SubscriptionPatchRequestInnerValueAnyOfInner"""
+    def testRoleMiningPotentialRolePotentialRoleRef(self):
+        """Test RoleMiningPotentialRolePotentialRoleRef"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

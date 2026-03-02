@@ -52,7 +52,11 @@ class TestRoleMiningPotentialRole(unittest.TestCase):
                             ], )
                     ],
                 identity_ids = [07a0b4e2, 13b4e2a0],
+                identity_group_status = 'OBTAINED',
                 name = 'Saved Potential Role - 07/10',
+                potential_role_ref = sailpoint.v2024.models.role_mining_potential_role_potential_role_ref.RoleMiningPotentialRole_potentialRoleRef(
+                    id = 'e0cc5d7d-bf7f-4f81-b2af-8885b09d9923', 
+                    name = 'Saved Potential Role - 07/10', ),
                 provision_state = None,
                 quality = 100,
                 role_id = '07a0b4e2-7a76-44fa-bd0b-c64654b66519',
@@ -72,8 +76,8 @@ class TestRoleMiningPotentialRole(unittest.TestCase):
                     scoping_method = 'MANUAL', ),
                 type = 'SPECIALIZED',
                 id = 'e0cc5d7d-bf7f-4f81-b2af-8885b09d9923',
-                created_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                modified_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
+                created_date = '2020-01-01T00:00Z',
+                modified_date = '2020-01-01T00:00Z'
             )
         else:
             return RoleMiningPotentialRole(

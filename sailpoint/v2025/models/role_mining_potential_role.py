@@ -22,6 +22,7 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2025.models.role_mining_identity_distribution import RoleMiningIdentityDistribution
+from sailpoint.v2025.models.role_mining_potential_role_potential_role_ref import RoleMiningPotentialRolePotentialRoleRef
 from sailpoint.v2025.models.role_mining_role_type import RoleMiningRoleType
 from sailpoint.v2025.models.role_mining_session_parameters_dto import RoleMiningSessionParametersDto
 from sailpoint.v2025.models.role_mining_session_response_created_by import RoleMiningSessionResponseCreatedBy
@@ -41,17 +42,19 @@ class RoleMiningPotentialRole(BaseModel):
     identity_count: Optional[StrictInt] = Field(default=None, description="The number of identities in a potential role.", alias="identityCount")
     identity_distribution: Optional[List[RoleMiningIdentityDistribution]] = Field(default=None, description="Identity attribute distribution.", alias="identityDistribution")
     identity_ids: Optional[List[StrictStr]] = Field(default=None, description="The list of ids in a potential role.", alias="identityIds")
+    identity_group_status: Optional[StrictStr] = Field(default=None, description="The status for this identity group which can be OBTAINED or COMPRESSED", alias="identityGroupStatus")
     name: Optional[StrictStr] = Field(default=None, description="Name of the potential role.")
+    potential_role_ref: Optional[RoleMiningPotentialRolePotentialRoleRef] = Field(default=None, alias="potentialRoleRef")
     provision_state: Optional[Any] = Field(default=None, alias="provisionState")
     quality: Optional[StrictInt] = Field(default=None, description="The quality of a potential role.")
     role_id: Optional[StrictStr] = Field(default=None, description="The roleId of a potential role.", alias="roleId")
-    saved: Optional[StrictBool] = Field(default=None, description="The potential role's saved status.")
+    saved: Optional[StrictBool] = Field(default=False, description="The potential role's saved status.")
     session: Optional[RoleMiningSessionParametersDto] = None
     type: Optional[Union[RoleMiningRoleType, str]] = None
     id: Optional[StrictStr] = Field(default=None, description="Id of the potential role")
     created_date: Optional[datetime] = Field(default=None, description="The date-time when this potential role was created.", alias="createdDate")
     modified_date: Optional[datetime] = Field(default=None, description="The date-time when this potential role was modified.", alias="modifiedDate")
-    __properties: ClassVar[List[str]] = ["createdBy", "density", "description", "entitlementCount", "excludedEntitlements", "freshness", "identityCount", "identityDistribution", "identityIds", "name", "provisionState", "quality", "roleId", "saved", "session", "type", "id", "createdDate", "modifiedDate"]
+    __properties: ClassVar[List[str]] = ["createdBy", "density", "description", "entitlementCount", "excludedEntitlements", "freshness", "identityCount", "identityDistribution", "identityIds", "identityGroupStatus", "name", "potentialRoleRef", "provisionState", "quality", "roleId", "saved", "session", "type", "id", "createdDate", "modifiedDate"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -102,6 +105,9 @@ class RoleMiningPotentialRole(BaseModel):
                 if _item_identity_distribution:
                     _items.append(_item_identity_distribution.to_dict())
             _dict['identityDistribution'] = _items
+        # override the default output from pydantic by calling `to_dict()` of potential_role_ref
+        if self.potential_role_ref:
+            _dict['potentialRoleRef'] = self.potential_role_ref.to_dict()
         # override the default output from pydantic by calling `to_dict()` of provision_state
         if self.provision_state:
             _dict['provisionState'] = self.provision_state.to_dict()
@@ -122,6 +128,16 @@ class RoleMiningPotentialRole(BaseModel):
         # and model_fields_set contains the field
         if self.identity_distribution is None and "identity_distribution" in self.model_fields_set:
             _dict['identityDistribution'] = None
+
+        # set to None if identity_group_status (nullable) is None
+        # and model_fields_set contains the field
+        if self.identity_group_status is None and "identity_group_status" in self.model_fields_set:
+            _dict['identityGroupStatus'] = None
+
+        # set to None if potential_role_ref (nullable) is None
+        # and model_fields_set contains the field
+        if self.potential_role_ref is None and "potential_role_ref" in self.model_fields_set:
+            _dict['potentialRoleRef'] = None
 
         # set to None if role_id (nullable) is None
         # and model_fields_set contains the field
@@ -149,11 +165,13 @@ class RoleMiningPotentialRole(BaseModel):
             "identityCount": obj.get("identityCount"),
             "identityDistribution": [RoleMiningIdentityDistribution.from_dict(_item) for _item in obj["identityDistribution"]] if obj.get("identityDistribution") is not None else None,
             "identityIds": obj.get("identityIds"),
+            "identityGroupStatus": obj.get("identityGroupStatus"),
             "name": obj.get("name"),
+            "potentialRoleRef": RoleMiningPotentialRolePotentialRoleRef.from_dict(obj["potentialRoleRef"]) if obj.get("potentialRoleRef") is not None else None,
             "provisionState": RoleMiningPotentialRoleProvisionState.from_dict(obj["provisionState"]) if obj.get("provisionState") is not None else None,
             "quality": obj.get("quality"),
             "roleId": obj.get("roleId"),
-            "saved": obj.get("saved"),
+            "saved": obj.get("saved") if obj.get("saved") is not None else False,
             "session": RoleMiningSessionParametersDto.from_dict(obj["session"]) if obj.get("session") is not None else None,
             "type": obj.get("type"),
             "id": obj.get("id"),

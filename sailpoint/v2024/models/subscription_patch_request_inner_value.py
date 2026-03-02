@@ -19,12 +19,12 @@ import pprint
 import re  # noqa: F401
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, ValidationError, field_validator
 from typing import Any, Dict, List, Optional
-from sailpoint.v2024.models.subscription_patch_request_inner_value_any_of_inner import SubscriptionPatchRequestInnerValueAnyOfInner
+from sailpoint.v2024.models.array_inner1 import ArrayInner1
 from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal, Self
 from pydantic import Field
 
-SUBSCRIPTIONPATCHREQUESTINNERVALUE_ANY_OF_SCHEMAS = ["List[SubscriptionPatchRequestInnerValueAnyOfInner]", "int", "object", "str"]
+SUBSCRIPTIONPATCHREQUESTINNERVALUE_ANY_OF_SCHEMAS = ["List[ArrayInner1]", "int", "object", "str"]
 
 class SubscriptionPatchRequestInnerValue(BaseModel):
     """
@@ -37,13 +37,13 @@ class SubscriptionPatchRequestInnerValue(BaseModel):
     anyof_schema_2_validator: Optional[StrictInt] = None
     # data type: object
     anyof_schema_3_validator: Optional[Dict[str, Any]] = None
-    # data type: List[SubscriptionPatchRequestInnerValueAnyOfInner]
-    anyof_schema_4_validator: Optional[List[SubscriptionPatchRequestInnerValueAnyOfInner]] = None
+    # data type: List[ArrayInner1]
+    anyof_schema_4_validator: Optional[List[ArrayInner1]] = None
     if TYPE_CHECKING:
-        actual_instance: Optional[Union[List[SubscriptionPatchRequestInnerValueAnyOfInner], int, object, str]] = None
+        actual_instance: Optional[Union[List[ArrayInner1], int, object, str]] = None
     else:
         actual_instance: Any = None
-    any_of_schemas: Set[str] = { "List[SubscriptionPatchRequestInnerValueAnyOfInner]", "int", "object", "str" }
+    any_of_schemas: Set[str] = { "List[ArrayInner1]", "int", "object", "str" }
 
     model_config = {
         "validate_assignment": True,
@@ -82,7 +82,7 @@ class SubscriptionPatchRequestInnerValue(BaseModel):
             return v
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # validate data type: List[SubscriptionPatchRequestInnerValueAnyOfInner]
+        # validate data type: List[ArrayInner1]
         try:
             instance.anyof_schema_4_validator = v
             return v
@@ -90,7 +90,7 @@ class SubscriptionPatchRequestInnerValue(BaseModel):
             error_messages.append(str(e))
         if error_messages:
             # no match
-            raise ValueError("No match found when setting the actual_instance in SubscriptionPatchRequestInnerValue with anyOf schemas: List[SubscriptionPatchRequestInnerValueAnyOfInner], int, object, str. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting the actual_instance in SubscriptionPatchRequestInnerValue with anyOf schemas: List[ArrayInner1], int, object, str. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -130,7 +130,7 @@ class SubscriptionPatchRequestInnerValue(BaseModel):
             return instance
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # deserialize data into List[SubscriptionPatchRequestInnerValueAnyOfInner]
+        # deserialize data into List[ArrayInner1]
         try:
             # validation
             instance.anyof_schema_4_validator = json.loads(json_str)
@@ -142,7 +142,7 @@ class SubscriptionPatchRequestInnerValue(BaseModel):
 
         if error_messages:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into SubscriptionPatchRequestInnerValue with anyOf schemas: List[SubscriptionPatchRequestInnerValueAnyOfInner], int, object, str. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into SubscriptionPatchRequestInnerValue with anyOf schemas: List[ArrayInner1], int, object, str. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -156,7 +156,7 @@ class SubscriptionPatchRequestInnerValue(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], List[SubscriptionPatchRequestInnerValueAnyOfInner], int, object, str]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], List[ArrayInner1], int, object, str]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

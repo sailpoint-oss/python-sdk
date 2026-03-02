@@ -17,13 +17,13 @@ from inspect import getfullargspec
 import json
 import pprint
 import re  # noqa: F401
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
-from typing import Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, ValidationError, field_validator
+from typing import Any, Dict, Optional
 from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal, Self
 from pydantic import Field
 
-ARRAYINNER1_ANY_OF_SCHEMAS = ["str"]
+ARRAYINNER1_ANY_OF_SCHEMAS = ["int", "object", "str"]
 
 class ArrayInner1(BaseModel):
     """
@@ -32,11 +32,15 @@ class ArrayInner1(BaseModel):
 
     # data type: str
     anyof_schema_1_validator: Optional[StrictStr] = None
+    # data type: int
+    anyof_schema_2_validator: Optional[StrictInt] = None
+    # data type: object
+    anyof_schema_3_validator: Optional[Dict[str, Any]] = None
     if TYPE_CHECKING:
-        actual_instance: Optional[Union[str]] = None
+        actual_instance: Optional[Union[int, object, str]] = None
     else:
         actual_instance: Any = None
-    any_of_schemas: Set[str] = { "str" }
+    any_of_schemas: Set[str] = { "int", "object", "str" }
 
     model_config = {
         "validate_assignment": True,
@@ -63,9 +67,21 @@ class ArrayInner1(BaseModel):
             return v
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
+        # validate data type: int
+        try:
+            instance.anyof_schema_2_validator = v
+            return v
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+        # validate data type: object
+        try:
+            instance.anyof_schema_3_validator = v
+            return v
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
         if error_messages:
             # no match
-            raise ValueError("No match found when setting the actual_instance in ArrayInner1 with anyOf schemas: str. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting the actual_instance in ArrayInner1 with anyOf schemas: int, object, str. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -87,10 +103,28 @@ class ArrayInner1(BaseModel):
             return instance
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
+        # deserialize data into int
+        try:
+            # validation
+            instance.anyof_schema_2_validator = json.loads(json_str)
+            # assign value to actual_instance
+            instance.actual_instance = instance.anyof_schema_2_validator
+            return instance
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+        # deserialize data into object
+        try:
+            # validation
+            instance.anyof_schema_3_validator = json.loads(json_str)
+            # assign value to actual_instance
+            instance.actual_instance = instance.anyof_schema_3_validator
+            return instance
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
 
         if error_messages:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into ArrayInner1 with anyOf schemas: str. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into ArrayInner1 with anyOf schemas: int, object, str. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -104,7 +138,7 @@ class ArrayInner1(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], str]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], int, object, str]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

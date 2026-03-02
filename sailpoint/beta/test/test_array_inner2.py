@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.beta.models.patch_role_mining_potential_role_request_inner import PatchRoleMiningPotentialRoleRequestInner
+from sailpoint.beta.models.array_inner2 import ArrayInner2
 
-class TestPatchRoleMiningPotentialRoleRequestInner(unittest.TestCase):
-    """PatchRoleMiningPotentialRoleRequestInner unit test stubs"""
+class TestArrayInner2(unittest.TestCase):
+    """ArrayInner2 unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,28 +25,24 @@ class TestPatchRoleMiningPotentialRoleRequestInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> PatchRoleMiningPotentialRoleRequestInner:
-        """Test PatchRoleMiningPotentialRoleRequestInner
+    def make_instance(self, include_optional) -> ArrayInner2:
+        """Test ArrayInner2
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `PatchRoleMiningPotentialRoleRequestInner`
+        # uncomment below to create an instance of `ArrayInner2`
         """
-        model = PatchRoleMiningPotentialRoleRequestInner()
+        model = ArrayInner2()
         if include_optional:
-            return PatchRoleMiningPotentialRoleRequestInner(
-                op = 'replace',
-                path = '/description',
-                value = New description
+            return ArrayInner2(
             )
         else:
-            return PatchRoleMiningPotentialRoleRequestInner(
-                path = '/description',
+            return ArrayInner2(
         )
         """
 
-    def testPatchRoleMiningPotentialRoleRequestInner(self):
-        """Test PatchRoleMiningPotentialRoleRequestInner"""
+    def testArrayInner2(self):
+        """Test ArrayInner2"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2025.models.patch_potential_role_request_inner import PatchPotentialRoleRequestInner
+from sailpoint.v2025.models.json_patch_operation_role_mining_value import JsonPatchOperationRoleMiningValue
 
-class TestPatchPotentialRoleRequestInner(unittest.TestCase):
-    """PatchPotentialRoleRequestInner unit test stubs"""
+class TestJsonPatchOperationRoleMiningValue(unittest.TestCase):
+    """JsonPatchOperationRoleMiningValue unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,28 +25,24 @@ class TestPatchPotentialRoleRequestInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> PatchPotentialRoleRequestInner:
-        """Test PatchPotentialRoleRequestInner
+    def make_instance(self, include_optional) -> JsonPatchOperationRoleMiningValue:
+        """Test JsonPatchOperationRoleMiningValue
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `PatchPotentialRoleRequestInner`
+        # uncomment below to create an instance of `JsonPatchOperationRoleMiningValue`
         """
-        model = PatchPotentialRoleRequestInner()
+        model = JsonPatchOperationRoleMiningValue()
         if include_optional:
-            return PatchPotentialRoleRequestInner(
-                op = 'replace',
-                path = '/description',
-                value = New description
+            return JsonPatchOperationRoleMiningValue(
             )
         else:
-            return PatchPotentialRoleRequestInner(
-                path = '/description',
+            return JsonPatchOperationRoleMiningValue(
         )
         """
 
-    def testPatchPotentialRoleRequestInner(self):
-        """Test PatchPotentialRoleRequestInner"""
+    def testJsonPatchOperationRoleMiningValue(self):
+        """Test JsonPatchOperationRoleMiningValue"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

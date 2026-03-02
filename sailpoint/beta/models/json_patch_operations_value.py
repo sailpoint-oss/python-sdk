@@ -17,12 +17,12 @@ import json
 import pprint
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, ValidationError, field_validator
 from typing import Any, List, Optional
-from sailpoint.beta.models.array_inner1 import ArrayInner1
+from sailpoint.beta.models.array_inner2 import ArrayInner2
 from pydantic import StrictStr, Field
 from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
-JSONPATCHOPERATIONSVALUE_ONE_OF_SCHEMAS = ["List[ArrayInner1]", "bool", "str"]
+JSONPATCHOPERATIONSVALUE_ONE_OF_SCHEMAS = ["List[ArrayInner2]", "bool", "str"]
 
 class JsonPatchOperationsValue(BaseModel):
     """
@@ -32,10 +32,10 @@ class JsonPatchOperationsValue(BaseModel):
     oneof_schema_1_validator: Optional[StrictStr] = None
     # data type: bool
     oneof_schema_2_validator: Optional[StrictBool] = None
-    # data type: List[ArrayInner1]
-    oneof_schema_3_validator: Optional[List[ArrayInner1]] = None
-    actual_instance: Optional[Union[List[ArrayInner1], bool, str]] = None
-    one_of_schemas: Set[str] = { "List[ArrayInner1]", "bool", "str" }
+    # data type: List[ArrayInner2]
+    oneof_schema_3_validator: Optional[List[ArrayInner2]] = None
+    actual_instance: Optional[Union[List[ArrayInner2], bool, str]] = None
+    one_of_schemas: Set[str] = { "List[ArrayInner2]", "bool", "str" }
 
     model_config = ConfigDict(
         validate_assignment=True,
@@ -70,7 +70,7 @@ class JsonPatchOperationsValue(BaseModel):
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # validate data type: List[ArrayInner1]
+        # validate data type: List[ArrayInner2]
         try:
             instance.oneof_schema_3_validator = v
             match += 1
@@ -78,10 +78,10 @@ class JsonPatchOperationsValue(BaseModel):
             error_messages.append(str(e))
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in JsonPatchOperationsValue with oneOf schemas: List[ArrayInner1], bool, str. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in JsonPatchOperationsValue with oneOf schemas: List[ArrayInner2], bool, str. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in JsonPatchOperationsValue with oneOf schemas: List[ArrayInner1], bool, str. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in JsonPatchOperationsValue with oneOf schemas: List[ArrayInner2], bool, str. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -114,7 +114,7 @@ class JsonPatchOperationsValue(BaseModel):
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # deserialize data into List[ArrayInner1]
+        # deserialize data into List[ArrayInner2]
         try:
             # validation
             instance.oneof_schema_3_validator = json.loads(json_str)
@@ -126,10 +126,10 @@ class JsonPatchOperationsValue(BaseModel):
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into JsonPatchOperationsValue with oneOf schemas: List[ArrayInner1], bool, str. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into JsonPatchOperationsValue with oneOf schemas: List[ArrayInner2], bool, str. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into JsonPatchOperationsValue with oneOf schemas: List[ArrayInner1], bool, str. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into JsonPatchOperationsValue with oneOf schemas: List[ArrayInner2], bool, str. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -143,7 +143,7 @@ class JsonPatchOperationsValue(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], List[ArrayInner1], bool, str]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], List[ArrayInner2], bool, str]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

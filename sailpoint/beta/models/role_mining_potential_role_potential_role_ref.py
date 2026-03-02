@@ -18,30 +18,18 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.beta.models.update_multi_host_sources_request_inner_value import UpdateMultiHostSourcesRequestInnerValue
 from typing import Optional, Set
 from typing_extensions import Self
 
-class PatchRoleMiningPotentialRoleRequestInner(BaseModel):
+class RoleMiningPotentialRolePotentialRoleRef(BaseModel):
     """
-    PatchRoleMiningPotentialRoleRequestInner
+    The potential role reference
     """ # noqa: E501
-    op: Optional[StrictStr] = Field(default=None, description="The operation to be performed")
-    path: StrictStr = Field(description="A string JSON Pointer representing the target path to an element to be affected by the operation")
-    value: Optional[UpdateMultiHostSourcesRequestInnerValue] = None
-    __properties: ClassVar[List[str]] = ["op", "path", "value"]
-
-    @field_validator('op')
-    def op_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['remove', 'replace']):
-            warnings.warn(f"must be one of enum values ('remove', 'replace') unknown value: {value}")
-        return value
+    id: Optional[StrictStr] = Field(default=None, description="Id of the potential role")
+    name: Optional[StrictStr] = Field(default=None, description="Name of the potential role")
+    __properties: ClassVar[List[str]] = ["id", "name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -61,7 +49,7 @@ class PatchRoleMiningPotentialRoleRequestInner(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of PatchRoleMiningPotentialRoleRequestInner from a JSON string"""
+        """Create an instance of RoleMiningPotentialRolePotentialRoleRef from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -82,14 +70,11 @@ class PatchRoleMiningPotentialRoleRequestInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of value
-        if self.value:
-            _dict['value'] = self.value.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of PatchRoleMiningPotentialRoleRequestInner from a dict"""
+        """Create an instance of RoleMiningPotentialRolePotentialRoleRef from a dict"""
         if obj is None:
             return None
 
@@ -97,9 +82,8 @@ class PatchRoleMiningPotentialRoleRequestInner(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "op": obj.get("op"),
-            "path": obj.get("path"),
-            "value": UpdateMultiHostSourcesRequestInnerValue.from_dict(obj["value"]) if obj.get("value") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name")
         })
         return _obj
 

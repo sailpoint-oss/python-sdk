@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2024.models.patch_potential_role_request_inner import PatchPotentialRoleRequestInner
+from sailpoint.v2024.models.array_inner1 import ArrayInner1
 
-class TestPatchPotentialRoleRequestInner(unittest.TestCase):
-    """PatchPotentialRoleRequestInner unit test stubs"""
+class TestArrayInner1(unittest.TestCase):
+    """ArrayInner1 unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,28 +25,24 @@ class TestPatchPotentialRoleRequestInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> PatchPotentialRoleRequestInner:
-        """Test PatchPotentialRoleRequestInner
+    def make_instance(self, include_optional) -> ArrayInner1:
+        """Test ArrayInner1
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `PatchPotentialRoleRequestInner`
+        # uncomment below to create an instance of `ArrayInner1`
         """
-        model = PatchPotentialRoleRequestInner()
+        model = ArrayInner1()
         if include_optional:
-            return PatchPotentialRoleRequestInner(
-                op = 'replace',
-                path = '/description',
-                value = New description
+            return ArrayInner1(
             )
         else:
-            return PatchPotentialRoleRequestInner(
-                path = '/description',
+            return ArrayInner1(
         )
         """
 
-    def testPatchPotentialRoleRequestInner(self):
-        """Test PatchPotentialRoleRequestInner"""
+    def testArrayInner1(self):
+        """Test ArrayInner1"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
