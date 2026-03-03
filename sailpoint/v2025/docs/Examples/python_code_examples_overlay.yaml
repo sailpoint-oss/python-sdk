@@ -21216,6 +21216,286 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling ServiceDeskIntegrationApi->update_status_check_details: %s\n" % e)
+- path: /ssf/streams
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/shared-signals-framework--ssf#create-stream
+      source: |
+        from sailpoint.v2025.api.shared_signals_framework_ssf_api import SharedSignalsFrameworkSSFApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.create_stream_request import CreateStreamRequest
+        from sailpoint.v2025.models.stream_config_response import StreamConfigResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          create_stream_request = '''{
+          "delivery" : {
+            "method" : "urn:ietf:rfc:8935",
+            "endpoint_url" : "https://receiver.example.com/ssf/events",
+            "authorization_header" : "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9..."
+          },
+          "description" : "Production event stream",
+          "events_requested" : [ "https://schemas.openid.net/secevent/caep/event-type/session-revoked" ]
+        }''' # CreateStreamRequest | 
+          try:
+              # Create stream
+              new_create_stream_request = CreateStreamRequest.from_json(create_stream_request)
+              results = SharedSignalsFrameworkSSFApi(api_client).create_stream(create_stream_request=new_create_stream_request)
+              # Below is a request that includes all optional parameters
+              # results = SharedSignalsFrameworkSSFApi(api_client).create_stream(new_create_stream_request)
+              print("The response of SharedSignalsFrameworkSSFApi->create_stream:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SharedSignalsFrameworkSSFApi->create_stream: %s\n" % e)
+- path: /ssf/streams
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/shared-signals-framework--ssf#delete-stream
+      source: |
+        from sailpoint.v2025.api.shared_signals_framework_ssf_api import SharedSignalsFrameworkSSFApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          stream_id = '550e8400-e29b-41d4-a716-446655440000' # str | ID of the stream to delete. Required; omitted or empty returns 400. # str | ID of the stream to delete. Required; omitted or empty returns 400.
+          try:
+              # Delete stream
+              
+              SharedSignalsFrameworkSSFApi(api_client).delete_stream(stream_id=stream_id)
+              # Below is a request that includes all optional parameters
+              # SharedSignalsFrameworkSSFApi(api_client).delete_stream(stream_id)
+          except Exception as e:
+              print("Exception when calling SharedSignalsFrameworkSSFApi->delete_stream: %s\n" % e)
+- path: /ssf/jwks
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/shared-signals-framework--ssf#get-jwks-data
+      source: |
+        from sailpoint.v2025.api.shared_signals_framework_ssf_api import SharedSignalsFrameworkSSFApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.jwks import JWKS
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          try:
+              # Get JWKS
+              
+              results = SharedSignalsFrameworkSSFApi(api_client).get_jwks_data()
+              # Below is a request that includes all optional parameters
+              # results = SharedSignalsFrameworkSSFApi(api_client).get_jwks_data()
+              print("The response of SharedSignalsFrameworkSSFApi->get_jwks_data:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SharedSignalsFrameworkSSFApi->get_jwks_data: %s\n" % e)
+- path: /.well-known/ssf-configuration
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/shared-signals-framework--ssf#get-ssf-configuration
+      source: |
+        from sailpoint.v2025.api.shared_signals_framework_ssf_api import SharedSignalsFrameworkSSFApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.transmitter_metadata import TransmitterMetadata
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          try:
+              # Get SSF configuration
+              
+              results = SharedSignalsFrameworkSSFApi(api_client).get_ssf_configuration()
+              # Below is a request that includes all optional parameters
+              # results = SharedSignalsFrameworkSSFApi(api_client).get_ssf_configuration()
+              print("The response of SharedSignalsFrameworkSSFApi->get_ssf_configuration:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SharedSignalsFrameworkSSFApi->get_ssf_configuration: %s\n" % e)
+- path: /ssf/streams
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/shared-signals-framework--ssf#get-stream
+      source: |
+        from sailpoint.v2025.api.shared_signals_framework_ssf_api import SharedSignalsFrameworkSSFApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.get_stream200_response import GetStream200Response
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          stream_id = '550e8400-e29b-41d4-a716-446655440000' # str | If provided, returns that stream; otherwise returns list of all streams. (optional) # str | If provided, returns that stream; otherwise returns list of all streams. (optional)
+          try:
+              # Get stream(s)
+              
+              results = SharedSignalsFrameworkSSFApi(api_client).get_stream()
+              # Below is a request that includes all optional parameters
+              # results = SharedSignalsFrameworkSSFApi(api_client).get_stream(stream_id)
+              print("The response of SharedSignalsFrameworkSSFApi->get_stream:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SharedSignalsFrameworkSSFApi->get_stream: %s\n" % e)
+- path: /ssf/streams/status
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/shared-signals-framework--ssf#get-stream-status
+      source: |
+        from sailpoint.v2025.api.shared_signals_framework_ssf_api import SharedSignalsFrameworkSSFApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.stream_status_response import StreamStatusResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          stream_id = '550e8400-e29b-41d4-a716-446655440000' # str | ID of the stream whose status to retrieve. # str | ID of the stream whose status to retrieve.
+          try:
+              # Get stream status
+              
+              results = SharedSignalsFrameworkSSFApi(api_client).get_stream_status(stream_id=stream_id)
+              # Below is a request that includes all optional parameters
+              # results = SharedSignalsFrameworkSSFApi(api_client).get_stream_status(stream_id)
+              print("The response of SharedSignalsFrameworkSSFApi->get_stream_status:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SharedSignalsFrameworkSSFApi->get_stream_status: %s\n" % e)
+- path: /ssf/streams/verify
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/shared-signals-framework--ssf#send-stream-verification
+      source: |
+        from sailpoint.v2025.api.shared_signals_framework_ssf_api import SharedSignalsFrameworkSSFApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.verification_request import VerificationRequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          verification_request = '''{
+          "stream_id" : "550e8400-e29b-41d4-a716-446655440000",
+          "state" : "verification-challenge-state-123"
+        }''' # VerificationRequest | 
+          try:
+              # Verify stream
+              new_verification_request = VerificationRequest.from_json(verification_request)
+              SharedSignalsFrameworkSSFApi(api_client).send_stream_verification(verification_request=new_verification_request)
+              # Below is a request that includes all optional parameters
+              # SharedSignalsFrameworkSSFApi(api_client).send_stream_verification(new_verification_request)
+          except Exception as e:
+              print("Exception when calling SharedSignalsFrameworkSSFApi->send_stream_verification: %s\n" % e)
+- path: /ssf/streams
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/shared-signals-framework--ssf#set-stream-configuration
+      source: |
+        from sailpoint.v2025.api.shared_signals_framework_ssf_api import SharedSignalsFrameworkSSFApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.replace_stream_configuration_request import ReplaceStreamConfigurationRequest
+        from sailpoint.v2025.models.update_stream_config_response import UpdateStreamConfigResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          replace_stream_configuration_request = '''{
+          "delivery" : {
+            "method" : "urn:ietf:rfc:8935",
+            "endpoint_url" : "https://receiver.example.com/ssf/events",
+            "authorization_header" : "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9..."
+          },
+          "stream_id" : "550e8400-e29b-41d4-a716-446655440000",
+          "description" : "Production event stream",
+          "events_requested" : [ "https://schemas.openid.net/secevent/caep/event-type/session-revoked" ]
+        }''' # ReplaceStreamConfigurationRequest | 
+          try:
+              # Replace stream configuration
+              new_replace_stream_configuration_request = ReplaceStreamConfigurationRequest.from_json(replace_stream_configuration_request)
+              results = SharedSignalsFrameworkSSFApi(api_client).set_stream_configuration(replace_stream_configuration_request=new_replace_stream_configuration_request)
+              # Below is a request that includes all optional parameters
+              # results = SharedSignalsFrameworkSSFApi(api_client).set_stream_configuration(new_replace_stream_configuration_request)
+              print("The response of SharedSignalsFrameworkSSFApi->set_stream_configuration:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SharedSignalsFrameworkSSFApi->set_stream_configuration: %s\n" % e)
+- path: /ssf/streams
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/shared-signals-framework--ssf#update-stream-configuration
+      source: |
+        from sailpoint.v2025.api.shared_signals_framework_ssf_api import SharedSignalsFrameworkSSFApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.update_stream_config_response import UpdateStreamConfigResponse
+        from sailpoint.v2025.models.update_stream_configuration_request import UpdateStreamConfigurationRequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          update_stream_configuration_request = '''{
+          "delivery" : {
+            "method" : "urn:ietf:rfc:8935",
+            "endpoint_url" : "https://receiver.example.com/ssf/events",
+            "authorization_header" : "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9..."
+          },
+          "stream_id" : "550e8400-e29b-41d4-a716-446655440000",
+          "description" : "Updated production event stream configuration",
+          "events_requested" : [ "https://schemas.openid.net/secevent/caep/event-type/session-revoked" ]
+        }''' # UpdateStreamConfigurationRequest | 
+          try:
+              # Update stream configuration
+              new_update_stream_configuration_request = UpdateStreamConfigurationRequest.from_json(update_stream_configuration_request)
+              results = SharedSignalsFrameworkSSFApi(api_client).update_stream_configuration(update_stream_configuration_request=new_update_stream_configuration_request)
+              # Below is a request that includes all optional parameters
+              # results = SharedSignalsFrameworkSSFApi(api_client).update_stream_configuration(new_update_stream_configuration_request)
+              print("The response of SharedSignalsFrameworkSSFApi->update_stream_configuration:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SharedSignalsFrameworkSSFApi->update_stream_configuration: %s\n" % e)
+- path: /ssf/streams/status
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/shared-signals-framework--ssf#update-stream-status
+      source: |
+        from sailpoint.v2025.api.shared_signals_framework_ssf_api import SharedSignalsFrameworkSSFApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.stream_status_response import StreamStatusResponse
+        from sailpoint.v2025.models.update_stream_status_request import UpdateStreamStatusRequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          update_stream_status_request = '''{
+          "reason" : "manually paused",
+          "stream_id" : "550e8400-e29b-41d4-a716-446655440000",
+          "status" : "paused"
+        }''' # UpdateStreamStatusRequest | 
+          try:
+              # Update stream status
+              new_update_stream_status_request = UpdateStreamStatusRequest.from_json(update_stream_status_request)
+              results = SharedSignalsFrameworkSSFApi(api_client).update_stream_status(update_stream_status_request=new_update_stream_status_request)
+              # Below is a request that includes all optional parameters
+              # results = SharedSignalsFrameworkSSFApi(api_client).update_stream_status(new_update_stream_status_request)
+              print("The response of SharedSignalsFrameworkSSFApi->update_stream_status:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SharedSignalsFrameworkSSFApi->update_stream_status: %s\n" % e)
 - path: /source-usages/{sourceId}/status
   method: GET
   xCodeSample:

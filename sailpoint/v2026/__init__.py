@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.20"
+__version__ = "1.4.21"
 
 # import apis into sdk package
 from sailpoint.v2026.api.account_deletion_requests_api import AccountDeletionRequestsApi

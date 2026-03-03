@@ -89,6 +89,7 @@ from sailpoint.v2025.api.search_api import SearchApi
 from sailpoint.v2025.api.search_attribute_configuration_api import SearchAttributeConfigurationApi
 from sailpoint.v2025.api.segments_api import SegmentsApi
 from sailpoint.v2025.api.service_desk_integration_api import ServiceDeskIntegrationApi
+from sailpoint.v2025.api.shared_signals_framework_ssf_api import SharedSignalsFrameworkSSFApi
 from sailpoint.v2025.api.source_usages_api import SourceUsagesApi
 from sailpoint.v2025.api.sources_api import SourcesApi
 from sailpoint.v2025.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi

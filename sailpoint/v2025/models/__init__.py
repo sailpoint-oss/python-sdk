@@ -258,6 +258,7 @@ from sailpoint.v2025.models.auth_profile_summary import AuthProfileSummary
 from sailpoint.v2025.models.auth_user import AuthUser
 from sailpoint.v2025.models.auth_user_levels_identity_count import AuthUserLevelsIdentityCount
 from sailpoint.v2025.models.auth_user_slim_response import AuthUserSlimResponse
+from sailpoint.v2025.models.authorization_scheme import AuthorizationScheme
 from sailpoint.v2025.models.backup_options import BackupOptions
 from sailpoint.v2025.models.backup_options1 import BackupOptions1
 from sailpoint.v2025.models.backup_response import BackupResponse
@@ -414,6 +415,8 @@ from sailpoint.v2025.models.create_privilege_criteria_request_groups_inner_crite
 from sailpoint.v2025.models.create_saved_search_request import CreateSavedSearchRequest
 from sailpoint.v2025.models.create_schedule_request import CreateScheduleRequest
 from sailpoint.v2025.models.create_scheduled_search_request import CreateScheduledSearchRequest
+from sailpoint.v2025.models.create_stream_delivery_request import CreateStreamDeliveryRequest
+from sailpoint.v2025.models.create_stream_request import CreateStreamRequest
 from sailpoint.v2025.models.create_uploaded_configuration_request import CreateUploadedConfigurationRequest
 from sailpoint.v2025.models.create_workflow_request import CreateWorkflowRequest
 from sailpoint.v2025.models.criteria_type import CriteriaType
@@ -427,6 +430,8 @@ from sailpoint.v2025.models.data_owner_model import DataOwnerModel
 from sailpoint.v2025.models.data_segment import DataSegment
 from sailpoint.v2025.models.delete_non_employee_records_in_bulk_request import DeleteNonEmployeeRecordsInBulkRequest
 from sailpoint.v2025.models.delete_source202_response import DeleteSource202Response
+from sailpoint.v2025.models.delivery_request import DeliveryRequest
+from sailpoint.v2025.models.delivery_response import DeliveryResponse
 from sailpoint.v2025.models.dependant_app_connections import DependantAppConnections
 from sailpoint.v2025.models.dependant_app_connections_account_source import DependantAppConnectionsAccountSource
 from sailpoint.v2025.models.dependant_app_connections_account_source_password_policies_inner import DependantAppConnectionsAccountSourcePasswordPoliciesInner
@@ -539,6 +544,7 @@ from sailpoint.v2025.models.get_launchers200_response import GetLaunchers200Resp
 from sailpoint.v2025.models.get_o_auth_client_response import GetOAuthClientResponse
 from sailpoint.v2025.models.get_personal_access_token_response import GetPersonalAccessTokenResponse
 from sailpoint.v2025.models.get_role_assignments200_response_inner import GetRoleAssignments200ResponseInner
+from sailpoint.v2025.models.get_stream200_response import GetStream200Response
 from sailpoint.v2025.models.get_tenant_context200_response_inner import GetTenantContext200ResponseInner
 from sailpoint.v2025.models.grant_type import GrantType
 from sailpoint.v2025.models.health_event import HealthEvent
@@ -630,6 +636,8 @@ from sailpoint.v2025.models.invocation import Invocation
 from sailpoint.v2025.models.invocation_status import InvocationStatus
 from sailpoint.v2025.models.invocation_status_type import InvocationStatusType
 from sailpoint.v2025.models.jit_configuration import JITConfiguration
+from sailpoint.v2025.models.jwk import JWK
+from sailpoint.v2025.models.jwks import JWKS
 from sailpoint.v2025.models.json_patch import JsonPatch
 from sailpoint.v2025.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v2025.models.json_patch_operation_role_mining import JsonPatchOperationRoleMining
@@ -900,6 +908,8 @@ from sailpoint.v2025.models.ref import Ref
 from sailpoint.v2025.models.reference import Reference
 from sailpoint.v2025.models.remediation_item_details import RemediationItemDetails
 from sailpoint.v2025.models.remediation_items import RemediationItems
+from sailpoint.v2025.models.replace_stream_configuration_request import ReplaceStreamConfigurationRequest
+from sailpoint.v2025.models.replace_stream_configuration_request_delivery import ReplaceStreamConfigurationRequestDelivery
 from sailpoint.v2025.models.report_config_dto import ReportConfigDTO
 from sailpoint.v2025.models.report_details import ReportDetails
 from sailpoint.v2025.models.report_details_arguments import ReportDetailsArguments
@@ -1183,6 +1193,8 @@ from sailpoint.v2025.models.standard_level import StandardLevel
 from sailpoint.v2025.models.start_invocation_input import StartInvocationInput
 from sailpoint.v2025.models.start_launcher200_response import StartLauncher200Response
 from sailpoint.v2025.models.status_response import StatusResponse
+from sailpoint.v2025.models.stream_config_response import StreamConfigResponse
+from sailpoint.v2025.models.stream_status_response import StreamStatusResponse
 from sailpoint.v2025.models.sub_search_aggregation_specification import SubSearchAggregationSpecification
 from sailpoint.v2025.models.subscription import Subscription
 from sailpoint.v2025.models.subscription_patch_request_inner import SubscriptionPatchRequestInner
@@ -1233,6 +1245,7 @@ from sailpoint.v2025.models.transform import Transform
 from sailpoint.v2025.models.transform_definition import TransformDefinition
 from sailpoint.v2025.models.transform_read import TransformRead
 from sailpoint.v2025.models.translation_message import TranslationMessage
+from sailpoint.v2025.models.transmitter_metadata import TransmitterMetadata
 from sailpoint.v2025.models.trigger import Trigger
 from sailpoint.v2025.models.trigger_example_input import TriggerExampleInput
 from sailpoint.v2025.models.trigger_example_output import TriggerExampleOutput
@@ -1245,6 +1258,9 @@ from sailpoint.v2025.models.update_detail import UpdateDetail
 from sailpoint.v2025.models.update_multi_host_sources_request_inner import UpdateMultiHostSourcesRequestInner
 from sailpoint.v2025.models.update_multi_host_sources_request_inner_value import UpdateMultiHostSourcesRequestInnerValue
 from sailpoint.v2025.models.update_schedule_request import UpdateScheduleRequest
+from sailpoint.v2025.models.update_stream_config_response import UpdateStreamConfigResponse
+from sailpoint.v2025.models.update_stream_configuration_request import UpdateStreamConfigurationRequest
+from sailpoint.v2025.models.update_stream_status_request import UpdateStreamStatusRequest
 from sailpoint.v2025.models.usage_type import UsageType
 from sailpoint.v2025.models.user_app import UserApp
 from sailpoint.v2025.models.user_app_account import UserAppAccount
@@ -1263,6 +1279,7 @@ from sailpoint.v2025.models.va_cluster_status_change_event_previous_health_check
 from sailpoint.v2025.models.validate_filter_input_dto import ValidateFilterInputDto
 from sailpoint.v2025.models.validate_filter_output_dto import ValidateFilterOutputDto
 from sailpoint.v2025.models.value import Value
+from sailpoint.v2025.models.verification_request import VerificationRequest
 from sailpoint.v2025.models.violation_context import ViolationContext
 from sailpoint.v2025.models.violation_context_policy import ViolationContextPolicy
 from sailpoint.v2025.models.violation_owner_assignment_config import ViolationOwnerAssignmentConfig
