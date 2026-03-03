@@ -114,30 +114,32 @@ class TestPythonSDK(unittest.TestCase):
             break  # at least one item has correct type
 
     def test_paginate_stream_with_http_info(self):
-        """Stream with _with_http_info returns (first_response, iterator); iterator yields same count."""
-        response, stream = Paginator.paginate_stream_with_http_info(
+        """Yields (item, response) tuples; every tuple carries the response from its page."""
+        stream = Paginator.paginate_stream_with_http_info(
             sailpoint.v3.AccountsApi(self.v3_api_client).list_accounts_with_http_info,
             100,
             limit=10
         )
-        self.assertIsNotNone(response)
-        self.assertEqual(200, response.status_code)
-        items = list(stream)
+        items = []
+        for item, response in stream:
+            self.assertEqual(200, response.status_code)
+            items.append(item)
         self.assertEqual(100, len(items))
 
     def test_paginate_stream_search_with_http_info(self):
-        """Stream search with _with_http_info returns (first_response, iterator); iterator yields same count."""
+        """Yields (item, response) tuples; every tuple carries the response from its page."""
         search = Search()
         search.indices = ['identities']
         search.query = {'query': '*'}
         search.sort = ['-name']
 
-        response, stream = Paginator.paginate_stream_search_with_http_info(
+        stream = Paginator.paginate_stream_search_with_http_info(
             sailpoint.v3.SearchApi(self.v3_api_client), search, 10, 100
         )
-        self.assertIsNotNone(response)
-        self.assertEqual(200, response.status_code)
-        items = list(stream)
+        items = []
+        for item, response in stream:
+            self.assertEqual(200, response.status_code)
+            items.append(item)
         self.assertEqual(100, len(items))
 
     def test_list_accounts_beta(self):

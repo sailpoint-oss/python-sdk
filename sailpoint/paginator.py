@@ -94,27 +94,24 @@ class Paginator:
         *,
         model: Optional[Type[TItem]] = None,
         **kwargs
-    ) -> Tuple[Any, Iterator[TItem]]:
+    ) -> Iterator[Tuple[TItem, Any]]:
         """
         Stream paginated results from a _with_http_info API call.
-        Expects api_call to return an object with .data (and typically .status_code).
-        Returns (first_response, iterator) so the caller can check status_code/headers
-        and then iterate over items.
+        Yields (item, response) tuples so callers can inspect status_code/headers
+        for every page, not just the first.
         """
         result_limit = result_limit if result_limit else 1000
         increment = kwargs.get('limit') if kwargs.get('limit') is not None else 250
         kwargs['offset'] = kwargs.get('offset') if kwargs.get('offset') is not None else 0
-
-        print(f'Paginating call, offset = {kwargs["offset"]}')
-        results = api_call(**kwargs)
-        first_response = results
-        batch = results.data
         yielded = 0
 
-        def _stream():
-            nonlocal yielded, batch
+        while True:
+            print(f'Paginating call, offset = {kwargs["offset"]}')
+            response = api_call(**kwargs)
+            batch = response.data
+
             for item in batch:
-                yield item
+                yield (item, response)
                 yielded += 1
                 if result_limit > 0 and yielded >= result_limit:
                     return
@@ -122,21 +119,7 @@ class Paginator:
             if len(batch) < increment:
                 return
 
-            while True:
-                kwargs['offset'] += increment
-                print(f'Paginating call, offset = {kwargs["offset"]}')
-                batch = api_call(**kwargs).data
-
-                for item in batch:
-                    yield item
-                    yielded += 1
-                    if result_limit > 0 and yielded >= result_limit:
-                        return
-
-                if len(batch) < increment:
-                    return
-
-        return (first_response, _stream())
+            kwargs['offset'] += increment
 
     @staticmethod
     def paginate_stream_search(search_api: SearchApi, search: Search, increment: int, limit: int):
@@ -175,11 +158,11 @@ class Paginator:
     @staticmethod
     def paginate_stream_search_with_http_info(
         search_api: SearchApi, search: Search, increment: int, limit: int
-    ) -> Tuple[Any, Iterator[Any]]:
+    ) -> Iterator[Tuple[Any, Any]]:
         """
         Stream search results from search_post_with_http_info.
-        Returns (first_response, iterator) so the caller can check status_code/headers
-        and then iterate over items.
+        Yields (item, response) tuples so callers can inspect status_code/headers
+        for every page, not just the first.
         """
         increment = increment if increment else 250
         max_limit = limit if limit else 0
@@ -188,15 +171,13 @@ class Paginator:
         if search.sort is None or len(search.sort) != 1:
             raise Exception('search query must include exactly one sort parameter to paginate properly')
 
-        print(f'Paginating call')
-        results = search_api.search_post_with_http_info(search, None, increment)
-        first_response = results
-        batch = results.data
+        while True:
+            print(f'Paginating call')
+            response = search_api.search_post_with_http_info(search, None, increment)
+            batch = response.data
 
-        def _stream():
-            nonlocal yielded, batch
             for result in batch:
-                yield result
+                yield (result, response)
                 yielded += 1
                 if max_limit > 0 and yielded >= max_limit:
                     return
@@ -206,29 +187,12 @@ class Paginator:
             if len(batch) < increment:
                 return
 
-            while True:
-                last = batch[len(batch) - 1]
-                if last[search.sort[0].strip('+-')] is not None:
-                    next_search_after = last[str(search.sort[0]).strip('+-')]
-                    search.search_after = [next_search_after]
-                else:
-                    raise Exception('Search unexpectedly did not return a result we can search after!')
-
-                print(f'Paginating call')
-                batch = search_api.search_post_with_http_info(search, None, increment).data
-
-                for result in batch:
-                    yield result
-                    yielded += 1
-                    if max_limit > 0 and yielded >= max_limit:
-                        return
-
-                print(f'Received {len(batch)} results')
-
-                if len(batch) < increment:
-                    return
-
-        return (first_response, _stream())
+            last = batch[len(batch) - 1]
+            if last[search.sort[0].strip('+-')] is not None:
+                next_search_after = last[str(search.sort[0]).strip('+-')]
+                search.search_after = [next_search_after]
+            else:
+                raise Exception('Search unexpectedly did not return a result we can search after!')
 
     @staticmethod
     def paginate_search(search_api: SearchApi, search: Search, increment: int, limit: int):
