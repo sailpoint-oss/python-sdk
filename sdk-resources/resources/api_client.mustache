@@ -9,7 +9,9 @@ import decimal
 import json
 import mimetypes
 import os
+import platform
 import re
+import sys
 import tempfile
 import xmltodict
 
@@ -95,7 +97,12 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = '{{{httpUserAgent}}}{{^httpUserAgent}}OpenAPI-Generator/{{{packageVersion}}}/python{{/httpUserAgent}}'
+        self.user_agent = '{{{httpUserAgent}}}{{^httpUserAgent}}SailPoint-SDK/python/{{{packageVersion}}}{{/httpUserAgent}}'
+        if configuration and getattr(configuration, 'consumer_identifier', None) and getattr(configuration, 'consumer_version', None):
+            self.user_agent = f'{self.user_agent} ({configuration.consumer_identifier}/{configuration.consumer_version})'
+        self.default_headers['X-SailPoint-SDK'] = 'python/{{{packageVersion}}}'
+        self.default_headers['X-SailPoint-SDK-Runtime'] = f'python/{sys.version.split()[0]}'
+        self.default_headers['X-SailPoint-SDK-OS'] = f'{sys.platform}/{platform.machine()}'
         self.client_side_validation = configuration.client_side_validation
 
 {{#asyncio}}
