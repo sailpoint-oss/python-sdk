@@ -1,4 +1,7 @@
+import logging
 from pprint import pprint
+
+logging.basicConfig(level=logging.DEBUG)
 
 import sailpoint
 import sailpoint.beta
@@ -102,4 +105,5 @@ with sailpoint.v2025.ApiClient(configuration) as api_client:
             print(f"[{response.status_code}] {account.name}")
     except Exception as e:
         print("Exception when streaming accounts with http info: %s\n" % e)
+
 

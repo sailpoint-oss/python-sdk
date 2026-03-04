@@ -1,9 +1,12 @@
+import logging
 from sailpoint.v3.api.search_api import SearchApi
 from sailpoint.v3.models.search import Search
-from typing import Any, Iterator, Optional, Tuple, Type, TypeVar
+from typing import Any, Callable, Iterator, Optional, Tuple, Type, TypeVar, overload
 
 T = TypeVar('T')
 TItem = TypeVar('TItem')
+
+logger = logging.getLogger(__name__)
 
 class PaginationParams:
     limit: int
@@ -28,7 +31,7 @@ class Paginator:
 
         modified = []
         while True:
-            print(f'Paginating call, offset = {kwargs["offset"]}')
+            logger.debug(f'Paginating call, offset = {kwargs["offset"]}')
 
             # Call endpoint and pass any arguments
             results = T(**kwargs)
@@ -49,9 +52,27 @@ class Paginator:
                             
             kwargs['offset'] += increment
 
+    @overload
     @staticmethod
     def paginate_stream(
-        api_call,
+        api_call: Callable[..., Any],
+        result_limit: Optional[int] = None,
+        *,
+        model: Type[TItem],
+        **kwargs
+    ) -> Iterator[TItem]: ...
+
+    @overload
+    @staticmethod
+    def paginate_stream(
+        api_call: Callable[..., Any],
+        result_limit: Optional[int] = None,
+        **kwargs
+    ) -> Iterator[Any]: ...
+
+    @staticmethod
+    def paginate_stream(
+        api_call: Callable[..., Any],
         result_limit: Optional[int] = None,
         *,
         model: Optional[Type[TItem]] = None,
@@ -59,7 +80,7 @@ class Paginator:
     ) -> Iterator[TItem]:
         """
         Stream paginated results by yielding items as each API page is received.
-        Optional model parameter is for typing only (e.g. Iterator[Account] when model=Account).
+        When model is provided, the iterator is typed as Iterator[model] for IDE support.
         """
         result_limit = result_limit if result_limit else 1000
         increment = kwargs.get('limit') if kwargs.get('limit') is not None else 250
@@ -67,7 +88,7 @@ class Paginator:
         yielded = 0
 
         while True:
-            print(f'Paginating call, offset = {kwargs["offset"]}')
+            logger.debug(f'Paginating call, offset = {kwargs["offset"]}')
 
             results = api_call(**kwargs)
 
@@ -87,9 +108,27 @@ class Paginator:
 
             kwargs['offset'] += increment
 
+    @overload
     @staticmethod
     def paginate_stream_with_http_info(
-        api_call,
+        api_call: Callable[..., Any],
+        result_limit: Optional[int] = None,
+        *,
+        model: Type[TItem],
+        **kwargs
+    ) -> Iterator[Tuple[TItem, Any]]: ...
+
+    @overload
+    @staticmethod
+    def paginate_stream_with_http_info(
+        api_call: Callable[..., Any],
+        result_limit: Optional[int] = None,
+        **kwargs
+    ) -> Iterator[Tuple[Any, Any]]: ...
+
+    @staticmethod
+    def paginate_stream_with_http_info(
+        api_call: Callable[..., Any],
         result_limit: Optional[int] = None,
         *,
         model: Optional[Type[TItem]] = None,
@@ -99,6 +138,7 @@ class Paginator:
         Stream paginated results from a _with_http_info API call.
         Yields (item, response) tuples so callers can inspect status_code/headers
         for every page, not just the first.
+        When model is provided, items in the tuples are typed as model for IDE support.
         """
         result_limit = result_limit if result_limit else 1000
         increment = kwargs.get('limit') if kwargs.get('limit') is not None else 250
@@ -106,7 +146,7 @@ class Paginator:
         yielded = 0
 
         while True:
-            print(f'Paginating call, offset = {kwargs["offset"]}')
+            logger.debug(f'Paginating call, offset = {kwargs["offset"]}')
             response = api_call(**kwargs)
             batch = response.data
 
@@ -134,7 +174,7 @@ class Paginator:
             raise Exception('search query must include exactly one sort parameter to paginate properly')
 
         while True:
-            print(f'Paginating call')
+            logger.debug('Paginating call')
             results = search_api.search_post(search, None, increment)
 
             for result in results:
@@ -143,7 +183,7 @@ class Paginator:
                 if max_limit > 0 and yielded >= max_limit:
                     return
 
-            print(f'Received {len(results)} results')
+            logger.debug(f'Received {len(results)} results')
 
             if len(results) < increment:
                 return
@@ -172,7 +212,7 @@ class Paginator:
             raise Exception('search query must include exactly one sort parameter to paginate properly')
 
         while True:
-            print(f'Paginating call')
+            logger.debug('Paginating call')
             response = search_api.search_post_with_http_info(search, None, increment)
             batch = response.data
 
@@ -182,7 +222,7 @@ class Paginator:
                 if max_limit > 0 and yielded >= max_limit:
                     return
 
-            print(f'Received {len(batch)} results')
+            logger.debug(f'Received {len(batch)} results')
 
             if len(batch) < increment:
                 return
@@ -206,11 +246,11 @@ class Paginator:
             raise Exception('search query must include exactly one sort parameter to paginate properly')
         
         while True:
-            print(f'Paginating call, offset = {offset}')
+            logger.debug(f'Paginating call, offset = {offset}')
             results = search_api.search_post(search, None, increment)
             modified = modified + results
             
-            print(f'Received {len(results)} results')
+            logger.debug(f'Received {len(results)} results')
 
             if len(results) < increment or (len(modified) >= max_limit and max_limit > 0):
                 results = modified
@@ -237,11 +277,11 @@ class Paginator:
             raise Exception('search query must include exactly one sort parameter to paginate properly')
         
         while True:
-            print(f'Paginating call, offset = {offset}')
+            logger.debug(f'Paginating call, offset = {offset}')
             results = search_api.search_post_with_http_info(search, None, increment)
             modified = modified + results.data
             
-            print(f'Recieved {len(results.data)} results')
+            logger.debug(f'Received {len(results.data)} results')
 
             if len(results.data) < increment or (len(modified) >= max_limit and max_limit > 0):
                 results.data = modified
