@@ -20,15 +20,16 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.v2026.models.entitlement_approval_scheme import EntitlementApprovalScheme
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ListEntitlements401Response(BaseModel):
+class EntitlementRevocationRequestConfig(BaseModel):
     """
-    ListEntitlements401Response
+    EntitlementRevocationRequestConfig
     """ # noqa: E501
-    error: Optional[Dict[str, Any]] = Field(default=None, description="A message describing the error")
-    __properties: ClassVar[List[str]] = ["error"]
+    approval_schemes: Optional[List[EntitlementApprovalScheme]] = Field(default=None, description="Ordered list of approval steps for the access request. Empty when no approval is required.", alias="approvalSchemes")
+    __properties: ClassVar[List[str]] = ["approvalSchemes"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +49,7 @@ class ListEntitlements401Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ListEntitlements401Response from a JSON string"""
+        """Create an instance of EntitlementRevocationRequestConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -69,11 +70,18 @@ class ListEntitlements401Response(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in approval_schemes (list)
+        _items = []
+        if self.approval_schemes:
+            for _item_approval_schemes in self.approval_schemes:
+                if _item_approval_schemes:
+                    _items.append(_item_approval_schemes.to_dict())
+            _dict['approvalSchemes'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ListEntitlements401Response from a dict"""
+        """Create an instance of EntitlementRevocationRequestConfig from a dict"""
         if obj is None:
             return None
 
@@ -81,7 +89,7 @@ class ListEntitlements401Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "error": obj.get("error")
+            "approvalSchemes": [EntitlementApprovalScheme.from_dict(_item) for _item in obj["approvalSchemes"]] if obj.get("approvalSchemes") is not None else None
         })
         return _obj
 

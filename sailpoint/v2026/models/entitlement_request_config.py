@@ -20,15 +20,18 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.v2026.models.entitlement_access_request_config import EntitlementAccessRequestConfig
+from sailpoint.v2026.models.entitlement_revocation_request_config import EntitlementRevocationRequestConfig
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ListEntitlements429Response(BaseModel):
+class EntitlementRequestConfig(BaseModel):
     """
-    ListEntitlements429Response
+    EntitlementRequestConfig
     """ # noqa: E501
-    message: Optional[Dict[str, Any]] = Field(default=None, description="A message describing the error")
-    __properties: ClassVar[List[str]] = ["message"]
+    access_request_config: Optional[EntitlementAccessRequestConfig] = Field(default=None, alias="accessRequestConfig")
+    revocation_request_config: Optional[EntitlementRevocationRequestConfig] = Field(default=None, alias="revocationRequestConfig")
+    __properties: ClassVar[List[str]] = ["accessRequestConfig", "revocationRequestConfig"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +51,7 @@ class ListEntitlements429Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ListEntitlements429Response from a JSON string"""
+        """Create an instance of EntitlementRequestConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -69,11 +72,17 @@ class ListEntitlements429Response(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of access_request_config
+        if self.access_request_config:
+            _dict['accessRequestConfig'] = self.access_request_config.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of revocation_request_config
+        if self.revocation_request_config:
+            _dict['revocationRequestConfig'] = self.revocation_request_config.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ListEntitlements429Response from a dict"""
+        """Create an instance of EntitlementRequestConfig from a dict"""
         if obj is None:
             return None
 
@@ -81,7 +90,8 @@ class ListEntitlements429Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "message": obj.get("message")
+            "accessRequestConfig": EntitlementAccessRequestConfig.from_dict(obj["accessRequestConfig"]) if obj.get("accessRequestConfig") is not None else None,
+            "revocationRequestConfig": EntitlementRevocationRequestConfig.from_dict(obj["revocationRequestConfig"]) if obj.get("revocationRequestConfig") is not None else None
         })
         return _obj
 

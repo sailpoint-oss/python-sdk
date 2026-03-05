@@ -1,6 +1,7 @@
 # flake8: noqa
 
 # import apis into api package
+from sailpoint.v2026.api.access_requests_api import AccessRequestsApi
 from sailpoint.v2026.api.account_deletion_requests_api import AccountDeletionRequestsApi
 from sailpoint.v2026.api.delete_account_api import DeleteAccountApi
 from sailpoint.v2026.api.entitlements_api import EntitlementsApi

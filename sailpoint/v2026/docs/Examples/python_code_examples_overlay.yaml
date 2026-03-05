@@ -1,3 +1,89 @@
+- path: /access-request-config
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/access-requests#get-access-request-config
+      source: |
+        from sailpoint.v2026.api.access_requests_api import AccessRequestsApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.access_request_config import AccessRequestConfig
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          try:
+              # Get access request configuration
+              
+              results = AccessRequestsApi(api_client).get_access_request_config()
+              # Below is a request that includes all optional parameters
+              # results = AccessRequestsApi(api_client).get_access_request_config()
+              print("The response of AccessRequestsApi->get_access_request_config:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessRequestsApi->get_access_request_config: %s\n" % e)
+- path: /access-request-config
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/access-requests#set-access-request-config
+      source: |
+        from sailpoint.v2026.api.access_requests_api import AccessRequestsApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.access_request_config import AccessRequestConfig
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          access_request_config = '''{
+          "govGroupVisibilityEnabled" : true,
+          "requestOnBehalfOfConfig" : {
+            "allowRequestOnBehalfOfEmployeeByManager" : true,
+            "allowRequestOnBehalfOfAnyoneByAnyone" : true
+          },
+          "autoApprovalEnabled" : true,
+          "entitlementRequestConfig" : {
+            "accessRequestConfig" : {
+              "denialCommentRequired" : false,
+              "approvalSchemes" : [ {
+                "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+                "approverType" : "GOVERNANCE_GROUP"
+              }, {
+                "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+                "approverType" : "GOVERNANCE_GROUP"
+              } ],
+              "reauthorizationRequired" : false,
+              "requestCommentRequired" : true,
+              "requireEndDate" : true,
+              "maxPermittedAccessDuration" : {
+                "value" : 5,
+                "timeUnit" : "DAYS"
+              }
+            },
+            "revocationRequestConfig" : {
+              "approvalSchemes" : [ {
+                "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+                "approverType" : "GOVERNANCE_GROUP"
+              }, {
+                "approverId" : "e3eab852-8315-467f-9de7-70eda97f63c8",
+                "approverType" : "GOVERNANCE_GROUP"
+              } ]
+            }
+          },
+          "reauthorizationEnabled" : true,
+          "approvalsMustBeExternal" : true
+        }''' # AccessRequestConfig | 
+          try:
+              # Update access request configuration
+              new_access_request_config = AccessRequestConfig.from_json(access_request_config)
+              results = AccessRequestsApi(api_client).set_access_request_config(access_request_config=new_access_request_config)
+              # Below is a request that includes all optional parameters
+              # results = AccessRequestsApi(api_client).set_access_request_config(new_access_request_config)
+              print("The response of AccessRequestsApi->set_access_request_config:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessRequestsApi->set_access_request_config: %s\n" % e)
 - path: /account-requests/deletion
   method: GET
   xCodeSample:

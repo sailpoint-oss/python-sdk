@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2026.models.list_entitlements401_response import ListEntitlements401Response
+from sailpoint.v2026.models.get_access_request_config429_response import GetAccessRequestConfig429Response
 
-class TestListEntitlements401Response(unittest.TestCase):
-    """ListEntitlements401Response unit test stubs"""
+class TestGetAccessRequestConfig429Response(unittest.TestCase):
+    """GetAccessRequestConfig429Response unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,25 +25,25 @@ class TestListEntitlements401Response(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ListEntitlements401Response:
-        """Test ListEntitlements401Response
+    def make_instance(self, include_optional) -> GetAccessRequestConfig429Response:
+        """Test GetAccessRequestConfig429Response
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ListEntitlements401Response`
+        # uncomment below to create an instance of `GetAccessRequestConfig429Response`
         """
-        model = ListEntitlements401Response()
+        model = GetAccessRequestConfig429Response()
         if include_optional:
-            return ListEntitlements401Response(
-                error = JWT validation failed: JWT is expired
+            return GetAccessRequestConfig429Response(
+                message =  Rate Limit Exceeded 
             )
         else:
-            return ListEntitlements401Response(
+            return GetAccessRequestConfig429Response(
         )
         """
 
-    def testListEntitlements401Response(self):
-        """Test ListEntitlements401Response"""
+    def testGetAccessRequestConfig429Response(self):
+        """Test GetAccessRequestConfig429Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -1525,7 +1525,7 @@ class AccessRequestsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AccessRequestConfig:
-        """Get access request configuration
+        """(Deprecated) Get access request configuration
 
         This endpoint returns the current access-request configuration.
 
@@ -1550,6 +1550,7 @@ class AccessRequestsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /access-request-config is deprecated.", DeprecationWarning)
 
         _param = self._get_access_request_config_serialize(
             _request_auth=_request_auth,
@@ -1593,7 +1594,7 @@ class AccessRequestsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AccessRequestConfig]:
-        """Get access request configuration
+        """(Deprecated) Get access request configuration
 
         This endpoint returns the current access-request configuration.
 
@@ -1618,6 +1619,7 @@ class AccessRequestsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /access-request-config is deprecated.", DeprecationWarning)
 
         _param = self._get_access_request_config_serialize(
             _request_auth=_request_auth,
@@ -1661,7 +1663,7 @@ class AccessRequestsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get access request configuration
+        """(Deprecated) Get access request configuration
 
         This endpoint returns the current access-request configuration.
 
@@ -1686,6 +1688,7 @@ class AccessRequestsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /access-request-config is deprecated.", DeprecationWarning)
 
         _param = self._get_access_request_config_serialize(
             _request_auth=_request_auth,
@@ -3267,7 +3270,7 @@ class AccessRequestsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AccessRequestConfig:
-        """Update access request configuration
+        """(Deprecated) Update access request configuration
 
         This endpoint replaces the current access-request configuration.
 
@@ -3294,6 +3297,7 @@ class AccessRequestsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PUT /access-request-config is deprecated.", DeprecationWarning)
 
         _param = self._set_access_request_config_serialize(
             access_request_config=access_request_config,
@@ -3339,7 +3343,7 @@ class AccessRequestsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AccessRequestConfig]:
-        """Update access request configuration
+        """(Deprecated) Update access request configuration
 
         This endpoint replaces the current access-request configuration.
 
@@ -3366,6 +3370,7 @@ class AccessRequestsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PUT /access-request-config is deprecated.", DeprecationWarning)
 
         _param = self._set_access_request_config_serialize(
             access_request_config=access_request_config,
@@ -3411,7 +3416,7 @@ class AccessRequestsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update access request configuration
+        """(Deprecated) Update access request configuration
 
         This endpoint replaces the current access-request configuration.
 
@@ -3438,6 +3443,7 @@ class AccessRequestsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PUT /access-request-config is deprecated.", DeprecationWarning)
 
         _param = self._set_access_request_config_serialize(
             access_request_config=access_request_config,

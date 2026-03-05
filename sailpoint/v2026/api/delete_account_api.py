@@ -104,10 +104,10 @@ class DeleteAccountApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "AccountDeleteAsyncResult",
             '400': "ErrorResponseDto",
-            '401': "ListEntitlements401Response",
+            '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListEntitlements429Response",
+            '429': "GetAccessRequestConfig429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -185,10 +185,10 @@ class DeleteAccountApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "AccountDeleteAsyncResult",
             '400': "ErrorResponseDto",
-            '401': "ListEntitlements401Response",
+            '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListEntitlements429Response",
+            '429': "GetAccessRequestConfig429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -266,10 +266,10 @@ class DeleteAccountApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "AccountDeleteAsyncResult",
             '400': "ErrorResponseDto",
-            '401': "ListEntitlements401Response",
+            '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListEntitlements429Response",
+            '429': "GetAccessRequestConfig429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(

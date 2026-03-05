@@ -110,9 +110,9 @@ class TaskManagementApi:
             '200': None,
             '204': None,
             '400': "ErrorResponseDto",
-            '401': "ListEntitlements401Response",
+            '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
-            '429': "ListEntitlements429Response",
+            '429': "GetAccessRequestConfig429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -196,9 +196,9 @@ class TaskManagementApi:
             '200': None,
             '204': None,
             '400': "ErrorResponseDto",
-            '401': "ListEntitlements401Response",
+            '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
-            '429': "ListEntitlements429Response",
+            '429': "GetAccessRequestConfig429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -282,9 +282,9 @@ class TaskManagementApi:
             '200': None,
             '204': None,
             '400': "ErrorResponseDto",
-            '401': "ListEntitlements401Response",
+            '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
-            '429': "ListEntitlements429Response",
+            '429': "GetAccessRequestConfig429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -445,9 +445,9 @@ class TaskManagementApi:
             '200': "List[TaskStatus]",
             '204': None,
             '400': "ErrorResponseDto",
-            '401': "ListEntitlements401Response",
+            '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
-            '429': "ListEntitlements429Response",
+            '429': "GetAccessRequestConfig429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -531,9 +531,9 @@ class TaskManagementApi:
             '200': "List[TaskStatus]",
             '204': None,
             '400': "ErrorResponseDto",
-            '401': "ListEntitlements401Response",
+            '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
-            '429': "ListEntitlements429Response",
+            '429': "GetAccessRequestConfig429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -617,9 +617,9 @@ class TaskManagementApi:
             '200': "List[TaskStatus]",
             '204': None,
             '400': "ErrorResponseDto",
-            '401': "ListEntitlements401Response",
+            '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
-            '429': "ListEntitlements429Response",
+            '429': "GetAccessRequestConfig429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -772,8 +772,8 @@ class TaskManagementApi:
             '403': None,
             '404': None,
             '400': "ErrorResponseDto",
-            '401': "ListEntitlements401Response",
-            '429': "ListEntitlements429Response",
+            '401': "GetAccessRequestConfig401Response",
+            '429': "GetAccessRequestConfig429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -849,8 +849,8 @@ class TaskManagementApi:
             '403': None,
             '404': None,
             '400': "ErrorResponseDto",
-            '401': "ListEntitlements401Response",
-            '429': "ListEntitlements429Response",
+            '401': "GetAccessRequestConfig401Response",
+            '429': "GetAccessRequestConfig429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -926,8 +926,8 @@ class TaskManagementApi:
             '403': None,
             '404': None,
             '400': "ErrorResponseDto",
-            '401': "ListEntitlements401Response",
-            '429': "ListEntitlements429Response",
+            '401': "GetAccessRequestConfig401Response",
+            '429': "GetAccessRequestConfig429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1082,10 +1082,10 @@ class TaskManagementApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[TaskStatus]",
             '400': "ErrorResponseDto",
-            '401': "ListEntitlements401Response",
+            '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListEntitlements429Response",
+            '429': "GetAccessRequestConfig429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1175,10 +1175,10 @@ class TaskManagementApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[TaskStatus]",
             '400': "ErrorResponseDto",
-            '401': "ListEntitlements401Response",
+            '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListEntitlements429Response",
+            '429': "GetAccessRequestConfig429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1268,10 +1268,10 @@ class TaskManagementApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[TaskStatus]",
             '400': "ErrorResponseDto",
-            '401': "ListEntitlements401Response",
+            '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '429': "ListEntitlements429Response",
+            '429': "GetAccessRequestConfig429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1438,8 +1438,8 @@ class TaskManagementApi:
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '401': "ListEntitlements401Response",
-            '429': "ListEntitlements429Response",
+            '401': "GetAccessRequestConfig401Response",
+            '429': "GetAccessRequestConfig429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1519,8 +1519,8 @@ class TaskManagementApi:
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '401': "ListEntitlements401Response",
-            '429': "ListEntitlements429Response",
+            '401': "GetAccessRequestConfig401Response",
+            '429': "GetAccessRequestConfig429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
@@ -1600,8 +1600,8 @@ class TaskManagementApi:
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
-            '401': "ListEntitlements401Response",
-            '429': "ListEntitlements429Response",
+            '401': "GetAccessRequestConfig401Response",
+            '429': "GetAccessRequestConfig429Response",
             '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(

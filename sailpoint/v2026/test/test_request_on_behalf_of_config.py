@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2026.models.list_entitlements429_response import ListEntitlements429Response
+from sailpoint.v2026.models.request_on_behalf_of_config import RequestOnBehalfOfConfig
 
-class TestListEntitlements429Response(unittest.TestCase):
-    """ListEntitlements429Response unit test stubs"""
+class TestRequestOnBehalfOfConfig(unittest.TestCase):
+    """RequestOnBehalfOfConfig unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,25 +25,26 @@ class TestListEntitlements429Response(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ListEntitlements429Response:
-        """Test ListEntitlements429Response
+    def make_instance(self, include_optional) -> RequestOnBehalfOfConfig:
+        """Test RequestOnBehalfOfConfig
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ListEntitlements429Response`
+        # uncomment below to create an instance of `RequestOnBehalfOfConfig`
         """
-        model = ListEntitlements429Response()
+        model = RequestOnBehalfOfConfig()
         if include_optional:
-            return ListEntitlements429Response(
-                message =  Rate Limit Exceeded 
+            return RequestOnBehalfOfConfig(
+                allow_request_on_behalf_of_anyone_by_anyone = True,
+                allow_request_on_behalf_of_employee_by_manager = True
             )
         else:
-            return ListEntitlements429Response(
+            return RequestOnBehalfOfConfig(
         )
         """
 
-    def testListEntitlements429Response(self):
-        """Test ListEntitlements429Response"""
+    def testRequestOnBehalfOfConfig(self):
+        """Test RequestOnBehalfOfConfig"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
