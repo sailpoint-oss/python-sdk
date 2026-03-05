@@ -255,7 +255,12 @@ class ApiClient:
 
         # request url
         if _host is None:
+            {{#nerm}}
+            url = self.configuration.nerm_base_url + '/' + resource_path
+            {{/nerm}}
+            {{^nerm}}
             url = self.configuration.base_url + '/{{apiVersion}}' + resource_path
+            {{/nerm}}
         else:
             # use server/host defined in path or operation instead
             url = _host + resource_path
