@@ -1,8 +1,10 @@
+from typing import Any
 import unittest
 
 import sailpoint.beta
 import sailpoint.v3
 import sailpoint.v2024
+import sailpoint.v2025
 import sailpoint.v2026
 from sailpoint.configuration import Configuration, ConfigurationParams
 from sailpoint.paginator import Paginator
@@ -16,6 +18,7 @@ class TestPythonSDK(unittest.TestCase):
     beta_api_client = sailpoint.beta.ApiClient(configuration)
     configuration.experimental = True
     v2024_api_client = sailpoint.v2024.ApiClient(configuration)
+    v2025_api_client = sailpoint.v2025.ApiClient(configuration)
     v2026_api_client = sailpoint.v2026.ApiClient(configuration)
 
 
@@ -47,6 +50,19 @@ class TestPythonSDK(unittest.TestCase):
         self.assertEqual(100,len(search_results.data))
         self.assertEqual(200,search_results.status_code)
 
+    def test_paginate_stream_search(self):
+        """Stream search yields same count as paginate_search when fully consumed."""
+        search = Search()
+        search.indices = ['identities']
+        search.query = {'query': '*'}
+        search.sort = ['-name']
+
+        stream = Paginator.paginate_stream_search(
+            sailpoint.v3.SearchApi(self.v3_api_client), search, 10, 100
+        )
+        items = list(stream)
+        self.assertEqual(100, len(items))
+
     def test_list_transforms(self):
         transforms = sailpoint.v3.TransformsApi(self.v3_api_client).list_transforms_with_http_info()
         self.assertIsNotNone(transforms.data)
@@ -57,6 +73,74 @@ class TestPythonSDK(unittest.TestCase):
         self.assertIsNotNone(accounts.data)
         self.assertEqual(100, len(accounts.data))
         self.assertEqual(200, accounts.status_code)
+
+    def test_paginate_stream(self):
+        """Stream yields same count as paginate when fully consumed."""
+        stream = Paginator.paginate_stream(
+            sailpoint.v3.AccountsApi(self.v3_api_client).list_accounts_with_http_info,
+            100,
+            limit=10
+        )
+        items = list(stream)
+        self.assertEqual(100, len(items))
+
+    def test_paginate_stream_consumed_incrementally(self):
+        """Stream yields items as they come; consuming first N then stopping does not require full fetch."""
+        stream = Paginator.paginate_stream(
+            sailpoint.v3.AccountsApi(self.v3_api_client).list_accounts_with_http_info,
+            100,
+            limit=2
+        )
+        first_three = []
+        for i, item in enumerate(stream):
+            first_three.append(item)
+            if i >= 2:
+                break
+        self.assertGreaterEqual(len(first_three), 1)
+        self.assertLessEqual(len(first_three), 3)
+
+    def test_paginate_stream_with_model_v2025(self):
+        """When model=Account is passed, yielded items are typed (and are Account instances)."""
+        from sailpoint.v2025.models.account import Account
+
+        stream = Paginator.paginate_stream(
+            sailpoint.v2025.AccountsApi(self.v2025_api_client).list_accounts_with_http_info,
+            10,
+            limit=5,
+            model=Account
+        )
+        for item in stream:
+            self.assertIsInstance(item, Account)
+            break  # at least one item has correct type
+
+    def test_paginate_stream_with_http_info(self):
+        """Yields (item, response) tuples; every tuple carries the response from its page."""
+        stream = Paginator.paginate_stream_with_http_info(
+            sailpoint.v3.AccountsApi(self.v3_api_client).list_accounts_with_http_info,
+            100,
+            limit=10
+        )
+        items = []
+        for item, response in stream:
+            self.assertEqual(200, response.status_code)
+            items.append(item)
+        self.assertEqual(100, len(items))
+
+    def test_paginate_stream_search_with_http_info(self):
+        """Yields (item, response) tuples; every tuple carries the response from its page."""
+        search = Search()
+        search.indices = ['identities']
+        search.query = {'query': '*'}
+        search.sort = ['-name']
+
+        stream = Paginator.paginate_stream_search_with_http_info(
+            sailpoint.v3.SearchApi(self.v3_api_client), search, 10, 100
+        )
+        items = []
+        for item, response in stream:
+            self.assertEqual(200, response.status_code)
+            items.append(item)
+        self.assertEqual(100, len(items))
 
     def test_list_accounts_beta(self):
         accounts = sailpoint.beta.AccountsApi(self.beta_api_client).list_accounts_with_http_info()
