@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.27"
+__version__ = "1.4.28"
 
 # import apis into sdk package
 from sailpoint.v2026.api.access_requests_api import AccessRequestsApi
