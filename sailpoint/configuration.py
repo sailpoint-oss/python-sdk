@@ -53,6 +53,11 @@ class Configuration:
         self.experimental = False
         self.suppress_experimental_warnings = False
 
+        # Optional consumer identifier for User-Agent suffix (e.g. "sailpoint-cli")
+        self.consumer_identifier = None
+        # Optional consumer version for User-Agent suffix (e.g. "1.2.3")
+        self.consumer_version = None
+
         self.temp_folder_path = None
         """Temp file folder for downloading files
         """
