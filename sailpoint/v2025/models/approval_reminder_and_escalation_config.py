@@ -27,11 +27,11 @@ from typing_extensions import Self
 
 class ApprovalReminderAndEscalationConfig(BaseModel):
     """
-    ApprovalReminderAndEscalationConfig
+    Configuration for approval reminder and escalation behavior. Important: Modifying this object will override the sp-approval service's reminderConfig and escalationConfig settings. Changes made here take precedence over any configuration set directly in the sp-approval service. 
     """ # noqa: E501
     days_until_escalation: Optional[StrictInt] = Field(default=None, description="Number of days to wait before the first reminder. If no reminders are configured, then this is the number of days to wait before escalation.", alias="daysUntilEscalation")
     days_between_reminders: Optional[StrictInt] = Field(default=None, description="Number of days to wait between reminder notifications.", alias="daysBetweenReminders")
-    max_reminders: Optional[Annotated[int, Field(strict=True, ge=1)]] = Field(default=None, description="Maximum number of reminder notification to send to the reviewer before approval escalation.", alias="maxReminders")
+    max_reminders: Optional[Annotated[int, Field(le=20, strict=True, ge=0)]] = Field(default=None, description="Maximum number of reminder notifications to send to the reviewer before approval escalation. The maximum allowed value is 20.", alias="maxReminders")
     fallback_approver_ref: Optional[IdentityReferenceWithNameAndEmail] = Field(default=None, alias="fallbackApproverRef")
     __properties: ClassVar[List[str]] = ["daysUntilEscalation", "daysBetweenReminders", "maxReminders", "fallbackApproverRef"]
 

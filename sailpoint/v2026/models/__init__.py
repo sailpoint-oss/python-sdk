@@ -66,3 +66,6 @@ from sailpoint.v2026.models.task_return_details import TaskReturnDetails
 from sailpoint.v2026.models.task_status import TaskStatus
 from sailpoint.v2026.models.task_status_message import TaskStatusMessage
 from sailpoint.v2026.models.task_status_message_parameters_inner import TaskStatusMessageParametersInner
+from sailpoint.v2026.models.template_medium_dto import TemplateMediumDto
+from sailpoint.v2026.models.template_variable import TemplateVariable
+from sailpoint.v2026.models.template_variables_dto import TemplateVariablesDto

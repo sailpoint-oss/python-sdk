@@ -529,6 +529,33 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling MachineSubtypeApprovalConfigApi->update_machine_account_deletion_by_sub_type_approval_config: %s\n" % e)
+- path: /notification-template-variables/{key}/{medium}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/notifications#get-notification-template-variables
+      source: |
+        from sailpoint.v2026.api.notifications_api import NotificationsApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.template_variables_dto import TemplateVariablesDto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          key = 'approval_request_notification' # str | The notification template key. Valid keys (and key/medium pairs) are available from the list notification templates operation.  # str | The notification template key. Valid keys (and key/medium pairs) are available from the list notification templates operation. 
+          medium = 'EMAIL' # str | The notification template medium (e.g. EMAIL, SLACK, TEAMS). Valid key/medium pairs are available from the list notification templates operation.  # str | The notification template medium (e.g. EMAIL, SLACK, TEAMS). Valid key/medium pairs are available from the list notification templates operation. 
+          sorters = '-description' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key, type, description** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **key, type, description** (optional)
+          try:
+              # Get notification template variables
+              
+              results = NotificationsApi(api_client).get_notification_template_variables(key=key, medium=medium)
+              # Below is a request that includes all optional parameters
+              # results = NotificationsApi(api_client).get_notification_template_variables(key, medium, sorters)
+              print("The response of NotificationsApi->get_notification_template_variables:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling NotificationsApi->get_notification_template_variables: %s\n" % e)
 - path: /task-status/pending-tasks
   method: HEAD
   xCodeSample:

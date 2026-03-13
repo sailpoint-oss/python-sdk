@@ -11,6 +11,7 @@ tags: ['SDK', 'Software Development Kit', 'ApprovalReminderAndEscalationConfig',
 
 # ApprovalReminderAndEscalationConfig
 
+Configuration for approval reminder and escalation behavior. Important: Modifying this object will override the sp-approval service's reminderConfig and escalationConfig settings. Changes made here take precedence over any configuration set directly in the sp-approval service. 
 
 ## Properties
 
@@ -18,7 +19,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **days_until_escalation** | **int** | Number of days to wait before the first reminder. If no reminders are configured, then this is the number of days to wait before escalation. | [optional] 
 **days_between_reminders** | **int** | Number of days to wait between reminder notifications. | [optional] 
-**max_reminders** | **int** | Maximum number of reminder notification to send to the reviewer before approval escalation. | [optional] 
+**max_reminders** | **int** | Maximum number of reminder notifications to send to the reviewer before approval escalation. The maximum allowed value is 20. | [optional] 
 **fallback_approver_ref** | [**IdentityReferenceWithNameAndEmail**](identity-reference-with-name-and-email) |  | [optional] 
 }
 

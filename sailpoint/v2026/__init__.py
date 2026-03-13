@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.28"
+__version__ = "1.4.29"
 
 # import apis into sdk package
 from sailpoint.v2026.api.access_requests_api import AccessRequestsApi
@@ -24,6 +24,7 @@ from sailpoint.v2026.api.entitlements_api import EntitlementsApi
 from sailpoint.v2026.api.human_account_deletion_approval_config_api import HumanAccountDeletionApprovalConfigApi
 from sailpoint.v2026.api.machine_account_deletion_approval_config_api import MachineAccountDeletionApprovalConfigApi
 from sailpoint.v2026.api.machine_subtype_approval_config_api import MachineSubtypeApprovalConfigApi
+from sailpoint.v2026.api.notifications_api import NotificationsApi
 from sailpoint.v2026.api.task_management_api import TaskManagementApi
 
 # import ApiClient
@@ -90,3 +91,6 @@ from sailpoint.v2026.models.task_return_details import TaskReturnDetails
 from sailpoint.v2026.models.task_status import TaskStatus
 from sailpoint.v2026.models.task_status_message import TaskStatusMessage
 from sailpoint.v2026.models.task_status_message_parameters_inner import TaskStatusMessageParametersInner
+from sailpoint.v2026.models.template_medium_dto import TemplateMediumDto
+from sailpoint.v2026.models.template_variable import TemplateVariable
+from sailpoint.v2026.models.template_variables_dto import TemplateVariablesDto

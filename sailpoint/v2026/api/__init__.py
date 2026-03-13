@@ -8,5 +8,6 @@ from sailpoint.v2026.api.entitlements_api import EntitlementsApi
 from sailpoint.v2026.api.human_account_deletion_approval_config_api import HumanAccountDeletionApprovalConfigApi
 from sailpoint.v2026.api.machine_account_deletion_approval_config_api import MachineAccountDeletionApprovalConfigApi
 from sailpoint.v2026.api.machine_subtype_approval_config_api import MachineSubtypeApprovalConfigApi
+from sailpoint.v2026.api.notifications_api import NotificationsApi
 from sailpoint.v2026.api.task_management_api import TaskManagementApi
 
