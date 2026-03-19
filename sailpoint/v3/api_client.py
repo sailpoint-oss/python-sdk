@@ -19,7 +19,9 @@ import decimal
 import json
 import mimetypes
 import os
+import platform
 import re
+import sys
 import tempfile
 import xmltodict
 
@@ -102,7 +104,10 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'OpenAPI-Generator/1.4.32/python'
+        self.user_agent = 'SailPoint-SDK-Python/1.4.33'
+        if configuration and getattr(configuration, 'consumer_identifier', None) and getattr(configuration, 'consumer_version', None):
+            self.user_agent = f'{self.user_agent} ({configuration.consumer_identifier}/{configuration.consumer_version})'
+        self.user_agent = f'{self.user_agent} ({sys.platform}; {platform.machine()}) Python/{sys.version.split()[0]} (openapi-generator/7.12.0)'
         self.client_side_validation = configuration.client_side_validation
 
     def __enter__(self):

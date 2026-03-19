@@ -36,7 +36,6 @@ class TestAccessRequestConfig(unittest.TestCase):
         if include_optional:
             return AccessRequestConfig(
                 approvals_must_be_external = True,
-                auto_approval_enabled = True,
                 reauthorization_enabled = True,
                 request_on_behalf_of_config = sailpoint.v2026.models.request_on_behalf_of_config.Request On Behalf Of Config(
                     allow_request_on_behalf_of_anyone_by_anyone = True, 

@@ -17,7 +17,6 @@ tags: ['SDK', 'Software Development Kit', 'AccessRequestConfig', 'V2026AccessReq
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **approvals_must_be_external** | **bool** | If this is true, approvals must be processed by an external system. Also, if this is true, it blocks Request Center access requests and returns an error for any user who isn't an org admin. | [optional] [default to False]
-**auto_approval_enabled** | **bool** | If this is true and the requester and reviewer are the same, the request is automatically approved. | [optional] [default to False]
 **reauthorization_enabled** | **bool** | If this is true, reauthorization will be enforced for appropriately configured access items. Enablement of this feature is currently in a limited state. | [optional] [default to False]
 **request_on_behalf_of_config** | [**RequestOnBehalfOfConfig**](request-on-behalf-of-config) |  | [optional] 
 **entitlement_request_config** | [**EntitlementRequestConfig**](entitlement-request-config) |  | [optional] 
@@ -31,7 +30,6 @@ from sailpoint.v2026.models.access_request_config import AccessRequestConfig
 
 access_request_config = AccessRequestConfig(
 approvals_must_be_external=True,
-auto_approval_enabled=True,
 reauthorization_enabled=True,
 request_on_behalf_of_config=sailpoint.v2026.models.request_on_behalf_of_config.Request On Behalf Of Config(
                     allow_request_on_behalf_of_anyone_by_anyone = True, 

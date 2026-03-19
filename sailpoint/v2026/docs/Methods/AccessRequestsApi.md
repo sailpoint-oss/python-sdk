@@ -119,7 +119,6 @@ with ApiClient(configuration) as api_client:
             "allowRequestOnBehalfOfEmployeeByManager" : true,
             "allowRequestOnBehalfOfAnyoneByAnyone" : true
           },
-          "autoApprovalEnabled" : true,
           "entitlementRequestConfig" : {
             "accessRequestConfig" : {
               "denialCommentRequired" : false,
