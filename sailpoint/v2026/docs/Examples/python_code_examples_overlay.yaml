@@ -472,6 +472,175 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling MachineAccountDeletionApprovalConfigApi->update_machine_account_deletion_approval_config: %s\n" % e)
+- path: /machine-identities
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/machine-identities#create-machine-identity
+      source: |
+        from sailpoint.v2026.api.machine_identities_api import MachineIdentitiesApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.machine_identity_request import MachineIdentityRequest
+        from sailpoint.v2026.models.machine_identity_response import MachineIdentityResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          machine_identity_request = '''{
+          "sourceId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa",
+          "subtype" : "Application",
+          "created" : "2015-05-28T14:07:17Z",
+          "userEntitlements" : [ {
+            "sourceId" : "5898b7c1-620c-49c6-cccc-cbf81eb4bddd",
+            "entitlementId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa"
+          }, {
+            "sourceId" : "5898b7c1-620c-49c6-cccc-cbf81eb4bddd",
+            "entitlementId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa"
+          } ],
+          "name" : "aName",
+          "modified" : "2015-05-28T14:07:17Z",
+          "description" : "",
+          "attributes" : "{\"Region\":\"EU\"}",
+          "owners" : {
+            "primaryIdentity" : "{}",
+            "secondaryIdentities" : [ {
+              "name" : "William Wilson",
+              "id" : "2c91808568c529c60168cca6f90c1313",
+              "type" : ""
+            }, {
+              "name" : "William Wilson",
+              "id" : "2c91808568c529c60168cca6f90c1313",
+              "type" : ""
+            } ]
+          },
+          "id" : "id12345",
+          "uuid" : "f5dd23fe-3414-42b7-bb1c-869400ad7a10",
+          "nativeIdentity" : "abc:123:dddd"
+        }''' # MachineIdentityRequest | 
+          try:
+              # Create machine identities
+              new_machine_identity_request = MachineIdentityRequest.from_json(machine_identity_request)
+              results = MachineIdentitiesApi(api_client).create_machine_identity(x_sail_point_experimental=x_sail_point_experimental, machine_identity_request=new_machine_identity_request)
+              # Below is a request that includes all optional parameters
+              # results = MachineIdentitiesApi(api_client).create_machine_identity(x_sail_point_experimental, new_machine_identity_request)
+              print("The response of MachineIdentitiesApi->create_machine_identity:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineIdentitiesApi->create_machine_identity: %s\n" % e)
+- path: /machine-identities/{id}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/machine-identities#delete-machine-identity
+      source: |
+        from sailpoint.v2026.api.machine_identities_api import MachineIdentitiesApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | Machine Identity ID # str | Machine Identity ID
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          try:
+              # Delete machine identity
+              
+              MachineIdentitiesApi(api_client).delete_machine_identity(id=id, x_sail_point_experimental=x_sail_point_experimental)
+              # Below is a request that includes all optional parameters
+              # MachineIdentitiesApi(api_client).delete_machine_identity(id, x_sail_point_experimental)
+          except Exception as e:
+              print("Exception when calling MachineIdentitiesApi->delete_machine_identity: %s\n" % e)
+- path: /machine-identities/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/machine-identities#get-machine-identity
+      source: |
+        from sailpoint.v2026.api.machine_identities_api import MachineIdentitiesApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.machine_identity_response import MachineIdentityResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | Machine Identity ID # str | Machine Identity ID
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          try:
+              # Machine identity details
+              
+              results = MachineIdentitiesApi(api_client).get_machine_identity(id=id, x_sail_point_experimental=x_sail_point_experimental)
+              # Below is a request that includes all optional parameters
+              # results = MachineIdentitiesApi(api_client).get_machine_identity(id, x_sail_point_experimental)
+              print("The response of MachineIdentitiesApi->get_machine_identity:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineIdentitiesApi->get_machine_identity: %s\n" % e)
+- path: /machine-identities
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/machine-identities#list-machine-identities
+      source: |
+        from sailpoint.v2026.api.machine_identities_api import MachineIdentitiesApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.machine_identity_response import MachineIdentityResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          filters = 'identityId eq \"2c9180858082150f0180893dbaf44201\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **cisIdentityId**: *eq, in, sw*  **nativeIdentity**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr*  **source.name**: *eq, in, sw*  **source.id**: *eq, in*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **cisIdentityId**: *eq, in, sw*  **nativeIdentity**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr*  **source.name**: *eq, in, sw*  **source.id**: *eq, in*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw* (optional)
+          sorters = 'nativeIdentity' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **nativeIdentity, name, owners.primaryIdentity.name, source.name, created, modified** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **nativeIdentity, name, owners.primaryIdentity.name, source.name, created, modified** (optional)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          try:
+              # List machine identities
+              
+              results = MachineIdentitiesApi(api_client).list_machine_identities(x_sail_point_experimental=x_sail_point_experimental)
+              # Below is a request that includes all optional parameters
+              # results = MachineIdentitiesApi(api_client).list_machine_identities(x_sail_point_experimental, filters, sorters, count, limit, offset)
+              print("The response of MachineIdentitiesApi->list_machine_identities:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineIdentitiesApi->list_machine_identities: %s\n" % e)
+- path: /machine-identities/{id}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/machine-identities#update-machine-identity
+      source: |
+        from sailpoint.v2026.api.machine_identities_api import MachineIdentitiesApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.machine_identity_response import MachineIdentityResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | Machine Identity ID. # str | Machine Identity ID.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          request_body = '''[{op=add, path=/attributes/securityRisk, value=medium}]''' # List[object] | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+          try:
+              # Update a machine identity
+              new_request_body = RequestBody.from_json(request_body)
+              results = MachineIdentitiesApi(api_client).update_machine_identity(id=id, x_sail_point_experimental=x_sail_point_experimental, request_body=new_request_body)
+              # Below is a request that includes all optional parameters
+              # results = MachineIdentitiesApi(api_client).update_machine_identity(id, x_sail_point_experimental, new_request_body)
+              print("The response of MachineIdentitiesApi->update_machine_identity:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineIdentitiesApi->update_machine_identity: %s\n" % e)
 - path: /source-subtypes/{subtypeId}/machine-config
   method: GET
   xCodeSample:

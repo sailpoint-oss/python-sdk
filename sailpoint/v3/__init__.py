@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.33"
+__version__ = "1.4.34"
 
 # import apis into sdk package
 from sailpoint.v3.api.access_profiles_api import AccessProfilesApi
@@ -146,6 +146,7 @@ from sailpoint.v3.models.accounts_export_report_arguments import AccountsExportR
 from sailpoint.v3.models.activate_campaign_options import ActivateCampaignOptions
 from sailpoint.v3.models.activity_identity import ActivityIdentity
 from sailpoint.v3.models.activity_insights import ActivityInsights
+from sailpoint.v3.models.additional_owner_ref import AdditionalOwnerRef
 from sailpoint.v3.models.admin_review_reassign import AdminReviewReassign
 from sailpoint.v3.models.admin_review_reassign_reassign_to import AdminReviewReassignReassignTo
 from sailpoint.v3.models.aggregation_result import AggregationResult

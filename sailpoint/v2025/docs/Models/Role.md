@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **modified** | **datetime** | Date the Role was last modified. | [optional] [readonly] 
 **description** | **str** | A human-readable description of the Role | [optional] 
 **owner** | [**OwnerReference**](owner-reference) |  | [required]
+**additional_owners** | [**[]AdditionalOwnerRef**](additional-owner-ref) | List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP). | [optional] 
 **access_profiles** | [**[]AccessProfileRef**](access-profile-ref) |  | [optional] 
 **entitlements** | [**[]EntitlementRef**](entitlement-ref) |  | [optional] 
 **membership** | [**RoleMembershipSelector**](role-membership-selector) |  | [optional] 
@@ -52,6 +53,12 @@ owner=sailpoint.v2025.models.owner_reference.OwnerReference(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'support', ),
+additional_owners=[
+                    sailpoint.v2025.models.additional_owner_ref.AdditionalOwnerRef(
+                        type = 'IDENTITY', 
+                        id = '2c9180a46faadee4016fb4e018c20639', 
+                        name = 'support', )
+                    ],
 access_profiles=[
                     sailpoint.v2025.models.access_profile_ref.AccessProfileRef(
                         id = 'ff808081751e6e129f1518161919ecca', 

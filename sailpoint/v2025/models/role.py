@@ -23,6 +23,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from sailpoint.v2025.models.access_profile_ref import AccessProfileRef
+from sailpoint.v2025.models.additional_owner_ref import AdditionalOwnerRef
 from sailpoint.v2025.models.attribute_dto_list import AttributeDTOList
 from sailpoint.v2025.models.dimension_ref import DimensionRef
 from sailpoint.v2025.models.entitlement_ref import EntitlementRef
@@ -43,6 +44,7 @@ class Role(BaseModel):
     modified: Optional[datetime] = Field(default=None, description="Date the Role was last modified.")
     description: Optional[StrictStr] = Field(default=None, description="A human-readable description of the Role")
     owner: Optional[OwnerReference]
+    additional_owners: Optional[List[AdditionalOwnerRef]] = Field(default=None, description="List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).", alias="additionalOwners")
     access_profiles: Optional[List[AccessProfileRef]] = Field(default=None, alias="accessProfiles")
     entitlements: Optional[List[EntitlementRef]] = None
     membership: Optional[RoleMembershipSelector] = None
@@ -55,7 +57,7 @@ class Role(BaseModel):
     dimensional: Optional[StrictBool] = Field(default=False, description="Whether the Role is dimensional.")
     dimension_refs: Optional[List[DimensionRef]] = Field(default=None, description="List of references to dimensions to which this Role is assigned. This field is only relevant if the Role is dimensional.", alias="dimensionRefs")
     access_model_metadata: Optional[AttributeDTOList] = Field(default=None, alias="accessModelMetadata")
-    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "owner", "accessProfiles", "entitlements", "membership", "legacyMembershipInfo", "enabled", "requestable", "accessRequestConfig", "revocationRequestConfig", "segments", "dimensional", "dimensionRefs", "accessModelMetadata"]
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "owner", "additionalOwners", "accessProfiles", "entitlements", "membership", "legacyMembershipInfo", "enabled", "requestable", "accessRequestConfig", "revocationRequestConfig", "segments", "dimensional", "dimensionRefs", "accessModelMetadata"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -103,6 +105,13 @@ class Role(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in additional_owners (list)
+        _items = []
+        if self.additional_owners:
+            for _item_additional_owners in self.additional_owners:
+                if _item_additional_owners:
+                    _items.append(_item_additional_owners.to_dict())
+            _dict['additionalOwners'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in access_profiles (list)
         _items = []
         if self.access_profiles:
@@ -145,6 +154,11 @@ class Role(BaseModel):
         # and model_fields_set contains the field
         if self.owner is None and "owner" in self.model_fields_set:
             _dict['owner'] = None
+
+        # set to None if additional_owners (nullable) is None
+        # and model_fields_set contains the field
+        if self.additional_owners is None and "additional_owners" in self.model_fields_set:
+            _dict['additionalOwners'] = None
 
         # set to None if access_profiles (nullable) is None
         # and model_fields_set contains the field
@@ -194,6 +208,7 @@ class Role(BaseModel):
             "modified": obj.get("modified"),
             "description": obj.get("description"),
             "owner": OwnerReference.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "additionalOwners": [AdditionalOwnerRef.from_dict(_item) for _item in obj["additionalOwners"]] if obj.get("additionalOwners") is not None else None,
             "accessProfiles": [AccessProfileRef.from_dict(_item) for _item in obj["accessProfiles"]] if obj.get("accessProfiles") is not None else None,
             "entitlements": [EntitlementRef.from_dict(_item) for _item in obj["entitlements"]] if obj.get("entitlements") is not None else None,
             "membership": RoleMembershipSelector.from_dict(obj["membership"]) if obj.get("membership") is not None else None,

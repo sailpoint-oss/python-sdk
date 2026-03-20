@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 **segments** | **[]str** | List of segment IDs, if any, that the access profile is assigned to. | [optional] 
 **access_model_metadata** | [**AttributeDTOList**](attribute-dto-list) |  | [optional] 
 **provisioning_criteria** | [**ProvisioningCriteriaLevel1**](provisioning-criteria-level1) |  | [optional] 
-**additional_owners** | [**[]OwnerReference**](owner-reference) |  | [optional] 
+**additional_owners** | [**[]AdditionalOwnerRef**](additional-owner-ref) | List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP). | [optional] 
 }
 
 ## Example
@@ -94,7 +94,7 @@ provisioning_criteria=sailpoint.beta.models.provisioning_criteria_level1.Provisi
                             value = 'carlee.cert1c9f9b6fd@mailinator.com', )
                         ], ),
 additional_owners=[
-                    sailpoint.beta.models.owner_reference.OwnerReference(
+                    sailpoint.beta.models.additional_owner_ref.AdditionalOwnerRef(
                         type = 'IDENTITY', 
                         id = '2c9180a46faadee4016fb4e018c20639', 
                         name = 'support', )

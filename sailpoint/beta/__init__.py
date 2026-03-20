@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.33"
+__version__ = "1.4.34"
 
 # import apis into sdk package
 from sailpoint.beta.api.access_model_metadata_api import AccessModelMetadataApi
@@ -211,6 +211,7 @@ from sailpoint.beta.models.accounts_collected_for_aggregation import AccountsCol
 from sailpoint.beta.models.accounts_collected_for_aggregation_source import AccountsCollectedForAggregationSource
 from sailpoint.beta.models.accounts_collected_for_aggregation_stats import AccountsCollectedForAggregationStats
 from sailpoint.beta.models.activate_campaign_options import ActivateCampaignOptions
+from sailpoint.beta.models.additional_owner_ref import AdditionalOwnerRef
 from sailpoint.beta.models.admin_review_reassign import AdminReviewReassign
 from sailpoint.beta.models.admin_review_reassign_reassign_to import AdminReviewReassignReassignTo
 from sailpoint.beta.models.app_account_details import AppAccountDetails

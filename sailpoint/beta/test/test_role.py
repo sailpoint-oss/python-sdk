@@ -44,6 +44,12 @@ class TestRole(unittest.TestCase):
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'support', ),
+                additional_owners = [
+                    sailpoint.beta.models.additional_owner_ref.AdditionalOwnerRef(
+                        type = 'IDENTITY', 
+                        id = '2c9180a46faadee4016fb4e018c20639', 
+                        name = 'support', )
+                    ],
                 access_profiles = [
                     sailpoint.beta.models.access_profile_ref.AccessProfileRef(
                         id = 'ff808081751e6e129f1518161919ecca', 

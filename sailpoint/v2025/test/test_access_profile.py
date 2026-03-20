@@ -88,7 +88,7 @@ class TestAccessProfile(unittest.TestCase):
                             value = 'carlee.cert1c9f9b6fd@mailinator.com', )
                         ], ),
                 additional_owners = [
-                    sailpoint.v2025.models.owner_reference.OwnerReference(
+                    sailpoint.v2025.models.additional_owner_ref.AdditionalOwnerRef(
                         type = 'IDENTITY', 
                         id = '2c9180a46faadee4016fb4e018c20639', 
                         name = 'support', )

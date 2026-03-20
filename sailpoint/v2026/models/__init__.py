@@ -33,6 +33,7 @@ from sailpoint.v2026.models.approval_details import ApprovalDetails
 from sailpoint.v2026.models.approver_dto import ApproverDto
 from sailpoint.v2026.models.approver_reference import ApproverReference
 from sailpoint.v2026.models.array_inner import ArrayInner
+from sailpoint.v2026.models.base_common_dto import BaseCommonDto
 from sailpoint.v2026.models.base_reference_dto import BaseReferenceDto
 from sailpoint.v2026.models.dto_type import DtoType
 from sailpoint.v2026.models.entitlement import Entitlement
@@ -58,6 +59,12 @@ from sailpoint.v2026.models.localized_message import LocalizedMessage
 from sailpoint.v2026.models.machine_account_sub_type_config_dto import MachineAccountSubTypeConfigDto
 from sailpoint.v2026.models.machine_account_sub_type_config_dto_machine_account_create import MachineAccountSubTypeConfigDtoMachineAccountCreate
 from sailpoint.v2026.models.machine_account_sub_type_config_dto_machine_account_delete import MachineAccountSubTypeConfigDtoMachineAccountDelete
+from sailpoint.v2026.models.machine_identity import MachineIdentity
+from sailpoint.v2026.models.machine_identity_dto_owners import MachineIdentityDtoOwners
+from sailpoint.v2026.models.machine_identity_request import MachineIdentityRequest
+from sailpoint.v2026.models.machine_identity_request_user_entitlements import MachineIdentityRequestUserEntitlements
+from sailpoint.v2026.models.machine_identity_response import MachineIdentityResponse
+from sailpoint.v2026.models.machine_identity_response_user_entitlements import MachineIdentityResponseUserEntitlements
 from sailpoint.v2026.models.permission_dto import PermissionDto
 from sailpoint.v2026.models.request_on_behalf_of_config import RequestOnBehalfOfConfig
 from sailpoint.v2026.models.target import Target

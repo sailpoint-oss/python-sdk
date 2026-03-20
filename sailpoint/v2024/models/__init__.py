@@ -148,6 +148,7 @@ from sailpoint.v2024.models.accounts_selection_response import AccountsSelection
 from sailpoint.v2024.models.activate_campaign_options import ActivateCampaignOptions
 from sailpoint.v2024.models.activity_identity import ActivityIdentity
 from sailpoint.v2024.models.activity_insights import ActivityInsights
+from sailpoint.v2024.models.additional_owner_ref import AdditionalOwnerRef
 from sailpoint.v2024.models.admin_review_reassign import AdminReviewReassign
 from sailpoint.v2024.models.admin_review_reassign_reassign_to import AdminReviewReassignReassignTo
 from sailpoint.v2024.models.aggregation_result import AggregationResult

@@ -22,6 +22,7 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v2025.models.access_profile_source_ref import AccessProfileSourceRef
+from sailpoint.v2025.models.additional_owner_ref import AdditionalOwnerRef
 from sailpoint.v2025.models.attribute_dto_list import AttributeDTOList
 from sailpoint.v2025.models.entitlement_ref import EntitlementRef
 from sailpoint.v2025.models.owner_reference import OwnerReference
@@ -50,7 +51,7 @@ class AccessProfile(BaseModel):
     segments: Optional[List[StrictStr]] = Field(default=None, description="List of segment IDs, if any, that the access profile is assigned to.")
     access_model_metadata: Optional[AttributeDTOList] = Field(default=None, alias="accessModelMetadata")
     provisioning_criteria: Optional[ProvisioningCriteriaLevel1] = Field(default=None, alias="provisioningCriteria")
-    additional_owners: Optional[List[Optional[OwnerReference]]] = Field(default=None, alias="additionalOwners")
+    additional_owners: Optional[List[AdditionalOwnerRef]] = Field(default=None, description="List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).", alias="additionalOwners")
     __properties: ClassVar[List[str]] = ["id", "name", "description", "created", "modified", "enabled", "owner", "source", "entitlements", "requestable", "accessRequestConfig", "revocationRequestConfig", "segments", "accessModelMetadata", "provisioningCriteria", "additionalOwners"]
 
     model_config = ConfigDict(
@@ -197,7 +198,7 @@ class AccessProfile(BaseModel):
             "segments": obj.get("segments"),
             "accessModelMetadata": AttributeDTOList.from_dict(obj["accessModelMetadata"]) if obj.get("accessModelMetadata") is not None else None,
             "provisioningCriteria": ProvisioningCriteriaLevel1.from_dict(obj["provisioningCriteria"]) if obj.get("provisioningCriteria") is not None else None,
-            "additionalOwners": [OwnerReference.from_dict(_item) for _item in obj["additionalOwners"]] if obj.get("additionalOwners") is not None else None
+            "additionalOwners": [AdditionalOwnerRef.from_dict(_item) for _item in obj["additionalOwners"]] if obj.get("additionalOwners") is not None else None
         })
         return _obj
 
