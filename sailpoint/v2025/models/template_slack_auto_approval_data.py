@@ -27,11 +27,11 @@ class TemplateSlackAutoApprovalData(BaseModel):
     """
     TemplateSlackAutoApprovalData
     """ # noqa: E501
-    is_auto_approved: Optional[StrictStr] = Field(default=None, alias="isAutoApproved")
-    item_id: Optional[StrictStr] = Field(default=None, alias="itemId")
-    item_type: Optional[StrictStr] = Field(default=None, alias="itemType")
-    auto_approval_message_json: Optional[StrictStr] = Field(default=None, alias="autoApprovalMessageJSON")
-    auto_approval_title: Optional[StrictStr] = Field(default=None, alias="autoApprovalTitle")
+    is_auto_approved: Optional[StrictStr] = Field(default=None, description="Whether the request was auto-approved", alias="isAutoApproved")
+    item_id: Optional[StrictStr] = Field(default=None, description="The item ID", alias="itemId")
+    item_type: Optional[StrictStr] = Field(default=None, description="The item type", alias="itemType")
+    auto_approval_message_json: Optional[StrictStr] = Field(default=None, description="JSON message for auto-approval", alias="autoApprovalMessageJSON")
+    auto_approval_title: Optional[StrictStr] = Field(default=None, description="Title for auto-approval", alias="autoApprovalTitle")
     __properties: ClassVar[List[str]] = ["isAutoApproved", "itemId", "itemType", "autoApprovalMessageJSON", "autoApprovalTitle"]
 
     model_config = ConfigDict(

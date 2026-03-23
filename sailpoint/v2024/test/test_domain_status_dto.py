@@ -37,9 +37,10 @@ class TestDomainStatusDto(unittest.TestCase):
             return DomainStatusDto(
                 id = '123b45b0-aaaa-bbbb-a7db-123456a56abc',
                 domain = 'sailpoint.com',
-                dkim_enabled = true,
+                dkim_enabled = True,
                 dkim_tokens = [token1, token2, token3],
-                dkim_verification_status = 'PENDING'
+                dkim_verification_status = 'PENDING',
+                region = 'us-east-1'
             )
         else:
             return DomainStatusDto(

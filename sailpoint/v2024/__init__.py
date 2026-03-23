@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.34"
+__version__ = "1.4.35"
 
 # import apis into sdk package
 from sailpoint.v2024.api.access_model_metadata_api import AccessModelMetadataApi
@@ -1183,6 +1183,8 @@ from sailpoint.v2024.models.task_status_message_parameters_inner import TaskStat
 from sailpoint.v2024.models.template_bulk_delete_dto import TemplateBulkDeleteDto
 from sailpoint.v2024.models.template_dto import TemplateDto
 from sailpoint.v2024.models.template_dto_default import TemplateDtoDefault
+from sailpoint.v2024.models.template_dto_slack_template import TemplateDtoSlackTemplate
+from sailpoint.v2024.models.template_dto_teams_template import TemplateDtoTeamsTemplate
 from sailpoint.v2024.models.template_slack import TemplateSlack
 from sailpoint.v2024.models.template_slack_auto_approval_data import TemplateSlackAutoApprovalData
 from sailpoint.v2024.models.template_slack_custom_fields import TemplateSlackCustomFields

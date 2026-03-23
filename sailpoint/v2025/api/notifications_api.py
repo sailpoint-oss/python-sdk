@@ -988,7 +988,7 @@ class NotificationsApi:
     ) -> None:
         """Bulk delete notification templates
 
-        This lets you bulk delete templates that you previously created for your site. Since this is a beta feature, please contact support to enable usage.
+        This lets you bulk delete templates that you previously created for your site.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -1064,7 +1064,7 @@ class NotificationsApi:
     ) -> ApiResponse[None]:
         """Bulk delete notification templates
 
-        This lets you bulk delete templates that you previously created for your site. Since this is a beta feature, please contact support to enable usage.
+        This lets you bulk delete templates that you previously created for your site.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -1140,7 +1140,7 @@ class NotificationsApi:
     ) -> RESTResponseType:
         """Bulk delete notification templates
 
-        This lets you bulk delete templates that you previously created for your site. Since this is a beta feature, please contact support to enable usage.
+        This lets you bulk delete templates that you previously created for your site.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -1849,7 +1849,7 @@ class NotificationsApi:
     @validate_call
     def get_mail_from_attributes(
         self,
-        id: Annotated[StrictStr, Field(description="Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status")],
+        identity: Annotated[StrictStr, Field(description="Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -1868,8 +1868,8 @@ class NotificationsApi:
 
         Retrieve MAIL FROM attributes for a given AWS SES identity.
 
-        :param id: Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status (required)
-        :type id: str
+        :param identity: Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status (required)
+        :type identity: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1895,7 +1895,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._get_mail_from_attributes_serialize(
-            id=id,
+            identity=identity,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1925,7 +1925,7 @@ class NotificationsApi:
     @validate_call
     def get_mail_from_attributes_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status")],
+        identity: Annotated[StrictStr, Field(description="Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -1944,8 +1944,8 @@ class NotificationsApi:
 
         Retrieve MAIL FROM attributes for a given AWS SES identity.
 
-        :param id: Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status (required)
-        :type id: str
+        :param identity: Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status (required)
+        :type identity: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1971,7 +1971,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._get_mail_from_attributes_serialize(
-            id=id,
+            identity=identity,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2001,7 +2001,7 @@ class NotificationsApi:
     @validate_call
     def get_mail_from_attributes_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status")],
+        identity: Annotated[StrictStr, Field(description="Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -2020,8 +2020,8 @@ class NotificationsApi:
 
         Retrieve MAIL FROM attributes for a given AWS SES identity.
 
-        :param id: Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status (required)
-        :type id: str
+        :param identity: Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status (required)
+        :type identity: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -2047,7 +2047,7 @@ class NotificationsApi:
         """ # noqa: E501
 
         _param = self._get_mail_from_attributes_serialize(
-            id=id,
+            identity=identity,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2072,7 +2072,7 @@ class NotificationsApi:
 
     def _get_mail_from_attributes_serialize(
         self,
-        id,
+        identity,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -2095,11 +2095,9 @@ class NotificationsApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
+        if identity is not None:
+            _path_params['identity'] = identity
         # process the query parameters
-        if id is not None:
-            
-            _query_params.append(('id', id))
-            
         # process the header parameters
         if x_sail_point_experimental is not None:
             _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental

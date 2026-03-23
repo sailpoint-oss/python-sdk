@@ -31,8 +31,9 @@ class DkimAttributes(BaseModel):
     address: Optional[StrictStr] = Field(default=None, description="The identity or domain address")
     dkim_enabled: Optional[StrictBool] = Field(default=False, description="Whether or not DKIM has been enabled for this domain / identity", alias="dkimEnabled")
     dkim_tokens: Optional[List[StrictStr]] = Field(default=None, description="The tokens to be added to a DNS for verification", alias="dkimTokens")
-    dkim_verification_status: Optional[StrictStr] = Field(default=None, description="The current status if the domain /identity has been verified. Ie Success, Failed, Pending", alias="dkimVerificationStatus")
-    __properties: ClassVar[List[str]] = ["id", "address", "dkimEnabled", "dkimTokens", "dkimVerificationStatus"]
+    dkim_verification_status: Optional[StrictStr] = Field(default=None, description="The current status if the domain /identity has been verified. Ie SUCCESS, FAILED, PENDING", alias="dkimVerificationStatus")
+    region: Optional[StrictStr] = Field(default=None, description="The AWS SES region the domain is associated with")
+    __properties: ClassVar[List[str]] = ["id", "address", "dkimEnabled", "dkimTokens", "dkimVerificationStatus", "region"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,7 +90,8 @@ class DkimAttributes(BaseModel):
             "address": obj.get("address"),
             "dkimEnabled": obj.get("dkimEnabled") if obj.get("dkimEnabled") is not None else False,
             "dkimTokens": obj.get("dkimTokens"),
-            "dkimVerificationStatus": obj.get("dkimVerificationStatus")
+            "dkimVerificationStatus": obj.get("dkimVerificationStatus"),
+            "region": obj.get("region")
         })
         return _obj
 

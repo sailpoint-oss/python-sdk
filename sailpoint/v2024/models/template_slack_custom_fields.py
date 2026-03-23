@@ -27,10 +27,10 @@ class TemplateSlackCustomFields(BaseModel):
     """
     TemplateSlackCustomFields
     """ # noqa: E501
-    request_type: Optional[StrictStr] = Field(default=None, alias="requestType")
-    contains_deny: Optional[StrictStr] = Field(default=None, alias="containsDeny")
-    campaign_id: Optional[StrictStr] = Field(default=None, alias="campaignId")
-    campaign_status: Optional[StrictStr] = Field(default=None, alias="campaignStatus")
+    request_type: Optional[StrictStr] = Field(default=None, description="The type of request", alias="requestType")
+    contains_deny: Optional[StrictStr] = Field(default=None, description="Whether the request contains a deny action", alias="containsDeny")
+    campaign_id: Optional[StrictStr] = Field(default=None, description="The campaign ID", alias="campaignId")
+    campaign_status: Optional[StrictStr] = Field(default=None, description="The campaign status", alias="campaignStatus")
     __properties: ClassVar[List[str]] = ["requestType", "containsDeny", "campaignId", "campaignStatus"]
 
     model_config = ConfigDict(

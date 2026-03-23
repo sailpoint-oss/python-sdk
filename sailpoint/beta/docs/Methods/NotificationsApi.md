@@ -138,9 +138,55 @@ configuration = Configuration()
 
 with ApiClient(configuration) as api_client:
     template_dto = '''{
-          "slackTemplate" : "slackTemplate",
+          "slackTemplate" : {
+            "isSubscription" : false,
+            "attachments" : "[]",
+            "blocks" : "blocks",
+            "requestId" : "requestId",
+            "autoApprovalData" : {
+              "itemId" : "itemId",
+              "itemType" : "itemType",
+              "autoApprovalMessageJSON" : "autoApprovalMessageJSON",
+              "isAutoApproved" : "isAutoApproved",
+              "autoApprovalTitle" : "autoApprovalTitle"
+            },
+            "customFields" : {
+              "requestType" : "requestType",
+              "campaignId" : "campaignId",
+              "campaignStatus" : "campaignStatus",
+              "containsDeny" : "containsDeny"
+            },
+            "requestedById" : "requestedById",
+            "approvalId" : "approvalId",
+            "text" : "You have a new approval request",
+            "notificationType" : "notificationType",
+            "key" : "key"
+          },
           "footer" : "footer",
-          "teamsTemplate" : "teamsTemplate",
+          "teamsTemplate" : {
+            "isSubscription" : false,
+            "requestId" : "requestId",
+            "autoApprovalData" : {
+              "itemId" : "itemId",
+              "itemType" : "itemType",
+              "autoApprovalMessageJSON" : "autoApprovalMessageJSON",
+              "isAutoApproved" : "isAutoApproved",
+              "autoApprovalTitle" : "autoApprovalTitle"
+            },
+            "customFields" : {
+              "requestType" : "requestType",
+              "campaignId" : "campaignId",
+              "campaignStatus" : "campaignStatus",
+              "containsDeny" : "containsDeny"
+            },
+            "requestedById" : "requestedById",
+            "approvalId" : "approvalId",
+            "text" : "You have a new approval request",
+            "notificationType" : "notificationType",
+            "title" : "title",
+            "key" : "key",
+            "messageJSON" : "messageJSON"
+          },
           "subject" : "You have $numberOfPendingTasks $taskTasks to complete in ${__global.productName}.",
           "created" : "2020-01-01T00:00:00Z",
           "description" : "Daily digest - sent if number of outstanding tasks for task owner > 0",
@@ -214,8 +260,9 @@ configuration = Configuration()
 with ApiClient(configuration) as api_client:
     email_status_dto = '''{
           "isVerifiedByDomain" : false,
-          "verificationStatus" : "PENDING",
+          "verificationStatus" : "SUCCESS",
           "id" : "id",
+          "region" : "us-east-1",
           "email" : "sender@example.com"
         }''' # EmailStatusDto | 
 
@@ -237,7 +284,7 @@ with ApiClient(configuration) as api_client:
 
 ## delete-notification-templates-in-bulk
 Bulk delete notification templates
-This lets you bulk delete templates that you previously created for your site. Since this is a beta feature, please contact support to enable usage.
+This lets you bulk delete templates that you previously created for your site.
 
 [API Spec](https://developer.sailpoint.com/docs/api/beta/delete-notification-templates-in-bulk)
 
@@ -932,8 +979,15 @@ configuration = Configuration()
 
 with ApiClient(configuration) as api_client:
     send_test_notification_request_dto = '''{
-          "context" : "{}",
+          "carbonCopy" : [ "cc@example.com" ],
+          "context" : {
+            "numberOfPendingTasks" : "4",
+            "taskTasks" : "tasks"
+          },
+          "blindCarbonCopy" : [ "bcc@example.com" ],
           "medium" : "EMAIL",
+          "locale" : "en",
+          "recipientEmailList" : [ "test@example.com" ],
           "key" : "cloud_manual_work_item_summary"
         }''' # SendTestNotificationRequestDto | 
 

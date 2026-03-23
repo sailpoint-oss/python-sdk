@@ -20,15 +20,13 @@ from typing_extensions import Self
 
 class Medium(str, Enum):
     """
-    Medium
+    The notification medium (EMAIL, SLACK, or TEAMS)
     """
 
     """
     allowed enum values
     """
     EMAIL = 'EMAIL'
-    SMS = 'SMS'
-    PHONE = 'PHONE'
     SLACK = 'SLACK'
     TEAMS = 'TEAMS'
 

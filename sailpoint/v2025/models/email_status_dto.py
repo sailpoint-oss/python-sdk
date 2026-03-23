@@ -27,11 +27,12 @@ class EmailStatusDto(BaseModel):
     """
     EmailStatusDto
     """ # noqa: E501
-    id: Optional[StrictStr] = None
-    email: Optional[StrictStr] = None
-    is_verified_by_domain: Optional[StrictBool] = Field(default=None, alias="isVerifiedByDomain")
-    verification_status: Optional[StrictStr] = Field(default=None, alias="verificationStatus")
-    __properties: ClassVar[List[str]] = ["id", "email", "isVerifiedByDomain", "verificationStatus"]
+    id: Optional[StrictStr] = Field(default=None, description="Unique identifier for the verified sender address")
+    email: Optional[StrictStr] = Field(default=None, description="The verified sender email address")
+    is_verified_by_domain: Optional[StrictBool] = Field(default=False, description="Whether the sender address is verified by domain", alias="isVerifiedByDomain")
+    verification_status: Optional[StrictStr] = Field(default=None, description="The verification status of the sender address", alias="verificationStatus")
+    region: Optional[StrictStr] = Field(default=None, description="The AWS SES region the sender address is associated with")
+    __properties: ClassVar[List[str]] = ["id", "email", "isVerifiedByDomain", "verificationStatus", "region"]
 
     @field_validator('verification_status')
     def verification_status_validate_enum(cls, value):
@@ -39,8 +40,8 @@ class EmailStatusDto(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['PENDING', 'SUCCESS', 'FAILED']):
-            warnings.warn(f"must be one of enum values ('PENDING', 'SUCCESS', 'FAILED') unknown value: {value}")
+        if value not in set(['PENDING', 'SUCCESS', 'FAILED', 'NA']):
+            warnings.warn(f"must be one of enum values ('PENDING', 'SUCCESS', 'FAILED', 'NA') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -101,8 +102,9 @@ class EmailStatusDto(BaseModel):
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "email": obj.get("email"),
-            "isVerifiedByDomain": obj.get("isVerifiedByDomain"),
-            "verificationStatus": obj.get("verificationStatus")
+            "isVerifiedByDomain": obj.get("isVerifiedByDomain") if obj.get("isVerifiedByDomain") is not None else False,
+            "verificationStatus": obj.get("verificationStatus"),
+            "region": obj.get("region")
         })
         return _obj
 

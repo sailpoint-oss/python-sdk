@@ -48,9 +48,9 @@ class TestTemplateDtoDefault(unittest.TestCase):
                 description = 'Daily digest - sent if number of outstanding tasks for task owner > 0',
                 slack_template = sailpoint.v2025.models.template_slack.Template Slack(
                     key = '', 
-                    text = '', 
+                    text = 'You have a new approval request', 
                     blocks = '', 
-                    attachments = '', 
+                    attachments = '[]', 
                     notification_type = '', 
                     approval_id = '', 
                     request_id = '', 
@@ -70,7 +70,7 @@ class TestTemplateDtoDefault(unittest.TestCase):
                 teams_template = sailpoint.v2025.models.template_teams.Template Teams(
                     key = '', 
                     title = '', 
-                    text = '', 
+                    text = 'You have a new approval request', 
                     message_json = '', 
                     is_subscription = True, 
                     approval_id = '', 

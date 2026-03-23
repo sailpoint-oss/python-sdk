@@ -36,9 +36,9 @@ class TestTemplateSlack(unittest.TestCase):
         if include_optional:
             return TemplateSlack(
                 key = '',
-                text = '',
+                text = 'You have a new approval request',
                 blocks = '',
-                attachments = '',
+                attachments = '[]',
                 notification_type = '',
                 approval_id = '',
                 request_id = '',

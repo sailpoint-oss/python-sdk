@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **key** | **str** | The key of the template | [required]
 **name** | **str** | The name of the Task Manager Subscription | [optional] 
-**medium** |  **Enum** [  'EMAIL',    'PHONE',    'SMS',    'SLACK',    'TEAMS' ] | The message medium. More mediums may be added in the future. | [required]
+**medium** |  **Enum** [  'EMAIL',    'SLACK',    'TEAMS' ] | The message medium. More mediums may be added in the future. | [required]
 **locale** | **str** | The locale for the message text, a BCP 47 language tag. | [required]
 **subject** | **str** | The subject line in the template | [optional] 
 **header** | **str** | The header value is now located within the body field. If included with non-null values, will result in a 400. | [optional] 
@@ -30,8 +30,8 @@ Name | Type | Description | Notes
 **id** | **str** | This is auto-generated. | [optional] 
 **created** | **datetime** | The time when this template is created. This is auto-generated. | [optional] 
 **modified** | **datetime** | The time when this template was last modified. This is auto-generated. | [optional] 
-**slack_template** | **str** |  | [optional] 
-**teams_template** | **str** |  | [optional] 
+**slack_template** | [**TemplateDtoSlackTemplate**](template-dto-slack-template) |  | [optional] 
+**teams_template** | [**TemplateDtoTeamsTemplate**](template-dto-teams-template) |  | [optional] 
 }
 
 ## Example
@@ -54,8 +54,8 @@ description='Daily digest - sent if number of outstanding tasks for task owner >
 id='c17bea3a-574d-453c-9e04-4365fbf5af0b',
 created='2020-01-01T00:00Z',
 modified='2020-01-01T00:00Z',
-slack_template='',
-teams_template=''
+slack_template=,
+teams_template=
 )
 
 ```

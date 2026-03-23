@@ -942,7 +942,7 @@ class NotificationsApi:
     ) -> None:
         """Bulk delete notification templates
 
-        This lets you bulk delete templates that you previously created for your site. Since this is a beta feature, please contact support to enable usage.
+        This lets you bulk delete templates that you previously created for your site.
 
         :param template_bulk_delete_dto: (required)
         :type template_bulk_delete_dto: List[TemplateBulkDeleteDto]
@@ -1014,7 +1014,7 @@ class NotificationsApi:
     ) -> ApiResponse[None]:
         """Bulk delete notification templates
 
-        This lets you bulk delete templates that you previously created for your site. Since this is a beta feature, please contact support to enable usage.
+        This lets you bulk delete templates that you previously created for your site.
 
         :param template_bulk_delete_dto: (required)
         :type template_bulk_delete_dto: List[TemplateBulkDeleteDto]
@@ -1086,7 +1086,7 @@ class NotificationsApi:
     ) -> RESTResponseType:
         """Bulk delete notification templates
 
-        This lets you bulk delete templates that you previously created for your site. Since this is a beta feature, please contact support to enable usage.
+        This lets you bulk delete templates that you previously created for your site.
 
         :param template_bulk_delete_dto: (required)
         :type template_bulk_delete_dto: List[TemplateBulkDeleteDto]

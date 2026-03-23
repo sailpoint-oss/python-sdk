@@ -27,8 +27,8 @@ class TemplateBulkDeleteDto(BaseModel):
     """
     TemplateBulkDeleteDto
     """ # noqa: E501
-    key: StrictStr
-    medium: Optional[StrictStr] = None
+    key: StrictStr = Field(description="The template key to delete")
+    medium: Optional[StrictStr] = Field(default=None, description="The notification medium (EMAIL, SLACK, or TEAMS)")
     locale: Optional[StrictStr] = Field(default=None, description="The locale for the message text, a BCP 47 language tag.")
     __properties: ClassVar[List[str]] = ["key", "medium", "locale"]
 
@@ -38,8 +38,8 @@ class TemplateBulkDeleteDto(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['EMAIL', 'PHONE', 'SMS']):
-            warnings.warn(f"must be one of enum values ('EMAIL', 'PHONE', 'SMS') unknown value: {value}")
+        if value not in set(['EMAIL', 'SLACK', 'TEAMS']):
+            warnings.warn(f"must be one of enum values ('EMAIL', 'SLACK', 'TEAMS') unknown value: {value}")
         return value
 
     model_config = ConfigDict(

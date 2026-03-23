@@ -29,15 +29,15 @@ class TemplateSlack(BaseModel):
     """
     TemplateSlack
     """ # noqa: E501
-    key: Optional[StrictStr] = None
-    text: Optional[StrictStr] = None
-    blocks: Optional[StrictStr] = None
-    attachments: Optional[StrictStr] = None
-    notification_type: Optional[StrictStr] = Field(default=None, alias="notificationType")
-    approval_id: Optional[StrictStr] = Field(default=None, alias="approvalId")
-    request_id: Optional[StrictStr] = Field(default=None, alias="requestId")
-    requested_by_id: Optional[StrictStr] = Field(default=None, alias="requestedById")
-    is_subscription: Optional[StrictBool] = Field(default=None, alias="isSubscription")
+    key: Optional[StrictStr] = Field(default=None, description="The template key")
+    text: Optional[StrictStr] = Field(default=None, description="The main text content of the Slack message")
+    blocks: Optional[StrictStr] = Field(default=None, description="JSON string of Slack Block Kit blocks for rich formatting")
+    attachments: Optional[StrictStr] = Field(default=None, description="JSON string of Slack attachments")
+    notification_type: Optional[StrictStr] = Field(default=None, description="The type of notification", alias="notificationType")
+    approval_id: Optional[StrictStr] = Field(default=None, description="The approval request ID", alias="approvalId")
+    request_id: Optional[StrictStr] = Field(default=None, description="The request ID", alias="requestId")
+    requested_by_id: Optional[StrictStr] = Field(default=None, description="The ID of the user who made the request", alias="requestedById")
+    is_subscription: Optional[StrictBool] = Field(default=False, description="Whether this is a subscription notification", alias="isSubscription")
     auto_approval_data: Optional[TemplateSlackAutoApprovalData] = Field(default=None, alias="autoApprovalData")
     custom_fields: Optional[TemplateSlackCustomFields] = Field(default=None, alias="customFields")
     __properties: ClassVar[List[str]] = ["key", "text", "blocks", "attachments", "notificationType", "approvalId", "requestId", "requestedById", "isSubscription", "autoApprovalData", "customFields"]
@@ -152,7 +152,7 @@ class TemplateSlack(BaseModel):
             "approvalId": obj.get("approvalId"),
             "requestId": obj.get("requestId"),
             "requestedById": obj.get("requestedById"),
-            "isSubscription": obj.get("isSubscription"),
+            "isSubscription": obj.get("isSubscription") if obj.get("isSubscription") is not None else False,
             "autoApprovalData": TemplateSlackAutoApprovalData.from_dict(obj["autoApprovalData"]) if obj.get("autoApprovalData") is not None else None,
             "customFields": TemplateSlackCustomFields.from_dict(obj["customFields"]) if obj.get("customFields") is not None else None
         })

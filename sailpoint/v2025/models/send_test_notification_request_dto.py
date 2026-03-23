@@ -29,8 +29,12 @@ class SendTestNotificationRequestDto(BaseModel):
     """ # noqa: E501
     key: Optional[StrictStr] = Field(default=None, description="The template notification key.")
     medium: Optional[StrictStr] = Field(default=None, description="The notification medium. Has to be one of the following enum values.")
+    locale: Optional[StrictStr] = Field(default=None, description="The locale for the message text.")
     context: Optional[Dict[str, Any]] = Field(default=None, description="A Json object that denotes the context specific to the template.")
-    __properties: ClassVar[List[str]] = ["key", "medium", "context"]
+    recipient_email_list: Optional[List[StrictStr]] = Field(default=None, description="A list of override recipient email addresses for the test notification.", alias="recipientEmailList")
+    carbon_copy: Optional[List[StrictStr]] = Field(default=None, description="A list of CC email addresses for the test notification.", alias="carbonCopy")
+    blind_carbon_copy: Optional[List[StrictStr]] = Field(default=None, description="A list of BCC email addresses for the test notification.", alias="blindCarbonCopy")
+    __properties: ClassVar[List[str]] = ["key", "medium", "locale", "context", "recipientEmailList", "carbonCopy", "blindCarbonCopy"]
 
     @field_validator('medium')
     def medium_validate_enum(cls, value):
@@ -95,7 +99,11 @@ class SendTestNotificationRequestDto(BaseModel):
         _obj = cls.model_validate({
             "key": obj.get("key"),
             "medium": obj.get("medium"),
-            "context": obj.get("context")
+            "locale": obj.get("locale"),
+            "context": obj.get("context"),
+            "recipientEmailList": obj.get("recipientEmailList"),
+            "carbonCopy": obj.get("carbonCopy"),
+            "blindCarbonCopy": obj.get("blindCarbonCopy")
         })
         return _obj
 

@@ -846,6 +846,8 @@ from sailpoint.beta.models.task_status_message_parameters_inner import TaskStatu
 from sailpoint.beta.models.template_bulk_delete_dto import TemplateBulkDeleteDto
 from sailpoint.beta.models.template_dto import TemplateDto
 from sailpoint.beta.models.template_dto_default import TemplateDtoDefault
+from sailpoint.beta.models.template_dto_slack_template import TemplateDtoSlackTemplate
+from sailpoint.beta.models.template_dto_teams_template import TemplateDtoTeamsTemplate
 from sailpoint.beta.models.template_slack import TemplateSlack
 from sailpoint.beta.models.template_slack_auto_approval_data import TemplateSlackAutoApprovalData
 from sailpoint.beta.models.template_slack_custom_fields import TemplateSlackCustomFields

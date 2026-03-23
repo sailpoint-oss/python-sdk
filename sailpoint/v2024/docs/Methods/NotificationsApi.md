@@ -166,9 +166,55 @@ configuration.experimental = True
 with ApiClient(configuration) as api_client:
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
     template_dto = '''{
-          "slackTemplate" : "slackTemplate",
+          "slackTemplate" : {
+            "isSubscription" : false,
+            "attachments" : "[]",
+            "blocks" : "blocks",
+            "requestId" : "requestId",
+            "autoApprovalData" : {
+              "itemId" : "itemId",
+              "itemType" : "itemType",
+              "autoApprovalMessageJSON" : "autoApprovalMessageJSON",
+              "isAutoApproved" : "isAutoApproved",
+              "autoApprovalTitle" : "autoApprovalTitle"
+            },
+            "customFields" : {
+              "requestType" : "requestType",
+              "campaignId" : "campaignId",
+              "campaignStatus" : "campaignStatus",
+              "containsDeny" : "containsDeny"
+            },
+            "requestedById" : "requestedById",
+            "approvalId" : "approvalId",
+            "text" : "You have a new approval request",
+            "notificationType" : "notificationType",
+            "key" : "key"
+          },
           "footer" : "footer",
-          "teamsTemplate" : "teamsTemplate",
+          "teamsTemplate" : {
+            "isSubscription" : false,
+            "requestId" : "requestId",
+            "autoApprovalData" : {
+              "itemId" : "itemId",
+              "itemType" : "itemType",
+              "autoApprovalMessageJSON" : "autoApprovalMessageJSON",
+              "isAutoApproved" : "isAutoApproved",
+              "autoApprovalTitle" : "autoApprovalTitle"
+            },
+            "customFields" : {
+              "requestType" : "requestType",
+              "campaignId" : "campaignId",
+              "campaignStatus" : "campaignStatus",
+              "containsDeny" : "containsDeny"
+            },
+            "requestedById" : "requestedById",
+            "approvalId" : "approvalId",
+            "text" : "You have a new approval request",
+            "notificationType" : "notificationType",
+            "title" : "title",
+            "key" : "key",
+            "messageJSON" : "messageJSON"
+          },
           "subject" : "You have $numberOfPendingTasks $taskTasks to complete in ${__global.productName}.",
           "created" : "2020-01-01T00:00:00Z",
           "description" : "Daily digest - sent if number of outstanding tasks for task owner > 0",
@@ -256,8 +302,9 @@ with ApiClient(configuration) as api_client:
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
     email_status_dto = '''{
           "isVerifiedByDomain" : false,
-          "verificationStatus" : "PENDING",
+          "verificationStatus" : "SUCCESS",
           "id" : "id",
+          "region" : "us-east-1",
           "email" : "sender@example.com"
         }''' # EmailStatusDto | 
 
@@ -290,7 +337,7 @@ This API is currently in an experimental state. The API is subject to change bas
  ```
 :::
 Bulk delete notification templates
-This lets you bulk delete templates that you previously created for your site. Since this is a beta feature, please contact support to enable usage.
+This lets you bulk delete templates that you previously created for your site.
 
 [API Spec](https://developer.sailpoint.com/docs/api/v2024/delete-notification-templates-in-bulk)
 
@@ -509,7 +556,7 @@ Retrieve MAIL FROM attributes for a given AWS SES identity.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
-  Query | id | **str** | True  | Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status
+Path   | identity | **str** | True  | Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status
    | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
@@ -541,15 +588,15 @@ configuration = Configuration()
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    id = 'bobsmith@sailpoint.com' # str | Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status # str | Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status
+    identity = 'bobsmith@sailpoint.com' # str | Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status # str | Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
         # Get mail from attributes
         
-        results = NotificationsApi(api_client).get_mail_from_attributes(id=id, x_sail_point_experimental=x_sail_point_experimental)
+        results = NotificationsApi(api_client).get_mail_from_attributes(identity=identity, x_sail_point_experimental=x_sail_point_experimental)
         # Below is a request that includes all optional parameters
-        # results = NotificationsApi(api_client).get_mail_from_attributes(id, x_sail_point_experimental)
+        # results = NotificationsApi(api_client).get_mail_from_attributes(identity, x_sail_point_experimental)
         print("The response of NotificationsApi->get_mail_from_attributes:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -1143,8 +1190,15 @@ configuration.experimental = True
 with ApiClient(configuration) as api_client:
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
     send_test_notification_request_dto = '''{
-          "context" : "{}",
+          "carbonCopy" : [ "cc@example.com" ],
+          "context" : {
+            "numberOfPendingTasks" : "4",
+            "taskTasks" : "tasks"
+          },
+          "blindCarbonCopy" : [ "bcc@example.com" ],
           "medium" : "EMAIL",
+          "locale" : "en",
+          "recipientEmailList" : [ "test@example.com" ],
           "key" : "cloud_manual_work_item_summary"
         }''' # SendTestNotificationRequestDto | 
 

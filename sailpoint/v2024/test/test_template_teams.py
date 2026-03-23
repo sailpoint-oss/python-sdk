@@ -37,7 +37,7 @@ class TestTemplateTeams(unittest.TestCase):
             return TemplateTeams(
                 key = '',
                 title = '',
-                text = '',
+                text = 'You have a new approval request',
                 message_json = '',
                 is_subscription = True,
                 approval_id = '',

@@ -16,15 +16,15 @@ tags: ['SDK', 'Software Development Kit', 'TemplateTeams', 'V2025TemplateTeams']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**key** | **str** |  | [optional] 
-**title** | **str** |  | [optional] 
-**text** | **str** |  | [optional] 
-**message_json** | **str** |  | [optional] 
-**is_subscription** | **bool** |  | [optional] 
-**approval_id** | **str** |  | [optional] 
-**request_id** | **str** |  | [optional] 
-**requested_by_id** | **str** |  | [optional] 
-**notification_type** | **str** |  | [optional] 
+**key** | **str** | The template key | [optional] 
+**title** | **str** | The title of the Teams message | [optional] 
+**text** | **str** | The main text content of the Teams message | [optional] 
+**message_json** | **str** | JSON string of the Teams adaptive card | [optional] 
+**is_subscription** | **bool** | Whether this is a subscription notification | [optional] [default to False]
+**approval_id** | **str** | The approval request ID | [optional] 
+**request_id** | **str** | The request ID | [optional] 
+**requested_by_id** | **str** | The ID of the user who made the request | [optional] 
+**notification_type** | **str** | The type of notification | [optional] 
 **auto_approval_data** | [**TemplateSlackAutoApprovalData**](template-slack-auto-approval-data) |  | [optional] 
 **custom_fields** | [**TemplateSlackCustomFields**](template-slack-custom-fields) |  | [optional] 
 }
@@ -37,7 +37,7 @@ from sailpoint.v2025.models.template_teams import TemplateTeams
 template_teams = TemplateTeams(
 key='',
 title='',
-text='',
+text='You have a new approval request',
 message_json='',
 is_subscription=True,
 approval_id='',

@@ -49,8 +49,8 @@ class TestTemplateDto(unittest.TestCase):
                 id = 'c17bea3a-574d-453c-9e04-4365fbf5af0b',
                 created = '2020-01-01T00:00Z',
                 modified = '2020-01-01T00:00Z',
-                slack_template = '',
-                teams_template = ''
+                slack_template = None,
+                teams_template = None
             )
         else:
             return TemplateDto(

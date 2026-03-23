@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,10 +29,11 @@ class DomainStatusDto(BaseModel):
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="New UUID associated with domain to be verified")
     domain: Optional[StrictStr] = Field(default=None, description="A domain address")
-    dkim_enabled: Optional[Dict[str, Any]] = Field(default=None, description="DKIM is enabled for this domain", alias="dkimEnabled")
+    dkim_enabled: Optional[StrictBool] = Field(default=False, description="DKIM is enabled for this domain", alias="dkimEnabled")
     dkim_tokens: Optional[List[StrictStr]] = Field(default=None, description="DKIM tokens required for authentication", alias="dkimTokens")
     dkim_verification_status: Optional[StrictStr] = Field(default=None, description="Status of DKIM authentication", alias="dkimVerificationStatus")
-    __properties: ClassVar[List[str]] = ["id", "domain", "dkimEnabled", "dkimTokens", "dkimVerificationStatus"]
+    region: Optional[StrictStr] = Field(default=None, description="The AWS SES region the domain is associated with")
+    __properties: ClassVar[List[str]] = ["id", "domain", "dkimEnabled", "dkimTokens", "dkimVerificationStatus", "region"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,9 +88,10 @@ class DomainStatusDto(BaseModel):
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "domain": obj.get("domain"),
-            "dkimEnabled": obj.get("dkimEnabled"),
+            "dkimEnabled": obj.get("dkimEnabled") if obj.get("dkimEnabled") is not None else False,
             "dkimTokens": obj.get("dkimTokens"),
-            "dkimVerificationStatus": obj.get("dkimVerificationStatus")
+            "dkimVerificationStatus": obj.get("dkimVerificationStatus"),
+            "region": obj.get("region")
         })
         return _obj
 

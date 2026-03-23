@@ -16,10 +16,11 @@ tags: ['SDK', 'Software Development Kit', 'EmailStatusDto', 'BetaEmailStatusDto'
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] 
-**email** | **str** |  | [optional] 
-**is_verified_by_domain** | **bool** |  | [optional] 
-**verification_status** |  **Enum** [  'PENDING',    'SUCCESS',    'FAILED' ] |  | [optional] 
+**id** | **str** | Unique identifier for the verified sender address | [optional] 
+**email** | **str** | The verified sender email address | [optional] 
+**is_verified_by_domain** | **bool** | Whether the sender address is verified by domain | [optional] [default to False]
+**verification_status** |  **Enum** [  'PENDING',    'SUCCESS',    'FAILED',    'NA' ] | The verification status of the sender address | [optional] 
+**region** | **str** | The AWS SES region the sender address is associated with | [optional] 
 }
 
 ## Example
@@ -31,7 +32,8 @@ email_status_dto = EmailStatusDto(
 id='',
 email='sender@example.com',
 is_verified_by_domain=False,
-verification_status='PENDING'
+verification_status='SUCCESS',
+region='us-east-1'
 )
 
 ```

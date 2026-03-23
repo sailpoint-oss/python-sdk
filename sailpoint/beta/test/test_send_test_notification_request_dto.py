@@ -37,7 +37,11 @@ class TestSendTestNotificationRequestDto(unittest.TestCase):
             return SendTestNotificationRequestDto(
                 key = 'cloud_manual_work_item_summary',
                 medium = 'EMAIL',
-                context = None
+                locale = 'en',
+                context = {numberOfPendingTasks=4, taskTasks=tasks},
+                recipient_email_list = [test@example.com],
+                carbon_copy = [cc@example.com],
+                blind_carbon_copy = [bcc@example.com]
             )
         else:
             return SendTestNotificationRequestDto(

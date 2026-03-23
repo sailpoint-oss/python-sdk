@@ -29,15 +29,15 @@ class TemplateTeams(BaseModel):
     """
     TemplateTeams
     """ # noqa: E501
-    key: Optional[StrictStr] = None
-    title: Optional[StrictStr] = None
-    text: Optional[StrictStr] = None
-    message_json: Optional[StrictStr] = Field(default=None, alias="messageJSON")
-    is_subscription: Optional[StrictBool] = Field(default=None, alias="isSubscription")
-    approval_id: Optional[StrictStr] = Field(default=None, alias="approvalId")
-    request_id: Optional[StrictStr] = Field(default=None, alias="requestId")
-    requested_by_id: Optional[StrictStr] = Field(default=None, alias="requestedById")
-    notification_type: Optional[StrictStr] = Field(default=None, alias="notificationType")
+    key: Optional[StrictStr] = Field(default=None, description="The template key")
+    title: Optional[StrictStr] = Field(default=None, description="The title of the Teams message")
+    text: Optional[StrictStr] = Field(default=None, description="The main text content of the Teams message")
+    message_json: Optional[StrictStr] = Field(default=None, description="JSON string of the Teams adaptive card", alias="messageJSON")
+    is_subscription: Optional[StrictBool] = Field(default=False, description="Whether this is a subscription notification", alias="isSubscription")
+    approval_id: Optional[StrictStr] = Field(default=None, description="The approval request ID", alias="approvalId")
+    request_id: Optional[StrictStr] = Field(default=None, description="The request ID", alias="requestId")
+    requested_by_id: Optional[StrictStr] = Field(default=None, description="The ID of the user who made the request", alias="requestedById")
+    notification_type: Optional[StrictStr] = Field(default=None, description="The type of notification", alias="notificationType")
     auto_approval_data: Optional[TemplateSlackAutoApprovalData] = Field(default=None, alias="autoApprovalData")
     custom_fields: Optional[TemplateSlackCustomFields] = Field(default=None, alias="customFields")
     __properties: ClassVar[List[str]] = ["key", "title", "text", "messageJSON", "isSubscription", "approvalId", "requestId", "requestedById", "notificationType", "autoApprovalData", "customFields"]
@@ -153,7 +153,7 @@ class TemplateTeams(BaseModel):
             "title": obj.get("title"),
             "text": obj.get("text"),
             "messageJSON": obj.get("messageJSON"),
-            "isSubscription": obj.get("isSubscription"),
+            "isSubscription": obj.get("isSubscription") if obj.get("isSubscription") is not None else False,
             "approvalId": obj.get("approvalId"),
             "requestId": obj.get("requestId"),
             "requestedById": obj.get("requestedById"),

@@ -39,7 +39,8 @@ class TestDkimAttributes(unittest.TestCase):
                 address = 'BobSmith@sailpoint.com',
                 dkim_enabled = True,
                 dkim_tokens = [uq1m3jjk25ckd3whl4n7y46c56r5l6aq, u7pm38jky9ckdawhlsn7y4dcj6f5lpgq, uhpm3jjkjjckdkwhlqn7yw6cjer5tpay],
-                dkim_verification_status = 'Success'
+                dkim_verification_status = 'SUCCESS',
+                region = 'us-east-1'
             )
         else:
             return DkimAttributes(

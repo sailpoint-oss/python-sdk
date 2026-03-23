@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **key** | **str** | The key of the default template | [optional] 
 **name** | **str** | The name of the default template | [optional] 
-**medium** |  **Enum** [  'EMAIL',    'PHONE',    'SMS',    'SLACK',    'TEAMS' ] | The message medium. More mediums may be added in the future. | [optional] 
+**medium** |  **Enum** [  'EMAIL',    'SLACK',    'TEAMS' ] | The message medium. More mediums may be added in the future. | [optional] 
 **locale** | **str** | The locale for the message text, a BCP 47 language tag. | [optional] 
 **subject** | **str** | The subject of the default template | [optional] 
 **header** | **str** | The header value is now located within the body field. If included with non-null values, will result in a 400. | [optional] 
@@ -50,9 +50,9 @@ reply_to='$__global.emailFromAddress',
 description='Daily digest - sent if number of outstanding tasks for task owner > 0',
 slack_template=sailpoint.v2024.models.template_slack.Template Slack(
                     key = '', 
-                    text = '', 
+                    text = 'You have a new approval request', 
                     blocks = '', 
-                    attachments = '', 
+                    attachments = '[]', 
                     notification_type = '', 
                     approval_id = '', 
                     request_id = '', 
@@ -72,7 +72,7 @@ slack_template=sailpoint.v2024.models.template_slack.Template Slack(
 teams_template=sailpoint.v2024.models.template_teams.Template Teams(
                     key = '', 
                     title = '', 
-                    text = '', 
+                    text = 'You have a new approval request', 
                     message_json = '', 
                     is_subscription = True, 
                     approval_id = '', 
