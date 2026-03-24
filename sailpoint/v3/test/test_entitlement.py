@@ -48,6 +48,12 @@ class TestEntitlement(unittest.TestCase):
                     id = '2c9180827ca885d7017ca8ce28a000eb', 
                     type = 'IDENTITY', 
                     name = 'john.doe', ),
+                additional_owners = [
+                    sailpoint.v3.models.additional_owner_ref.AdditionalOwnerRef(
+                        type = 'IDENTITY', 
+                        id = '2c9180a46faadee4016fb4e018c20639', 
+                        name = 'support', )
+                    ],
                 manually_updated_fields = {DISPLAY_NAME=true, DESCRIPTION=true},
                 access_model_metadata = sailpoint.v3.models.entitlement_access_model_metadata.Entitlement_accessModelMetadata(
                     attributes = [

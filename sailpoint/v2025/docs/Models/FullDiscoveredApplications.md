@@ -42,7 +42,10 @@ Name | Type | Description | Notes
 **business_unit** | **str** | The business unit associated with the application. | [optional] 
 **install_type** | **str** | The installation type of the application. | [optional] 
 **environment** | **str** | The environment in which the application operates. | [optional] 
-**risk_score** | **str** | The risk score of the application. | [optional] 
+**risk_score** | **int** | The risk score of the application ranging from 0-100, 100 being highest risk. | [optional] 
+**is_business** | **bool** | Indicates whether the application is used for business purposes. | [optional] [default to True]
+**total_signins_count** | **int** | The total number of sign-in accounts for the application. | [optional] 
+**risk_level** |  **Enum** [  'High',    'Medium',    'Low' ] | The risk level of the application. | [optional] 
 **is_privileged** | **bool** | Indicates whether the application has privileged access. | [optional] [default to False]
 **warranty_expiration** | **str** | The warranty expiration date of the application. | [optional] 
 **attributes** | **object** | Additional attributes of the application useful for visibility of governance posture. | [optional] 
@@ -79,7 +82,10 @@ data_classification='Restricted',
 business_unit='Finance',
 install_type='On Premise',
 environment='Production',
-risk_score='ANY',
+risk_score=1,
+is_business=False,
+total_signins_count=1,
+risk_level='Low',
 is_privileged=False,
 warranty_expiration='2023-09-25T14:07:27.000+0000',
 attributes={features=[IMPORT_PROFILE_UPDATES, IMPORT_USER_SCHEMA, IMPORT_NEW_USERS], identityStack=NOT_SHARED, selfService=false, signOnMode=SAML_2_0}

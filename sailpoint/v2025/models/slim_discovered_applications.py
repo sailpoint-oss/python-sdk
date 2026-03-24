@@ -19,7 +19,7 @@ import json
 import warnings
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -52,11 +52,24 @@ class SlimDiscoveredApplications(BaseModel):
     business_unit: Optional[StrictStr] = Field(default=None, description="The business unit associated with the application.", alias="businessUnit")
     install_type: Optional[StrictStr] = Field(default=None, description="The installation type of the application.", alias="installType")
     environment: Optional[StrictStr] = Field(default=None, description="The environment in which the application operates.")
-    risk_score: Optional[StrictStr] = Field(default=None, description="The risk score of the application.", alias="riskScore")
+    risk_score: Optional[StrictInt] = Field(default=None, description="The risk score of the application ranging from 0-100, 100 being highest risk.", alias="riskScore")
+    is_business: Optional[StrictBool] = Field(default=True, description="Indicates whether the application is used for business purposes.", alias="isBusiness")
+    total_signins_count: Optional[StrictInt] = Field(default=None, description="The total number of sign-in accounts for the application.", alias="totalSigninsCount")
+    risk_level: Optional[StrictStr] = Field(default=None, description="The risk level of the application.", alias="riskLevel")
     is_privileged: Optional[StrictBool] = Field(default=False, description="Indicates whether the application has privileged access.", alias="isPrivileged")
     warranty_expiration: Optional[StrictStr] = Field(default=None, description="The warranty expiration date of the application.", alias="warrantyExpiration")
     attributes: Optional[Dict[str, Any]] = Field(default=None, description="Additional attributes of the application useful for visibility of governance posture.")
-    __properties: ClassVar[List[str]] = ["id", "name", "discoverySource", "discoveredVendor", "description", "recommendedConnectors", "discoveredAt", "createdAt", "status", "operationalStatus", "discoverySourceCategory", "licenseCount", "isSanctioned", "logo", "appUrl", "groups", "usersCount", "applicationOwner", "itApplicationOwner", "businessCriticality", "dataClassification", "businessUnit", "installType", "environment", "riskScore", "isPrivileged", "warrantyExpiration", "attributes"]
+    __properties: ClassVar[List[str]] = ["id", "name", "discoverySource", "discoveredVendor", "description", "recommendedConnectors", "discoveredAt", "createdAt", "status", "operationalStatus", "discoverySourceCategory", "licenseCount", "isSanctioned", "logo", "appUrl", "groups", "usersCount", "applicationOwner", "itApplicationOwner", "businessCriticality", "dataClassification", "businessUnit", "installType", "environment", "riskScore", "isBusiness", "totalSigninsCount", "riskLevel", "isPrivileged", "warrantyExpiration", "attributes"]
+
+    @field_validator('risk_level')
+    def risk_level_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['High', 'Medium', 'Low']):
+            warnings.warn(f"must be one of enum values ('High', 'Medium', 'Low') unknown value: {value}")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -134,6 +147,9 @@ class SlimDiscoveredApplications(BaseModel):
             "installType": obj.get("installType"),
             "environment": obj.get("environment"),
             "riskScore": obj.get("riskScore"),
+            "isBusiness": obj.get("isBusiness") if obj.get("isBusiness") is not None else True,
+            "totalSigninsCount": obj.get("totalSigninsCount"),
+            "riskLevel": obj.get("riskLevel"),
             "isPrivileged": obj.get("isPrivileged") if obj.get("isPrivileged") is not None else False,
             "warrantyExpiration": obj.get("warrantyExpiration"),
             "attributes": obj.get("attributes")

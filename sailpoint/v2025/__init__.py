@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.35"
+__version__ = "1.4.36"
 
 # import apis into sdk package
 from sailpoint.v2025.api.access_model_metadata_api import AccessModelMetadataApi
@@ -1310,6 +1310,8 @@ from sailpoint.v2025.models.sp_config_rule_value import SpConfigRuleValue
 from sailpoint.v2025.models.sp_config_rules import SpConfigRules
 from sailpoint.v2025.models.sp_details import SpDetails
 from sailpoint.v2025.models.standard_level import StandardLevel
+from sailpoint.v2025.models.start_application_discovery403_response import StartApplicationDiscovery403Response
+from sailpoint.v2025.models.start_application_discovery403_response_one_of import StartApplicationDiscovery403ResponseOneOf
 from sailpoint.v2025.models.start_invocation_input import StartInvocationInput
 from sailpoint.v2025.models.start_launcher200_response import StartLauncher200Response
 from sailpoint.v2025.models.status_response import StatusResponse

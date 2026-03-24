@@ -18,31 +18,17 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class EmailStatusDto(BaseModel):
+class StartApplicationDiscovery403ResponseOneOf(BaseModel):
     """
-    EmailStatusDto
+    StartApplicationDiscovery403ResponseOneOf
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="Unique identifier for the verified sender address")
-    email: Optional[StrictStr] = Field(default=None, description="The verified sender email address")
-    is_verified_by_domain: Optional[StrictBool] = Field(default=False, description="Whether the sender address is verified by domain", alias="isVerifiedByDomain")
-    verification_status: Optional[StrictStr] = Field(default=None, description="The verification status of the sender address", alias="verificationStatus")
-    region: Optional[StrictStr] = Field(default=None, description="The AWS SES region the sender address is associated with")
-    __properties: ClassVar[List[str]] = ["id", "email", "isVerifiedByDomain", "verificationStatus", "region"]
-
-    @field_validator('verification_status')
-    def verification_status_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['PENDING', 'SUCCESS', 'FAILED', 'NA']):
-            warnings.warn(f"must be one of enum values ('PENDING', 'SUCCESS', 'FAILED', 'NA') unknown value: {value}")
-        return value
+    error: StrictStr = Field(description="Error message when quota is exceeded")
+    __properties: ClassVar[List[str]] = ["error"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -62,7 +48,7 @@ class EmailStatusDto(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of EmailStatusDto from a JSON string"""
+        """Create an instance of StartApplicationDiscovery403ResponseOneOf from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -83,21 +69,11 @@ class EmailStatusDto(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if id (nullable) is None
-        # and model_fields_set contains the field
-        if self.id is None and "id" in self.model_fields_set:
-            _dict['id'] = None
-
-        # set to None if region (nullable) is None
-        # and model_fields_set contains the field
-        if self.region is None and "region" in self.model_fields_set:
-            _dict['region'] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of EmailStatusDto from a dict"""
+        """Create an instance of StartApplicationDiscovery403ResponseOneOf from a dict"""
         if obj is None:
             return None
 
@@ -105,11 +81,7 @@ class EmailStatusDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "email": obj.get("email"),
-            "isVerifiedByDomain": obj.get("isVerifiedByDomain") if obj.get("isVerifiedByDomain") is not None else False,
-            "verificationStatus": obj.get("verificationStatus"),
-            "region": obj.get("region")
+            "error": obj.get("error")
         })
         return _obj
 

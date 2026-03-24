@@ -52,6 +52,12 @@ class TestEntitlement(unittest.TestCase):
                     type = 'SOURCE', 
                     name = 'ODS-AD-Source', ),
                 owner = None,
+                additional_owners = [
+                    sailpoint.beta.models.additional_owner_ref.AdditionalOwnerRef(
+                        type = 'IDENTITY', 
+                        id = '2c9180a46faadee4016fb4e018c20639', 
+                        name = 'support', )
+                    ],
                 direct_permissions = [
                     sailpoint.beta.models.permission_dto.Permission DTO(
                         rights = [

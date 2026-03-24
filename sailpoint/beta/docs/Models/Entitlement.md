@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **attributes** | **map[string]object** | A map of free-form key-value pairs from the source system | [optional] 
 **source** | [**EntitlementSource**](entitlement-source) |  | [optional] 
 **owner** | [**EntitlementOwner**](entitlement-owner) |  | [optional] 
+**additional_owners** | [**[]AdditionalOwnerRef**](additional-owner-ref) | List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP). | [optional] 
 **direct_permissions** | [**[]PermissionDto**](permission-dto) |  | [optional] 
 **segments** | **[]str** | List of IDs of segments, if any, to which this Entitlement is assigned. | [optional] 
 **manually_updated_fields** | [**EntitlementManuallyUpdatedFields**](entitlement-manually-updated-fields) |  | [optional] 
@@ -59,6 +60,12 @@ source=sailpoint.beta.models.entitlement_source.Entitlement_source(
                     type = 'SOURCE', 
                     name = 'ODS-AD-Source', ),
 owner=,
+additional_owners=[
+                    sailpoint.beta.models.additional_owner_ref.AdditionalOwnerRef(
+                        type = 'IDENTITY', 
+                        id = '2c9180a46faadee4016fb4e018c20639', 
+                        name = 'support', )
+                    ],
 direct_permissions=[
                     sailpoint.beta.models.permission_dto.Permission DTO(
                         rights = [

@@ -19,7 +19,7 @@ import json
 import warnings
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -37,7 +37,21 @@ class SlimDiscoveredApplications(BaseModel):
     discovered_at: Optional[datetime] = Field(default=None, description="The timestamp when the application was last received via an entitlement aggregation invocation  or a manual csv upload, in ISO 8601 format.", alias="discoveredAt")
     created_at: Optional[datetime] = Field(default=None, description="The timestamp when the application was first discovered, in ISO 8601 format.", alias="createdAt")
     status: Optional[StrictStr] = Field(default=None, description="The status of an application within the discovery source.  By default this field is set to \"ACTIVE\" when the application is discovered.  If an application has been deleted from within the discovery source, the status will be set to \"INACTIVE\".")
-    __properties: ClassVar[List[str]] = ["id", "name", "discoverySource", "discoveredVendor", "description", "recommendedConnectors", "discoveredAt", "createdAt", "status"]
+    risk_score: Optional[StrictInt] = Field(default=None, description="The risk score of the application ranging from 0-100, 100 being highest risk.", alias="riskScore")
+    is_business: Optional[StrictBool] = Field(default=True, description="Indicates whether the application is used for business purposes.", alias="isBusiness")
+    total_signins_count: Optional[StrictInt] = Field(default=None, description="The total number of sign-in accounts for the application.", alias="totalSigninsCount")
+    risk_level: Optional[StrictStr] = Field(default=None, description="The risk level of the application.", alias="riskLevel")
+    __properties: ClassVar[List[str]] = ["id", "name", "discoverySource", "discoveredVendor", "description", "recommendedConnectors", "discoveredAt", "createdAt", "status", "riskScore", "isBusiness", "totalSigninsCount", "riskLevel"]
+
+    @field_validator('risk_level')
+    def risk_level_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['High', 'Medium', 'Low']):
+            warnings.warn(f"must be one of enum values ('High', 'Medium', 'Low') unknown value: {value}")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -98,7 +112,11 @@ class SlimDiscoveredApplications(BaseModel):
             "recommendedConnectors": obj.get("recommendedConnectors"),
             "discoveredAt": obj.get("discoveredAt"),
             "createdAt": obj.get("createdAt"),
-            "status": obj.get("status")
+            "status": obj.get("status"),
+            "riskScore": obj.get("riskScore"),
+            "isBusiness": obj.get("isBusiness") if obj.get("isBusiness") is not None else True,
+            "totalSigninsCount": obj.get("totalSigninsCount"),
+            "riskLevel": obj.get("riskLevel")
         })
         return _obj
 

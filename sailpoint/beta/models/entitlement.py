@@ -21,6 +21,7 @@ import warnings
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.beta.models.additional_owner_ref import AdditionalOwnerRef
 from sailpoint.beta.models.entitlement_access_model_metadata import EntitlementAccessModelMetadata
 from sailpoint.beta.models.entitlement_manually_updated_fields import EntitlementManuallyUpdatedFields
 from sailpoint.beta.models.entitlement_owner import EntitlementOwner
@@ -47,11 +48,12 @@ class Entitlement(BaseModel):
     attributes: Optional[Dict[str, Any]] = Field(default=None, description="A map of free-form key-value pairs from the source system")
     source: Optional[EntitlementSource] = None
     owner: Optional[EntitlementOwner] = None
+    additional_owners: Optional[List[AdditionalOwnerRef]] = Field(default=None, description="List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).", alias="additionalOwners")
     direct_permissions: Optional[List[PermissionDto]] = Field(default=None, alias="directPermissions")
     segments: Optional[List[StrictStr]] = Field(default=None, description="List of IDs of segments, if any, to which this Entitlement is assigned.")
     manually_updated_fields: Optional[EntitlementManuallyUpdatedFields] = Field(default=None, alias="manuallyUpdatedFields")
     access_model_metadata: Optional[EntitlementAccessModelMetadata] = Field(default=None, alias="accessModelMetadata")
-    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "attribute", "value", "sourceSchemaObjectType", "privileged", "cloudGoverned", "description", "requestable", "attributes", "source", "owner", "directPermissions", "segments", "manuallyUpdatedFields", "accessModelMetadata"]
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "attribute", "value", "sourceSchemaObjectType", "privileged", "cloudGoverned", "description", "requestable", "attributes", "source", "owner", "additionalOwners", "directPermissions", "segments", "manuallyUpdatedFields", "accessModelMetadata"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -98,6 +100,13 @@ class Entitlement(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in additional_owners (list)
+        _items = []
+        if self.additional_owners:
+            for _item_additional_owners in self.additional_owners:
+                if _item_additional_owners:
+                    _items.append(_item_additional_owners.to_dict())
+            _dict['additionalOwners'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in direct_permissions (list)
         _items = []
         if self.direct_permissions:
@@ -120,6 +129,11 @@ class Entitlement(BaseModel):
         # and model_fields_set contains the field
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
+
+        # set to None if additional_owners (nullable) is None
+        # and model_fields_set contains the field
+        if self.additional_owners is None and "additional_owners" in self.model_fields_set:
+            _dict['additionalOwners'] = None
 
         # set to None if segments (nullable) is None
         # and model_fields_set contains the field
@@ -152,6 +166,7 @@ class Entitlement(BaseModel):
             "attributes": obj.get("attributes"),
             "source": EntitlementSource.from_dict(obj["source"]) if obj.get("source") is not None else None,
             "owner": EntitlementOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "additionalOwners": [AdditionalOwnerRef.from_dict(_item) for _item in obj["additionalOwners"]] if obj.get("additionalOwners") is not None else None,
             "directPermissions": [PermissionDto.from_dict(_item) for _item in obj["directPermissions"]] if obj.get("directPermissions") is not None else None,
             "segments": obj.get("segments"),
             "manuallyUpdatedFields": EntitlementManuallyUpdatedFields.from_dict(obj["manuallyUpdatedFields"]) if obj.get("manuallyUpdatedFields") is not None else None,

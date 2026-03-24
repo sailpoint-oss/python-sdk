@@ -43,7 +43,11 @@ class TestSlimDiscoveredApplications(unittest.TestCase):
                 recommended_connectors = [ConnectorA, ConnectorB],
                 discovered_at = '2023-01-01T12:00Z',
                 created_at = '2023-01-01T12:00Z',
-                status = 'ACTIVE'
+                status = 'ACTIVE',
+                risk_score = 1,
+                is_business = False,
+                total_signins_count = 1,
+                risk_level = 'Low'
             )
         else:
             return SlimDiscoveredApplications(

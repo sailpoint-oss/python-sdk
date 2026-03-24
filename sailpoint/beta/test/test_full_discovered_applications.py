@@ -44,7 +44,11 @@ class TestFullDiscoveredApplications(unittest.TestCase):
                 discovered_at = '2023-01-01T12:00Z',
                 created_at = '2023-01-01T12:00Z',
                 status = 'ACTIVE',
-                associated_sources = [e0cc5d7d-bf7f-4f81-b2af-8885b09d9923, a0303682-5e4a-44f7-bdc2-6ce6112549c1]
+                associated_sources = [e0cc5d7d-bf7f-4f81-b2af-8885b09d9923, a0303682-5e4a-44f7-bdc2-6ce6112549c1],
+                risk_score = 1,
+                is_business = False,
+                total_signins_count = 1,
+                risk_level = 'Low'
             )
         else:
             return FullDiscoveredApplications(
