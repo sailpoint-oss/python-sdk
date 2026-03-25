@@ -35,7 +35,7 @@ class TestAccountActionRequestDtoRequester(unittest.TestCase):
         model = AccountActionRequestDtoRequester()
         if include_optional:
             return AccountActionRequestDtoRequester(
-                type = None,
+                type = 'IDENTITY',
                 id = '2c91808568c529c60168cca6f90c1313',
                 name = 'William Wilson'
             )

@@ -7330,10 +7330,8 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           workgroup_dto = '''{
           "owner" : {
             "emailAddress" : "support@sailpoint.com",
@@ -7353,9 +7351,9 @@
           try:
               # Create a new governance group.
               new_workgroup_dto = WorkgroupDto.from_json(workgroup_dto)
-              results = GovernanceGroupsApi(api_client).create_workgroup(x_sail_point_experimental=x_sail_point_experimental, workgroup_dto=new_workgroup_dto)
+              results = GovernanceGroupsApi(api_client).create_workgroup(workgroup_dto=new_workgroup_dto)
               # Below is a request that includes all optional parameters
-              # results = GovernanceGroupsApi(api_client).create_workgroup(x_sail_point_experimental, new_workgroup_dto)
+              # results = GovernanceGroupsApi(api_client).create_workgroup(new_workgroup_dto)
               print("The response of GovernanceGroupsApi->create_workgroup:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -7371,17 +7369,15 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           id = '2c9180837ca6693d017ca8d097500149' # str | ID of the Governance Group # str | ID of the Governance Group
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           try:
               # Delete a governance group
               
-              GovernanceGroupsApi(api_client).delete_workgroup(id=id, x_sail_point_experimental=x_sail_point_experimental)
+              GovernanceGroupsApi(api_client).delete_workgroup(id=id)
               # Below is a request that includes all optional parameters
-              # GovernanceGroupsApi(api_client).delete_workgroup(id, x_sail_point_experimental)
+              # GovernanceGroupsApi(api_client).delete_workgroup(id)
           except Exception as e:
               print("Exception when calling GovernanceGroupsApi->delete_workgroup: %s\n" % e)
 - path: /workgroups/{workgroupId}/members/bulk-delete
@@ -7397,18 +7393,16 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           workgroup_id = '2c91808a7813090a017814121919ecca' # str | ID of the Governance Group. # str | ID of the Governance Group.
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           identity_preview_response_identity = '''[sailpoint.v2024.IdentityPreviewResponseIdentity()]''' # List[IdentityPreviewResponseIdentity] | List of identities to be removed from  a Governance Group members list.
           try:
               # Remove members from governance group
               new_identity_preview_response_identity = IdentityPreviewResponseIdentity.from_json(identity_preview_response_identity)
-              results = GovernanceGroupsApi(api_client).delete_workgroup_members(workgroup_id=workgroup_id, x_sail_point_experimental=x_sail_point_experimental, identity_preview_response_identity=new_identity_preview_response_identity)
+              results = GovernanceGroupsApi(api_client).delete_workgroup_members(workgroup_id=workgroup_id, identity_preview_response_identity=new_identity_preview_response_identity)
               # Below is a request that includes all optional parameters
-              # results = GovernanceGroupsApi(api_client).delete_workgroup_members(workgroup_id, x_sail_point_experimental, new_identity_preview_response_identity)
+              # results = GovernanceGroupsApi(api_client).delete_workgroup_members(workgroup_id, new_identity_preview_response_identity)
               print("The response of GovernanceGroupsApi->delete_workgroup_members:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))
@@ -7427,19 +7421,17 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           workgroup_bulk_delete_request = '''{
           "ids" : [ "567a697e-885b-495a-afc5-d55e1c23a302", "c7b0f7b2-1e78-4063-b294-a555333dacd2" ]
         }''' # WorkgroupBulkDeleteRequest | 
           try:
               # Delete governance group(s)
               new_workgroup_bulk_delete_request = WorkgroupBulkDeleteRequest.from_json(workgroup_bulk_delete_request)
-              results = GovernanceGroupsApi(api_client).delete_workgroups_in_bulk(x_sail_point_experimental=x_sail_point_experimental, workgroup_bulk_delete_request=new_workgroup_bulk_delete_request)
+              results = GovernanceGroupsApi(api_client).delete_workgroups_in_bulk(workgroup_bulk_delete_request=new_workgroup_bulk_delete_request)
               # Below is a request that includes all optional parameters
-              # results = GovernanceGroupsApi(api_client).delete_workgroups_in_bulk(x_sail_point_experimental, new_workgroup_bulk_delete_request)
+              # results = GovernanceGroupsApi(api_client).delete_workgroups_in_bulk(new_workgroup_bulk_delete_request)
               print("The response of GovernanceGroupsApi->delete_workgroups_in_bulk:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))
@@ -7457,17 +7449,15 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           id = '2c9180837ca6693d017ca8d097500149' # str | ID of the Governance Group # str | ID of the Governance Group
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           try:
               # Get governance group by id
               
-              results = GovernanceGroupsApi(api_client).get_workgroup(id=id, x_sail_point_experimental=x_sail_point_experimental)
+              results = GovernanceGroupsApi(api_client).get_workgroup(id=id)
               # Below is a request that includes all optional parameters
-              # results = GovernanceGroupsApi(api_client).get_workgroup(id, x_sail_point_experimental)
+              # results = GovernanceGroupsApi(api_client).get_workgroup(id)
               print("The response of GovernanceGroupsApi->get_workgroup:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -7484,11 +7474,9 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           workgroup_id = '2c91808a7813090a017814121919ecca' # str | ID of the Governance Group. # str | ID of the Governance Group.
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           limit = 50 # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50) # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
           count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -7496,9 +7484,9 @@
           try:
               # List connections for governance group
               
-              results = GovernanceGroupsApi(api_client).list_connections(workgroup_id=workgroup_id, x_sail_point_experimental=x_sail_point_experimental)
+              results = GovernanceGroupsApi(api_client).list_connections(workgroup_id=workgroup_id)
               # Below is a request that includes all optional parameters
-              # results = GovernanceGroupsApi(api_client).list_connections(workgroup_id, x_sail_point_experimental, offset, limit, count, sorters)
+              # results = GovernanceGroupsApi(api_client).list_connections(workgroup_id, offset, limit, count, sorters)
               print("The response of GovernanceGroupsApi->list_connections:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))
@@ -7516,11 +7504,9 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           workgroup_id = '2c91808a7813090a017814121919ecca' # str | ID of the Governance Group. # str | ID of the Governance Group.
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           limit = 50 # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50) # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
           count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -7528,9 +7514,9 @@
           try:
               # List governance group members
               
-              results = GovernanceGroupsApi(api_client).list_workgroup_members(workgroup_id=workgroup_id, x_sail_point_experimental=x_sail_point_experimental)
+              results = GovernanceGroupsApi(api_client).list_workgroup_members(workgroup_id=workgroup_id)
               # Below is a request that includes all optional parameters
-              # results = GovernanceGroupsApi(api_client).list_workgroup_members(workgroup_id, x_sail_point_experimental, offset, limit, count, sorters)
+              # results = GovernanceGroupsApi(api_client).list_workgroup_members(workgroup_id, offset, limit, count, sorters)
               print("The response of GovernanceGroupsApi->list_workgroup_members:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))
@@ -7548,10 +7534,8 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
           count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -7560,9 +7544,9 @@
           try:
               # List governance groups
               
-              results = GovernanceGroupsApi(api_client).list_workgroups(x_sail_point_experimental=x_sail_point_experimental)
+              results = GovernanceGroupsApi(api_client).list_workgroups()
               # Below is a request that includes all optional parameters
-              # results = GovernanceGroupsApi(api_client).list_workgroups(x_sail_point_experimental, offset, limit, count, filters, sorters)
+              # results = GovernanceGroupsApi(api_client).list_workgroups(offset, limit, count, filters, sorters)
               print("The response of GovernanceGroupsApi->list_workgroups:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))
@@ -7581,18 +7565,16 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           id = '2c9180837ca6693d017ca8d097500149' # str | ID of the Governance Group # str | ID of the Governance Group
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           json_patch_operation = '''[{op=replace, path=/description, value=Governance Group new description.}]''' # List[JsonPatchOperation] |  (optional)
           try:
               # Patch a governance group
               
-              results = GovernanceGroupsApi(api_client).patch_workgroup(id=id, x_sail_point_experimental=x_sail_point_experimental)
+              results = GovernanceGroupsApi(api_client).patch_workgroup(id=id)
               # Below is a request that includes all optional parameters
-              # results = GovernanceGroupsApi(api_client).patch_workgroup(id, x_sail_point_experimental, new_json_patch_operation)
+              # results = GovernanceGroupsApi(api_client).patch_workgroup(id, new_json_patch_operation)
               print("The response of GovernanceGroupsApi->patch_workgroup:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -7610,18 +7592,16 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           workgroup_id = '2c91808a7813090a017814121919ecca' # str | ID of the Governance Group. # str | ID of the Governance Group.
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           identity_preview_response_identity = '''[sailpoint.v2024.IdentityPreviewResponseIdentity()]''' # List[IdentityPreviewResponseIdentity] | List of identities to be added to a Governance Group members list.
           try:
               # Add members to governance group
               new_identity_preview_response_identity = IdentityPreviewResponseIdentity.from_json(identity_preview_response_identity)
-              results = GovernanceGroupsApi(api_client).update_workgroup_members(workgroup_id=workgroup_id, x_sail_point_experimental=x_sail_point_experimental, identity_preview_response_identity=new_identity_preview_response_identity)
+              results = GovernanceGroupsApi(api_client).update_workgroup_members(workgroup_id=workgroup_id, identity_preview_response_identity=new_identity_preview_response_identity)
               # Below is a request that includes all optional parameters
-              # results = GovernanceGroupsApi(api_client).update_workgroup_members(workgroup_id, x_sail_point_experimental, new_identity_preview_response_identity)
+              # results = GovernanceGroupsApi(api_client).update_workgroup_members(workgroup_id, new_identity_preview_response_identity)
               print("The response of GovernanceGroupsApi->update_workgroup_members:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))
@@ -21203,11 +21183,9 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde' # str | The ID of the invocation to complete. # str | The ID of the invocation to complete.
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           complete_invocation = '''{
           "output" : {
             "approved" : false
@@ -21218,9 +21196,9 @@
           try:
               # Complete trigger invocation
               new_complete_invocation = CompleteInvocation.from_json(complete_invocation)
-              TriggersApi(api_client).complete_trigger_invocation(id=id, x_sail_point_experimental=x_sail_point_experimental, complete_invocation=new_complete_invocation)
+              TriggersApi(api_client).complete_trigger_invocation(id=id, complete_invocation=new_complete_invocation)
               # Below is a request that includes all optional parameters
-              # TriggersApi(api_client).complete_trigger_invocation(id, x_sail_point_experimental, new_complete_invocation)
+              # TriggersApi(api_client).complete_trigger_invocation(id, new_complete_invocation)
           except Exception as e:
               print("Exception when calling TriggersApi->complete_trigger_invocation: %s\n" % e)
 - path: /trigger-subscriptions
@@ -21236,10 +21214,8 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           subscription_post_request = '''{
           "filter" : "$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]",
           "httpConfig" : {
@@ -21268,9 +21244,9 @@
           try:
               # Create a subscription
               new_subscription_post_request = SubscriptionPostRequest.from_json(subscription_post_request)
-              results = TriggersApi(api_client).create_subscription(x_sail_point_experimental=x_sail_point_experimental, subscription_post_request=new_subscription_post_request)
+              results = TriggersApi(api_client).create_subscription(subscription_post_request=new_subscription_post_request)
               # Below is a request that includes all optional parameters
-              # results = TriggersApi(api_client).create_subscription(x_sail_point_experimental, new_subscription_post_request)
+              # results = TriggersApi(api_client).create_subscription(new_subscription_post_request)
               print("The response of TriggersApi->create_subscription:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -21286,17 +21262,15 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde' # str | Subscription ID # str | Subscription ID
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           try:
               # Delete a subscription
               
-              TriggersApi(api_client).delete_subscription(id=id, x_sail_point_experimental=x_sail_point_experimental)
+              TriggersApi(api_client).delete_subscription(id=id)
               # Below is a request that includes all optional parameters
-              # TriggersApi(api_client).delete_subscription(id, x_sail_point_experimental)
+              # TriggersApi(api_client).delete_subscription(id)
           except Exception as e:
               print("Exception when calling TriggersApi->delete_subscription: %s\n" % e)
 - path: /trigger-subscriptions
@@ -21311,10 +21285,8 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
           offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -21323,9 +21295,9 @@
           try:
               # List subscriptions
               
-              results = TriggersApi(api_client).list_subscriptions(x_sail_point_experimental=x_sail_point_experimental)
+              results = TriggersApi(api_client).list_subscriptions()
               # Below is a request that includes all optional parameters
-              # results = TriggersApi(api_client).list_subscriptions(x_sail_point_experimental, limit, offset, count, filters, sorters)
+              # results = TriggersApi(api_client).list_subscriptions(limit, offset, count, filters, sorters)
               print("The response of TriggersApi->list_subscriptions:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))
@@ -21343,10 +21315,8 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
           offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -21355,9 +21325,9 @@
           try:
               # List latest invocation statuses
               
-              results = TriggersApi(api_client).list_trigger_invocation_status(x_sail_point_experimental=x_sail_point_experimental)
+              results = TriggersApi(api_client).list_trigger_invocation_status()
               # Below is a request that includes all optional parameters
-              # results = TriggersApi(api_client).list_trigger_invocation_status(x_sail_point_experimental, limit, offset, count, filters, sorters)
+              # results = TriggersApi(api_client).list_trigger_invocation_status(limit, offset, count, filters, sorters)
               print("The response of TriggersApi->list_trigger_invocation_status:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))
@@ -21375,10 +21345,8 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
           offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -21387,9 +21355,9 @@
           try:
               # List triggers
               
-              results = TriggersApi(api_client).list_triggers(x_sail_point_experimental=x_sail_point_experimental)
+              results = TriggersApi(api_client).list_triggers()
               # Below is a request that includes all optional parameters
-              # results = TriggersApi(api_client).list_triggers(x_sail_point_experimental, limit, offset, count, filters, sorters)
+              # results = TriggersApi(api_client).list_triggers(limit, offset, count, filters, sorters)
               print("The response of TriggersApi->list_triggers:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))
@@ -21408,18 +21376,16 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde' # str | ID of the Subscription to patch # str | ID of the Subscription to patch
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           subscription_patch_request_inner = '''[sailpoint.v2024.SubscriptionPatchRequestInner()]''' # List[SubscriptionPatchRequestInner] | 
           try:
               # Patch a subscription
               new_subscription_patch_request_inner = SubscriptionPatchRequestInner.from_json(subscription_patch_request_inner)
-              results = TriggersApi(api_client).patch_subscription(id=id, x_sail_point_experimental=x_sail_point_experimental, subscription_patch_request_inner=new_subscription_patch_request_inner)
+              results = TriggersApi(api_client).patch_subscription(id=id, subscription_patch_request_inner=new_subscription_patch_request_inner)
               # Below is a request that includes all optional parameters
-              # results = TriggersApi(api_client).patch_subscription(id, x_sail_point_experimental, new_subscription_patch_request_inner)
+              # results = TriggersApi(api_client).patch_subscription(id, new_subscription_patch_request_inner)
               print("The response of TriggersApi->patch_subscription:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -21437,10 +21403,8 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           test_invocation = '''{
           "input" : {
             "identityId" : "201327fda1c44704ac01181e963d463c"
@@ -21454,9 +21418,9 @@
           try:
               # Start a test invocation
               new_test_invocation = TestInvocation.from_json(test_invocation)
-              results = TriggersApi(api_client).start_test_trigger_invocation(x_sail_point_experimental=x_sail_point_experimental, test_invocation=new_test_invocation)
+              results = TriggersApi(api_client).start_test_trigger_invocation(test_invocation=new_test_invocation)
               # Below is a request that includes all optional parameters
-              # results = TriggersApi(api_client).start_test_trigger_invocation(x_sail_point_experimental, new_test_invocation)
+              # results = TriggersApi(api_client).start_test_trigger_invocation(new_test_invocation)
               print("The response of TriggersApi->start_test_trigger_invocation:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))
@@ -21475,10 +21439,8 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           validate_filter_input_dto = '''{
           "filter" : "$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]",
           "input" : {
@@ -21488,9 +21450,9 @@
           try:
               # Validate a subscription filter
               new_validate_filter_input_dto = ValidateFilterInputDto.from_json(validate_filter_input_dto)
-              results = TriggersApi(api_client).test_subscription_filter(x_sail_point_experimental=x_sail_point_experimental, validate_filter_input_dto=new_validate_filter_input_dto)
+              results = TriggersApi(api_client).test_subscription_filter(validate_filter_input_dto=new_validate_filter_input_dto)
               # Below is a request that includes all optional parameters
-              # results = TriggersApi(api_client).test_subscription_filter(x_sail_point_experimental, new_validate_filter_input_dto)
+              # results = TriggersApi(api_client).test_subscription_filter(new_validate_filter_input_dto)
               print("The response of TriggersApi->test_subscription_filter:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -21508,11 +21470,9 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde' # str | Subscription ID # str | Subscription ID
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           subscription_put_request = '''{
           "filter" : "$[?($.identityId == \"201327fda1c44704ac01181e963d463c\")]",
           "httpConfig" : {
@@ -21540,9 +21500,9 @@
           try:
               # Update a subscription
               new_subscription_put_request = SubscriptionPutRequest.from_json(subscription_put_request)
-              results = TriggersApi(api_client).update_subscription(id=id, x_sail_point_experimental=x_sail_point_experimental, subscription_put_request=new_subscription_put_request)
+              results = TriggersApi(api_client).update_subscription(id=id, subscription_put_request=new_subscription_put_request)
               # Below is a request that includes all optional parameters
-              # results = TriggersApi(api_client).update_subscription(id, x_sail_point_experimental, new_subscription_put_request)
+              # results = TriggersApi(api_client).update_subscription(id, new_subscription_put_request)
               print("The response of TriggersApi->update_subscription:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:

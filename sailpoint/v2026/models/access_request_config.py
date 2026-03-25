@@ -20,6 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.v2026.models.approval_reminder_and_escalation_config import ApprovalReminderAndEscalationConfig
 from sailpoint.v2026.models.entitlement_request_config import EntitlementRequestConfig
 from sailpoint.v2026.models.request_on_behalf_of_config import RequestOnBehalfOfConfig
 from typing import Optional, Set
@@ -30,11 +31,12 @@ class AccessRequestConfig(BaseModel):
     AccessRequestConfig
     """ # noqa: E501
     approvals_must_be_external: Optional[StrictBool] = Field(default=False, description="If this is true, approvals must be processed by an external system. Also, if this is true, it blocks Request Center access requests and returns an error for any user who isn't an org admin.", alias="approvalsMustBeExternal")
+    auto_approval_enabled: Optional[StrictBool] = Field(default=False, description="If this is true and the requester and reviewer are the same, the request is automatically approved.", alias="autoApprovalEnabled")
     reauthorization_enabled: Optional[StrictBool] = Field(default=False, description="If this is true, reauthorization will be enforced for appropriately configured access items. Enablement of this feature is currently in a limited state.", alias="reauthorizationEnabled")
     request_on_behalf_of_config: Optional[RequestOnBehalfOfConfig] = Field(default=None, alias="requestOnBehalfOfConfig")
+    approval_reminder_and_escalation_config: Optional[ApprovalReminderAndEscalationConfig] = Field(default=None, alias="approvalReminderAndEscalationConfig")
     entitlement_request_config: Optional[EntitlementRequestConfig] = Field(default=None, alias="entitlementRequestConfig")
-    gov_group_visibility_enabled: Optional[StrictBool] = Field(default=False, description="If this is true, requesters and requested-for users will be able to see the names of governance group members when a request is awaiting the group's approval. Up to the first 10 members of the group will be listed.", alias="govGroupVisibilityEnabled")
-    __properties: ClassVar[List[str]] = ["approvalsMustBeExternal", "reauthorizationEnabled", "requestOnBehalfOfConfig", "entitlementRequestConfig", "govGroupVisibilityEnabled"]
+    __properties: ClassVar[List[str]] = ["approvalsMustBeExternal", "autoApprovalEnabled", "reauthorizationEnabled", "requestOnBehalfOfConfig", "approvalReminderAndEscalationConfig", "entitlementRequestConfig"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -78,6 +80,9 @@ class AccessRequestConfig(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of request_on_behalf_of_config
         if self.request_on_behalf_of_config:
             _dict['requestOnBehalfOfConfig'] = self.request_on_behalf_of_config.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of approval_reminder_and_escalation_config
+        if self.approval_reminder_and_escalation_config:
+            _dict['approvalReminderAndEscalationConfig'] = self.approval_reminder_and_escalation_config.to_dict()
         # override the default output from pydantic by calling `to_dict()` of entitlement_request_config
         if self.entitlement_request_config:
             _dict['entitlementRequestConfig'] = self.entitlement_request_config.to_dict()
@@ -94,10 +99,11 @@ class AccessRequestConfig(BaseModel):
 
         _obj = cls.model_validate({
             "approvalsMustBeExternal": obj.get("approvalsMustBeExternal") if obj.get("approvalsMustBeExternal") is not None else False,
+            "autoApprovalEnabled": obj.get("autoApprovalEnabled") if obj.get("autoApprovalEnabled") is not None else False,
             "reauthorizationEnabled": obj.get("reauthorizationEnabled") if obj.get("reauthorizationEnabled") is not None else False,
             "requestOnBehalfOfConfig": RequestOnBehalfOfConfig.from_dict(obj["requestOnBehalfOfConfig"]) if obj.get("requestOnBehalfOfConfig") is not None else None,
-            "entitlementRequestConfig": EntitlementRequestConfig.from_dict(obj["entitlementRequestConfig"]) if obj.get("entitlementRequestConfig") is not None else None,
-            "govGroupVisibilityEnabled": obj.get("govGroupVisibilityEnabled") if obj.get("govGroupVisibilityEnabled") is not None else False
+            "approvalReminderAndEscalationConfig": ApprovalReminderAndEscalationConfig.from_dict(obj["approvalReminderAndEscalationConfig"]) if obj.get("approvalReminderAndEscalationConfig") is not None else None,
+            "entitlementRequestConfig": EntitlementRequestConfig.from_dict(obj["entitlementRequestConfig"]) if obj.get("entitlementRequestConfig") is not None else None
         })
         return _obj
 

@@ -36,19 +36,24 @@ class TestEntitlement(unittest.TestCase):
         if include_optional:
             return Entitlement(
                 id = '2c91808874ff91550175097daaec161c',
-                name = 'Account Payable',
+                name = 'PayrollControls',
                 attribute = 'memberOf',
-                value = 'CN=Account Payable,OU=Finance,DC=xyz company',
+                value = 'CN=PayrollControls,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com',
                 source_schema_object_type = 'group',
-                description = 'This entitlement allows users to access the accounts payable module of the organization's financial management system. Users can view, process, and approve invoices, manage vendor relationships, and perform other accounts payable-related tasks.',
-                privilege_level = None,
-                tags = [tag1, tag2],
+                description = 'Grants the ability to access and manage payroll-related controls and settings within the Corporate Active Directory system.',
+                privileged = True,
                 cloud_governed = True,
                 requestable = True,
                 owner = sailpoint.v2026.models.entitlement_owner.Entitlement_owner(
                     id = '2c9180827ca885d7017ca8ce28a000eb', 
                     type = 'IDENTITY', 
                     name = 'john.doe', ),
+                additional_owners = [
+                    sailpoint.v2026.models.additional_owner_ref.AdditionalOwnerRef(
+                        type = 'IDENTITY', 
+                        id = '2c9180a46faadee4016fb4e018c20639', 
+                        name = 'support', )
+                    ],
                 manually_updated_fields = {DISPLAY_NAME=true, DESCRIPTION=true},
                 access_model_metadata = sailpoint.v2026.models.entitlement_access_model_metadata.Entitlement_accessModelMetadata(
                     attributes = [
@@ -72,7 +77,7 @@ class TestEntitlement(unittest.TestCase):
                 source = sailpoint.v2026.models.entitlement_source.Entitlement_source(
                     id = '2c9180827ca885d7017ca8ce28a000eb', 
                     type = 'SOURCE', 
-                    name = 'ODS-AD-Source', ),
+                    name = 'Corporate Active Directory', ),
                 attributes = {fieldName=fieldValue},
                 segments = [f7b1b8a3-5fed-4fd4-ad29-82014e137e19, 29cb6c06-1da8-43ea-8be4-b3125f248f2a],
                 direct_permissions = [

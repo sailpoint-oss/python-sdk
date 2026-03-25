@@ -46,7 +46,6 @@ class TaskManagementApi:
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -62,10 +61,8 @@ class TaskManagementApi:
     ) -> None:
         """(Deprecated) Retrieve pending task list headers
 
-        This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2026/get-task-status-list) endpoint with isnull filtering on the completionStatus field and count=true. Example: /v2026/task-status?count=true&filters=completionStatus isnull  Responds with headers only for list of task statuses for pending tasks. 
+        This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2025/get-task-status-list) endpoint with isnull filtering on the completionStatus field and count=true. Example: /v2025/task-status?count=true&filters=completionStatus isnull  Responds with headers only for list of task statuses for pending tasks. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -96,7 +93,6 @@ class TaskManagementApi:
         warnings.warn("HEAD /task-status/pending-tasks is deprecated.", DeprecationWarning)
 
         _param = self._get_pending_task_headers_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             offset=offset,
             limit=limit,
             count=count,
@@ -132,7 +128,6 @@ class TaskManagementApi:
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -148,10 +143,8 @@ class TaskManagementApi:
     ) -> ApiResponse[None]:
         """(Deprecated) Retrieve pending task list headers
 
-        This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2026/get-task-status-list) endpoint with isnull filtering on the completionStatus field and count=true. Example: /v2026/task-status?count=true&filters=completionStatus isnull  Responds with headers only for list of task statuses for pending tasks. 
+        This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2025/get-task-status-list) endpoint with isnull filtering on the completionStatus field and count=true. Example: /v2025/task-status?count=true&filters=completionStatus isnull  Responds with headers only for list of task statuses for pending tasks. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -182,7 +175,6 @@ class TaskManagementApi:
         warnings.warn("HEAD /task-status/pending-tasks is deprecated.", DeprecationWarning)
 
         _param = self._get_pending_task_headers_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             offset=offset,
             limit=limit,
             count=count,
@@ -218,7 +210,6 @@ class TaskManagementApi:
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -234,10 +225,8 @@ class TaskManagementApi:
     ) -> RESTResponseType:
         """(Deprecated) Retrieve pending task list headers
 
-        This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2026/get-task-status-list) endpoint with isnull filtering on the completionStatus field and count=true. Example: /v2026/task-status?count=true&filters=completionStatus isnull  Responds with headers only for list of task statuses for pending tasks. 
+        This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2025/get-task-status-list) endpoint with isnull filtering on the completionStatus field and count=true. Example: /v2025/task-status?count=true&filters=completionStatus isnull  Responds with headers only for list of task statuses for pending tasks. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -268,7 +257,6 @@ class TaskManagementApi:
         warnings.warn("HEAD /task-status/pending-tasks is deprecated.", DeprecationWarning)
 
         _param = self._get_pending_task_headers_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             offset=offset,
             limit=limit,
             count=count,
@@ -296,7 +284,6 @@ class TaskManagementApi:
 
     def _get_pending_task_headers_serialize(
         self,
-        x_sail_point_experimental,
         offset,
         limit,
         count,
@@ -335,8 +322,6 @@ class TaskManagementApi:
             _query_params.append(('count', count))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -381,7 +366,6 @@ class TaskManagementApi:
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -397,10 +381,8 @@ class TaskManagementApi:
     ) -> List[TaskStatus]:
         """(Deprecated) Retrieve pending task status list
 
-        This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2026/get-task-status-list) endpoint with isnull filtering on the completionStatus field to retrieve pending tasks. Example: /v2026/task-status?filters=completionStatus isnull  Retrieve a list of statuses for pending tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks. Data for tasks older than 90 days will not be returned. 
+        This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2025/get-task-status-list) endpoint with isnull filtering on the completionStatus field to retrieve pending tasks. Example: /v2025/task-status?filters=completionStatus isnull  Retrieve a list of statuses for pending tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -431,7 +413,6 @@ class TaskManagementApi:
         warnings.warn("GET /task-status/pending-tasks is deprecated.", DeprecationWarning)
 
         _param = self._get_pending_tasks_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             offset=offset,
             limit=limit,
             count=count,
@@ -467,7 +448,6 @@ class TaskManagementApi:
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -483,10 +463,8 @@ class TaskManagementApi:
     ) -> ApiResponse[List[TaskStatus]]:
         """(Deprecated) Retrieve pending task status list
 
-        This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2026/get-task-status-list) endpoint with isnull filtering on the completionStatus field to retrieve pending tasks. Example: /v2026/task-status?filters=completionStatus isnull  Retrieve a list of statuses for pending tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks. Data for tasks older than 90 days will not be returned. 
+        This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2025/get-task-status-list) endpoint with isnull filtering on the completionStatus field to retrieve pending tasks. Example: /v2025/task-status?filters=completionStatus isnull  Retrieve a list of statuses for pending tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -517,7 +495,6 @@ class TaskManagementApi:
         warnings.warn("GET /task-status/pending-tasks is deprecated.", DeprecationWarning)
 
         _param = self._get_pending_tasks_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             offset=offset,
             limit=limit,
             count=count,
@@ -553,7 +530,6 @@ class TaskManagementApi:
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -569,10 +545,8 @@ class TaskManagementApi:
     ) -> RESTResponseType:
         """(Deprecated) Retrieve pending task status list
 
-        This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2026/get-task-status-list) endpoint with isnull filtering on the completionStatus field to retrieve pending tasks. Example: /v2026/task-status?filters=completionStatus isnull  Retrieve a list of statuses for pending tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks. Data for tasks older than 90 days will not be returned. 
+        This API is being deprecated. Please use the [task-status-list](https://developer.sailpoint.com/docs/api/v2025/get-task-status-list) endpoint with isnull filtering on the completionStatus field to retrieve pending tasks. Example: /v2025/task-status?filters=completionStatus isnull  Retrieve a list of statuses for pending tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks.  Data for tasks older than 90 days will not be returned. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -603,7 +577,6 @@ class TaskManagementApi:
         warnings.warn("GET /task-status/pending-tasks is deprecated.", DeprecationWarning)
 
         _param = self._get_pending_tasks_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             offset=offset,
             limit=limit,
             count=count,
@@ -631,7 +604,6 @@ class TaskManagementApi:
 
     def _get_pending_tasks_serialize(
         self,
-        x_sail_point_experimental,
         offset,
         limit,
         count,
@@ -670,8 +642,6 @@ class TaskManagementApi:
             _query_params.append(('count', count))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -714,7 +684,6 @@ class TaskManagementApi:
     def get_task_status(
         self,
         id: Annotated[StrictStr, Field(description="Task ID.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -734,8 +703,6 @@ class TaskManagementApi:
 
         :param id: Task ID. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -760,7 +727,6 @@ class TaskManagementApi:
 
         _param = self._get_task_status_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -791,7 +757,6 @@ class TaskManagementApi:
     def get_task_status_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Task ID.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -811,8 +776,6 @@ class TaskManagementApi:
 
         :param id: Task ID. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -837,7 +800,6 @@ class TaskManagementApi:
 
         _param = self._get_task_status_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -868,7 +830,6 @@ class TaskManagementApi:
     def get_task_status_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Task ID.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -888,8 +849,6 @@ class TaskManagementApi:
 
         :param id: Task ID. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -914,7 +873,6 @@ class TaskManagementApi:
 
         _param = self._get_task_status_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -940,7 +898,6 @@ class TaskManagementApi:
     def _get_task_status_serialize(
         self,
         id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -966,8 +923,6 @@ class TaskManagementApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -1012,7 +967,7 @@ class TaskManagementApi:
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **launcher**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, CLOUD_ENTITLEMENT_IMPORT, CLOUD_UNCORRELATED_REFRESH, CLOUD_IDENTITY_AGGREGATION, CLOUD_ATTRIBUTE_SYNCHRONIZATION, IDENTITY_REFRESH, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created**")] = None,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
@@ -1030,7 +985,7 @@ class TaskManagementApi:
     ) -> List[TaskStatus]:
         """Retrieve task status list
 
-        Use this endpoint to get a list of statuses for **all** tasks, including completed, in-progress, terminated, and errored tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks. Data for tasks older than 90 days will not be returned. For a list of **in-progress** tasks, apply the isnull filter to the Completion Status field. 
+        Use this endpoint to get a list of statuses for **all** tasks, including completed, in-progress, terminated, and errored tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks. Data for tasks older than 90 days will not be returned. For a list of **in-progress** tasks, use the [retrieve pending task status list](https://developer.sailpoint.com/docs/api/v2025/get-pending-tasks) endpoint or apply the isnull filter to the Completion Status field. 
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -1040,7 +995,7 @@ class TaskManagementApi:
         :type offset: int
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type count: bool
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **launcher**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, CLOUD_ENTITLEMENT_IMPORT, CLOUD_UNCORRELATED_REFRESH, CLOUD_IDENTITY_AGGREGATION, CLOUD_ATTRIBUTE_SYNCHRONIZATION, IDENTITY_REFRESH, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION
         :type filters: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created**
         :type sorters: str
@@ -1105,7 +1060,7 @@ class TaskManagementApi:
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **launcher**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, CLOUD_ENTITLEMENT_IMPORT, CLOUD_UNCORRELATED_REFRESH, CLOUD_IDENTITY_AGGREGATION, CLOUD_ATTRIBUTE_SYNCHRONIZATION, IDENTITY_REFRESH, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created**")] = None,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
@@ -1123,7 +1078,7 @@ class TaskManagementApi:
     ) -> ApiResponse[List[TaskStatus]]:
         """Retrieve task status list
 
-        Use this endpoint to get a list of statuses for **all** tasks, including completed, in-progress, terminated, and errored tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks. Data for tasks older than 90 days will not be returned. For a list of **in-progress** tasks, apply the isnull filter to the Completion Status field. 
+        Use this endpoint to get a list of statuses for **all** tasks, including completed, in-progress, terminated, and errored tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks. Data for tasks older than 90 days will not be returned. For a list of **in-progress** tasks, use the [retrieve pending task status list](https://developer.sailpoint.com/docs/api/v2025/get-pending-tasks) endpoint or apply the isnull filter to the Completion Status field. 
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -1133,7 +1088,7 @@ class TaskManagementApi:
         :type offset: int
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type count: bool
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **launcher**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, CLOUD_ENTITLEMENT_IMPORT, CLOUD_UNCORRELATED_REFRESH, CLOUD_IDENTITY_AGGREGATION, CLOUD_ATTRIBUTE_SYNCHRONIZATION, IDENTITY_REFRESH, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION
         :type filters: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created**
         :type sorters: str
@@ -1198,7 +1153,7 @@ class TaskManagementApi:
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **launcher**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, CLOUD_ENTITLEMENT_IMPORT, CLOUD_UNCORRELATED_REFRESH, CLOUD_IDENTITY_AGGREGATION, CLOUD_ATTRIBUTE_SYNCHRONIZATION, IDENTITY_REFRESH, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created**")] = None,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
@@ -1216,7 +1171,7 @@ class TaskManagementApi:
     ) -> RESTResponseType:
         """Retrieve task status list
 
-        Use this endpoint to get a list of statuses for **all** tasks, including completed, in-progress, terminated, and errored tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks. Data for tasks older than 90 days will not be returned. For a list of **in-progress** tasks, apply the isnull filter to the Completion Status field. 
+        Use this endpoint to get a list of statuses for **all** tasks, including completed, in-progress, terminated, and errored tasks. Types of tasks include account and entitlement aggregation and other general background processing tasks. Data for tasks older than 90 days will not be returned. For a list of **in-progress** tasks, use the [retrieve pending task status list](https://developer.sailpoint.com/docs/api/v2025/get-pending-tasks) endpoint or apply the isnull filter to the Completion Status field. 
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -1226,7 +1181,7 @@ class TaskManagementApi:
         :type offset: int
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type count: bool
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **launcher**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, CLOUD_ENTITLEMENT_IMPORT, CLOUD_UNCORRELATED_REFRESH, CLOUD_IDENTITY_AGGREGATION, CLOUD_ATTRIBUTE_SYNCHRONIZATION, IDENTITY_REFRESH, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION
         :type filters: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created**
         :type sorters: str
@@ -1377,7 +1332,6 @@ class TaskManagementApi:
         self,
         id: Annotated[StrictStr, Field(description="Task ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1397,8 +1351,6 @@ class TaskManagementApi:
 
         :param id: Task ID. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param json_patch_operation: The JSONPatch payload used to update the object. (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
@@ -1425,7 +1377,6 @@ class TaskManagementApi:
 
         _param = self._update_task_status_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1458,7 +1409,6 @@ class TaskManagementApi:
         self,
         id: Annotated[StrictStr, Field(description="Task ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1478,8 +1428,6 @@ class TaskManagementApi:
 
         :param id: Task ID. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param json_patch_operation: The JSONPatch payload used to update the object. (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
@@ -1506,7 +1454,6 @@ class TaskManagementApi:
 
         _param = self._update_task_status_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1539,7 +1486,6 @@ class TaskManagementApi:
         self,
         id: Annotated[StrictStr, Field(description="Task ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1559,8 +1505,6 @@ class TaskManagementApi:
 
         :param id: Task ID. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param json_patch_operation: The JSONPatch payload used to update the object. (required)
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
@@ -1587,7 +1531,6 @@ class TaskManagementApi:
 
         _param = self._update_task_status_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1614,7 +1557,6 @@ class TaskManagementApi:
     def _update_task_status_serialize(
         self,
         id,
-        x_sail_point_experimental,
         json_patch_operation,
         _request_auth,
         _content_type,
@@ -1642,8 +1584,6 @@ class TaskManagementApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if json_patch_operation is not None:

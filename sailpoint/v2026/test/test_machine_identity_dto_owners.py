@@ -38,7 +38,7 @@ class TestMachineIdentityDtoOwners(unittest.TestCase):
                 primary_identity = sailpoint.v2026.models.machine_identity_dto_owners_primary_identity.MachineIdentityDto_owners_primaryIdentity(),
                 secondary_identities = [
                     sailpoint.v2026.models.base_reference_dto.Base Reference Dto(
-                        type = null, 
+                        type = 'IDENTITY', 
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'William Wilson', )
                     ]
@@ -48,7 +48,7 @@ class TestMachineIdentityDtoOwners(unittest.TestCase):
                 primary_identity = sailpoint.v2026.models.machine_identity_dto_owners_primary_identity.MachineIdentityDto_owners_primaryIdentity(),
                 secondary_identities = [
                     sailpoint.v2026.models.base_reference_dto.Base Reference Dto(
-                        type = null, 
+                        type = 'IDENTITY', 
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'William Wilson', )
                     ],

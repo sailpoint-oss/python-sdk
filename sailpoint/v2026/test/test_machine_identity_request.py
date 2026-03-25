@@ -39,7 +39,7 @@ class TestMachineIdentityRequest(unittest.TestCase):
                 name = 'aName',
                 created = '2015-05-28T14:07:17Z',
                 modified = '2015-05-28T14:07:17Z',
-                native_identity = 'abc:123:dddd',
+                business_application = 'ADService',
                 description = '',
                 attributes = {"Region":"EU"},
                 subtype = 'Application',
@@ -47,12 +47,13 @@ class TestMachineIdentityRequest(unittest.TestCase):
                     primary_identity = sailpoint.v2026.models.machine_identity_dto_owners_primary_identity.MachineIdentityDto_owners_primaryIdentity(), 
                     secondary_identities = [
                         sailpoint.v2026.models.base_reference_dto.Base Reference Dto(
-                            type = null, 
+                            type = 'IDENTITY', 
                             id = '2c91808568c529c60168cca6f90c1313', 
                             name = 'William Wilson', )
                         ], ),
                 source_id = '6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa',
                 uuid = 'f5dd23fe-3414-42b7-bb1c-869400ad7a10',
+                native_identity = 'abc:123:dddd',
                 user_entitlements = [
                     sailpoint.v2026.models.machine_identity_request_user_entitlements.Machine_Identity_Request_userEntitlements(
                         entitlement_id = '6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa', 
@@ -62,7 +63,7 @@ class TestMachineIdentityRequest(unittest.TestCase):
         else:
             return MachineIdentityRequest(
                 name = 'aName',
-                native_identity = 'abc:123:dddd',
+                business_application = 'ADService',
                 subtype = 'Application',
         )
         """

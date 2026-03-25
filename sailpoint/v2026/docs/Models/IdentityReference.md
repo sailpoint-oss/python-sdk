@@ -11,16 +11,15 @@ tags: ['SDK', 'Software Development Kit', 'IdentityReference', 'V2026IdentityRef
 
 # IdentityReference
 
-Contains detailed information about an identity, including unique identifier, name, email address, and registration status.
+The manager for the identity.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | ID of identity | [optional] 
-**name** | **str** | Name of Identity | [optional] 
-**email** | **str** | mail id of identity | [optional] 
-**status** | **str** | status of identity UNREGISTERED/REGISTERED | [optional] 
+**type** | [**DtoType**](dto-type) |  | [optional] 
+**id** | **str** | Identity id | [optional] 
+**name** | **str** | Human-readable display name of identity. | [optional] 
 }
 
 ## Example
@@ -29,10 +28,9 @@ Name | Type | Description | Notes
 from sailpoint.v2026.models.identity_reference import IdentityReference
 
 identity_reference = IdentityReference(
-id='117e169acf21f4ae28e8a06198ce7f69',
-name='Alfred',
-email='alfred@testmail.identitysoon.com',
-status='UNREGISTERED'
+type='IDENTITY',
+id='2c9180a46faadee4016fb4e018c20639',
+name='Thomas Edison'
 )
 
 ```

@@ -54,6 +54,20 @@ class TestMachineIdentitiesApi(unittest.TestCase):
         """
         pass
 
+    def test_list_machine_identity_user_entitlements(self) -> None:
+        """Test case for list_machine_identity_user_entitlements
+
+        List machine identity's user entitlements
+        """
+        pass
+
+    def test_start_machine_identity_aggregation(self) -> None:
+        """Test case for start_machine_identity_aggregation
+
+        Start Machine Identity (AI Agent) Aggregation
+        """
+        pass
+
     def test_update_machine_identity(self) -> None:
         """Test case for update_machine_identity
 

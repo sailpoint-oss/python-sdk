@@ -51,7 +51,6 @@ class GovernanceGroupsApi:
     def create_workgroup(
         self,
         workgroup_dto: WorkgroupDto,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -69,8 +68,6 @@ class GovernanceGroupsApi:
 
         This API creates a new Governance Group.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param workgroup_dto: (required)
         :type workgroup_dto: WorkgroupDto
         :param _request_timeout: timeout setting for this request. If one
@@ -96,7 +93,6 @@ class GovernanceGroupsApi:
         """ # noqa: E501
 
         _param = self._create_workgroup_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             workgroup_dto=workgroup_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -127,7 +123,6 @@ class GovernanceGroupsApi:
     def create_workgroup_with_http_info(
         self,
         workgroup_dto: WorkgroupDto,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -145,8 +140,6 @@ class GovernanceGroupsApi:
 
         This API creates a new Governance Group.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param workgroup_dto: (required)
         :type workgroup_dto: WorkgroupDto
         :param _request_timeout: timeout setting for this request. If one
@@ -172,7 +165,6 @@ class GovernanceGroupsApi:
         """ # noqa: E501
 
         _param = self._create_workgroup_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             workgroup_dto=workgroup_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -203,7 +195,6 @@ class GovernanceGroupsApi:
     def create_workgroup_without_preload_content(
         self,
         workgroup_dto: WorkgroupDto,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -221,8 +212,6 @@ class GovernanceGroupsApi:
 
         This API creates a new Governance Group.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param workgroup_dto: (required)
         :type workgroup_dto: WorkgroupDto
         :param _request_timeout: timeout setting for this request. If one
@@ -248,7 +237,6 @@ class GovernanceGroupsApi:
         """ # noqa: E501
 
         _param = self._create_workgroup_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             workgroup_dto=workgroup_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -273,7 +261,6 @@ class GovernanceGroupsApi:
 
     def _create_workgroup_serialize(
         self,
-        x_sail_point_experimental,
         workgroup_dto,
         _request_auth,
         _content_type,
@@ -298,8 +285,6 @@ class GovernanceGroupsApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if workgroup_dto is not None:
@@ -357,7 +342,6 @@ class GovernanceGroupsApi:
     def delete_workgroup(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Governance Group")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -377,8 +361,6 @@ class GovernanceGroupsApi:
 
         :param id: ID of the Governance Group (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -403,7 +385,6 @@ class GovernanceGroupsApi:
 
         _param = self._delete_workgroup_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -433,7 +414,6 @@ class GovernanceGroupsApi:
     def delete_workgroup_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Governance Group")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -453,8 +433,6 @@ class GovernanceGroupsApi:
 
         :param id: ID of the Governance Group (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -479,7 +457,6 @@ class GovernanceGroupsApi:
 
         _param = self._delete_workgroup_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -509,7 +486,6 @@ class GovernanceGroupsApi:
     def delete_workgroup_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Governance Group")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -529,8 +505,6 @@ class GovernanceGroupsApi:
 
         :param id: ID of the Governance Group (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -555,7 +529,6 @@ class GovernanceGroupsApi:
 
         _param = self._delete_workgroup_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -580,7 +553,6 @@ class GovernanceGroupsApi:
     def _delete_workgroup_serialize(
         self,
         id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -606,8 +578,6 @@ class GovernanceGroupsApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -651,7 +621,6 @@ class GovernanceGroupsApi:
         self,
         workgroup_id: Annotated[StrictStr, Field(description="ID of the Governance Group.")],
         identity_preview_response_identity: Annotated[List[IdentityPreviewResponseIdentity], Field(description="List of identities to be removed from  a Governance Group members list.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -671,8 +640,6 @@ class GovernanceGroupsApi:
 
         :param workgroup_id: ID of the Governance Group. (required)
         :type workgroup_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identity_preview_response_identity: List of identities to be removed from  a Governance Group members list. (required)
         :type identity_preview_response_identity: List[IdentityPreviewResponseIdentity]
         :param _request_timeout: timeout setting for this request. If one
@@ -699,7 +666,6 @@ class GovernanceGroupsApi:
 
         _param = self._delete_workgroup_members_serialize(
             workgroup_id=workgroup_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             identity_preview_response_identity=identity_preview_response_identity,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -731,7 +697,6 @@ class GovernanceGroupsApi:
         self,
         workgroup_id: Annotated[StrictStr, Field(description="ID of the Governance Group.")],
         identity_preview_response_identity: Annotated[List[IdentityPreviewResponseIdentity], Field(description="List of identities to be removed from  a Governance Group members list.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -751,8 +716,6 @@ class GovernanceGroupsApi:
 
         :param workgroup_id: ID of the Governance Group. (required)
         :type workgroup_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identity_preview_response_identity: List of identities to be removed from  a Governance Group members list. (required)
         :type identity_preview_response_identity: List[IdentityPreviewResponseIdentity]
         :param _request_timeout: timeout setting for this request. If one
@@ -779,7 +742,6 @@ class GovernanceGroupsApi:
 
         _param = self._delete_workgroup_members_serialize(
             workgroup_id=workgroup_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             identity_preview_response_identity=identity_preview_response_identity,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -811,7 +773,6 @@ class GovernanceGroupsApi:
         self,
         workgroup_id: Annotated[StrictStr, Field(description="ID of the Governance Group.")],
         identity_preview_response_identity: Annotated[List[IdentityPreviewResponseIdentity], Field(description="List of identities to be removed from  a Governance Group members list.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -831,8 +792,6 @@ class GovernanceGroupsApi:
 
         :param workgroup_id: ID of the Governance Group. (required)
         :type workgroup_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identity_preview_response_identity: List of identities to be removed from  a Governance Group members list. (required)
         :type identity_preview_response_identity: List[IdentityPreviewResponseIdentity]
         :param _request_timeout: timeout setting for this request. If one
@@ -859,7 +818,6 @@ class GovernanceGroupsApi:
 
         _param = self._delete_workgroup_members_serialize(
             workgroup_id=workgroup_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             identity_preview_response_identity=identity_preview_response_identity,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -885,7 +843,6 @@ class GovernanceGroupsApi:
     def _delete_workgroup_members_serialize(
         self,
         workgroup_id,
-        x_sail_point_experimental,
         identity_preview_response_identity,
         _request_auth,
         _content_type,
@@ -913,8 +870,6 @@ class GovernanceGroupsApi:
             _path_params['workgroupId'] = workgroup_id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if identity_preview_response_identity is not None:
@@ -972,7 +927,6 @@ class GovernanceGroupsApi:
     def delete_workgroups_in_bulk(
         self,
         workgroup_bulk_delete_request: WorkgroupBulkDeleteRequest,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -990,8 +944,6 @@ class GovernanceGroupsApi:
 
          This API initiates a bulk deletion of one or more Governance Groups.  >  If any of the indicated Governance Groups have one or more connections associated with it,then those Governance Groups will be added in  **inUse** list of the response. Governance Group(s) marked as **inUse** can not be deleted.  >  If any of the indicated Governance Groups is not does not exists in Organization,then those Governance Groups will be added in **notFound** list of the response. Governance Groups marked as **notFound** will not be deleted.  >  If any of the indicated Governance Groups does not have any connections associated with it,then those Governance Groups will be added in **deleted** list of the response. A Governance Group marked as **deleted** will be deleted from current Organization.  >  If the request contains any **inUse** or **notFound** Governance Group IDs then it skips only these Governance Groups for deletion and deletes the rest of Governance Groups which have no connections associated with it.   >  **This API has limit number of Governance Groups can be deleted at one time. If the request contains more then 100 Governance Groups IDs to be deleted then the API will throw an exception.**
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param workgroup_bulk_delete_request: (required)
         :type workgroup_bulk_delete_request: WorkgroupBulkDeleteRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1017,7 +969,6 @@ class GovernanceGroupsApi:
         """ # noqa: E501
 
         _param = self._delete_workgroups_in_bulk_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             workgroup_bulk_delete_request=workgroup_bulk_delete_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1048,7 +999,6 @@ class GovernanceGroupsApi:
     def delete_workgroups_in_bulk_with_http_info(
         self,
         workgroup_bulk_delete_request: WorkgroupBulkDeleteRequest,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1066,8 +1016,6 @@ class GovernanceGroupsApi:
 
          This API initiates a bulk deletion of one or more Governance Groups.  >  If any of the indicated Governance Groups have one or more connections associated with it,then those Governance Groups will be added in  **inUse** list of the response. Governance Group(s) marked as **inUse** can not be deleted.  >  If any of the indicated Governance Groups is not does not exists in Organization,then those Governance Groups will be added in **notFound** list of the response. Governance Groups marked as **notFound** will not be deleted.  >  If any of the indicated Governance Groups does not have any connections associated with it,then those Governance Groups will be added in **deleted** list of the response. A Governance Group marked as **deleted** will be deleted from current Organization.  >  If the request contains any **inUse** or **notFound** Governance Group IDs then it skips only these Governance Groups for deletion and deletes the rest of Governance Groups which have no connections associated with it.   >  **This API has limit number of Governance Groups can be deleted at one time. If the request contains more then 100 Governance Groups IDs to be deleted then the API will throw an exception.**
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param workgroup_bulk_delete_request: (required)
         :type workgroup_bulk_delete_request: WorkgroupBulkDeleteRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1093,7 +1041,6 @@ class GovernanceGroupsApi:
         """ # noqa: E501
 
         _param = self._delete_workgroups_in_bulk_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             workgroup_bulk_delete_request=workgroup_bulk_delete_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1124,7 +1071,6 @@ class GovernanceGroupsApi:
     def delete_workgroups_in_bulk_without_preload_content(
         self,
         workgroup_bulk_delete_request: WorkgroupBulkDeleteRequest,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1142,8 +1088,6 @@ class GovernanceGroupsApi:
 
          This API initiates a bulk deletion of one or more Governance Groups.  >  If any of the indicated Governance Groups have one or more connections associated with it,then those Governance Groups will be added in  **inUse** list of the response. Governance Group(s) marked as **inUse** can not be deleted.  >  If any of the indicated Governance Groups is not does not exists in Organization,then those Governance Groups will be added in **notFound** list of the response. Governance Groups marked as **notFound** will not be deleted.  >  If any of the indicated Governance Groups does not have any connections associated with it,then those Governance Groups will be added in **deleted** list of the response. A Governance Group marked as **deleted** will be deleted from current Organization.  >  If the request contains any **inUse** or **notFound** Governance Group IDs then it skips only these Governance Groups for deletion and deletes the rest of Governance Groups which have no connections associated with it.   >  **This API has limit number of Governance Groups can be deleted at one time. If the request contains more then 100 Governance Groups IDs to be deleted then the API will throw an exception.**
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param workgroup_bulk_delete_request: (required)
         :type workgroup_bulk_delete_request: WorkgroupBulkDeleteRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -1169,7 +1113,6 @@ class GovernanceGroupsApi:
         """ # noqa: E501
 
         _param = self._delete_workgroups_in_bulk_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             workgroup_bulk_delete_request=workgroup_bulk_delete_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1194,7 +1137,6 @@ class GovernanceGroupsApi:
 
     def _delete_workgroups_in_bulk_serialize(
         self,
-        x_sail_point_experimental,
         workgroup_bulk_delete_request,
         _request_auth,
         _content_type,
@@ -1219,8 +1161,6 @@ class GovernanceGroupsApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if workgroup_bulk_delete_request is not None:
@@ -1278,7 +1218,6 @@ class GovernanceGroupsApi:
     def get_workgroup(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Governance Group")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1298,8 +1237,6 @@ class GovernanceGroupsApi:
 
         :param id: ID of the Governance Group (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1324,7 +1261,6 @@ class GovernanceGroupsApi:
 
         _param = self._get_workgroup_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1354,7 +1290,6 @@ class GovernanceGroupsApi:
     def get_workgroup_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Governance Group")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1374,8 +1309,6 @@ class GovernanceGroupsApi:
 
         :param id: ID of the Governance Group (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1400,7 +1333,6 @@ class GovernanceGroupsApi:
 
         _param = self._get_workgroup_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1430,7 +1362,6 @@ class GovernanceGroupsApi:
     def get_workgroup_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of the Governance Group")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1450,8 +1381,6 @@ class GovernanceGroupsApi:
 
         :param id: ID of the Governance Group (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1476,7 +1405,6 @@ class GovernanceGroupsApi:
 
         _param = self._get_workgroup_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1501,7 +1429,6 @@ class GovernanceGroupsApi:
     def _get_workgroup_serialize(
         self,
         id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -1527,8 +1454,6 @@ class GovernanceGroupsApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -1575,7 +1500,6 @@ class GovernanceGroupsApi:
         limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1595,8 +1519,6 @@ class GovernanceGroupsApi:
 
         :param workgroup_id: ID of the Governance Group. (required)
         :type workgroup_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
         :param limit: Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1629,7 +1551,6 @@ class GovernanceGroupsApi:
 
         _param = self._list_connections_serialize(
             workgroup_id=workgroup_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             offset=offset,
             limit=limit,
             count=count,
@@ -1667,7 +1588,6 @@ class GovernanceGroupsApi:
         limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1687,8 +1607,6 @@ class GovernanceGroupsApi:
 
         :param workgroup_id: ID of the Governance Group. (required)
         :type workgroup_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
         :param limit: Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1721,7 +1639,6 @@ class GovernanceGroupsApi:
 
         _param = self._list_connections_serialize(
             workgroup_id=workgroup_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             offset=offset,
             limit=limit,
             count=count,
@@ -1759,7 +1676,6 @@ class GovernanceGroupsApi:
         limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1779,8 +1695,6 @@ class GovernanceGroupsApi:
 
         :param workgroup_id: ID of the Governance Group. (required)
         :type workgroup_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
         :param limit: Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1813,7 +1727,6 @@ class GovernanceGroupsApi:
 
         _param = self._list_connections_serialize(
             workgroup_id=workgroup_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             offset=offset,
             limit=limit,
             count=count,
@@ -1842,7 +1755,6 @@ class GovernanceGroupsApi:
     def _list_connections_serialize(
         self,
         workgroup_id,
-        x_sail_point_experimental,
         offset,
         limit,
         count,
@@ -1888,8 +1800,6 @@ class GovernanceGroupsApi:
             _query_params.append(('sorters', sorters))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -1936,7 +1846,6 @@ class GovernanceGroupsApi:
         limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1956,8 +1865,6 @@ class GovernanceGroupsApi:
 
         :param workgroup_id: ID of the Governance Group. (required)
         :type workgroup_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
         :param limit: Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1990,7 +1897,6 @@ class GovernanceGroupsApi:
 
         _param = self._list_workgroup_members_serialize(
             workgroup_id=workgroup_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             offset=offset,
             limit=limit,
             count=count,
@@ -2028,7 +1934,6 @@ class GovernanceGroupsApi:
         limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2048,8 +1953,6 @@ class GovernanceGroupsApi:
 
         :param workgroup_id: ID of the Governance Group. (required)
         :type workgroup_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
         :param limit: Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -2082,7 +1985,6 @@ class GovernanceGroupsApi:
 
         _param = self._list_workgroup_members_serialize(
             workgroup_id=workgroup_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             offset=offset,
             limit=limit,
             count=count,
@@ -2120,7 +2022,6 @@ class GovernanceGroupsApi:
         limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2140,8 +2041,6 @@ class GovernanceGroupsApi:
 
         :param workgroup_id: ID of the Governance Group. (required)
         :type workgroup_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
         :param limit: Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -2174,7 +2073,6 @@ class GovernanceGroupsApi:
 
         _param = self._list_workgroup_members_serialize(
             workgroup_id=workgroup_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             offset=offset,
             limit=limit,
             count=count,
@@ -2203,7 +2101,6 @@ class GovernanceGroupsApi:
     def _list_workgroup_members_serialize(
         self,
         workgroup_id,
-        x_sail_point_experimental,
         offset,
         limit,
         count,
@@ -2249,8 +2146,6 @@ class GovernanceGroupsApi:
             _query_params.append(('sorters', sorters))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -2297,7 +2192,6 @@ class GovernanceGroupsApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **name**: *eq, sw, in*  **memberships.identityId**: *eq, in*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, description**")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2315,8 +2209,6 @@ class GovernanceGroupsApi:
 
         This API returns list of Governance Groups
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -2350,7 +2242,6 @@ class GovernanceGroupsApi:
         """ # noqa: E501
 
         _param = self._list_workgroups_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             offset=offset,
             limit=limit,
             count=count,
@@ -2389,7 +2280,6 @@ class GovernanceGroupsApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **name**: *eq, sw, in*  **memberships.identityId**: *eq, in*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, description**")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2407,8 +2297,6 @@ class GovernanceGroupsApi:
 
         This API returns list of Governance Groups
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -2442,7 +2330,6 @@ class GovernanceGroupsApi:
         """ # noqa: E501
 
         _param = self._list_workgroups_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             offset=offset,
             limit=limit,
             count=count,
@@ -2481,7 +2368,6 @@ class GovernanceGroupsApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **name**: *eq, sw, in*  **memberships.identityId**: *eq, in*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, description**")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2499,8 +2385,6 @@ class GovernanceGroupsApi:
 
         This API returns list of Governance Groups
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -2534,7 +2418,6 @@ class GovernanceGroupsApi:
         """ # noqa: E501
 
         _param = self._list_workgroups_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             offset=offset,
             limit=limit,
             count=count,
@@ -2563,7 +2446,6 @@ class GovernanceGroupsApi:
 
     def _list_workgroups_serialize(
         self,
-        x_sail_point_experimental,
         offset,
         limit,
         count,
@@ -2612,8 +2494,6 @@ class GovernanceGroupsApi:
             _query_params.append(('sorters', sorters))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -2657,7 +2537,6 @@ class GovernanceGroupsApi:
         self,
         id: Annotated[StrictStr, Field(description="ID of the Governance Group")],
         json_patch_operation: Optional[List[JsonPatchOperation]] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2677,8 +2556,6 @@ class GovernanceGroupsApi:
 
         :param id: ID of the Governance Group (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param json_patch_operation:
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
@@ -2705,7 +2582,6 @@ class GovernanceGroupsApi:
 
         _param = self._patch_workgroup_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2737,7 +2613,6 @@ class GovernanceGroupsApi:
         self,
         id: Annotated[StrictStr, Field(description="ID of the Governance Group")],
         json_patch_operation: Optional[List[JsonPatchOperation]] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2757,8 +2632,6 @@ class GovernanceGroupsApi:
 
         :param id: ID of the Governance Group (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param json_patch_operation:
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
@@ -2785,7 +2658,6 @@ class GovernanceGroupsApi:
 
         _param = self._patch_workgroup_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2817,7 +2689,6 @@ class GovernanceGroupsApi:
         self,
         id: Annotated[StrictStr, Field(description="ID of the Governance Group")],
         json_patch_operation: Optional[List[JsonPatchOperation]] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2837,8 +2708,6 @@ class GovernanceGroupsApi:
 
         :param id: ID of the Governance Group (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param json_patch_operation:
         :type json_patch_operation: List[JsonPatchOperation]
         :param _request_timeout: timeout setting for this request. If one
@@ -2865,7 +2734,6 @@ class GovernanceGroupsApi:
 
         _param = self._patch_workgroup_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2891,7 +2759,6 @@ class GovernanceGroupsApi:
     def _patch_workgroup_serialize(
         self,
         id,
-        x_sail_point_experimental,
         json_patch_operation,
         _request_auth,
         _content_type,
@@ -2919,8 +2786,6 @@ class GovernanceGroupsApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if json_patch_operation is not None:
@@ -2979,7 +2844,6 @@ class GovernanceGroupsApi:
         self,
         workgroup_id: Annotated[StrictStr, Field(description="ID of the Governance Group.")],
         identity_preview_response_identity: Annotated[List[IdentityPreviewResponseIdentity], Field(description="List of identities to be added to a Governance Group members list.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2999,8 +2863,6 @@ class GovernanceGroupsApi:
 
         :param workgroup_id: ID of the Governance Group. (required)
         :type workgroup_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identity_preview_response_identity: List of identities to be added to a Governance Group members list. (required)
         :type identity_preview_response_identity: List[IdentityPreviewResponseIdentity]
         :param _request_timeout: timeout setting for this request. If one
@@ -3027,7 +2889,6 @@ class GovernanceGroupsApi:
 
         _param = self._update_workgroup_members_serialize(
             workgroup_id=workgroup_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             identity_preview_response_identity=identity_preview_response_identity,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3059,7 +2920,6 @@ class GovernanceGroupsApi:
         self,
         workgroup_id: Annotated[StrictStr, Field(description="ID of the Governance Group.")],
         identity_preview_response_identity: Annotated[List[IdentityPreviewResponseIdentity], Field(description="List of identities to be added to a Governance Group members list.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3079,8 +2939,6 @@ class GovernanceGroupsApi:
 
         :param workgroup_id: ID of the Governance Group. (required)
         :type workgroup_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identity_preview_response_identity: List of identities to be added to a Governance Group members list. (required)
         :type identity_preview_response_identity: List[IdentityPreviewResponseIdentity]
         :param _request_timeout: timeout setting for this request. If one
@@ -3107,7 +2965,6 @@ class GovernanceGroupsApi:
 
         _param = self._update_workgroup_members_serialize(
             workgroup_id=workgroup_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             identity_preview_response_identity=identity_preview_response_identity,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3139,7 +2996,6 @@ class GovernanceGroupsApi:
         self,
         workgroup_id: Annotated[StrictStr, Field(description="ID of the Governance Group.")],
         identity_preview_response_identity: Annotated[List[IdentityPreviewResponseIdentity], Field(description="List of identities to be added to a Governance Group members list.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3159,8 +3015,6 @@ class GovernanceGroupsApi:
 
         :param workgroup_id: ID of the Governance Group. (required)
         :type workgroup_id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param identity_preview_response_identity: List of identities to be added to a Governance Group members list. (required)
         :type identity_preview_response_identity: List[IdentityPreviewResponseIdentity]
         :param _request_timeout: timeout setting for this request. If one
@@ -3187,7 +3041,6 @@ class GovernanceGroupsApi:
 
         _param = self._update_workgroup_members_serialize(
             workgroup_id=workgroup_id,
-            x_sail_point_experimental=x_sail_point_experimental,
             identity_preview_response_identity=identity_preview_response_identity,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3213,7 +3066,6 @@ class GovernanceGroupsApi:
     def _update_workgroup_members_serialize(
         self,
         workgroup_id,
-        x_sail_point_experimental,
         identity_preview_response_identity,
         _request_auth,
         _content_type,
@@ -3241,8 +3093,6 @@ class GovernanceGroupsApi:
             _path_params['workgroupId'] = workgroup_id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if identity_preview_response_identity is not None:

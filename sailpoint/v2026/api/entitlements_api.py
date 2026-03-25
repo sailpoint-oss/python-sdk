@@ -16,12 +16,15 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBool, StrictStr
-from typing import List, Optional
+from pydantic import Field, StrictBool, StrictBytes, StrictStr
+from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from sailpoint.v2026.models.entitlement import Entitlement
 from sailpoint.v2026.models.entitlement_bulk_update_request import EntitlementBulkUpdateRequest
-from sailpoint.v2026.models.json_patch_operation import JsonPatchOperation
+from sailpoint.v2026.models.entitlement_dto import EntitlementDTO
+from sailpoint.v2026.models.entitlement_request_config import EntitlementRequestConfig
+from sailpoint.v2026.models.entitlement_source_reset_base_reference_dto import EntitlementSourceResetBaseReferenceDto
+from sailpoint.v2026.models.load_entitlement_task import LoadEntitlementTask
 
 from sailpoint.v2026.api_client import ApiClient, RequestSerialized
 from sailpoint.v2026.api_response import ApiResponse
@@ -42,14 +45,11 @@ class EntitlementsApi:
 
 
     @validate_call
-    def get_account_entitlements(
+    def create_access_model_metadata_for_entitlement(
         self,
-        account_id: Annotated[StrictStr, Field(description="The account ID to get entitlements for")],
-        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        search_after: Annotated[Optional[StrictStr], Field(description="Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement.")] = None,
-        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**")] = None,
+        id: Annotated[StrictStr, Field(description="The entitlement id.")],
+        attribute_key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
+        attribute_value: Annotated[StrictStr, Field(description="Technical name of the Attribute Value.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -62,23 +62,17 @@ class EntitlementsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Entitlement]:
-        """Get entitlements for an account
+    ) -> Entitlement:
+        """Add metadata to an entitlement.
 
-        This API returns a list of all entitlements associated with the given account ID. The account must exist; if not found, the API returns 404.
+        Add single Access Model Metadata to an entitlement.
 
-        :param account_id: The account ID to get entitlements for (required)
-        :type account_id: str
-        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        :type limit: int
-        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        :type offset: int
-        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        :type count: bool
-        :param search_after: Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement.
-        :type search_after: str
-        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**
-        :type sorters: str
+        :param id: The entitlement id. (required)
+        :type id: str
+        :param attribute_key: Technical name of the Attribute. (required)
+        :type attribute_key: str
+        :param attribute_value: Technical name of the Attribute Value. (required)
+        :type attribute_value: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -101,13 +95,10 @@ class EntitlementsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_account_entitlements_serialize(
-            account_id=account_id,
-            limit=limit,
-            offset=offset,
-            count=count,
-            search_after=search_after,
-            sorters=sorters,
+        _param = self._create_access_model_metadata_for_entitlement_serialize(
+            id=id,
+            attribute_key=attribute_key,
+            attribute_value=attribute_value,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -115,11 +106,10 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Entitlement]",
+            '201': "Entitlement",
             '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto",
             '429': "GetAccessRequestConfig429Response",
             '500': "ErrorResponseDto",
         }
@@ -135,14 +125,11 @@ class EntitlementsApi:
 
 
     @validate_call
-    def get_account_entitlements_with_http_info(
+    def create_access_model_metadata_for_entitlement_with_http_info(
         self,
-        account_id: Annotated[StrictStr, Field(description="The account ID to get entitlements for")],
-        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        search_after: Annotated[Optional[StrictStr], Field(description="Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement.")] = None,
-        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**")] = None,
+        id: Annotated[StrictStr, Field(description="The entitlement id.")],
+        attribute_key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
+        attribute_value: Annotated[StrictStr, Field(description="Technical name of the Attribute Value.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -155,23 +142,17 @@ class EntitlementsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Entitlement]]:
-        """Get entitlements for an account
+    ) -> ApiResponse[Entitlement]:
+        """Add metadata to an entitlement.
 
-        This API returns a list of all entitlements associated with the given account ID. The account must exist; if not found, the API returns 404.
+        Add single Access Model Metadata to an entitlement.
 
-        :param account_id: The account ID to get entitlements for (required)
-        :type account_id: str
-        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        :type limit: int
-        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        :type offset: int
-        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        :type count: bool
-        :param search_after: Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement.
-        :type search_after: str
-        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**
-        :type sorters: str
+        :param id: The entitlement id. (required)
+        :type id: str
+        :param attribute_key: Technical name of the Attribute. (required)
+        :type attribute_key: str
+        :param attribute_value: Technical name of the Attribute Value. (required)
+        :type attribute_value: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -194,13 +175,10 @@ class EntitlementsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_account_entitlements_serialize(
-            account_id=account_id,
-            limit=limit,
-            offset=offset,
-            count=count,
-            search_after=search_after,
-            sorters=sorters,
+        _param = self._create_access_model_metadata_for_entitlement_serialize(
+            id=id,
+            attribute_key=attribute_key,
+            attribute_value=attribute_value,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -208,11 +186,10 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Entitlement]",
+            '201': "Entitlement",
             '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto",
             '429': "GetAccessRequestConfig429Response",
             '500': "ErrorResponseDto",
         }
@@ -228,14 +205,11 @@ class EntitlementsApi:
 
 
     @validate_call
-    def get_account_entitlements_without_preload_content(
+    def create_access_model_metadata_for_entitlement_without_preload_content(
         self,
-        account_id: Annotated[StrictStr, Field(description="The account ID to get entitlements for")],
-        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        search_after: Annotated[Optional[StrictStr], Field(description="Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement.")] = None,
-        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**")] = None,
+        id: Annotated[StrictStr, Field(description="The entitlement id.")],
+        attribute_key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
+        attribute_value: Annotated[StrictStr, Field(description="Technical name of the Attribute Value.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -249,22 +223,16 @@ class EntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get entitlements for an account
+        """Add metadata to an entitlement.
 
-        This API returns a list of all entitlements associated with the given account ID. The account must exist; if not found, the API returns 404.
+        Add single Access Model Metadata to an entitlement.
 
-        :param account_id: The account ID to get entitlements for (required)
-        :type account_id: str
-        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        :type limit: int
-        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        :type offset: int
-        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        :type count: bool
-        :param search_after: Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement.
-        :type search_after: str
-        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**
-        :type sorters: str
+        :param id: The entitlement id. (required)
+        :type id: str
+        :param attribute_key: Technical name of the Attribute. (required)
+        :type attribute_key: str
+        :param attribute_value: Technical name of the Attribute Value. (required)
+        :type attribute_value: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -287,13 +255,10 @@ class EntitlementsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_account_entitlements_serialize(
-            account_id=account_id,
-            limit=limit,
-            offset=offset,
-            count=count,
-            search_after=search_after,
-            sorters=sorters,
+        _param = self._create_access_model_metadata_for_entitlement_serialize(
+            id=id,
+            attribute_key=attribute_key,
+            attribute_value=attribute_value,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -301,11 +266,10 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Entitlement]",
+            '201': "Entitlement",
             '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto",
             '429': "GetAccessRequestConfig429Response",
             '500': "ErrorResponseDto",
         }
@@ -316,14 +280,11 @@ class EntitlementsApi:
         return response_data.response
 
 
-    def _get_account_entitlements_serialize(
+    def _create_access_model_metadata_for_entitlement_serialize(
         self,
-        account_id,
-        limit,
-        offset,
-        count,
-        search_after,
-        sorters,
+        id,
+        attribute_key,
+        attribute_value,
         _request_auth,
         _content_type,
         _headers,
@@ -345,29 +306,13 @@ class EntitlementsApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if account_id is not None:
-            _path_params['accountId'] = account_id
+        if id is not None:
+            _path_params['id'] = id
+        if attribute_key is not None:
+            _path_params['attributeKey'] = attribute_key
+        if attribute_value is not None:
+            _path_params['attributeValue'] = attribute_value
         # process the query parameters
-        if limit is not None:
-            
-            _query_params.append(('limit', limit))
-            
-        if offset is not None:
-            
-            _query_params.append(('offset', offset))
-            
-        if count is not None:
-            
-            _query_params.append(('count', count))
-            
-        if search_after is not None:
-            
-            _query_params.append(('searchAfter', search_after))
-            
-        if sorters is not None:
-            
-            _query_params.append(('sorters', sorters))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -389,8 +334,8 @@ class EntitlementsApi:
         ]
 
         return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/entitlements/account/{accountId}/entitlements',
+            method='POST',
+            resource_path='/entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -407,9 +352,9 @@ class EntitlementsApi:
 
 
     @validate_call
-    def get_entitlement(
+    def create_entitlement(
         self,
-        id: Annotated[StrictStr, Field(description="The entitlement ID")],
+        entitlement_dto: EntitlementDTO,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -422,12 +367,609 @@ class EntitlementsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Entitlement:
-        """Get an entitlement
+    ) -> List[EntitlementDTO]:
+        """Creates an entitlement
 
-        This API returns an entitlement by its ID.
+        This internal endpoint creates an entitlement using the given entitlement payload
 
-        :param id: The entitlement ID (required)
+        :param entitlement_dto: (required)
+        :type entitlement_dto: EntitlementDTO
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_entitlement_serialize(
+            entitlement_dto=entitlement_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "List[EntitlementDTO]",
+            '400': "ErrorResponseDto",
+            '401': "GetAccessRequestConfig401Response",
+            '403': "ErrorResponseDto",
+            '429': "GetAccessRequestConfig429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def create_entitlement_with_http_info(
+        self,
+        entitlement_dto: EntitlementDTO,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[EntitlementDTO]]:
+        """Creates an entitlement
+
+        This internal endpoint creates an entitlement using the given entitlement payload
+
+        :param entitlement_dto: (required)
+        :type entitlement_dto: EntitlementDTO
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_entitlement_serialize(
+            entitlement_dto=entitlement_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "List[EntitlementDTO]",
+            '400': "ErrorResponseDto",
+            '401': "GetAccessRequestConfig401Response",
+            '403': "ErrorResponseDto",
+            '429': "GetAccessRequestConfig429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def create_entitlement_without_preload_content(
+        self,
+        entitlement_dto: EntitlementDTO,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Creates an entitlement
+
+        This internal endpoint creates an entitlement using the given entitlement payload
+
+        :param entitlement_dto: (required)
+        :type entitlement_dto: EntitlementDTO
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_entitlement_serialize(
+            entitlement_dto=entitlement_dto,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "List[EntitlementDTO]",
+            '400': "ErrorResponseDto",
+            '401': "GetAccessRequestConfig401Response",
+            '403': "ErrorResponseDto",
+            '429': "GetAccessRequestConfig429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _create_entitlement_serialize(
+        self,
+        entitlement_dto,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if entitlement_dto is not None:
+            _body_params = entitlement_dto
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/entitlements/{id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def delete_access_model_metadata_from_entitlement(
+        self,
+        id: Annotated[StrictStr, Field(description="The entitlement id.")],
+        attribute_key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
+        attribute_value: Annotated[StrictStr, Field(description="Technical name of the Attribute Value.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Remove metadata from an entitlement.
+
+        Remove single Access Model Metadata from an entitlement.
+
+        :param id: The entitlement id. (required)
+        :type id: str
+        :param attribute_key: Technical name of the Attribute. (required)
+        :type attribute_key: str
+        :param attribute_value: Technical name of the Attribute Value. (required)
+        :type attribute_value: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_access_model_metadata_from_entitlement_serialize(
+            id=id,
+            attribute_key=attribute_key,
+            attribute_value=attribute_value,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '400': "ErrorResponseDto",
+            '401': "GetAccessRequestConfig401Response",
+            '403': "ErrorResponseDto",
+            '429': "GetAccessRequestConfig429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def delete_access_model_metadata_from_entitlement_with_http_info(
+        self,
+        id: Annotated[StrictStr, Field(description="The entitlement id.")],
+        attribute_key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
+        attribute_value: Annotated[StrictStr, Field(description="Technical name of the Attribute Value.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Remove metadata from an entitlement.
+
+        Remove single Access Model Metadata from an entitlement.
+
+        :param id: The entitlement id. (required)
+        :type id: str
+        :param attribute_key: Technical name of the Attribute. (required)
+        :type attribute_key: str
+        :param attribute_value: Technical name of the Attribute Value. (required)
+        :type attribute_value: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_access_model_metadata_from_entitlement_serialize(
+            id=id,
+            attribute_key=attribute_key,
+            attribute_value=attribute_value,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '400': "ErrorResponseDto",
+            '401': "GetAccessRequestConfig401Response",
+            '403': "ErrorResponseDto",
+            '429': "GetAccessRequestConfig429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def delete_access_model_metadata_from_entitlement_without_preload_content(
+        self,
+        id: Annotated[StrictStr, Field(description="The entitlement id.")],
+        attribute_key: Annotated[StrictStr, Field(description="Technical name of the Attribute.")],
+        attribute_value: Annotated[StrictStr, Field(description="Technical name of the Attribute Value.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Remove metadata from an entitlement.
+
+        Remove single Access Model Metadata from an entitlement.
+
+        :param id: The entitlement id. (required)
+        :type id: str
+        :param attribute_key: Technical name of the Attribute. (required)
+        :type attribute_key: str
+        :param attribute_value: Technical name of the Attribute Value. (required)
+        :type attribute_value: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_access_model_metadata_from_entitlement_serialize(
+            id=id,
+            attribute_key=attribute_key,
+            attribute_value=attribute_value,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '400': "ErrorResponseDto",
+            '401': "GetAccessRequestConfig401Response",
+            '403': "ErrorResponseDto",
+            '429': "GetAccessRequestConfig429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _delete_access_model_metadata_from_entitlement_serialize(
+        self,
+        id,
+        attribute_key,
+        attribute_value,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        if attribute_key is not None:
+            _path_params['attributeKey'] = attribute_key
+        if attribute_value is not None:
+            _path_params['attributeValue'] = attribute_value
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def get_entitlement_request_config(
+        self,
+        id: Annotated[StrictStr, Field(description="Entitlement Id")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EntitlementRequestConfig:
+        """Get entitlement request config
+
+        This API returns the entitlement request config for a specified entitlement.
+
+        :param id: Entitlement Id (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -451,7 +993,7 @@ class EntitlementsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_entitlement_serialize(
+        _param = self._get_entitlement_request_config_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -460,7 +1002,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlement",
+            '200': "EntitlementRequestConfig",
             '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
@@ -480,9 +1022,9 @@ class EntitlementsApi:
 
 
     @validate_call
-    def get_entitlement_with_http_info(
+    def get_entitlement_request_config_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The entitlement ID")],
+        id: Annotated[StrictStr, Field(description="Entitlement Id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -495,12 +1037,12 @@ class EntitlementsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Entitlement]:
-        """Get an entitlement
+    ) -> ApiResponse[EntitlementRequestConfig]:
+        """Get entitlement request config
 
-        This API returns an entitlement by its ID.
+        This API returns the entitlement request config for a specified entitlement.
 
-        :param id: The entitlement ID (required)
+        :param id: Entitlement Id (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -524,7 +1066,7 @@ class EntitlementsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_entitlement_serialize(
+        _param = self._get_entitlement_request_config_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -533,7 +1075,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlement",
+            '200': "EntitlementRequestConfig",
             '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
@@ -553,9 +1095,9 @@ class EntitlementsApi:
 
 
     @validate_call
-    def get_entitlement_without_preload_content(
+    def get_entitlement_request_config_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The entitlement ID")],
+        id: Annotated[StrictStr, Field(description="Entitlement Id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -569,11 +1111,11 @@ class EntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get an entitlement
+        """Get entitlement request config
 
-        This API returns an entitlement by its ID.
+        This API returns the entitlement request config for a specified entitlement.
 
-        :param id: The entitlement ID (required)
+        :param id: Entitlement Id (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -597,7 +1139,7 @@ class EntitlementsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_entitlement_serialize(
+        _param = self._get_entitlement_request_config_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -606,7 +1148,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlement",
+            '200': "EntitlementRequestConfig",
             '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
@@ -621,7 +1163,7 @@ class EntitlementsApi:
         return response_data.response
 
 
-    def _get_entitlement_serialize(
+    def _get_entitlement_request_config_serialize(
         self,
         id,
         _request_auth,
@@ -665,12 +1207,321 @@ class EntitlementsApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/entitlements/{id}',
+            resource_path='/entitlements/{id}/entitlement-request-config',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def import_entitlements_by_source(
+        self,
+        id: Annotated[StrictStr, Field(description="Source Id")],
+        csv_file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> LoadEntitlementTask:
+        """(Deprecated) Aggregate entitlements
+
+        Starts an entitlement aggregation on the specified source. Though this endpoint has been deprecated, you can find its Beta equivalent [here](https://developer.sailpoint.com/docs/api/beta/import-entitlements).  If the target source is a direct connection, then the request body must be empty. You will also need to make sure the Content-Type header is not set. If you set the Content-Type header without specifying a body, then you will receive a 500 error.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
+
+        :param id: Source Id (required)
+        :type id: str
+        :param csv_file: The CSV file containing the source entitlements to aggregate.
+        :type csv_file: bytearray
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+        warnings.warn("POST /entitlements/aggregate/sources/{id} is deprecated.", DeprecationWarning)
+
+        _param = self._import_entitlements_by_source_serialize(
+            id=id,
+            csv_file=csv_file,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "LoadEntitlementTask",
+            '400': "ErrorResponseDto",
+            '401': "GetAccessRequestConfig401Response",
+            '403': "ErrorResponseDto",
+            '429': "GetAccessRequestConfig429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def import_entitlements_by_source_with_http_info(
+        self,
+        id: Annotated[StrictStr, Field(description="Source Id")],
+        csv_file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[LoadEntitlementTask]:
+        """(Deprecated) Aggregate entitlements
+
+        Starts an entitlement aggregation on the specified source. Though this endpoint has been deprecated, you can find its Beta equivalent [here](https://developer.sailpoint.com/docs/api/beta/import-entitlements).  If the target source is a direct connection, then the request body must be empty. You will also need to make sure the Content-Type header is not set. If you set the Content-Type header without specifying a body, then you will receive a 500 error.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
+
+        :param id: Source Id (required)
+        :type id: str
+        :param csv_file: The CSV file containing the source entitlements to aggregate.
+        :type csv_file: bytearray
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+        warnings.warn("POST /entitlements/aggregate/sources/{id} is deprecated.", DeprecationWarning)
+
+        _param = self._import_entitlements_by_source_serialize(
+            id=id,
+            csv_file=csv_file,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "LoadEntitlementTask",
+            '400': "ErrorResponseDto",
+            '401': "GetAccessRequestConfig401Response",
+            '403': "ErrorResponseDto",
+            '429': "GetAccessRequestConfig429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def import_entitlements_by_source_without_preload_content(
+        self,
+        id: Annotated[StrictStr, Field(description="Source Id")],
+        csv_file: Annotated[Optional[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The CSV file containing the source entitlements to aggregate.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """(Deprecated) Aggregate entitlements
+
+        Starts an entitlement aggregation on the specified source. Though this endpoint has been deprecated, you can find its Beta equivalent [here](https://developer.sailpoint.com/docs/api/beta/import-entitlements).  If the target source is a direct connection, then the request body must be empty. You will also need to make sure the Content-Type header is not set. If you set the Content-Type header without specifying a body, then you will receive a 500 error.  If the target source is a delimited file source, then the CSV file needs to be included in the request body. You will also need to set the Content-Type header to `multipart/form-data`.
+
+        :param id: Source Id (required)
+        :type id: str
+        :param csv_file: The CSV file containing the source entitlements to aggregate.
+        :type csv_file: bytearray
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+        warnings.warn("POST /entitlements/aggregate/sources/{id} is deprecated.", DeprecationWarning)
+
+        _param = self._import_entitlements_by_source_serialize(
+            id=id,
+            csv_file=csv_file,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "LoadEntitlementTask",
+            '400': "ErrorResponseDto",
+            '401': "GetAccessRequestConfig401Response",
+            '403': "ErrorResponseDto",
+            '429': "GetAccessRequestConfig429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _import_entitlements_by_source_serialize(
+        self,
+        id,
+        csv_file,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        if csv_file is not None:
+            _files['csvFile'] = csv_file
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'multipart/form-data'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/entitlements/aggregate/sources/{id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1453,15 +2304,15 @@ class EntitlementsApi:
     @validate_call
     def list_entitlements(
         self,
-        segmented_for_identity: Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID.")] = None,
-        for_segment_ids: Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs.")] = None,
+        account_id: Annotated[Optional[StrictStr], Field(description="The account ID. If specified, returns only entitlements associated with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s).")] = None,
+        segmented_for_identity: Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user's Identity.")] = None,
+        for_segment_ids: Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. Cannot be specified with the **account-id** or **segmented-for-identity** param(s).")] = None,
         include_unsegmented: Annotated[Optional[StrictBool], Field(description="Whether or not the response list should contain unsegmented Entitlements. If **for-segment-ids** and **segmented-for-identity** are both absent or empty, specifying **include-unsegmented=false** results in an error.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        search_after: Annotated[Optional[StrictStr], Field(description="Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**")] = None,
-        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **tags**: *eq*  **privilegeLevel.direct**: *eq*")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1477,11 +2328,13 @@ class EntitlementsApi:
     ) -> List[Entitlement]:
         """Gets a list of entitlements.
 
-        This API returns a list of entitlements. Any authenticated token can call this API.
+        This API returns a list of entitlements.  This API can be used in one of the two following ways: either getting entitlements for a specific **account-id**, or getting via use of **filters** (those two options are exclusive).  Any authenticated token can call this API.
 
-        :param segmented_for_identity: If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID.
+        :param account_id: The account ID. If specified, returns only entitlements associated with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s).
+        :type account_id: str
+        :param segmented_for_identity: If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user's Identity.
         :type segmented_for_identity: str
-        :param for_segment_ids: If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs.
+        :param for_segment_ids: If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. Cannot be specified with the **account-id** or **segmented-for-identity** param(s).
         :type for_segment_ids: str
         :param include_unsegmented: Whether or not the response list should contain unsegmented Entitlements. If **for-segment-ids** and **segmented-for-identity** are both absent or empty, specifying **include-unsegmented=false** results in an error.
         :type include_unsegmented: bool
@@ -1491,11 +2344,9 @@ class EntitlementsApi:
         :type limit: int
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type count: bool
-        :param search_after: Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement.
-        :type search_after: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**
         :type sorters: str
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **tags**: *eq*  **privilegeLevel.direct**: *eq*
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*
         :type filters: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1520,13 +2371,13 @@ class EntitlementsApi:
         """ # noqa: E501
 
         _param = self._list_entitlements_serialize(
+            account_id=account_id,
             segmented_for_identity=segmented_for_identity,
             for_segment_ids=for_segment_ids,
             include_unsegmented=include_unsegmented,
             offset=offset,
             limit=limit,
             count=count,
-            search_after=search_after,
             sorters=sorters,
             filters=filters,
             _request_auth=_request_auth,
@@ -1557,15 +2408,15 @@ class EntitlementsApi:
     @validate_call
     def list_entitlements_with_http_info(
         self,
-        segmented_for_identity: Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID.")] = None,
-        for_segment_ids: Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs.")] = None,
+        account_id: Annotated[Optional[StrictStr], Field(description="The account ID. If specified, returns only entitlements associated with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s).")] = None,
+        segmented_for_identity: Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user's Identity.")] = None,
+        for_segment_ids: Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. Cannot be specified with the **account-id** or **segmented-for-identity** param(s).")] = None,
         include_unsegmented: Annotated[Optional[StrictBool], Field(description="Whether or not the response list should contain unsegmented Entitlements. If **for-segment-ids** and **segmented-for-identity** are both absent or empty, specifying **include-unsegmented=false** results in an error.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        search_after: Annotated[Optional[StrictStr], Field(description="Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**")] = None,
-        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **tags**: *eq*  **privilegeLevel.direct**: *eq*")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1581,11 +2432,13 @@ class EntitlementsApi:
     ) -> ApiResponse[List[Entitlement]]:
         """Gets a list of entitlements.
 
-        This API returns a list of entitlements. Any authenticated token can call this API.
+        This API returns a list of entitlements.  This API can be used in one of the two following ways: either getting entitlements for a specific **account-id**, or getting via use of **filters** (those two options are exclusive).  Any authenticated token can call this API.
 
-        :param segmented_for_identity: If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID.
+        :param account_id: The account ID. If specified, returns only entitlements associated with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s).
+        :type account_id: str
+        :param segmented_for_identity: If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user's Identity.
         :type segmented_for_identity: str
-        :param for_segment_ids: If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs.
+        :param for_segment_ids: If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. Cannot be specified with the **account-id** or **segmented-for-identity** param(s).
         :type for_segment_ids: str
         :param include_unsegmented: Whether or not the response list should contain unsegmented Entitlements. If **for-segment-ids** and **segmented-for-identity** are both absent or empty, specifying **include-unsegmented=false** results in an error.
         :type include_unsegmented: bool
@@ -1595,11 +2448,9 @@ class EntitlementsApi:
         :type limit: int
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type count: bool
-        :param search_after: Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement.
-        :type search_after: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**
         :type sorters: str
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **tags**: *eq*  **privilegeLevel.direct**: *eq*
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*
         :type filters: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1624,13 +2475,13 @@ class EntitlementsApi:
         """ # noqa: E501
 
         _param = self._list_entitlements_serialize(
+            account_id=account_id,
             segmented_for_identity=segmented_for_identity,
             for_segment_ids=for_segment_ids,
             include_unsegmented=include_unsegmented,
             offset=offset,
             limit=limit,
             count=count,
-            search_after=search_after,
             sorters=sorters,
             filters=filters,
             _request_auth=_request_auth,
@@ -1661,15 +2512,15 @@ class EntitlementsApi:
     @validate_call
     def list_entitlements_without_preload_content(
         self,
-        segmented_for_identity: Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID.")] = None,
-        for_segment_ids: Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs.")] = None,
+        account_id: Annotated[Optional[StrictStr], Field(description="The account ID. If specified, returns only entitlements associated with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s).")] = None,
+        segmented_for_identity: Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user's Identity.")] = None,
+        for_segment_ids: Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. Cannot be specified with the **account-id** or **segmented-for-identity** param(s).")] = None,
         include_unsegmented: Annotated[Optional[StrictBool], Field(description="Whether or not the response list should contain unsegmented Entitlements. If **for-segment-ids** and **segmented-for-identity** are both absent or empty, specifying **include-unsegmented=false** results in an error.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
-        search_after: Annotated[Optional[StrictStr], Field(description="Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement.")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**")] = None,
-        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **tags**: *eq*  **privilegeLevel.direct**: *eq*")] = None,
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1685,11 +2536,13 @@ class EntitlementsApi:
     ) -> RESTResponseType:
         """Gets a list of entitlements.
 
-        This API returns a list of entitlements. Any authenticated token can call this API.
+        This API returns a list of entitlements.  This API can be used in one of the two following ways: either getting entitlements for a specific **account-id**, or getting via use of **filters** (those two options are exclusive).  Any authenticated token can call this API.
 
-        :param segmented_for_identity: If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID.
+        :param account_id: The account ID. If specified, returns only entitlements associated with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s).
+        :type account_id: str
+        :param segmented_for_identity: If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user's Identity.
         :type segmented_for_identity: str
-        :param for_segment_ids: If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs.
+        :param for_segment_ids: If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. Cannot be specified with the **account-id** or **segmented-for-identity** param(s).
         :type for_segment_ids: str
         :param include_unsegmented: Whether or not the response list should contain unsegmented Entitlements. If **for-segment-ids** and **segmented-for-identity** are both absent or empty, specifying **include-unsegmented=false** results in an error.
         :type include_unsegmented: bool
@@ -1699,11 +2552,9 @@ class EntitlementsApi:
         :type limit: int
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type count: bool
-        :param search_after: Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement.
-        :type search_after: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**
         :type sorters: str
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **tags**: *eq*  **privilegeLevel.direct**: *eq*
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*
         :type filters: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1728,13 +2579,13 @@ class EntitlementsApi:
         """ # noqa: E501
 
         _param = self._list_entitlements_serialize(
+            account_id=account_id,
             segmented_for_identity=segmented_for_identity,
             for_segment_ids=for_segment_ids,
             include_unsegmented=include_unsegmented,
             offset=offset,
             limit=limit,
             count=count,
-            search_after=search_after,
             sorters=sorters,
             filters=filters,
             _request_auth=_request_auth,
@@ -1760,13 +2611,13 @@ class EntitlementsApi:
 
     def _list_entitlements_serialize(
         self,
+        account_id,
         segmented_for_identity,
         for_segment_ids,
         include_unsegmented,
         offset,
         limit,
         count,
-        search_after,
         sorters,
         filters,
         _request_auth,
@@ -1791,6 +2642,10 @@ class EntitlementsApi:
 
         # process the path parameters
         # process the query parameters
+        if account_id is not None:
+            
+            _query_params.append(('account-id', account_id))
+            
         if segmented_for_identity is not None:
             
             _query_params.append(('segmented-for-identity', segmented_for_identity))
@@ -1814,10 +2669,6 @@ class EntitlementsApi:
         if count is not None:
             
             _query_params.append(('count', count))
-            
-        if search_after is not None:
-            
-            _query_params.append(('searchAfter', search_after))
             
         if sorters is not None:
             
@@ -1844,7 +2695,8 @@ class EntitlementsApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1866,10 +2718,14 @@ class EntitlementsApi:
 
 
     @validate_call
-    def patch_entitlement(
+    def list_entitlements_by_account(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the entitlement to patch")],
-        json_patch_operation: Optional[List[JsonPatchOperation]] = None,
+        account_id: Annotated[StrictStr, Field(description="The account ID to get entitlements for")],
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        search_after: Annotated[Optional[StrictStr], Field(description="Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement.")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1882,15 +2738,23 @@ class EntitlementsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Entitlement:
-        """Patch an entitlement
+    ) -> List[Entitlement]:
+        """Get entitlements for an account
 
-        This API updates an existing entitlement using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  The following fields are patchable: **requestable**, **segments**, **privilegeOverride/level**, **owner**, **name**, **description**, and **manuallyUpdatedFields**  When you're patching owner, only owner type and owner id must be provided. Owner name is optional, and it won't be modified. If the owner name is provided, it should correspond to the real name. The only owner type currently supported is IDENTITY.
+        This API returns a list of all entitlements associated with the given account ID. The account must exist; if not found, the API returns 404.
 
-        :param id: ID of the entitlement to patch (required)
-        :type id: str
-        :param json_patch_operation:
-        :type json_patch_operation: List[JsonPatchOperation]
+        :param account_id: The account ID to get entitlements for (required)
+        :type account_id: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param search_after: Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement.
+        :type search_after: str
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**
+        :type sorters: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1913,9 +2777,13 @@ class EntitlementsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._patch_entitlement_serialize(
-            id=id,
-            json_patch_operation=json_patch_operation,
+        _param = self._list_entitlements_by_account_serialize(
+            account_id=account_id,
+            limit=limit,
+            offset=offset,
+            count=count,
+            search_after=search_after,
+            sorters=sorters,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1923,7 +2791,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlement",
+            '200': "List[Entitlement]",
             '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
@@ -1943,10 +2811,14 @@ class EntitlementsApi:
 
 
     @validate_call
-    def patch_entitlement_with_http_info(
+    def list_entitlements_by_account_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the entitlement to patch")],
-        json_patch_operation: Optional[List[JsonPatchOperation]] = None,
+        account_id: Annotated[StrictStr, Field(description="The account ID to get entitlements for")],
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        search_after: Annotated[Optional[StrictStr], Field(description="Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement.")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1959,15 +2831,23 @@ class EntitlementsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Entitlement]:
-        """Patch an entitlement
+    ) -> ApiResponse[List[Entitlement]]:
+        """Get entitlements for an account
 
-        This API updates an existing entitlement using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  The following fields are patchable: **requestable**, **segments**, **privilegeOverride/level**, **owner**, **name**, **description**, and **manuallyUpdatedFields**  When you're patching owner, only owner type and owner id must be provided. Owner name is optional, and it won't be modified. If the owner name is provided, it should correspond to the real name. The only owner type currently supported is IDENTITY.
+        This API returns a list of all entitlements associated with the given account ID. The account must exist; if not found, the API returns 404.
 
-        :param id: ID of the entitlement to patch (required)
-        :type id: str
-        :param json_patch_operation:
-        :type json_patch_operation: List[JsonPatchOperation]
+        :param account_id: The account ID to get entitlements for (required)
+        :type account_id: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param search_after: Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement.
+        :type search_after: str
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**
+        :type sorters: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1990,9 +2870,13 @@ class EntitlementsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._patch_entitlement_serialize(
-            id=id,
-            json_patch_operation=json_patch_operation,
+        _param = self._list_entitlements_by_account_serialize(
+            account_id=account_id,
+            limit=limit,
+            offset=offset,
+            count=count,
+            search_after=search_after,
+            sorters=sorters,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2000,7 +2884,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlement",
+            '200': "List[Entitlement]",
             '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
@@ -2020,10 +2904,14 @@ class EntitlementsApi:
 
 
     @validate_call
-    def patch_entitlement_without_preload_content(
+    def list_entitlements_by_account_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="ID of the entitlement to patch")],
-        json_patch_operation: Optional[List[JsonPatchOperation]] = None,
+        account_id: Annotated[StrictStr, Field(description="The account ID to get entitlements for")],
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
+        search_after: Annotated[Optional[StrictStr], Field(description="Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement.")] = None,
+        sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2037,14 +2925,22 @@ class EntitlementsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Patch an entitlement
+        """Get entitlements for an account
 
-        This API updates an existing entitlement using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  The following fields are patchable: **requestable**, **segments**, **privilegeOverride/level**, **owner**, **name**, **description**, and **manuallyUpdatedFields**  When you're patching owner, only owner type and owner id must be provided. Owner name is optional, and it won't be modified. If the owner name is provided, it should correspond to the real name. The only owner type currently supported is IDENTITY.
+        This API returns a list of all entitlements associated with the given account ID. The account must exist; if not found, the API returns 404.
 
-        :param id: ID of the entitlement to patch (required)
-        :type id: str
-        :param json_patch_operation:
-        :type json_patch_operation: List[JsonPatchOperation]
+        :param account_id: The account ID to get entitlements for (required)
+        :type account_id: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param search_after: Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement.
+        :type search_after: str
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**
+        :type sorters: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2067,9 +2963,13 @@ class EntitlementsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._patch_entitlement_serialize(
-            id=id,
-            json_patch_operation=json_patch_operation,
+        _param = self._list_entitlements_by_account_serialize(
+            account_id=account_id,
+            limit=limit,
+            offset=offset,
+            count=count,
+            search_after=search_after,
+            sorters=sorters,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2077,7 +2977,7 @@ class EntitlementsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Entitlement",
+            '200': "List[Entitlement]",
             '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
@@ -2092,10 +2992,14 @@ class EntitlementsApi:
         return response_data.response
 
 
-    def _patch_entitlement_serialize(
+    def _list_entitlements_by_account_serialize(
         self,
-        id,
-        json_patch_operation,
+        account_id,
+        limit,
+        offset,
+        count,
+        search_after,
+        sorters,
         _request_auth,
         _content_type,
         _headers,
@@ -2105,7 +3009,319 @@ class EntitlementsApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'JsonPatchOperation': '',
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if account_id is not None:
+            _path_params['accountId'] = account_id
+        # process the query parameters
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
+        if count is not None:
+            
+            _query_params.append(('count', count))
+            
+        if search_after is not None:
+            
+            _query_params.append(('searchAfter', search_after))
+            
+        if sorters is not None:
+            
+            _query_params.append(('sorters', sorters))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/entitlements/account/{accountId}/entitlements',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def put_entitlement_request_config(
+        self,
+        id: Annotated[StrictStr, Field(description="Entitlement ID")],
+        entitlement_request_config: EntitlementRequestConfig,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EntitlementRequestConfig:
+        """Replace entitlement request config
+
+        This API replaces the entitlement request config for a specified entitlement.
+
+        :param id: Entitlement ID (required)
+        :type id: str
+        :param entitlement_request_config: (required)
+        :type entitlement_request_config: EntitlementRequestConfig
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._put_entitlement_request_config_serialize(
+            id=id,
+            entitlement_request_config=entitlement_request_config,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "EntitlementRequestConfig",
+            '400': "ErrorResponseDto",
+            '401': "GetAccessRequestConfig401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "GetAccessRequestConfig429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def put_entitlement_request_config_with_http_info(
+        self,
+        id: Annotated[StrictStr, Field(description="Entitlement ID")],
+        entitlement_request_config: EntitlementRequestConfig,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EntitlementRequestConfig]:
+        """Replace entitlement request config
+
+        This API replaces the entitlement request config for a specified entitlement.
+
+        :param id: Entitlement ID (required)
+        :type id: str
+        :param entitlement_request_config: (required)
+        :type entitlement_request_config: EntitlementRequestConfig
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._put_entitlement_request_config_serialize(
+            id=id,
+            entitlement_request_config=entitlement_request_config,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "EntitlementRequestConfig",
+            '400': "ErrorResponseDto",
+            '401': "GetAccessRequestConfig401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "GetAccessRequestConfig429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def put_entitlement_request_config_without_preload_content(
+        self,
+        id: Annotated[StrictStr, Field(description="Entitlement ID")],
+        entitlement_request_config: EntitlementRequestConfig,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Replace entitlement request config
+
+        This API replaces the entitlement request config for a specified entitlement.
+
+        :param id: Entitlement ID (required)
+        :type id: str
+        :param entitlement_request_config: (required)
+        :type entitlement_request_config: EntitlementRequestConfig
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._put_entitlement_request_config_serialize(
+            id=id,
+            entitlement_request_config=entitlement_request_config,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "EntitlementRequestConfig",
+            '400': "ErrorResponseDto",
+            '401': "GetAccessRequestConfig401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "GetAccessRequestConfig429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _put_entitlement_request_config_serialize(
+        self,
+        id,
+        entitlement_request_config,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
         }
 
         _path_params: Dict[str, str] = {}
@@ -2124,8 +3340,8 @@ class EntitlementsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if json_patch_operation is not None:
-            _body_params = json_patch_operation
+        if entitlement_request_config is not None:
+            _body_params = entitlement_request_config
 
 
         # set the HTTP header `Accept`
@@ -2143,7 +3359,7 @@ class EntitlementsApi:
             _default_content_type = (
                 self.api_client.select_header_content_type(
                     [
-                        'application/json-patch+json'
+                        'application/json'
                     ]
                 )
             )
@@ -2157,8 +3373,285 @@ class EntitlementsApi:
         ]
 
         return self.api_client.param_serialize(
-            method='PATCH',
-            resource_path='/entitlements/{id}',
+            method='PUT',
+            resource_path='/entitlements/{id}/entitlement-request-config',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def reset_source_entitlements(
+        self,
+        id: Annotated[StrictStr, Field(description="ID of source for the entitlement reset")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EntitlementSourceResetBaseReferenceDto:
+        """Reset source entitlements
+
+        Remove all entitlements from a specific source. To reload the accounts along with the entitlements you removed, you must run an unoptimized aggregation.  To do so, use [Account Aggregation](https://developer.sailpoint.com/docs/api/v2024/import-accounts/) with `disableOptimization` = `true`. 
+
+        :param id: ID of source for the entitlement reset (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._reset_source_entitlements_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "EntitlementSourceResetBaseReferenceDto",
+            '400': "ErrorResponseDto",
+            '401': "GetAccessRequestConfig401Response",
+            '403': "ErrorResponseDto",
+            '429': "GetAccessRequestConfig429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def reset_source_entitlements_with_http_info(
+        self,
+        id: Annotated[StrictStr, Field(description="ID of source for the entitlement reset")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EntitlementSourceResetBaseReferenceDto]:
+        """Reset source entitlements
+
+        Remove all entitlements from a specific source. To reload the accounts along with the entitlements you removed, you must run an unoptimized aggregation.  To do so, use [Account Aggregation](https://developer.sailpoint.com/docs/api/v2024/import-accounts/) with `disableOptimization` = `true`. 
+
+        :param id: ID of source for the entitlement reset (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._reset_source_entitlements_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "EntitlementSourceResetBaseReferenceDto",
+            '400': "ErrorResponseDto",
+            '401': "GetAccessRequestConfig401Response",
+            '403': "ErrorResponseDto",
+            '429': "GetAccessRequestConfig429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def reset_source_entitlements_without_preload_content(
+        self,
+        id: Annotated[StrictStr, Field(description="ID of source for the entitlement reset")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Reset source entitlements
+
+        Remove all entitlements from a specific source. To reload the accounts along with the entitlements you removed, you must run an unoptimized aggregation.  To do so, use [Account Aggregation](https://developer.sailpoint.com/docs/api/v2024/import-accounts/) with `disableOptimization` = `true`. 
+
+        :param id: ID of source for the entitlement reset (required)
+        :type id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._reset_source_entitlements_serialize(
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "EntitlementSourceResetBaseReferenceDto",
+            '400': "ErrorResponseDto",
+            '401': "GetAccessRequestConfig401Response",
+            '403': "ErrorResponseDto",
+            '429': "GetAccessRequestConfig429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _reset_source_entitlements_serialize(
+        self,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/entitlements/reset/sources/{id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

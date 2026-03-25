@@ -1,0 +1,39 @@
+---
+id: v2026-managed-cluster-types
+title: ManagedClusterTypes
+pagination_label: ManagedClusterTypes
+sidebar_label: ManagedClusterTypes
+sidebar_class_name: pythonsdk
+keywords: ['python', 'Python', 'sdk', 'ManagedClusterTypes', 'V2026ManagedClusterTypes'] 
+slug: /tools/sdk/python/v2026/models/managed-cluster-types
+tags: ['SDK', 'Software Development Kit', 'ManagedClusterTypes', 'V2026ManagedClusterTypes']
+---
+
+# ManagedClusterTypes
+
+The Type of Cluster: * `idn` - IDN VA type * `iai` - IAI harvester VA * `spConnectCluster` - Saas 2.0 connector cluster (this should be one per org) * `sqsCluster` - This should be unused * `das-rc` - Data Access Security Resources Collector * `das-pc` - Data Access Security Permissions Collector * `das-dc` - Data Access Security Data Classification Collector * `pag` - Privilege Action Gateway VA * `das-am` - Data Access Security Activity Monitor * `standard` - Standard Cluster type for running multiple products 
+
+## Enum
+
+* `IDN` (value: `'idn'`)
+
+* `IAI` (value: `'iai'`)
+
+* `SPCONNECTCLUSTER` (value: `'spConnectCluster'`)
+
+* `SQSCLUSTER` (value: `'sqsCluster'`)
+
+* `DAS_MINUS_RC` (value: `'das-rc'`)
+
+* `DAS_MINUS_PC` (value: `'das-pc'`)
+
+* `DAS_MINUS_DC` (value: `'das-dc'`)
+
+* `PAG` (value: `'pag'`)
+
+* `DAS_MINUS_AM` (value: `'das-am'`)
+
+* `STANDARD` (value: `'standard'`)
+
+[[Back to top]](#) 
+

@@ -19,7 +19,7 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from sailpoint.v2026.models.dto_type import DtoType
 from typing import Optional, Set
 from typing_extensions import Self
@@ -28,7 +28,7 @@ class AccountActionRequestDtoRequester(BaseModel):
     """
     AccountActionRequestDtoRequester
     """ # noqa: E501
-    type: Optional[Any] = None
+    type: Optional[Union[DtoType, str]] = None
     id: Optional[StrictStr] = Field(default=None, description="ID of the object to which this reference applies")
     name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the object to which this reference applies")
     __properties: ClassVar[List[str]] = ["type", "id", "name"]
@@ -72,9 +72,6 @@ class AccountActionRequestDtoRequester(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of type
-        if self.type:
-            _dict['type'] = self.type.to_dict()
         return _dict
 
     @classmethod
@@ -87,7 +84,7 @@ class AccountActionRequestDtoRequester(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "type": DtoType.from_dict(obj["type"]) if obj.get("type") is not None else None,
+            "type": obj.get("type"),
             "id": obj.get("id"),
             "name": obj.get("name")
         })

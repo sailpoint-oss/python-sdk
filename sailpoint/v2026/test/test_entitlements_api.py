@@ -26,17 +26,38 @@ class TestEntitlementsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_get_account_entitlements(self) -> None:
-        """Test case for get_account_entitlements
+    def test_create_access_model_metadata_for_entitlement(self) -> None:
+        """Test case for create_access_model_metadata_for_entitlement
 
-        Get entitlements for an account
+        Add metadata to an entitlement.
         """
         pass
 
-    def test_get_entitlement(self) -> None:
-        """Test case for get_entitlement
+    def test_create_entitlement(self) -> None:
+        """Test case for create_entitlement
 
-        Get an entitlement
+        Creates an entitlement
+        """
+        pass
+
+    def test_delete_access_model_metadata_from_entitlement(self) -> None:
+        """Test case for delete_access_model_metadata_from_entitlement
+
+        Remove metadata from an entitlement.
+        """
+        pass
+
+    def test_get_entitlement_request_config(self) -> None:
+        """Test case for get_entitlement_request_config
+
+        Get entitlement request config
+        """
+        pass
+
+    def test_import_entitlements_by_source(self) -> None:
+        """Test case for import_entitlements_by_source
+
+        Aggregate entitlements
         """
         pass
 
@@ -61,10 +82,24 @@ class TestEntitlementsApi(unittest.TestCase):
         """
         pass
 
-    def test_patch_entitlement(self) -> None:
-        """Test case for patch_entitlement
+    def test_list_entitlements_by_account(self) -> None:
+        """Test case for list_entitlements_by_account
 
-        Patch an entitlement
+        Get entitlements for an account
+        """
+        pass
+
+    def test_put_entitlement_request_config(self) -> None:
+        """Test case for put_entitlement_request_config
+
+        Replace entitlement request config
+        """
+        pass
+
+    def test_reset_source_entitlements(self) -> None:
+        """Test case for reset_source_entitlements
+
+        Reset source entitlements
         """
         pass
 

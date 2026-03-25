@@ -33,17 +33,6 @@ Method | HTTP request | Description
 
 
 ## create-workgroup
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 Create a new governance group.
 This API creates a new Governance Group.
 
@@ -53,7 +42,6 @@ This API creates a new Governance Group.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
-   | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
  Body  | workgroup_dto | [**WorkgroupDto**](../models/workgroup-dto) | True  | 
 
 ### Return type
@@ -82,10 +70,8 @@ from sailpoint.v2024.models.workgroup_dto import WorkgroupDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
-configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
     workgroup_dto = '''{
           "owner" : {
             "emailAddress" : "support@sailpoint.com",
@@ -106,9 +92,9 @@ with ApiClient(configuration) as api_client:
     try:
         # Create a new governance group.
         new_workgroup_dto = WorkgroupDto.from_json(workgroup_dto)
-        results = GovernanceGroupsApi(api_client).create_workgroup(x_sail_point_experimental=x_sail_point_experimental, workgroup_dto=new_workgroup_dto)
+        results = GovernanceGroupsApi(api_client).create_workgroup(workgroup_dto=new_workgroup_dto)
         # Below is a request that includes all optional parameters
-        # results = GovernanceGroupsApi(api_client).create_workgroup(x_sail_point_experimental, new_workgroup_dto)
+        # results = GovernanceGroupsApi(api_client).create_workgroup(new_workgroup_dto)
         print("The response of GovernanceGroupsApi->create_workgroup:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -120,17 +106,6 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## delete-workgroup
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 Delete a governance group
 This API deletes a Governance Group by its ID.
 
@@ -141,7 +116,6 @@ This API deletes a Governance Group by its ID.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | ID of the Governance Group
-   | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
  (empty response body)
@@ -168,18 +142,16 @@ from sailpoint.v2024.api_client import ApiClient
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
-configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     id = '2c9180837ca6693d017ca8d097500149' # str | ID of the Governance Group # str | ID of the Governance Group
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
         # Delete a governance group
         
-        GovernanceGroupsApi(api_client).delete_workgroup(id=id, x_sail_point_experimental=x_sail_point_experimental)
+        GovernanceGroupsApi(api_client).delete_workgroup(id=id)
         # Below is a request that includes all optional parameters
-        # GovernanceGroupsApi(api_client).delete_workgroup(id, x_sail_point_experimental)
+        # GovernanceGroupsApi(api_client).delete_workgroup(id)
     except Exception as e:
         print("Exception when calling GovernanceGroupsApi->delete_workgroup: %s\n" % e)
 ```
@@ -189,17 +161,6 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## delete-workgroup-members
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 Remove members from governance group
 This API removes one or more  members from a Governance Group.  A
 >  **Following field of Identity is an optional field in the request.**
@@ -213,7 +174,6 @@ This API removes one or more  members from a Governance Group.  A
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | workgroup_id | **str** | True  | ID of the Governance Group.
-   | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
  Body  | identity_preview_response_identity | [**[]IdentityPreviewResponseIdentity**](../models/identity-preview-response-identity) | True  | List of identities to be removed from  a Governance Group members list.
 
 ### Return type
@@ -243,19 +203,17 @@ from sailpoint.v2024.models.workgroup_member_delete_item import WorkgroupMemberD
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
-configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     workgroup_id = '2c91808a7813090a017814121919ecca' # str | ID of the Governance Group. # str | ID of the Governance Group.
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
     identity_preview_response_identity = '''[sailpoint.v2024.IdentityPreviewResponseIdentity()]''' # List[IdentityPreviewResponseIdentity] | List of identities to be removed from  a Governance Group members list.
 
     try:
         # Remove members from governance group
         new_identity_preview_response_identity = IdentityPreviewResponseIdentity.from_json(identity_preview_response_identity)
-        results = GovernanceGroupsApi(api_client).delete_workgroup_members(workgroup_id=workgroup_id, x_sail_point_experimental=x_sail_point_experimental, identity_preview_response_identity=new_identity_preview_response_identity)
+        results = GovernanceGroupsApi(api_client).delete_workgroup_members(workgroup_id=workgroup_id, identity_preview_response_identity=new_identity_preview_response_identity)
         # Below is a request that includes all optional parameters
-        # results = GovernanceGroupsApi(api_client).delete_workgroup_members(workgroup_id, x_sail_point_experimental, new_identity_preview_response_identity)
+        # results = GovernanceGroupsApi(api_client).delete_workgroup_members(workgroup_id, new_identity_preview_response_identity)
         print("The response of GovernanceGroupsApi->delete_workgroup_members:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -268,17 +226,6 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## delete-workgroups-in-bulk
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 Delete governance group(s)
 
 This API initiates a bulk deletion of one or more Governance Groups.
@@ -299,7 +246,6 @@ This API initiates a bulk deletion of one or more Governance Groups.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
-   | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
  Body  | workgroup_bulk_delete_request | [**WorkgroupBulkDeleteRequest**](../models/workgroup-bulk-delete-request) | True  | 
 
 ### Return type
@@ -329,10 +275,8 @@ from sailpoint.v2024.models.workgroup_delete_item import WorkgroupDeleteItem
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
-configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
     workgroup_bulk_delete_request = '''{
           "ids" : [ "567a697e-885b-495a-afc5-d55e1c23a302", "c7b0f7b2-1e78-4063-b294-a555333dacd2" ]
         }''' # WorkgroupBulkDeleteRequest | 
@@ -340,9 +284,9 @@ with ApiClient(configuration) as api_client:
     try:
         # Delete governance group(s)
         new_workgroup_bulk_delete_request = WorkgroupBulkDeleteRequest.from_json(workgroup_bulk_delete_request)
-        results = GovernanceGroupsApi(api_client).delete_workgroups_in_bulk(x_sail_point_experimental=x_sail_point_experimental, workgroup_bulk_delete_request=new_workgroup_bulk_delete_request)
+        results = GovernanceGroupsApi(api_client).delete_workgroups_in_bulk(workgroup_bulk_delete_request=new_workgroup_bulk_delete_request)
         # Below is a request that includes all optional parameters
-        # results = GovernanceGroupsApi(api_client).delete_workgroups_in_bulk(x_sail_point_experimental, new_workgroup_bulk_delete_request)
+        # results = GovernanceGroupsApi(api_client).delete_workgroups_in_bulk(new_workgroup_bulk_delete_request)
         print("The response of GovernanceGroupsApi->delete_workgroups_in_bulk:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -355,17 +299,6 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## get-workgroup
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 Get governance group by id
 This API returns a Governance Groups by its ID.
 
@@ -376,7 +309,6 @@ This API returns a Governance Groups by its ID.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | ID of the Governance Group
-   | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
 
 ### Return type
 [**WorkgroupDto**](../models/workgroup-dto)
@@ -404,18 +336,16 @@ from sailpoint.v2024.models.workgroup_dto import WorkgroupDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
-configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     id = '2c9180837ca6693d017ca8d097500149' # str | ID of the Governance Group # str | ID of the Governance Group
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
         # Get governance group by id
         
-        results = GovernanceGroupsApi(api_client).get_workgroup(id=id, x_sail_point_experimental=x_sail_point_experimental)
+        results = GovernanceGroupsApi(api_client).get_workgroup(id=id)
         # Below is a request that includes all optional parameters
-        # results = GovernanceGroupsApi(api_client).get_workgroup(id, x_sail_point_experimental)
+        # results = GovernanceGroupsApi(api_client).get_workgroup(id)
         print("The response of GovernanceGroupsApi->get_workgroup:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -427,17 +357,6 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## list-connections
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 List connections for governance group
 This API returns list of connections associated with a Governance Group.
 
@@ -448,7 +367,6 @@ This API returns list of connections associated with a Governance Group.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | workgroup_id | **str** | True  | ID of the Governance Group.
-   | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
   Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | limit | **int** |   (optional) (default to 50) | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -480,11 +398,9 @@ from sailpoint.v2024.models.workgroup_connection_dto import WorkgroupConnectionD
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
-configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     workgroup_id = '2c91808a7813090a017814121919ecca' # str | ID of the Governance Group. # str | ID of the Governance Group.
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit = 50 # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50) # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -493,9 +409,9 @@ with ApiClient(configuration) as api_client:
     try:
         # List connections for governance group
         
-        results = GovernanceGroupsApi(api_client).list_connections(workgroup_id=workgroup_id, x_sail_point_experimental=x_sail_point_experimental)
+        results = GovernanceGroupsApi(api_client).list_connections(workgroup_id=workgroup_id)
         # Below is a request that includes all optional parameters
-        # results = GovernanceGroupsApi(api_client).list_connections(workgroup_id, x_sail_point_experimental, offset, limit, count, sorters)
+        # results = GovernanceGroupsApi(api_client).list_connections(workgroup_id, offset, limit, count, sorters)
         print("The response of GovernanceGroupsApi->list_connections:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -508,17 +424,6 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## list-workgroup-members
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 List governance group members
 This API returns list of members associated with a Governance Group.
 
@@ -529,7 +434,6 @@ This API returns list of members associated with a Governance Group.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | workgroup_id | **str** | True  | ID of the Governance Group.
-   | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
   Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | limit | **int** |   (optional) (default to 50) | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -561,11 +465,9 @@ from sailpoint.v2024.models.list_workgroup_members200_response_inner import List
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
-configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     workgroup_id = '2c91808a7813090a017814121919ecca' # str | ID of the Governance Group. # str | ID of the Governance Group.
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit = 50 # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50) # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -574,9 +476,9 @@ with ApiClient(configuration) as api_client:
     try:
         # List governance group members
         
-        results = GovernanceGroupsApi(api_client).list_workgroup_members(workgroup_id=workgroup_id, x_sail_point_experimental=x_sail_point_experimental)
+        results = GovernanceGroupsApi(api_client).list_workgroup_members(workgroup_id=workgroup_id)
         # Below is a request that includes all optional parameters
-        # results = GovernanceGroupsApi(api_client).list_workgroup_members(workgroup_id, x_sail_point_experimental, offset, limit, count, sorters)
+        # results = GovernanceGroupsApi(api_client).list_workgroup_members(workgroup_id, offset, limit, count, sorters)
         print("The response of GovernanceGroupsApi->list_workgroup_members:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -589,17 +491,6 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## list-workgroups
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 List governance groups
 This API returns list of Governance Groups
 
@@ -609,7 +500,6 @@ This API returns list of Governance Groups
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
-   | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
   Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | limit | **int** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -642,10 +532,8 @@ from sailpoint.v2024.models.workgroup_dto import WorkgroupDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
-configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -655,9 +543,9 @@ with ApiClient(configuration) as api_client:
     try:
         # List governance groups
         
-        results = GovernanceGroupsApi(api_client).list_workgroups(x_sail_point_experimental=x_sail_point_experimental)
+        results = GovernanceGroupsApi(api_client).list_workgroups()
         # Below is a request that includes all optional parameters
-        # results = GovernanceGroupsApi(api_client).list_workgroups(x_sail_point_experimental, offset, limit, count, filters, sorters)
+        # results = GovernanceGroupsApi(api_client).list_workgroups(offset, limit, count, filters, sorters)
         print("The response of GovernanceGroupsApi->list_workgroups:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -670,17 +558,6 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## patch-workgroup
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 Patch a governance group
 This API updates an existing governance group by ID. The following fields and objects are patchable:
 * name
@@ -694,7 +571,6 @@ This API updates an existing governance group by ID. The following fields and ob
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | id | **str** | True  | ID of the Governance Group
-   | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
  Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) |   (optional) | 
 
 ### Return type
@@ -724,19 +600,17 @@ from sailpoint.v2024.models.workgroup_dto import WorkgroupDto
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
-configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     id = '2c9180837ca6693d017ca8d097500149' # str | ID of the Governance Group # str | ID of the Governance Group
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
     json_patch_operation = '''[{op=replace, path=/description, value=Governance Group new description.}]''' # List[JsonPatchOperation] |  (optional)
 
     try:
         # Patch a governance group
         
-        results = GovernanceGroupsApi(api_client).patch_workgroup(id=id, x_sail_point_experimental=x_sail_point_experimental)
+        results = GovernanceGroupsApi(api_client).patch_workgroup(id=id)
         # Below is a request that includes all optional parameters
-        # results = GovernanceGroupsApi(api_client).patch_workgroup(id, x_sail_point_experimental, new_json_patch_operation)
+        # results = GovernanceGroupsApi(api_client).patch_workgroup(id, new_json_patch_operation)
         print("The response of GovernanceGroupsApi->patch_workgroup:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -748,17 +622,6 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## update-workgroup-members
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 Add members to governance group
 This API adds one or more members to a Governance Group.  A token with API, ORG_ADMIN authority is required to call this API.
 
@@ -773,7 +636,6 @@ This API adds one or more members to a Governance Group.  A token with API, ORG_
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | workgroup_id | **str** | True  | ID of the Governance Group.
-   | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
  Body  | identity_preview_response_identity | [**[]IdentityPreviewResponseIdentity**](../models/identity-preview-response-identity) | True  | List of identities to be added to a Governance Group members list.
 
 ### Return type
@@ -803,19 +665,17 @@ from sailpoint.v2024.models.workgroup_member_add_item import WorkgroupMemberAddI
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
-configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
     workgroup_id = '2c91808a7813090a017814121919ecca' # str | ID of the Governance Group. # str | ID of the Governance Group.
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
     identity_preview_response_identity = '''[sailpoint.v2024.IdentityPreviewResponseIdentity()]''' # List[IdentityPreviewResponseIdentity] | List of identities to be added to a Governance Group members list.
 
     try:
         # Add members to governance group
         new_identity_preview_response_identity = IdentityPreviewResponseIdentity.from_json(identity_preview_response_identity)
-        results = GovernanceGroupsApi(api_client).update_workgroup_members(workgroup_id=workgroup_id, x_sail_point_experimental=x_sail_point_experimental, identity_preview_response_identity=new_identity_preview_response_identity)
+        results = GovernanceGroupsApi(api_client).update_workgroup_members(workgroup_id=workgroup_id, identity_preview_response_identity=new_identity_preview_response_identity)
         # Below is a request that includes all optional parameters
-        # results = GovernanceGroupsApi(api_client).update_workgroup_members(workgroup_id, x_sail_point_experimental, new_identity_preview_response_identity)
+        # results = GovernanceGroupsApi(api_client).update_workgroup_members(workgroup_id, new_identity_preview_response_identity)
         print("The response of GovernanceGroupsApi->update_workgroup_members:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))

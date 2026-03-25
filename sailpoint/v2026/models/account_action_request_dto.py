@@ -119,6 +119,11 @@ class AccountActionRequestDto(BaseModel):
                 if _item_approval_details:
                     _items.append(_item_approval_details.to_dict())
             _dict['approvalDetails'] = _items
+        # set to None if manager_reference (nullable) is None
+        # and model_fields_set contains the field
+        if self.manager_reference is None and "manager_reference" in self.model_fields_set:
+            _dict['managerReference'] = None
+
         # set to None if error_details (nullable) is None
         # and model_fields_set contains the field
         if self.error_details is None and "error_details" in self.model_fields_set:

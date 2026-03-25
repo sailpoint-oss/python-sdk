@@ -35,20 +35,30 @@ class TestAccountActionRequestDtoAccountDetails(unittest.TestCase):
         model = AccountActionRequestDtoAccountDetails()
         if include_optional:
             return AccountActionRequestDtoAccountDetails(
-                account_id = '15e169acf21f4ae28e8a06198ce7f699',
-                account_name = 'walter.white',
-                account_native_identity = 'CN=Walter White,OU=BB,OU=org-data-service,DC=TestAutomationAD,DC=local',
-                account_uuid = '{3bbeb846-e168-47d2-9e5d-bd46506c9280=null}',
-                account_type = 'HUMAN',
-                account_subtype_id = '',
-                account_subtype = '',
-                description = 'This is human account for identity walter.white',
-                source_id = 'ee03924d95034cd088cbd5af068f1772',
-                source_name = 'BB AD',
-                has_entitlements = True,
-                disabled = False,
-                locked = False,
-                owner_identity = None
+                id = '2c91808474683da6017468693c260195',
+                name = '',
+                account_id = '4191808474683da6017468693c260195',
+                description = '',
+                native_identity = '',
+                uuid = '',
+                display_name = '',
+                disabled = True,
+                locked = True,
+                uncorrelated = True,
+                system_account = True,
+                authoritative = True,
+                supports_password_change = True,
+                attributes = sailpoint.v2026.models.attributes.attributes(),
+                application = sailpoint.v2026.models.application.application(),
+                identity = sailpoint.v2026.models.identity.identity(),
+                var_schema = sailpoint.v2026.models.schema.schema(),
+                pending_access_request_ids = [
+                    ''
+                    ],
+                features = [
+                    'AUTHENTICATE'
+                    ],
+                meta = sailpoint.v2026.models.meta.meta()
             )
         else:
             return AccountActionRequestDtoAccountDetails(

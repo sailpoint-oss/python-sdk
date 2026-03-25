@@ -18,9 +18,8 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2026.models.account_details_owner_identity import AccountDetailsOwnerIdentity
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,21 +27,38 @@ class AccountActionRequestDtoAccountDetails(BaseModel):
     """
     AccountActionRequestDtoAccountDetails
     """ # noqa: E501
-    account_id: Optional[StrictStr] = Field(default=None, description="ID of account", alias="accountId")
-    account_name: Optional[StrictStr] = Field(default=None, description="Account name", alias="accountName")
-    account_native_identity: Optional[StrictStr] = Field(default=None, description="Native identity of account", alias="accountNativeIdentity")
-    account_uuid: Optional[StrictStr] = Field(default=None, description="UUID associated with account", alias="accountUuid")
-    account_type: Optional[StrictStr] = Field(default=None, description="Type of account", alias="accountType")
-    account_subtype_id: Optional[StrictStr] = Field(default=None, description="Sub Type ID of account", alias="accountSubtypeId")
-    account_subtype: Optional[StrictStr] = Field(default=None, description="Subtype of account", alias="accountSubtype")
-    description: Optional[StrictStr] = Field(default=None, description="Account Description")
-    source_id: Optional[StrictStr] = Field(default=None, description="ID of source", alias="sourceId")
-    source_name: Optional[StrictStr] = Field(default=None, description="Name of source", alias="sourceName")
-    has_entitlements: Optional[StrictBool] = Field(default=False, description="Indicates entitlements assigned to identity or not", alias="hasEntitlements")
-    disabled: Optional[StrictBool] = Field(default=False, description="Indicates account is enabled/disabled")
-    locked: Optional[StrictBool] = Field(default=False, description="Indicates account locked/unlocked")
-    owner_identity: Optional[AccountDetailsOwnerIdentity] = Field(default=None, alias="ownerIdentity")
-    __properties: ClassVar[List[str]] = ["accountId", "accountName", "accountNativeIdentity", "accountUuid", "accountType", "accountSubtypeId", "accountSubtype", "description", "sourceId", "sourceName", "hasEntitlements", "disabled", "locked", "ownerIdentity"]
+    id: Optional[StrictStr] = Field(default=None, description="unique id of this object")
+    name: Optional[StrictStr] = None
+    account_id: Optional[StrictStr] = Field(default=None, alias="accountId")
+    description: Optional[StrictStr] = None
+    native_identity: Optional[StrictStr] = Field(default=None, alias="nativeIdentity")
+    uuid: Optional[StrictStr] = None
+    display_name: Optional[StrictStr] = Field(default=None, alias="displayName")
+    disabled: Optional[StrictBool] = None
+    locked: Optional[StrictBool] = None
+    uncorrelated: Optional[StrictBool] = None
+    system_account: Optional[StrictBool] = Field(default=None, alias="systemAccount")
+    authoritative: Optional[StrictBool] = None
+    supports_password_change: Optional[StrictBool] = Field(default=None, alias="supportsPasswordChange")
+    attributes: Optional[Dict[str, Any]] = None
+    application: Optional[Dict[str, Any]] = None
+    identity: Optional[Dict[str, Any]] = None
+    var_schema: Optional[Dict[str, Any]] = Field(default=None, alias="schema")
+    pending_access_request_ids: Optional[List[StrictStr]] = Field(default=None, alias="pendingAccessRequestIds")
+    features: Optional[List[StrictStr]] = None
+    meta: Optional[Dict[str, Any]] = None
+    __properties: ClassVar[List[str]] = ["id", "name", "accountId", "description", "nativeIdentity", "uuid", "displayName", "disabled", "locked", "uncorrelated", "systemAccount", "authoritative", "supportsPasswordChange", "attributes", "application", "identity", "schema", "pendingAccessRequestIds", "features", "meta"]
+
+    @field_validator('features')
+    def features_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        for i in value:
+            if i not in set(['AUTHENTICATE', 'COMPOSITE', 'DIRECT_PERMISSIONS', 'DISCOVER_SCHEMA', 'ENABLE', 'MANAGER_LOOKUP', 'NO_RANDOM_ACCESS', 'PROXY', 'SEARCH', 'TEMPLATE', 'UNLOCK', 'UNSTRUCTURED_TARGETS', 'SHAREPOINT_TARGET', 'PROVISIONING', 'GROUP_PROVISIONING', 'SYNC_PROVISIONING', 'PASSWORD', 'CURRENT_PASSWORD', 'ACCOUNT_ONLY_REQUEST', 'ADDITIONAL_ACCOUNT_REQUEST', 'NO_AGGREGATION', 'GROUPS_HAVE_MEMBERS', 'NO_PERMISSIONS_PROVISIONING', 'NO_GROUP_PERMISSIONS_PROVISIONING', 'NO_UNSTRUCTURED_TARGETS_PROVISIONING', 'NO_DIRECT_PERMISSIONS_PROVISIONING']):
+                warnings.warn(f"each list item must be one of ('AUTHENTICATE', 'COMPOSITE', 'DIRECT_PERMISSIONS', 'DISCOVER_SCHEMA', 'ENABLE', 'MANAGER_LOOKUP', 'NO_RANDOM_ACCESS', 'PROXY', 'SEARCH', 'TEMPLATE', 'UNLOCK', 'UNSTRUCTURED_TARGETS', 'SHAREPOINT_TARGET', 'PROVISIONING', 'GROUP_PROVISIONING', 'SYNC_PROVISIONING', 'PASSWORD', 'CURRENT_PASSWORD', 'ACCOUNT_ONLY_REQUEST', 'ADDITIONAL_ACCOUNT_REQUEST', 'NO_AGGREGATION', 'GROUPS_HAVE_MEMBERS', 'NO_PERMISSIONS_PROVISIONING', 'NO_GROUP_PERMISSIONS_PROVISIONING', 'NO_UNSTRUCTURED_TARGETS_PROVISIONING', 'NO_DIRECT_PERMISSIONS_PROVISIONING') unknown value: {i}")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,29 +99,6 @@ class AccountActionRequestDtoAccountDetails(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of owner_identity
-        if self.owner_identity:
-            _dict['ownerIdentity'] = self.owner_identity.to_dict()
-        # set to None if account_subtype_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.account_subtype_id is None and "account_subtype_id" in self.model_fields_set:
-            _dict['accountSubtypeId'] = None
-
-        # set to None if account_subtype (nullable) is None
-        # and model_fields_set contains the field
-        if self.account_subtype is None and "account_subtype" in self.model_fields_set:
-            _dict['accountSubtype'] = None
-
-        # set to None if description (nullable) is None
-        # and model_fields_set contains the field
-        if self.description is None and "description" in self.model_fields_set:
-            _dict['description'] = None
-
-        # set to None if owner_identity (nullable) is None
-        # and model_fields_set contains the field
-        if self.owner_identity is None and "owner_identity" in self.model_fields_set:
-            _dict['ownerIdentity'] = None
-
         return _dict
 
     @classmethod
@@ -118,20 +111,26 @@ class AccountActionRequestDtoAccountDetails(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "id": obj.get("id"),
+            "name": obj.get("name"),
             "accountId": obj.get("accountId"),
-            "accountName": obj.get("accountName"),
-            "accountNativeIdentity": obj.get("accountNativeIdentity"),
-            "accountUuid": obj.get("accountUuid"),
-            "accountType": obj.get("accountType"),
-            "accountSubtypeId": obj.get("accountSubtypeId"),
-            "accountSubtype": obj.get("accountSubtype"),
             "description": obj.get("description"),
-            "sourceId": obj.get("sourceId"),
-            "sourceName": obj.get("sourceName"),
-            "hasEntitlements": obj.get("hasEntitlements") if obj.get("hasEntitlements") is not None else False,
-            "disabled": obj.get("disabled") if obj.get("disabled") is not None else False,
-            "locked": obj.get("locked") if obj.get("locked") is not None else False,
-            "ownerIdentity": AccountDetailsOwnerIdentity.from_dict(obj["ownerIdentity"]) if obj.get("ownerIdentity") is not None else None
+            "nativeIdentity": obj.get("nativeIdentity"),
+            "uuid": obj.get("uuid"),
+            "displayName": obj.get("displayName"),
+            "disabled": obj.get("disabled"),
+            "locked": obj.get("locked"),
+            "uncorrelated": obj.get("uncorrelated"),
+            "systemAccount": obj.get("systemAccount"),
+            "authoritative": obj.get("authoritative"),
+            "supportsPasswordChange": obj.get("supportsPasswordChange"),
+            "attributes": obj.get("attributes"),
+            "application": obj.get("application"),
+            "identity": obj.get("identity"),
+            "schema": obj.get("schema"),
+            "pendingAccessRequestIds": obj.get("pendingAccessRequestIds"),
+            "features": obj.get("features"),
+            "meta": obj.get("meta")
         })
         return _obj
 

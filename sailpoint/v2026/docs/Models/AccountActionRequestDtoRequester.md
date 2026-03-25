@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 from sailpoint.v2026.models.account_action_request_dto_requester import AccountActionRequestDtoRequester
 
 account_action_request_dto_requester = AccountActionRequestDtoRequester(
-type=,
+type='IDENTITY',
 id='2c91808568c529c60168cca6f90c1313',
 name='William Wilson'
 )

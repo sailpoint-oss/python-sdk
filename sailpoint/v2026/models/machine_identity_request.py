@@ -34,15 +34,16 @@ class MachineIdentityRequest(BaseModel):
     name: Optional[StrictStr] = Field(description="Name of the Object")
     created: Optional[datetime] = Field(default=None, description="Creation date of the Object")
     modified: Optional[datetime] = Field(default=None, description="Last modification date of the Object")
-    native_identity: StrictStr = Field(description="The native identity associated to the machine identity directly aggregated from a source", alias="nativeIdentity")
+    business_application: StrictStr = Field(description="The business application that the identity represents", alias="businessApplication")
     description: Optional[StrictStr] = Field(default=None, description="Description of machine identity")
     attributes: Optional[Dict[str, Any]] = Field(default=None, description="A map of custom machine identity attributes")
     subtype: StrictStr = Field(description="The subtype value associated to the machine identity")
     owners: Optional[MachineIdentityDtoOwners] = None
     source_id: Optional[StrictStr] = Field(default=None, description="The source id associated to the machine identity", alias="sourceId")
     uuid: Optional[StrictStr] = Field(default=None, description="The UUID associated to the machine identity directly aggregated from a source")
+    native_identity: Optional[StrictStr] = Field(default=None, description="The native identity associated to the machine identity directly aggregated from a source", alias="nativeIdentity")
     user_entitlements: Optional[List[MachineIdentityRequestUserEntitlements]] = Field(default=None, description="The user entitlements associated to the machine identity", alias="userEntitlements")
-    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "nativeIdentity", "description", "attributes", "subtype", "owners", "sourceId", "uuid", "userEntitlements"]
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "businessApplication", "description", "attributes", "subtype", "owners", "sourceId", "uuid", "nativeIdentity", "userEntitlements"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -120,13 +121,14 @@ class MachineIdentityRequest(BaseModel):
             "name": obj.get("name"),
             "created": obj.get("created"),
             "modified": obj.get("modified"),
-            "nativeIdentity": obj.get("nativeIdentity"),
+            "businessApplication": obj.get("businessApplication"),
             "description": obj.get("description"),
             "attributes": obj.get("attributes"),
             "subtype": obj.get("subtype"),
             "owners": MachineIdentityDtoOwners.from_dict(obj["owners"]) if obj.get("owners") is not None else None,
             "sourceId": obj.get("sourceId"),
             "uuid": obj.get("uuid"),
+            "nativeIdentity": obj.get("nativeIdentity"),
             "userEntitlements": [MachineIdentityRequestUserEntitlements.from_dict(_item) for _item in obj["userEntitlements"]] if obj.get("userEntitlements") is not None else None
         })
         return _obj

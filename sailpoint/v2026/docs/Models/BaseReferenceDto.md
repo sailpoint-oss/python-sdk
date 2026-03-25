@@ -11,7 +11,6 @@ tags: ['SDK', 'Software Development Kit', 'BaseReferenceDto', 'V2026BaseReferenc
 
 # BaseReferenceDto
 
-Base object for referencing other DTOs, containing type, id, and name fields for identification and display purposes.
 
 ## Properties
 
@@ -28,7 +27,7 @@ Name | Type | Description | Notes
 from sailpoint.v2026.models.base_reference_dto import BaseReferenceDto
 
 base_reference_dto = BaseReferenceDto(
-type=,
+type='IDENTITY',
 id='2c91808568c529c60168cca6f90c1313',
 name='William Wilson'
 )

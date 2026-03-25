@@ -45,10 +45,9 @@ class TestAccountActionRequestDto(unittest.TestCase):
                 account_details = None,
                 correlated_identity = {id=c2353ef10dd54a8e9725beff360c0be2, name=machine102, email=machine.102@testmail.identitysoon.com, status=ACTIVE},
                 manager_reference = sailpoint.v2026.models.identity_reference.Identity Reference(
-                    id = '117e169acf21f4ae28e8a06198ce7f69', 
-                    name = 'Alfred', 
-                    email = 'alfred@testmail.identitysoon.com', 
-                    status = 'UNREGISTERED', ),
+                    type = 'IDENTITY', 
+                    id = '2c9180a46faadee4016fb4e018c20639', 
+                    name = 'Thomas Edison', ),
                 approval_request_id = '06cc946d58bb4422bbd094cf78667d42',
                 account_request_phases = [{name=APPROVAL_PHASE, state=APPROVED, started=2026-01-14T08:08:28.644090559Z, finished=2026-01-14T08:38:42.707043142Z}, {name=PROVISIONING_PHASE, state=PASSED, started=2026-01-14T08:38:42.785577841Z, finished=2026-01-14T08:38:45.932606296Z}],
                 approval_details = [{identityID=85131bd73fdc423599e57f40b29f01fe, id=85131bd73fdc423599e57f40b29f01fe, name=SailPoint Support, email=support@testmail.identitysoon.com, type=IDENTITY, ownerOf={email=Alfred.255e71dfc6e@testmail.identitysoon.com, type=IDENTITY, id=7ec252acbd4245548bc25df22348cb75, name=Alfred}, actionedAs={email=Alfred.255e71dfc6e@testmail.identitysoon.com, type=IDENTITY, id=7ec252acbd4245548bc25df22348cb75, name=Alfred}, members={email=Alfred.255e71dfc6e@testmail.identitysoon.com, type=IDENTITY, id=7ec252acbd4245548bc25df22348cb75, name=Alfred}}],

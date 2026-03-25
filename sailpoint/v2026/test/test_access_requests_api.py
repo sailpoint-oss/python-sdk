@@ -26,10 +26,73 @@ class TestAccessRequestsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_approve_bulk_access_request(self) -> None:
+        """Test case for approve_bulk_access_request
+
+        Bulk approve access request
+        """
+        pass
+
+    def test_cancel_access_request(self) -> None:
+        """Test case for cancel_access_request
+
+        Cancel access request
+        """
+        pass
+
+    def test_cancel_access_request_in_bulk(self) -> None:
+        """Test case for cancel_access_request_in_bulk
+
+        Bulk cancel access request
+        """
+        pass
+
+    def test_close_access_request(self) -> None:
+        """Test case for close_access_request
+
+        Close access request
+        """
+        pass
+
+    def test_create_access_request(self) -> None:
+        """Test case for create_access_request
+
+        Submit access request
+        """
+        pass
+
     def test_get_access_request_config(self) -> None:
         """Test case for get_access_request_config
 
         Get access request configuration
+        """
+        pass
+
+    def test_get_entitlement_details_for_identity(self) -> None:
+        """Test case for get_entitlement_details_for_identity
+
+        Identity entitlement details
+        """
+        pass
+
+    def test_list_access_request_status(self) -> None:
+        """Test case for list_access_request_status
+
+        Access request status
+        """
+        pass
+
+    def test_list_administrators_access_request_status(self) -> None:
+        """Test case for list_administrators_access_request_status
+
+        Access request status for administrators
+        """
+        pass
+
+    def test_load_account_selections(self) -> None:
+        """Test case for load_account_selections
+
+        Get accounts selections for identity
         """
         pass
 

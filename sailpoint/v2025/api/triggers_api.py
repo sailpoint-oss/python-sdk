@@ -54,7 +54,6 @@ class TriggersApi:
         self,
         id: Annotated[StrictStr, Field(description="The ID of the invocation to complete.")],
         complete_invocation: CompleteInvocation,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -74,8 +73,6 @@ class TriggersApi:
 
         :param id: The ID of the invocation to complete. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param complete_invocation: (required)
         :type complete_invocation: CompleteInvocation
         :param _request_timeout: timeout setting for this request. If one
@@ -102,7 +99,6 @@ class TriggersApi:
 
         _param = self._complete_trigger_invocation_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             complete_invocation=complete_invocation,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -134,7 +130,6 @@ class TriggersApi:
         self,
         id: Annotated[StrictStr, Field(description="The ID of the invocation to complete.")],
         complete_invocation: CompleteInvocation,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -154,8 +149,6 @@ class TriggersApi:
 
         :param id: The ID of the invocation to complete. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param complete_invocation: (required)
         :type complete_invocation: CompleteInvocation
         :param _request_timeout: timeout setting for this request. If one
@@ -182,7 +175,6 @@ class TriggersApi:
 
         _param = self._complete_trigger_invocation_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             complete_invocation=complete_invocation,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -214,7 +206,6 @@ class TriggersApi:
         self,
         id: Annotated[StrictStr, Field(description="The ID of the invocation to complete.")],
         complete_invocation: CompleteInvocation,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -234,8 +225,6 @@ class TriggersApi:
 
         :param id: The ID of the invocation to complete. (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param complete_invocation: (required)
         :type complete_invocation: CompleteInvocation
         :param _request_timeout: timeout setting for this request. If one
@@ -262,7 +251,6 @@ class TriggersApi:
 
         _param = self._complete_trigger_invocation_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             complete_invocation=complete_invocation,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -288,7 +276,6 @@ class TriggersApi:
     def _complete_trigger_invocation_serialize(
         self,
         id,
-        x_sail_point_experimental,
         complete_invocation,
         _request_auth,
         _content_type,
@@ -315,8 +302,6 @@ class TriggersApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if complete_invocation is not None:
@@ -348,7 +333,8 @@ class TriggersApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -373,7 +359,6 @@ class TriggersApi:
     def create_subscription(
         self,
         subscription_post_request: SubscriptionPostRequest,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -391,8 +376,6 @@ class TriggersApi:
 
         This API creates a new subscription to a trigger and defines trigger invocation details. The type of subscription determines which config object is required: * HTTP subscriptions require httpConfig * EventBridge subscriptions require eventBridgeConfig
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param subscription_post_request: (required)
         :type subscription_post_request: SubscriptionPostRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -418,7 +401,6 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._create_subscription_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             subscription_post_request=subscription_post_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -449,7 +431,6 @@ class TriggersApi:
     def create_subscription_with_http_info(
         self,
         subscription_post_request: SubscriptionPostRequest,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -467,8 +448,6 @@ class TriggersApi:
 
         This API creates a new subscription to a trigger and defines trigger invocation details. The type of subscription determines which config object is required: * HTTP subscriptions require httpConfig * EventBridge subscriptions require eventBridgeConfig
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param subscription_post_request: (required)
         :type subscription_post_request: SubscriptionPostRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -494,7 +473,6 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._create_subscription_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             subscription_post_request=subscription_post_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -525,7 +503,6 @@ class TriggersApi:
     def create_subscription_without_preload_content(
         self,
         subscription_post_request: SubscriptionPostRequest,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -543,8 +520,6 @@ class TriggersApi:
 
         This API creates a new subscription to a trigger and defines trigger invocation details. The type of subscription determines which config object is required: * HTTP subscriptions require httpConfig * EventBridge subscriptions require eventBridgeConfig
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param subscription_post_request: (required)
         :type subscription_post_request: SubscriptionPostRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -570,7 +545,6 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._create_subscription_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             subscription_post_request=subscription_post_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -595,7 +569,6 @@ class TriggersApi:
 
     def _create_subscription_serialize(
         self,
-        x_sail_point_experimental,
         subscription_post_request,
         _request_auth,
         _content_type,
@@ -620,8 +593,6 @@ class TriggersApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if subscription_post_request is not None:
@@ -679,7 +650,6 @@ class TriggersApi:
     def delete_subscription(
         self,
         id: Annotated[StrictStr, Field(description="Subscription ID")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -699,8 +669,6 @@ class TriggersApi:
 
         :param id: Subscription ID (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -725,7 +693,6 @@ class TriggersApi:
 
         _param = self._delete_subscription_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -756,7 +723,6 @@ class TriggersApi:
     def delete_subscription_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Subscription ID")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -776,8 +742,6 @@ class TriggersApi:
 
         :param id: Subscription ID (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -802,7 +766,6 @@ class TriggersApi:
 
         _param = self._delete_subscription_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -833,7 +796,6 @@ class TriggersApi:
     def delete_subscription_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Subscription ID")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -853,8 +815,6 @@ class TriggersApi:
 
         :param id: Subscription ID (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -879,7 +839,6 @@ class TriggersApi:
 
         _param = self._delete_subscription_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -905,7 +864,6 @@ class TriggersApi:
     def _delete_subscription_serialize(
         self,
         id,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -931,8 +889,6 @@ class TriggersApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -979,7 +935,6 @@ class TriggersApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **triggerId**: *eq*  **type**: *eq, le*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **triggerId, triggerName**")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -997,8 +952,6 @@ class TriggersApi:
 
         Gets a list of all trigger subscriptions.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1032,7 +985,6 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._list_subscriptions_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -1071,7 +1023,6 @@ class TriggersApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **triggerId**: *eq*  **type**: *eq, le*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **triggerId, triggerName**")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1089,8 +1040,6 @@ class TriggersApi:
 
         Gets a list of all trigger subscriptions.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1124,7 +1073,6 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._list_subscriptions_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -1163,7 +1111,6 @@ class TriggersApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **triggerId**: *eq*  **type**: *eq, le*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **triggerId, triggerName**")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1181,8 +1128,6 @@ class TriggersApi:
 
         Gets a list of all trigger subscriptions.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1216,7 +1161,6 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._list_subscriptions_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -1245,7 +1189,6 @@ class TriggersApi:
 
     def _list_subscriptions_serialize(
         self,
-        x_sail_point_experimental,
         limit,
         offset,
         count,
@@ -1294,8 +1237,6 @@ class TriggersApi:
             _query_params.append(('sorters', sorters))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -1342,7 +1283,6 @@ class TriggersApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **triggerId**: *eq*  **subscriptionId**: *eq*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **triggerId, subscriptionName, created, completed**")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1360,8 +1300,6 @@ class TriggersApi:
 
         Gets a list of latest invocation statuses. Statuses of successful invocations are available for up to 24 hours. Statuses of failed invocations are available for up to 48 hours. This endpoint may only fetch up to 2000 invocations, and should not be treated as a representation of the full history of invocations.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1395,7 +1333,6 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._list_trigger_invocation_status_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -1434,7 +1371,6 @@ class TriggersApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **triggerId**: *eq*  **subscriptionId**: *eq*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **triggerId, subscriptionName, created, completed**")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1452,8 +1388,6 @@ class TriggersApi:
 
         Gets a list of latest invocation statuses. Statuses of successful invocations are available for up to 24 hours. Statuses of failed invocations are available for up to 48 hours. This endpoint may only fetch up to 2000 invocations, and should not be treated as a representation of the full history of invocations.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1487,7 +1421,6 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._list_trigger_invocation_status_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -1526,7 +1459,6 @@ class TriggersApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **triggerId**: *eq*  **subscriptionId**: *eq*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **triggerId, subscriptionName, created, completed**")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1544,8 +1476,6 @@ class TriggersApi:
 
         Gets a list of latest invocation statuses. Statuses of successful invocations are available for up to 24 hours. Statuses of failed invocations are available for up to 48 hours. This endpoint may only fetch up to 2000 invocations, and should not be treated as a representation of the full history of invocations.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1579,7 +1509,6 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._list_trigger_invocation_status_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -1608,7 +1537,6 @@ class TriggersApi:
 
     def _list_trigger_invocation_status_serialize(
         self,
-        x_sail_point_experimental,
         limit,
         offset,
         count,
@@ -1657,8 +1585,6 @@ class TriggersApi:
             _query_params.append(('sorters', sorters))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -1705,7 +1631,6 @@ class TriggersApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ge, le*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name**")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1723,8 +1648,6 @@ class TriggersApi:
 
         Gets a list of triggers that are available in the tenant.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1758,7 +1681,6 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._list_triggers_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -1797,7 +1719,6 @@ class TriggersApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ge, le*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name**")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1815,8 +1736,6 @@ class TriggersApi:
 
         Gets a list of triggers that are available in the tenant.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1850,7 +1769,6 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._list_triggers_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -1889,7 +1807,6 @@ class TriggersApi:
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ge, le*")] = None,
         sorters: Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name**")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1907,8 +1824,6 @@ class TriggersApi:
 
         Gets a list of triggers that are available in the tenant.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1942,7 +1857,6 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._list_triggers_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -1971,7 +1885,6 @@ class TriggersApi:
 
     def _list_triggers_serialize(
         self,
-        x_sail_point_experimental,
         limit,
         offset,
         count,
@@ -2020,8 +1933,6 @@ class TriggersApi:
             _query_params.append(('sorters', sorters))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -2065,7 +1976,6 @@ class TriggersApi:
         self,
         id: Annotated[StrictStr, Field(description="ID of the Subscription to patch")],
         subscription_patch_request_inner: List[SubscriptionPatchRequestInner],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2085,8 +1995,6 @@ class TriggersApi:
 
         :param id: ID of the Subscription to patch (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param subscription_patch_request_inner: (required)
         :type subscription_patch_request_inner: List[SubscriptionPatchRequestInner]
         :param _request_timeout: timeout setting for this request. If one
@@ -2113,7 +2021,6 @@ class TriggersApi:
 
         _param = self._patch_subscription_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             subscription_patch_request_inner=subscription_patch_request_inner,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2146,7 +2053,6 @@ class TriggersApi:
         self,
         id: Annotated[StrictStr, Field(description="ID of the Subscription to patch")],
         subscription_patch_request_inner: List[SubscriptionPatchRequestInner],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2166,8 +2072,6 @@ class TriggersApi:
 
         :param id: ID of the Subscription to patch (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param subscription_patch_request_inner: (required)
         :type subscription_patch_request_inner: List[SubscriptionPatchRequestInner]
         :param _request_timeout: timeout setting for this request. If one
@@ -2194,7 +2098,6 @@ class TriggersApi:
 
         _param = self._patch_subscription_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             subscription_patch_request_inner=subscription_patch_request_inner,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2227,7 +2130,6 @@ class TriggersApi:
         self,
         id: Annotated[StrictStr, Field(description="ID of the Subscription to patch")],
         subscription_patch_request_inner: List[SubscriptionPatchRequestInner],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2247,8 +2149,6 @@ class TriggersApi:
 
         :param id: ID of the Subscription to patch (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param subscription_patch_request_inner: (required)
         :type subscription_patch_request_inner: List[SubscriptionPatchRequestInner]
         :param _request_timeout: timeout setting for this request. If one
@@ -2275,7 +2175,6 @@ class TriggersApi:
 
         _param = self._patch_subscription_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             subscription_patch_request_inner=subscription_patch_request_inner,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2302,7 +2201,6 @@ class TriggersApi:
     def _patch_subscription_serialize(
         self,
         id,
-        x_sail_point_experimental,
         subscription_patch_request_inner,
         _request_auth,
         _content_type,
@@ -2330,8 +2228,6 @@ class TriggersApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if subscription_patch_request_inner is not None:
@@ -2389,7 +2285,6 @@ class TriggersApi:
     def start_test_trigger_invocation(
         self,
         test_invocation: TestInvocation,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2407,8 +2302,6 @@ class TriggersApi:
 
         Initiate a test event for all subscribers of the specified event trigger.  If there are no subscribers to the specified trigger in the tenant, then no test event will be sent.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param test_invocation: (required)
         :type test_invocation: TestInvocation
         :param _request_timeout: timeout setting for this request. If one
@@ -2434,7 +2327,6 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._start_test_trigger_invocation_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             test_invocation=test_invocation,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2466,7 +2358,6 @@ class TriggersApi:
     def start_test_trigger_invocation_with_http_info(
         self,
         test_invocation: TestInvocation,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2484,8 +2375,6 @@ class TriggersApi:
 
         Initiate a test event for all subscribers of the specified event trigger.  If there are no subscribers to the specified trigger in the tenant, then no test event will be sent.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param test_invocation: (required)
         :type test_invocation: TestInvocation
         :param _request_timeout: timeout setting for this request. If one
@@ -2511,7 +2400,6 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._start_test_trigger_invocation_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             test_invocation=test_invocation,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2543,7 +2431,6 @@ class TriggersApi:
     def start_test_trigger_invocation_without_preload_content(
         self,
         test_invocation: TestInvocation,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2561,8 +2448,6 @@ class TriggersApi:
 
         Initiate a test event for all subscribers of the specified event trigger.  If there are no subscribers to the specified trigger in the tenant, then no test event will be sent.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param test_invocation: (required)
         :type test_invocation: TestInvocation
         :param _request_timeout: timeout setting for this request. If one
@@ -2588,7 +2473,6 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._start_test_trigger_invocation_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             test_invocation=test_invocation,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2614,7 +2498,6 @@ class TriggersApi:
 
     def _start_test_trigger_invocation_serialize(
         self,
-        x_sail_point_experimental,
         test_invocation,
         _request_auth,
         _content_type,
@@ -2639,8 +2522,6 @@ class TriggersApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if test_invocation is not None:
@@ -2698,7 +2579,6 @@ class TriggersApi:
     def test_subscription_filter(
         self,
         validate_filter_input_dto: ValidateFilterInputDto,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2716,8 +2596,6 @@ class TriggersApi:
 
         Validates a JSONPath filter expression against a provided mock input. Request requires a security scope of: 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param validate_filter_input_dto: (required)
         :type validate_filter_input_dto: ValidateFilterInputDto
         :param _request_timeout: timeout setting for this request. If one
@@ -2743,7 +2621,6 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._test_subscription_filter_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             validate_filter_input_dto=validate_filter_input_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2774,7 +2651,6 @@ class TriggersApi:
     def test_subscription_filter_with_http_info(
         self,
         validate_filter_input_dto: ValidateFilterInputDto,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2792,8 +2668,6 @@ class TriggersApi:
 
         Validates a JSONPath filter expression against a provided mock input. Request requires a security scope of: 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param validate_filter_input_dto: (required)
         :type validate_filter_input_dto: ValidateFilterInputDto
         :param _request_timeout: timeout setting for this request. If one
@@ -2819,7 +2693,6 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._test_subscription_filter_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             validate_filter_input_dto=validate_filter_input_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2850,7 +2723,6 @@ class TriggersApi:
     def test_subscription_filter_without_preload_content(
         self,
         validate_filter_input_dto: ValidateFilterInputDto,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2868,8 +2740,6 @@ class TriggersApi:
 
         Validates a JSONPath filter expression against a provided mock input. Request requires a security scope of: 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param validate_filter_input_dto: (required)
         :type validate_filter_input_dto: ValidateFilterInputDto
         :param _request_timeout: timeout setting for this request. If one
@@ -2895,7 +2765,6 @@ class TriggersApi:
         """ # noqa: E501
 
         _param = self._test_subscription_filter_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             validate_filter_input_dto=validate_filter_input_dto,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2920,7 +2789,6 @@ class TriggersApi:
 
     def _test_subscription_filter_serialize(
         self,
-        x_sail_point_experimental,
         validate_filter_input_dto,
         _request_auth,
         _content_type,
@@ -2945,8 +2813,6 @@ class TriggersApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if validate_filter_input_dto is not None:
@@ -3005,7 +2871,6 @@ class TriggersApi:
         self,
         id: Annotated[StrictStr, Field(description="Subscription ID")],
         subscription_put_request: SubscriptionPutRequest,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3025,8 +2890,6 @@ class TriggersApi:
 
         :param id: Subscription ID (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param subscription_put_request: (required)
         :type subscription_put_request: SubscriptionPutRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -3053,7 +2916,6 @@ class TriggersApi:
 
         _param = self._update_subscription_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             subscription_put_request=subscription_put_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3086,7 +2948,6 @@ class TriggersApi:
         self,
         id: Annotated[StrictStr, Field(description="Subscription ID")],
         subscription_put_request: SubscriptionPutRequest,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3106,8 +2967,6 @@ class TriggersApi:
 
         :param id: Subscription ID (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param subscription_put_request: (required)
         :type subscription_put_request: SubscriptionPutRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -3134,7 +2993,6 @@ class TriggersApi:
 
         _param = self._update_subscription_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             subscription_put_request=subscription_put_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3167,7 +3025,6 @@ class TriggersApi:
         self,
         id: Annotated[StrictStr, Field(description="Subscription ID")],
         subscription_put_request: SubscriptionPutRequest,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3187,8 +3044,6 @@ class TriggersApi:
 
         :param id: Subscription ID (required)
         :type id: str
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param subscription_put_request: (required)
         :type subscription_put_request: SubscriptionPutRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -3215,7 +3070,6 @@ class TriggersApi:
 
         _param = self._update_subscription_serialize(
             id=id,
-            x_sail_point_experimental=x_sail_point_experimental,
             subscription_put_request=subscription_put_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3242,7 +3096,6 @@ class TriggersApi:
     def _update_subscription_serialize(
         self,
         id,
-        x_sail_point_experimental,
         subscription_put_request,
         _request_auth,
         _content_type,
@@ -3269,8 +3122,6 @@ class TriggersApi:
             _path_params['id'] = id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if subscription_put_request is not None:

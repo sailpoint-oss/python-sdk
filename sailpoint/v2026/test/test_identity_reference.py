@@ -35,10 +35,9 @@ class TestIdentityReference(unittest.TestCase):
         model = IdentityReference()
         if include_optional:
             return IdentityReference(
-                id = '117e169acf21f4ae28e8a06198ce7f69',
-                name = 'Alfred',
-                email = 'alfred@testmail.identitysoon.com',
-                status = 'UNREGISTERED'
+                type = 'IDENTITY',
+                id = '2c9180a46faadee4016fb4e018c20639',
+                name = 'Thomas Edison'
             )
         else:
             return IdentityReference(

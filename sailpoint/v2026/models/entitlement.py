@@ -21,9 +21,9 @@ import warnings
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.v2026.models.additional_owner_ref import AdditionalOwnerRef
 from sailpoint.v2026.models.entitlement_access_model_metadata import EntitlementAccessModelMetadata
 from sailpoint.v2026.models.entitlement_owner import EntitlementOwner
-from sailpoint.v2026.models.entitlement_privilege_level import EntitlementPrivilegeLevel
 from sailpoint.v2026.models.entitlement_source import EntitlementSource
 from sailpoint.v2026.models.permission_dto import PermissionDto
 from typing import Optional, Set
@@ -39,11 +39,11 @@ class Entitlement(BaseModel):
     value: Optional[StrictStr] = Field(default=None, description="The value of the entitlement")
     source_schema_object_type: Optional[StrictStr] = Field(default=None, description="The object type of the entitlement from the source schema", alias="sourceSchemaObjectType")
     description: Optional[StrictStr] = Field(default=None, description="The description of the entitlement")
-    privilege_level: Optional[EntitlementPrivilegeLevel] = Field(default=None, alias="privilegeLevel")
-    tags: Optional[List[StrictStr]] = Field(default=None, description="List of tags assigned to the entitlement")
+    privileged: Optional[StrictBool] = Field(default=False, description="True if the entitlement is privileged")
     cloud_governed: Optional[StrictBool] = Field(default=False, description="True if the entitlement is cloud governed", alias="cloudGoverned")
     requestable: Optional[StrictBool] = Field(default=False, description="True if the entitlement is able to be directly requested")
     owner: Optional[EntitlementOwner] = None
+    additional_owners: Optional[List[AdditionalOwnerRef]] = Field(default=None, description="List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP).", alias="additionalOwners")
     manually_updated_fields: Optional[Dict[str, Any]] = Field(default=None, description="A map of entitlement fields that have been manually updated. The key is the field name in UPPER_SNAKE_CASE format, and the value is true or false to indicate if the field has been updated.", alias="manuallyUpdatedFields")
     access_model_metadata: Optional[EntitlementAccessModelMetadata] = Field(default=None, alias="accessModelMetadata")
     created: Optional[datetime] = Field(default=None, description="Time when the entitlement was created")
@@ -52,7 +52,7 @@ class Entitlement(BaseModel):
     attributes: Optional[Dict[str, Any]] = Field(default=None, description="A map of free-form key-value pairs from the source system")
     segments: Optional[List[StrictStr]] = Field(default=None, description="List of IDs of segments, if any, to which this Entitlement is assigned.")
     direct_permissions: Optional[List[PermissionDto]] = Field(default=None, alias="directPermissions")
-    __properties: ClassVar[List[str]] = ["id", "name", "attribute", "value", "sourceSchemaObjectType", "description", "privilegeLevel", "tags", "cloudGoverned", "requestable", "owner", "manuallyUpdatedFields", "accessModelMetadata", "created", "modified", "source", "attributes", "segments", "directPermissions"]
+    __properties: ClassVar[List[str]] = ["id", "name", "attribute", "value", "sourceSchemaObjectType", "description", "privileged", "cloudGoverned", "requestable", "owner", "additionalOwners", "manuallyUpdatedFields", "accessModelMetadata", "created", "modified", "source", "attributes", "segments", "directPermissions"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -93,12 +93,16 @@ class Entitlement(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of privilege_level
-        if self.privilege_level:
-            _dict['privilegeLevel'] = self.privilege_level.to_dict()
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in additional_owners (list)
+        _items = []
+        if self.additional_owners:
+            for _item_additional_owners in self.additional_owners:
+                if _item_additional_owners:
+                    _items.append(_item_additional_owners.to_dict())
+            _dict['additionalOwners'] = _items
         # override the default output from pydantic by calling `to_dict()` of access_model_metadata
         if self.access_model_metadata:
             _dict['accessModelMetadata'] = self.access_model_metadata.to_dict()
@@ -117,15 +121,15 @@ class Entitlement(BaseModel):
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
 
-        # set to None if tags (nullable) is None
-        # and model_fields_set contains the field
-        if self.tags is None and "tags" in self.model_fields_set:
-            _dict['tags'] = None
-
         # set to None if owner (nullable) is None
         # and model_fields_set contains the field
         if self.owner is None and "owner" in self.model_fields_set:
             _dict['owner'] = None
+
+        # set to None if additional_owners (nullable) is None
+        # and model_fields_set contains the field
+        if self.additional_owners is None and "additional_owners" in self.model_fields_set:
+            _dict['additionalOwners'] = None
 
         # set to None if manually_updated_fields (nullable) is None
         # and model_fields_set contains the field
@@ -155,11 +159,11 @@ class Entitlement(BaseModel):
             "value": obj.get("value"),
             "sourceSchemaObjectType": obj.get("sourceSchemaObjectType"),
             "description": obj.get("description"),
-            "privilegeLevel": EntitlementPrivilegeLevel.from_dict(obj["privilegeLevel"]) if obj.get("privilegeLevel") is not None else None,
-            "tags": obj.get("tags"),
+            "privileged": obj.get("privileged") if obj.get("privileged") is not None else False,
             "cloudGoverned": obj.get("cloudGoverned") if obj.get("cloudGoverned") is not None else False,
             "requestable": obj.get("requestable") if obj.get("requestable") is not None else False,
             "owner": EntitlementOwner.from_dict(obj["owner"]) if obj.get("owner") is not None else None,
+            "additionalOwners": [AdditionalOwnerRef.from_dict(_item) for _item in obj["additionalOwners"]] if obj.get("additionalOwners") is not None else None,
             "manuallyUpdatedFields": obj.get("manuallyUpdatedFields"),
             "accessModelMetadata": EntitlementAccessModelMetadata.from_dict(obj["accessModelMetadata"]) if obj.get("accessModelMetadata") is not None else None,
             "created": obj.get("created"),

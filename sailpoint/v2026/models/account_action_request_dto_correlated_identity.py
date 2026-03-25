@@ -19,7 +19,8 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from sailpoint.v2026.models.dto_type import DtoType
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,11 +28,10 @@ class AccountActionRequestDtoCorrelatedIdentity(BaseModel):
     """
     AccountActionRequestDtoCorrelatedIdentity
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="ID of identity")
-    name: Optional[StrictStr] = Field(default=None, description="Name of Identity")
-    email: Optional[StrictStr] = Field(default=None, description="mail id of identity")
-    status: Optional[StrictStr] = Field(default=None, description="status of identity UNREGISTERED/REGISTERED")
-    __properties: ClassVar[List[str]] = ["id", "name", "email", "status"]
+    type: Optional[Union[DtoType, str]] = None
+    id: Optional[StrictStr] = Field(default=None, description="Identity id")
+    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of identity.")
+    __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -72,16 +72,6 @@ class AccountActionRequestDtoCorrelatedIdentity(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if email (nullable) is None
-        # and model_fields_set contains the field
-        if self.email is None and "email" in self.model_fields_set:
-            _dict['email'] = None
-
-        # set to None if status (nullable) is None
-        # and model_fields_set contains the field
-        if self.status is None and "status" in self.model_fields_set:
-            _dict['status'] = None
-
         return _dict
 
     @classmethod
@@ -94,10 +84,9 @@ class AccountActionRequestDtoCorrelatedIdentity(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "type": obj.get("type"),
             "id": obj.get("id"),
-            "name": obj.get("name"),
-            "email": obj.get("email"),
-            "status": obj.get("status")
+            "name": obj.get("name")
         })
         return _obj
 
