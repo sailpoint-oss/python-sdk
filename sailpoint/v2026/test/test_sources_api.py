@@ -96,6 +96,13 @@ class TestSourcesApi(unittest.TestCase):
         """
         pass
 
+    def test_get_account_delete_approval_config(self) -> None:
+        """Test case for get_account_delete_approval_config
+
+        Human Account Deletion Approval Config
+        """
+        pass
+
     def test_get_accounts_schema(self) -> None:
         """Test case for get_accounts_schema
 
@@ -114,6 +121,13 @@ class TestSourcesApi(unittest.TestCase):
         """Test case for get_entitlements_schema
 
         Downloads source entitlements schema template
+        """
+        pass
+
+    def test_get_machine_account_deletion_approval_config_by_source(self) -> None:
+        """Test case for get_machine_account_deletion_approval_config_by_source
+
+        Machine Account Deletion Approval Config
         """
         pass
 
@@ -338,6 +352,20 @@ class TestSourcesApi(unittest.TestCase):
         """Test case for test_source_connection
 
         Check connection for source connector.
+        """
+        pass
+
+    def test_update_account_deletion_approval_config(self) -> None:
+        """Test case for update_account_deletion_approval_config
+
+        Human Account Deletion Approval Config
+        """
+        pass
+
+    def test_update_machine_account_deletion_approval_config(self) -> None:
+        """Test case for update_machine_account_deletion_approval_config
+
+        Machine Account Deletion Approval Config
         """
         pass
 

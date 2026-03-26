@@ -33,12 +33,10 @@ from sailpoint.v2026.api.custom_user_levels_api import CustomUserLevelsApi
 from sailpoint.v2026.api.data_access_security_api import DataAccessSecurityApi
 from sailpoint.v2026.api.data_segmentation_api import DataSegmentationApi
 from sailpoint.v2026.api.declassify_source_api import DeclassifySourceApi
-from sailpoint.v2026.api.delete_account_api import DeleteAccountApi
 from sailpoint.v2026.api.dimensions_api import DimensionsApi
 from sailpoint.v2026.api.entitlements_api import EntitlementsApi
 from sailpoint.v2026.api.global_tenant_security_settings_api import GlobalTenantSecuritySettingsApi
 from sailpoint.v2026.api.governance_groups_api import GovernanceGroupsApi
-from sailpoint.v2026.api.human_account_deletion_approval_config_api import HumanAccountDeletionApprovalConfigApi
 from sailpoint.v2026.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
 from sailpoint.v2026.api.iai_common_access_api import IAICommonAccessApi
 from sailpoint.v2026.api.iai_outliers_api import IAIOutliersApi
@@ -54,12 +52,10 @@ from sailpoint.v2026.api.launchers_api import LaunchersApi
 from sailpoint.v2026.api.lifecycle_states_api import LifecycleStatesApi
 from sailpoint.v2026.api.mfa_configuration_api import MFAConfigurationApi
 from sailpoint.v2026.api.machine_account_classify_api import MachineAccountClassifyApi
-from sailpoint.v2026.api.machine_account_deletion_approval_config_api import MachineAccountDeletionApprovalConfigApi
 from sailpoint.v2026.api.machine_account_mappings_api import MachineAccountMappingsApi
 from sailpoint.v2026.api.machine_accounts_api import MachineAccountsApi
 from sailpoint.v2026.api.machine_classification_config_api import MachineClassificationConfigApi
 from sailpoint.v2026.api.machine_identities_api import MachineIdentitiesApi
-from sailpoint.v2026.api.machine_subtype_approval_config_api import MachineSubtypeApprovalConfigApi
 from sailpoint.v2026.api.managed_clients_api import ManagedClientsApi
 from sailpoint.v2026.api.managed_cluster_types_api import ManagedClusterTypesApi
 from sailpoint.v2026.api.managed_clusters_api import ManagedClustersApi

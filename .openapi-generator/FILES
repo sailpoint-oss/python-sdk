@@ -34,12 +34,10 @@ sailpoint/v2026/api/custom_user_levels_api.py
 sailpoint/v2026/api/data_access_security_api.py
 sailpoint/v2026/api/data_segmentation_api.py
 sailpoint/v2026/api/declassify_source_api.py
-sailpoint/v2026/api/delete_account_api.py
 sailpoint/v2026/api/dimensions_api.py
 sailpoint/v2026/api/entitlements_api.py
 sailpoint/v2026/api/global_tenant_security_settings_api.py
 sailpoint/v2026/api/governance_groups_api.py
-sailpoint/v2026/api/human_account_deletion_approval_config_api.py
 sailpoint/v2026/api/iai_access_request_recommendations_api.py
 sailpoint/v2026/api/iai_common_access_api.py
 sailpoint/v2026/api/iai_outliers_api.py
@@ -54,12 +52,10 @@ sailpoint/v2026/api/identity_profiles_api.py
 sailpoint/v2026/api/launchers_api.py
 sailpoint/v2026/api/lifecycle_states_api.py
 sailpoint/v2026/api/machine_account_classify_api.py
-sailpoint/v2026/api/machine_account_deletion_approval_config_api.py
 sailpoint/v2026/api/machine_account_mappings_api.py
 sailpoint/v2026/api/machine_accounts_api.py
 sailpoint/v2026/api/machine_classification_config_api.py
 sailpoint/v2026/api/machine_identities_api.py
-sailpoint/v2026/api/machine_subtype_approval_config_api.py
 sailpoint/v2026/api/managed_clients_api.py
 sailpoint/v2026/api/managed_cluster_types_api.py
 sailpoint/v2026/api/managed_clusters_api.py
@@ -573,7 +569,6 @@ sailpoint/v2026/docs/DataOwnerModel.md
 sailpoint/v2026/docs/DataSegment.md
 sailpoint/v2026/docs/DataSegmentationApi.md
 sailpoint/v2026/docs/DeclassifySourceApi.md
-sailpoint/v2026/docs/DeleteAccountApi.md
 sailpoint/v2026/docs/DeleteNonEmployeeRecordsInBulkRequest.md
 sailpoint/v2026/docs/DeleteSource202Response.md
 sailpoint/v2026/docs/DeliveryRequest.md
@@ -709,7 +704,6 @@ sailpoint/v2026/docs/HierarchicalRightSet.md
 sailpoint/v2026/docs/HttpAuthenticationType.md
 sailpoint/v2026/docs/HttpConfig.md
 sailpoint/v2026/docs/HttpDispatchMode.md
-sailpoint/v2026/docs/HumanAccountDeletionApprovalConfigApi.md
 sailpoint/v2026/docs/IAIAccessRequestRecommendationsApi.md
 sailpoint/v2026/docs/IAICommonAccessApi.md
 sailpoint/v2026/docs/IAIOutliersApi.md
@@ -853,7 +847,6 @@ sailpoint/v2026/docs/LookupStep.md
 sailpoint/v2026/docs/MFAConfigurationApi.md
 sailpoint/v2026/docs/MachineAccount.md
 sailpoint/v2026/docs/MachineAccountClassifyApi.md
-sailpoint/v2026/docs/MachineAccountDeletionApprovalConfigApi.md
 sailpoint/v2026/docs/MachineAccountMappingsApi.md
 sailpoint/v2026/docs/MachineAccountSubTypeConfigDto.md
 sailpoint/v2026/docs/MachineAccountSubTypeConfigDtoMachineAccountCreate.md
@@ -892,7 +885,6 @@ sailpoint/v2026/docs/MachineIdentityUserEntitlementResponse.md
 sailpoint/v2026/docs/MachineIdentityUserEntitlementResponseEntitlement.md
 sailpoint/v2026/docs/MachineIdentityUserEntitlementResponseSource.md
 sailpoint/v2026/docs/MachineIdentityUserEntitlements.md
-sailpoint/v2026/docs/MachineSubtypeApprovalConfigApi.md
 sailpoint/v2026/docs/MailFromAttributes.md
 sailpoint/v2026/docs/MailFromAttributesDto.md
 sailpoint/v2026/docs/ManagedClient.md
@@ -3351,7 +3343,6 @@ sailpoint/v2026/test/test_data_owner_model.py
 sailpoint/v2026/test/test_data_segment.py
 sailpoint/v2026/test/test_data_segmentation_api.py
 sailpoint/v2026/test/test_declassify_source_api.py
-sailpoint/v2026/test/test_delete_account_api.py
 sailpoint/v2026/test/test_delete_non_employee_records_in_bulk_request.py
 sailpoint/v2026/test/test_delete_source202_response.py
 sailpoint/v2026/test/test_delivery_request.py
@@ -3486,7 +3477,6 @@ sailpoint/v2026/test/test_hierarchical_right_set.py
 sailpoint/v2026/test/test_http_authentication_type.py
 sailpoint/v2026/test/test_http_config.py
 sailpoint/v2026/test/test_http_dispatch_mode.py
-sailpoint/v2026/test/test_human_account_deletion_approval_config_api.py
 sailpoint/v2026/test/test_iai_access_request_recommendations_api.py
 sailpoint/v2026/test/test_iai_common_access_api.py
 sailpoint/v2026/test/test_iai_outliers_api.py
@@ -3629,7 +3619,6 @@ sailpoint/v2026/test/test_lockout_configuration.py
 sailpoint/v2026/test/test_lookup_step.py
 sailpoint/v2026/test/test_machine_account.py
 sailpoint/v2026/test/test_machine_account_classify_api.py
-sailpoint/v2026/test/test_machine_account_deletion_approval_config_api.py
 sailpoint/v2026/test/test_machine_account_mappings_api.py
 sailpoint/v2026/test/test_machine_account_sub_type_config_dto.py
 sailpoint/v2026/test/test_machine_account_sub_type_config_dto_machine_account_create.py
@@ -3668,7 +3657,6 @@ sailpoint/v2026/test/test_machine_identity_user_entitlement_response.py
 sailpoint/v2026/test/test_machine_identity_user_entitlement_response_entitlement.py
 sailpoint/v2026/test/test_machine_identity_user_entitlement_response_source.py
 sailpoint/v2026/test/test_machine_identity_user_entitlements.py
-sailpoint/v2026/test/test_machine_subtype_approval_config_api.py
 sailpoint/v2026/test/test_mail_from_attributes.py
 sailpoint/v2026/test/test_mail_from_attributes_dto.py
 sailpoint/v2026/test/test_managed_client.py

@@ -47,6 +47,13 @@ class TestMachineAccountsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_machine_account_deletion_sub_type_approval_config(self) -> None:
+        """Test case for get_machine_account_deletion_sub_type_approval_config
+
+        Machine Subtype Approval Config
+        """
+        pass
+
     def test_get_machine_account_subtype_by_id(self) -> None:
         """Test case for get_machine_account_subtype_by_id
 
@@ -86,6 +93,13 @@ class TestMachineAccountsApi(unittest.TestCase):
         """Test case for update_machine_account
 
         Update a machine account
+        """
+        pass
+
+    def test_update_machine_account_deletion_by_sub_type_approval_config(self) -> None:
+        """Test case for update_machine_account_deletion_by_sub_type_approval_config
+
+        Machine Subtype Approval Config
         """
         pass
 

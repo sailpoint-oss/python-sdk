@@ -26,6 +26,13 @@ class TestAccountDeletionRequestsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_delete_account_request(self) -> None:
+        """Test case for delete_account_request
+
+        Delete account
+        """
+        pass
+
     def test_get_account_deletion_requests(self) -> None:
         """Test case for get_account_deletion_requests
 
