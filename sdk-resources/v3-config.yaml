@@ -1,6 +1,6 @@
 templateDir: ./sdk-resources/resources
 packageName: sailpoint.v3
-packageVersion: 1.4.38
+packageVersion: 1.4.39
 apiVersion: v3
 generateSourceCodeOnly: true
 functionPrefix:
