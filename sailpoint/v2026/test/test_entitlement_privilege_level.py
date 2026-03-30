@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2026.models.entitlement_owner import EntitlementOwner
+from sailpoint.v2026.models.entitlement_privilege_level import EntitlementPrivilegeLevel
 
-class TestEntitlementOwner(unittest.TestCase):
-    """EntitlementOwner unit test stubs"""
+class TestEntitlementPrivilegeLevel(unittest.TestCase):
+    """EntitlementPrivilegeLevel unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,27 +25,29 @@ class TestEntitlementOwner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> EntitlementOwner:
-        """Test EntitlementOwner
+    def make_instance(self, include_optional) -> EntitlementPrivilegeLevel:
+        """Test EntitlementPrivilegeLevel
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `EntitlementOwner`
+        # uncomment below to create an instance of `EntitlementPrivilegeLevel`
         """
-        model = EntitlementOwner()
+        model = EntitlementPrivilegeLevel()
         if include_optional:
-            return EntitlementOwner(
-                id = '2c9180827ca885d7017ca8ce28a000eb',
-                type = 'IDENTITY',
-                name = 'john.doe'
+            return EntitlementPrivilegeLevel(
+                direct = 'HIGH',
+                set_by = 'SAILPOINT_MIGRATION',
+                set_by_type = 'OVERRIDE',
+                inherited = 'HIGH',
+                effective = 'HIGH'
             )
         else:
-            return EntitlementOwner(
+            return EntitlementPrivilegeLevel(
         )
         """
 
-    def testEntitlementOwner(self):
-        """Test EntitlementOwner"""
+    def testEntitlementPrivilegeLevel(self):
+        """Test EntitlementPrivilegeLevel"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

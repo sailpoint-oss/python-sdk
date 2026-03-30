@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2026.models.owner_reference_dto import OwnerReferenceDto
+from sailpoint.v2026.models.entitlement_v2_owner import EntitlementV2Owner
 
-class TestOwnerReferenceDto(unittest.TestCase):
-    """OwnerReferenceDto unit test stubs"""
+class TestEntitlementV2Owner(unittest.TestCase):
+    """EntitlementV2Owner unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,27 +25,27 @@ class TestOwnerReferenceDto(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> OwnerReferenceDto:
-        """Test OwnerReferenceDto
+    def make_instance(self, include_optional) -> EntitlementV2Owner:
+        """Test EntitlementV2Owner
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `OwnerReferenceDto`
+        # uncomment below to create an instance of `EntitlementV2Owner`
         """
-        model = OwnerReferenceDto()
+        model = EntitlementV2Owner()
         if include_optional:
-            return OwnerReferenceDto(
-                id = '2a2fdacca5e345f18bf7970cfbb8fec2',
-                name = 'identity 1',
-                type = 'IDENTITY'
+            return EntitlementV2Owner(
+                id = '2c9180827ca885d7017ca8ce28a000eb',
+                type = 'IDENTITY',
+                name = 'john.doe'
             )
         else:
-            return OwnerReferenceDto(
+            return EntitlementV2Owner(
         )
         """
 
-    def testOwnerReferenceDto(self):
-        """Test OwnerReferenceDto"""
+    def testEntitlementV2Owner(self):
+        """Test EntitlementV2Owner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

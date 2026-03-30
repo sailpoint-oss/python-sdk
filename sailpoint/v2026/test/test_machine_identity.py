@@ -39,7 +39,7 @@ class TestMachineIdentity(unittest.TestCase):
                 name = 'aName',
                 created = '2015-05-28T14:07:17Z',
                 modified = '2015-05-28T14:07:17Z',
-                business_application = 'ADService',
+                native_identity = 'abc:123:dddd',
                 description = '',
                 attributes = {"Region":"EU"},
                 subtype = 'Application',
@@ -52,13 +52,12 @@ class TestMachineIdentity(unittest.TestCase):
                             name = 'William Wilson', )
                         ], ),
                 source_id = '6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa',
-                uuid = 'f5dd23fe-3414-42b7-bb1c-869400ad7a10',
-                native_identity = 'abc:123:dddd'
+                uuid = 'f5dd23fe-3414-42b7-bb1c-869400ad7a10'
             )
         else:
             return MachineIdentity(
                 name = 'aName',
-                business_application = 'ADService',
+                native_identity = 'abc:123:dddd',
                 subtype = 'Application',
         )
         """

@@ -1,15 +1,15 @@
 ---
-id: v2026-entitlement-access-model-metadata
-title: EntitlementAccessModelMetadata
-pagination_label: EntitlementAccessModelMetadata
-sidebar_label: EntitlementAccessModelMetadata
+id: v2026-entitlement-v2-access-model-metadata
+title: EntitlementV2AccessModelMetadata
+pagination_label: EntitlementV2AccessModelMetadata
+sidebar_label: EntitlementV2AccessModelMetadata
 sidebar_class_name: pythonsdk
-keywords: ['python', 'Python', 'sdk', 'EntitlementAccessModelMetadata', 'V2026EntitlementAccessModelMetadata'] 
-slug: /tools/sdk/python/v2026/models/entitlement-access-model-metadata
-tags: ['SDK', 'Software Development Kit', 'EntitlementAccessModelMetadata', 'V2026EntitlementAccessModelMetadata']
+keywords: ['python', 'Python', 'sdk', 'EntitlementV2AccessModelMetadata', 'V2026EntitlementV2AccessModelMetadata'] 
+slug: /tools/sdk/python/v2026/models/entitlement-v2-access-model-metadata
+tags: ['SDK', 'Software Development Kit', 'EntitlementV2AccessModelMetadata', 'V2026EntitlementV2AccessModelMetadata']
 ---
 
-# EntitlementAccessModelMetadata
+# EntitlementV2AccessModelMetadata
 
 Additional data to classify the entitlement
 
@@ -23,9 +23,9 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from sailpoint.v2026.models.entitlement_access_model_metadata import EntitlementAccessModelMetadata
+from sailpoint.v2026.models.entitlement_v2_access_model_metadata import EntitlementV2AccessModelMetadata
 
-entitlement_access_model_metadata = EntitlementAccessModelMetadata(
+entitlement_v2_access_model_metadata = EntitlementV2AccessModelMetadata(
 attributes=[
                     sailpoint.v2026.models.access_model_metadata.Access Model Metadata(
                         key = 'iscCsp', 

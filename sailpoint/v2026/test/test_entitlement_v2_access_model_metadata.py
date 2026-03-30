@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2026.models.entitlement_access_model_metadata import EntitlementAccessModelMetadata
+from sailpoint.v2026.models.entitlement_v2_access_model_metadata import EntitlementV2AccessModelMetadata
 
-class TestEntitlementAccessModelMetadata(unittest.TestCase):
-    """EntitlementAccessModelMetadata unit test stubs"""
+class TestEntitlementV2AccessModelMetadata(unittest.TestCase):
+    """EntitlementV2AccessModelMetadata unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,16 +25,16 @@ class TestEntitlementAccessModelMetadata(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> EntitlementAccessModelMetadata:
-        """Test EntitlementAccessModelMetadata
+    def make_instance(self, include_optional) -> EntitlementV2AccessModelMetadata:
+        """Test EntitlementV2AccessModelMetadata
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `EntitlementAccessModelMetadata`
+        # uncomment below to create an instance of `EntitlementV2AccessModelMetadata`
         """
-        model = EntitlementAccessModelMetadata()
+        model = EntitlementV2AccessModelMetadata()
         if include_optional:
-            return EntitlementAccessModelMetadata(
+            return EntitlementV2AccessModelMetadata(
                 attributes = [
                     sailpoint.v2026.models.access_model_metadata.Access Model Metadata(
                         key = 'iscCsp', 
@@ -53,12 +53,12 @@ class TestEntitlementAccessModelMetadata(unittest.TestCase):
                     ]
             )
         else:
-            return EntitlementAccessModelMetadata(
+            return EntitlementV2AccessModelMetadata(
         )
         """
 
-    def testEntitlementAccessModelMetadata(self):
-        """Test EntitlementAccessModelMetadata"""
+    def testEntitlementV2AccessModelMetadata(self):
+        """Test EntitlementV2AccessModelMetadata"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

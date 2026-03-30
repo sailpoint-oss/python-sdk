@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2026.models.entitlement_dto_all_of_source import EntitlementDTOAllOfSource
+from sailpoint.v2026.models.entitlement_v2_privilege_level import EntitlementV2PrivilegeLevel
 
-class TestEntitlementDTOAllOfSource(unittest.TestCase):
-    """EntitlementDTOAllOfSource unit test stubs"""
+class TestEntitlementV2PrivilegeLevel(unittest.TestCase):
+    """EntitlementV2PrivilegeLevel unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,27 +25,29 @@ class TestEntitlementDTOAllOfSource(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> EntitlementDTOAllOfSource:
-        """Test EntitlementDTOAllOfSource
+    def make_instance(self, include_optional) -> EntitlementV2PrivilegeLevel:
+        """Test EntitlementV2PrivilegeLevel
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `EntitlementDTOAllOfSource`
+        # uncomment below to create an instance of `EntitlementV2PrivilegeLevel`
         """
-        model = EntitlementDTOAllOfSource()
+        model = EntitlementV2PrivilegeLevel()
         if include_optional:
-            return EntitlementDTOAllOfSource(
-                id = '2b86153b97a94abc936c8a11b106aaf8',
-                value = 'accountant',
-                type = 'SOURCE'
+            return EntitlementV2PrivilegeLevel(
+                direct = 'HIGH',
+                set_by = 'SAILPOINT_MIGRATION',
+                set_by_type = 'OVERRIDE',
+                inherited = 'HIGH',
+                effective = 'HIGH'
             )
         else:
-            return EntitlementDTOAllOfSource(
+            return EntitlementV2PrivilegeLevel(
         )
         """
 
-    def testEntitlementDTOAllOfSource(self):
-        """Test EntitlementDTOAllOfSource"""
+    def testEntitlementV2PrivilegeLevel(self):
+        """Test EntitlementV2PrivilegeLevel"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

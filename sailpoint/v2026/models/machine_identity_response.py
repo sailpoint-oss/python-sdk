@@ -34,20 +34,19 @@ class MachineIdentityResponse(BaseModel):
     name: Optional[StrictStr] = Field(description="Name of the Object")
     created: Optional[datetime] = Field(default=None, description="Creation date of the Object")
     modified: Optional[datetime] = Field(default=None, description="Last modification date of the Object")
-    business_application: StrictStr = Field(description="The business application that the identity represents", alias="businessApplication")
+    native_identity: StrictStr = Field(description="The native identity associated to the machine identity directly aggregated from a source", alias="nativeIdentity")
     description: Optional[StrictStr] = Field(default=None, description="Description of machine identity")
     attributes: Optional[Dict[str, Any]] = Field(default=None, description="A map of custom machine identity attributes")
     subtype: StrictStr = Field(description="The subtype value associated to the machine identity")
     owners: Optional[MachineIdentityDtoOwners] = None
     source_id: Optional[StrictStr] = Field(default=None, description="The source id associated to the machine identity", alias="sourceId")
     uuid: Optional[StrictStr] = Field(default=None, description="The UUID associated to the machine identity directly aggregated from a source")
-    native_identity: Optional[StrictStr] = Field(default=None, description="The native identity associated to the machine identity directly aggregated from a source", alias="nativeIdentity")
     manually_edited: Optional[StrictBool] = Field(default=False, description="Indicates if the machine identity has been manually edited", alias="manuallyEdited")
     manually_created: Optional[StrictBool] = Field(default=False, description="Indicates if the machine identity has been manually created", alias="manuallyCreated")
     source: Optional[Dict[str, Any]] = Field(default=None, description="The source of the machine identity")
     dataset_id: Optional[StrictStr] = Field(default=None, description="The dataset id associated to the source in which the identity was retrieved from", alias="datasetId")
     user_entitlements: Optional[List[MachineIdentityResponseUserEntitlements]] = Field(default=None, description="The user entitlements associated to the machine identity", alias="userEntitlements")
-    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "businessApplication", "description", "attributes", "subtype", "owners", "sourceId", "uuid", "nativeIdentity", "manuallyEdited", "manuallyCreated", "source", "datasetId", "userEntitlements"]
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "nativeIdentity", "description", "attributes", "subtype", "owners", "sourceId", "uuid", "manuallyEdited", "manuallyCreated", "source", "datasetId", "userEntitlements"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -125,14 +124,13 @@ class MachineIdentityResponse(BaseModel):
             "name": obj.get("name"),
             "created": obj.get("created"),
             "modified": obj.get("modified"),
-            "businessApplication": obj.get("businessApplication"),
+            "nativeIdentity": obj.get("nativeIdentity"),
             "description": obj.get("description"),
             "attributes": obj.get("attributes"),
             "subtype": obj.get("subtype"),
             "owners": MachineIdentityDtoOwners.from_dict(obj["owners"]) if obj.get("owners") is not None else None,
             "sourceId": obj.get("sourceId"),
             "uuid": obj.get("uuid"),
-            "nativeIdentity": obj.get("nativeIdentity"),
             "manuallyEdited": obj.get("manuallyEdited") if obj.get("manuallyEdited") is not None else False,
             "manuallyCreated": obj.get("manuallyCreated") if obj.get("manuallyCreated") is not None else False,
             "source": obj.get("source"),

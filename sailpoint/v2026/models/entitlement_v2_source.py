@@ -18,29 +18,19 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class EntitlementOwner(BaseModel):
+class EntitlementV2Source(BaseModel):
     """
-    The identity that owns the entitlement
+    EntitlementV2Source
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="The identity ID")
-    type: Optional[StrictStr] = Field(default=None, description="The type of object")
-    name: Optional[StrictStr] = Field(default=None, description="The display name of the identity")
+    id: Optional[StrictStr] = Field(default=None, description="The source ID")
+    type: Optional[StrictStr] = Field(default=None, description="The source type, will always be \"SOURCE\"")
+    name: Optional[StrictStr] = Field(default=None, description="The source name")
     __properties: ClassVar[List[str]] = ["id", "type", "name"]
-
-    @field_validator('type')
-    def type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['IDENTITY']):
-            warnings.warn(f"must be one of enum values ('IDENTITY') unknown value: {value}")
-        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -60,7 +50,7 @@ class EntitlementOwner(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of EntitlementOwner from a JSON string"""
+        """Create an instance of EntitlementV2Source from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -85,7 +75,7 @@ class EntitlementOwner(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of EntitlementOwner from a dict"""
+        """Create an instance of EntitlementV2Source from a dict"""
         if obj is None:
             return None
 

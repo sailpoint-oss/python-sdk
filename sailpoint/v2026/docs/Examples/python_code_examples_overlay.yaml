@@ -1544,22 +1544,11 @@
 
         with ApiClient(configuration) as api_client:
           access_request_config = '''{
+          "govGroupVisibilityEnabled" : true,
           "requestOnBehalfOfConfig" : {
             "allowRequestOnBehalfOfEmployeeByManager" : true,
             "allowRequestOnBehalfOfAnyoneByAnyone" : true
           },
-          "approvalReminderAndEscalationConfig" : {
-            "fallbackApproverRef" : {
-              "name" : "Alison Ferguso",
-              "id" : "5168015d32f890ca15812c9180835d2e",
-              "type" : "IDENTITY",
-              "email" : "alison.ferguso@identitysoon.com"
-            },
-            "maxReminders" : 1,
-            "daysUntilEscalation" : 0,
-            "daysBetweenReminders" : 0
-          },
-          "autoApprovalEnabled" : true,
           "entitlementRequestConfig" : {
             "accessRequestConfig" : {
               "denialCommentRequired" : false,
@@ -8581,73 +8570,6 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling EntitlementsApi->create_access_model_metadata_for_entitlement: %s\n" % e)
-- path: /entitlements/{id}
-  method: POST
-  xCodeSample:
-    - lang: Python
-      label: SDK_tools/sdk/python/v2026/methods/entitlements#create-entitlement
-      source: |
-        from sailpoint.v2026.api.entitlements_api import EntitlementsApi
-        from sailpoint.v2026.api_client import ApiClient
-        from sailpoint.v2026.models.entitlement_dto import EntitlementDTO
-        from sailpoint.configuration import Configuration
-        configuration = Configuration()
-
-
-        with ApiClient(configuration) as api_client:
-          entitlement_dto = '''{
-          "cloudEligible" : true,
-          "segmentStatus" : "GLOBAL",
-          "idnExceptional" : "PRIVILEGED",
-          "description" : "some entitlement description",
-          "source" : {
-            "id" : "2b86153b97a94abc936c8a11b106aaf8",
-            "type" : "SOURCE",
-            "value" : "accountant"
-          },
-          "uuid" : "6a099125e1614e4c9024bff6c6159f49",
-          "entitlementitlementAggregated" : "true",
-          "segments" : [ "[students]", "[students]" ],
-          "directPermissions" : [ {
-            "rights" : "HereIsRight1",
-            "target" : "SYS.GV_$TRANSACTION"
-          }, {
-            "rights" : "HereIsRight1",
-            "target" : "SYS.GV_$TRANSACTION"
-          } ],
-          "idnServiceApp" : "AppName123",
-          "modified" : "2015-05-28T14:07:17Z",
-          "sourceSchemaObjectType" : "group",
-          "id" : "id12345",
-          "attribute" : "authorizationType",
-          "value" : "CN=Users,dc=sailpoint,dc=com",
-          "owner" : {
-            "name" : "identity 1",
-            "id" : "2a2fdacca5e345f18bf7970cfbb8fec2",
-            "type" : "IDENTITY"
-          },
-          "lastRefresh" : "2022-06-24T16:12:53.389386Z",
-          "created" : "2015-05-28T14:07:17Z",
-          "privileged" : true,
-          "inheritFrom" : [ "[a9ced5a52d284b83a7f5595873d35b4e]", "[a9ced5a52d284b83a7f5595873d35b4e]" ],
-          "name" : "aName",
-          "attributes" : "{cn=Human Resources-bchun2, owner=CN=Fritz.8349b2f31e67,OU=flatfileAD,dc=flatfile,dc=endtoend,dc=com, objectguid=objectguidHuman-Resources-bchun2, description=HR-desc, sysDescriptions={en_US=HR-desc}, entitlementAggregated=true}",
-          "requestable" : true,
-          "isGroup" : true,
-          "cloudGoverned" : true,
-          "hash" : "5c8b309fa18a2c76d7fbee2b9e00dba99e4c82de"
-        }''' # EntitlementDTO | 
-          try:
-              # Creates an entitlement
-              new_entitlement_dto = EntitlementDto.from_json(entitlement_dto)
-              results = EntitlementsApi(api_client).create_entitlement(entitlement_dto=new_entitlement_dto)
-              # Below is a request that includes all optional parameters
-              # results = EntitlementsApi(api_client).create_entitlement(new_entitlement_dto)
-              print("The response of EntitlementsApi->create_entitlement:\n")
-              for item in results:
-                  print(item.model_dump_json(by_alias=True, indent=4))
-          except Exception as e:
-              print("Exception when calling EntitlementsApi->create_entitlement: %s\n" % e)
 - path: /entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}
   method: DELETE
   xCodeSample:
@@ -8672,6 +8594,31 @@
               # EntitlementsApi(api_client).delete_access_model_metadata_from_entitlement(id, attribute_key, attribute_value)
           except Exception as e:
               print("Exception when calling EntitlementsApi->delete_access_model_metadata_from_entitlement: %s\n" % e)
+- path: /entitlements/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/entitlements#get-entitlement
+      source: |
+        from sailpoint.v2026.api.entitlements_api import EntitlementsApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.entitlement_v2 import EntitlementV2
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '2c91808874ff91550175097daaec161c' # str | The entitlement ID # str | The entitlement ID
+          try:
+              # Get an entitlement
+              
+              results = EntitlementsApi(api_client).get_entitlement(id=id)
+              # Below is a request that includes all optional parameters
+              # results = EntitlementsApi(api_client).get_entitlement(id)
+              print("The response of EntitlementsApi->get_entitlement:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling EntitlementsApi->get_entitlement: %s\n" % e)
 - path: /entitlements/{id}/entitlement-request-config
   method: GET
   xCodeSample:
@@ -8731,7 +8678,7 @@
       source: |
         from sailpoint.v2026.api.entitlements_api import EntitlementsApi
         from sailpoint.v2026.api_client import ApiClient
-        from sailpoint.v2026.models.entitlement import Entitlement
+        from sailpoint.v2026.models.entitlement_v2 import EntitlementV2
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -8763,7 +8710,7 @@
       source: |
         from sailpoint.v2026.api.entitlements_api import EntitlementsApi
         from sailpoint.v2026.api_client import ApiClient
-        from sailpoint.v2026.models.entitlement import Entitlement
+        from sailpoint.v2026.models.entitlement_v2 import EntitlementV2
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -8795,27 +8742,27 @@
       source: |
         from sailpoint.v2026.api.entitlements_api import EntitlementsApi
         from sailpoint.v2026.api_client import ApiClient
-        from sailpoint.v2026.models.entitlement import Entitlement
+        from sailpoint.v2026.models.entitlement_v2 import EntitlementV2
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          account_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account ID. If specified, returns only entitlements associated with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s). (optional) # str | The account ID. If specified, returns only entitlements associated with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s). (optional)
-          segmented_for_identity = 'e554098913544630b5985e9042f5e44b' # str | If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user's Identity. (optional) # str | If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user's Identity. (optional)
-          for_segment_ids = '041727d4-7d95-4779-b891-93cf41e98249,a378c9fa-bae5-494c-804e-a1e30f69f649' # str | If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. Cannot be specified with the **account-id** or **segmented-for-identity** param(s). (optional) # str | If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. Cannot be specified with the **account-id** or **segmented-for-identity** param(s). (optional)
+          segmented_for_identity = 'e554098913544630b5985e9042f5e44b' # str | If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. (optional) # str | If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. (optional)
+          for_segment_ids = '041727d4-7d95-4779-b891-93cf41e98249,a378c9fa-bae5-494c-804e-a1e30f69f649' # str | If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. (optional) # str | If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. (optional)
           include_unsegmented = True # bool | Whether or not the response list should contain unsegmented Entitlements. If **for-segment-ids** and **segmented-for-identity** are both absent or empty, specifying **include-unsegmented=false** results in an error. (optional) (default to True) # bool | Whether or not the response list should contain unsegmented Entitlements. If **for-segment-ids** and **segmented-for-identity** are both absent or empty, specifying **include-unsegmented=false** results in an error. (optional) (default to True)
           offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
           count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
-          sorters = 'name,-modified' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable** (optional)
-          filters = 'attribute eq \"memberOf\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in* (optional)
+          search_after = 'Account Payable,2c91808375d8e80a0175e1f88a575221' # str | Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement. (optional) # str | Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement. (optional)
+          sorters = 'name,id' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable** (optional)
+          filters = 'attribute eq \"memberOf\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **tags**: *eq*  **privilegeLevel.direct**: *eq* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **tags**: *eq*  **privilegeLevel.direct**: *eq* (optional)
           try:
               # Gets a list of entitlements.
               
               results = EntitlementsApi(api_client).list_entitlements()
               # Below is a request that includes all optional parameters
-              # results = EntitlementsApi(api_client).list_entitlements(account_id, segmented_for_identity, for_segment_ids, include_unsegmented, offset, limit, count, sorters, filters)
+              # results = EntitlementsApi(api_client).list_entitlements(segmented_for_identity, for_segment_ids, include_unsegmented, offset, limit, count, search_after, sorters, filters)
               print("The response of EntitlementsApi->list_entitlements:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))
@@ -8829,7 +8776,7 @@
       source: |
         from sailpoint.v2026.api.entitlements_api import EntitlementsApi
         from sailpoint.v2026.api_client import ApiClient
-        from sailpoint.v2026.models.entitlement import Entitlement
+        from sailpoint.v2026.models.entitlement_v2 import EntitlementV2
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -8852,6 +8799,33 @@
                   print(item.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling EntitlementsApi->list_entitlements_by_account: %s\n" % e)
+- path: /entitlements/{id}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/entitlements#patch-entitlement
+      source: |
+        from sailpoint.v2026.api.entitlements_api import EntitlementsApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.entitlement_v2 import EntitlementV2
+        from sailpoint.v2026.models.json_patch_operation import JsonPatchOperation
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '2c91808a7813090a017814121e121518' # str | ID of the entitlement to patch # str | ID of the entitlement to patch
+          json_patch_operation = '''[{op=add, path=/segments/-, value=f7b1b8a3-5fed-4fd4-ad29-82014e137e19}]''' # List[JsonPatchOperation] |  (optional)
+          try:
+              # Patch an entitlement
+              
+              results = EntitlementsApi(api_client).patch_entitlement(id=id)
+              # Below is a request that includes all optional parameters
+              # results = EntitlementsApi(api_client).patch_entitlement(id, new_json_patch_operation)
+              print("The response of EntitlementsApi->patch_entitlement:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling EntitlementsApi->patch_entitlement: %s\n" % e)
 - path: /entitlements/{id}/entitlement-request-config
   method: PUT
   xCodeSample:
@@ -8948,12 +8922,12 @@
           "entitlementIds" : [ "2c91808a7624751a01762f19d665220d", "2c91808a7624751a01762f19d67c220e", "2c91808a7624751a01762f19d692220f" ],
           "jsonPatch" : [ {
             "op" : "replace",
-            "path" : "/privileged",
+            "path" : "/requestable",
             "value" : false
           }, {
             "op" : "replace",
-            "path" : "/requestable",
-            "value" : false
+            "path" : "/privilegeOverride/level",
+            "value" : "HIGH"
           } ]
         }''' # EntitlementBulkUpdateRequest | 
           try:
@@ -13568,8 +13542,19 @@
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           machine_identity_request = '''{
           "sourceId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa",
+          "subtype" : "Application",
           "created" : "2015-05-28T14:07:17Z",
+          "userEntitlements" : [ {
+            "sourceId" : "5898b7c1-620c-49c6-cccc-cbf81eb4bddd",
+            "entitlementId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa"
+          }, {
+            "sourceId" : "5898b7c1-620c-49c6-cccc-cbf81eb4bddd",
+            "entitlementId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa"
+          } ],
+          "name" : "aName",
+          "modified" : "2015-05-28T14:07:17Z",
           "description" : "",
+          "attributes" : "{\"Region\":\"EU\"}",
           "owners" : {
             "primaryIdentity" : "{}",
             "secondaryIdentities" : [ {
@@ -13582,21 +13567,9 @@
               "type" : "IDENTITY"
             } ]
           },
+          "id" : "id12345",
           "uuid" : "f5dd23fe-3414-42b7-bb1c-869400ad7a10",
-          "nativeIdentity" : "abc:123:dddd",
-          "subtype" : "Application",
-          "businessApplication" : "ADService",
-          "userEntitlements" : [ {
-            "sourceId" : "5898b7c1-620c-49c6-cccc-cbf81eb4bddd",
-            "entitlementId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa"
-          }, {
-            "sourceId" : "5898b7c1-620c-49c6-cccc-cbf81eb4bddd",
-            "entitlementId" : "6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa"
-          } ],
-          "name" : "aName",
-          "modified" : "2015-05-28T14:07:17Z",
-          "attributes" : "{\"Region\":\"EU\"}",
-          "id" : "id12345"
+          "nativeIdentity" : "abc:123:dddd"
         }''' # MachineIdentityRequest | 
           try:
               # Create machine identities
@@ -13675,8 +13648,8 @@
 
         with ApiClient(configuration) as api_client:
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
-          filters = 'identityId eq \"2c9180858082150f0180893dbaf44201\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **cisIdentityId**: *eq, in, sw*  **businessApplication**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr*  **source.name**: *eq, in, sw*  **source.id**: *eq, in*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **cisIdentityId**: *eq, in, sw*  **businessApplication**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr*  **source.name**: *eq, in, sw*  **source.id**: *eq, in*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw* (optional)
-          sorters = 'businessApplication' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **businessApplication, name, owners.primaryIdentity.name, source.name, created, modified** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **businessApplication, name, owners.primaryIdentity.name, source.name, created, modified** (optional)
+          filters = 'identityId eq \"2c9180858082150f0180893dbaf44201\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **cisIdentityId**: *eq, in, sw*  **nativeIdentity**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr*  **source.name**: *eq, in, sw*  **source.id**: *eq, in*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, in, sw*  **cisIdentityId**: *eq, in, sw*  **nativeIdentity**: *eq, in, sw*  **attributes**: *eq*  **manuallyEdited**: *eq*  **subtype**: *eq, in*  **owners.primaryIdentity.id**: *eq, in, sw*  **owners.primaryIdentity.name**: *eq, in, isnull, pr*  **owners.secondaryIdentity.id**: *eq, in, sw*  **owners.secondaryIdentity.name**: *eq, in, isnull, pr*  **source.name**: *eq, in, sw*  **source.id**: *eq, in*  **entitlement.id**: *eq, in*  **entitlement.name**: *eq, in, sw* (optional)
+          sorters = 'nativeIdentity' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **nativeIdentity, name, owners.primaryIdentity.name, source.name, created, modified** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **nativeIdentity, name, owners.primaryIdentity.name, source.name, created, modified** (optional)
           count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
           limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
           offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -24128,58 +24101,6 @@
                   print(item.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling TagsApi->list_tags: %s\n" % e)
-- path: /task-status/pending-tasks
-  method: HEAD
-  xCodeSample:
-    - lang: Python
-      label: SDK_tools/sdk/python/v2026/methods/task-management#get-pending-task-headers
-      source: |
-        from sailpoint.v2026.api.task_management_api import TaskManagementApi
-        from sailpoint.v2026.api_client import ApiClient
-        from sailpoint.configuration import Configuration
-        configuration = Configuration()
-
-
-        with ApiClient(configuration) as api_client:
-          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
-          try:
-              # Retrieve pending task list headers
-              
-              TaskManagementApi(api_client).get_pending_task_headers()
-              # Below is a request that includes all optional parameters
-              # TaskManagementApi(api_client).get_pending_task_headers(offset, limit, count)
-          except Exception as e:
-              print("Exception when calling TaskManagementApi->get_pending_task_headers: %s\n" % e)
-- path: /task-status/pending-tasks
-  method: GET
-  xCodeSample:
-    - lang: Python
-      label: SDK_tools/sdk/python/v2026/methods/task-management#get-pending-tasks
-      source: |
-        from sailpoint.v2026.api.task_management_api import TaskManagementApi
-        from sailpoint.v2026.api_client import ApiClient
-        from sailpoint.v2026.models.task_status import TaskStatus
-        from sailpoint.configuration import Configuration
-        configuration = Configuration()
-
-
-        with ApiClient(configuration) as api_client:
-          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
-          try:
-              # Retrieve pending task status list
-              
-              results = TaskManagementApi(api_client).get_pending_tasks()
-              # Below is a request that includes all optional parameters
-              # results = TaskManagementApi(api_client).get_pending_tasks(offset, limit, count)
-              print("The response of TaskManagementApi->get_pending_tasks:\n")
-              for item in results:
-                  print(item.model_dump_json(by_alias=True, indent=4))
-          except Exception as e:
-              print("Exception when calling TaskManagementApi->get_pending_tasks: %s\n" % e)
 - path: /task-status/{id}
   method: GET
   xCodeSample:
@@ -24192,15 +24113,17 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
+        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           id = '00eebcf881994e419d72e757fd30dc0e' # str | Task ID. # str | Task ID.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           try:
               # Get task status by id
               
-              results = TaskManagementApi(api_client).get_task_status(id=id)
+              results = TaskManagementApi(api_client).get_task_status(id=id, x_sail_point_experimental=x_sail_point_experimental)
               # Below is a request that includes all optional parameters
-              # results = TaskManagementApi(api_client).get_task_status(id)
+              # results = TaskManagementApi(api_client).get_task_status(id, x_sail_point_experimental)
               print("The response of TaskManagementApi->get_task_status:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -24224,7 +24147,7 @@
           limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
           offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
-          filters = 'completionStatus eq \"Success\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION (optional)
+          filters = 'type eq \"CLOUD_ACCOUNT_AGGREGATION\" and completionStatus isnull' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **launcher**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, CLOUD_ENTITLEMENT_IMPORT, CLOUD_UNCORRELATED_REFRESH, CLOUD_IDENTITY_AGGREGATION, CLOUD_ATTRIBUTE_SYNCHRONIZATION, IDENTITY_REFRESH, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in, isnull*  **type**: *eq, in*  **launcher**: *eq, in*  **Possible Values:** CLOUD_ACCOUNT_AGGREGATION, CLOUD_GROUP_AGGREGATION, CLOUD_PROCESS_UNCORRELATED_ACCOUNTS, CLOUD_REFRESH_ROLE, SOURCE_APPLICATION_DISCOVERY, AI_AGENT_AGGREGATION, CLOUD_ENTITLEMENT_IMPORT, CLOUD_UNCORRELATED_REFRESH, CLOUD_IDENTITY_AGGREGATION, CLOUD_ATTRIBUTE_SYNCHRONIZATION, IDENTITY_REFRESH, APPLICATION_DISCOVERY, MACHINE_IDENTITY_AGGREGATION, MACHINE_IDENTITY_DELETION, ACCOUNT_DELETION (optional)
           sorters = '-created' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created** (optional)
           try:
               # Retrieve task status list
@@ -24250,16 +24173,18 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
+        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           id = '00eebcf881994e419d72e757fd30dc0e' # str | Task ID. # str | Task ID.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           json_patch_operation = '''[sailpoint.v2026.JsonPatchOperation()]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the object.
           try:
               # Update task status by id
               new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
-              results = TaskManagementApi(api_client).update_task_status(id=id, json_patch_operation=new_json_patch_operation)
+              results = TaskManagementApi(api_client).update_task_status(id=id, x_sail_point_experimental=x_sail_point_experimental, json_patch_operation=new_json_patch_operation)
               # Below is a request that includes all optional parameters
-              # results = TaskManagementApi(api_client).update_task_status(id, new_json_patch_operation)
+              # results = TaskManagementApi(api_client).update_task_status(id, x_sail_point_experimental, new_json_patch_operation)
               print("The response of TaskManagementApi->update_task_status:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:

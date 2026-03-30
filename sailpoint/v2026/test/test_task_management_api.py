@@ -26,20 +26,6 @@ class TestTaskManagementApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_get_pending_task_headers(self) -> None:
-        """Test case for get_pending_task_headers
-
-        Retrieve pending task list headers
-        """
-        pass
-
-    def test_get_pending_tasks(self) -> None:
-        """Test case for get_pending_tasks
-
-        Retrieve pending task status list
-        """
-        pass
-
     def test_get_task_status(self) -> None:
         """Test case for get_task_status
 

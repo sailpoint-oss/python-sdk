@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2026.models.entitlement import Entitlement
+from sailpoint.v2026.models.entitlement_v2 import EntitlementV2
 
-class TestEntitlement(unittest.TestCase):
-    """Entitlement unit test stubs"""
+class TestEntitlementV2(unittest.TestCase):
+    """EntitlementV2 unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,35 +25,30 @@ class TestEntitlement(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> Entitlement:
-        """Test Entitlement
+    def make_instance(self, include_optional) -> EntitlementV2:
+        """Test EntitlementV2
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Entitlement`
+        # uncomment below to create an instance of `EntitlementV2`
         """
-        model = Entitlement()
+        model = EntitlementV2()
         if include_optional:
-            return Entitlement(
+            return EntitlementV2(
                 id = '2c91808874ff91550175097daaec161c',
-                name = 'PayrollControls',
+                name = 'Account Payable',
                 attribute = 'memberOf',
-                value = 'CN=PayrollControls,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com',
+                value = 'CN=Account Payable,OU=Finance,DC=xyz company',
                 source_schema_object_type = 'group',
-                description = 'Grants the ability to access and manage payroll-related controls and settings within the Corporate Active Directory system.',
-                privileged = True,
+                description = 'This entitlement allows users to access the accounts payable module of the organization's financial management system. Users can view, process, and approve invoices, manage vendor relationships, and perform other accounts payable-related tasks.',
+                privilege_level = None,
+                tags = [tag1, tag2],
                 cloud_governed = True,
                 requestable = True,
                 owner = sailpoint.v2026.models.entitlement_v2_owner.EntitlementV2_owner(
                     id = '2c9180827ca885d7017ca8ce28a000eb', 
                     type = 'IDENTITY', 
                     name = 'john.doe', ),
-                additional_owners = [
-                    sailpoint.v2026.models.additional_owner_ref.AdditionalOwnerRef(
-                        type = 'IDENTITY', 
-                        id = '2c9180a46faadee4016fb4e018c20639', 
-                        name = 'support', )
-                    ],
                 manually_updated_fields = {DISPLAY_NAME=true, DESCRIPTION=true},
                 access_model_metadata = sailpoint.v2026.models.entitlement_v2_access_model_metadata.EntitlementV2_accessModelMetadata(
                     attributes = [
@@ -74,10 +69,10 @@ class TestEntitlement(unittest.TestCase):
                         ], ),
                 created = '2020-10-08T18:33:52.029Z',
                 modified = '2020-10-08T18:33:52.029Z',
-                source = sailpoint.v2026.models.entitlement_source.Entitlement_source(
+                source = sailpoint.v2026.models.entitlement_v2_source.EntitlementV2_source(
                     id = '2c9180827ca885d7017ca8ce28a000eb', 
                     type = 'SOURCE', 
-                    name = 'Corporate Active Directory', ),
+                    name = 'ODS-AD-Source', ),
                 attributes = {fieldName=fieldValue},
                 segments = [f7b1b8a3-5fed-4fd4-ad29-82014e137e19, 29cb6c06-1da8-43ea-8be4-b3125f248f2a],
                 direct_permissions = [
@@ -87,12 +82,12 @@ class TestEntitlement(unittest.TestCase):
                     ]
             )
         else:
-            return Entitlement(
+            return EntitlementV2(
         )
         """
 
-    def testEntitlement(self):
-        """Test Entitlement"""
+    def testEntitlementV2(self):
+        """Test EntitlementV2"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -13063,17 +13063,15 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           id = 'ef38f94347e94562b5bb8424a56397d8' # str | Machine Account ID. # str | Machine Account ID.
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           try:
               # Machine account details
               
-              results = MachineAccountsApi(api_client).get_machine_account(id=id, x_sail_point_experimental=x_sail_point_experimental)
+              results = MachineAccountsApi(api_client).get_machine_account(id=id)
               # Below is a request that includes all optional parameters
-              # results = MachineAccountsApi(api_client).get_machine_account(id, x_sail_point_experimental)
+              # results = MachineAccountsApi(api_client).get_machine_account(id)
               print("The response of MachineAccountsApi->get_machine_account:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -13178,10 +13176,8 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
           offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -13190,9 +13186,9 @@
           try:
               # Machine accounts list
               
-              results = MachineAccountsApi(api_client).list_machine_accounts(x_sail_point_experimental=x_sail_point_experimental)
+              results = MachineAccountsApi(api_client).list_machine_accounts()
               # Below is a request that includes all optional parameters
-              # results = MachineAccountsApi(api_client).list_machine_accounts(x_sail_point_experimental, limit, offset, count, filters, sorters)
+              # results = MachineAccountsApi(api_client).list_machine_accounts(limit, offset, count, filters, sorters)
               print("The response of MachineAccountsApi->list_machine_accounts:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))
@@ -13239,18 +13235,16 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           id = 'ef38f94347e94562b5bb8424a56397d8' # str | Machine Account ID. # str | Machine Account ID.
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           request_body = '''[{op=add, path=/environment, value=test}]''' # List[object] | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following fields are patchable:           * description           * ownerIdentity           * subType           * accessType           * environment           * attributes           * classificationMethod           * manuallyEdited           * nativeIdentity           * uuid           * source           * manuallyCorrelated           * enabled           * locked           * hasEntitlements           * connectorAttributes
           try:
               # Update a machine account
               new_request_body = RequestBody.from_json(request_body)
-              results = MachineAccountsApi(api_client).update_machine_account(id=id, x_sail_point_experimental=x_sail_point_experimental, request_body=new_request_body)
+              results = MachineAccountsApi(api_client).update_machine_account(id=id, request_body=new_request_body)
               # Below is a request that includes all optional parameters
-              # results = MachineAccountsApi(api_client).update_machine_account(id, x_sail_point_experimental, new_request_body)
+              # results = MachineAccountsApi(api_client).update_machine_account(id, new_request_body)
               print("The response of MachineAccountsApi->update_machine_account:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:

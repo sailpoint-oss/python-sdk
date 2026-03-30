@@ -1,15 +1,15 @@
 ---
-id: v2026-entitlement
-title: Entitlement
-pagination_label: Entitlement
-sidebar_label: Entitlement
+id: v2026-entitlement-v2
+title: EntitlementV2
+pagination_label: EntitlementV2
+sidebar_label: EntitlementV2
 sidebar_class_name: pythonsdk
-keywords: ['python', 'Python', 'sdk', 'Entitlement', 'V2026Entitlement'] 
-slug: /tools/sdk/python/v2026/models/entitlement
-tags: ['SDK', 'Software Development Kit', 'Entitlement', 'V2026Entitlement']
+keywords: ['python', 'Python', 'sdk', 'EntitlementV2', 'V2026EntitlementV2'] 
+slug: /tools/sdk/python/v2026/models/entitlement-v2
+tags: ['SDK', 'Software Development Kit', 'EntitlementV2', 'V2026EntitlementV2']
 ---
 
-# Entitlement
+# EntitlementV2
 
 
 ## Properties
@@ -22,16 +22,16 @@ Name | Type | Description | Notes
 **value** | **str** | The value of the entitlement | [optional] 
 **source_schema_object_type** | **str** | The object type of the entitlement from the source schema | [optional] 
 **description** | **str** | The description of the entitlement | [optional] 
-**privileged** | **bool** | True if the entitlement is privileged | [optional] [default to False]
+**privilege_level** | [**EntitlementV2PrivilegeLevel**](entitlement-v2-privilege-level) |  | [optional] 
+**tags** | **[]str** | List of tags assigned to the entitlement | [optional] 
 **cloud_governed** | **bool** | True if the entitlement is cloud governed | [optional] [default to False]
 **requestable** | **bool** | True if the entitlement is able to be directly requested | [optional] [default to False]
 **owner** | [**EntitlementV2Owner**](entitlement-v2-owner) |  | [optional] 
-**additional_owners** | [**[]AdditionalOwnerRef**](additional-owner-ref) | List of additional owner references beyond the primary owner. Each entry may be an identity (IDENTITY) or a governance group (GOVERNANCE_GROUP). | [optional] 
 **manually_updated_fields** | **map[string]object** | A map of entitlement fields that have been manually updated. The key is the field name in UPPER_SNAKE_CASE format, and the value is true or false to indicate if the field has been updated. | [optional] 
 **access_model_metadata** | [**EntitlementV2AccessModelMetadata**](entitlement-v2-access-model-metadata) |  | [optional] 
 **created** | **datetime** | Time when the entitlement was created | [optional] 
 **modified** | **datetime** | Time when the entitlement was last modified | [optional] 
-**source** | [**EntitlementSource**](entitlement-source) |  | [optional] 
+**source** | [**EntitlementV2Source**](entitlement-v2-source) |  | [optional] 
 **attributes** | **map[string]object** | A map of free-form key-value pairs from the source system | [optional] 
 **segments** | **[]str** | List of IDs of segments, if any, to which this Entitlement is assigned. | [optional] 
 **direct_permissions** | [**[]PermissionDto**](permission-dto) |  | [optional] 
@@ -40,28 +40,23 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from sailpoint.v2026.models.entitlement import Entitlement
+from sailpoint.v2026.models.entitlement_v2 import EntitlementV2
 
-entitlement = Entitlement(
+entitlement_v2 = EntitlementV2(
 id='2c91808874ff91550175097daaec161c',
-name='PayrollControls',
+name='Account Payable',
 attribute='memberOf',
-value='CN=PayrollControls,OU=Groups,OU=Demo,DC=seri,DC=sailpointdemo,DC=com',
+value='CN=Account Payable,OU=Finance,DC=xyz company',
 source_schema_object_type='group',
-description='Grants the ability to access and manage payroll-related controls and settings within the Corporate Active Directory system.',
-privileged=True,
+description='This entitlement allows users to access the accounts payable module of the organization's financial management system. Users can view, process, and approve invoices, manage vendor relationships, and perform other accounts payable-related tasks.',
+privilege_level=,
+tags=[tag1, tag2],
 cloud_governed=True,
 requestable=True,
 owner=sailpoint.v2026.models.entitlement_v2_owner.EntitlementV2_owner(
                     id = '2c9180827ca885d7017ca8ce28a000eb', 
                     type = 'IDENTITY', 
                     name = 'john.doe', ),
-additional_owners=[
-                    sailpoint.v2026.models.additional_owner_ref.AdditionalOwnerRef(
-                        type = 'IDENTITY', 
-                        id = '2c9180a46faadee4016fb4e018c20639', 
-                        name = 'support', )
-                    ],
 manually_updated_fields={DISPLAY_NAME=true, DESCRIPTION=true},
 access_model_metadata=sailpoint.v2026.models.entitlement_v2_access_model_metadata.EntitlementV2_accessModelMetadata(
                     attributes = [
@@ -82,10 +77,10 @@ access_model_metadata=sailpoint.v2026.models.entitlement_v2_access_model_metadat
                         ], ),
 created='2020-10-08T18:33:52.029Z',
 modified='2020-10-08T18:33:52.029Z',
-source=sailpoint.v2026.models.entitlement_source.Entitlement_source(
+source=sailpoint.v2026.models.entitlement_v2_source.EntitlementV2_source(
                     id = '2c9180827ca885d7017ca8ce28a000eb', 
                     type = 'SOURCE', 
-                    name = 'Corporate Active Directory', ),
+                    name = 'ODS-AD-Source', ),
 attributes={fieldName=fieldValue},
 segments=[f7b1b8a3-5fed-4fd4-ad29-82014e137e19, 29cb6c06-1da8-43ea-8be4-b3125f248f2a],
 direct_permissions=[

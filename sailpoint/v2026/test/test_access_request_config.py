@@ -36,20 +36,10 @@ class TestAccessRequestConfig(unittest.TestCase):
         if include_optional:
             return AccessRequestConfig(
                 approvals_must_be_external = True,
-                auto_approval_enabled = True,
                 reauthorization_enabled = True,
                 request_on_behalf_of_config = sailpoint.v2026.models.request_on_behalf_of_config.Request On Behalf Of Config(
                     allow_request_on_behalf_of_anyone_by_anyone = True, 
                     allow_request_on_behalf_of_employee_by_manager = True, ),
-                approval_reminder_and_escalation_config = sailpoint.v2026.models.approval_reminder_and_escalation_config.Approval Reminder And Escalation Config(
-                    days_until_escalation = 0, 
-                    days_between_reminders = 0, 
-                    max_reminders = 1, 
-                    fallback_approver_ref = sailpoint.v2026.models.identity_reference_with_name_and_email.Identity Reference With Name And Email(
-                        type = 'IDENTITY', 
-                        id = '5168015d32f890ca15812c9180835d2e', 
-                        name = 'Alison Ferguso', 
-                        email = 'alison.ferguso@identitysoon.com', ), ),
                 entitlement_request_config = sailpoint.v2026.models.entitlement_request_config.Entitlement Request Config(
                     access_request_config = sailpoint.v2026.models.entitlement_access_request_config.Entitlement Access Request Config(
                         approval_schemes = [
@@ -64,7 +54,8 @@ class TestAccessRequestConfig(unittest.TestCase):
                         max_permitted_access_duration = sailpoint.v2026.models.entitlement_access_request_config_max_permitted_access_duration.EntitlementAccessRequestConfig_maxPermittedAccessDuration(
                             value = 5, 
                             time_unit = 'DAYS', ), ), 
-                    revocation_request_config = sailpoint.v2026.models.entitlement_revocation_request_config.Entitlement Revocation Request Config(), )
+                    revocation_request_config = sailpoint.v2026.models.entitlement_revocation_request_config.Entitlement Revocation Request Config(), ),
+                gov_group_visibility_enabled = True
             )
         else:
             return AccessRequestConfig(

@@ -16,14 +16,15 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2026*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create-access-model-metadata-for-entitlement**](#create-access-model-metadata-for-entitlement) | **POST** `/entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}` | Add metadata to an entitlement.
-[**create-entitlement**](#create-entitlement) | **POST** `/entitlements/{id}` | Creates an entitlement
 [**delete-access-model-metadata-from-entitlement**](#delete-access-model-metadata-from-entitlement) | **DELETE** `/entitlements/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}` | Remove metadata from an entitlement.
+[**get-entitlement**](#get-entitlement) | **GET** `/entitlements/{id}` | Get an entitlement
 [**get-entitlement-request-config**](#get-entitlement-request-config) | **GET** `/entitlements/{id}/entitlement-request-config` | Get entitlement request config
 [**import-entitlements-by-source**](#import-entitlements-by-source) | **POST** `/entitlements/aggregate/sources/{id}` | Aggregate entitlements
 [**list-entitlement-children**](#list-entitlement-children) | **GET** `/entitlements/{id}/children` | List of entitlements children
 [**list-entitlement-parents**](#list-entitlement-parents) | **GET** `/entitlements/{id}/parents` | List of entitlements parents
 [**list-entitlements**](#list-entitlements) | **GET** `/entitlements` | Gets a list of entitlements.
 [**list-entitlements-by-account**](#list-entitlements-by-account) | **GET** `/entitlements/account/{accountId}/entitlements` | Get entitlements for an account
+[**patch-entitlement**](#patch-entitlement) | **PATCH** `/entitlements/{id}` | Patch an entitlement
 [**put-entitlement-request-config**](#put-entitlement-request-config) | **PUT** `/entitlements/{id}/entitlement-request-config` | Replace entitlement request config
 [**reset-source-entitlements**](#reset-source-entitlements) | **POST** `/entitlements/reset/sources/{id}` | Reset source entitlements
 [**update-entitlements-in-bulk**](#update-entitlements-in-bulk) | **POST** `/entitlements/bulk-update` | Bulk update an entitlement list
@@ -91,106 +92,6 @@ with ApiClient(configuration) as api_client:
 
 [[Back to top]](#) 
 
-## create-entitlement
-Creates an entitlement
-This internal endpoint creates an entitlement using the given entitlement payload
-
-[API Spec](https://developer.sailpoint.com/docs/api/v2026/create-entitlement)
-
-### Parameters 
-
-Param Type | Name | Data Type | Required  | Description
-------------- | ------------- | ------------- | ------------- | ------------- 
- Body  | entitlement_dto | [**EntitlementDTO**](../models/entitlement-dto) | True  | 
-
-### Return type
-[**List[EntitlementDTO]**](../models/entitlement-dto)
-
-### Responses
-Code | Description  | Data Type | Response headers |
-------------- | ------------- | ------------- |------------------|
-201 | Returns the created entitlement DTO object. | List[EntitlementDTO] |  -  |
-400 | * Source is missing * Source schema is missing * Entitlement value is missing and source schema object type is not of the permission type * Attribute is missing  | ErrorResponseDto |  -  |
-401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
-429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfig429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
-
-### HTTP request headers
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### Example
-
-```python
-from sailpoint.v2026.api.entitlements_api import EntitlementsApi
-from sailpoint.v2026.api_client import ApiClient
-from sailpoint.v2026.models.entitlement_dto import EntitlementDTO
-from sailpoint.configuration import Configuration
-configuration = Configuration()
-
-
-with ApiClient(configuration) as api_client:
-    entitlement_dto = '''{
-          "cloudEligible" : true,
-          "segmentStatus" : "GLOBAL",
-          "idnExceptional" : "PRIVILEGED",
-          "description" : "some entitlement description",
-          "source" : {
-            "id" : "2b86153b97a94abc936c8a11b106aaf8",
-            "type" : "SOURCE",
-            "value" : "accountant"
-          },
-          "uuid" : "6a099125e1614e4c9024bff6c6159f49",
-          "entitlementitlementAggregated" : "true",
-          "segments" : [ "[students]", "[students]" ],
-          "directPermissions" : [ {
-            "rights" : "HereIsRight1",
-            "target" : "SYS.GV_$TRANSACTION"
-          }, {
-            "rights" : "HereIsRight1",
-            "target" : "SYS.GV_$TRANSACTION"
-          } ],
-          "idnServiceApp" : "AppName123",
-          "modified" : "2015-05-28T14:07:17Z",
-          "sourceSchemaObjectType" : "group",
-          "id" : "id12345",
-          "attribute" : "authorizationType",
-          "value" : "CN=Users,dc=sailpoint,dc=com",
-          "owner" : {
-            "name" : "identity 1",
-            "id" : "2a2fdacca5e345f18bf7970cfbb8fec2",
-            "type" : "IDENTITY"
-          },
-          "lastRefresh" : "2022-06-24T16:12:53.389386Z",
-          "created" : "2015-05-28T14:07:17Z",
-          "privileged" : true,
-          "inheritFrom" : [ "[a9ced5a52d284b83a7f5595873d35b4e]", "[a9ced5a52d284b83a7f5595873d35b4e]" ],
-          "name" : "aName",
-          "attributes" : "{cn=Human Resources-bchun2, owner=CN=Fritz.8349b2f31e67,OU=flatfileAD,dc=flatfile,dc=endtoend,dc=com, objectguid=objectguidHuman-Resources-bchun2, description=HR-desc, sysDescriptions={en_US=HR-desc}, entitlementAggregated=true}",
-          "requestable" : true,
-          "isGroup" : true,
-          "cloudGoverned" : true,
-          "hash" : "5c8b309fa18a2c76d7fbee2b9e00dba99e4c82de"
-        }''' # EntitlementDTO | 
-
-    try:
-        # Creates an entitlement
-        new_entitlement_dto = EntitlementDto.from_json(entitlement_dto)
-        results = EntitlementsApi(api_client).create_entitlement(entitlement_dto=new_entitlement_dto)
-        # Below is a request that includes all optional parameters
-        # results = EntitlementsApi(api_client).create_entitlement(new_entitlement_dto)
-        print("The response of EntitlementsApi->create_entitlement:\n")
-        for item in results:
-            print(item.model_dump_json(by_alias=True, indent=4))
-    except Exception as e:
-        print("Exception when calling EntitlementsApi->create_entitlement: %s\n" % e)
-```
-
-
-
-[[Back to top]](#) 
-
 ## delete-access-model-metadata-from-entitlement
 Remove metadata from an entitlement.
 Remove single Access Model Metadata from an entitlement.
@@ -244,6 +145,65 @@ with ApiClient(configuration) as api_client:
         # EntitlementsApi(api_client).delete_access_model_metadata_from_entitlement(id, attribute_key, attribute_value)
     except Exception as e:
         print("Exception when calling EntitlementsApi->delete_access_model_metadata_from_entitlement: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## get-entitlement
+Get an entitlement
+This API returns an entitlement by its ID.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2026/get-entitlement)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **str** | True  | The entitlement ID
+
+### Return type
+[**EntitlementV2**](../models/entitlement-v2)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | An entitlement | EntitlementV2 |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfig429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2026.api.entitlements_api import EntitlementsApi
+from sailpoint.v2026.api_client import ApiClient
+from sailpoint.v2026.models.entitlement_v2 import EntitlementV2
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    id = '2c91808874ff91550175097daaec161c' # str | The entitlement ID # str | The entitlement ID
+
+    try:
+        # Get an entitlement
+        
+        results = EntitlementsApi(api_client).get_entitlement(id=id)
+        # Below is a request that includes all optional parameters
+        # results = EntitlementsApi(api_client).get_entitlement(id)
+        print("The response of EntitlementsApi->get_entitlement:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling EntitlementsApi->get_entitlement: %s\n" % e)
 ```
 
 
@@ -395,12 +355,12 @@ Path   | id | **str** | True  | Entitlement Id
   Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **tags**: *eq*  **privilegeLevel.direct**: *eq*
 
 ### Return type
-[**List[Entitlement]**](../models/entitlement)
+[**List[EntitlementV2]**](../models/entitlement-v2)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of entitlements children from an entitlement | List[Entitlement] |  -  |
+200 | List of entitlements children from an entitlement | List[EntitlementV2] |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
@@ -417,7 +377,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.v2026.api.entitlements_api import EntitlementsApi
 from sailpoint.v2026.api_client import ApiClient
-from sailpoint.v2026.models.entitlement import Entitlement
+from sailpoint.v2026.models.entitlement_v2 import EntitlementV2
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -467,12 +427,12 @@ Path   | id | **str** | True  | Entitlement Id
   Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **tags**: *eq*  **privilegeLevel.direct**: *eq*
 
 ### Return type
-[**List[Entitlement]**](../models/entitlement)
+[**List[EntitlementV2]**](../models/entitlement-v2)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of entitlements parents from an entitlement | List[Entitlement] |  -  |
+200 | List of entitlements parents from an entitlement | List[EntitlementV2] |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
@@ -489,7 +449,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.v2026.api.entitlements_api import EntitlementsApi
 from sailpoint.v2026.api_client import ApiClient
-from sailpoint.v2026.models.entitlement import Entitlement
+from sailpoint.v2026.models.entitlement_v2 import EntitlementV2
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -522,11 +482,7 @@ with ApiClient(configuration) as api_client:
 
 ## list-entitlements
 Gets a list of entitlements.
-This API returns a list of entitlements.
-
-This API can be used in one of the two following ways: either getting entitlements for a specific **account-id**, or getting via use of **filters** (those two options are exclusive).
-
-Any authenticated token can call this API.
+This API returns a list of entitlements. Any authenticated token can call this API.
 
 [API Spec](https://developer.sailpoint.com/docs/api/v2026/list-entitlements)
 
@@ -534,23 +490,23 @@ Any authenticated token can call this API.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
-  Query | account_id | **str** |   (optional) | The account ID. If specified, returns only entitlements associated with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s).
-  Query | segmented_for_identity | **str** |   (optional) | If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user's Identity.
-  Query | for_segment_ids | **str** |   (optional) | If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. Cannot be specified with the **account-id** or **segmented-for-identity** param(s).
+  Query | segmented_for_identity | **str** |   (optional) | If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID.
+  Query | for_segment_ids | **str** |   (optional) | If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs.
   Query | include_unsegmented | **bool** |   (optional) (default to True) | Whether or not the response list should contain unsegmented Entitlements. If **for-segment-ids** and **segmented-for-identity** are both absent or empty, specifying **include-unsegmented=false** results in an error.
   Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | limit | **int** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | search_after | **str** |   (optional) | Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement.
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**
-  Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*
+  Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **tags**: *eq*  **privilegeLevel.direct**: *eq*
 
 ### Return type
-[**List[Entitlement]**](../models/entitlement)
+[**List[EntitlementV2]**](../models/entitlement-v2)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of entitlements | List[Entitlement] |  -  |
+200 | List of entitlements | List[EntitlementV2] |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
@@ -566,28 +522,28 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.v2026.api.entitlements_api import EntitlementsApi
 from sailpoint.v2026.api_client import ApiClient
-from sailpoint.v2026.models.entitlement import Entitlement
+from sailpoint.v2026.models.entitlement_v2 import EntitlementV2
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    account_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account ID. If specified, returns only entitlements associated with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s). (optional) # str | The account ID. If specified, returns only entitlements associated with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s). (optional)
-    segmented_for_identity = 'e554098913544630b5985e9042f5e44b' # str | If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user's Identity. (optional) # str | If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user's Identity. (optional)
-    for_segment_ids = '041727d4-7d95-4779-b891-93cf41e98249,a378c9fa-bae5-494c-804e-a1e30f69f649' # str | If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. Cannot be specified with the **account-id** or **segmented-for-identity** param(s). (optional) # str | If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. Cannot be specified with the **account-id** or **segmented-for-identity** param(s). (optional)
+    segmented_for_identity = 'e554098913544630b5985e9042f5e44b' # str | If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. (optional) # str | If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. (optional)
+    for_segment_ids = '041727d4-7d95-4779-b891-93cf41e98249,a378c9fa-bae5-494c-804e-a1e30f69f649' # str | If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. (optional) # str | If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. (optional)
     include_unsegmented = True # bool | Whether or not the response list should contain unsegmented Entitlements. If **for-segment-ids** and **segmented-for-identity** are both absent or empty, specifying **include-unsegmented=false** results in an error. (optional) (default to True) # bool | Whether or not the response list should contain unsegmented Entitlements. If **for-segment-ids** and **segmented-for-identity** are both absent or empty, specifying **include-unsegmented=false** results in an error. (optional) (default to True)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
-    sorters = 'name,-modified' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable** (optional)
-    filters = 'attribute eq \"memberOf\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in* (optional)
+    search_after = 'Account Payable,2c91808375d8e80a0175e1f88a575221' # str | Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement. (optional) # str | Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement. (optional)
+    sorters = 'name,id' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable** (optional)
+    filters = 'attribute eq \"memberOf\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **tags**: *eq*  **privilegeLevel.direct**: *eq* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **tags**: *eq*  **privilegeLevel.direct**: *eq* (optional)
 
     try:
         # Gets a list of entitlements.
         
         results = EntitlementsApi(api_client).list_entitlements()
         # Below is a request that includes all optional parameters
-        # results = EntitlementsApi(api_client).list_entitlements(account_id, segmented_for_identity, for_segment_ids, include_unsegmented, offset, limit, count, sorters, filters)
+        # results = EntitlementsApi(api_client).list_entitlements(segmented_for_identity, for_segment_ids, include_unsegmented, offset, limit, count, search_after, sorters, filters)
         print("The response of EntitlementsApi->list_entitlements:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))
@@ -617,12 +573,12 @@ Path   | account_id | **str** | True  | The account ID to get entitlements for
   Query | sorters | **str** |   (optional) | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id, requestable**
 
 ### Return type
-[**List[Entitlement]**](../models/entitlement)
+[**List[EntitlementV2]**](../models/entitlement-v2)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of entitlements for the account | List[Entitlement] |  * total-count - Total number of results (when count is requested).  |
+200 | List of entitlements for the account | List[EntitlementV2] |  * total-count - Total number of results (when count is requested).  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
@@ -639,7 +595,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.v2026.api.entitlements_api import EntitlementsApi
 from sailpoint.v2026.api_client import ApiClient
-from sailpoint.v2026.models.entitlement import Entitlement
+from sailpoint.v2026.models.entitlement_v2 import EntitlementV2
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -663,6 +619,72 @@ with ApiClient(configuration) as api_client:
             print(item.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling EntitlementsApi->list_entitlements_by_account: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## patch-entitlement
+Patch an entitlement
+This API updates an existing entitlement using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
+
+The following fields are patchable: **requestable**, **segments**, **privilegeOverride/level**, **owner**, **name**, **description**, and **manuallyUpdatedFields**
+
+When you're patching owner, only owner type and owner id must be provided. Owner name is optional, and it won't be modified. If the owner name is provided, it should correspond to the real name. The only owner type currently supported is IDENTITY.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2026/patch-entitlement)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **str** | True  | ID of the entitlement to patch
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) |   (optional) | 
+
+### Return type
+[**EntitlementV2**](../models/entitlement-v2)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | Responds with the entitlement as updated. | EntitlementV2 |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfig429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json-patch+json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2026.api.entitlements_api import EntitlementsApi
+from sailpoint.v2026.api_client import ApiClient
+from sailpoint.v2026.models.entitlement_v2 import EntitlementV2
+from sailpoint.v2026.models.json_patch_operation import JsonPatchOperation
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    id = '2c91808a7813090a017814121e121518' # str | ID of the entitlement to patch # str | ID of the entitlement to patch
+    json_patch_operation = '''[{op=add, path=/segments/-, value=f7b1b8a3-5fed-4fd4-ad29-82014e137e19}]''' # List[JsonPatchOperation] |  (optional)
+
+    try:
+        # Patch an entitlement
+        
+        results = EntitlementsApi(api_client).patch_entitlement(id=id)
+        # Below is a request that includes all optional parameters
+        # results = EntitlementsApi(api_client).patch_entitlement(id, new_json_patch_operation)
+        print("The response of EntitlementsApi->patch_entitlement:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling EntitlementsApi->patch_entitlement: %s\n" % e)
 ```
 
 
@@ -873,12 +895,12 @@ with ApiClient(configuration) as api_client:
           "entitlementIds" : [ "2c91808a7624751a01762f19d665220d", "2c91808a7624751a01762f19d67c220e", "2c91808a7624751a01762f19d692220f" ],
           "jsonPatch" : [ {
             "op" : "replace",
-            "path" : "/privileged",
+            "path" : "/requestable",
             "value" : false
           }, {
             "op" : "replace",
-            "path" : "/requestable",
-            "value" : false
+            "path" : "/privilegeOverride/level",
+            "value" : "HIGH"
           } ]
         }''' # EntitlementBulkUpdateRequest | 
 

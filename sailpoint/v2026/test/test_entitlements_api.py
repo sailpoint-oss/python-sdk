@@ -33,17 +33,17 @@ class TestEntitlementsApi(unittest.TestCase):
         """
         pass
 
-    def test_create_entitlement(self) -> None:
-        """Test case for create_entitlement
-
-        Creates an entitlement
-        """
-        pass
-
     def test_delete_access_model_metadata_from_entitlement(self) -> None:
         """Test case for delete_access_model_metadata_from_entitlement
 
         Remove metadata from an entitlement.
+        """
+        pass
+
+    def test_get_entitlement(self) -> None:
+        """Test case for get_entitlement
+
+        Get an entitlement
         """
         pass
 
@@ -86,6 +86,13 @@ class TestEntitlementsApi(unittest.TestCase):
         """Test case for list_entitlements_by_account
 
         Get entitlements for an account
+        """
+        pass
+
+    def test_patch_entitlement(self) -> None:
+        """Test case for patch_entitlement
+
+        Patch an entitlement
         """
         pass
 

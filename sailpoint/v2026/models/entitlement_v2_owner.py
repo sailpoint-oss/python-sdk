@@ -18,18 +18,29 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2026.models.access_model_metadata import AccessModelMetadata
 from typing import Optional, Set
 from typing_extensions import Self
 
-class EntitlementAccessModelMetadata(BaseModel):
+class EntitlementV2Owner(BaseModel):
     """
-    Additional data to classify the entitlement
+    The identity that owns the entitlement
     """ # noqa: E501
-    attributes: Optional[List[AccessModelMetadata]] = None
-    __properties: ClassVar[List[str]] = ["attributes"]
+    id: Optional[StrictStr] = Field(default=None, description="The identity ID")
+    type: Optional[StrictStr] = Field(default=None, description="The type of object")
+    name: Optional[StrictStr] = Field(default=None, description="The display name of the identity")
+    __properties: ClassVar[List[str]] = ["id", "type", "name"]
+
+    @field_validator('type')
+    def type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['IDENTITY']):
+            warnings.warn(f"must be one of enum values ('IDENTITY') unknown value: {value}")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +60,7 @@ class EntitlementAccessModelMetadata(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of EntitlementAccessModelMetadata from a JSON string"""
+        """Create an instance of EntitlementV2Owner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -70,18 +81,11 @@ class EntitlementAccessModelMetadata(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in attributes (list)
-        _items = []
-        if self.attributes:
-            for _item_attributes in self.attributes:
-                if _item_attributes:
-                    _items.append(_item_attributes.to_dict())
-            _dict['attributes'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of EntitlementAccessModelMetadata from a dict"""
+        """Create an instance of EntitlementV2Owner from a dict"""
         if obj is None:
             return None
 
@@ -89,7 +93,9 @@ class EntitlementAccessModelMetadata(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "attributes": [AccessModelMetadata.from_dict(_item) for _item in obj["attributes"]] if obj.get("attributes") is not None else None
+            "id": obj.get("id"),
+            "type": obj.get("type"),
+            "name": obj.get("name")
         })
         return _obj
 
