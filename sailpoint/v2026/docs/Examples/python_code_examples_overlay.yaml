@@ -1686,10 +1686,8 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           account_id = 'ef38f94347e94562b5bb8424a56498d8' # str | Account ID. # str | Account ID.
           account_delete_request_input = '''{
           "comments" : "Requesting account deletion request"
@@ -1697,9 +1695,9 @@
           try:
               # Delete account
               
-              results = AccountDeletionRequestsApi(api_client).delete_account_request(x_sail_point_experimental=x_sail_point_experimental, account_id=account_id)
+              results = AccountDeletionRequestsApi(api_client).delete_account_request(account_id=account_id)
               # Below is a request that includes all optional parameters
-              # results = AccountDeletionRequestsApi(api_client).delete_account_request(x_sail_point_experimental, account_id, new_account_delete_request_input)
+              # results = AccountDeletionRequestsApi(api_client).delete_account_request(account_id, new_account_delete_request_input)
               print("The response of AccountDeletionRequestsApi->delete_account_request:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -1716,10 +1714,8 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
           offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
           count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -1727,9 +1723,9 @@
           try:
               # List of Account Deletion Requests
               
-              results = AccountDeletionRequestsApi(api_client).get_account_deletion_requests(x_sail_point_experimental=x_sail_point_experimental)
+              results = AccountDeletionRequestsApi(api_client).get_account_deletion_requests()
               # Below is a request that includes all optional parameters
-              # results = AccountDeletionRequestsApi(api_client).get_account_deletion_requests(x_sail_point_experimental, limit, offset, count, mine)
+              # results = AccountDeletionRequestsApi(api_client).get_account_deletion_requests(limit, offset, count, mine)
               print("The response of AccountDeletionRequestsApi->get_account_deletion_requests:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))
@@ -13174,17 +13170,15 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           subtype_id = 'ef38f94347e94562b5bb8424a56498d8' # str | machine subtype id. # str | machine subtype id.
           try:
               # Machine Subtype Approval Config
               
-              results = MachineAccountsApi(api_client).get_machine_account_deletion_sub_type_approval_config(x_sail_point_experimental=x_sail_point_experimental, subtype_id=subtype_id)
+              results = MachineAccountsApi(api_client).get_machine_account_deletion_sub_type_approval_config(subtype_id=subtype_id)
               # Below is a request that includes all optional parameters
-              # results = MachineAccountsApi(api_client).get_machine_account_deletion_sub_type_approval_config(x_sail_point_experimental, subtype_id)
+              # results = MachineAccountsApi(api_client).get_machine_account_deletion_sub_type_approval_config(subtype_id)
               print("The response of MachineAccountsApi->get_machine_account_deletion_sub_type_approval_config:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -13379,18 +13373,16 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           subtype_id = '00eebcf881994e419d72e757fd30dc0e' # str | machine account subtype ID. # str | machine account subtype ID.
           json_patch_operation = '''[sailpoint.v2026.JsonPatchOperation()]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the object.
           try:
               # Machine Subtype Approval Config
               new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
-              results = MachineAccountsApi(api_client).update_machine_account_deletion_by_sub_type_approval_config(x_sail_point_experimental=x_sail_point_experimental, subtype_id=subtype_id, json_patch_operation=new_json_patch_operation)
+              results = MachineAccountsApi(api_client).update_machine_account_deletion_by_sub_type_approval_config(subtype_id=subtype_id, json_patch_operation=new_json_patch_operation)
               # Below is a request that includes all optional parameters
-              # results = MachineAccountsApi(api_client).update_machine_account_deletion_by_sub_type_approval_config(x_sail_point_experimental, subtype_id, new_json_patch_operation)
+              # results = MachineAccountsApi(api_client).update_machine_account_deletion_by_sub_type_approval_config(subtype_id, new_json_patch_operation)
               print("The response of MachineAccountsApi->update_machine_account_deletion_by_sub_type_approval_config:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -22109,17 +22101,15 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           source_id = 'ha38f94347e94562b5bb8424a56498d8' # str | The Source id # str | The Source id
           try:
               # Human Account Deletion Approval Config
               
-              results = SourcesApi(api_client).get_account_delete_approval_config(x_sail_point_experimental=x_sail_point_experimental, source_id=source_id)
+              results = SourcesApi(api_client).get_account_delete_approval_config(source_id=source_id)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).get_account_delete_approval_config(x_sail_point_experimental, source_id)
+              # results = SourcesApi(api_client).get_account_delete_approval_config(source_id)
               print("The response of SourcesApi->get_account_delete_approval_config:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -22206,17 +22196,15 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           source_id = 'gt38f94347e94562b5bb8424a56498d8' # str | source id. # str | source id.
           try:
               # Machine Account Deletion Approval Config
               
-              results = SourcesApi(api_client).get_machine_account_deletion_approval_config_by_source(x_sail_point_experimental=x_sail_point_experimental, source_id=source_id)
+              results = SourcesApi(api_client).get_machine_account_deletion_approval_config_by_source(source_id=source_id)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).get_machine_account_deletion_approval_config_by_source(x_sail_point_experimental, source_id)
+              # results = SourcesApi(api_client).get_machine_account_deletion_approval_config_by_source(source_id)
               print("The response of SourcesApi->get_machine_account_deletion_approval_config_by_source:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -23249,18 +23237,16 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           source_id = '00eebcf881994e419d72e757fd30dc0e' # str | Human account source ID. # str | Human account source ID.
           json_patch_operation = '''[sailpoint.v2026.JsonPatchOperation()]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the object.
           try:
               # Human Account Deletion Approval Config
               new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
-              results = SourcesApi(api_client).update_account_deletion_approval_config(x_sail_point_experimental=x_sail_point_experimental, source_id=source_id, json_patch_operation=new_json_patch_operation)
+              results = SourcesApi(api_client).update_account_deletion_approval_config(source_id=source_id, json_patch_operation=new_json_patch_operation)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).update_account_deletion_approval_config(x_sail_point_experimental, source_id, new_json_patch_operation)
+              # results = SourcesApi(api_client).update_account_deletion_approval_config(source_id, new_json_patch_operation)
               print("The response of SourcesApi->update_account_deletion_approval_config:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -23278,18 +23264,16 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           source_id = '00eebcf881994e419d72e757fd30dc0e' # str | machine account source ID. # str | machine account source ID.
           json_patch_operation = '''[sailpoint.v2026.JsonPatchOperation()]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the object.
           try:
               # Machine Account Deletion Approval Config
               new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
-              results = SourcesApi(api_client).update_machine_account_deletion_approval_config(x_sail_point_experimental=x_sail_point_experimental, source_id=source_id, json_patch_operation=new_json_patch_operation)
+              results = SourcesApi(api_client).update_machine_account_deletion_approval_config(source_id=source_id, json_patch_operation=new_json_patch_operation)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).update_machine_account_deletion_approval_config(x_sail_point_experimental, source_id, new_json_patch_operation)
+              # results = SourcesApi(api_client).update_machine_account_deletion_approval_config(source_id, new_json_patch_operation)
               print("The response of SourcesApi->update_machine_account_deletion_approval_config:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:

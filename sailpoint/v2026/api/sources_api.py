@@ -3014,7 +3014,6 @@ class SourcesApi:
     def get_account_delete_approval_config(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3032,8 +3031,6 @@ class SourcesApi:
 
         The endpoint retrieves the approval configuration for deleting human accounts from a specified source. It returns details such as whether approval is required, who the approvers are, and any additional approval settings. This helps administrators understand and manage the approval workflow for human account deletions in their organization. The response is provided as an AccountDeleteConfigDto object. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param source_id: The Source id (required)
         :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -3059,7 +3056,6 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._get_account_delete_approval_config_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3091,7 +3087,6 @@ class SourcesApi:
     def get_account_delete_approval_config_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3109,8 +3104,6 @@ class SourcesApi:
 
         The endpoint retrieves the approval configuration for deleting human accounts from a specified source. It returns details such as whether approval is required, who the approvers are, and any additional approval settings. This helps administrators understand and manage the approval workflow for human account deletions in their organization. The response is provided as an AccountDeleteConfigDto object. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param source_id: The Source id (required)
         :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -3136,7 +3129,6 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._get_account_delete_approval_config_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3168,7 +3160,6 @@ class SourcesApi:
     def get_account_delete_approval_config_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3186,8 +3177,6 @@ class SourcesApi:
 
         The endpoint retrieves the approval configuration for deleting human accounts from a specified source. It returns details such as whether approval is required, who the approvers are, and any additional approval settings. This helps administrators understand and manage the approval workflow for human account deletions in their organization. The response is provided as an AccountDeleteConfigDto object. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param source_id: The Source id (required)
         :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -3213,7 +3202,6 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._get_account_delete_approval_config_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3239,7 +3227,6 @@ class SourcesApi:
 
     def _get_account_delete_approval_config_serialize(
         self,
-        x_sail_point_experimental,
         source_id,
         _request_auth,
         _content_type,
@@ -3266,8 +3253,6 @@ class SourcesApi:
             _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -4169,7 +4154,6 @@ class SourcesApi:
     def get_machine_account_deletion_approval_config_by_source(
         self,
         source_id: Annotated[StrictStr, Field(description="source id.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4187,8 +4171,6 @@ class SourcesApi:
 
         Retrieves the machine account deletion approval configuration for a specific source. This endpoint returns details about the approval requirements, approvers, and comment settings that govern the deletion of machine accounts associated with the given source ID.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param source_id: source id. (required)
         :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4214,7 +4196,6 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._get_machine_account_deletion_approval_config_by_source_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4246,7 +4227,6 @@ class SourcesApi:
     def get_machine_account_deletion_approval_config_by_source_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="source id.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4264,8 +4244,6 @@ class SourcesApi:
 
         Retrieves the machine account deletion approval configuration for a specific source. This endpoint returns details about the approval requirements, approvers, and comment settings that govern the deletion of machine accounts associated with the given source ID.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param source_id: source id. (required)
         :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4291,7 +4269,6 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._get_machine_account_deletion_approval_config_by_source_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4323,7 +4300,6 @@ class SourcesApi:
     def get_machine_account_deletion_approval_config_by_source_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="source id.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4341,8 +4317,6 @@ class SourcesApi:
 
         Retrieves the machine account deletion approval configuration for a specific source. This endpoint returns details about the approval requirements, approvers, and comment settings that govern the deletion of machine accounts associated with the given source ID.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param source_id: source id. (required)
         :type source_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4368,7 +4342,6 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._get_machine_account_deletion_approval_config_by_source_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             source_id=source_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4394,7 +4367,6 @@ class SourcesApi:
 
     def _get_machine_account_deletion_approval_config_by_source_serialize(
         self,
-        x_sail_point_experimental,
         source_id,
         _request_auth,
         _content_type,
@@ -4421,8 +4393,6 @@ class SourcesApi:
             _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -14146,7 +14116,6 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="Human account source ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14164,8 +14133,6 @@ class SourcesApi:
 
         Updates the approval configuration for deleting human accounts for a specific source, identified by source ID. This endpoint allows administrators to modify settings such as whether approval is required, who the approvers are, and other approval-related options. The update is performed using a JSON Patch payload, and the response returns the updated AccountDeleteConfigDto object reflecting the new approval workflow configuration. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param source_id: Human account source ID. (required)
         :type source_id: str
         :param json_patch_operation: The JSONPatch payload used to update the object. (required)
@@ -14193,7 +14160,6 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._update_account_deletion_approval_config_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             source_id=source_id,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
@@ -14227,7 +14193,6 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="Human account source ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14245,8 +14210,6 @@ class SourcesApi:
 
         Updates the approval configuration for deleting human accounts for a specific source, identified by source ID. This endpoint allows administrators to modify settings such as whether approval is required, who the approvers are, and other approval-related options. The update is performed using a JSON Patch payload, and the response returns the updated AccountDeleteConfigDto object reflecting the new approval workflow configuration. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param source_id: Human account source ID. (required)
         :type source_id: str
         :param json_patch_operation: The JSONPatch payload used to update the object. (required)
@@ -14274,7 +14237,6 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._update_account_deletion_approval_config_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             source_id=source_id,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
@@ -14308,7 +14270,6 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="Human account source ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14326,8 +14287,6 @@ class SourcesApi:
 
         Updates the approval configuration for deleting human accounts for a specific source, identified by source ID. This endpoint allows administrators to modify settings such as whether approval is required, who the approvers are, and other approval-related options. The update is performed using a JSON Patch payload, and the response returns the updated AccountDeleteConfigDto object reflecting the new approval workflow configuration. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param source_id: Human account source ID. (required)
         :type source_id: str
         :param json_patch_operation: The JSONPatch payload used to update the object. (required)
@@ -14355,7 +14314,6 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._update_account_deletion_approval_config_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             source_id=source_id,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
@@ -14382,7 +14340,6 @@ class SourcesApi:
 
     def _update_account_deletion_approval_config_serialize(
         self,
-        x_sail_point_experimental,
         source_id,
         json_patch_operation,
         _request_auth,
@@ -14411,8 +14368,6 @@ class SourcesApi:
             _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if json_patch_operation is not None:
@@ -14470,7 +14425,6 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="machine account source ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14488,8 +14442,6 @@ class SourcesApi:
 
         Use this endpoint to update the machine account deletion approval configuration for a specific source. The update is performed using a JSON Patch payload, which allows partial modifications to the approval config. This operation is typically used to change approval requirements, approvers, or comments settings for machine account deletion. The endpoint expects the source ID as a path parameter and a valid JSON Patch array in the request body. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param source_id: machine account source ID. (required)
         :type source_id: str
         :param json_patch_operation: The JSONPatch payload used to update the object. (required)
@@ -14517,7 +14469,6 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._update_machine_account_deletion_approval_config_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             source_id=source_id,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
@@ -14551,7 +14502,6 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="machine account source ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14569,8 +14519,6 @@ class SourcesApi:
 
         Use this endpoint to update the machine account deletion approval configuration for a specific source. The update is performed using a JSON Patch payload, which allows partial modifications to the approval config. This operation is typically used to change approval requirements, approvers, or comments settings for machine account deletion. The endpoint expects the source ID as a path parameter and a valid JSON Patch array in the request body. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param source_id: machine account source ID. (required)
         :type source_id: str
         :param json_patch_operation: The JSONPatch payload used to update the object. (required)
@@ -14598,7 +14546,6 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._update_machine_account_deletion_approval_config_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             source_id=source_id,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
@@ -14632,7 +14579,6 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="machine account source ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14650,8 +14596,6 @@ class SourcesApi:
 
         Use this endpoint to update the machine account deletion approval configuration for a specific source. The update is performed using a JSON Patch payload, which allows partial modifications to the approval config. This operation is typically used to change approval requirements, approvers, or comments settings for machine account deletion. The endpoint expects the source ID as a path parameter and a valid JSON Patch array in the request body. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param source_id: machine account source ID. (required)
         :type source_id: str
         :param json_patch_operation: The JSONPatch payload used to update the object. (required)
@@ -14679,7 +14623,6 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._update_machine_account_deletion_approval_config_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             source_id=source_id,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
@@ -14706,7 +14649,6 @@ class SourcesApi:
 
     def _update_machine_account_deletion_approval_config_serialize(
         self,
-        x_sail_point_experimental,
         source_id,
         json_patch_operation,
         _request_auth,
@@ -14735,8 +14677,6 @@ class SourcesApi:
             _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if json_patch_operation is not None:

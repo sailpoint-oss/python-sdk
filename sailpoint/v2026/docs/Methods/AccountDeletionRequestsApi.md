@@ -20,17 +20,6 @@ Method | HTTP request | Description
 
 
 ## delete-account-request
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 Delete account
 Initiates an account deletion request for the specified account.
 This method validates the input data, processes the deletion request,
@@ -43,7 +32,6 @@ and generates an asynchronous result containing a tracking ID.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
-   | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
 Path   | account_id | **str** | True  | Account ID.
  Body  | account_delete_request_input | [**AccountDeleteRequestInput**](../models/account-delete-request-input) |   (optional) | 
 
@@ -75,10 +63,8 @@ from sailpoint.v2026.models.account_delete_request_input import AccountDeleteReq
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
-configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
     account_id = 'ef38f94347e94562b5bb8424a56498d8' # str | Account ID. # str | Account ID.
     account_delete_request_input = '''{
           "comments" : "Requesting account deletion request"
@@ -87,9 +73,9 @@ with ApiClient(configuration) as api_client:
     try:
         # Delete account
         
-        results = AccountDeletionRequestsApi(api_client).delete_account_request(x_sail_point_experimental=x_sail_point_experimental, account_id=account_id)
+        results = AccountDeletionRequestsApi(api_client).delete_account_request(account_id=account_id)
         # Below is a request that includes all optional parameters
-        # results = AccountDeletionRequestsApi(api_client).delete_account_request(x_sail_point_experimental, account_id, new_account_delete_request_input)
+        # results = AccountDeletionRequestsApi(api_client).delete_account_request(account_id, new_account_delete_request_input)
         print("The response of AccountDeletionRequestsApi->delete_account_request:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
@@ -101,17 +87,6 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## get-account-deletion-requests
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
 List of Account Deletion Requests
 Retrieves a paginated list of account deletion requests filtered by the provided query parameters. When the "mine" parameter is set to true, the response includes only those deletion requests that were initiated by the currently authenticated user. If "mine" is false or not specified, the endpoint returns all account deletion requests associated with the current tenant, regardless of the initiator. This allows both users and administrators to view relevant deletion requests based on their access level and intent.
 
@@ -121,7 +96,6 @@ Retrieves a paginated list of account deletion requests filtered by the provided
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
-   | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
   Query | limit | **int** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -154,10 +128,8 @@ from sailpoint.v2026.models.account_action_request_dto import AccountActionReque
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
-configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -166,9 +138,9 @@ with ApiClient(configuration) as api_client:
     try:
         # List of Account Deletion Requests
         
-        results = AccountDeletionRequestsApi(api_client).get_account_deletion_requests(x_sail_point_experimental=x_sail_point_experimental)
+        results = AccountDeletionRequestsApi(api_client).get_account_deletion_requests()
         # Below is a request that includes all optional parameters
-        # results = AccountDeletionRequestsApi(api_client).get_account_deletion_requests(x_sail_point_experimental, limit, offset, count, mine)
+        # results = AccountDeletionRequestsApi(api_client).get_account_deletion_requests(limit, offset, count, mine)
         print("The response of AccountDeletionRequestsApi->get_account_deletion_requests:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))

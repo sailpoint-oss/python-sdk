@@ -46,7 +46,6 @@ class AccountDeletionRequestsApi:
         self,
         account_id: Annotated[StrictStr, Field(description="Account ID.")],
         account_delete_request_input: Optional[AccountDeleteRequestInput] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -64,8 +63,6 @@ class AccountDeletionRequestsApi:
 
         Initiates an account deletion request for the specified account. This method validates the input data, processes the deletion request, and generates an asynchronous result containing a tracking ID.  >**NOTE: You can only delete accounts from sources of the \"Connected\" type. which supports account deletion**
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param account_id: Account ID. (required)
         :type account_id: str
         :param account_delete_request_input:
@@ -93,7 +90,6 @@ class AccountDeletionRequestsApi:
         """ # noqa: E501
 
         _param = self._delete_account_request_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             account_id=account_id,
             account_delete_request_input=account_delete_request_input,
             _request_auth=_request_auth,
@@ -127,7 +123,6 @@ class AccountDeletionRequestsApi:
         self,
         account_id: Annotated[StrictStr, Field(description="Account ID.")],
         account_delete_request_input: Optional[AccountDeleteRequestInput] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -145,8 +140,6 @@ class AccountDeletionRequestsApi:
 
         Initiates an account deletion request for the specified account. This method validates the input data, processes the deletion request, and generates an asynchronous result containing a tracking ID.  >**NOTE: You can only delete accounts from sources of the \"Connected\" type. which supports account deletion**
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param account_id: Account ID. (required)
         :type account_id: str
         :param account_delete_request_input:
@@ -174,7 +167,6 @@ class AccountDeletionRequestsApi:
         """ # noqa: E501
 
         _param = self._delete_account_request_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             account_id=account_id,
             account_delete_request_input=account_delete_request_input,
             _request_auth=_request_auth,
@@ -208,7 +200,6 @@ class AccountDeletionRequestsApi:
         self,
         account_id: Annotated[StrictStr, Field(description="Account ID.")],
         account_delete_request_input: Optional[AccountDeleteRequestInput] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -226,8 +217,6 @@ class AccountDeletionRequestsApi:
 
         Initiates an account deletion request for the specified account. This method validates the input data, processes the deletion request, and generates an asynchronous result containing a tracking ID.  >**NOTE: You can only delete accounts from sources of the \"Connected\" type. which supports account deletion**
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param account_id: Account ID. (required)
         :type account_id: str
         :param account_delete_request_input:
@@ -255,7 +244,6 @@ class AccountDeletionRequestsApi:
         """ # noqa: E501
 
         _param = self._delete_account_request_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             account_id=account_id,
             account_delete_request_input=account_delete_request_input,
             _request_auth=_request_auth,
@@ -282,7 +270,6 @@ class AccountDeletionRequestsApi:
 
     def _delete_account_request_serialize(
         self,
-        x_sail_point_experimental,
         account_id,
         account_delete_request_input,
         _request_auth,
@@ -310,8 +297,6 @@ class AccountDeletionRequestsApi:
             _path_params['accountId'] = account_id
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if account_delete_request_input is not None:
@@ -371,7 +356,6 @@ class AccountDeletionRequestsApi:
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         mine: Annotated[Optional[StrictBool], Field(description="Determines whether to return only the account deletion requests initiated by the currently authenticated user. If set to true, the response includes only deletion requests created by the logged-in user. If set to false or not provided, the response includes all deletion requests for the tenant, regardless of the initiator. This parameter allows users to view their own requests, while administrators can view all requests within the tenant.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -389,8 +373,6 @@ class AccountDeletionRequestsApi:
 
         Retrieves a paginated list of account deletion requests filtered by the provided query parameters. When the \"mine\" parameter is set to true, the response includes only those deletion requests that were initiated by the currently authenticated user. If \"mine\" is false or not specified, the endpoint returns all account deletion requests associated with the current tenant, regardless of the initiator. This allows both users and administrators to view relevant deletion requests based on their access level and intent.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -422,7 +404,6 @@ class AccountDeletionRequestsApi:
         """ # noqa: E501
 
         _param = self._get_account_deletion_requests_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -460,7 +441,6 @@ class AccountDeletionRequestsApi:
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         mine: Annotated[Optional[StrictBool], Field(description="Determines whether to return only the account deletion requests initiated by the currently authenticated user. If set to true, the response includes only deletion requests created by the logged-in user. If set to false or not provided, the response includes all deletion requests for the tenant, regardless of the initiator. This parameter allows users to view their own requests, while administrators can view all requests within the tenant.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -478,8 +458,6 @@ class AccountDeletionRequestsApi:
 
         Retrieves a paginated list of account deletion requests filtered by the provided query parameters. When the \"mine\" parameter is set to true, the response includes only those deletion requests that were initiated by the currently authenticated user. If \"mine\" is false or not specified, the endpoint returns all account deletion requests associated with the current tenant, regardless of the initiator. This allows both users and administrators to view relevant deletion requests based on their access level and intent.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -511,7 +489,6 @@ class AccountDeletionRequestsApi:
         """ # noqa: E501
 
         _param = self._get_account_deletion_requests_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -549,7 +526,6 @@ class AccountDeletionRequestsApi:
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         count: Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
         mine: Annotated[Optional[StrictBool], Field(description="Determines whether to return only the account deletion requests initiated by the currently authenticated user. If set to true, the response includes only deletion requests created by the logged-in user. If set to false or not provided, the response includes all deletion requests for the tenant, regardless of the initiator. This parameter allows users to view their own requests, while administrators can view all requests within the tenant.")] = None,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -567,8 +543,6 @@ class AccountDeletionRequestsApi:
 
         Retrieves a paginated list of account deletion requests filtered by the provided query parameters. When the \"mine\" parameter is set to true, the response includes only those deletion requests that were initiated by the currently authenticated user. If \"mine\" is false or not specified, the endpoint returns all account deletion requests associated with the current tenant, regardless of the initiator. This allows both users and administrators to view relevant deletion requests based on their access level and intent.
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type limit: int
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -600,7 +574,6 @@ class AccountDeletionRequestsApi:
         """ # noqa: E501
 
         _param = self._get_account_deletion_requests_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             limit=limit,
             offset=offset,
             count=count,
@@ -629,7 +602,6 @@ class AccountDeletionRequestsApi:
 
     def _get_account_deletion_requests_serialize(
         self,
-        x_sail_point_experimental,
         limit,
         offset,
         count,
@@ -673,8 +645,6 @@ class AccountDeletionRequestsApi:
             _query_params.append(('mine', mine))
             
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
