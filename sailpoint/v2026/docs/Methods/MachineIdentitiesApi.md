@@ -15,13 +15,13 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2026*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create-machine-identity**](#create-machine-identity) | **POST** `/machine-identities` | Create machine identities
+[**create-machine-identity**](#create-machine-identity) | **POST** `/machine-identities` | Create machine identity
 [**delete-machine-identity**](#delete-machine-identity) | **DELETE** `/machine-identities/{id}` | Delete machine identity
-[**get-machine-identity**](#get-machine-identity) | **GET** `/machine-identities/{id}` | Machine identity details
+[**get-machine-identity**](#get-machine-identity) | **GET** `/machine-identities/{id}` | Get machine identity details
 [**list-machine-identities**](#list-machine-identities) | **GET** `/machine-identities` | List machine identities
 [**list-machine-identity-user-entitlements**](#list-machine-identity-user-entitlements) | **GET** `/machine-identity-user-entitlements` | List machine identity&#39;s user entitlements
-[**start-machine-identity-aggregation**](#start-machine-identity-aggregation) | **POST** `/sources/{sourceId}/aggregate-agents` | Start Machine Identity (AI Agent) Aggregation
-[**update-machine-identity**](#update-machine-identity) | **PATCH** `/machine-identities/{id}` | Update a machine identity
+[**start-machine-identity-aggregation**](#start-machine-identity-aggregation) | **POST** `/sources/{sourceId}/aggregate-agents` | Start machine identity aggregation
+[**update-machine-identity**](#update-machine-identity) | **PATCH** `/machine-identities/{id}` | Update machine identity details
 
 
 ## create-machine-identity
@@ -36,7 +36,7 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.experimental = True
  ```
 :::
-Create machine identities
+Create machine identity
 Use this API to create a machine identity.
 The maximum supported length for the description field is 2000 characters.
 
@@ -114,7 +114,7 @@ with ApiClient(configuration) as api_client:
         }''' # MachineIdentityRequest | 
 
     try:
-        # Create machine identities
+        # Create machine identity
         new_machine_identity_request = MachineIdentityRequest.from_json(machine_identity_request)
         results = MachineIdentitiesApi(api_client).create_machine_identity(x_sail_point_experimental=x_sail_point_experimental, machine_identity_request=new_machine_identity_request)
         # Below is a request that includes all optional parameters
@@ -211,7 +211,7 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.experimental = True
  ```
 :::
-Machine identity details
+Get machine identity details
 This API returns a single machine identity using the Machine Identity ID.
 
 [API Spec](https://developer.sailpoint.com/docs/api/v2026/get-machine-identity)
@@ -257,7 +257,7 @@ with ApiClient(configuration) as api_client:
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
-        # Machine identity details
+        # Get machine identity details
         
         results = MachineIdentitiesApi(api_client).get_machine_identity(id=id, x_sail_point_experimental=x_sail_point_experimental)
         # Below is a request that includes all optional parameters
@@ -448,8 +448,8 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.experimental = True
  ```
 :::
-Start Machine Identity (AI Agent) Aggregation
-Use this API to aggregate machine identities (AI Agents).
+Start machine identity aggregation
+Starts a machine identity (AI Agents) aggregation on the specified source.
 
 [API Spec](https://developer.sailpoint.com/docs/api/v2026/start-machine-identity-aggregation)
 
@@ -497,7 +497,7 @@ with ApiClient(configuration) as api_client:
         }''' # MachineIdentityAggregationRequest | 
 
     try:
-        # Start Machine Identity (AI Agent) Aggregation
+        # Start machine identity aggregation
         new_machine_identity_aggregation_request = MachineIdentityAggregationRequest.from_json(machine_identity_aggregation_request)
         results = MachineIdentitiesApi(api_client).start_machine_identity_aggregation(x_sail_point_experimental=x_sail_point_experimental, machine_identity_aggregation_request=new_machine_identity_aggregation_request)
         # Below is a request that includes all optional parameters
@@ -524,7 +524,7 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.experimental = True
  ```
 :::
-Update a machine identity
+Update machine identity details
 Use this API to update machine identity details.
 
 
@@ -573,7 +573,7 @@ with ApiClient(configuration) as api_client:
     request_body = '''[{op=add, path=/attributes/securityRisk, value=medium}]''' # List[object] | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
     try:
-        # Update a machine identity
+        # Update machine identity details
         new_request_body = RequestBody.from_json(request_body)
         results = MachineIdentitiesApi(api_client).update_machine_identity(id=id, x_sail_point_experimental=x_sail_point_experimental, request_body=new_request_body)
         # Below is a request that includes all optional parameters

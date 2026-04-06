@@ -57,7 +57,7 @@ class MachineIdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MachineIdentity:
-        """Create machine identities
+        """Create machine identity
 
         Use this API to create a machine identity. The maximum supported length for the description field is 2000 characters.
 
@@ -134,7 +134,7 @@ class MachineIdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MachineIdentity]:
-        """Create machine identities
+        """Create machine identity
 
         Use this API to create a machine identity. The maximum supported length for the description field is 2000 characters.
 
@@ -211,7 +211,7 @@ class MachineIdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create machine identities
+        """Create machine identity
 
         Use this API to create a machine identity. The maximum supported length for the description field is 2000 characters.
 
@@ -662,7 +662,7 @@ class MachineIdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MachineIdentity:
-        """Machine identity details
+        """Get machine identity details
 
         This API returns a single machine identity using the Machine Identity ID.
 
@@ -739,7 +739,7 @@ class MachineIdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MachineIdentity]:
-        """Machine identity details
+        """Get machine identity details
 
         This API returns a single machine identity using the Machine Identity ID.
 
@@ -816,7 +816,7 @@ class MachineIdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Machine identity details
+        """Get machine identity details
 
         This API returns a single machine identity using the Machine Identity ID.
 
@@ -1323,7 +1323,7 @@ class MachineIdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MachineIdentity:
-        """Update a machine identity
+        """Update machine identity details
 
         Use this API to update machine identity details. 
 
@@ -1404,7 +1404,7 @@ class MachineIdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MachineIdentity]:
-        """Update a machine identity
+        """Update machine identity details
 
         Use this API to update machine identity details. 
 
@@ -1485,7 +1485,7 @@ class MachineIdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update a machine identity
+        """Update machine identity details
 
         Use this API to update machine identity details. 
 

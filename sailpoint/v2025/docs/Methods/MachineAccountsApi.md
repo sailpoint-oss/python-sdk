@@ -17,13 +17,13 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create-machine-account-subtype**](#create-machine-account-subtype) | **POST** `/sources/{sourceId}/subtypes` | Create subtype
 [**delete-machine-account-subtype**](#delete-machine-account-subtype) | **DELETE** `/sources/{sourceId}/subtypes/{technicalName}` | Delete subtype
-[**get-machine-account**](#get-machine-account) | **GET** `/machine-accounts/{id}` | Machine account details
+[**get-machine-account**](#get-machine-account) | **GET** `/machine-accounts/{id}` | Get machine account details
 [**get-machine-account-subtype-by-id**](#get-machine-account-subtype-by-id) | **GET** `/sources/subtypes/{subtypeId}` | Retrieve subtype by subtype id
 [**get-machine-account-subtype-by-technical-name**](#get-machine-account-subtype-by-technical-name) | **GET** `/sources/{sourceId}/subtypes/{technicalName}` | Retrieve subtype by source and technicalName
 [**list-machine-account-subtypes**](#list-machine-account-subtypes) | **GET** `/sources/{sourceId}/subtypes` | Retrieve all subtypes by source
-[**list-machine-accounts**](#list-machine-accounts) | **GET** `/machine-accounts` | Machine accounts list
+[**list-machine-accounts**](#list-machine-accounts) | **GET** `/machine-accounts` | List machine accounts
 [**patch-machine-account-subtype**](#patch-machine-account-subtype) | **PATCH** `/sources/{sourceId}/subtypes/{technicalName}` | Patch subtype
-[**update-machine-account**](#update-machine-account) | **PATCH** `/machine-accounts/{id}` | Update a machine account
+[**update-machine-account**](#update-machine-account) | **PATCH** `/machine-accounts/{id}` | Update machine account details
 
 
 ## create-machine-account-subtype
@@ -173,7 +173,7 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## get-machine-account
-Machine account details
+Get machine account details
 Use this API to return the details for a single machine account by its ID.  
 
 [API Spec](https://developer.sailpoint.com/docs/api/v2025/get-machine-account)
@@ -216,7 +216,7 @@ with ApiClient(configuration) as api_client:
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Machine Account ID. # str | Machine Account ID.
 
     try:
-        # Machine account details
+        # Get machine account details
         
         results = MachineAccountsApi(api_client).get_machine_account(id=id)
         # Below is a request that includes all optional parameters
@@ -461,7 +461,7 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## list-machine-accounts
-Machine accounts list
+List machine accounts
 This returns a list of machine accounts.  
 
 [API Spec](https://developer.sailpoint.com/docs/api/v2025/list-machine-accounts)
@@ -512,7 +512,7 @@ with ApiClient(configuration) as api_client:
     sorters = 'id,name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, nativeIdentity, ownerIdentity, uuid, description, machineIdentity.id, machineIdentity.name, subtype.technicalName, subtype.displayName, accessType, environment, manuallyCorrelated, enabled, locked, hasEntitlements, ownerIdentity.id, ownerIdentity.name, attributes, source.id, source.name, created, modified** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, nativeIdentity, ownerIdentity, uuid, description, machineIdentity.id, machineIdentity.name, subtype.technicalName, subtype.displayName, accessType, environment, manuallyCorrelated, enabled, locked, hasEntitlements, ownerIdentity.id, ownerIdentity.name, attributes, source.id, source.name, created, modified** (optional)
 
     try:
-        # Machine accounts list
+        # List machine accounts
         
         results = MachineAccountsApi(api_client).list_machine_accounts()
         # Below is a request that includes all optional parameters
@@ -606,7 +606,7 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## update-machine-account
-Update a machine account
+Update machine account details
 Use this API to update machine accounts details. 
 
 
@@ -652,7 +652,7 @@ with ApiClient(configuration) as api_client:
     request_body = '''[{op=add, path=/environment, value=test}]''' # List[object] | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following fields are patchable:           * description           * ownerIdentity           * subType           * accessType           * environment           * attributes           * classificationMethod           * manuallyEdited           * nativeIdentity           * uuid           * source           * manuallyCorrelated           * enabled           * locked           * hasEntitlements           * connectorAttributes
 
     try:
-        # Update a machine account
+        # Update machine account details
         new_request_body = RequestBody.from_json(request_body)
         results = MachineAccountsApi(api_client).update_machine_account(id=id, request_body=new_request_body)
         # Below is a request that includes all optional parameters

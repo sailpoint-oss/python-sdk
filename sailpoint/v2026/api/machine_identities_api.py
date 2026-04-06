@@ -61,7 +61,7 @@ class MachineIdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MachineIdentityResponse:
-        """Create machine identities
+        """Create machine identity
 
         Use this API to create a machine identity. The maximum supported length for the description field is 2000 characters.
 
@@ -138,7 +138,7 @@ class MachineIdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MachineIdentityResponse]:
-        """Create machine identities
+        """Create machine identity
 
         Use this API to create a machine identity. The maximum supported length for the description field is 2000 characters.
 
@@ -215,7 +215,7 @@ class MachineIdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create machine identities
+        """Create machine identity
 
         Use this API to create a machine identity. The maximum supported length for the description field is 2000 characters.
 
@@ -666,7 +666,7 @@ class MachineIdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MachineIdentityResponse:
-        """Machine identity details
+        """Get machine identity details
 
         This API returns a single machine identity using the Machine Identity ID.
 
@@ -743,7 +743,7 @@ class MachineIdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MachineIdentityResponse]:
-        """Machine identity details
+        """Get machine identity details
 
         This API returns a single machine identity using the Machine Identity ID.
 
@@ -820,7 +820,7 @@ class MachineIdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Machine identity details
+        """Get machine identity details
 
         This API returns a single machine identity using the Machine Identity ID.
 
@@ -1691,9 +1691,9 @@ class MachineIdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MachineIdentityAggregationResponse:
-        """Start Machine Identity (AI Agent) Aggregation
+        """Start machine identity aggregation
 
-        Use this API to aggregate machine identities (AI Agents).
+        Starts a machine identity (AI Agents) aggregation on the specified source.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -1768,9 +1768,9 @@ class MachineIdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MachineIdentityAggregationResponse]:
-        """Start Machine Identity (AI Agent) Aggregation
+        """Start machine identity aggregation
 
-        Use this API to aggregate machine identities (AI Agents).
+        Starts a machine identity (AI Agents) aggregation on the specified source.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -1845,9 +1845,9 @@ class MachineIdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Start Machine Identity (AI Agent) Aggregation
+        """Start machine identity aggregation
 
-        Use this API to aggregate machine identities (AI Agents).
+        Starts a machine identity (AI Agents) aggregation on the specified source.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -2000,7 +2000,7 @@ class MachineIdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MachineIdentityResponse:
-        """Update a machine identity
+        """Update machine identity details
 
         Use this API to update machine identity details. 
 
@@ -2081,7 +2081,7 @@ class MachineIdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MachineIdentityResponse]:
-        """Update a machine identity
+        """Update machine identity details
 
         Use this API to update machine identity details. 
 
@@ -2162,7 +2162,7 @@ class MachineIdentitiesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update a machine identity
+        """Update machine identity details
 
         Use this API to update machine identity details. 
 

@@ -15,11 +15,11 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2024*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create-machine-identity**](#create-machine-identity) | **POST** `/machine-identities` | Create machine identities
+[**create-machine-identity**](#create-machine-identity) | **POST** `/machine-identities` | Create machine identity
 [**delete-machine-identity**](#delete-machine-identity) | **DELETE** `/machine-identities/{id}` | Delete machine identity
-[**get-machine-identity**](#get-machine-identity) | **GET** `/machine-identities/{id}` | Machine identity details
+[**get-machine-identity**](#get-machine-identity) | **GET** `/machine-identities/{id}` | Get machine identity details
 [**list-machine-identities**](#list-machine-identities) | **GET** `/machine-identities` | List machine identities
-[**update-machine-identity**](#update-machine-identity) | **PATCH** `/machine-identities/{id}` | Update a machine identity
+[**update-machine-identity**](#update-machine-identity) | **PATCH** `/machine-identities/{id}` | Update machine identity details
 
 
 ## create-machine-identity
@@ -34,7 +34,7 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.experimental = True
  ```
 :::
-Create machine identities
+Create machine identity
 Use this API to create a machine identity.
 The maximum supported length for the description field is 2000 characters.
 
@@ -90,7 +90,7 @@ with ApiClient(configuration) as api_client:
         }''' # MachineIdentity | 
 
     try:
-        # Create machine identities
+        # Create machine identity
         new_machine_identity = MachineIdentity.from_json(machine_identity)
         results = MachineIdentitiesApi(api_client).create_machine_identity(x_sail_point_experimental=x_sail_point_experimental, machine_identity=new_machine_identity)
         # Below is a request that includes all optional parameters
@@ -187,7 +187,7 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.experimental = True
  ```
 :::
-Machine identity details
+Get machine identity details
 This API returns a single machine identity using the Machine Identity ID.
 
 [API Spec](https://developer.sailpoint.com/docs/api/v2024/get-machine-identity)
@@ -233,7 +233,7 @@ with ApiClient(configuration) as api_client:
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
-        # Machine identity details
+        # Get machine identity details
         
         results = MachineIdentitiesApi(api_client).get_machine_identity(id=id, x_sail_point_experimental=x_sail_point_experimental)
         # Below is a request that includes all optional parameters
@@ -342,7 +342,7 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.experimental = True
  ```
 :::
-Update a machine identity
+Update machine identity details
 Use this API to update machine identity details.
 
 
@@ -391,7 +391,7 @@ with ApiClient(configuration) as api_client:
     request_body = '''[{op=add, path=/attributes/securityRisk, value=medium}]''' # List[object] | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
     try:
-        # Update a machine identity
+        # Update machine identity details
         new_request_body = RequestBody.from_json(request_body)
         results = MachineIdentitiesApi(api_client).update_machine_identity(id=id, x_sail_point_experimental=x_sail_point_experimental, request_body=new_request_body)
         # Below is a request that includes all optional parameters

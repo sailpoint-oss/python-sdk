@@ -29,7 +29,7 @@ class TestMachineAccountClassifyApi(unittest.TestCase):
     def test_send_classify_machine_account(self) -> None:
         """Test case for send_classify_machine_account
 
-        Classify a Single Machine Account
+        Classify single machine account
         """
         pass
 

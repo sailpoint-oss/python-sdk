@@ -29,7 +29,7 @@ class TestMachineIdentitiesApi(unittest.TestCase):
     def test_create_machine_identity(self) -> None:
         """Test case for create_machine_identity
 
-        Create machine identities
+        Create machine identity
         """
         pass
 
@@ -43,7 +43,7 @@ class TestMachineIdentitiesApi(unittest.TestCase):
     def test_get_machine_identity(self) -> None:
         """Test case for get_machine_identity
 
-        Machine identity details
+        Get machine identity details
         """
         pass
 
@@ -64,14 +64,14 @@ class TestMachineIdentitiesApi(unittest.TestCase):
     def test_start_machine_identity_aggregation(self) -> None:
         """Test case for start_machine_identity_aggregation
 
-        Start Machine Identity (AI Agent) Aggregation
+        Start machine identity aggregation
         """
         pass
 
     def test_update_machine_identity(self) -> None:
         """Test case for update_machine_identity
 
-        Update a machine identity
+        Update machine identity details
         """
         pass
 

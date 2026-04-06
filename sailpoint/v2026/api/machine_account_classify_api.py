@@ -57,7 +57,7 @@ class MachineAccountClassifyApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SendClassifyMachineAccount200Response:
-        """Classify a Single Machine Account
+        """Classify single machine account
 
         Use this API to classify a single machine account. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
@@ -133,7 +133,7 @@ class MachineAccountClassifyApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SendClassifyMachineAccount200Response]:
-        """Classify a Single Machine Account
+        """Classify single machine account
 
         Use this API to classify a single machine account. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
@@ -209,7 +209,7 @@ class MachineAccountClassifyApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Classify a Single Machine Account
+        """Classify single machine account
 
         Use this API to classify a single machine account. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 

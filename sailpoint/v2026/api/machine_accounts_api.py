@@ -690,7 +690,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MachineAccount:
-        """Machine account details
+        """Get machine account details
 
         Use this API to return the details for a single machine account by its ID.  
 
@@ -767,7 +767,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MachineAccount]:
-        """Machine account details
+        """Get machine account details
 
         Use this API to return the details for a single machine account by its ID.  
 
@@ -844,7 +844,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Machine account details
+        """Get machine account details
 
         Use this API to return the details for a single machine account by its ID.  
 
@@ -971,6 +971,7 @@ class MachineAccountsApi:
     def get_machine_account_deletion_sub_type_approval_config(
         self,
         subtype_id: Annotated[StrictStr, Field(description="machine subtype id.")],
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -988,6 +989,8 @@ class MachineAccountsApi:
 
         This endpoint retrieves the approval configuration for machine account deletion at the machine subtype level. By providing a specific subtypeId in the path, clients can fetch the approval rules and settings (such as required approvers and comments policy) that govern account deletion for that particular machine subtype. The response includes a MachineAccountSubtypeConfigDto object detailing these configurations, enabling clients to understand or display the approval workflow required for deleting machine accounts of the given subtype. Use this endpoint to get machine subtype level approval config for account deletion.
 
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param subtype_id: machine subtype id. (required)
         :type subtype_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1013,6 +1016,7 @@ class MachineAccountsApi:
         """ # noqa: E501
 
         _param = self._get_machine_account_deletion_sub_type_approval_config_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
             subtype_id=subtype_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1044,6 +1048,7 @@ class MachineAccountsApi:
     def get_machine_account_deletion_sub_type_approval_config_with_http_info(
         self,
         subtype_id: Annotated[StrictStr, Field(description="machine subtype id.")],
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1061,6 +1066,8 @@ class MachineAccountsApi:
 
         This endpoint retrieves the approval configuration for machine account deletion at the machine subtype level. By providing a specific subtypeId in the path, clients can fetch the approval rules and settings (such as required approvers and comments policy) that govern account deletion for that particular machine subtype. The response includes a MachineAccountSubtypeConfigDto object detailing these configurations, enabling clients to understand or display the approval workflow required for deleting machine accounts of the given subtype. Use this endpoint to get machine subtype level approval config for account deletion.
 
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param subtype_id: machine subtype id. (required)
         :type subtype_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1086,6 +1093,7 @@ class MachineAccountsApi:
         """ # noqa: E501
 
         _param = self._get_machine_account_deletion_sub_type_approval_config_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
             subtype_id=subtype_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1117,6 +1125,7 @@ class MachineAccountsApi:
     def get_machine_account_deletion_sub_type_approval_config_without_preload_content(
         self,
         subtype_id: Annotated[StrictStr, Field(description="machine subtype id.")],
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1134,6 +1143,8 @@ class MachineAccountsApi:
 
         This endpoint retrieves the approval configuration for machine account deletion at the machine subtype level. By providing a specific subtypeId in the path, clients can fetch the approval rules and settings (such as required approvers and comments policy) that govern account deletion for that particular machine subtype. The response includes a MachineAccountSubtypeConfigDto object detailing these configurations, enabling clients to understand or display the approval workflow required for deleting machine accounts of the given subtype. Use this endpoint to get machine subtype level approval config for account deletion.
 
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param subtype_id: machine subtype id. (required)
         :type subtype_id: str
         :param _request_timeout: timeout setting for this request. If one
@@ -1159,6 +1170,7 @@ class MachineAccountsApi:
         """ # noqa: E501
 
         _param = self._get_machine_account_deletion_sub_type_approval_config_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
             subtype_id=subtype_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1184,6 +1196,7 @@ class MachineAccountsApi:
 
     def _get_machine_account_deletion_sub_type_approval_config_serialize(
         self,
+        x_sail_point_experimental,
         subtype_id,
         _request_auth,
         _content_type,
@@ -1210,6 +1223,8 @@ class MachineAccountsApi:
             _path_params['subtypeId'] = subtype_id
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -2248,7 +2263,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[MachineAccount]:
-        """Machine accounts list
+        """List machine accounts
 
         This returns a list of machine accounts.  
 
@@ -2341,7 +2356,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[MachineAccount]]:
-        """Machine accounts list
+        """List machine accounts
 
         This returns a list of machine accounts.  
 
@@ -2434,7 +2449,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Machine accounts list
+        """List machine accounts
 
         This returns a list of machine accounts.  
 
@@ -2947,7 +2962,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MachineAccount:
-        """Update a machine account
+        """Update machine account details
 
         Use this API to update machine accounts details.  
 
@@ -3028,7 +3043,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MachineAccount]:
-        """Update a machine account
+        """Update machine account details
 
         Use this API to update machine accounts details.  
 
@@ -3109,7 +3124,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Update a machine account
+        """Update machine account details
 
         Use this API to update machine accounts details.  
 
@@ -3258,6 +3273,7 @@ class MachineAccountsApi:
         self,
         subtype_id: Annotated[StrictStr, Field(description="machine account subtype ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3275,6 +3291,8 @@ class MachineAccountsApi:
 
         Updates the approval configuration for machine account deletion at the specified machine subtype level. This endpoint allows clients to modify approval rules and settings (such as required approvers and comments policy) for account deletion workflows associated with a given subtypeId. Use this to customize or enforce approval requirements for deleting machine accounts of a particular subtype.
 
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param subtype_id: machine account subtype ID. (required)
         :type subtype_id: str
         :param json_patch_operation: The JSONPatch payload used to update the object. (required)
@@ -3302,6 +3320,7 @@ class MachineAccountsApi:
         """ # noqa: E501
 
         _param = self._update_machine_account_deletion_by_sub_type_approval_config_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
             subtype_id=subtype_id,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
@@ -3335,6 +3354,7 @@ class MachineAccountsApi:
         self,
         subtype_id: Annotated[StrictStr, Field(description="machine account subtype ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3352,6 +3372,8 @@ class MachineAccountsApi:
 
         Updates the approval configuration for machine account deletion at the specified machine subtype level. This endpoint allows clients to modify approval rules and settings (such as required approvers and comments policy) for account deletion workflows associated with a given subtypeId. Use this to customize or enforce approval requirements for deleting machine accounts of a particular subtype.
 
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param subtype_id: machine account subtype ID. (required)
         :type subtype_id: str
         :param json_patch_operation: The JSONPatch payload used to update the object. (required)
@@ -3379,6 +3401,7 @@ class MachineAccountsApi:
         """ # noqa: E501
 
         _param = self._update_machine_account_deletion_by_sub_type_approval_config_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
             subtype_id=subtype_id,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
@@ -3412,6 +3435,7 @@ class MachineAccountsApi:
         self,
         subtype_id: Annotated[StrictStr, Field(description="machine account subtype ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3429,6 +3453,8 @@ class MachineAccountsApi:
 
         Updates the approval configuration for machine account deletion at the specified machine subtype level. This endpoint allows clients to modify approval rules and settings (such as required approvers and comments policy) for account deletion workflows associated with a given subtypeId. Use this to customize or enforce approval requirements for deleting machine accounts of a particular subtype.
 
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
         :param subtype_id: machine account subtype ID. (required)
         :type subtype_id: str
         :param json_patch_operation: The JSONPatch payload used to update the object. (required)
@@ -3456,6 +3482,7 @@ class MachineAccountsApi:
         """ # noqa: E501
 
         _param = self._update_machine_account_deletion_by_sub_type_approval_config_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
             subtype_id=subtype_id,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
@@ -3482,6 +3509,7 @@ class MachineAccountsApi:
 
     def _update_machine_account_deletion_by_sub_type_approval_config_serialize(
         self,
+        x_sail_point_experimental,
         subtype_id,
         json_patch_operation,
         _request_auth,
@@ -3510,6 +3538,8 @@ class MachineAccountsApi:
             _path_params['subtypeId'] = subtype_id
         # process the query parameters
         # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if json_patch_operation is not None:

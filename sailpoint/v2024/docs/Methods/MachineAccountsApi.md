@@ -15,9 +15,9 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2024*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get-machine-account**](#get-machine-account) | **GET** `/machine-accounts/{id}` | Machine account details
-[**list-machine-accounts**](#list-machine-accounts) | **GET** `/machine-accounts` | Machine accounts list
-[**update-machine-account**](#update-machine-account) | **PATCH** `/machine-accounts/{id}` | Update a machine account
+[**get-machine-account**](#get-machine-account) | **GET** `/machine-accounts/{id}` | Get machine account details
+[**list-machine-accounts**](#list-machine-accounts) | **GET** `/machine-accounts` | List machine accounts
+[**update-machine-account**](#update-machine-account) | **PATCH** `/machine-accounts/{id}` | Update machine account details
 
 
 ## get-machine-account
@@ -32,7 +32,7 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.experimental = True
  ```
 :::
-Machine account details
+Get machine account details
 Use this API to return the details for a single machine account by its ID.  
 
 [API Spec](https://developer.sailpoint.com/docs/api/v2024/get-machine-account)
@@ -78,7 +78,7 @@ with ApiClient(configuration) as api_client:
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
 
     try:
-        # Machine account details
+        # Get machine account details
         
         results = MachineAccountsApi(api_client).get_machine_account(id=id, x_sail_point_experimental=x_sail_point_experimental)
         # Below is a request that includes all optional parameters
@@ -105,7 +105,7 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.experimental = True
  ```
 :::
-Machine accounts list
+List machine accounts
 This returns a list of machine accounts.  
 
 [API Spec](https://developer.sailpoint.com/docs/api/v2024/list-machine-accounts)
@@ -159,7 +159,7 @@ with ApiClient(configuration) as api_client:
     sorters = 'id,name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, nativeIdentity, ownerIdentity, uuid, description, machineIdentity.id, machineIdentity.name, subtype.technicalName, subtype.displayName, accessType, environment, manuallyCorrelated, enabled, locked, hasEntitlements, ownerIdentity.id, ownerIdentity.name, attributes, source.id, source.name, created, modified** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, nativeIdentity, ownerIdentity, uuid, description, machineIdentity.id, machineIdentity.name, subtype.technicalName, subtype.displayName, accessType, environment, manuallyCorrelated, enabled, locked, hasEntitlements, ownerIdentity.id, ownerIdentity.name, attributes, source.id, source.name, created, modified** (optional)
 
     try:
-        # Machine accounts list
+        # List machine accounts
         
         results = MachineAccountsApi(api_client).list_machine_accounts(x_sail_point_experimental=x_sail_point_experimental)
         # Below is a request that includes all optional parameters
@@ -187,7 +187,7 @@ This API is currently in an experimental state. The API is subject to change bas
    configuration.experimental = True
  ```
 :::
-Update a machine account
+Update machine account details
 Use this API to update machine accounts details. 
 
 
@@ -236,7 +236,7 @@ with ApiClient(configuration) as api_client:
     request_body = '''[{op=add, path=/environment, value=test}]''' # List[object] | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following fields are patchable:           * description           * ownerIdentity           * subType           * accessType           * environment           * attributes           * classificationMethod           * manuallyEdited           * nativeIdentity           * uuid           * source           * manuallyCorrelated           * enabled           * locked           * hasEntitlements           * connectorAttributes
 
     try:
-        # Update a machine account
+        # Update machine account details
         new_request_body = RequestBody.from_json(request_body)
         results = MachineAccountsApi(api_client).update_machine_account(id=id, x_sail_point_experimental=x_sail_point_experimental, request_body=new_request_body)
         # Below is a request that includes all optional parameters

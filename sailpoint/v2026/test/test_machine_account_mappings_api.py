@@ -50,7 +50,7 @@ class TestMachineAccountMappingsApi(unittest.TestCase):
     def test_set_machine_account_mappings(self) -> None:
         """Test case for set_machine_account_mappings
 
-        Update Source's Machine Account Mappings
+        Update source's machine account mappings
         """
         pass
 

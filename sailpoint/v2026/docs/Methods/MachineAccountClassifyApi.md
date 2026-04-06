@@ -15,11 +15,11 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2026*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**send-classify-machine-account**](#send-classify-machine-account) | **POST** `/accounts/{id}/classify` | Classify a Single Machine Account
+[**send-classify-machine-account**](#send-classify-machine-account) | **POST** `/accounts/{id}/classify` | Classify single machine account
 
 
 ## send-classify-machine-account
-Classify a Single Machine Account
+Classify single machine account
 Use this API to classify a single machine account.
 A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
@@ -64,7 +64,7 @@ with ApiClient(configuration) as api_client:
     classification_mode = default # str | Specifies how the accounts should be classified.        default - uses criteria to classify account as machine or human, excludes accounts that were manually classified.       ignoreManual - like default, but includes accounts that were manually classified.       forceMachine - forces account to be classified as machine.       forceHuman - forces account to be classified as human. (optional) (default to default) # str | Specifies how the accounts should be classified.        default - uses criteria to classify account as machine or human, excludes accounts that were manually classified.       ignoreManual - like default, but includes accounts that were manually classified.       forceMachine - forces account to be classified as machine.       forceHuman - forces account to be classified as human. (optional) (default to default)
 
     try:
-        # Classify a Single Machine Account
+        # Classify single machine account
         
         results = MachineAccountClassifyApi(api_client).send_classify_machine_account(id=id)
         # Below is a request that includes all optional parameters
