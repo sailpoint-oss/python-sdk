@@ -19,16 +19,19 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from sailpoint.v2026.models.dto_type import DtoType
 from typing import Optional, Set
 from typing_extensions import Self
 
-class AccountDeleteAsyncResult(BaseModel):
+class AccountRequestDetailsDtoRequester(BaseModel):
     """
-    Asynchronous response containing a unique tracking ID for the account deletion request
+    AccountRequestDetailsDtoRequester
     """ # noqa: E501
-    account_request_id: StrictStr = Field(description="Id of the deletion request", alias="accountRequestId")
-    __properties: ClassVar[List[str]] = ["accountRequestId"]
+    type: Optional[Union[DtoType, str]] = None
+    id: Optional[StrictStr] = Field(default=None, description="ID of the object to which this reference applies")
+    name: Optional[StrictStr] = Field(default=None, description="Human-readable display name of the object to which this reference applies")
+    __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +51,7 @@ class AccountDeleteAsyncResult(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AccountDeleteAsyncResult from a JSON string"""
+        """Create an instance of AccountRequestDetailsDtoRequester from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,7 +76,7 @@ class AccountDeleteAsyncResult(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AccountDeleteAsyncResult from a dict"""
+        """Create an instance of AccountRequestDetailsDtoRequester from a dict"""
         if obj is None:
             return None
 
@@ -81,7 +84,9 @@ class AccountDeleteAsyncResult(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accountRequestId": obj.get("accountRequestId")
+            "type": obj.get("type"),
+            "id": obj.get("id"),
+            "name": obj.get("name")
         })
         return _obj
 

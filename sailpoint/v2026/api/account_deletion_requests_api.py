@@ -20,8 +20,8 @@ from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
 from sailpoint.v2026.models.account_action_request_dto import AccountActionRequestDto
-from sailpoint.v2026.models.account_delete_async_result import AccountDeleteAsyncResult
 from sailpoint.v2026.models.account_delete_request_input import AccountDeleteRequestInput
+from sailpoint.v2026.models.account_request_async_result import AccountRequestAsyncResult
 
 from sailpoint.v2026.api_client import ApiClient, RequestSerialized
 from sailpoint.v2026.api_response import ApiResponse
@@ -58,7 +58,7 @@ class AccountDeletionRequestsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AccountDeleteAsyncResult:
+    ) -> AccountRequestAsyncResult:
         """Delete account
 
         Initiates an account deletion request for the specified account. This method validates the input data, processes the deletion request, and generates an asynchronous result containing a tracking ID.  >**NOTE: You can only delete accounts from sources of the \"Connected\" type. which supports account deletion**
@@ -99,7 +99,7 @@ class AccountDeletionRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "AccountDeleteAsyncResult",
+            '202': "AccountRequestAsyncResult",
             '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
@@ -135,7 +135,7 @@ class AccountDeletionRequestsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AccountDeleteAsyncResult]:
+    ) -> ApiResponse[AccountRequestAsyncResult]:
         """Delete account
 
         Initiates an account deletion request for the specified account. This method validates the input data, processes the deletion request, and generates an asynchronous result containing a tracking ID.  >**NOTE: You can only delete accounts from sources of the \"Connected\" type. which supports account deletion**
@@ -176,7 +176,7 @@ class AccountDeletionRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "AccountDeleteAsyncResult",
+            '202': "AccountRequestAsyncResult",
             '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
@@ -253,7 +253,7 @@ class AccountDeletionRequestsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '202': "AccountDeleteAsyncResult",
+            '202': "AccountRequestAsyncResult",
             '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",

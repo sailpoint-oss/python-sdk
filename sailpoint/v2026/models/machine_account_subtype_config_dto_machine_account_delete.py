@@ -18,22 +18,19 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2026.models.approval_config import ApprovalConfig
+from sailpoint.v2026.models.machine_subtype_approval_config import MachineSubtypeApprovalConfig
 from typing import Optional, Set
 from typing_extensions import Self
 
-class MachineAccountSubTypeConfigDtoMachineAccountCreate(BaseModel):
+class MachineAccountSubtypeConfigDtoMachineAccountDelete(BaseModel):
     """
-    Configuration options for machine account creation, including whether creation is enabled, if approval is required, associated form and entitlement IDs, and detailed approval settings such as approvers and allowed comment types.
+    Configuration options for machine account deletion, including whether approval is required, the list of authorized approvers, and the types of comments permitted during the approval workflow.
     """ # noqa: E501
-    account_create_enabled: Optional[StrictBool] = Field(default=False, description="Specifies if the creation of machine accounts is allowed for this subtype.", alias="accountCreateEnabled")
-    approval_required: Optional[StrictBool] = Field(default=False, description="Specifies if approval is needed before a machine account can be created for this subtype.", alias="approvalRequired")
-    form_id: Optional[StrictStr] = Field(default=None, description="formId", alias="formId")
-    entitlement_id: Optional[StrictStr] = Field(default=None, description="Configuration details specifying who can approve machine account creation requests and the types of comments allowed during the approval process.", alias="entitlementId")
-    approval_config: Optional[ApprovalConfig] = Field(default=None, alias="approvalConfig")
-    __properties: ClassVar[List[str]] = ["accountCreateEnabled", "approvalRequired", "formId", "entitlementId", "approvalConfig"]
+    approval_required: Optional[StrictBool] = Field(default=False, description="Indicates whether approval is required for an account deletion request.", alias="approvalRequired")
+    approval_config: Optional[MachineSubtypeApprovalConfig] = Field(default=None, alias="approvalConfig")
+    __properties: ClassVar[List[str]] = ["approvalRequired", "approvalConfig"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -53,7 +50,7 @@ class MachineAccountSubTypeConfigDtoMachineAccountCreate(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of MachineAccountSubTypeConfigDtoMachineAccountCreate from a JSON string"""
+        """Create an instance of MachineAccountSubtypeConfigDtoMachineAccountDelete from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -81,7 +78,7 @@ class MachineAccountSubTypeConfigDtoMachineAccountCreate(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of MachineAccountSubTypeConfigDtoMachineAccountCreate from a dict"""
+        """Create an instance of MachineAccountSubtypeConfigDtoMachineAccountDelete from a dict"""
         if obj is None:
             return None
 
@@ -89,11 +86,8 @@ class MachineAccountSubTypeConfigDtoMachineAccountCreate(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "accountCreateEnabled": obj.get("accountCreateEnabled") if obj.get("accountCreateEnabled") is not None else False,
             "approvalRequired": obj.get("approvalRequired") if obj.get("approvalRequired") is not None else False,
-            "formId": obj.get("formId"),
-            "entitlementId": obj.get("entitlementId"),
-            "approvalConfig": ApprovalConfig.from_dict(obj["approvalConfig"]) if obj.get("approvalConfig") is not None else None
+            "approvalConfig": MachineSubtypeApprovalConfig.from_dict(obj["approvalConfig"]) if obj.get("approvalConfig") is not None else None
         })
         return _obj
 

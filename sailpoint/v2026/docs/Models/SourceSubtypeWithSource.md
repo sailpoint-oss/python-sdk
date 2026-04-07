@@ -1,0 +1,52 @@
+---
+id: v2026-source-subtype-with-source
+title: SourceSubtypeWithSource
+pagination_label: SourceSubtypeWithSource
+sidebar_label: SourceSubtypeWithSource
+sidebar_class_name: pythonsdk
+keywords: ['python', 'Python', 'sdk', 'SourceSubtypeWithSource', 'V2026SourceSubtypeWithSource'] 
+slug: /tools/sdk/python/v2026/models/source-subtype-with-source
+tags: ['SDK', 'Software Development Kit', 'SourceSubtypeWithSource', 'V2026SourceSubtypeWithSource']
+---
+
+# SourceSubtypeWithSource
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **str** | Unique identifier for the subtype. | [optional] 
+**source_id** | **str** | The ID of the source. | [optional] [readonly] 
+**technical_name** | **str** | Technical name of the subtype. | [optional] 
+**display_name** | **str** | Display name of the subtype. | [optional] 
+**description** | **str** | Description of the subtype. | [optional] 
+**created** | **datetime** | Creation timestamp. | [optional] 
+**modified** | **datetime** | Last modified timestamp. | [optional] 
+**type** | **str** | Type of the subtype. Either MACHINE OR null. | [optional] 
+**source** | [**SourceSubtypeWithSourceSource**](source-subtype-with-source-source) |  | [optional] 
+}
+
+## Example
+
+```python
+from sailpoint.v2026.models.source_subtype_with_source import SourceSubtypeWithSource
+
+source_subtype_with_source = SourceSubtypeWithSource(
+id='38453251-6be2-5f8f-df93-5ce19e295838',
+source_id='',
+technical_name='foo',
+display_name='Mr Foo',
+description='fighters',
+created='2025-07-28T16:13:42.801300Z',
+modified='2025-07-28T16:13:42.750850Z',
+type='MACHINE',
+source=sailpoint.v2026.models.source_subtype_with_source_source.SourceSubtypeWithSource_source(
+                    type = 'SOURCE', 
+                    id = '6d0458373bec4b4b80460992b76016da', 
+                    name = 'Test Source', )
+)
+
+```
+[[Back to top]](#) 
+

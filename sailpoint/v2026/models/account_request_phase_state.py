@@ -32,6 +32,7 @@ class AccountRequestPhaseState(str, Enum):
     REJECTED = 'REJECTED'
     PASSED = 'PASSED'
     FAILED = 'FAILED'
+    NOT_STARTED = 'NOT_STARTED'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

@@ -22,8 +22,9 @@ from typing_extensions import Annotated
 from sailpoint.v2026.models.create_machine_account_subtype_request import CreateMachineAccountSubtypeRequest
 from sailpoint.v2026.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v2026.models.machine_account import MachineAccount
-from sailpoint.v2026.models.machine_account_sub_type_config_dto import MachineAccountSubTypeConfigDto
+from sailpoint.v2026.models.machine_account_subtype_config_dto import MachineAccountSubtypeConfigDto
 from sailpoint.v2026.models.source_subtype import SourceSubtype
+from sailpoint.v2026.models.source_subtype_with_source import SourceSubtypeWithSource
 
 from sailpoint.v2026.api_client import ApiClient, RequestSerialized
 from sailpoint.v2026.api_response import ApiResponse
@@ -365,7 +366,7 @@ class MachineAccountsApi:
 
 
     @validate_call
-    def delete_machine_account_subtype(
+    def delete_machine_account_subtype_by_technical_name(
         self,
         source_id: Annotated[StrictStr, Field(description="The ID of the source.")],
         technical_name: Annotated[StrictStr, Field(description="The technical name of the subtype.")],
@@ -415,7 +416,7 @@ class MachineAccountsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_machine_account_subtype_serialize(
+        _param = self._delete_machine_account_subtype_by_technical_name_serialize(
             source_id=source_id,
             technical_name=technical_name,
             x_sail_point_experimental=x_sail_point_experimental,
@@ -445,7 +446,7 @@ class MachineAccountsApi:
 
 
     @validate_call
-    def delete_machine_account_subtype_with_http_info(
+    def delete_machine_account_subtype_by_technical_name_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="The ID of the source.")],
         technical_name: Annotated[StrictStr, Field(description="The technical name of the subtype.")],
@@ -495,7 +496,7 @@ class MachineAccountsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_machine_account_subtype_serialize(
+        _param = self._delete_machine_account_subtype_by_technical_name_serialize(
             source_id=source_id,
             technical_name=technical_name,
             x_sail_point_experimental=x_sail_point_experimental,
@@ -525,7 +526,7 @@ class MachineAccountsApi:
 
 
     @validate_call
-    def delete_machine_account_subtype_without_preload_content(
+    def delete_machine_account_subtype_by_technical_name_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="The ID of the source.")],
         technical_name: Annotated[StrictStr, Field(description="The technical name of the subtype.")],
@@ -575,7 +576,7 @@ class MachineAccountsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_machine_account_subtype_serialize(
+        _param = self._delete_machine_account_subtype_by_technical_name_serialize(
             source_id=source_id,
             technical_name=technical_name,
             x_sail_point_experimental=x_sail_point_experimental,
@@ -600,7 +601,7 @@ class MachineAccountsApi:
         return response_data.response
 
 
-    def _delete_machine_account_subtype_serialize(
+    def _delete_machine_account_subtype_by_technical_name_serialize(
         self,
         source_id,
         technical_name,
@@ -968,7 +969,7 @@ class MachineAccountsApi:
 
 
     @validate_call
-    def get_machine_account_deletion_sub_type_approval_config(
+    def get_machine_account_subtype_approval_config(
         self,
         subtype_id: Annotated[StrictStr, Field(description="machine subtype id.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
@@ -984,10 +985,10 @@ class MachineAccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> MachineAccountSubTypeConfigDto:
+    ) -> MachineAccountSubtypeConfigDto:
         """Machine Subtype Approval Config
 
-        This endpoint retrieves the approval configuration for machine account deletion at the machine subtype level. By providing a specific subtypeId in the path, clients can fetch the approval rules and settings (such as required approvers and comments policy) that govern account deletion for that particular machine subtype. The response includes a MachineAccountSubtypeConfigDto object detailing these configurations, enabling clients to understand or display the approval workflow required for deleting machine accounts of the given subtype. Use this endpoint to get machine subtype level approval config for account deletion.
+        This endpoint retrieves the approval configuration for machine account creation and deletion at the machine subtype level. By providing a specific subtypeId in the path, clients can fetch the approval rules and settings (such as required approvers and comments policy) that govern account creation and deletion for that particular machine subtype. The response includes a MachineAccountSubtypeConfigDto object detailing these configurations, enabling clients to understand or display the approval workflow required for creating and deleting machine accounts of the given subtype. Use this endpoint to get machine subtype level approval config for account creation and deletion.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -1015,7 +1016,7 @@ class MachineAccountsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_machine_account_deletion_sub_type_approval_config_serialize(
+        _param = self._get_machine_account_subtype_approval_config_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
             subtype_id=subtype_id,
             _request_auth=_request_auth,
@@ -1025,7 +1026,7 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "MachineAccountSubTypeConfigDto",
+            '200': "MachineAccountSubtypeConfigDto",
             '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
@@ -1045,7 +1046,7 @@ class MachineAccountsApi:
 
 
     @validate_call
-    def get_machine_account_deletion_sub_type_approval_config_with_http_info(
+    def get_machine_account_subtype_approval_config_with_http_info(
         self,
         subtype_id: Annotated[StrictStr, Field(description="machine subtype id.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
@@ -1061,10 +1062,10 @@ class MachineAccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[MachineAccountSubTypeConfigDto]:
+    ) -> ApiResponse[MachineAccountSubtypeConfigDto]:
         """Machine Subtype Approval Config
 
-        This endpoint retrieves the approval configuration for machine account deletion at the machine subtype level. By providing a specific subtypeId in the path, clients can fetch the approval rules and settings (such as required approvers and comments policy) that govern account deletion for that particular machine subtype. The response includes a MachineAccountSubtypeConfigDto object detailing these configurations, enabling clients to understand or display the approval workflow required for deleting machine accounts of the given subtype. Use this endpoint to get machine subtype level approval config for account deletion.
+        This endpoint retrieves the approval configuration for machine account creation and deletion at the machine subtype level. By providing a specific subtypeId in the path, clients can fetch the approval rules and settings (such as required approvers and comments policy) that govern account creation and deletion for that particular machine subtype. The response includes a MachineAccountSubtypeConfigDto object detailing these configurations, enabling clients to understand or display the approval workflow required for creating and deleting machine accounts of the given subtype. Use this endpoint to get machine subtype level approval config for account creation and deletion.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -1092,7 +1093,7 @@ class MachineAccountsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_machine_account_deletion_sub_type_approval_config_serialize(
+        _param = self._get_machine_account_subtype_approval_config_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
             subtype_id=subtype_id,
             _request_auth=_request_auth,
@@ -1102,7 +1103,7 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "MachineAccountSubTypeConfigDto",
+            '200': "MachineAccountSubtypeConfigDto",
             '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
@@ -1122,7 +1123,7 @@ class MachineAccountsApi:
 
 
     @validate_call
-    def get_machine_account_deletion_sub_type_approval_config_without_preload_content(
+    def get_machine_account_subtype_approval_config_without_preload_content(
         self,
         subtype_id: Annotated[StrictStr, Field(description="machine subtype id.")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
@@ -1141,7 +1142,7 @@ class MachineAccountsApi:
     ) -> RESTResponseType:
         """Machine Subtype Approval Config
 
-        This endpoint retrieves the approval configuration for machine account deletion at the machine subtype level. By providing a specific subtypeId in the path, clients can fetch the approval rules and settings (such as required approvers and comments policy) that govern account deletion for that particular machine subtype. The response includes a MachineAccountSubtypeConfigDto object detailing these configurations, enabling clients to understand or display the approval workflow required for deleting machine accounts of the given subtype. Use this endpoint to get machine subtype level approval config for account deletion.
+        This endpoint retrieves the approval configuration for machine account creation and deletion at the machine subtype level. By providing a specific subtypeId in the path, clients can fetch the approval rules and settings (such as required approvers and comments policy) that govern account creation and deletion for that particular machine subtype. The response includes a MachineAccountSubtypeConfigDto object detailing these configurations, enabling clients to understand or display the approval workflow required for creating and deleting machine accounts of the given subtype. Use this endpoint to get machine subtype level approval config for account creation and deletion.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -1169,7 +1170,7 @@ class MachineAccountsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_machine_account_deletion_sub_type_approval_config_serialize(
+        _param = self._get_machine_account_subtype_approval_config_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
             subtype_id=subtype_id,
             _request_auth=_request_auth,
@@ -1179,7 +1180,7 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "MachineAccountSubTypeConfigDto",
+            '200': "MachineAccountSubtypeConfigDto",
             '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
@@ -1194,7 +1195,7 @@ class MachineAccountsApi:
         return response_data.response
 
 
-    def _get_machine_account_deletion_sub_type_approval_config_serialize(
+    def _get_machine_account_subtype_approval_config_serialize(
         self,
         x_sail_point_experimental,
         subtype_id,
@@ -2607,7 +2608,317 @@ class MachineAccountsApi:
 
 
     @validate_call
-    def patch_machine_account_subtype(
+    def load_bulk_source_subtypes(
+        self,
+        request_body: Annotated[List[StrictStr], Field(min_length=1, max_length=100)],
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[SourceSubtypeWithSource]:
+        """Bulk Retrieve of Source Subtypes
+
+        This endpoint retrieves the subtypes for given subtypeIds.
+
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
+        :param request_body: (required)
+        :type request_body: List[str]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._load_bulk_source_subtypes_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
+            request_body=request_body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[SourceSubtypeWithSource]",
+            '400': "ErrorResponseDto",
+            '401': "GetAccessRequestConfig401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "GetAccessRequestConfig429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def load_bulk_source_subtypes_with_http_info(
+        self,
+        request_body: Annotated[List[StrictStr], Field(min_length=1, max_length=100)],
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[SourceSubtypeWithSource]]:
+        """Bulk Retrieve of Source Subtypes
+
+        This endpoint retrieves the subtypes for given subtypeIds.
+
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
+        :param request_body: (required)
+        :type request_body: List[str]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._load_bulk_source_subtypes_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
+            request_body=request_body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[SourceSubtypeWithSource]",
+            '400': "ErrorResponseDto",
+            '401': "GetAccessRequestConfig401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "GetAccessRequestConfig429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def load_bulk_source_subtypes_without_preload_content(
+        self,
+        request_body: Annotated[List[StrictStr], Field(min_length=1, max_length=100)],
+        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Bulk Retrieve of Source Subtypes
+
+        This endpoint retrieves the subtypes for given subtypeIds.
+
+        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
+        :type x_sail_point_experimental: str
+        :param request_body: (required)
+        :type request_body: List[str]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._load_bulk_source_subtypes_serialize(
+            x_sail_point_experimental=x_sail_point_experimental,
+            request_body=request_body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[SourceSubtypeWithSource]",
+            '400': "ErrorResponseDto",
+            '401': "GetAccessRequestConfig401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "GetAccessRequestConfig429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _load_bulk_source_subtypes_serialize(
+        self,
+        x_sail_point_experimental,
+        request_body,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            'request_body': '',
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
+        # process the form parameters
+        # process the body parameter
+        if request_body is not None:
+            _body_params = request_body
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth', 
+            'applicationAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/source-subtypes/bulk-retrieve',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def patch_machine_account_subtype_by_technical_name(
         self,
         source_id: Annotated[StrictStr, Field(description="The ID of the source.")],
         technical_name: Annotated[StrictStr, Field(description="The technical name of the subtype.")],
@@ -2660,7 +2971,7 @@ class MachineAccountsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._patch_machine_account_subtype_serialize(
+        _param = self._patch_machine_account_subtype_by_technical_name_serialize(
             source_id=source_id,
             technical_name=technical_name,
             x_sail_point_experimental=x_sail_point_experimental,
@@ -2691,7 +3002,7 @@ class MachineAccountsApi:
 
 
     @validate_call
-    def patch_machine_account_subtype_with_http_info(
+    def patch_machine_account_subtype_by_technical_name_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="The ID of the source.")],
         technical_name: Annotated[StrictStr, Field(description="The technical name of the subtype.")],
@@ -2744,7 +3055,7 @@ class MachineAccountsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._patch_machine_account_subtype_serialize(
+        _param = self._patch_machine_account_subtype_by_technical_name_serialize(
             source_id=source_id,
             technical_name=technical_name,
             x_sail_point_experimental=x_sail_point_experimental,
@@ -2775,7 +3086,7 @@ class MachineAccountsApi:
 
 
     @validate_call
-    def patch_machine_account_subtype_without_preload_content(
+    def patch_machine_account_subtype_by_technical_name_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="The ID of the source.")],
         technical_name: Annotated[StrictStr, Field(description="The technical name of the subtype.")],
@@ -2828,7 +3139,7 @@ class MachineAccountsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._patch_machine_account_subtype_serialize(
+        _param = self._patch_machine_account_subtype_by_technical_name_serialize(
             source_id=source_id,
             technical_name=technical_name,
             x_sail_point_experimental=x_sail_point_experimental,
@@ -2854,7 +3165,7 @@ class MachineAccountsApi:
         return response_data.response
 
 
-    def _patch_machine_account_subtype_serialize(
+    def _patch_machine_account_subtype_by_technical_name_serialize(
         self,
         source_id,
         technical_name,
@@ -3269,7 +3580,7 @@ class MachineAccountsApi:
 
 
     @validate_call
-    def update_machine_account_deletion_by_sub_type_approval_config(
+    def update_machine_account_subtype_approval_config(
         self,
         subtype_id: Annotated[StrictStr, Field(description="machine account subtype ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
@@ -3286,10 +3597,10 @@ class MachineAccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> MachineAccountSubTypeConfigDto:
+    ) -> MachineAccountSubtypeConfigDto:
         """Machine Subtype Approval Config
 
-        Updates the approval configuration for machine account deletion at the specified machine subtype level. This endpoint allows clients to modify approval rules and settings (such as required approvers and comments policy) for account deletion workflows associated with a given subtypeId. Use this to customize or enforce approval requirements for deleting machine accounts of a particular subtype.
+        Updates the approval configuration for machine account deletion at the specified machine subtype level. This endpoint allows clients to modify approval rules and settings (such as required approvers and comments policy) for account creation and deletion workflows associated with a given subtypeId. Use this to customize or enforce approval requirements for creating and deleting machine accounts of a particular subtype.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -3319,7 +3630,7 @@ class MachineAccountsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_machine_account_deletion_by_sub_type_approval_config_serialize(
+        _param = self._update_machine_account_subtype_approval_config_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
             subtype_id=subtype_id,
             json_patch_operation=json_patch_operation,
@@ -3330,7 +3641,7 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "MachineAccountSubTypeConfigDto",
+            '200': "MachineAccountSubtypeConfigDto",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
@@ -3350,7 +3661,7 @@ class MachineAccountsApi:
 
 
     @validate_call
-    def update_machine_account_deletion_by_sub_type_approval_config_with_http_info(
+    def update_machine_account_subtype_approval_config_with_http_info(
         self,
         subtype_id: Annotated[StrictStr, Field(description="machine account subtype ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
@@ -3367,10 +3678,10 @@ class MachineAccountsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[MachineAccountSubTypeConfigDto]:
+    ) -> ApiResponse[MachineAccountSubtypeConfigDto]:
         """Machine Subtype Approval Config
 
-        Updates the approval configuration for machine account deletion at the specified machine subtype level. This endpoint allows clients to modify approval rules and settings (such as required approvers and comments policy) for account deletion workflows associated with a given subtypeId. Use this to customize or enforce approval requirements for deleting machine accounts of a particular subtype.
+        Updates the approval configuration for machine account deletion at the specified machine subtype level. This endpoint allows clients to modify approval rules and settings (such as required approvers and comments policy) for account creation and deletion workflows associated with a given subtypeId. Use this to customize or enforce approval requirements for creating and deleting machine accounts of a particular subtype.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -3400,7 +3711,7 @@ class MachineAccountsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_machine_account_deletion_by_sub_type_approval_config_serialize(
+        _param = self._update_machine_account_subtype_approval_config_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
             subtype_id=subtype_id,
             json_patch_operation=json_patch_operation,
@@ -3411,7 +3722,7 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "MachineAccountSubTypeConfigDto",
+            '200': "MachineAccountSubtypeConfigDto",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
@@ -3431,7 +3742,7 @@ class MachineAccountsApi:
 
 
     @validate_call
-    def update_machine_account_deletion_by_sub_type_approval_config_without_preload_content(
+    def update_machine_account_subtype_approval_config_without_preload_content(
         self,
         subtype_id: Annotated[StrictStr, Field(description="machine account subtype ID.")],
         json_patch_operation: Annotated[List[JsonPatchOperation], Field(description="The JSONPatch payload used to update the object.")],
@@ -3451,7 +3762,7 @@ class MachineAccountsApi:
     ) -> RESTResponseType:
         """Machine Subtype Approval Config
 
-        Updates the approval configuration for machine account deletion at the specified machine subtype level. This endpoint allows clients to modify approval rules and settings (such as required approvers and comments policy) for account deletion workflows associated with a given subtypeId. Use this to customize or enforce approval requirements for deleting machine accounts of a particular subtype.
+        Updates the approval configuration for machine account deletion at the specified machine subtype level. This endpoint allows clients to modify approval rules and settings (such as required approvers and comments policy) for account creation and deletion workflows associated with a given subtypeId. Use this to customize or enforce approval requirements for creating and deleting machine accounts of a particular subtype.
 
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
@@ -3481,7 +3792,7 @@ class MachineAccountsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_machine_account_deletion_by_sub_type_approval_config_serialize(
+        _param = self._update_machine_account_subtype_approval_config_serialize(
             x_sail_point_experimental=x_sail_point_experimental,
             subtype_id=subtype_id,
             json_patch_operation=json_patch_operation,
@@ -3492,7 +3803,7 @@ class MachineAccountsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "MachineAccountSubTypeConfigDto",
+            '200': "MachineAccountSubtypeConfigDto",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
@@ -3507,7 +3818,7 @@ class MachineAccountsApi:
         return response_data.response
 
 
-    def _update_machine_account_deletion_by_sub_type_approval_config_serialize(
+    def _update_machine_account_subtype_approval_config_serialize(
         self,
         x_sail_point_experimental,
         subtype_id,

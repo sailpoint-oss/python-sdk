@@ -27,5 +27,7 @@ The current phase state of the account request, indicating its progress or outco
 
 * `FAILED` (value: `'FAILED'`)
 
+* `NOT_STARTED` (value: `'NOT_STARTED'`)
+
 [[Back to top]](#) 
 

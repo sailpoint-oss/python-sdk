@@ -36,12 +36,12 @@ Path   | account_id | **str** | True  | Account ID.
  Body  | account_delete_request_input | [**AccountDeleteRequestInput**](../models/account-delete-request-input) |   (optional) | 
 
 ### Return type
-[**AccountDeleteAsyncResult**](../models/account-delete-async-result)
+[**AccountRequestAsyncResult**](../models/account-request-async-result)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-202 | Account deletion request details. | AccountDeleteAsyncResult |  -  |
+202 | Account deletion request details. | AccountRequestAsyncResult |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
@@ -58,8 +58,8 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.v2026.api.account_deletion_requests_api import AccountDeletionRequestsApi
 from sailpoint.v2026.api_client import ApiClient
-from sailpoint.v2026.models.account_delete_async_result import AccountDeleteAsyncResult
 from sailpoint.v2026.models.account_delete_request_input import AccountDeleteRequestInput
+from sailpoint.v2026.models.account_request_async_result import AccountRequestAsyncResult
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 

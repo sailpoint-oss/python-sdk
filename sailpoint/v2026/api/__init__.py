@@ -52,7 +52,9 @@ from sailpoint.v2026.api.launchers_api import LaunchersApi
 from sailpoint.v2026.api.lifecycle_states_api import LifecycleStatesApi
 from sailpoint.v2026.api.mfa_configuration_api import MFAConfigurationApi
 from sailpoint.v2026.api.machine_account_classify_api import MachineAccountClassifyApi
+from sailpoint.v2026.api.machine_account_creation_request_api import MachineAccountCreationRequestApi
 from sailpoint.v2026.api.machine_account_mappings_api import MachineAccountMappingsApi
+from sailpoint.v2026.api.machine_account_subtypes_api import MachineAccountSubtypesApi
 from sailpoint.v2026.api.machine_accounts_api import MachineAccountsApi
 from sailpoint.v2026.api.machine_classification_config_api import MachineClassificationConfigApi
 from sailpoint.v2026.api.machine_identities_api import MachineIdentitiesApi

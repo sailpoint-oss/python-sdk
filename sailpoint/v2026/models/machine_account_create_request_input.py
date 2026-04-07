@@ -20,19 +20,22 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2026.models.machine_account_sub_type_config_dto_machine_account_create import MachineAccountSubTypeConfigDtoMachineAccountCreate
-from sailpoint.v2026.models.machine_account_sub_type_config_dto_machine_account_delete import MachineAccountSubTypeConfigDtoMachineAccountDelete
 from typing import Optional, Set
 from typing_extensions import Self
 
-class MachineAccountSubTypeConfigDto(BaseModel):
+class MachineAccountCreateRequestInput(BaseModel):
     """
-    Contains comprehensive configuration details for machine account subtype approval, including creation and deletion approval requirements, approver lists, form and entitlement references, and approval status options.
+    Contains the required information for processing a user-initiated machine account creation request.
     """ # noqa: E501
-    subtype_id: Optional[StrictStr] = Field(default=None, description="Unique identifier representing the specific subtype of the machine account, used to distinguish between different machine account categories.", alias="subtypeId")
-    machine_account_create: Optional[MachineAccountSubTypeConfigDtoMachineAccountCreate] = Field(default=None, alias="machineAccountCreate")
-    machine_account_delete: Optional[MachineAccountSubTypeConfigDtoMachineAccountDelete] = Field(default=None, alias="machineAccountDelete")
-    __properties: ClassVar[List[str]] = ["subtypeId", "machineAccountCreate", "machineAccountDelete"]
+    subtype_id: StrictStr = Field(description="Subtype ID for which machine account create is enabled and user have the entitlement to create the machine account.", alias="subtypeId")
+    form_id: Optional[StrictStr] = Field(default=None, description="Form ID selected by user for the machine account create request.", alias="formId")
+    owner_identity_id: StrictStr = Field(description="Owner Identity ID. This identity will be assigned as an owner of the created machine account.", alias="ownerIdentityId")
+    machine_identity_id: Optional[StrictStr] = Field(default=None, description="Machine identity to correlate with the created machine account. If not provided, a new machine identity will be created.", alias="machineIdentityId")
+    environment: Optional[StrictStr] = Field(default=None, description="Environment type to use for the machine account.")
+    description: Optional[StrictStr] = Field(default=None, description="Description for the machine account.")
+    user_input: Optional[Dict[str, Any]] = Field(default=None, description="Fields of the form linked to the subtype in approval settings.", alias="userInput")
+    entitlement_ids: Optional[List[StrictStr]] = Field(default=None, description="List of entitlement IDs to provision for created machine account.", alias="entitlementIds")
+    __properties: ClassVar[List[str]] = ["subtypeId", "formId", "ownerIdentityId", "machineIdentityId", "environment", "description", "userInput", "entitlementIds"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -52,7 +55,7 @@ class MachineAccountSubTypeConfigDto(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of MachineAccountSubTypeConfigDto from a JSON string"""
+        """Create an instance of MachineAccountCreateRequestInput from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,17 +76,16 @@ class MachineAccountSubTypeConfigDto(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of machine_account_create
-        if self.machine_account_create:
-            _dict['machineAccountCreate'] = self.machine_account_create.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of machine_account_delete
-        if self.machine_account_delete:
-            _dict['machineAccountDelete'] = self.machine_account_delete.to_dict()
+        # set to None if machine_identity_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.machine_identity_id is None and "machine_identity_id" in self.model_fields_set:
+            _dict['machineIdentityId'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of MachineAccountSubTypeConfigDto from a dict"""
+        """Create an instance of MachineAccountCreateRequestInput from a dict"""
         if obj is None:
             return None
 
@@ -92,8 +94,13 @@ class MachineAccountSubTypeConfigDto(BaseModel):
 
         _obj = cls.model_validate({
             "subtypeId": obj.get("subtypeId"),
-            "machineAccountCreate": MachineAccountSubTypeConfigDtoMachineAccountCreate.from_dict(obj["machineAccountCreate"]) if obj.get("machineAccountCreate") is not None else None,
-            "machineAccountDelete": MachineAccountSubTypeConfigDtoMachineAccountDelete.from_dict(obj["machineAccountDelete"]) if obj.get("machineAccountDelete") is not None else None
+            "formId": obj.get("formId"),
+            "ownerIdentityId": obj.get("ownerIdentityId"),
+            "machineIdentityId": obj.get("machineIdentityId"),
+            "environment": obj.get("environment"),
+            "description": obj.get("description"),
+            "userInput": obj.get("userInput"),
+            "entitlementIds": obj.get("entitlementIds")
         })
         return _obj
 

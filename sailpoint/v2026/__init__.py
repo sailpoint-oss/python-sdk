@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.45"
+__version__ = "1.4.46"
 
 # import apis into sdk package
 from sailpoint.v2026.api.access_model_metadata_api import AccessModelMetadataApi
@@ -68,7 +68,9 @@ from sailpoint.v2026.api.launchers_api import LaunchersApi
 from sailpoint.v2026.api.lifecycle_states_api import LifecycleStatesApi
 from sailpoint.v2026.api.mfa_configuration_api import MFAConfigurationApi
 from sailpoint.v2026.api.machine_account_classify_api import MachineAccountClassifyApi
+from sailpoint.v2026.api.machine_account_creation_request_api import MachineAccountCreationRequestApi
 from sailpoint.v2026.api.machine_account_mappings_api import MachineAccountMappingsApi
+from sailpoint.v2026.api.machine_account_subtypes_api import MachineAccountSubtypesApi
 from sailpoint.v2026.api.machine_accounts_api import MachineAccountsApi
 from sailpoint.v2026.api.machine_classification_config_api import MachineClassificationConfigApi
 from sailpoint.v2026.api.machine_identities_api import MachineIdentitiesApi
@@ -251,7 +253,6 @@ from sailpoint.v2026.models.account_correlated_identity import AccountCorrelated
 from sailpoint.v2026.models.account_correlated_source import AccountCorrelatedSource
 from sailpoint.v2026.models.account_created import AccountCreated
 from sailpoint.v2026.models.account_created_event import AccountCreatedEvent
-from sailpoint.v2026.models.account_delete_async_result import AccountDeleteAsyncResult
 from sailpoint.v2026.models.account_delete_config_dto import AccountDeleteConfigDto
 from sailpoint.v2026.models.account_delete_request_input import AccountDeleteRequestInput
 from sailpoint.v2026.models.account_deleted import AccountDeleted
@@ -261,6 +262,9 @@ from sailpoint.v2026.models.account_info_dto import AccountInfoDto
 from sailpoint.v2026.models.account_info_ref import AccountInfoRef
 from sailpoint.v2026.models.account_item_ref import AccountItemRef
 from sailpoint.v2026.models.account_request import AccountRequest
+from sailpoint.v2026.models.account_request_async_result import AccountRequestAsyncResult
+from sailpoint.v2026.models.account_request_details_dto import AccountRequestDetailsDto
+from sailpoint.v2026.models.account_request_details_dto_requester import AccountRequestDetailsDtoRequester
 from sailpoint.v2026.models.account_request_info import AccountRequestInfo
 from sailpoint.v2026.models.account_request_phase import AccountRequestPhase
 from sailpoint.v2026.models.account_request_phase_state import AccountRequestPhaseState
@@ -821,9 +825,12 @@ from sailpoint.v2026.models.localized_message import LocalizedMessage
 from sailpoint.v2026.models.lockout_configuration import LockoutConfiguration
 from sailpoint.v2026.models.lookup_step import LookupStep
 from sailpoint.v2026.models.machine_account import MachineAccount
-from sailpoint.v2026.models.machine_account_sub_type_config_dto import MachineAccountSubTypeConfigDto
-from sailpoint.v2026.models.machine_account_sub_type_config_dto_machine_account_create import MachineAccountSubTypeConfigDtoMachineAccountCreate
-from sailpoint.v2026.models.machine_account_sub_type_config_dto_machine_account_delete import MachineAccountSubTypeConfigDtoMachineAccountDelete
+from sailpoint.v2026.models.machine_account_create_access_dto import MachineAccountCreateAccessDto
+from sailpoint.v2026.models.machine_account_create_access_dto_subtypes_inner import MachineAccountCreateAccessDtoSubtypesInner
+from sailpoint.v2026.models.machine_account_create_request_input import MachineAccountCreateRequestInput
+from sailpoint.v2026.models.machine_account_subtype_config_dto import MachineAccountSubtypeConfigDto
+from sailpoint.v2026.models.machine_account_subtype_config_dto_machine_account_create import MachineAccountSubtypeConfigDtoMachineAccountCreate
+from sailpoint.v2026.models.machine_account_subtype_config_dto_machine_account_delete import MachineAccountSubtypeConfigDtoMachineAccountDelete
 from sailpoint.v2026.models.machine_classification_config import MachineClassificationConfig
 from sailpoint.v2026.models.machine_classification_criteria_level1 import MachineClassificationCriteriaLevel1
 from sailpoint.v2026.models.machine_classification_criteria_level2 import MachineClassificationCriteriaLevel2
@@ -855,6 +862,7 @@ from sailpoint.v2026.models.machine_identity_user_entitlement_response import Ma
 from sailpoint.v2026.models.machine_identity_user_entitlement_response_entitlement import MachineIdentityUserEntitlementResponseEntitlement
 from sailpoint.v2026.models.machine_identity_user_entitlement_response_source import MachineIdentityUserEntitlementResponseSource
 from sailpoint.v2026.models.machine_identity_user_entitlements import MachineIdentityUserEntitlements
+from sailpoint.v2026.models.machine_subtype_approval_config import MachineSubtypeApprovalConfig
 from sailpoint.v2026.models.mail_from_attributes import MailFromAttributes
 from sailpoint.v2026.models.mail_from_attributes_dto import MailFromAttributesDto
 from sailpoint.v2026.models.managed_client import ManagedClient
@@ -1310,6 +1318,8 @@ from sailpoint.v2026.models.source_password_policies_inner import SourcePassword
 from sailpoint.v2026.models.source_schedule import SourceSchedule
 from sailpoint.v2026.models.source_schemas_inner import SourceSchemasInner
 from sailpoint.v2026.models.source_subtype import SourceSubtype
+from sailpoint.v2026.models.source_subtype_with_source import SourceSubtypeWithSource
+from sailpoint.v2026.models.source_subtype_with_source_source import SourceSubtypeWithSourceSource
 from sailpoint.v2026.models.source_sync_job import SourceSyncJob
 from sailpoint.v2026.models.source_sync_payload import SourceSyncPayload
 from sailpoint.v2026.models.source_updated import SourceUpdated

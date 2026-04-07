@@ -18,19 +18,18 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2026.models.approval_config import ApprovalConfig
 from typing import Optional, Set
 from typing_extensions import Self
 
-class MachineAccountSubTypeConfigDtoMachineAccountDelete(BaseModel):
+class MachineSubtypeApprovalConfig(BaseModel):
     """
-    Configuration options for machine account deletion, including whether approval is required, the list of authorized approvers, and the types of comments permitted during the approval workflow.
+    MachineSubtypeApprovalConfig
     """ # noqa: E501
-    approval_required: Optional[StrictBool] = Field(default=False, description="Indicates whether approval is required for an account deletion request.", alias="approvalRequired")
-    approval_config: Optional[ApprovalConfig] = Field(default=None, alias="approvalConfig")
-    __properties: ClassVar[List[str]] = ["approvalRequired", "approvalConfig"]
+    approvers: Optional[StrictStr] = Field(default=None, description="Comma separated string of approvers.  Following are the options for approver types: manager, sourceOwner, accountOwner, workgroup:{workgroupId} (Governance group).  Approval request will be assigned based on the order of the approvers passed.  Multiple workgroups(governance groups) can be selected as an approver.  >**Note:** accountOwner approver type is only for machine account delete approval settings.")
+    comments: Optional[StrictStr] = Field(default=None, description="Comment configurations for the approval request.  Following are the options for comments: ALL, OFF, APPROVAL, REJECT.")
+    __properties: ClassVar[List[str]] = ["approvers", "comments"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +49,7 @@ class MachineAccountSubTypeConfigDtoMachineAccountDelete(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of MachineAccountSubTypeConfigDtoMachineAccountDelete from a JSON string"""
+        """Create an instance of MachineSubtypeApprovalConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,14 +70,11 @@ class MachineAccountSubTypeConfigDtoMachineAccountDelete(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of approval_config
-        if self.approval_config:
-            _dict['approvalConfig'] = self.approval_config.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of MachineAccountSubTypeConfigDtoMachineAccountDelete from a dict"""
+        """Create an instance of MachineSubtypeApprovalConfig from a dict"""
         if obj is None:
             return None
 
@@ -86,8 +82,8 @@ class MachineAccountSubTypeConfigDtoMachineAccountDelete(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "approvalRequired": obj.get("approvalRequired") if obj.get("approvalRequired") is not None else False,
-            "approvalConfig": ApprovalConfig.from_dict(obj["approvalConfig"]) if obj.get("approvalConfig") is not None else None
+            "approvers": obj.get("approvers"),
+            "comments": obj.get("comments")
         })
         return _obj
 

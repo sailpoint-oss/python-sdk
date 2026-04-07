@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2026.models.account_delete_async_result import AccountDeleteAsyncResult
+from sailpoint.v2026.models.account_request_details_dto_requester import AccountRequestDetailsDtoRequester
 
-class TestAccountDeleteAsyncResult(unittest.TestCase):
-    """AccountDeleteAsyncResult unit test stubs"""
+class TestAccountRequestDetailsDtoRequester(unittest.TestCase):
+    """AccountRequestDetailsDtoRequester unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,26 +25,27 @@ class TestAccountDeleteAsyncResult(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> AccountDeleteAsyncResult:
-        """Test AccountDeleteAsyncResult
+    def make_instance(self, include_optional) -> AccountRequestDetailsDtoRequester:
+        """Test AccountRequestDetailsDtoRequester
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `AccountDeleteAsyncResult`
+        # uncomment below to create an instance of `AccountRequestDetailsDtoRequester`
         """
-        model = AccountDeleteAsyncResult()
+        model = AccountRequestDetailsDtoRequester()
         if include_optional:
-            return AccountDeleteAsyncResult(
-                account_request_id = '2d81808474683da6017468693c260196'
+            return AccountRequestDetailsDtoRequester(
+                type = 'IDENTITY',
+                id = '2c91808568c529c60168cca6f90c1313',
+                name = 'William Wilson'
             )
         else:
-            return AccountDeleteAsyncResult(
-                account_request_id = '2d81808474683da6017468693c260196',
+            return AccountRequestDetailsDtoRequester(
         )
         """
 
-    def testAccountDeleteAsyncResult(self):
-        """Test AccountDeleteAsyncResult"""
+    def testAccountRequestDetailsDtoRequester(self):
+        """Test AccountRequestDetailsDtoRequester"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -33,8 +33,8 @@ class TestMachineAccountsApi(unittest.TestCase):
         """
         pass
 
-    def test_delete_machine_account_subtype(self) -> None:
-        """Test case for delete_machine_account_subtype
+    def test_delete_machine_account_subtype_by_technical_name(self) -> None:
+        """Test case for delete_machine_account_subtype_by_technical_name
 
         Delete subtype
         """
@@ -47,8 +47,8 @@ class TestMachineAccountsApi(unittest.TestCase):
         """
         pass
 
-    def test_get_machine_account_deletion_sub_type_approval_config(self) -> None:
-        """Test case for get_machine_account_deletion_sub_type_approval_config
+    def test_get_machine_account_subtype_approval_config(self) -> None:
+        """Test case for get_machine_account_subtype_approval_config
 
         Machine Subtype Approval Config
         """
@@ -82,8 +82,15 @@ class TestMachineAccountsApi(unittest.TestCase):
         """
         pass
 
-    def test_patch_machine_account_subtype(self) -> None:
-        """Test case for patch_machine_account_subtype
+    def test_load_bulk_source_subtypes(self) -> None:
+        """Test case for load_bulk_source_subtypes
+
+        Bulk Retrieve of Source Subtypes
+        """
+        pass
+
+    def test_patch_machine_account_subtype_by_technical_name(self) -> None:
+        """Test case for patch_machine_account_subtype_by_technical_name
 
         Patch subtype
         """
@@ -96,8 +103,8 @@ class TestMachineAccountsApi(unittest.TestCase):
         """
         pass
 
-    def test_update_machine_account_deletion_by_sub_type_approval_config(self) -> None:
-        """Test case for update_machine_account_deletion_by_sub_type_approval_config
+    def test_update_machine_account_subtype_approval_config(self) -> None:
+        """Test case for update_machine_account_subtype_approval_config
 
         Machine Subtype Approval Config
         """
