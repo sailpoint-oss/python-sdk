@@ -37,7 +37,8 @@ class TestMachineIdentityAggregationRequest(unittest.TestCase):
             return MachineIdentityAggregationRequest(
                 dataset_ids = [
                     'source:datasetId12345'
-                    ]
+                    ],
+                disable_optimization = False
             )
         else:
             return MachineIdentityAggregationRequest(

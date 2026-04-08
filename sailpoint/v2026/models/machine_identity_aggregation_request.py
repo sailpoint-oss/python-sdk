@@ -18,8 +18,8 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +28,8 @@ class MachineIdentityAggregationRequest(BaseModel):
     MachineIdentityAggregationRequest
     """ # noqa: E501
     dataset_ids: List[StrictStr] = Field(description="List of dataset Ids to aggregate machine identities", alias="datasetIds")
-    __properties: ClassVar[List[str]] = ["datasetIds"]
+    disable_optimization: Optional[StrictBool] = Field(default=False, description="Flag to disable optimization for the aggregation. Defaults to false when not provided. When set to true, it disables aggregation optimizations and may increase processing time.", alias="disableOptimization")
+    __properties: ClassVar[List[str]] = ["datasetIds", "disableOptimization"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,7 +82,8 @@ class MachineIdentityAggregationRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "datasetIds": obj.get("datasetIds")
+            "datasetIds": obj.get("datasetIds"),
+            "disableOptimization": obj.get("disableOptimization") if obj.get("disableOptimization") is not None else False
         })
         return _obj
 

@@ -493,7 +493,8 @@ configuration.experimental = True
 with ApiClient(configuration) as api_client:
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
     machine_identity_aggregation_request = '''{
-          "datasetIds" : [ "source:datasetId12345", "source:datasetId12345" ]
+          "datasetIds" : [ "source:datasetId12345", "source:datasetId12345" ],
+          "disableOptimization" : false
         }''' # MachineIdentityAggregationRequest | 
 
     try:
