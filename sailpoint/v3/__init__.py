@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.47"
+__version__ = "1.4.48"
 
 # import apis into sdk package
 from sailpoint.v3.api.access_profiles_api import AccessProfilesApi
