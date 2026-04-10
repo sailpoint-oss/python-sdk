@@ -44,7 +44,7 @@ class Configuration:
         self.access_token = configurationParams.access_token if configurationParams and configurationParams.access_token else defaultConfiguration.access_token
         self.proxy = configurationParams.proxy if configurationParams and configurationParams.proxy else None
         self.proxy_headers = configurationParams.proxy_headers if configurationParams and configurationParams.proxy_headers else None
-        self.verify_ssl = configurationParams.verify_ssl if configurationParams and configurationParams.verify_ssl else True
+        self.verify_ssl = configurationParams.verify_ssl if configurationParams and configurationParams.verify_ssl is not None else True
 
         url = f"{self.token_url}"
         if self.access_token == None:
@@ -87,7 +87,6 @@ class Configuration:
         """Debug switch
         """
 
-        self.verify_ssl = True
         """SSL/TLS verification
            Set this to false to skip verifying SSL certificate when calling API
            from https server.
@@ -139,19 +138,19 @@ class Configuration:
         """
 
     @classmethod
-    def get_configuration_params(self):
-        envConfiguration = self.get_environment_params()
+    def get_configuration_params(cls):
+        envConfiguration = cls.get_environment_params()
         if envConfiguration.base_url:
             return envConfiguration
 
-        localConfiguration = self.get_local_params()
+        localConfiguration = cls.get_local_params()
         if localConfiguration.base_url:
             return localConfiguration
 
         return ConfigurationParams()
 
     @classmethod
-    def get_environment_params(self) -> ConfigurationParams:
+    def get_environment_params(cls) -> ConfigurationParams:
         config = ConfigurationParams()
 
         config.base_url = (
@@ -167,26 +166,25 @@ class Configuration:
             if os.environ.get("SAIL_CLIENT_SECRET")
             else None
         )
-        config.token_url = str(config.base_url) + "/oauth/token"
+        config.token_url = (config.base_url + "/oauth/token") if config.base_url else None
 
         return config
 
     @classmethod
-    def get_local_params(self) -> ConfigurationParams:
+    def get_local_params(cls) -> ConfigurationParams:
         config = ConfigurationParams()
         if os.path.exists("./config.json"):
-            ("File is present")
             with open("./config.json") as file:
                 data = json.load(file)
-                config.base_url = data["BaseURL"]
-                config.client_id = data["ClientId"]
-                config.client_secret = data["ClientSecret"]
+                config.base_url = data.get("BaseURL")
+                config.client_id = data.get("ClientId")
+                config.client_secret = data.get("ClientSecret")
                 config.token_url = config.base_url + "/oauth/token"
         
         return config
 
     @classmethod
-    def get_access_token(self, url: str, client_id: str, client_secret: str, proxy: str, proxy_headers: dict, verify_ssl: bool) -> str:
+    def get_access_token(cls, url: str, client_id: str, client_secret: str, proxy: str, proxy_headers: dict, verify_ssl: bool) -> str:
 
         http = urllib3.PoolManager()
         pool_args = {}
@@ -223,7 +221,7 @@ class Configuration:
                     "There was an error while trying to fetch access token: "
                     + str(response.data)
                 )
-        except Exception as e:
+        except urllib3.exceptions.HTTPError as e:
             print("Unable to fetch access token. %s" % e)
 
     def auth_settings(self):
@@ -232,13 +230,6 @@ class Configuration:
         :return: The Auth Settings information dict.
         """
         auth = {}
-        if self.access_token is not None:
-            auth["userAuth"] = {
-                "type": "oauth2",
-                "in": "header",
-                "key": "Authorization",
-                "value": "Bearer " + self.access_token,
-            }
         if self.access_token is not None:
             auth["userAuth"] = {
                 "type": "oauth2",
