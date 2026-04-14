@@ -1277,7 +1277,11 @@ No parameters required.
 [API Spec](https://developer.sailpoint.com/docs/api/beta/search-form-instances-by-tenant)
 
 ### Parameters 
-This endpoint does not need any parameter. 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+  Query | offset | **int** |   (optional) (default to 0) | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
+  Query | limit | **int** |   (optional) (default to 50) | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
 
 ### Return type
 [**List[FormInstanceResponse]**](../models/form-instance-response)
@@ -1307,13 +1311,15 @@ configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
+    offset = 0 # int | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0) # int | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0)
+    limit = 50 # int | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 50) # int | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 50)
 
     try:
         # List form instances by tenant.
         
         results = CustomFormsApi(api_client).search_form_instances_by_tenant()
         # Below is a request that includes all optional parameters
-        # results = CustomFormsApi(api_client).search_form_instances_by_tenant()
+        # results = CustomFormsApi(api_client).search_form_instances_by_tenant(offset, limit)
         print("The response of CustomFormsApi->search_form_instances_by_tenant:\n")
         for item in results:
             print(item.model_dump_json(by_alias=True, indent=4))

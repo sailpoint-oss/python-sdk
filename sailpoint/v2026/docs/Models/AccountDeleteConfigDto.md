@@ -29,9 +29,6 @@ from sailpoint.v2026.models.account_delete_config_dto import AccountDeleteConfig
 account_delete_config_dto = AccountDeleteConfigDto(
 approval_required=True,
 approval_config=sailpoint.v2026.models.approval_config.ApprovalConfig(
-                    tenant_id = 'd3c10266-1a31-4acc-b01e-44a3d1c56615', 
-                    id = '5804e7d6-e04b-400f-9fb8-dff894419a2f', 
-                    scope = 'DOMAIN_OBJECT', 
                     reminder_config = sailpoint.v2026.models.approval_config_reminder_config.ApprovalConfig_reminderConfig(
                         enabled = False, 
                         days_until_first_reminder = 0, 
@@ -82,7 +79,9 @@ approval_config=sailpoint.v2026.models.approval_config.ApprovalConfig(
                             ], 
                         serial_order = 0, 
                         type = 'IDENTITY', ), 
-                    auto_approve = 'false', )
+                    machine_identity_manager_assignment = 'MACHINE_IDENTITY_OWNER', 
+                    circumvent_approval_process = False, 
+                    auto_approve = 'OFF', )
 )
 
 ```

@@ -316,6 +316,7 @@ sailpoint/v2026/docs/ApprovalApprovalCriteriaRejection.md
 sailpoint/v2026/docs/ApprovalApproveRequest.md
 sailpoint/v2026/docs/ApprovalAttributesRequest.md
 sailpoint/v2026/docs/ApprovalBatch.md
+sailpoint/v2026/docs/ApprovalCancelRequest.md
 sailpoint/v2026/docs/ApprovalComment.md
 sailpoint/v2026/docs/ApprovalComment1.md
 sailpoint/v2026/docs/ApprovalComment2.md
@@ -1754,6 +1755,7 @@ sailpoint/v2026/models/approval_approval_criteria_rejection.py
 sailpoint/v2026/models/approval_approve_request.py
 sailpoint/v2026/models/approval_attributes_request.py
 sailpoint/v2026/models/approval_batch.py
+sailpoint/v2026/models/approval_cancel_request.py
 sailpoint/v2026/models/approval_comment.py
 sailpoint/v2026/models/approval_comment1.py
 sailpoint/v2026/models/approval_comment2.py
@@ -3108,6 +3110,7 @@ sailpoint/v2026/test/test_approval_approval_criteria_rejection.py
 sailpoint/v2026/test/test_approval_approve_request.py
 sailpoint/v2026/test/test_approval_attributes_request.py
 sailpoint/v2026/test/test_approval_batch.py
+sailpoint/v2026/test/test_approval_cancel_request.py
 sailpoint/v2026/test/test_approval_comment.py
 sailpoint/v2026/test/test_approval_comment1.py
 sailpoint/v2026/test/test_approval_comment2.py

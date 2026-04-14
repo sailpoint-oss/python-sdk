@@ -23,13 +23,12 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class MachineSubtypeApprovalConfig(BaseModel):
+class ApprovalCancelRequest(BaseModel):
     """
-    MachineSubtypeApprovalConfig
+    Request body for cancelling a single approval request.
     """ # noqa: E501
-    approvers: Optional[StrictStr] = Field(default=None, description="Comma separated string of approvers.  Following are the options for approver types: manager, sourceOwner, accountOwner, workgroup:[workgroupId] (Governance group).  Approval request will be assigned based on the order of the approvers passed.  Multiple workgroups(governance groups) can be selected as an approver.  >**Note:** accountOwner approver type is only for machine account delete approval settings.")
-    comments: Optional[StrictStr] = Field(default=None, description="Comment configurations for the approval request.  Following are the options for comments: ALL, OFF, APPROVAL, REJECT.")
-    __properties: ClassVar[List[str]] = ["approvers", "comments"]
+    comment: Optional[StrictStr] = Field(default=None, description="Optional comment associated with the cancel request.")
+    __properties: ClassVar[List[str]] = ["comment"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +48,7 @@ class MachineSubtypeApprovalConfig(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of MachineSubtypeApprovalConfig from a JSON string"""
+        """Create an instance of ApprovalCancelRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,7 +73,7 @@ class MachineSubtypeApprovalConfig(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of MachineSubtypeApprovalConfig from a dict"""
+        """Create an instance of ApprovalCancelRequest from a dict"""
         if obj is None:
             return None
 
@@ -82,8 +81,7 @@ class MachineSubtypeApprovalConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "approvers": obj.get("approvers"),
-            "comments": obj.get("comments")
+            "comment": obj.get("comment")
         })
         return _obj
 

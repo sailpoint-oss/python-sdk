@@ -4875,6 +4875,8 @@ class CustomFormsApi:
     @validate_call
     def search_form_instances_by_tenant(
         self,
+        offset: Annotated[Optional[StrictInt], Field(description="Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4892,6 +4894,10 @@ class CustomFormsApi:
 
         No parameters required.
 
+        :param offset: Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
+        :type offset: int
+        :param limit: Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
+        :type limit: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4915,6 +4921,8 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._search_form_instances_by_tenant_serialize(
+            offset=offset,
+            limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4943,6 +4951,8 @@ class CustomFormsApi:
     @validate_call
     def search_form_instances_by_tenant_with_http_info(
         self,
+        offset: Annotated[Optional[StrictInt], Field(description="Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4960,6 +4970,10 @@ class CustomFormsApi:
 
         No parameters required.
 
+        :param offset: Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
+        :type offset: int
+        :param limit: Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
+        :type limit: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4983,6 +4997,8 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._search_form_instances_by_tenant_serialize(
+            offset=offset,
+            limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5011,6 +5027,8 @@ class CustomFormsApi:
     @validate_call
     def search_form_instances_by_tenant_without_preload_content(
         self,
+        offset: Annotated[Optional[StrictInt], Field(description="Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5028,6 +5046,10 @@ class CustomFormsApi:
 
         No parameters required.
 
+        :param offset: Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
+        :type offset: int
+        :param limit: Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
+        :type limit: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5051,6 +5073,8 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._search_form_instances_by_tenant_serialize(
+            offset=offset,
+            limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5074,6 +5098,8 @@ class CustomFormsApi:
 
     def _search_form_instances_by_tenant_serialize(
         self,
+        offset,
+        limit,
         _request_auth,
         _content_type,
         _headers,
@@ -5096,6 +5122,14 @@ class CustomFormsApi:
 
         # process the path parameters
         # process the query parameters
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter

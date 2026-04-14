@@ -22,6 +22,7 @@ from typing_extensions import Annotated
 from sailpoint.v2026.models.approval import Approval
 from sailpoint.v2026.models.approval_approve_request import ApprovalApproveRequest
 from sailpoint.v2026.models.approval_attributes_request import ApprovalAttributesRequest
+from sailpoint.v2026.models.approval_cancel_request import ApprovalCancelRequest
 from sailpoint.v2026.models.approval_comments_request import ApprovalCommentsRequest
 from sailpoint.v2026.models.approval_config import ApprovalConfig
 from sailpoint.v2026.models.approval_reassign_request import ApprovalReassignRequest
@@ -52,7 +53,7 @@ class ApprovalsApi:
     @validate_call
     def approve_approval(
         self,
-        id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to approve")],
+        id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to approve.")],
         approval_approve_request: Optional[ApprovalApproveRequest] = None,
         _request_timeout: Union[
             None,
@@ -69,9 +70,9 @@ class ApprovalsApi:
     ) -> Approval:
         """Post Approvals Approve
 
-        Currently this endpoint only supports Entitlement Description Approvals. Approves a specified approval request on behalf of the caller. This endpoint is for generic approvals, unlike the access-request-approval endpoint, and does not include access-request-approvals. The approval request must be in a state that allows it to be approved. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user.
+        Approves a specified approval request on behalf of the caller. The approval request must be in a state that allows it to be approved. This endpoint does not support access request IDs. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user.
 
-        :param id: Approval ID that correlates to an existing approval request that a user wants to approve (required)
+        :param id: Approval ID that correlates to an existing approval request that a user wants to approve. (required)
         :type id: str
         :param approval_approve_request:
         :type approval_approve_request: ApprovalApproveRequest
@@ -129,7 +130,7 @@ class ApprovalsApi:
     @validate_call
     def approve_approval_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to approve")],
+        id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to approve.")],
         approval_approve_request: Optional[ApprovalApproveRequest] = None,
         _request_timeout: Union[
             None,
@@ -146,9 +147,9 @@ class ApprovalsApi:
     ) -> ApiResponse[Approval]:
         """Post Approvals Approve
 
-        Currently this endpoint only supports Entitlement Description Approvals. Approves a specified approval request on behalf of the caller. This endpoint is for generic approvals, unlike the access-request-approval endpoint, and does not include access-request-approvals. The approval request must be in a state that allows it to be approved. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user.
+        Approves a specified approval request on behalf of the caller. The approval request must be in a state that allows it to be approved. This endpoint does not support access request IDs. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user.
 
-        :param id: Approval ID that correlates to an existing approval request that a user wants to approve (required)
+        :param id: Approval ID that correlates to an existing approval request that a user wants to approve. (required)
         :type id: str
         :param approval_approve_request:
         :type approval_approve_request: ApprovalApproveRequest
@@ -206,7 +207,7 @@ class ApprovalsApi:
     @validate_call
     def approve_approval_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to approve")],
+        id: Annotated[StrictStr, Field(description="Approval ID that correlates to an existing approval request that a user wants to approve.")],
         approval_approve_request: Optional[ApprovalApproveRequest] = None,
         _request_timeout: Union[
             None,
@@ -223,9 +224,9 @@ class ApprovalsApi:
     ) -> RESTResponseType:
         """Post Approvals Approve
 
-        Currently this endpoint only supports Entitlement Description Approvals. Approves a specified approval request on behalf of the caller. This endpoint is for generic approvals, unlike the access-request-approval endpoint, and does not include access-request-approvals. The approval request must be in a state that allows it to be approved. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user.
+        Approves a specified approval request on behalf of the caller. The approval request must be in a state that allows it to be approved. This endpoint does not support access request IDs. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user.
 
-        :param id: Approval ID that correlates to an existing approval request that a user wants to approve (required)
+        :param id: Approval ID that correlates to an existing approval request that a user wants to approve. (required)
         :type id: str
         :param approval_approve_request:
         :type approval_approve_request: ApprovalApproveRequest
@@ -669,7 +670,7 @@ class ApprovalsApi:
     ) -> object:
         """Post Bulk Cancel Approvals
 
-        Bulk cancels specified approval requests on behalf of the caller
+        Bulk cancels specified approval requests on behalf of the caller.  Note: To bulk cancel access request approvals, please use the following: /access-requests/bulk-cancel
 
         :param bulk_cancel_request_dto: (required)
         :type bulk_cancel_request_dto: BulkCancelRequestDTO
@@ -742,7 +743,7 @@ class ApprovalsApi:
     ) -> ApiResponse[object]:
         """Post Bulk Cancel Approvals
 
-        Bulk cancels specified approval requests on behalf of the caller
+        Bulk cancels specified approval requests on behalf of the caller.  Note: To bulk cancel access request approvals, please use the following: /access-requests/bulk-cancel
 
         :param bulk_cancel_request_dto: (required)
         :type bulk_cancel_request_dto: BulkCancelRequestDTO
@@ -815,7 +816,7 @@ class ApprovalsApi:
     ) -> RESTResponseType:
         """Post Bulk Cancel Approvals
 
-        Bulk cancels specified approval requests on behalf of the caller
+        Bulk cancels specified approval requests on behalf of the caller.  Note: To bulk cancel access request approvals, please use the following: /access-requests/bulk-cancel
 
         :param bulk_cancel_request_dto: (required)
         :type bulk_cancel_request_dto: BulkCancelRequestDTO
@@ -944,10 +945,318 @@ class ApprovalsApi:
 
 
     @validate_call
+    def cancel_approval_by_id(
+        self,
+        id: Annotated[StrictStr, Field(description="ID of the approval request to cancel.")],
+        approval_cancel_request: Optional[ApprovalCancelRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Post Approval Cancel
+
+        Cancels a specified approval requests on behalf of the caller.  Note: This endpoint does not support access request IDs. To cancel access request approvals, please use the following: /access-requests/cancel
+
+        :param id: ID of the approval request to cancel. (required)
+        :type id: str
+        :param approval_cancel_request:
+        :type approval_cancel_request: ApprovalCancelRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._cancel_approval_by_id_serialize(
+            id=id,
+            approval_cancel_request=approval_cancel_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '401': "GetAccessRequestConfig401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "GetAccessRequestConfig429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def cancel_approval_by_id_with_http_info(
+        self,
+        id: Annotated[StrictStr, Field(description="ID of the approval request to cancel.")],
+        approval_cancel_request: Optional[ApprovalCancelRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Post Approval Cancel
+
+        Cancels a specified approval requests on behalf of the caller.  Note: This endpoint does not support access request IDs. To cancel access request approvals, please use the following: /access-requests/cancel
+
+        :param id: ID of the approval request to cancel. (required)
+        :type id: str
+        :param approval_cancel_request:
+        :type approval_cancel_request: ApprovalCancelRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._cancel_approval_by_id_serialize(
+            id=id,
+            approval_cancel_request=approval_cancel_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '401': "GetAccessRequestConfig401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "GetAccessRequestConfig429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def cancel_approval_by_id_without_preload_content(
+        self,
+        id: Annotated[StrictStr, Field(description="ID of the approval request to cancel.")],
+        approval_cancel_request: Optional[ApprovalCancelRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Post Approval Cancel
+
+        Cancels a specified approval requests on behalf of the caller.  Note: This endpoint does not support access request IDs. To cancel access request approvals, please use the following: /access-requests/cancel
+
+        :param id: ID of the approval request to cancel. (required)
+        :type id: str
+        :param approval_cancel_request:
+        :type approval_cancel_request: ApprovalCancelRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._cancel_approval_by_id_serialize(
+            id=id,
+            approval_cancel_request=approval_cancel_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '401': "GetAccessRequestConfig401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "GetAccessRequestConfig429Response",
+            '500': "ErrorResponseDto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _cancel_approval_by_id_serialize(
+        self,
+        id,
+        approval_cancel_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if approval_cancel_request is not None:
+            _body_params = approval_cancel_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/generic-approvals/{id}/cancel',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def delete_approval_config_request(
         self,
-        id: Annotated[StrictStr, Field(description="The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
-        scope: Annotated[StrictStr, Field(description="The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
+        id: Annotated[StrictStr, Field(description="The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
+        scope: Annotated[StrictStr, Field(description="The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -965,9 +1274,9 @@ class ApprovalsApi:
 
         Deletes an approval configuration. Configurations at the APPROVAL_REQUEST scope cannot be deleted.
 
-        :param id: The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
+        :param id: The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
         :type id: str
-        :param scope: The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
+        :param scope: The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
         :type scope: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1023,8 +1332,8 @@ class ApprovalsApi:
     @validate_call
     def delete_approval_config_request_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
-        scope: Annotated[StrictStr, Field(description="The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
+        id: Annotated[StrictStr, Field(description="The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
+        scope: Annotated[StrictStr, Field(description="The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1042,9 +1351,9 @@ class ApprovalsApi:
 
         Deletes an approval configuration. Configurations at the APPROVAL_REQUEST scope cannot be deleted.
 
-        :param id: The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
+        :param id: The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
         :type id: str
-        :param scope: The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
+        :param scope: The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
         :type scope: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1100,8 +1409,8 @@ class ApprovalsApi:
     @validate_call
     def delete_approval_config_request_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
-        scope: Annotated[StrictStr, Field(description="The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
+        id: Annotated[StrictStr, Field(description="The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
+        scope: Annotated[StrictStr, Field(description="The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1119,9 +1428,9 @@ class ApprovalsApi:
 
         Deletes an approval configuration. Configurations at the APPROVAL_REQUEST scope cannot be deleted.
 
-        :param id: The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
+        :param id: The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
         :type id: str
-        :param scope: The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
+        :param scope: The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
         :type scope: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1257,7 +1566,7 @@ class ApprovalsApi:
     ) -> Approval:
         """Get an approval
 
-        Currently this endpoint only supports Entitlement Description Approvals. Retrieve a single approval for a given approval ID. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.
+        Fetches an approval request by it's approval ID. For lookups by access request ID please use the following: /generic-approvals?filters=referenceType+eq+\"accessRequestId\"+and+referenceId+eq+\"12345678901234567890123456789012\"
 
         :param id: ID of the approval that is to be returned (required)
         :type id: str
@@ -1329,7 +1638,7 @@ class ApprovalsApi:
     ) -> ApiResponse[Approval]:
         """Get an approval
 
-        Currently this endpoint only supports Entitlement Description Approvals. Retrieve a single approval for a given approval ID. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.
+        Fetches an approval request by it's approval ID. For lookups by access request ID please use the following: /generic-approvals?filters=referenceType+eq+\"accessRequestId\"+and+referenceId+eq+\"12345678901234567890123456789012\"
 
         :param id: ID of the approval that is to be returned (required)
         :type id: str
@@ -1401,7 +1710,7 @@ class ApprovalsApi:
     ) -> RESTResponseType:
         """Get an approval
 
-        Currently this endpoint only supports Entitlement Description Approvals. Retrieve a single approval for a given approval ID. This endpoint is for generic approvals, different than the access-request-approval endpoint and does not include access-request-approvals.
+        Fetches an approval request by it's approval ID. For lookups by access request ID please use the following: /generic-approvals?filters=referenceType+eq+\"accessRequestId\"+and+referenceId+eq+\"12345678901234567890123456789012\"
 
         :param id: ID of the approval that is to be returned (required)
         :type id: str
@@ -1526,6 +1835,7 @@ class ApprovalsApi:
         count_only: Annotated[Optional[StrictBool], Field(description="Adds X-Total-Count to the header to give the amount of total approvals returned from the query. Only returns the count and no approval objects.")] = None,
         include_comments: Annotated[Optional[StrictBool], Field(description="If set to true in the query, the approval requests returned will include comments.")] = None,
         include_approvers: Annotated[Optional[StrictBool], Field(description="If set to true in the query, the approval requests returned will include approvers.")] = None,
+        include_reassignment_history: Annotated[Optional[StrictBool], Field(description="If set to true in the query, the approval requests returned will include reassignment history.")] = None,
         include_batch_info: Annotated[Optional[StrictBool], Field(description="If set to true in the query, the approval requests returned will include batch information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, ne, in, co, sw*  **referenceType**: *eq, ne, in, co, sw*  **name**: *eq, ne, in, co, sw*  **priority**: *eq, ne, in, co, sw*  **type**: *eq, ne, in, co, sw*  **medium**: *eq, ne, in, co, sw*  **description**: *eq, ne, in, co, sw*  **batchId**: *eq, ne, in, co, sw*  **approvalId**: *eq, ne, in, co, sw*  **tenantId**: *eq, ne, in, co, sw*  **createdDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **dueDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **completedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **search**: *eq, ne, in, co, sw*  **referenceId**: *eq, ne, in, co, sw*  **referenceName**: *eq, ne, in, co, sw*  **requestedTargetType**: *eq, ne, in, co, sw*  **requestedTargetRequestType**: *eq, ne, in, co, sw*  **requestedTargetId**: *eq, ne, in, co, sw*  **modifiedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **requesterId**: *eq, ne, in, co, sw*  **requesteeId**: *eq, ne, in, co, sw*  **approverId**: *eq, ne, in, co, sw*  **decisionDate**: *eq, ne, in, co, sw, gt, ge, lt, le*")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
@@ -1545,7 +1855,7 @@ class ApprovalsApi:
     ) -> List[Approval]:
         """Get approvals
 
-        Currently this endpoint only supports Entitlement Description Approvals. Get a list of approvals. This endpoint is for generic approvals, unlike the access-request-approval endpoint, and does not include access-request-approvals.  Absence of all query parameters for non admins will will default to mine=true. Admin will default to mine=false. Absence of all query parameters for admins will return all approvals in the org.
+        Gets a list of approvals. For lookups by access request ID please use the following: /generic-approvals?filters=referenceType+eq+\"accessRequestId\"+and+referenceId+eq+\"12345678901234567890123456789012\" Absence of all query parameters for non admins will will default to mine=true. Admin will default to mine=false. Absence of all query parameters for admins will return all approvals in the org.
 
         :param mine: Returns the list of approvals for the current caller. Defaults to false if admin, true otherwise.
         :type mine: bool
@@ -1563,6 +1873,8 @@ class ApprovalsApi:
         :type include_comments: bool
         :param include_approvers: If set to true in the query, the approval requests returned will include approvers.
         :type include_approvers: bool
+        :param include_reassignment_history: If set to true in the query, the approval requests returned will include reassignment history.
+        :type include_reassignment_history: bool
         :param include_batch_info: If set to true in the query, the approval requests returned will include batch information.
         :type include_batch_info: bool
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, ne, in, co, sw*  **referenceType**: *eq, ne, in, co, sw*  **name**: *eq, ne, in, co, sw*  **priority**: *eq, ne, in, co, sw*  **type**: *eq, ne, in, co, sw*  **medium**: *eq, ne, in, co, sw*  **description**: *eq, ne, in, co, sw*  **batchId**: *eq, ne, in, co, sw*  **approvalId**: *eq, ne, in, co, sw*  **tenantId**: *eq, ne, in, co, sw*  **createdDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **dueDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **completedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **search**: *eq, ne, in, co, sw*  **referenceId**: *eq, ne, in, co, sw*  **referenceName**: *eq, ne, in, co, sw*  **requestedTargetType**: *eq, ne, in, co, sw*  **requestedTargetRequestType**: *eq, ne, in, co, sw*  **requestedTargetId**: *eq, ne, in, co, sw*  **modifiedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **requesterId**: *eq, ne, in, co, sw*  **requesteeId**: *eq, ne, in, co, sw*  **approverId**: *eq, ne, in, co, sw*  **decisionDate**: *eq, ne, in, co, sw, gt, ge, lt, le*
@@ -1602,6 +1914,7 @@ class ApprovalsApi:
             count_only=count_only,
             include_comments=include_comments,
             include_approvers=include_approvers,
+            include_reassignment_history=include_reassignment_history,
             include_batch_info=include_batch_info,
             filters=filters,
             limit=limit,
@@ -1642,6 +1955,7 @@ class ApprovalsApi:
         count_only: Annotated[Optional[StrictBool], Field(description="Adds X-Total-Count to the header to give the amount of total approvals returned from the query. Only returns the count and no approval objects.")] = None,
         include_comments: Annotated[Optional[StrictBool], Field(description="If set to true in the query, the approval requests returned will include comments.")] = None,
         include_approvers: Annotated[Optional[StrictBool], Field(description="If set to true in the query, the approval requests returned will include approvers.")] = None,
+        include_reassignment_history: Annotated[Optional[StrictBool], Field(description="If set to true in the query, the approval requests returned will include reassignment history.")] = None,
         include_batch_info: Annotated[Optional[StrictBool], Field(description="If set to true in the query, the approval requests returned will include batch information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, ne, in, co, sw*  **referenceType**: *eq, ne, in, co, sw*  **name**: *eq, ne, in, co, sw*  **priority**: *eq, ne, in, co, sw*  **type**: *eq, ne, in, co, sw*  **medium**: *eq, ne, in, co, sw*  **description**: *eq, ne, in, co, sw*  **batchId**: *eq, ne, in, co, sw*  **approvalId**: *eq, ne, in, co, sw*  **tenantId**: *eq, ne, in, co, sw*  **createdDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **dueDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **completedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **search**: *eq, ne, in, co, sw*  **referenceId**: *eq, ne, in, co, sw*  **referenceName**: *eq, ne, in, co, sw*  **requestedTargetType**: *eq, ne, in, co, sw*  **requestedTargetRequestType**: *eq, ne, in, co, sw*  **requestedTargetId**: *eq, ne, in, co, sw*  **modifiedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **requesterId**: *eq, ne, in, co, sw*  **requesteeId**: *eq, ne, in, co, sw*  **approverId**: *eq, ne, in, co, sw*  **decisionDate**: *eq, ne, in, co, sw, gt, ge, lt, le*")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
@@ -1661,7 +1975,7 @@ class ApprovalsApi:
     ) -> ApiResponse[List[Approval]]:
         """Get approvals
 
-        Currently this endpoint only supports Entitlement Description Approvals. Get a list of approvals. This endpoint is for generic approvals, unlike the access-request-approval endpoint, and does not include access-request-approvals.  Absence of all query parameters for non admins will will default to mine=true. Admin will default to mine=false. Absence of all query parameters for admins will return all approvals in the org.
+        Gets a list of approvals. For lookups by access request ID please use the following: /generic-approvals?filters=referenceType+eq+\"accessRequestId\"+and+referenceId+eq+\"12345678901234567890123456789012\" Absence of all query parameters for non admins will will default to mine=true. Admin will default to mine=false. Absence of all query parameters for admins will return all approvals in the org.
 
         :param mine: Returns the list of approvals for the current caller. Defaults to false if admin, true otherwise.
         :type mine: bool
@@ -1679,6 +1993,8 @@ class ApprovalsApi:
         :type include_comments: bool
         :param include_approvers: If set to true in the query, the approval requests returned will include approvers.
         :type include_approvers: bool
+        :param include_reassignment_history: If set to true in the query, the approval requests returned will include reassignment history.
+        :type include_reassignment_history: bool
         :param include_batch_info: If set to true in the query, the approval requests returned will include batch information.
         :type include_batch_info: bool
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, ne, in, co, sw*  **referenceType**: *eq, ne, in, co, sw*  **name**: *eq, ne, in, co, sw*  **priority**: *eq, ne, in, co, sw*  **type**: *eq, ne, in, co, sw*  **medium**: *eq, ne, in, co, sw*  **description**: *eq, ne, in, co, sw*  **batchId**: *eq, ne, in, co, sw*  **approvalId**: *eq, ne, in, co, sw*  **tenantId**: *eq, ne, in, co, sw*  **createdDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **dueDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **completedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **search**: *eq, ne, in, co, sw*  **referenceId**: *eq, ne, in, co, sw*  **referenceName**: *eq, ne, in, co, sw*  **requestedTargetType**: *eq, ne, in, co, sw*  **requestedTargetRequestType**: *eq, ne, in, co, sw*  **requestedTargetId**: *eq, ne, in, co, sw*  **modifiedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **requesterId**: *eq, ne, in, co, sw*  **requesteeId**: *eq, ne, in, co, sw*  **approverId**: *eq, ne, in, co, sw*  **decisionDate**: *eq, ne, in, co, sw, gt, ge, lt, le*
@@ -1718,6 +2034,7 @@ class ApprovalsApi:
             count_only=count_only,
             include_comments=include_comments,
             include_approvers=include_approvers,
+            include_reassignment_history=include_reassignment_history,
             include_batch_info=include_batch_info,
             filters=filters,
             limit=limit,
@@ -1758,6 +2075,7 @@ class ApprovalsApi:
         count_only: Annotated[Optional[StrictBool], Field(description="Adds X-Total-Count to the header to give the amount of total approvals returned from the query. Only returns the count and no approval objects.")] = None,
         include_comments: Annotated[Optional[StrictBool], Field(description="If set to true in the query, the approval requests returned will include comments.")] = None,
         include_approvers: Annotated[Optional[StrictBool], Field(description="If set to true in the query, the approval requests returned will include approvers.")] = None,
+        include_reassignment_history: Annotated[Optional[StrictBool], Field(description="If set to true in the query, the approval requests returned will include reassignment history.")] = None,
         include_batch_info: Annotated[Optional[StrictBool], Field(description="If set to true in the query, the approval requests returned will include batch information.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, ne, in, co, sw*  **referenceType**: *eq, ne, in, co, sw*  **name**: *eq, ne, in, co, sw*  **priority**: *eq, ne, in, co, sw*  **type**: *eq, ne, in, co, sw*  **medium**: *eq, ne, in, co, sw*  **description**: *eq, ne, in, co, sw*  **batchId**: *eq, ne, in, co, sw*  **approvalId**: *eq, ne, in, co, sw*  **tenantId**: *eq, ne, in, co, sw*  **createdDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **dueDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **completedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **search**: *eq, ne, in, co, sw*  **referenceId**: *eq, ne, in, co, sw*  **referenceName**: *eq, ne, in, co, sw*  **requestedTargetType**: *eq, ne, in, co, sw*  **requestedTargetRequestType**: *eq, ne, in, co, sw*  **requestedTargetId**: *eq, ne, in, co, sw*  **modifiedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **requesterId**: *eq, ne, in, co, sw*  **requesteeId**: *eq, ne, in, co, sw*  **approverId**: *eq, ne, in, co, sw*  **decisionDate**: *eq, ne, in, co, sw, gt, ge, lt, le*")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None,
@@ -1777,7 +2095,7 @@ class ApprovalsApi:
     ) -> RESTResponseType:
         """Get approvals
 
-        Currently this endpoint only supports Entitlement Description Approvals. Get a list of approvals. This endpoint is for generic approvals, unlike the access-request-approval endpoint, and does not include access-request-approvals.  Absence of all query parameters for non admins will will default to mine=true. Admin will default to mine=false. Absence of all query parameters for admins will return all approvals in the org.
+        Gets a list of approvals. For lookups by access request ID please use the following: /generic-approvals?filters=referenceType+eq+\"accessRequestId\"+and+referenceId+eq+\"12345678901234567890123456789012\" Absence of all query parameters for non admins will will default to mine=true. Admin will default to mine=false. Absence of all query parameters for admins will return all approvals in the org.
 
         :param mine: Returns the list of approvals for the current caller. Defaults to false if admin, true otherwise.
         :type mine: bool
@@ -1795,6 +2113,8 @@ class ApprovalsApi:
         :type include_comments: bool
         :param include_approvers: If set to true in the query, the approval requests returned will include approvers.
         :type include_approvers: bool
+        :param include_reassignment_history: If set to true in the query, the approval requests returned will include reassignment history.
+        :type include_reassignment_history: bool
         :param include_batch_info: If set to true in the query, the approval requests returned will include batch information.
         :type include_batch_info: bool
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, ne, in, co, sw*  **referenceType**: *eq, ne, in, co, sw*  **name**: *eq, ne, in, co, sw*  **priority**: *eq, ne, in, co, sw*  **type**: *eq, ne, in, co, sw*  **medium**: *eq, ne, in, co, sw*  **description**: *eq, ne, in, co, sw*  **batchId**: *eq, ne, in, co, sw*  **approvalId**: *eq, ne, in, co, sw*  **tenantId**: *eq, ne, in, co, sw*  **createdDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **dueDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **completedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **search**: *eq, ne, in, co, sw*  **referenceId**: *eq, ne, in, co, sw*  **referenceName**: *eq, ne, in, co, sw*  **requestedTargetType**: *eq, ne, in, co, sw*  **requestedTargetRequestType**: *eq, ne, in, co, sw*  **requestedTargetId**: *eq, ne, in, co, sw*  **modifiedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **requesterId**: *eq, ne, in, co, sw*  **requesteeId**: *eq, ne, in, co, sw*  **approverId**: *eq, ne, in, co, sw*  **decisionDate**: *eq, ne, in, co, sw, gt, ge, lt, le*
@@ -1834,6 +2154,7 @@ class ApprovalsApi:
             count_only=count_only,
             include_comments=include_comments,
             include_approvers=include_approvers,
+            include_reassignment_history=include_reassignment_history,
             include_batch_info=include_batch_info,
             filters=filters,
             limit=limit,
@@ -1869,6 +2190,7 @@ class ApprovalsApi:
         count_only,
         include_comments,
         include_approvers,
+        include_reassignment_history,
         include_batch_info,
         filters,
         limit,
@@ -1927,6 +2249,10 @@ class ApprovalsApi:
             
             _query_params.append(('include-approvers', include_approvers))
             
+        if include_reassignment_history is not None:
+            
+            _query_params.append(('include-reassignment-history', include_reassignment_history))
+            
         if include_batch_info is not None:
             
             _query_params.append(('include-batch-info', include_batch_info))
@@ -1984,7 +2310,7 @@ class ApprovalsApi:
     @validate_call
     def get_approvals_config(
         self,
-        id: Annotated[StrictStr, Field(description="The id of the object the config applies to, for example one of the following: [(approvalID), (roleID), (entitlementID), (accessProfileID), \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", (tenantID)]")],
+        id: Annotated[StrictStr, Field(description="The id of the object the config applies to, for example one of the following: [(approvalID), (roleID), (entitlementID), (accessProfileID), \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", \"ACCOUNT_CREATE_APPROVAL_REQUEST\", \"ACCOUNT_DELETE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST\", (tenantID)]")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2002,7 +2328,7 @@ class ApprovalsApi:
 
         Retrieves a singular approval configuration that matches the given ID
 
-        :param id: The id of the object the config applies to, for example one of the following: [(approvalID), (roleID), (entitlementID), (accessProfileID), \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", (tenantID)] (required)
+        :param id: The id of the object the config applies to, for example one of the following: [(approvalID), (roleID), (entitlementID), (accessProfileID), \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", \"ACCOUNT_CREATE_APPROVAL_REQUEST\", \"ACCOUNT_DELETE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST\", (tenantID)] (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2056,7 +2382,7 @@ class ApprovalsApi:
     @validate_call
     def get_approvals_config_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The id of the object the config applies to, for example one of the following: [(approvalID), (roleID), (entitlementID), (accessProfileID), \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", (tenantID)]")],
+        id: Annotated[StrictStr, Field(description="The id of the object the config applies to, for example one of the following: [(approvalID), (roleID), (entitlementID), (accessProfileID), \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", \"ACCOUNT_CREATE_APPROVAL_REQUEST\", \"ACCOUNT_DELETE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST\", (tenantID)]")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2074,7 +2400,7 @@ class ApprovalsApi:
 
         Retrieves a singular approval configuration that matches the given ID
 
-        :param id: The id of the object the config applies to, for example one of the following: [(approvalID), (roleID), (entitlementID), (accessProfileID), \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", (tenantID)] (required)
+        :param id: The id of the object the config applies to, for example one of the following: [(approvalID), (roleID), (entitlementID), (accessProfileID), \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", \"ACCOUNT_CREATE_APPROVAL_REQUEST\", \"ACCOUNT_DELETE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST\", (tenantID)] (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2128,7 +2454,7 @@ class ApprovalsApi:
     @validate_call
     def get_approvals_config_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The id of the object the config applies to, for example one of the following: [(approvalID), (roleID), (entitlementID), (accessProfileID), \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", (tenantID)]")],
+        id: Annotated[StrictStr, Field(description="The id of the object the config applies to, for example one of the following: [(approvalID), (roleID), (entitlementID), (accessProfileID), \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", \"ACCOUNT_CREATE_APPROVAL_REQUEST\", \"ACCOUNT_DELETE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST\", (tenantID)]")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2146,7 +2472,7 @@ class ApprovalsApi:
 
         Retrieves a singular approval configuration that matches the given ID
 
-        :param id: The id of the object the config applies to, for example one of the following: [(approvalID), (roleID), (entitlementID), (accessProfileID), \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", (tenantID)] (required)
+        :param id: The id of the object the config applies to, for example one of the following: [(approvalID), (roleID), (entitlementID), (accessProfileID), \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", \"ACCOUNT_CREATE_APPROVAL_REQUEST\", \"ACCOUNT_DELETE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST\", (tenantID)] (required)
         :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2554,8 +2880,8 @@ class ApprovalsApi:
     @validate_call
     def put_approvals_config(
         self,
-        id: Annotated[StrictStr, Field(description="The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
-        scope: Annotated[StrictStr, Field(description="The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
+        id: Annotated[StrictStr, Field(description="The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
+        scope: Annotated[StrictStr, Field(description="The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
         approval_config: ApprovalConfig,
         _request_timeout: Union[
             None,
@@ -2574,9 +2900,9 @@ class ApprovalsApi:
 
         Upserts a singular approval configuration that matches the given configID and configScope.  For example to update the approval configurations for all Access Request Approvals please use: '/generic-approvals/config/ACCESS_REQUEST_APPROVAL/APPROVAL_TYPE'
 
-        :param id: The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
+        :param id: The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
         :type id: str
-        :param scope: The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
+        :param scope: The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
         :type scope: str
         :param approval_config: (required)
         :type approval_config: ApprovalConfig
@@ -2635,8 +2961,8 @@ class ApprovalsApi:
     @validate_call
     def put_approvals_config_with_http_info(
         self,
-        id: Annotated[StrictStr, Field(description="The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
-        scope: Annotated[StrictStr, Field(description="The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
+        id: Annotated[StrictStr, Field(description="The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
+        scope: Annotated[StrictStr, Field(description="The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
         approval_config: ApprovalConfig,
         _request_timeout: Union[
             None,
@@ -2655,9 +2981,9 @@ class ApprovalsApi:
 
         Upserts a singular approval configuration that matches the given configID and configScope.  For example to update the approval configurations for all Access Request Approvals please use: '/generic-approvals/config/ACCESS_REQUEST_APPROVAL/APPROVAL_TYPE'
 
-        :param id: The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
+        :param id: The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
         :type id: str
-        :param scope: The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
+        :param scope: The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
         :type scope: str
         :param approval_config: (required)
         :type approval_config: ApprovalConfig
@@ -2716,8 +3042,8 @@ class ApprovalsApi:
     @validate_call
     def put_approvals_config_without_preload_content(
         self,
-        id: Annotated[StrictStr, Field(description="The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
-        scope: Annotated[StrictStr, Field(description="The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
+        id: Annotated[StrictStr, Field(description="The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
+        scope: Annotated[StrictStr, Field(description="The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")],
         approval_config: ApprovalConfig,
         _request_timeout: Union[
             None,
@@ -2736,9 +3062,9 @@ class ApprovalsApi:
 
         Upserts a singular approval configuration that matches the given configID and configScope.  For example to update the approval configurations for all Access Request Approvals please use: '/generic-approvals/config/ACCESS_REQUEST_APPROVAL/APPROVAL_TYPE'
 
-        :param id: The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
+        :param id: The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
         :type id: str
-        :param scope: The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
+        :param scope: The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT (required)
         :type scope: str
         :param approval_config: (required)
         :type approval_config: ApprovalConfig
@@ -2894,7 +3220,7 @@ class ApprovalsApi:
     ) -> None:
         """Post Approvals Reject
 
-        Currently this endpoint only supports Entitlement Description Approvals. Rejects a specified approval request on behalf of the caller. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user.
+        Rejects a specified approval request on behalf of the caller. This endpoint does not support access request IDs. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user and approved.
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to reject. (required)
         :type id: str
@@ -2971,7 +3297,7 @@ class ApprovalsApi:
     ) -> ApiResponse[None]:
         """Post Approvals Reject
 
-        Currently this endpoint only supports Entitlement Description Approvals. Rejects a specified approval request on behalf of the caller. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user.
+        Rejects a specified approval request on behalf of the caller. This endpoint does not support access request IDs. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user and approved.
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to reject. (required)
         :type id: str
@@ -3048,7 +3374,7 @@ class ApprovalsApi:
     ) -> RESTResponseType:
         """Post Approvals Reject
 
-        Currently this endpoint only supports Entitlement Description Approvals. Rejects a specified approval request on behalf of the caller. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user.
+        Rejects a specified approval request on behalf of the caller. This endpoint does not support access request IDs. If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user and approved.
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to reject. (required)
         :type id: str
@@ -3495,7 +3821,7 @@ class ApprovalsApi:
     ) -> Approval:
         """Post Approvals Attributes
 
-        Currently this endpoint only supports Entitlement Description Approvals. Allows for the edit/addition/removal of the key/value pair additional attributes map for an existing approval request.
+        Allows for the edit/addition/removal of the key/value pair additional attributes map for an existing approval request. This endpoint does not support access request IDs.
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to change the attributes of. (required)
         :type id: str
@@ -3572,7 +3898,7 @@ class ApprovalsApi:
     ) -> ApiResponse[Approval]:
         """Post Approvals Attributes
 
-        Currently this endpoint only supports Entitlement Description Approvals. Allows for the edit/addition/removal of the key/value pair additional attributes map for an existing approval request.
+        Allows for the edit/addition/removal of the key/value pair additional attributes map for an existing approval request. This endpoint does not support access request IDs.
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to change the attributes of. (required)
         :type id: str
@@ -3649,7 +3975,7 @@ class ApprovalsApi:
     ) -> RESTResponseType:
         """Post Approvals Attributes
 
-        Currently this endpoint only supports Entitlement Description Approvals. Allows for the edit/addition/removal of the key/value pair additional attributes map for an existing approval request.
+        Allows for the edit/addition/removal of the key/value pair additional attributes map for an existing approval request. This endpoint does not support access request IDs.
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to change the attributes of. (required)
         :type id: str
@@ -3803,7 +4129,7 @@ class ApprovalsApi:
     ) -> Approval:
         """Post Approvals Comments
 
-        Currently this endpoint only supports Entitlement Description Approvals. Adds comments to a specified approval request.
+        Adds comments to a specified approval request. This endpoint does not support access request IDs.
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to add a comment to. (required)
         :type id: str
@@ -3880,7 +4206,7 @@ class ApprovalsApi:
     ) -> ApiResponse[Approval]:
         """Post Approvals Comments
 
-        Currently this endpoint only supports Entitlement Description Approvals. Adds comments to a specified approval request.
+        Adds comments to a specified approval request. This endpoint does not support access request IDs.
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to add a comment to. (required)
         :type id: str
@@ -3957,7 +4283,7 @@ class ApprovalsApi:
     ) -> RESTResponseType:
         """Post Approvals Comments
 
-        Currently this endpoint only supports Entitlement Description Approvals. Adds comments to a specified approval request.
+        Adds comments to a specified approval request. This endpoint does not support access request IDs.
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to add a comment to. (required)
         :type id: str
@@ -4111,7 +4437,7 @@ class ApprovalsApi:
     ) -> None:
         """Post Approvals Reassign
 
-        Currently this endpoint only supports Entitlement Description Approvals. Reassigns an approval request to another identity resulting in that identity being added as an authorized approver.
+        Reassigns an approval request to another identity resulting in that identity being added as an authorized approver. This endpoint does not support access request IDs.
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to reassign. (required)
         :type id: str
@@ -4188,7 +4514,7 @@ class ApprovalsApi:
     ) -> ApiResponse[None]:
         """Post Approvals Reassign
 
-        Currently this endpoint only supports Entitlement Description Approvals. Reassigns an approval request to another identity resulting in that identity being added as an authorized approver.
+        Reassigns an approval request to another identity resulting in that identity being added as an authorized approver. This endpoint does not support access request IDs.
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to reassign. (required)
         :type id: str
@@ -4265,7 +4591,7 @@ class ApprovalsApi:
     ) -> RESTResponseType:
         """Post Approvals Reassign
 
-        Currently this endpoint only supports Entitlement Description Approvals. Reassigns an approval request to another identity resulting in that identity being added as an authorized approver.
+        Reassigns an approval request to another identity resulting in that identity being added as an authorized approver. This endpoint does not support access request IDs.
 
         :param id: Approval ID that correlates to an existing approval request that a user wants to reassign. (required)
         :type id: str

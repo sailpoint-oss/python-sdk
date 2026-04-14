@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v2026.models.approval_config_cron_timezone import ApprovalConfigCronTimezone
 from sailpoint.v2026.models.approval_config_escalation_config import ApprovalConfigEscalationConfig
@@ -32,9 +32,6 @@ class ApprovalConfig(BaseModel):
     """
     Approval config Object
     """ # noqa: E501
-    tenant_id: Optional[StrictStr] = Field(default=None, description="Tenant ID of the approval configuration.", alias="tenantId")
-    id: Optional[StrictStr] = Field(default=None, description="The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")
-    scope: Optional[StrictStr] = Field(default=None, description="The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT")
     reminder_config: Optional[ApprovalConfigReminderConfig] = Field(default=None, alias="reminderConfig")
     escalation_config: Optional[ApprovalConfigEscalationConfig] = Field(default=None, alias="escalationConfig")
     timeout_config: Optional[ApprovalConfigTimeoutConfig] = Field(default=None, alias="timeoutConfig")
@@ -42,8 +39,10 @@ class ApprovalConfig(BaseModel):
     serial_chain: Optional[List[ApprovalConfigSerialChainInner]] = Field(default=None, description="If the approval request has an approvalCriteria of SERIAL this chain will be used to determine the assignment order.", alias="serialChain")
     requires_comment: Optional[StrictStr] = Field(default=None, description="Determines whether a comment is required when approving or rejecting the approval request.", alias="requiresComment")
     fallback_approver: Optional[Dict[str, Any]] = Field(default=None, description="Configuration for fallback approver. Used if the user cannot be found for whatever reason and escalation config does not exist.", alias="fallbackApprover")
+    machine_identity_manager_assignment: Optional[StrictStr] = Field(default='MACHINE_IDENTITY_OWNER', description="Specifies how to treat the identity type \"MANAGER_OF\" when the requestee is a machine identity.", alias="machineIdentityManagerAssignment")
+    circumvent_approval_process: Optional[StrictBool] = Field(default=False, description="When true, all approvals will be created with the status \"PASSED\".", alias="circumventApprovalProcess")
     auto_approve: Optional[StrictStr] = Field(default=None, description="OFF will prevent the approval request from being assigned to the requester or requestee by assigning it to their manager instead. DIRECT will cause approval requests to be auto-approved when assigned directly and only to the requester. INDIRECT will auto-approve when the requester appears anywhere in the list of approvers, including in a governance group. This field will only be effective if requestedTarget.reauthRequired is set to false, otherwise the approval will have to be manually approved.", alias="autoApprove")
-    __properties: ClassVar[List[str]] = ["tenantId", "id", "scope", "reminderConfig", "escalationConfig", "timeoutConfig", "cronTimezone", "serialChain", "requiresComment", "fallbackApprover", "autoApprove"]
+    __properties: ClassVar[List[str]] = ["reminderConfig", "escalationConfig", "timeoutConfig", "cronTimezone", "serialChain", "requiresComment", "fallbackApprover", "machineIdentityManagerAssignment", "circumventApprovalProcess", "autoApprove"]
 
     @field_validator('requires_comment')
     def requires_comment_validate_enum(cls, value):
@@ -53,6 +52,16 @@ class ApprovalConfig(BaseModel):
 
         if value not in set(['APPROVAL', 'REJECTION', 'ALL', 'OFF']):
             warnings.warn(f"must be one of enum values ('APPROVAL', 'REJECTION', 'ALL', 'OFF') unknown value: {value}")
+        return value
+
+    @field_validator('machine_identity_manager_assignment')
+    def machine_identity_manager_assignment_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['MANAGER_OF_REQUESTER', 'MACHINE_IDENTITY_OWNER', 'MANAGER_OF_MACHINE_IDENTITY_OWNER', 'REQUESTED_TARGET_OWNER', 'MANAGER_OF_REQUESTED_TARGET_OWNER', 'ACCOUNT_OWNER', 'MANAGER_OF_ACCOUNT_OWNER']):
+            warnings.warn(f"must be one of enum values ('MANAGER_OF_REQUESTER', 'MACHINE_IDENTITY_OWNER', 'MANAGER_OF_MACHINE_IDENTITY_OWNER', 'REQUESTED_TARGET_OWNER', 'MANAGER_OF_REQUESTED_TARGET_OWNER', 'ACCOUNT_OWNER', 'MANAGER_OF_ACCOUNT_OWNER') unknown value: {value}")
         return value
 
     @field_validator('auto_approve')
@@ -138,9 +147,6 @@ class ApprovalConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "tenantId": obj.get("tenantId"),
-            "id": obj.get("id"),
-            "scope": obj.get("scope"),
             "reminderConfig": ApprovalConfigReminderConfig.from_dict(obj["reminderConfig"]) if obj.get("reminderConfig") is not None else None,
             "escalationConfig": ApprovalConfigEscalationConfig.from_dict(obj["escalationConfig"]) if obj.get("escalationConfig") is not None else None,
             "timeoutConfig": ApprovalConfigTimeoutConfig.from_dict(obj["timeoutConfig"]) if obj.get("timeoutConfig") is not None else None,
@@ -148,6 +154,8 @@ class ApprovalConfig(BaseModel):
             "serialChain": [ApprovalConfigSerialChainInner.from_dict(_item) for _item in obj["serialChain"]] if obj.get("serialChain") is not None else None,
             "requiresComment": obj.get("requiresComment"),
             "fallbackApprover": ApprovalIdentity.from_dict(obj["fallbackApprover"]) if obj.get("fallbackApprover") is not None else None,
+            "machineIdentityManagerAssignment": obj.get("machineIdentityManagerAssignment") if obj.get("machineIdentityManagerAssignment") is not None else 'MACHINE_IDENTITY_OWNER',
+            "circumventApprovalProcess": obj.get("circumventApprovalProcess") if obj.get("circumventApprovalProcess") is not None else False,
             "autoApprove": obj.get("autoApprove")
         })
         return _obj

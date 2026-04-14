@@ -207,6 +207,7 @@ from sailpoint.v2026.models.approval_approval_criteria_rejection import Approval
 from sailpoint.v2026.models.approval_approve_request import ApprovalApproveRequest
 from sailpoint.v2026.models.approval_attributes_request import ApprovalAttributesRequest
 from sailpoint.v2026.models.approval_batch import ApprovalBatch
+from sailpoint.v2026.models.approval_cancel_request import ApprovalCancelRequest
 from sailpoint.v2026.models.approval_comment import ApprovalComment
 from sailpoint.v2026.models.approval_comment1 import ApprovalComment1
 from sailpoint.v2026.models.approval_comment2 import ApprovalComment2

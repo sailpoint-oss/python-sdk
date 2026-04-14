@@ -4589,6 +4589,8 @@ class CustomFormsApi:
     @validate_call
     def search_form_instances_by_tenant(
         self,
+        offset: Annotated[Optional[StrictInt], Field(description="Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **formDefinitionId**: *eq*")] = None,
         _request_timeout: Union[
             None,
@@ -4607,6 +4609,10 @@ class CustomFormsApi:
 
         Returns a list of form instances for the tenant. Optionally filter by form definition ID.
 
+        :param offset: Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
+        :type offset: int
+        :param limit: Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
+        :type limit: int
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **formDefinitionId**: *eq*
         :type filters: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4632,6 +4638,8 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._search_form_instances_by_tenant_serialize(
+            offset=offset,
+            limit=limit,
             filters=filters,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4661,6 +4669,8 @@ class CustomFormsApi:
     @validate_call
     def search_form_instances_by_tenant_with_http_info(
         self,
+        offset: Annotated[Optional[StrictInt], Field(description="Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **formDefinitionId**: *eq*")] = None,
         _request_timeout: Union[
             None,
@@ -4679,6 +4689,10 @@ class CustomFormsApi:
 
         Returns a list of form instances for the tenant. Optionally filter by form definition ID.
 
+        :param offset: Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
+        :type offset: int
+        :param limit: Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
+        :type limit: int
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **formDefinitionId**: *eq*
         :type filters: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4704,6 +4718,8 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._search_form_instances_by_tenant_serialize(
+            offset=offset,
+            limit=limit,
             filters=filters,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4733,6 +4749,8 @@ class CustomFormsApi:
     @validate_call
     def search_form_instances_by_tenant_without_preload_content(
         self,
+        offset: Annotated[Optional[StrictInt], Field(description="Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
         filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **formDefinitionId**: *eq*")] = None,
         _request_timeout: Union[
             None,
@@ -4751,6 +4769,10 @@ class CustomFormsApi:
 
         Returns a list of form instances for the tenant. Optionally filter by form definition ID.
 
+        :param offset: Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
+        :type offset: int
+        :param limit: Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
+        :type limit: int
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **formDefinitionId**: *eq*
         :type filters: str
         :param _request_timeout: timeout setting for this request. If one
@@ -4776,6 +4798,8 @@ class CustomFormsApi:
         """ # noqa: E501
 
         _param = self._search_form_instances_by_tenant_serialize(
+            offset=offset,
+            limit=limit,
             filters=filters,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4800,6 +4824,8 @@ class CustomFormsApi:
 
     def _search_form_instances_by_tenant_serialize(
         self,
+        offset,
+        limit,
         filters,
         _request_auth,
         _content_type,
@@ -4823,6 +4849,14 @@ class CustomFormsApi:
 
         # process the path parameters
         # process the query parameters
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
         if filters is not None:
             
             _query_params.append(('filters', filters))
