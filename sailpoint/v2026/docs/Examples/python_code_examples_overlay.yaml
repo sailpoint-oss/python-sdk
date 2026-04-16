@@ -23730,6 +23730,60 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling SourcesApi->update_source_schema: %s\n" % e)
+- path: /suggested-entitlement-descriptions/auto-write-settings
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/suggested-entitlement-description#create-auto-write-settings
+      source: |
+        from sailpoint.v2026.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.auto_write_setting import AutoWriteSetting
+        from sailpoint.v2026.models.auto_write_setting_response import AutoWriteSettingResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          auto_write_setting = '''{
+          "excludedSourceIds" : [ "2c91808a7813090a017814552e526350" ],
+          "includedSourceIds" : [ "2c91808a7813090a017814552e526349", "2c91808a7813090a017814552e52634a" ],
+          "enabled" : true
+        }''' # AutoWriteSetting | Auto-write settings to create
+          try:
+              # Create auto-write settings for SED
+              new_auto_write_setting = AutoWriteSetting.from_json(auto_write_setting)
+              results = SuggestedEntitlementDescriptionApi(api_client).create_auto_write_settings(auto_write_setting=new_auto_write_setting)
+              # Below is a request that includes all optional parameters
+              # results = SuggestedEntitlementDescriptionApi(api_client).create_auto_write_settings(new_auto_write_setting)
+              print("The response of SuggestedEntitlementDescriptionApi->create_auto_write_settings:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SuggestedEntitlementDescriptionApi->create_auto_write_settings: %s\n" % e)
+- path: /suggested-entitlement-descriptions/auto-write-settings
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/suggested-entitlement-description#get-auto-write-settings
+      source: |
+        from sailpoint.v2026.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.auto_write_setting_response import AutoWriteSettingResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          try:
+              # Get auto-write settings for SED
+              
+              results = SuggestedEntitlementDescriptionApi(api_client).get_auto_write_settings()
+              # Below is a request that includes all optional parameters
+              # results = SuggestedEntitlementDescriptionApi(api_client).get_auto_write_settings()
+              print("The response of SuggestedEntitlementDescriptionApi->get_auto_write_settings:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SuggestedEntitlementDescriptionApi->get_auto_write_settings: %s\n" % e)
 - path: /suggested-entitlement-description-batches/{batchId}/stats
   method: GET
   xCodeSample:
@@ -23956,6 +24010,32 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling SuggestedEntitlementDescriptionApi->submit_sed_batch_request: %s\n" % e)
+- path: /suggested-entitlement-descriptions/auto-write-settings
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/suggested-entitlement-description#update-auto-write-settings
+      source: |
+        from sailpoint.v2026.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.auto_write_setting_patch import AutoWriteSettingPatch
+        from sailpoint.v2026.models.auto_write_setting_response import AutoWriteSettingResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          auto_write_setting_patch = '''[sailpoint.v2026.AutoWriteSettingPatch()]''' # List[AutoWriteSettingPatch] | Patch operations for auto-write settings
+          try:
+              # Update auto-write settings for SED
+              new_auto_write_setting_patch = AutoWriteSettingPatch.from_json(auto_write_setting_patch)
+              results = SuggestedEntitlementDescriptionApi(api_client).update_auto_write_settings(auto_write_setting_patch=new_auto_write_setting_patch)
+              # Below is a request that includes all optional parameters
+              # results = SuggestedEntitlementDescriptionApi(api_client).update_auto_write_settings(new_auto_write_setting_patch)
+              print("The response of SuggestedEntitlementDescriptionApi->update_auto_write_settings:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SuggestedEntitlementDescriptionApi->update_auto_write_settings: %s\n" % e)
 - path: /tagged-objects/{type}/{id}
   method: DELETE
   xCodeSample:

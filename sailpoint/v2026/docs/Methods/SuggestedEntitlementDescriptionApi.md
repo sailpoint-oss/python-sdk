@@ -18,6 +18,8 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2026*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**create-auto-write-settings**](#create-auto-write-settings) | **POST** `/suggested-entitlement-descriptions/auto-write-settings` | Create auto-write settings for SED
+[**get-auto-write-settings**](#get-auto-write-settings) | **GET** `/suggested-entitlement-descriptions/auto-write-settings` | Get auto-write settings for SED
 [**get-sed-batch-stats**](#get-sed-batch-stats) | **GET** `/suggested-entitlement-description-batches/{batchId}/stats` | Submit sed batch stats request
 [**get-sed-batches**](#get-sed-batches) | **GET** `/suggested-entitlement-description-batches` | List Sed Batch Record
 [**list-seds**](#list-seds) | **GET** `/suggested-entitlement-descriptions` | List suggested entitlement descriptions
@@ -25,7 +27,127 @@ Method | HTTP request | Description
 [**submit-sed-approval**](#submit-sed-approval) | **POST** `/suggested-entitlement-description-approvals` | Submit bulk approval request
 [**submit-sed-assignment**](#submit-sed-assignment) | **POST** `/suggested-entitlement-description-assignments` | Submit sed assignment request
 [**submit-sed-batch-request**](#submit-sed-batch-request) | **POST** `/suggested-entitlement-description-batches` | Submit sed batch request
+[**update-auto-write-settings**](#update-auto-write-settings) | **PATCH** `/suggested-entitlement-descriptions/auto-write-settings` | Update auto-write settings for SED
 
+
+## create-auto-write-settings
+Create auto-write settings for SED
+Create the initial auto-write settings for a tenant. Returns 409 Conflict if settings already exist. Use PATCH to update existing settings.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2026/create-auto-write-settings)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | auto_write_setting | [**AutoWriteSetting**](../models/auto-write-setting) | True  | Auto-write settings to create
+
+### Return type
+[**AutoWriteSettingResponse**](../models/auto-write-setting-response)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+201 | Auto-write settings created successfully | AutoWriteSettingResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+409 | Conflict - Indicates that the request could not be processed because of conflict in the current state of the resource. |  |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfig429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json
+ - **Accept**: application/json, schema
+
+### Example
+
+```python
+from sailpoint.v2026.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
+from sailpoint.v2026.api_client import ApiClient
+from sailpoint.v2026.models.auto_write_setting import AutoWriteSetting
+from sailpoint.v2026.models.auto_write_setting_response import AutoWriteSettingResponse
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    auto_write_setting = '''{
+          "excludedSourceIds" : [ "2c91808a7813090a017814552e526350" ],
+          "includedSourceIds" : [ "2c91808a7813090a017814552e526349", "2c91808a7813090a017814552e52634a" ],
+          "enabled" : true
+        }''' # AutoWriteSetting | Auto-write settings to create
+
+    try:
+        # Create auto-write settings for SED
+        new_auto_write_setting = AutoWriteSetting.from_json(auto_write_setting)
+        results = SuggestedEntitlementDescriptionApi(api_client).create_auto_write_settings(auto_write_setting=new_auto_write_setting)
+        # Below is a request that includes all optional parameters
+        # results = SuggestedEntitlementDescriptionApi(api_client).create_auto_write_settings(new_auto_write_setting)
+        print("The response of SuggestedEntitlementDescriptionApi->create_auto_write_settings:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling SuggestedEntitlementDescriptionApi->create_auto_write_settings: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## get-auto-write-settings
+Get auto-write settings for SED
+Get the current auto-write configuration for the tenant, including the enabled state and source include/exclude lists.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2026/get-auto-write-settings)
+
+### Parameters 
+This endpoint does not need any parameter. 
+
+### Return type
+[**AutoWriteSettingResponse**](../models/auto-write-setting-response)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | Current auto-write settings | AutoWriteSettingResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfig429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2026.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
+from sailpoint.v2026.api_client import ApiClient
+from sailpoint.v2026.models.auto_write_setting_response import AutoWriteSettingResponse
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+
+    try:
+        # Get auto-write settings for SED
+        
+        results = SuggestedEntitlementDescriptionApi(api_client).get_auto_write_settings()
+        # Below is a request that includes all optional parameters
+        # results = SuggestedEntitlementDescriptionApi(api_client).get_auto_write_settings()
+        print("The response of SuggestedEntitlementDescriptionApi->get_auto_write_settings:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling SuggestedEntitlementDescriptionApi->get_auto_write_settings: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
 
 ## get-sed-batch-stats
 Submit sed batch stats request
@@ -519,6 +641,66 @@ with ApiClient(configuration) as api_client:
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling SuggestedEntitlementDescriptionApi->submit_sed_batch_request: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## update-auto-write-settings
+Update auto-write settings for SED
+Partially update the auto-write settings for a tenant using JSON Patch operations. Only the "replace" operation is supported. Returns 404 if no settings exist yet - use POST to create them first.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2026/update-auto-write-settings)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | auto_write_setting_patch | [**[]AutoWriteSettingPatch**](../models/auto-write-setting-patch) | True  | Patch operations for auto-write settings
+
+### Return type
+[**AutoWriteSettingResponse**](../models/auto-write-setting-response)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | Updated auto-write settings | AutoWriteSettingResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfig429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json-patch+json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2026.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
+from sailpoint.v2026.api_client import ApiClient
+from sailpoint.v2026.models.auto_write_setting_patch import AutoWriteSettingPatch
+from sailpoint.v2026.models.auto_write_setting_response import AutoWriteSettingResponse
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    auto_write_setting_patch = '''[sailpoint.v2026.AutoWriteSettingPatch()]''' # List[AutoWriteSettingPatch] | Patch operations for auto-write settings
+
+    try:
+        # Update auto-write settings for SED
+        new_auto_write_setting_patch = AutoWriteSettingPatch.from_json(auto_write_setting_patch)
+        results = SuggestedEntitlementDescriptionApi(api_client).update_auto_write_settings(auto_write_setting_patch=new_auto_write_setting_patch)
+        # Below is a request that includes all optional parameters
+        # results = SuggestedEntitlementDescriptionApi(api_client).update_auto_write_settings(new_auto_write_setting_patch)
+        print("The response of SuggestedEntitlementDescriptionApi->update_auto_write_settings:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling SuggestedEntitlementDescriptionApi->update_auto_write_settings: %s\n" % e)
 ```
 
 

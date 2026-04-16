@@ -26,6 +26,20 @@ class TestSuggestedEntitlementDescriptionApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_create_auto_write_settings(self) -> None:
+        """Test case for create_auto_write_settings
+
+        Create auto-write settings for SED
+        """
+        pass
+
+    def test_get_auto_write_settings(self) -> None:
+        """Test case for get_auto_write_settings
+
+        Get auto-write settings for SED
+        """
+        pass
+
     def test_get_sed_batch_stats(self) -> None:
         """Test case for get_sed_batch_stats
 
@@ -72,6 +86,13 @@ class TestSuggestedEntitlementDescriptionApi(unittest.TestCase):
         """Test case for submit_sed_batch_request
 
         Submit sed batch request
+        """
+        pass
+
+    def test_update_auto_write_settings(self) -> None:
+        """Test case for update_auto_write_settings
+
+        Update auto-write settings for SED
         """
         pass
 

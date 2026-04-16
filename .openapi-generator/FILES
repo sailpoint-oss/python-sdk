@@ -388,6 +388,10 @@ sailpoint/v2026/docs/AuthUserLevelsIdentityCount.md
 sailpoint/v2026/docs/AuthUserSlimResponse.md
 sailpoint/v2026/docs/AuthUsersApi.md
 sailpoint/v2026/docs/AuthorizationScheme.md
+sailpoint/v2026/docs/AutoWriteSetting.md
+sailpoint/v2026/docs/AutoWriteSettingPatch.md
+sailpoint/v2026/docs/AutoWriteSettingPatchValue.md
+sailpoint/v2026/docs/AutoWriteSettingResponse.md
 sailpoint/v2026/docs/BackupOptions.md
 sailpoint/v2026/docs/BackupOptions1.md
 sailpoint/v2026/docs/BackupResponse.md
@@ -1823,6 +1827,10 @@ sailpoint/v2026/models/auth_user.py
 sailpoint/v2026/models/auth_user_levels_identity_count.py
 sailpoint/v2026/models/auth_user_slim_response.py
 sailpoint/v2026/models/authorization_scheme.py
+sailpoint/v2026/models/auto_write_setting.py
+sailpoint/v2026/models/auto_write_setting_patch.py
+sailpoint/v2026/models/auto_write_setting_patch_value.py
+sailpoint/v2026/models/auto_write_setting_response.py
 sailpoint/v2026/models/backup_options.py
 sailpoint/v2026/models/backup_options1.py
 sailpoint/v2026/models/backup_response.py
@@ -3182,6 +3190,10 @@ sailpoint/v2026/test/test_auth_user_levels_identity_count.py
 sailpoint/v2026/test/test_auth_user_slim_response.py
 sailpoint/v2026/test/test_auth_users_api.py
 sailpoint/v2026/test/test_authorization_scheme.py
+sailpoint/v2026/test/test_auto_write_setting.py
+sailpoint/v2026/test/test_auto_write_setting_patch.py
+sailpoint/v2026/test/test_auto_write_setting_patch_value.py
+sailpoint/v2026/test/test_auto_write_setting_response.py
 sailpoint/v2026/test/test_backup_options.py
 sailpoint/v2026/test/test_backup_options1.py
 sailpoint/v2026/test/test_backup_response.py

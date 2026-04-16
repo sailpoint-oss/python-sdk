@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.50"
+__version__ = "1.4.51"
 
 # import apis into sdk package
 from sailpoint.v2026.api.access_model_metadata_api import AccessModelMetadataApi
@@ -397,6 +397,10 @@ from sailpoint.v2026.models.auth_user import AuthUser
 from sailpoint.v2026.models.auth_user_levels_identity_count import AuthUserLevelsIdentityCount
 from sailpoint.v2026.models.auth_user_slim_response import AuthUserSlimResponse
 from sailpoint.v2026.models.authorization_scheme import AuthorizationScheme
+from sailpoint.v2026.models.auto_write_setting import AutoWriteSetting
+from sailpoint.v2026.models.auto_write_setting_patch import AutoWriteSettingPatch
+from sailpoint.v2026.models.auto_write_setting_patch_value import AutoWriteSettingPatchValue
+from sailpoint.v2026.models.auto_write_setting_response import AutoWriteSettingResponse
 from sailpoint.v2026.models.backup_options import BackupOptions
 from sailpoint.v2026.models.backup_options1 import BackupOptions1
 from sailpoint.v2026.models.backup_response import BackupResponse
