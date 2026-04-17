@@ -30,7 +30,7 @@ class Reviewer(BaseModel):
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="The id of the reviewer.")
     name: Optional[StrictStr] = Field(default=None, description="The name of the reviewer.")
-    email: Optional[StrictStr] = Field(default=None, description="The email of the reviewing identity.")
+    email: Optional[StrictStr] = Field(default=None, description="The email of the reviewing identity. This is only applicable to reviewers of the `IDENTITY` type.")
     type: Optional[StrictStr] = Field(default=None, description="The type of the reviewing identity.")
     created: Optional[datetime] = Field(default=None, description="The created date of the reviewing identity.")
     modified: Optional[datetime] = Field(default=None, description="The modified date of the reviewing identity.")
@@ -42,8 +42,8 @@ class Reviewer(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['IDENTITY']):
-            warnings.warn(f"must be one of enum values ('IDENTITY') unknown value: {value}")
+        if value not in set(['IDENTITY', 'GOVERNANCE_GROUP']):
+            warnings.warn(f"must be one of enum values ('IDENTITY', 'GOVERNANCE_GROUP') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -85,6 +85,11 @@ class Reviewer(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if email (nullable) is None
+        # and model_fields_set contains the field
+        if self.email is None and "email" in self.model_fields_set:
+            _dict['email'] = None
+
         # set to None if created (nullable) is None
         # and model_fields_set contains the field
         if self.created is None and "created" in self.model_fields_set:

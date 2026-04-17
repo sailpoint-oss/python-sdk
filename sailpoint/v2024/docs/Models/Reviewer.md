@@ -18,8 +18,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The id of the reviewer. | [optional] 
 **name** | **str** | The name of the reviewer. | [optional] 
-**email** | **str** | The email of the reviewing identity. | [optional] 
-**type** |  **Enum** [  'IDENTITY' ] | The type of the reviewing identity. | [optional] 
+**email** | **str** | The email of the reviewing identity. This is only applicable to reviewers of the `IDENTITY` type. | [optional] 
+**type** |  **Enum** [  'IDENTITY',    'GOVERNANCE_GROUP' ] | The type of the reviewing identity. | [optional] 
 **created** | **datetime** | The created date of the reviewing identity. | [optional] 
 **modified** | **datetime** | The modified date of the reviewing identity. | [optional] 
 }

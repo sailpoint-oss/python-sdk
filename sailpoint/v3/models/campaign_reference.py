@@ -46,8 +46,8 @@ class CampaignReference(BaseModel):
     @field_validator('campaign_type')
     def campaign_type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['MANAGER', 'SOURCE_OWNER', 'SEARCH']):
-            warnings.warn(f"must be one of enum values ('MANAGER', 'SOURCE_OWNER', 'SEARCH') unknown value: {value}")
+        if value not in set(['MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION', 'MACHINE_ACCOUNT']):
+            warnings.warn(f"must be one of enum values ('MANAGER', 'SOURCE_OWNER', 'SEARCH', 'ROLE_COMPOSITION', 'MACHINE_ACCOUNT') unknown value: {value}")
         return value
 
     @field_validator('correlated_status')

@@ -840,6 +840,8 @@ with ApiClient(configuration) as api_client:
 Returns a form instance.
 Parameter `{formInstanceID}` should match a form instance ID.
 
+Only the assigned recipient (`recipients[].id` when `type` is `IDENTITY`) may call this.
+
 [API Spec](https://developer.sailpoint.com/docs/api/beta/get-form-instance-by-key)
 
 ### Parameters 
@@ -1080,6 +1082,8 @@ with ApiClient(configuration) as api_client:
 Patch a form instance.
 Parameter `{formInstanceID}` should match a form instance ID.
 
+Only the assigned recipient (`recipients[].id` when `type` is `IDENTITY`) may call this.
+
 [API Spec](https://developer.sailpoint.com/docs/api/beta/patch-form-instance)
 
 ### Parameters 
@@ -1281,7 +1285,7 @@ No parameters required.
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
   Query | offset | **int** |   (optional) (default to 0) | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
-  Query | limit | **int** |   (optional) (default to 50) | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
+  Query | limit | **int** |   (optional) (default to 250) | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
 
 ### Return type
 [**List[FormInstanceResponse]**](../models/form-instance-response)
@@ -1293,7 +1297,7 @@ Code | Description  | Data Type | Response headers |
 400 | An error with the request occurred | GetFormDefinitionByKey400Response |  -  |
 401 | An error with the authorization occurred | GetFormDefinitionByKey400Response |  -  |
 403 | An error with the user permissions occurred | GetFormDefinitionByKey400Response |  -  |
-429 | Too many requests | Error |  -  |
+429 | Too many requests. The list form instances operation is limited to 50 requests per 10 seconds per tenant; reduce call frequency or wait before retrying. | Error |  -  |
 500 | An internal server error occurred | GetFormDefinitionByKey400Response |  -  |
 
 ### HTTP request headers
@@ -1312,7 +1316,7 @@ configuration = Configuration()
 
 with ApiClient(configuration) as api_client:
     offset = 0 # int | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0) # int | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0)
-    limit = 50 # int | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 50) # int | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 50)
+    limit = 250 # int | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250) # int | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250)
 
     try:
         # List form instances by tenant.

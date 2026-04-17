@@ -31,9 +31,9 @@ class WorkflowLibraryTrigger(BaseModel):
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Trigger ID. This is a static namespaced ID for the trigger.")
     type: Optional[StrictStr] = Field(default=None, description="Trigger type")
-    deprecated: Optional[StrictBool] = None
-    deprecated_by: Optional[datetime] = Field(default=None, alias="deprecatedBy")
-    is_simulation_enabled: Optional[StrictBool] = Field(default=None, alias="isSimulationEnabled")
+    deprecated: Optional[StrictBool] = Field(default=False, description="Whether the trigger is deprecated.")
+    deprecated_by: Optional[datetime] = Field(default=None, description="Date the trigger was deprecated, if applicable.", alias="deprecatedBy")
+    is_simulation_enabled: Optional[StrictBool] = Field(default=False, description="Whether the trigger can be simulated.", alias="isSimulationEnabled")
     output_schema: Optional[Dict[str, Any]] = Field(default=None, description="Example output schema", alias="outputSchema")
     name: Optional[StrictStr] = Field(default=None, description="Trigger Name")
     description: Optional[StrictStr] = Field(default=None, description="Trigger Description")
@@ -48,8 +48,8 @@ class WorkflowLibraryTrigger(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['EVENT', 'SCHEDULED', 'EXTERNAL']):
-            warnings.warn(f"must be one of enum values ('EVENT', 'SCHEDULED', 'EXTERNAL') unknown value: {value}")
+        if value not in set(['EVENT', 'SCHEDULED', 'EXTERNAL', 'AccessRequestTrigger']):
+            warnings.warn(f"must be one of enum values ('EVENT', 'SCHEDULED', 'EXTERNAL', 'AccessRequestTrigger') unknown value: {value}")
         return value
 
     model_config = ConfigDict(
@@ -122,9 +122,9 @@ class WorkflowLibraryTrigger(BaseModel):
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "type": obj.get("type"),
-            "deprecated": obj.get("deprecated"),
+            "deprecated": obj.get("deprecated") if obj.get("deprecated") is not None else False,
             "deprecatedBy": obj.get("deprecatedBy"),
-            "isSimulationEnabled": obj.get("isSimulationEnabled"),
+            "isSimulationEnabled": obj.get("isSimulationEnabled") if obj.get("isSimulationEnabled") is not None else False,
             "outputSchema": obj.get("outputSchema"),
             "name": obj.get("name"),
             "description": obj.get("description"),

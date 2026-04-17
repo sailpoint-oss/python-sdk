@@ -17,10 +17,10 @@ tags: ['SDK', 'Software Development Kit', 'WorkflowLibraryTrigger', 'V2024Workfl
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Trigger ID. This is a static namespaced ID for the trigger. | [optional] 
-**type** |  **Enum** [  'EVENT',    'SCHEDULED',    'EXTERNAL' ] | Trigger type | [optional] 
-**deprecated** | **bool** |  | [optional] 
-**deprecated_by** | **datetime** |  | [optional] 
-**is_simulation_enabled** | **bool** |  | [optional] 
+**type** |  **Enum** [  'EVENT',    'SCHEDULED',    'EXTERNAL',    'AccessRequestTrigger' ] | Trigger type | [optional] 
+**deprecated** | **bool** | Whether the trigger is deprecated. | [optional] [default to False]
+**deprecated_by** | **datetime** | Date the trigger was deprecated, if applicable. | [optional] 
+**is_simulation_enabled** | **bool** | Whether the trigger can be simulated. | [optional] [default to False]
 **output_schema** | **object** | Example output schema | [optional] 
 **name** | **str** | Trigger Name | [optional] 
 **description** | **str** | Trigger Description | [optional] 
@@ -37,10 +37,10 @@ from sailpoint.v2024.models.workflow_library_trigger import WorkflowLibraryTrigg
 workflow_library_trigger = WorkflowLibraryTrigger(
 id='idn:identity-attributes-changed',
 type='EVENT',
-deprecated=True,
-deprecated_by=datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-is_simulation_enabled=True,
-output_schema=None,
+deprecated=False,
+deprecated_by='2023-01-01T00:00Z',
+is_simulation_enabled=False,
+output_schema={},
 name='Identity Attributes Changed',
 description='One or more identity attributes changed.',
 is_dynamic_schema=False,

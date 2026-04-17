@@ -2728,7 +2728,7 @@ class CustomFormsApi:
     ) -> FormInstanceResponse:
         """Returns a form instance.
 
-        Parameter `{formInstanceID}` should match a form instance ID.
+        Parameter `{formInstanceID}` should match a form instance ID.  Only the assigned recipient (`recipients[].id` when `type` is `IDENTITY`) may call this.
 
         :param form_instance_id: Form instance ID (required)
         :type form_instance_id: str
@@ -2801,7 +2801,7 @@ class CustomFormsApi:
     ) -> ApiResponse[FormInstanceResponse]:
         """Returns a form instance.
 
-        Parameter `{formInstanceID}` should match a form instance ID.
+        Parameter `{formInstanceID}` should match a form instance ID.  Only the assigned recipient (`recipients[].id` when `type` is `IDENTITY`) may call this.
 
         :param form_instance_id: Form instance ID (required)
         :type form_instance_id: str
@@ -2874,7 +2874,7 @@ class CustomFormsApi:
     ) -> RESTResponseType:
         """Returns a form instance.
 
-        Parameter `{formInstanceID}` should match a form instance ID.
+        Parameter `{formInstanceID}` should match a form instance ID.  Only the assigned recipient (`recipients[].id` when `type` is `IDENTITY`) may call this.
 
         :param form_instance_id: Form instance ID (required)
         :type form_instance_id: str
@@ -3904,7 +3904,7 @@ class CustomFormsApi:
     ) -> FormInstanceResponse:
         """Patch a form instance.
 
-        Parameter `{formInstanceID}` should match a form instance ID.
+        Parameter `{formInstanceID}` should match a form instance ID.  Only the assigned recipient (`recipients[].id` when `type` is `IDENTITY`) may call this.
 
         :param form_instance_id: Form instance ID (required)
         :type form_instance_id: str
@@ -3982,7 +3982,7 @@ class CustomFormsApi:
     ) -> ApiResponse[FormInstanceResponse]:
         """Patch a form instance.
 
-        Parameter `{formInstanceID}` should match a form instance ID.
+        Parameter `{formInstanceID}` should match a form instance ID.  Only the assigned recipient (`recipients[].id` when `type` is `IDENTITY`) may call this.
 
         :param form_instance_id: Form instance ID (required)
         :type form_instance_id: str
@@ -4060,7 +4060,7 @@ class CustomFormsApi:
     ) -> RESTResponseType:
         """Patch a form instance.
 
-        Parameter `{formInstanceID}` should match a form instance ID.
+        Parameter `{formInstanceID}` should match a form instance ID.  Only the assigned recipient (`recipients[].id` when `type` is `IDENTITY`) may call this.
 
         :param form_instance_id: Form instance ID (required)
         :type form_instance_id: str
@@ -4876,7 +4876,7 @@ class CustomFormsApi:
     def search_form_instances_by_tenant(
         self,
         offset: Annotated[Optional[StrictInt], Field(description="Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.")] = None,
-        limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4952,7 +4952,7 @@ class CustomFormsApi:
     def search_form_instances_by_tenant_with_http_info(
         self,
         offset: Annotated[Optional[StrictInt], Field(description="Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.")] = None,
-        limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5028,7 +5028,7 @@ class CustomFormsApi:
     def search_form_instances_by_tenant_without_preload_content(
         self,
         offset: Annotated[Optional[StrictInt], Field(description="Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.")] = None,
-        limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=0)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
