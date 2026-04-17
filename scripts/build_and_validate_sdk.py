@@ -44,12 +44,12 @@ def main():
     idn_path = os.path.join(api_specs_path, "idn")
     subprocess.run(["node", "sdk-resources/prescript.js", idn_path], check=True, cwd=root)
 
-    def build_sdk(name, spec, config, out_dir):
+    def build_sdk(name, spec, config, out_dir, spec_subdir="idn"):
         print(f"Building {name} SDK...")
         sailpoint_dir = os.path.join(root, "sailpoint", out_dir)
         if os.path.isdir(sailpoint_dir):
             shutil.rmtree(sailpoint_dir)
-        spec_path = os.path.join(api_specs_path, "idn", spec)
+        spec_path = os.path.join(api_specs_path, spec_subdir, spec)
         subprocess.run(
             [
                 "java", "-jar", jar_path, "generate",
@@ -72,6 +72,8 @@ def main():
     build_sdk("V2024", "sailpoint-api.v2024.yaml", "v2024-config.yaml", "v2024")
     build_sdk("V2025", "sailpoint-api.v2025.yaml", "v2025-config.yaml", "v2025")
     build_sdk("V2026", "sailpoint-api.v2026.yaml", "v2026-config.yaml", "v2026")
+    build_sdk("NERM", "openapi.yaml", "nerm-config.yaml", "nerm", spec_subdir="nerm")
+    build_sdk("NERM V2025", os.path.join("v2025", "v2025.yaml"), "v2025-nerm-config.yaml", os.path.join("nerm", "v2025"), spec_subdir="nerm")
 
     # Install and test (use current Python / venv)
     pip_cmd = [sys.executable, "-m", "pip"]
