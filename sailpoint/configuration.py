@@ -24,6 +24,7 @@ def is_socks_proxy_url(url):
 
 class ConfigurationParams:
     base_url = None
+    nerm_base_url = None
     client_id = None
     client_secret = None
     token_url = None
@@ -45,6 +46,7 @@ class Configuration:
         self.proxy = configurationParams.proxy if configurationParams and configurationParams.proxy else None
         self.proxy_headers = configurationParams.proxy_headers if configurationParams and configurationParams.proxy_headers else None
         self.verify_ssl = configurationParams.verify_ssl if configurationParams and configurationParams.verify_ssl else True
+        self.nerm_base_url = configurationParams.nerm_base_url if configurationParams and configurationParams.nerm_base_url is not None else defaultConfiguration.nerm_base_url
 
         url = f"{self.token_url}"
         if self.access_token == None:
@@ -167,6 +169,11 @@ class Configuration:
             if os.environ.get("SAIL_CLIENT_SECRET")
             else None
         )
+        config.nerm_base_url = (
+            os.environ.get("SAIL_NERM_BASE_URL")
+            if os.environ.get("SAIL_NERM_BASE_URL")
+            else None
+        )
         config.token_url = str(config.base_url) + "/oauth/token"
 
         return config
@@ -181,6 +188,7 @@ class Configuration:
                 config.base_url = data["BaseURL"]
                 config.client_id = data["ClientId"]
                 config.client_secret = data["ClientSecret"]
+                config.nerm_base_url = data["NermBaseUrl"]
                 config.token_url = config.base_url + "/oauth/token"
         
         return config
