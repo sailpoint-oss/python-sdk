@@ -35,7 +35,7 @@ class TestAccountUsage(unittest.TestCase):
         model = AccountUsage()
         if include_optional:
             return AccountUsage(
-                var_date = 'Thu Apr 20 20:00:00 EDT 2023',
+                var_date = 'Fri Apr 21 00:00:00 UTC 2023',
                 count = 10
             )
         else:
