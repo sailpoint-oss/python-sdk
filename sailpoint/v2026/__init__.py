@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.53"
+__version__ = "1.4.54"
 
 # import apis into sdk package
 from sailpoint.v2026.api.access_model_metadata_api import AccessModelMetadataApi
@@ -64,6 +64,7 @@ from sailpoint.v2026.api.identities_api import IdentitiesApi
 from sailpoint.v2026.api.identity_attributes_api import IdentityAttributesApi
 from sailpoint.v2026.api.identity_history_api import IdentityHistoryApi
 from sailpoint.v2026.api.identity_profiles_api import IdentityProfilesApi
+from sailpoint.v2026.api.jit_access_api import JITAccessApi
 from sailpoint.v2026.api.launchers_api import LaunchersApi
 from sailpoint.v2026.api.lifecycle_states_api import LifecycleStatesApi
 from sailpoint.v2026.api.mfa_configuration_api import MFAConfigurationApi
@@ -784,9 +785,12 @@ from sailpoint.v2026.models.invite_identities_request import InviteIdentitiesReq
 from sailpoint.v2026.models.invocation import Invocation
 from sailpoint.v2026.models.invocation_status import InvocationStatus
 from sailpoint.v2026.models.invocation_status_type import InvocationStatusType
+from sailpoint.v2026.models.jit_activation_config_response import JITActivationConfigResponse
 from sailpoint.v2026.models.jit_configuration import JITConfiguration
 from sailpoint.v2026.models.jwk import JWK
 from sailpoint.v2026.models.jwks import JWKS
+from sailpoint.v2026.models.jit_access_operation_request import JitAccessOperationRequest
+from sailpoint.v2026.models.jit_access_operation_request_value import JitAccessOperationRequestValue
 from sailpoint.v2026.models.json_patch import JsonPatch
 from sailpoint.v2026.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v2026.models.json_patch_operation_role_mining import JsonPatchOperationRoleMining

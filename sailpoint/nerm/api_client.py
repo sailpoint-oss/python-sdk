@@ -104,7 +104,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'SailPoint-SDK-Python/1.4.1'
+        self.user_agent = 'SailPoint-SDK-Python/1.4.54'
         if configuration and getattr(configuration, 'consumer_identifier', None) and getattr(configuration, 'consumer_version', None):
             self.user_agent = f'{self.user_agent} ({configuration.consumer_identifier}/{configuration.consumer_version})'
         self.user_agent = f'{self.user_agent} ({sys.platform}; {platform.machine()}) Python/{sys.version.split()[0]} (openapi-generator/7.12.0)'
