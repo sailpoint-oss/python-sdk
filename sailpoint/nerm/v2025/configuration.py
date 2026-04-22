@@ -113,6 +113,8 @@ HTTPSignatureAuthSetting = TypedDict(
 AuthSettings = TypedDict(
     "AuthSettings",
     {
+        "userAuth": OAuth2AuthSetting,
+        "userAuth": OAuth2AuthSetting,
     },
     total=False,
 )
@@ -161,6 +163,7 @@ class Configuration:
       in PEM format.
     :param retries: Number of retries for API requests.
 
+    :Example:
     """
 
     _default: ClassVar[Optional[Self]] = None
@@ -483,6 +486,20 @@ class Configuration:
         :return: The Auth Settings information dict.
         """
         auth: AuthSettings = {}
+        if self.access_token is not None:
+            auth['userAuth'] = {
+                'type': 'oauth2',
+                'in': 'header',
+                'key': 'Authorization',
+                'value': 'Bearer ' + self.access_token
+            }
+        if self.access_token is not None:
+            auth['userAuth'] = {
+                'type': 'oauth2',
+                'in': 'header',
+                'key': 'Authorization',
+                'value': 'Bearer ' + self.access_token
+            }
         return auth
 
     def to_debug_report(self) -> str:
@@ -494,7 +511,7 @@ class Configuration:
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 1.0.0\n"\
-               "SDK Package Version: 1.4.54".\
+               "SDK Package Version: 1.4.55".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self) -> List[HostSetting]:

@@ -371,6 +371,8 @@ class DelegationsApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -637,6 +639,8 @@ class DelegationsApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -903,6 +907,8 @@ class DelegationsApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1197,6 +1203,8 @@ class DelegationsApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1476,6 +1484,8 @@ class DelegationsApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'userAuth', 
+            'userAuth'
         ]
 
         return self.api_client.param_serialize(
