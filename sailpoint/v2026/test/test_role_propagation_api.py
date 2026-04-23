@@ -40,10 +40,24 @@ class TestRolePropagationApi(unittest.TestCase):
         """
         pass
 
+    def test_get_role_propagation_config(self) -> None:
+        """Test case for get_role_propagation_config
+
+        Get Role Change Propagation Configuration
+        """
+        pass
+
     def test_get_role_propagation_status(self) -> None:
         """Test case for get_role_propagation_status
 
         Get status of Role-Propagation process
+        """
+        pass
+
+    def test_set_role_propagation_config(self) -> None:
+        """Test case for set_role_propagation_config
+
+        Update Role Change Propagation Configuration
         """
         pass
 

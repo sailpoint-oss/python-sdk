@@ -21,7 +21,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**cancel-role-propagation**](#cancel-role-propagation) | **POST** `/role-propagation/terminate` | Terminate Role Propagation process
 [**get-ongoing-role-propagation**](#get-ongoing-role-propagation) | **GET** `/role-propagation/is-running` | Get ongoing Role Propagation process
+[**get-role-propagation-config**](#get-role-propagation-config) | **GET** `/role-propagation-config` | Get Role Change Propagation Configuration
 [**get-role-propagation-status**](#get-role-propagation-status) | **GET** `/role-propagation/{rolePropagationId}/status` | Get status of Role-Propagation process
+[**set-role-propagation-config**](#set-role-propagation-config) | **PUT** `/role-propagation-config` | Update Role Change Propagation Configuration
 [**start-role-propagation**](#start-role-propagation) | **POST** `/role-propagation` | Initiate Role Propagation process
 
 
@@ -162,6 +164,76 @@ with ApiClient(configuration) as api_client:
 
 [[Back to top]](#) 
 
+## get-role-propagation-config
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
+Get Role Change Propagation Configuration
+This endpoint fetches the Role Change Propagation Configuration for the tenant
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/get-role-propagation-config)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+   | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
+
+### Return type
+[**RolePropagationConfigResponse**](../models/role-propagation-config-response)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | Role Change Propagation configuration for the tenant. | RolePropagationConfigResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2025.api.role_propagation_api import RolePropagationApi
+from sailpoint.v2025.api_client import ApiClient
+from sailpoint.v2025.models.role_propagation_config_response import RolePropagationConfigResponse
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+configuration.experimental = True
+
+with ApiClient(configuration) as api_client:
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+
+    try:
+        # Get Role Change Propagation Configuration
+        
+        results = RolePropagationApi(api_client).get_role_propagation_config(x_sail_point_experimental=x_sail_point_experimental)
+        # Below is a request that includes all optional parameters
+        # results = RolePropagationApi(api_client).get_role_propagation_config(x_sail_point_experimental)
+        print("The response of RolePropagationApi->get_role_propagation_config:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling RolePropagationApi->get_role_propagation_config: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
 ## get-role-propagation-status
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
@@ -235,6 +307,79 @@ with ApiClient(configuration) as api_client:
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling RolePropagationApi->get_role_propagation_status: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## set-role-propagation-config
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
+Update Role Change Propagation Configuration
+This endpoint enables or disables the Role Change Propagation Process for the tenant
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2025/set-role-propagation-config)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+   | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
+ Body  | role_propagation_config_input | [**RolePropagationConfigInput**](../models/role-propagation-config-input) | True  | 
+
+### Return type
+[**RolePropagationConfigResponse**](../models/role-propagation-config-response)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | Role Change Propagation configuration for the tenant is successfully updated. | RolePropagationConfigResponse |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2025.api.role_propagation_api import RolePropagationApi
+from sailpoint.v2025.api_client import ApiClient
+from sailpoint.v2025.models.role_propagation_config_input import RolePropagationConfigInput
+from sailpoint.v2025.models.role_propagation_config_response import RolePropagationConfigResponse
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+configuration.experimental = True
+
+with ApiClient(configuration) as api_client:
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+    role_propagation_config_input = '''sailpoint.v2025.RolePropagationConfigInput()''' # RolePropagationConfigInput | 
+
+    try:
+        # Update Role Change Propagation Configuration
+        new_role_propagation_config_input = RolePropagationConfigInput.from_json(role_propagation_config_input)
+        results = RolePropagationApi(api_client).set_role_propagation_config(x_sail_point_experimental=x_sail_point_experimental, role_propagation_config_input=new_role_propagation_config_input)
+        # Below is a request that includes all optional parameters
+        # results = RolePropagationApi(api_client).set_role_propagation_config(x_sail_point_experimental, new_role_propagation_config_input)
+        print("The response of RolePropagationApi->set_role_propagation_config:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling RolePropagationApi->set_role_propagation_config: %s\n" % e)
 ```
 
 

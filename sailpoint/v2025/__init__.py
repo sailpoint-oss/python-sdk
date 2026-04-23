@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.55"
+__version__ = "1.4.56"
 
 # import apis into sdk package
 from sailpoint.v2025.api.access_model_metadata_api import AccessModelMetadataApi
@@ -1143,6 +1143,8 @@ from sailpoint.v2025.models.role_mining_session_scope import RoleMiningSessionSc
 from sailpoint.v2025.models.role_mining_session_scoping_method import RoleMiningSessionScopingMethod
 from sailpoint.v2025.models.role_mining_session_state import RoleMiningSessionState
 from sailpoint.v2025.models.role_mining_session_status import RoleMiningSessionStatus
+from sailpoint.v2025.models.role_propagation_config_input import RolePropagationConfigInput
+from sailpoint.v2025.models.role_propagation_config_response import RolePropagationConfigResponse
 from sailpoint.v2025.models.role_propagation_ongoing_response import RolePropagationOngoingResponse
 from sailpoint.v2025.models.role_propagation_ongoing_response_role_propagation_details import RolePropagationOngoingResponseRolePropagationDetails
 from sailpoint.v2025.models.role_propagation_response import RolePropagationResponse

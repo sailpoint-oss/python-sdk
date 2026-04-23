@@ -17865,6 +17865,32 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling RolePropagationApi->get_ongoing_role_propagation: %s\n" % e)
+- path: /role-propagation-config
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/role-propagation#get-role-propagation-config
+      source: |
+        from sailpoint.v2025.api.role_propagation_api import RolePropagationApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.role_propagation_config_response import RolePropagationConfigResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          try:
+              # Get Role Change Propagation Configuration
+              
+              results = RolePropagationApi(api_client).get_role_propagation_config(x_sail_point_experimental=x_sail_point_experimental)
+              # Below is a request that includes all optional parameters
+              # results = RolePropagationApi(api_client).get_role_propagation_config(x_sail_point_experimental)
+              print("The response of RolePropagationApi->get_role_propagation_config:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolePropagationApi->get_role_propagation_config: %s\n" % e)
 - path: /role-propagation/{rolePropagationId}/status
   method: GET
   xCodeSample:
@@ -17892,6 +17918,34 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling RolePropagationApi->get_role_propagation_status: %s\n" % e)
+- path: /role-propagation-config
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2025/methods/role-propagation#set-role-propagation-config
+      source: |
+        from sailpoint.v2025.api.role_propagation_api import RolePropagationApi
+        from sailpoint.v2025.api_client import ApiClient
+        from sailpoint.v2025.models.role_propagation_config_input import RolePropagationConfigInput
+        from sailpoint.v2025.models.role_propagation_config_response import RolePropagationConfigResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          role_propagation_config_input = '''sailpoint.v2025.RolePropagationConfigInput()''' # RolePropagationConfigInput | 
+          try:
+              # Update Role Change Propagation Configuration
+              new_role_propagation_config_input = RolePropagationConfigInput.from_json(role_propagation_config_input)
+              results = RolePropagationApi(api_client).set_role_propagation_config(x_sail_point_experimental=x_sail_point_experimental, role_propagation_config_input=new_role_propagation_config_input)
+              # Below is a request that includes all optional parameters
+              # results = RolePropagationApi(api_client).set_role_propagation_config(x_sail_point_experimental, new_role_propagation_config_input)
+              print("The response of RolePropagationApi->set_role_propagation_config:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolePropagationApi->set_role_propagation_config: %s\n" % e)
 - path: /role-propagation
   method: POST
   xCodeSample:

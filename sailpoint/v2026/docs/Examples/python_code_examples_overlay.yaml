@@ -12428,6 +12428,92 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling JITAccessApi->patch_jit_activation_config: %s\n" % e)
+- path: /jit-activations/activate
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/jit-activations#start-activate-workflow
+      source: |
+        from sailpoint.v2026.api.jit_activations_api import JITActivationsApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.jit_activation_activate_request import JitActivationActivateRequest
+        from sailpoint.v2026.models.jit_activation_activate_response import JitActivationActivateResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          jit_activation_activate_request = '''{
+          "activationPeriodMins" : 120,
+          "connectionId" : "757fb803-9024-5861-e510-83a56e4c5bd3"
+        }''' # JitActivationActivateRequest | 
+          try:
+              # Start JIT activation workflow
+              new_jit_activation_activate_request = JitActivationActivateRequest.from_json(jit_activation_activate_request)
+              results = JITActivationsApi(api_client).start_activate_workflow(jit_activation_activate_request=new_jit_activation_activate_request)
+              # Below is a request that includes all optional parameters
+              # results = JITActivationsApi(api_client).start_activate_workflow(new_jit_activation_activate_request)
+              print("The response of JITActivationsApi->start_activate_workflow:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling JITActivationsApi->start_activate_workflow: %s\n" % e)
+- path: /jit-activations/deactivate
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/jit-activations#start-deactivate-workflow
+      source: |
+        from sailpoint.v2026.api.jit_activations_api import JITActivationsApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.jit_activation_deactivate_request import JitActivationDeactivateRequest
+        from sailpoint.v2026.models.jit_activation_deactivate_response import JitActivationDeactivateResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          jit_activation_deactivate_request = '''{
+          "connectionId" : "757fb803-9024-5861-e510-83a56e4c5bd3"
+        }''' # JitActivationDeactivateRequest | 
+          try:
+              # Deactivate JIT activation workflow
+              new_jit_activation_deactivate_request = JitActivationDeactivateRequest.from_json(jit_activation_deactivate_request)
+              results = JITActivationsApi(api_client).start_deactivate_workflow(jit_activation_deactivate_request=new_jit_activation_deactivate_request)
+              # Below is a request that includes all optional parameters
+              # results = JITActivationsApi(api_client).start_deactivate_workflow(new_jit_activation_deactivate_request)
+              print("The response of JITActivationsApi->start_deactivate_workflow:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling JITActivationsApi->start_deactivate_workflow: %s\n" % e)
+- path: /jit-activations/extend
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/jit-activations#start-extend-workflow
+      source: |
+        from sailpoint.v2026.api.jit_activations_api import JITActivationsApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.jit_activation_extend_request import JitActivationExtendRequest
+        from sailpoint.v2026.models.jit_activation_extend_response import JitActivationExtendResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          jit_activation_extend_request = '''{
+          "activationPeriodExtensionMins" : 120,
+          "connectionId" : "757fb803-9024-5861-e510-83a56e4c5bd3"
+        }''' # JitActivationExtendRequest | 
+          try:
+              # Extend JIT activation workflow
+              new_jit_activation_extend_request = JitActivationExtendRequest.from_json(jit_activation_extend_request)
+              results = JITActivationsApi(api_client).start_extend_workflow(jit_activation_extend_request=new_jit_activation_extend_request)
+              # Below is a request that includes all optional parameters
+              # results = JITActivationsApi(api_client).start_extend_workflow(new_jit_activation_extend_request)
+              print("The response of JITActivationsApi->start_extend_workflow:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling JITActivationsApi->start_extend_workflow: %s\n" % e)
 - path: /launchers
   method: POST
   xCodeSample:
@@ -18308,6 +18394,32 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling RolePropagationApi->get_ongoing_role_propagation: %s\n" % e)
+- path: /role-propagation-config
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/role-propagation#get-role-propagation-config
+      source: |
+        from sailpoint.v2026.api.role_propagation_api import RolePropagationApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.role_propagation_config_response import RolePropagationConfigResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          try:
+              # Get Role Change Propagation Configuration
+              
+              results = RolePropagationApi(api_client).get_role_propagation_config(x_sail_point_experimental=x_sail_point_experimental)
+              # Below is a request that includes all optional parameters
+              # results = RolePropagationApi(api_client).get_role_propagation_config(x_sail_point_experimental)
+              print("The response of RolePropagationApi->get_role_propagation_config:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolePropagationApi->get_role_propagation_config: %s\n" % e)
 - path: /role-propagation/{rolePropagationId}/status
   method: GET
   xCodeSample:
@@ -18335,6 +18447,34 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling RolePropagationApi->get_role_propagation_status: %s\n" % e)
+- path: /role-propagation-config
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/role-propagation#set-role-propagation-config
+      source: |
+        from sailpoint.v2026.api.role_propagation_api import RolePropagationApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.role_propagation_config_input import RolePropagationConfigInput
+        from sailpoint.v2026.models.role_propagation_config_response import RolePropagationConfigResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          role_propagation_config_input = '''sailpoint.v2026.RolePropagationConfigInput()''' # RolePropagationConfigInput | 
+          try:
+              # Update Role Change Propagation Configuration
+              new_role_propagation_config_input = RolePropagationConfigInput.from_json(role_propagation_config_input)
+              results = RolePropagationApi(api_client).set_role_propagation_config(x_sail_point_experimental=x_sail_point_experimental, role_propagation_config_input=new_role_propagation_config_input)
+              # Below is a request that includes all optional parameters
+              # results = RolePropagationApi(api_client).set_role_propagation_config(x_sail_point_experimental, new_role_propagation_config_input)
+              print("The response of RolePropagationApi->set_role_propagation_config:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolePropagationApi->set_role_propagation_config: %s\n" % e)
 - path: /role-propagation
   method: POST
   xCodeSample:

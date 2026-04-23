@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.55"
+__version__ = "1.4.56"
 
 # import apis into sdk package
 from sailpoint.v2026.api.access_model_metadata_api import AccessModelMetadataApi
@@ -65,6 +65,7 @@ from sailpoint.v2026.api.identity_attributes_api import IdentityAttributesApi
 from sailpoint.v2026.api.identity_history_api import IdentityHistoryApi
 from sailpoint.v2026.api.identity_profiles_api import IdentityProfilesApi
 from sailpoint.v2026.api.jit_access_api import JITAccessApi
+from sailpoint.v2026.api.jit_activations_api import JITActivationsApi
 from sailpoint.v2026.api.launchers_api import LaunchersApi
 from sailpoint.v2026.api.lifecycle_states_api import LifecycleStatesApi
 from sailpoint.v2026.api.mfa_configuration_api import MFAConfigurationApi
@@ -303,6 +304,7 @@ from sailpoint.v2026.models.accounts_export_report_arguments import AccountsExpo
 from sailpoint.v2026.models.accounts_selection_request import AccountsSelectionRequest
 from sailpoint.v2026.models.accounts_selection_response import AccountsSelectionResponse
 from sailpoint.v2026.models.activate_campaign_options import ActivateCampaignOptions
+from sailpoint.v2026.models.activation_workflow_status import ActivationWorkflowStatus
 from sailpoint.v2026.models.activity_configuration_settings import ActivityConfigurationSettings
 from sailpoint.v2026.models.activity_identity import ActivityIdentity
 from sailpoint.v2026.models.activity_insights import ActivityInsights
@@ -791,6 +793,12 @@ from sailpoint.v2026.models.jwk import JWK
 from sailpoint.v2026.models.jwks import JWKS
 from sailpoint.v2026.models.jit_access_operation_request import JitAccessOperationRequest
 from sailpoint.v2026.models.jit_access_operation_request_value import JitAccessOperationRequestValue
+from sailpoint.v2026.models.jit_activation_activate_request import JitActivationActivateRequest
+from sailpoint.v2026.models.jit_activation_activate_response import JitActivationActivateResponse
+from sailpoint.v2026.models.jit_activation_deactivate_request import JitActivationDeactivateRequest
+from sailpoint.v2026.models.jit_activation_deactivate_response import JitActivationDeactivateResponse
+from sailpoint.v2026.models.jit_activation_extend_request import JitActivationExtendRequest
+from sailpoint.v2026.models.jit_activation_extend_response import JitActivationExtendResponse
 from sailpoint.v2026.models.json_patch import JsonPatch
 from sailpoint.v2026.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v2026.models.json_patch_operation_role_mining import JsonPatchOperationRoleMining
@@ -1180,6 +1188,8 @@ from sailpoint.v2026.models.role_mining_session_scope import RoleMiningSessionSc
 from sailpoint.v2026.models.role_mining_session_scoping_method import RoleMiningSessionScopingMethod
 from sailpoint.v2026.models.role_mining_session_state import RoleMiningSessionState
 from sailpoint.v2026.models.role_mining_session_status import RoleMiningSessionStatus
+from sailpoint.v2026.models.role_propagation_config_input import RolePropagationConfigInput
+from sailpoint.v2026.models.role_propagation_config_response import RolePropagationConfigResponse
 from sailpoint.v2026.models.role_propagation_ongoing_response import RolePropagationOngoingResponse
 from sailpoint.v2026.models.role_propagation_ongoing_response_role_propagation_details import RolePropagationOngoingResponseRolePropagationDetails
 from sailpoint.v2026.models.role_propagation_response import RolePropagationResponse

@@ -49,6 +49,7 @@ from sailpoint.v2026.api.identity_attributes_api import IdentityAttributesApi
 from sailpoint.v2026.api.identity_history_api import IdentityHistoryApi
 from sailpoint.v2026.api.identity_profiles_api import IdentityProfilesApi
 from sailpoint.v2026.api.jit_access_api import JITAccessApi
+from sailpoint.v2026.api.jit_activations_api import JITActivationsApi
 from sailpoint.v2026.api.launchers_api import LaunchersApi
 from sailpoint.v2026.api.lifecycle_states_api import LifecycleStatesApi
 from sailpoint.v2026.api.mfa_configuration_api import MFAConfigurationApi
