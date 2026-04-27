@@ -1,6 +1,6 @@
 templateDir: ./sdk-resources/resources
 packageName: sailpoint.v2024
-packageVersion: 1.4.57
+packageVersion: 1.4.58
 apiVersion: v2024
 generateSourceCodeOnly: true
 functionPrefix: V2024
