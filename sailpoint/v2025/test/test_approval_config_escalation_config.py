@@ -40,7 +40,6 @@ class TestApprovalConfigEscalationConfig(unittest.TestCase):
                 escalation_cron_schedule = '*/5 * * * *',
                 escalation_chain = [
                     sailpoint.v2025.models.approval_config_escalation_config_escalation_chain_inner.ApprovalConfig_escalationConfig_escalationChain_inner(
-                        chain_id = 'ef85d1a8-41ef-433a-8153-0b1f59e7b26a', 
                         tier = 1, 
                         identity_id = 'fdfda352157d4cc79bb749953131b457', 
                         identity_type = 'IDENTITY', )

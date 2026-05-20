@@ -30,11 +30,12 @@ class JitActivationExtendResponse(BaseModel):
     JitActivationExtendResponse
     """ # noqa: E501
     id: StrictStr = Field(description="Workflow or business identifier for this activation.")
+    activation_id: StrictStr = Field(description="Persistent activation record identifier for this JIT activation.", alias="activationId")
     connection_id: StrictStr = Field(description="Entitlement connection identifier for the activation.", alias="connectionId")
     activation_period_extension_mins: StrictInt = Field(description="Extension applied to the activation period, in minutes.", alias="activationPeriodExtensionMins")
     status: ActivationWorkflowStatus
     start_time: datetime = Field(description="Time associated with this extend request (ISO-8601).", alias="startTime")
-    __properties: ClassVar[List[str]] = ["id", "connectionId", "activationPeriodExtensionMins", "status", "startTime"]
+    __properties: ClassVar[List[str]] = ["id", "activationId", "connectionId", "activationPeriodExtensionMins", "status", "startTime"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -88,6 +89,7 @@ class JitActivationExtendResponse(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
+            "activationId": obj.get("activationId"),
             "connectionId": obj.get("connectionId"),
             "activationPeriodExtensionMins": obj.get("activationPeriodExtensionMins"),
             "status": obj.get("status"),

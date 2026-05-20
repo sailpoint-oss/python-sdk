@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2026.models.error_message_dto1 import ErrorMessageDto1
+from sailpoint.v2026.models.entitlement_recommendation_assign_request import EntitlementRecommendationAssignRequest
 
-class TestErrorMessageDto1(unittest.TestCase):
-    """ErrorMessageDto1 unit test stubs"""
+class TestEntitlementRecommendationAssignRequest(unittest.TestCase):
+    """EntitlementRecommendationAssignRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,27 +25,28 @@ class TestErrorMessageDto1(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ErrorMessageDto1:
-        """Test ErrorMessageDto1
+    def make_instance(self, include_optional) -> EntitlementRecommendationAssignRequest:
+        """Test EntitlementRecommendationAssignRequest
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ErrorMessageDto1`
+        # uncomment below to create an instance of `EntitlementRecommendationAssignRequest`
         """
-        model = ErrorMessageDto1()
+        model = EntitlementRecommendationAssignRequest()
         if include_optional:
-            return ErrorMessageDto1(
-                locale = 'en-US',
-                locale_origin = 'DEFAULT',
-                text = 'The request was syntactically correct but its content is semantically invalid.'
+            return EntitlementRecommendationAssignRequest(
+                items = [79db50d4-723c-4aa0-a824-83c2205d82d1, a1b2c3d4-e5f6-7890-abcd-ef1234567890],
+                assignee = None
             )
         else:
-            return ErrorMessageDto1(
+            return EntitlementRecommendationAssignRequest(
+                items = [79db50d4-723c-4aa0-a824-83c2205d82d1, a1b2c3d4-e5f6-7890-abcd-ef1234567890],
+                assignee = None,
         )
         """
 
-    def testErrorMessageDto1(self):
-        """Test ErrorMessageDto1"""
+    def testEntitlementRecommendationAssignRequest(self):
+        """Test EntitlementRecommendationAssignRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

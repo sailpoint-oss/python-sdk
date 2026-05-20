@@ -354,10 +354,16 @@ with ApiClient(configuration) as api_client:
 
 ## get-approvals
 Get approvals
-Gets a list of approvals. For lookups by access request ID please use the following:
-/generic-approvals?filters=referenceType+eq+"accessRequestId"+and+referenceId+eq+"12345678901234567890123456789012"
-Absence of all query parameters for non admins will will default to mine=true. Admin will default to mine=false.
-Absence of all query parameters for admins will return all approvals in the org.
+Gets a list of approvals.
+
+One of the following query parameters should be present: 'mine', 'approverId', 'requesterId', 'requesteeId'.
+
+The absence of all query parameters for non admins will default to mine=true (which is the equivalent of 'approverId=${your_identity_id}') 
+while admins will default to mine=false (which will show all approvals in the org).
+
+For lookups by access request ID please use the following:
+
+'/generic-approvals?mine=false&filters=referenceType+eq+"accessRequestId"+and+referenceId+eq+"12345678901234567890123456789012"'
 
 [API Spec](https://developer.sailpoint.com/docs/api/v2025/get-approvals)
 
@@ -365,7 +371,7 @@ Absence of all query parameters for admins will return all approvals in the org.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
-  Query | mine | **bool** |   (optional) (default to False) | Returns the list of approvals for the current caller. Defaults to false if admin, true otherwise.
+  Query | mine | **bool** |   (optional) (default to False) | Determines whether to return the list of approvals assigned to the current caller or all approvals in the org. Defaults to false if admin, true otherwise (which is the equivalent of 'approverId=${your_identity_id}').
   Query | requester_id | **str** |   (optional) | Returns the list of approvals for a given requester ID. Must match the calling user's identity ID unless they are an admin.
   Query | requestee_id | **str** |   (optional) | Returns the list of approvals for a given requesteeId ID. Must match the calling user's identity ID unless they are an admin.
   Query | approver_id | **str** |   (optional) | Returns the list of approvals for a given approverId ID. Must match the calling user's identity ID unless they are an admin.
@@ -375,7 +381,7 @@ Param Type | Name | Data Type | Required  | Description
   Query | include_approvers | **bool** |   (optional) (default to False) | If set to true in the query, the approval requests returned will include approvers.
   Query | include_reassignment_history | **bool** |   (optional) (default to False) | If set to true in the query, the approval requests returned will include reassignment history.
   Query | include_batch_info | **bool** |   (optional) (default to False) | If set to true in the query, the approval requests returned will include batch information.
-  Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, ne, in, co, sw*  **referenceType**: *eq, ne, in, co, sw*  **name**: *eq, ne, in, co, sw*  **priority**: *eq, ne, in, co, sw*  **type**: *eq, ne, in, co, sw*  **medium**: *eq, ne, in, co, sw*  **description**: *eq, ne, in, co, sw*  **batchId**: *eq, ne, in, co, sw*  **approvalId**: *eq, ne, in, co, sw*  **tenantId**: *eq, ne, in, co, sw*  **createdDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **dueDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **completedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **search**: *eq, ne, in, co, sw*  **referenceId**: *eq, ne, in, co, sw*  **referenceName**: *eq, ne, in, co, sw*  **requestedTargetType**: *eq, ne, in, co, sw*  **requestedTargetRequestType**: *eq, ne, in, co, sw*  **requestedTargetId**: *eq, ne, in, co, sw*  **modifiedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **requesterId**: *eq, ne, in, co, sw*  **requesteeId**: *eq, ne, in, co, sw*  **approverId**: *eq, ne, in, co, sw*  **decisionDate**: *eq, ne, in, co, sw, gt, ge, lt, le*
+  Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, ne, in, co, sw*  **name**: *eq, ne, in, co, sw*  **priority**: *eq, ne, in, co, sw*  **type**: *eq, ne, in, co, sw*  **medium**: *eq, ne, in, co, sw*  **description**: *eq, ne, in, co, sw*  **batchId**: *eq, ne, in, co, sw*  **createdDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **dueDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **completedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **search**: *eq, ne, in, co, sw*  **referenceId**: *eq, ne, in, co, sw*  **referenceType**: *eq, ne, in, co, sw*  **referenceName**: *eq, ne, in, co, sw*  **requestedTargetId**: *eq, ne, in, co, sw*  **requestedTargetType**: *eq, ne, in, co, sw*  **requestedTargetName**: *eq, ne, in, co, sw*  **requestedTargetRequestType**: *eq, ne, in, co, sw*  **modifiedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **decisionDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **approvalId**: *eq, ne, in, co, sw*  **requesterId**: *eq, ne, in, co, sw*  **requesteeId**: *eq, ne, in, co, sw*  **approverId**: *eq, ne, in, co, sw*
   Query | limit | **int** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
   Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
@@ -407,7 +413,7 @@ configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
-    mine = False # bool | Returns the list of approvals for the current caller. Defaults to false if admin, true otherwise. (optional) (default to False) # bool | Returns the list of approvals for the current caller. Defaults to false if admin, true otherwise. (optional) (default to False)
+    mine = False # bool | Determines whether to return the list of approvals assigned to the current caller or all approvals in the org. Defaults to false if admin, true otherwise (which is the equivalent of 'approverId=${your_identity_id}'). (optional) (default to False) # bool | Determines whether to return the list of approvals assigned to the current caller or all approvals in the org. Defaults to false if admin, true otherwise (which is the equivalent of 'approverId=${your_identity_id}'). (optional) (default to False)
     requester_id = '17e633e7d57e481569df76323169deb6a' # str | Returns the list of approvals for a given requester ID. Must match the calling user's identity ID unless they are an admin. (optional) # str | Returns the list of approvals for a given requester ID. Must match the calling user's identity ID unless they are an admin. (optional)
     requestee_id = '27e6334g757e481569df76323169db9sc' # str | Returns the list of approvals for a given requesteeId ID. Must match the calling user's identity ID unless they are an admin. (optional) # str | Returns the list of approvals for a given requesteeId ID. Must match the calling user's identity ID unless they are an admin. (optional)
     approver_id = '37e6334g557e481569df7g2d3169db9sb' # str | Returns the list of approvals for a given approverId ID. Must match the calling user's identity ID unless they are an admin. (optional) # str | Returns the list of approvals for a given approverId ID. Must match the calling user's identity ID unless they are an admin. (optional)
@@ -417,7 +423,7 @@ with ApiClient(configuration) as api_client:
     include_approvers = False # bool | If set to true in the query, the approval requests returned will include approvers. (optional) (default to False) # bool | If set to true in the query, the approval requests returned will include approvers. (optional) (default to False)
     include_reassignment_history = False # bool | If set to true in the query, the approval requests returned will include reassignment history. (optional) (default to False) # bool | If set to true in the query, the approval requests returned will include reassignment history. (optional) (default to False)
     include_batch_info = False # bool | If set to true in the query, the approval requests returned will include batch information. (optional) (default to False) # bool | If set to true in the query, the approval requests returned will include batch information. (optional) (default to False)
-    filters = 'filters=status eq \"PENDING\" and type eq \"ACCESS_REQUEST_APPROVAL\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, ne, in, co, sw*  **referenceType**: *eq, ne, in, co, sw*  **name**: *eq, ne, in, co, sw*  **priority**: *eq, ne, in, co, sw*  **type**: *eq, ne, in, co, sw*  **medium**: *eq, ne, in, co, sw*  **description**: *eq, ne, in, co, sw*  **batchId**: *eq, ne, in, co, sw*  **approvalId**: *eq, ne, in, co, sw*  **tenantId**: *eq, ne, in, co, sw*  **createdDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **dueDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **completedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **search**: *eq, ne, in, co, sw*  **referenceId**: *eq, ne, in, co, sw*  **referenceName**: *eq, ne, in, co, sw*  **requestedTargetType**: *eq, ne, in, co, sw*  **requestedTargetRequestType**: *eq, ne, in, co, sw*  **requestedTargetId**: *eq, ne, in, co, sw*  **modifiedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **requesterId**: *eq, ne, in, co, sw*  **requesteeId**: *eq, ne, in, co, sw*  **approverId**: *eq, ne, in, co, sw*  **decisionDate**: *eq, ne, in, co, sw, gt, ge, lt, le* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, ne, in, co, sw*  **referenceType**: *eq, ne, in, co, sw*  **name**: *eq, ne, in, co, sw*  **priority**: *eq, ne, in, co, sw*  **type**: *eq, ne, in, co, sw*  **medium**: *eq, ne, in, co, sw*  **description**: *eq, ne, in, co, sw*  **batchId**: *eq, ne, in, co, sw*  **approvalId**: *eq, ne, in, co, sw*  **tenantId**: *eq, ne, in, co, sw*  **createdDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **dueDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **completedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **search**: *eq, ne, in, co, sw*  **referenceId**: *eq, ne, in, co, sw*  **referenceName**: *eq, ne, in, co, sw*  **requestedTargetType**: *eq, ne, in, co, sw*  **requestedTargetRequestType**: *eq, ne, in, co, sw*  **requestedTargetId**: *eq, ne, in, co, sw*  **modifiedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **requesterId**: *eq, ne, in, co, sw*  **requesteeId**: *eq, ne, in, co, sw*  **approverId**: *eq, ne, in, co, sw*  **decisionDate**: *eq, ne, in, co, sw, gt, ge, lt, le* (optional)
+    filters = 'filters=status eq \"PENDING\" and type eq \"ACCESS_REQUEST_APPROVAL\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, ne, in, co, sw*  **name**: *eq, ne, in, co, sw*  **priority**: *eq, ne, in, co, sw*  **type**: *eq, ne, in, co, sw*  **medium**: *eq, ne, in, co, sw*  **description**: *eq, ne, in, co, sw*  **batchId**: *eq, ne, in, co, sw*  **createdDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **dueDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **completedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **search**: *eq, ne, in, co, sw*  **referenceId**: *eq, ne, in, co, sw*  **referenceType**: *eq, ne, in, co, sw*  **referenceName**: *eq, ne, in, co, sw*  **requestedTargetId**: *eq, ne, in, co, sw*  **requestedTargetType**: *eq, ne, in, co, sw*  **requestedTargetName**: *eq, ne, in, co, sw*  **requestedTargetRequestType**: *eq, ne, in, co, sw*  **modifiedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **decisionDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **approvalId**: *eq, ne, in, co, sw*  **requesterId**: *eq, ne, in, co, sw*  **requesteeId**: *eq, ne, in, co, sw*  **approverId**: *eq, ne, in, co, sw* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, ne, in, co, sw*  **name**: *eq, ne, in, co, sw*  **priority**: *eq, ne, in, co, sw*  **type**: *eq, ne, in, co, sw*  **medium**: *eq, ne, in, co, sw*  **description**: *eq, ne, in, co, sw*  **batchId**: *eq, ne, in, co, sw*  **createdDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **dueDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **completedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **search**: *eq, ne, in, co, sw*  **referenceId**: *eq, ne, in, co, sw*  **referenceType**: *eq, ne, in, co, sw*  **referenceName**: *eq, ne, in, co, sw*  **requestedTargetId**: *eq, ne, in, co, sw*  **requestedTargetType**: *eq, ne, in, co, sw*  **requestedTargetName**: *eq, ne, in, co, sw*  **requestedTargetRequestType**: *eq, ne, in, co, sw*  **modifiedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **decisionDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **approvalId**: *eq, ne, in, co, sw*  **requesterId**: *eq, ne, in, co, sw*  **requesteeId**: *eq, ne, in, co, sw*  **approverId**: *eq, ne, in, co, sw* (optional)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
 
@@ -618,31 +624,8 @@ with ApiClient(configuration) as api_client:
             "location" : "America/New_York"
           },
           "fallbackApprover" : {
-            "identityID" : "17e633e7d57e481569df76323169deb6a",
-            "members" : [ {
-              "name" : "Bob Neil",
-              "id" : "17e633e7d57e481569df76323169deb6a",
-              "type" : "IDENTITY",
-              "email" : "mail@mail.com"
-            }, {
-              "name" : "Bob Neil",
-              "id" : "17e633e7d57e481569df76323169deb6a",
-              "type" : "IDENTITY",
-              "email" : "mail@mail.com"
-            } ],
-            "name" : "Jim Bob",
-            "ownerOf" : [ {
-              "name" : "Access Request App",
-              "id" : "string",
-              "type" : "APPLICATION"
-            }, {
-              "name" : "Access Request App",
-              "id" : "string",
-              "type" : "APPLICATION"
-            } ],
-            "serialOrder" : 0,
-            "type" : "IDENTITY",
-            "email" : "mail@mail.com"
+            "identityID" : "fdfda352157d4cc79bb749953131b457",
+            "type" : "MANAGER_OF"
           },
           "reminderConfig" : {
             "reminderCronSchedule" : "1 1 1 1 1",
@@ -655,12 +638,10 @@ with ApiClient(configuration) as api_client:
             "escalationCronSchedule" : "*/5 * * * *",
             "escalationChain" : [ {
               "tier" : 1,
-              "chainId" : "ef85d1a8-41ef-433a-8153-0b1f59e7b26a",
               "identityType" : "IDENTITY",
               "identityId" : "fdfda352157d4cc79bb749953131b457"
             }, {
               "tier" : 1,
-              "chainId" : "ef85d1a8-41ef-433a-8153-0b1f59e7b26a",
               "identityType" : "IDENTITY",
               "identityId" : "fdfda352157d4cc79bb749953131b457"
             } ],
@@ -669,12 +650,10 @@ with ApiClient(configuration) as api_client:
           },
           "serialChain" : [ {
             "tier" : 1,
-            "chainId" : "23dc206e-2a9e-4f98-93db-8d6e342cca18",
             "identityType" : "IDENTITY",
             "identityId" : "2c9180858090ea8801809a0465e829da"
           }, {
             "tier" : 1,
-            "chainId" : "23dc206e-2a9e-4f98-93db-8d6e342cca18",
             "identityType" : "IDENTITY",
             "identityId" : "2c9180858090ea8801809a0465e829da"
           } ],

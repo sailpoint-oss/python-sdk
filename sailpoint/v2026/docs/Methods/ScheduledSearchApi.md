@@ -248,7 +248,7 @@ Param Type | Name | Data Type | Required  | Description
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The list of requested scheduled searches. | List[ScheduledSearch] |  * X-Total-Count - The total result count.  |
+200 | The list of requested scheduled searches. | List[ScheduledSearch] |  * X-Total-Count - The total number of recommendation groups available.  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |

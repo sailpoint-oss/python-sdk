@@ -17,6 +17,7 @@ tags: ['SDK', 'Software Development Kit', 'JitActivationActivateResponse', 'V202
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Workflow or business identifier for this activation. | [required]
+**activation_id** | **str** | Persistent activation record identifier for this JIT activation. | [required]
 **connection_id** | **str** | Entitlement connection identifier for the activation. | [required]
 **activation_period_mins** | **int** | Activation duration in minutes for this workflow. | [required]
 **status** | [**ActivationWorkflowStatus**](activation-workflow-status) |  | [required]
@@ -30,6 +31,7 @@ from sailpoint.v2026.models.jit_activation_activate_response import JitActivatio
 
 jit_activation_activate_response = JitActivationActivateResponse(
 id='jit-activation-abc123',
+activation_id='8a9b0c1d-2e3f-4a5b-6c7d-8e9f0a1b2c3d',
 connection_id='757fb803-9024-5861-e510-83a56e4c5bd3',
 activation_period_mins=120,
 status='PROVISIONED',

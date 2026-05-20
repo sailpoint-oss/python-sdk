@@ -16,9 +16,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictStr
 from typing import List
-from typing_extensions import Annotated
 from sailpoint.v2026.models.get_tenant_context200_response_inner import GetTenantContext200ResponseInner
 from sailpoint.v2026.models.json_patch_operation import JsonPatchOperation
 
@@ -43,7 +41,6 @@ class TenantContextApi:
     @validate_call
     def get_tenant_context(
         self,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -59,10 +56,8 @@ class TenantContextApi:
     ) -> List[GetTenantContext200ResponseInner]:
         """Retrieve tenant context
 
-        Returns a list of key-value pairs representing the current state of the tenant's context. 
+        Returns all key-value pairs representing the current state of the tenant's context. Each tenant is limited to a maximum of 100 key-value pairs. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -86,7 +81,6 @@ class TenantContextApi:
         """ # noqa: E501
 
         _param = self._get_tenant_context_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -115,7 +109,6 @@ class TenantContextApi:
     @validate_call
     def get_tenant_context_with_http_info(
         self,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -131,10 +124,8 @@ class TenantContextApi:
     ) -> ApiResponse[List[GetTenantContext200ResponseInner]]:
         """Retrieve tenant context
 
-        Returns a list of key-value pairs representing the current state of the tenant's context. 
+        Returns all key-value pairs representing the current state of the tenant's context. Each tenant is limited to a maximum of 100 key-value pairs. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -158,7 +149,6 @@ class TenantContextApi:
         """ # noqa: E501
 
         _param = self._get_tenant_context_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -187,7 +177,6 @@ class TenantContextApi:
     @validate_call
     def get_tenant_context_without_preload_content(
         self,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -203,10 +192,8 @@ class TenantContextApi:
     ) -> RESTResponseType:
         """Retrieve tenant context
 
-        Returns a list of key-value pairs representing the current state of the tenant's context. 
+        Returns all key-value pairs representing the current state of the tenant's context. Each tenant is limited to a maximum of 100 key-value pairs. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -230,7 +217,6 @@ class TenantContextApi:
         """ # noqa: E501
 
         _param = self._get_tenant_context_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -254,7 +240,6 @@ class TenantContextApi:
 
     def _get_tenant_context_serialize(
         self,
-        x_sail_point_experimental,
         _request_auth,
         _content_type,
         _headers,
@@ -278,8 +263,6 @@ class TenantContextApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
 
@@ -322,7 +305,6 @@ class TenantContextApi:
     def patch_tenant_context(
         self,
         json_patch_operation: JsonPatchOperation,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -340,8 +322,6 @@ class TenantContextApi:
 
         Allows the user to make incremental updates to tenant context records using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  This endpoint is specifically designed to modify the `/Key/*` field, supporting operations such as `add`, `remove`, or `replace` to manage key-value pairs.   Note that each tenant is limited to a maximum of 100 key-value pairs. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param json_patch_operation: (required)
         :type json_patch_operation: JsonPatchOperation
         :param _request_timeout: timeout setting for this request. If one
@@ -367,7 +347,6 @@ class TenantContextApi:
         """ # noqa: E501
 
         _param = self._patch_tenant_context_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -377,7 +356,7 @@ class TenantContextApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "ErrorResponseDto1",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
@@ -399,7 +378,6 @@ class TenantContextApi:
     def patch_tenant_context_with_http_info(
         self,
         json_patch_operation: JsonPatchOperation,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -417,8 +395,6 @@ class TenantContextApi:
 
         Allows the user to make incremental updates to tenant context records using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  This endpoint is specifically designed to modify the `/Key/*` field, supporting operations such as `add`, `remove`, or `replace` to manage key-value pairs.   Note that each tenant is limited to a maximum of 100 key-value pairs. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param json_patch_operation: (required)
         :type json_patch_operation: JsonPatchOperation
         :param _request_timeout: timeout setting for this request. If one
@@ -444,7 +420,6 @@ class TenantContextApi:
         """ # noqa: E501
 
         _param = self._patch_tenant_context_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -454,7 +429,7 @@ class TenantContextApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "ErrorResponseDto1",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
@@ -476,7 +451,6 @@ class TenantContextApi:
     def patch_tenant_context_without_preload_content(
         self,
         json_patch_operation: JsonPatchOperation,
-        x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -494,8 +468,6 @@ class TenantContextApi:
 
         Allows the user to make incremental updates to tenant context records using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  This endpoint is specifically designed to modify the `/Key/*` field, supporting operations such as `add`, `remove`, or `replace` to manage key-value pairs.   Note that each tenant is limited to a maximum of 100 key-value pairs. 
 
-        :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
-        :type x_sail_point_experimental: str
         :param json_patch_operation: (required)
         :type json_patch_operation: JsonPatchOperation
         :param _request_timeout: timeout setting for this request. If one
@@ -521,7 +493,6 @@ class TenantContextApi:
         """ # noqa: E501
 
         _param = self._patch_tenant_context_serialize(
-            x_sail_point_experimental=x_sail_point_experimental,
             json_patch_operation=json_patch_operation,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -531,7 +502,7 @@ class TenantContextApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "ErrorResponseDto1",
+            '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
@@ -547,7 +518,6 @@ class TenantContextApi:
 
     def _patch_tenant_context_serialize(
         self,
-        x_sail_point_experimental,
         json_patch_operation,
         _request_auth,
         _content_type,
@@ -572,8 +542,6 @@ class TenantContextApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if x_sail_point_experimental is not None:
-            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
         # process the form parameters
         # process the body parameter
         if json_patch_operation is not None:

@@ -47,7 +47,6 @@ class TestSpConfigJob(unittest.TestCase):
                 job_id = '3469b87d-48ca-439a-868f-2160001da8c1',
                 status = 'COMPLETE',
                 type = 'IMPORT',
-                expiration = '2021-05-11T22:23:16Z',
                 created = '2021-05-11T22:23:16Z',
                 modified = '2021-05-11T22:23:16Z',
         )

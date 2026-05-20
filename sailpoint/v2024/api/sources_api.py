@@ -5603,6 +5603,7 @@ class SourcesApi:
     @validate_call
     def get_source_entitlement_request_config(
         self,
+        id: Annotated[StrictStr, Field(description="The Source id")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -5621,6 +5622,8 @@ class SourcesApi:
 
         This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
 
+        :param id: The Source id (required)
+        :type id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -5646,6 +5649,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._get_source_entitlement_request_config_serialize(
+            id=id,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -5675,6 +5679,7 @@ class SourcesApi:
     @validate_call
     def get_source_entitlement_request_config_with_http_info(
         self,
+        id: Annotated[StrictStr, Field(description="The Source id")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -5693,6 +5698,8 @@ class SourcesApi:
 
         This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
 
+        :param id: The Source id (required)
+        :type id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -5718,6 +5725,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._get_source_entitlement_request_config_serialize(
+            id=id,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -5747,6 +5755,7 @@ class SourcesApi:
     @validate_call
     def get_source_entitlement_request_config_without_preload_content(
         self,
+        id: Annotated[StrictStr, Field(description="The Source id")],
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
             None,
@@ -5765,6 +5774,8 @@ class SourcesApi:
 
         This API gets the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
 
+        :param id: The Source id (required)
+        :type id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
         :param _request_timeout: timeout setting for this request. If one
@@ -5790,6 +5801,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._get_source_entitlement_request_config_serialize(
+            id=id,
             x_sail_point_experimental=x_sail_point_experimental,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -5814,6 +5826,7 @@ class SourcesApi:
 
     def _get_source_entitlement_request_config_serialize(
         self,
+        id,
         x_sail_point_experimental,
         _request_auth,
         _content_type,
@@ -5836,6 +5849,8 @@ class SourcesApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
         # process the query parameters
         # process the header parameters
         if x_sail_point_experimental is not None:
@@ -14477,6 +14492,7 @@ class SourcesApi:
     @validate_call
     def update_source_entitlement_request_config(
         self,
+        id: Annotated[StrictStr, Field(description="The Source id")],
         source_entitlement_request_config: SourceEntitlementRequestConfig,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
@@ -14496,6 +14512,8 @@ class SourcesApi:
 
         This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
 
+        :param id: The Source id (required)
+        :type id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
         :param source_entitlement_request_config: (required)
@@ -14523,6 +14541,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._update_source_entitlement_request_config_serialize(
+            id=id,
             x_sail_point_experimental=x_sail_point_experimental,
             source_entitlement_request_config=source_entitlement_request_config,
             _request_auth=_request_auth,
@@ -14553,6 +14572,7 @@ class SourcesApi:
     @validate_call
     def update_source_entitlement_request_config_with_http_info(
         self,
+        id: Annotated[StrictStr, Field(description="The Source id")],
         source_entitlement_request_config: SourceEntitlementRequestConfig,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
@@ -14572,6 +14592,8 @@ class SourcesApi:
 
         This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
 
+        :param id: The Source id (required)
+        :type id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
         :param source_entitlement_request_config: (required)
@@ -14599,6 +14621,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._update_source_entitlement_request_config_serialize(
+            id=id,
             x_sail_point_experimental=x_sail_point_experimental,
             source_entitlement_request_config=source_entitlement_request_config,
             _request_auth=_request_auth,
@@ -14629,6 +14652,7 @@ class SourcesApi:
     @validate_call
     def update_source_entitlement_request_config_without_preload_content(
         self,
+        id: Annotated[StrictStr, Field(description="The Source id")],
         source_entitlement_request_config: SourceEntitlementRequestConfig,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
@@ -14648,6 +14672,8 @@ class SourcesApi:
 
         This API replaces the current entitlement request configuration for a source. This source-level configuration should apply for all the entitlements in the source.  Access request to any entitlements in the source should follow this configuration unless a separate entitlement-level configuration is defined. - During access request, this source-level entitlement request configuration overrides the global organization-level configuration. - However, the entitlement-level configuration (if defined) overrides this source-level configuration.
 
+        :param id: The Source id (required)
+        :type id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
         :param source_entitlement_request_config: (required)
@@ -14675,6 +14701,7 @@ class SourcesApi:
         """ # noqa: E501
 
         _param = self._update_source_entitlement_request_config_serialize(
+            id=id,
             x_sail_point_experimental=x_sail_point_experimental,
             source_entitlement_request_config=source_entitlement_request_config,
             _request_auth=_request_auth,
@@ -14700,6 +14727,7 @@ class SourcesApi:
 
     def _update_source_entitlement_request_config_serialize(
         self,
+        id,
         x_sail_point_experimental,
         source_entitlement_request_config,
         _request_auth,
@@ -14723,6 +14751,8 @@ class SourcesApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
         # process the query parameters
         # process the header parameters
         if x_sail_point_experimental is not None:

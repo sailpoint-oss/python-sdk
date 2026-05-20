@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **job_id** | **str** | Unique id assigned to this job. | [required]
 **status** |  **Enum** [  'NOT_STARTED',    'IN_PROGRESS',    'COMPLETE',    'CANCELLED',    'FAILED' ] | Status of the job. | [required]
 **type** |  **Enum** [  'EXPORT',    'IMPORT' ] | Type of the job, either export or import. | [required]
-**expiration** | **datetime** | The time until which the artifacts will be available for download. | [required]
+**expiration** | **datetime** | The time until which the artifacts will be available for download. | [optional] 
 **created** | **datetime** | The time the job was started. | [required]
 **modified** | **datetime** | The time of the last update to the job. | [required]
 **message** | **str** | This message contains additional information about the overall status of the job. | [optional] 

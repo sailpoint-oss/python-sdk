@@ -101,7 +101,6 @@ approval_config=sailpoint.v2026.models.approval_config.ApprovalConfig(
                         escalation_cron_schedule = '*/5 * * * *', 
                         escalation_chain = [
                             sailpoint.v2026.models.approval_config_escalation_config_escalation_chain_inner.ApprovalConfig_escalationConfig_escalationChain_inner(
-                                chain_id = 'ef85d1a8-41ef-433a-8153-0b1f59e7b26a', 
                                 tier = 1, 
                                 identity_id = 'fdfda352157d4cc79bb749953131b457', 
                                 identity_type = 'IDENTITY', )
@@ -115,32 +114,15 @@ approval_config=sailpoint.v2026.models.approval_config.ApprovalConfig(
                         offset = '', ), 
                     serial_chain = [
                         sailpoint.v2026.models.approval_config_serial_chain_inner.ApprovalConfig_serialChain_inner(
-                            chain_id = '23dc206e-2a9e-4f98-93db-8d6e342cca18', 
                             tier = 1, 
                             identity_id = '2c9180858090ea8801809a0465e829da', 
                             identity_type = 'IDENTITY', )
                         ], 
                     requires_comment = 'ALL', 
-                    fallback_approver = sailpoint.v2026.models.approval_identity.Approval Identity(
-                        email = 'mail@mail.com', 
-                        identity_id = '17e633e7d57e481569df76323169deb6a', 
-                        members = [
-                            sailpoint.v2026.models.approval_identity_members_inner.ApprovalIdentity_members_inner(
-                                email = 'mail@mail.com', 
-                                id = '17e633e7d57e481569df76323169deb6a', 
-                                name = 'Bob Neil', 
-                                type = 'IDENTITY', )
-                            ], 
-                        name = 'Jim Bob', 
-                        owner_of = [
-                            sailpoint.v2026.models.approval_identity_owner_of_inner.ApprovalIdentity_ownerOf_inner(
-                                id = 'string', 
-                                name = 'Access Request App', 
-                                type = 'APPLICATION', )
-                            ], 
-                        serial_order = 0, 
-                        type = 'IDENTITY', ), 
-                    machine_identity_manager_assignment = 'MACHINE_IDENTITY_OWNER', 
+                    fallback_approver = sailpoint.v2026.models.approval_config_fallback_approver.ApprovalConfig_fallbackApprover(
+                        identity_id = 'fdfda352157d4cc79bb749953131b457', 
+                        type = 'MANAGER_OF', ), 
+                    machine_identity_manager_assignment = 'MANAGER_OF_REQUESTER', 
                     circumvent_approval_process = False, 
                     auto_approve = 'OFF', ),
 description=[

@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,11 +27,20 @@ class ApprovalConfigEscalationConfigEscalationChainInner(BaseModel):
     """
     ApprovalConfigEscalationConfigEscalationChainInner
     """ # noqa: E501
-    chain_id: Optional[StrictStr] = Field(default=None, description="ID of the escalation chain.", alias="chainId")
     tier: Optional[StrictInt] = Field(default=None, description="Starting at 1 defines the order in which the identities will get assigned")
-    identity_id: Optional[StrictStr] = Field(default=None, description="Identity ID in the escalation chain.", alias="identityId")
-    identity_type: Optional[StrictStr] = Field(default=None, description="Type of identity in the escalation chain.", alias="identityType")
-    __properties: ClassVar[List[str]] = ["chainId", "tier", "identityId", "identityType"]
+    identity_id: Optional[StrictStr] = Field(default=None, description="Optional Identity ID of the type of identity defined in the 'identityType' field.", alias="identityId")
+    identity_type: Optional[StrictStr] = Field(default=None, description="Type of identityId in the escalation chain.", alias="identityType")
+    __properties: ClassVar[List[str]] = ["tier", "identityId", "identityType"]
+
+    @field_validator('identity_type')
+    def identity_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['IDENTITY', 'MANAGER_OF', 'ACCOUNT_OWNER', 'MACHINE_ACCOUNT_OWNER', 'MACHINE_IDENTITY_OWNER', 'MANAGER_OF_REQUESTED_TARGET_OWNER', 'MANAGER_OF_MACHINE_IDENTITY_OWNER', 'MANAGER_OF_ACCOUNT_OWNER', 'MANAGER_OF_MACHINE_ACCOUNT_OWNER', 'MANAGER_OF_REQUESTER', 'MANAGER_OF_REQUESTER_OWNER', 'MANAGER_OF_OWNER', 'ACCESS_PROFILE_OWNER', 'APPLICATION_OWNER', 'ENTITLEMENT_OWNER', 'ROLE_OWNER', 'SOURCE_OWNER', 'ACCESS_PROFILE_PRIMARY_OWNER', 'APPLICATION_PRIMARY_OWNER', 'ENTITLEMENT_PRIMARY_OWNER', 'ROLE_PRIMARY_OWNER', 'SOURCE_PRIMARY_OWNER']):
+            warnings.warn(f"must be one of enum values ('IDENTITY', 'MANAGER_OF', 'ACCOUNT_OWNER', 'MACHINE_ACCOUNT_OWNER', 'MACHINE_IDENTITY_OWNER', 'MANAGER_OF_REQUESTED_TARGET_OWNER', 'MANAGER_OF_MACHINE_IDENTITY_OWNER', 'MANAGER_OF_ACCOUNT_OWNER', 'MANAGER_OF_MACHINE_ACCOUNT_OWNER', 'MANAGER_OF_REQUESTER', 'MANAGER_OF_REQUESTER_OWNER', 'MANAGER_OF_OWNER', 'ACCESS_PROFILE_OWNER', 'APPLICATION_OWNER', 'ENTITLEMENT_OWNER', 'ROLE_OWNER', 'SOURCE_OWNER', 'ACCESS_PROFILE_PRIMARY_OWNER', 'APPLICATION_PRIMARY_OWNER', 'ENTITLEMENT_PRIMARY_OWNER', 'ROLE_PRIMARY_OWNER', 'SOURCE_PRIMARY_OWNER') unknown value: {value}")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,7 +93,6 @@ class ApprovalConfigEscalationConfigEscalationChainInner(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "chainId": obj.get("chainId"),
             "tier": obj.get("tier"),
             "identityId": obj.get("identityId"),
             "identityType": obj.get("identityType")

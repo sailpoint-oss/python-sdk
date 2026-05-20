@@ -35,7 +35,6 @@ class TestApprovalConfigEscalationConfigEscalationChainInner(unittest.TestCase):
         model = ApprovalConfigEscalationConfigEscalationChainInner()
         if include_optional:
             return ApprovalConfigEscalationConfigEscalationChainInner(
-                chain_id = 'ef85d1a8-41ef-433a-8153-0b1f59e7b26a',
                 tier = 1,
                 identity_id = 'fdfda352157d4cc79bb749953131b457',
                 identity_type = 'IDENTITY'

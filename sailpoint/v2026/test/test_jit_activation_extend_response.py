@@ -36,6 +36,7 @@ class TestJitActivationExtendResponse(unittest.TestCase):
         if include_optional:
             return JitActivationExtendResponse(
                 id = 'jit-activation-abc123',
+                activation_id = '8a9b0c1d-2e3f-4a5b-6c7d-8e9f0a1b2c3d',
                 connection_id = '757fb803-9024-5861-e510-83a56e4c5bd3',
                 activation_period_extension_mins = 120,
                 status = 'PROVISIONED',
@@ -44,6 +45,7 @@ class TestJitActivationExtendResponse(unittest.TestCase):
         else:
             return JitActivationExtendResponse(
                 id = 'jit-activation-abc123',
+                activation_id = '8a9b0c1d-2e3f-4a5b-6c7d-8e9f0a1b2c3d',
                 connection_id = '757fb803-9024-5861-e510-83a56e4c5bd3',
                 activation_period_extension_mins = 120,
                 status = 'PROVISIONED',

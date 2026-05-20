@@ -18,17 +18,92 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2026*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**approve-bulk-entitlement-recommendations**](#approve-bulk-entitlement-recommendations) | **POST** `/entitlement-recommendations/bulk-approve` | Bulk approve entitlement recommendations
 [**create-auto-write-settings**](#create-auto-write-settings) | **POST** `/suggested-entitlement-descriptions/auto-write-settings` | Create auto-write settings for SED
 [**get-auto-write-settings**](#get-auto-write-settings) | **GET** `/suggested-entitlement-descriptions/auto-write-settings` | Get auto-write settings for SED
 [**get-sed-batch-stats**](#get-sed-batch-stats) | **GET** `/suggested-entitlement-description-batches/{batchId}/stats` | Submit sed batch stats request
 [**get-sed-batches**](#get-sed-batches) | **GET** `/suggested-entitlement-description-batches` | List Sed Batch Record
+[**list-pending-entitlement-recommendation-approvals**](#list-pending-entitlement-recommendation-approvals) | **GET** `/entitlement-recommendations/pending-approvals` | List pending entitlement recommendation approvals
+[**list-privileged-entitlement-recommendations**](#list-privileged-entitlement-recommendations) | **GET** `/privileged-recommendations` | List privileged entitlement recommendations
 [**list-seds**](#list-seds) | **GET** `/suggested-entitlement-descriptions` | List suggested entitlement descriptions
+[**patch-entitlement-recommendation**](#patch-entitlement-recommendation) | **PATCH** `/entitlement-recommendations/{id}` | Update an entitlement recommendation
 [**patch-sed**](#patch-sed) | **PATCH** `/suggested-entitlement-descriptions` | Patch suggested entitlement description
+[**submit-entitlement-recommendations-assignment**](#submit-entitlement-recommendations-assignment) | **POST** `/entitlement-recommendations/assign` | Assign entitlement recommendations for review
 [**submit-sed-approval**](#submit-sed-approval) | **POST** `/suggested-entitlement-description-approvals` | Submit bulk approval request
 [**submit-sed-assignment**](#submit-sed-assignment) | **POST** `/suggested-entitlement-description-assignments` | Submit sed assignment request
 [**submit-sed-batch-request**](#submit-sed-batch-request) | **POST** `/suggested-entitlement-description-batches` | Submit sed batch request
 [**update-auto-write-settings**](#update-auto-write-settings) | **PATCH** `/suggested-entitlement-descriptions/auto-write-settings` | Update auto-write settings for SED
 
+
+## approve-bulk-entitlement-recommendations
+Bulk approve entitlement recommendations
+Approve multiple entitlement recommendations in a single request. Each item in the request must include the recommendation ID and, depending on the record type, either an approved description (SED items) or an approved privilege level (privilege items). Returns a per-item result indicating success or failure.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2026/approve-bulk-entitlement-recommendations)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | bulk_approve_entitlement_recommendation_request | [**BulkApproveEntitlementRecommendationRequest**](../models/bulk-approve-entitlement-recommendation-request) | True  | The list of recommendation items to approve.
+
+### Return type
+[**List[BulkApproveEntitlementRecommendationResult]**](../models/bulk-approve-entitlement-recommendation-result)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | Per-item approval results. | List[BulkApproveEntitlementRecommendationResult] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfig429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2026.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
+from sailpoint.v2026.api_client import ApiClient
+from sailpoint.v2026.models.bulk_approve_entitlement_recommendation_request import BulkApproveEntitlementRecommendationRequest
+from sailpoint.v2026.models.bulk_approve_entitlement_recommendation_result import BulkApproveEntitlementRecommendationResult
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    bulk_approve_entitlement_recommendation_request = '''{
+          "items" : [ {
+            "id" : "79db50d4-723c-4aa0-a824-83c2205d82d1",
+            "recordType" : "SED",
+            "description" : "Provides access and permissions related to the Delinea Secret Server Cloud system."
+          }, {
+            "id" : "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+            "recordType" : "privilege",
+            "privilegeLevel" : "high"
+          } ]
+        }''' # BulkApproveEntitlementRecommendationRequest | The list of recommendation items to approve.
+
+    try:
+        # Bulk approve entitlement recommendations
+        new_bulk_approve_entitlement_recommendation_request = BulkApproveEntitlementRecommendationRequest.from_json(bulk_approve_entitlement_recommendation_request)
+        results = SuggestedEntitlementDescriptionApi(api_client).approve_bulk_entitlement_recommendations(bulk_approve_entitlement_recommendation_request=new_bulk_approve_entitlement_recommendation_request)
+        # Below is a request that includes all optional parameters
+        # results = SuggestedEntitlementDescriptionApi(api_client).approve_bulk_entitlement_recommendations(new_bulk_approve_entitlement_recommendation_request)
+        print("The response of SuggestedEntitlementDescriptionApi->approve_bulk_entitlement_recommendations:\n")
+        for item in results:
+            print(item.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling SuggestedEntitlementDescriptionApi->approve_bulk_entitlement_recommendations: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
 
 ## create-auto-write-settings
 Create auto-write settings for SED
@@ -281,6 +356,128 @@ with ApiClient(configuration) as api_client:
 
 [[Back to top]](#) 
 
+## list-pending-entitlement-recommendation-approvals
+List pending entitlement recommendation approvals
+Returns a list of entitlement recommendations (SED and/or privilege) that are currently awaiting review or approval. Each record includes the recommendation type, entitlement details, and any AI-generated suggestions.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2026/list-pending-entitlement-recommendation-approvals)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+  Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | limit | **int** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+
+### Return type
+[**List[EntitlementRecommendationRecord]**](../models/entitlement-recommendation-record)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | A list of pending entitlement recommendation records. | List[EntitlementRecommendationRecord] |  * X-Total-Count - The total number of recommendation groups available.  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfig429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2026.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
+from sailpoint.v2026.api_client import ApiClient
+from sailpoint.v2026.models.entitlement_recommendation_record import EntitlementRecommendationRecord
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+
+    try:
+        # List pending entitlement recommendation approvals
+        
+        results = SuggestedEntitlementDescriptionApi(api_client).list_pending_entitlement_recommendation_approvals()
+        # Below is a request that includes all optional parameters
+        # results = SuggestedEntitlementDescriptionApi(api_client).list_pending_entitlement_recommendation_approvals(offset, limit)
+        print("The response of SuggestedEntitlementDescriptionApi->list_pending_entitlement_recommendation_approvals:\n")
+        for item in results:
+            print(item.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling SuggestedEntitlementDescriptionApi->list_pending_entitlement_recommendation_approvals: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## list-privileged-entitlement-recommendations
+List privileged entitlement recommendations
+Returns a list of privileged entitlement recommendation groups. Each group aggregates individual entitlement instances that share the same entitlement name and connector type, along with a recommendation score and instance count.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2026/list-privileged-entitlement-recommendations)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+  Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | limit | **int** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+
+### Return type
+[**List[PrivilegedRecommendationGroup]**](../models/privileged-recommendation-group)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | A list of privileged recommendation groups. | List[PrivilegedRecommendationGroup] |  * X-Total-Count - The total number of recommendation groups available.  * X-Total-Entitlements - The total number of individual entitlement instances across all groups.  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfig429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2026.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
+from sailpoint.v2026.api_client import ApiClient
+from sailpoint.v2026.models.privileged_recommendation_group import PrivilegedRecommendationGroup
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+
+    try:
+        # List privileged entitlement recommendations
+        
+        results = SuggestedEntitlementDescriptionApi(api_client).list_privileged_entitlement_recommendations()
+        # Below is a request that includes all optional parameters
+        # results = SuggestedEntitlementDescriptionApi(api_client).list_privileged_entitlement_recommendations(offset, limit)
+        print("The response of SuggestedEntitlementDescriptionApi->list_privileged_entitlement_recommendations:\n")
+        for item in results:
+            print(item.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling SuggestedEntitlementDescriptionApi->list_privileged_entitlement_recommendations: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
 ## list-seds
 List suggested entitlement descriptions
 List of Suggested Entitlement Descriptions (SED)
@@ -369,6 +566,68 @@ with ApiClient(configuration) as api_client:
 
 [[Back to top]](#) 
 
+## patch-entitlement-recommendation
+Update an entitlement recommendation
+Partially update a single entitlement recommendation record by its ID. Use this endpoint to update the status, description, or privilege level of a specific SED or privilege recommendation.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2026/patch-entitlement-recommendation)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **str** | True  | The unique identifier of the entitlement recommendation to update.
+ Body  | json_patch_operation | [**[]JsonPatchOperation**](../models/json-patch-operation) | True  | The patch operations to apply to the entitlement recommendation record.
+
+### Return type
+[**EntitlementRecommendationRecord**](../models/entitlement-recommendation-record)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | The updated entitlement recommendation record. | EntitlementRecommendationRecord |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfig429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json-patch+json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2026.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
+from sailpoint.v2026.api_client import ApiClient
+from sailpoint.v2026.models.entitlement_recommendation_record import EntitlementRecommendationRecord
+from sailpoint.v2026.models.json_patch_operation import JsonPatchOperation
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    id = '79db50d4-723c-4aa0-a824-83c2205d82d1' # str | The unique identifier of the entitlement recommendation to update. # str | The unique identifier of the entitlement recommendation to update.
+    json_patch_operation = '''[sailpoint.v2026.JsonPatchOperation()]''' # List[JsonPatchOperation] | The patch operations to apply to the entitlement recommendation record.
+
+    try:
+        # Update an entitlement recommendation
+        new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+        results = SuggestedEntitlementDescriptionApi(api_client).patch_entitlement_recommendation(id=id, json_patch_operation=new_json_patch_operation)
+        # Below is a request that includes all optional parameters
+        # results = SuggestedEntitlementDescriptionApi(api_client).patch_entitlement_recommendation(id, new_json_patch_operation)
+        print("The response of SuggestedEntitlementDescriptionApi->patch_entitlement_recommendation:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling SuggestedEntitlementDescriptionApi->patch_entitlement_recommendation: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
 ## patch-sed
 Patch suggested entitlement description
 Patch Suggested Entitlement Description
@@ -425,6 +684,71 @@ with ApiClient(configuration) as api_client:
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling SuggestedEntitlementDescriptionApi->patch_sed: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## submit-entitlement-recommendations-assignment
+Assign entitlement recommendations for review
+Assign a set of entitlement recommendation records to a reviewer. The assignee can be a specific identity, a governance group, or a role-based assignee such as source owner or entitlement owner. Returns a batch ID that can be used to track the assignment.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2026/submit-entitlement-recommendations-assignment)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | entitlement_recommendation_assign_request | [**EntitlementRecommendationAssignRequest**](../models/entitlement-recommendation-assign-request) | True  | The recommendation IDs and the target assignee.
+
+### Return type
+[**EntitlementRecommendationAssignResult**](../models/entitlement-recommendation-assign-result)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+202 | Assignment queued successfully. Returns the batch ID for tracking. | EntitlementRecommendationAssignResult |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfig429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2026.api.suggested_entitlement_description_api import SuggestedEntitlementDescriptionApi
+from sailpoint.v2026.api_client import ApiClient
+from sailpoint.v2026.models.entitlement_recommendation_assign_request import EntitlementRecommendationAssignRequest
+from sailpoint.v2026.models.entitlement_recommendation_assign_result import EntitlementRecommendationAssignResult
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    entitlement_recommendation_assign_request = '''{
+          "assignee" : {
+            "type" : "IDENTITY",
+            "value" : "2c91808a7f3b2e8a017f3c3e5f6d0099"
+          },
+          "items" : [ "79db50d4-723c-4aa0-a824-83c2205d82d1", "a1b2c3d4-e5f6-7890-abcd-ef1234567890" ]
+        }''' # EntitlementRecommendationAssignRequest | The recommendation IDs and the target assignee.
+
+    try:
+        # Assign entitlement recommendations for review
+        new_entitlement_recommendation_assign_request = EntitlementRecommendationAssignRequest.from_json(entitlement_recommendation_assign_request)
+        results = SuggestedEntitlementDescriptionApi(api_client).submit_entitlement_recommendations_assignment(entitlement_recommendation_assign_request=new_entitlement_recommendation_assign_request)
+        # Below is a request that includes all optional parameters
+        # results = SuggestedEntitlementDescriptionApi(api_client).submit_entitlement_recommendations_assignment(new_entitlement_recommendation_assign_request)
+        print("The response of SuggestedEntitlementDescriptionApi->submit_entitlement_recommendations_assignment:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling SuggestedEntitlementDescriptionApi->submit_entitlement_recommendations_assignment: %s\n" % e)
 ```
 
 

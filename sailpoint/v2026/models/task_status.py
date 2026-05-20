@@ -40,7 +40,7 @@ class TaskStatus(BaseModel):
     launcher: StrictStr = Field(description="Service to execute the task this TaskStatus represents")
     target: Optional[Target] = None
     created: datetime = Field(description="Creation date of the task this TaskStatus represents")
-    modified: datetime = Field(description="Last modification date of the task this TaskStatus represents")
+    modified: Optional[datetime] = Field(description="Last modification date of the task this TaskStatus represents")
     launched: Optional[datetime] = Field(description="Launch date of the task this TaskStatus represents")
     completed: Optional[datetime] = Field(description="Completion date of the task this TaskStatus represents")
     completion_status: Optional[StrictStr] = Field(description="Completion status of the task this TaskStatus represents", alias="completionStatus")
@@ -137,6 +137,11 @@ class TaskStatus(BaseModel):
         # and model_fields_set contains the field
         if self.target is None and "target" in self.model_fields_set:
             _dict['target'] = None
+
+        # set to None if modified (nullable) is None
+        # and model_fields_set contains the field
+        if self.modified is None and "modified" in self.model_fields_set:
+            _dict['modified'] = None
 
         # set to None if launched (nullable) is None
         # and model_fields_set contains the field

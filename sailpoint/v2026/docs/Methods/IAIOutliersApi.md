@@ -134,7 +134,7 @@ Param Type | Name | Data Type | Required  | Description
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Succeeded. Returns list of objects. Each object is a summary to give high level statistics/counts of outliers | List[OutlierSummary] |  * X-Total-Count - The total result count.  |
+200 | Succeeded. Returns list of objects. Each object is a summary to give high level statistics/counts of outliers | List[OutlierSummary] |  * X-Total-Count - The total number of recommendation groups available.  |
 202 | Accepted - Returned if the request was successfully accepted into the system. | object |  -  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
@@ -217,7 +217,7 @@ Param Type | Name | Data Type | Required  | Description
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Succeeded. Returns list of objects. Each object contains information about outliers. | List[Outlier] |  * X-Total-Count - The total result count.  |
+200 | Succeeded. Returns list of objects. Each object contains information about outliers. | List[Outlier] |  * X-Total-Count - The total number of recommendation groups available.  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
@@ -453,7 +453,7 @@ Path   | outlier_id | **str** | True  | The outlier id
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Succeeded. Returns list of objects. Each object contains a feature and metadata about that feature. | List[OutlierContributingFeature] |  * X-Total-Count - The total result count.  * accept-language - The locale to use for translations  |
+200 | Succeeded. Returns list of objects. Each object contains a feature and metadata about that feature. | List[OutlierContributingFeature] |  * X-Total-Count - The total number of recommendation groups available.  * accept-language - The locale to use for translations  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |

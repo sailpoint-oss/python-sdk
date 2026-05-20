@@ -18,21 +18,24 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2026.models.error_message_dto1 import ErrorMessageDto1
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ErrorResponseDto1(BaseModel):
+class EntitlementRecommendationAssigneeOneOf1(BaseModel):
     """
-    ErrorResponseDto1
+    Assign to the source owner or entitlement owner role. No value field is required.
     """ # noqa: E501
-    detail_code: Optional[StrictStr] = Field(default=None, description="Fine-grained error code providing more detail of the error.", alias="detailCode")
-    tracking_id: Optional[StrictStr] = Field(default=None, description="Unique tracking id for the error.", alias="trackingId")
-    messages: Optional[List[ErrorMessageDto1]] = Field(default=None, description="Generic localized reason for error")
-    causes: Optional[List[ErrorMessageDto1]] = Field(default=None, description="Plain-text descriptive reasons to provide additional detail to the text provided in the messages field")
-    __properties: ClassVar[List[str]] = ["detailCode", "trackingId", "messages", "causes"]
+    type: StrictStr = Field(description="The type of assignee.")
+    __properties: ClassVar[List[str]] = ["type"]
+
+    @field_validator('type')
+    def type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['SOURCE_OWNER', 'ENTITLEMENT_OWNER']):
+            warnings.warn(f"must be one of enum values ('SOURCE_OWNER', 'ENTITLEMENT_OWNER') unknown value: {value}")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -52,7 +55,7 @@ class ErrorResponseDto1(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ErrorResponseDto1 from a JSON string"""
+        """Create an instance of EntitlementRecommendationAssigneeOneOf1 from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,25 +76,11 @@ class ErrorResponseDto1(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
-        _items = []
-        if self.messages:
-            for _item_messages in self.messages:
-                if _item_messages:
-                    _items.append(_item_messages.to_dict())
-            _dict['messages'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in causes (list)
-        _items = []
-        if self.causes:
-            for _item_causes in self.causes:
-                if _item_causes:
-                    _items.append(_item_causes.to_dict())
-            _dict['causes'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ErrorResponseDto1 from a dict"""
+        """Create an instance of EntitlementRecommendationAssigneeOneOf1 from a dict"""
         if obj is None:
             return None
 
@@ -99,10 +88,7 @@ class ErrorResponseDto1(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "detailCode": obj.get("detailCode"),
-            "trackingId": obj.get("trackingId"),
-            "messages": [ErrorMessageDto1.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None,
-            "causes": [ErrorMessageDto1.from_dict(_item) for _item in obj["causes"]] if obj.get("causes") is not None else None
+            "type": obj.get("type")
         })
         return _obj
 

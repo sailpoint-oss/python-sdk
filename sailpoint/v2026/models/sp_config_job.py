@@ -20,7 +20,7 @@ import warnings
 
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -31,7 +31,7 @@ class SpConfigJob(BaseModel):
     job_id: StrictStr = Field(description="Unique id assigned to this job.", alias="jobId")
     status: StrictStr = Field(description="Status of the job.")
     type: StrictStr = Field(description="Type of the job, either export or import.")
-    expiration: datetime = Field(description="The time until which the artifacts will be available for download.")
+    expiration: Optional[datetime] = Field(default=None, description="The time until which the artifacts will be available for download.")
     created: datetime = Field(description="The time the job was started.")
     modified: datetime = Field(description="The time of the last update to the job.")
     __properties: ClassVar[List[str]] = ["jobId", "status", "type", "expiration", "created", "modified"]

@@ -26,6 +26,13 @@ class TestSuggestedEntitlementDescriptionApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_approve_bulk_entitlement_recommendations(self) -> None:
+        """Test case for approve_bulk_entitlement_recommendations
+
+        Bulk approve entitlement recommendations
+        """
+        pass
+
     def test_create_auto_write_settings(self) -> None:
         """Test case for create_auto_write_settings
 
@@ -54,6 +61,20 @@ class TestSuggestedEntitlementDescriptionApi(unittest.TestCase):
         """
         pass
 
+    def test_list_pending_entitlement_recommendation_approvals(self) -> None:
+        """Test case for list_pending_entitlement_recommendation_approvals
+
+        List pending entitlement recommendation approvals
+        """
+        pass
+
+    def test_list_privileged_entitlement_recommendations(self) -> None:
+        """Test case for list_privileged_entitlement_recommendations
+
+        List privileged entitlement recommendations
+        """
+        pass
+
     def test_list_seds(self) -> None:
         """Test case for list_seds
 
@@ -61,10 +82,24 @@ class TestSuggestedEntitlementDescriptionApi(unittest.TestCase):
         """
         pass
 
+    def test_patch_entitlement_recommendation(self) -> None:
+        """Test case for patch_entitlement_recommendation
+
+        Update an entitlement recommendation
+        """
+        pass
+
     def test_patch_sed(self) -> None:
         """Test case for patch_sed
 
         Patch suggested entitlement description
+        """
+        pass
+
+    def test_submit_entitlement_recommendations_assignment(self) -> None:
+        """Test case for submit_entitlement_recommendations_assignment
+
+        Assign entitlement recommendations for review
         """
         pass
 

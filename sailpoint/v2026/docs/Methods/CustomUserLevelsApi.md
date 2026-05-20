@@ -308,7 +308,7 @@ Param Type | Name | Data Type | Required  | Description
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Successfully retrieved the list of authorization assignable right sets. | List[HierarchicalRightSet] |  * X-Total-Count - The total result count.  * accept-language - The locale to use for translations  |
+200 | Successfully retrieved the list of authorization assignable right sets. | List[HierarchicalRightSet] |  * X-Total-Count - The total number of recommendation groups available.  * accept-language - The locale to use for translations  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
@@ -389,7 +389,7 @@ Path   | id | **str** | True  | The unique identifier of the user level.
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of identities associated with a user level. | List[AuthUserSlimResponse] |  * X-Total-Count - The total result count.  |
+200 | List of identities associated with a user level. | List[AuthUserSlimResponse] |  * X-Total-Count - The total number of recommendation groups available.  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
@@ -471,7 +471,7 @@ Param Type | Name | Data Type | Required  | Description
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | Successfully retrieved the list of user levels. | List[UserLevelSummaryDTO] |  * X-Total-Count - The total result count.  * accept-language - The locale to use for translations  |
+200 | Successfully retrieved the list of user levels. | List[UserLevelSummaryDTO] |  * X-Total-Count - The total number of recommendation groups available.  * accept-language - The locale to use for translations  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
@@ -622,7 +622,7 @@ Param Type | Name | Data Type | Required  | Description
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of user levels along with the number of identities associated to it. | List[AuthUserLevelsIdentityCount] |  * X-Total-Count - The total result count.  |
+200 | List of user levels along with the number of identities associated to it. | List[AuthUserLevelsIdentityCount] |  * X-Total-Count - The total number of recommendation groups available.  |
 400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |

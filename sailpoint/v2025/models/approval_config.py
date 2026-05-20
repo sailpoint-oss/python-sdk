@@ -22,6 +22,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v2025.models.approval_config_cron_timezone import ApprovalConfigCronTimezone
 from sailpoint.v2025.models.approval_config_escalation_config import ApprovalConfigEscalationConfig
+from sailpoint.v2025.models.approval_config_fallback_approver import ApprovalConfigFallbackApprover
 from sailpoint.v2025.models.approval_config_reminder_config import ApprovalConfigReminderConfig
 from sailpoint.v2025.models.approval_config_serial_chain_inner import ApprovalConfigSerialChainInner
 from sailpoint.v2025.models.approval_config_timeout_config import ApprovalConfigTimeoutConfig
@@ -38,8 +39,8 @@ class ApprovalConfig(BaseModel):
     cron_timezone: Optional[ApprovalConfigCronTimezone] = Field(default=None, alias="cronTimezone")
     serial_chain: Optional[List[ApprovalConfigSerialChainInner]] = Field(default=None, description="If the approval request has an approvalCriteria of SERIAL this chain will be used to determine the assignment order.", alias="serialChain")
     requires_comment: Optional[StrictStr] = Field(default=None, description="Determines whether a comment is required when approving or rejecting the approval request.", alias="requiresComment")
-    fallback_approver: Optional[Dict[str, Any]] = Field(default=None, description="Configuration for fallback approver. Used if the user cannot be found for whatever reason and escalation config does not exist.", alias="fallbackApprover")
-    machine_identity_manager_assignment: Optional[StrictStr] = Field(default='MACHINE_IDENTITY_OWNER', description="Specifies how to treat the identity type \"MANAGER_OF\" when the requestee is a machine identity.", alias="machineIdentityManagerAssignment")
+    fallback_approver: Optional[ApprovalConfigFallbackApprover] = Field(default=None, alias="fallbackApprover")
+    machine_identity_manager_assignment: Optional[StrictStr] = Field(default='MANAGER_OF_REQUESTER', description="Specifies how to treat the identity type \"MANAGER_OF\" when the requestee is a machine identity.", alias="machineIdentityManagerAssignment")
     circumvent_approval_process: Optional[StrictBool] = Field(default=False, description="When true, all approvals will be created with the status \"PASSED\".", alias="circumventApprovalProcess")
     auto_approve: Optional[StrictStr] = Field(default=None, description="OFF will prevent the approval request from being assigned to the requester or requestee by assigning it to their manager instead. DIRECT will cause approval requests to be auto-approved when assigned directly and only to the requester. INDIRECT will auto-approve when the requester appears anywhere in the list of approvers, including in a governance group. This field will only be effective if requestedTarget.reauthRequired is set to false, otherwise the approval will have to be manually approved.", alias="autoApprove")
     __properties: ClassVar[List[str]] = ["reminderConfig", "escalationConfig", "timeoutConfig", "cronTimezone", "serialChain", "requiresComment", "fallbackApprover", "machineIdentityManagerAssignment", "circumventApprovalProcess", "autoApprove"]
@@ -153,8 +154,8 @@ class ApprovalConfig(BaseModel):
             "cronTimezone": ApprovalConfigCronTimezone.from_dict(obj["cronTimezone"]) if obj.get("cronTimezone") is not None else None,
             "serialChain": [ApprovalConfigSerialChainInner.from_dict(_item) for _item in obj["serialChain"]] if obj.get("serialChain") is not None else None,
             "requiresComment": obj.get("requiresComment"),
-            "fallbackApprover": ApprovalIdentity.from_dict(obj["fallbackApprover"]) if obj.get("fallbackApprover") is not None else None,
-            "machineIdentityManagerAssignment": obj.get("machineIdentityManagerAssignment") if obj.get("machineIdentityManagerAssignment") is not None else 'MACHINE_IDENTITY_OWNER',
+            "fallbackApprover": ApprovalConfigFallbackApprover.from_dict(obj["fallbackApprover"]) if obj.get("fallbackApprover") is not None else None,
+            "machineIdentityManagerAssignment": obj.get("machineIdentityManagerAssignment") if obj.get("machineIdentityManagerAssignment") is not None else 'MANAGER_OF_REQUESTER',
             "circumventApprovalProcess": obj.get("circumventApprovalProcess") if obj.get("circumventApprovalProcess") is not None else False,
             "autoApprove": obj.get("autoApprove")
         })

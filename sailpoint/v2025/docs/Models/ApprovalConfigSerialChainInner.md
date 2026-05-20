@@ -16,10 +16,9 @@ tags: ['SDK', 'Software Development Kit', 'ApprovalConfigSerialChainInner', 'V20
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**chain_id** | **str** | ID of the serial chain. | [optional] 
 **tier** | **int** | Starting at 1 defines the order in which the identities will get assigned | [optional] 
-**identity_id** | **str** | Identity ID in the serial chain. | [optional] 
-**identity_type** | **str** | Type of identity in the serial chain. | [optional] 
+**identity_id** | **str** | Optional Identity ID of the type of identity defined in the 'identityType' field. | [optional] 
+**identity_type** |  **Enum** [  'IDENTITY',    'GOVERNANCE_GROUP',    'MANAGER_OF',    'ACCOUNT_OWNER',    'MACHINE_ACCOUNT_OWNER',    'MACHINE_IDENTITY_OWNER',    'MANAGER_OF_REQUESTED_TARGET_OWNER',    'MANAGER_OF_MACHINE_IDENTITY_OWNER',    'MANAGER_OF_ACCOUNT_OWNER',    'MANAGER_OF_MACHINE_ACCOUNT_OWNER',    'MANAGER_OF_REQUESTER',    'MANAGER_OF_REQUESTER_OWNER',    'MANAGER_OF_OWNER',    'ACCESS_PROFILE_OWNER',    'APPLICATION_OWNER',    'ENTITLEMENT_OWNER',    'ROLE_OWNER',    'SOURCE_OWNER',    'REQUESTED_TARGET_OWNER',    'ACCESS_PROFILE_PRIMARY_OWNER',    'APPLICATION_PRIMARY_OWNER',    'ENTITLEMENT_PRIMARY_OWNER',    'ROLE_PRIMARY_OWNER',    'SOURCE_PRIMARY_OWNER',    'REQUESTED_TARGET_PRIMARY_OWNER',    'ACCESS_PROFILE_SECONDARY_OWNER_GROUP',    'APPLICATION_SECONDARY_OWNER_GROUP',    'ENTITLEMENT_SECONDARY_OWNER_GROUP',    'ROLE_SECONDARY_OWNER_GROUP',    'SOURCE_SECONDARY_OWNER_GROUP',    'REQUESTED_TARGET_SECONDARY_OWNER_GROUP',    'ACCESS_PROFILE_ALL_OWNER_GROUP',    'APPLICATION_ALL_OWNER_GROUP',    'ENTITLEMENT_ALL_OWNER_GROUP',    'ROLE_ALL_OWNER_GROUP',    'SOURCE_ALL_OWNER_GROUP',    'REQUESTED_TARGET_ALL_OWNER_GROUP' ] | Type of identityId in the serial chain. | [optional] 
 }
 
 ## Example
@@ -28,7 +27,6 @@ Name | Type | Description | Notes
 from sailpoint.v2025.models.approval_config_serial_chain_inner import ApprovalConfigSerialChainInner
 
 approval_config_serial_chain_inner = ApprovalConfigSerialChainInner(
-chain_id='23dc206e-2a9e-4f98-93db-8d6e342cca18',
 tier=1,
 identity_id='2c9180858090ea8801809a0465e829da',
 identity_type='IDENTITY'

@@ -18,20 +18,25 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
-from sailpoint.v2026.models.locale_origin import LocaleOrigin
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ErrorMessageDto1(BaseModel):
+class EntitlementRecommendationAssigneeOneOf(BaseModel):
     """
-    ErrorMessageDto1
+    Assign to a specific identity or governance group. The value field is required and must be the ID of the identity or governance group.
     """ # noqa: E501
-    locale: Optional[StrictStr] = Field(default=None, description="The locale for the message text, a BCP 47 language tag.")
-    locale_origin: Optional[Union[LocaleOrigin, str]] = Field(default=None, alias="localeOrigin")
-    text: Optional[StrictStr] = Field(default=None, description="Actual text of the error message in the indicated locale.")
-    __properties: ClassVar[List[str]] = ["locale", "localeOrigin", "text"]
+    type: StrictStr = Field(description="The type of assignee.")
+    value: StrictStr = Field(description="The ID of the identity or governance group to assign to.")
+    __properties: ClassVar[List[str]] = ["type", "value"]
+
+    @field_validator('type')
+    def type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['IDENTITY', 'GOVERNANCE_GROUP']):
+            warnings.warn(f"must be one of enum values ('IDENTITY', 'GOVERNANCE_GROUP') unknown value: {value}")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +56,7 @@ class ErrorMessageDto1(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ErrorMessageDto1 from a JSON string"""
+        """Create an instance of EntitlementRecommendationAssigneeOneOf from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,21 +77,11 @@ class ErrorMessageDto1(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if locale (nullable) is None
-        # and model_fields_set contains the field
-        if self.locale is None and "locale" in self.model_fields_set:
-            _dict['locale'] = None
-
-        # set to None if locale_origin (nullable) is None
-        # and model_fields_set contains the field
-        if self.locale_origin is None and "locale_origin" in self.model_fields_set:
-            _dict['localeOrigin'] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ErrorMessageDto1 from a dict"""
+        """Create an instance of EntitlementRecommendationAssigneeOneOf from a dict"""
         if obj is None:
             return None
 
@@ -94,9 +89,8 @@ class ErrorMessageDto1(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "locale": obj.get("locale"),
-            "localeOrigin": obj.get("localeOrigin"),
-            "text": obj.get("text")
+            "type": obj.get("type"),
+            "value": obj.get("value")
         })
         return _obj
 

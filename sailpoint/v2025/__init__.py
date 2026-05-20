@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.73"
+__version__ = "1.4.74"
 
 # import apis into sdk package
 from sailpoint.v2025.api.access_model_metadata_api import AccessModelMetadataApi
@@ -322,6 +322,7 @@ from sailpoint.v2025.models.approval_config import ApprovalConfig
 from sailpoint.v2025.models.approval_config_cron_timezone import ApprovalConfigCronTimezone
 from sailpoint.v2025.models.approval_config_escalation_config import ApprovalConfigEscalationConfig
 from sailpoint.v2025.models.approval_config_escalation_config_escalation_chain_inner import ApprovalConfigEscalationConfigEscalationChainInner
+from sailpoint.v2025.models.approval_config_fallback_approver import ApprovalConfigFallbackApprover
 from sailpoint.v2025.models.approval_config_reminder_config import ApprovalConfigReminderConfig
 from sailpoint.v2025.models.approval_config_serial_chain_inner import ApprovalConfigSerialChainInner
 from sailpoint.v2025.models.approval_config_timeout_config import ApprovalConfigTimeoutConfig
@@ -602,9 +603,7 @@ from sailpoint.v2025.models.entity_created_by_dto import EntityCreatedByDTO
 from sailpoint.v2025.models.error import Error
 from sailpoint.v2025.models.error_message import ErrorMessage
 from sailpoint.v2025.models.error_message_dto import ErrorMessageDto
-from sailpoint.v2025.models.error_message_dto1 import ErrorMessageDto1
 from sailpoint.v2025.models.error_response_dto import ErrorResponseDto
-from sailpoint.v2025.models.error_response_dto1 import ErrorResponseDto1
 from sailpoint.v2025.models.evaluate_response import EvaluateResponse
 from sailpoint.v2025.models.event import Event
 from sailpoint.v2025.models.event_actor import EventActor

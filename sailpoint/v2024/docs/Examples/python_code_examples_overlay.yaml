@@ -19198,13 +19198,14 @@
         configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
+          id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id # str | The Source id
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           try:
               # Get source entitlement request configuration
               
-              results = SourcesApi(api_client).get_source_entitlement_request_config(x_sail_point_experimental=x_sail_point_experimental)
+              results = SourcesApi(api_client).get_source_entitlement_request_config(id=id, x_sail_point_experimental=x_sail_point_experimental)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).get_source_entitlement_request_config(x_sail_point_experimental)
+              # results = SourcesApi(api_client).get_source_entitlement_request_config(id, x_sail_point_experimental)
               print("The response of SourcesApi->get_source_entitlement_request_config:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -20139,6 +20140,7 @@
         configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
+          id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id # str | The Source id
           x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           source_entitlement_request_config = '''{
           "accessRequestConfig" : {
@@ -20171,9 +20173,9 @@
           try:
               # Update source entitlement request configuration
               new_source_entitlement_request_config = SourceEntitlementRequestConfig.from_json(source_entitlement_request_config)
-              results = SourcesApi(api_client).update_source_entitlement_request_config(x_sail_point_experimental=x_sail_point_experimental, source_entitlement_request_config=new_source_entitlement_request_config)
+              results = SourcesApi(api_client).update_source_entitlement_request_config(id=id, x_sail_point_experimental=x_sail_point_experimental, source_entitlement_request_config=new_source_entitlement_request_config)
               # Below is a request that includes all optional parameters
-              # results = SourcesApi(api_client).update_source_entitlement_request_config(x_sail_point_experimental, new_source_entitlement_request_config)
+              # results = SourcesApi(api_client).update_source_entitlement_request_config(id, x_sail_point_experimental, new_source_entitlement_request_config)
               print("The response of SourcesApi->update_source_entitlement_request_config:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
@@ -20991,16 +20993,14 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           try:
               # Retrieve tenant context
               
-              results = TenantContextApi(api_client).get_tenant_context(x_sail_point_experimental=x_sail_point_experimental)
+              results = TenantContextApi(api_client).get_tenant_context()
               # Below is a request that includes all optional parameters
-              # results = TenantContextApi(api_client).get_tenant_context(x_sail_point_experimental)
+              # results = TenantContextApi(api_client).get_tenant_context()
               print("The response of TenantContextApi->get_tenant_context:\n")
               for item in results:
                   print(item.model_dump_json(by_alias=True, indent=4))
@@ -21018,10 +21018,8 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
-        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           json_patch_operation = '''{
           "op" : "replace",
           "path" : "/description",
@@ -21030,9 +21028,9 @@
           try:
               # Update tenant context
               new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
-              TenantContextApi(api_client).patch_tenant_context(x_sail_point_experimental=x_sail_point_experimental, json_patch_operation=new_json_patch_operation)
+              TenantContextApi(api_client).patch_tenant_context(json_patch_operation=new_json_patch_operation)
               # Below is a request that includes all optional parameters
-              # TenantContextApi(api_client).patch_tenant_context(x_sail_point_experimental, new_json_patch_operation)
+              # TenantContextApi(api_client).patch_tenant_context(new_json_patch_operation)
           except Exception as e:
               print("Exception when calling TenantContextApi->patch_tenant_context: %s\n" % e)
 - path: /transforms
