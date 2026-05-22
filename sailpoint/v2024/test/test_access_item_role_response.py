@@ -40,6 +40,7 @@ class TestAccessItemRoleResponse(unittest.TestCase):
                 display_name = 'sample',
                 source_name = 'Source Name',
                 description = 'Role - Workday/Citizenship access',
+                start_date = '2024-07-01T05:00:00.00Z',
                 remove_date = '2024-07-01T06:00:00.00Z',
                 revocable = True
             )

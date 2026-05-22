@@ -32,9 +32,10 @@ class AccessItemRoleResponse(BaseModel):
     display_name: Optional[StrictStr] = Field(default=None, description="the role display name", alias="displayName")
     source_name: Optional[StrictStr] = Field(default=None, description="the associated source name if it exists", alias="sourceName")
     description: Optional[StrictStr] = Field(default=None, description="the description for the role")
+    start_date: Optional[StrictStr] = Field(default=None, description="the date the access profile will be assigned to the specified identity, in case requested with a future start date", alias="startDate")
     remove_date: Optional[StrictStr] = Field(default=None, description="the date the role is no longer assigned to the specified identity", alias="removeDate")
     revocable: StrictBool = Field(description="indicates whether the role is revocable")
-    __properties: ClassVar[List[str]] = ["id", "accessType", "displayName", "sourceName", "description", "removeDate", "revocable"]
+    __properties: ClassVar[List[str]] = ["id", "accessType", "displayName", "sourceName", "description", "startDate", "removeDate", "revocable"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,6 +81,11 @@ class AccessItemRoleResponse(BaseModel):
         if self.source_name is None and "source_name" in self.model_fields_set:
             _dict['sourceName'] = None
 
+        # set to None if start_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.start_date is None and "start_date" in self.model_fields_set:
+            _dict['startDate'] = None
+
         return _dict
 
     @classmethod
@@ -97,6 +103,7 @@ class AccessItemRoleResponse(BaseModel):
             "displayName": obj.get("displayName"),
             "sourceName": obj.get("sourceName"),
             "description": obj.get("description"),
+            "startDate": obj.get("startDate"),
             "removeDate": obj.get("removeDate"),
             "revocable": obj.get("revocable")
         })

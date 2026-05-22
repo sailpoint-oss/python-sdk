@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **cloud_governed** | **bool** | indicates whether the entitlement is cloud governed | [required]
 **entitlement_count** | **int** | the number of entitlements the account will create | [required]
 **app_refs** | [**[]AccessItemAccessProfileResponseAppRefsInner**](access-item-access-profile-response-app-refs-inner) | the list of app ids associated with the access profile | [required]
+**start_date** | **str** | the date the access profile will be assigned to the specified identity, in case requested with a future start date | [optional] 
 **remove_date** | **str** | the date the role is no longer assigned to the specified identity | [optional] 
 **revocable** | **bool** | indicates whether the role is revocable | [required]
 **native_identity** | **str** | the native identifier used to uniquely identify an acccount | [required]
@@ -56,6 +57,7 @@ privileged=False,
 cloud_governed=True,
 entitlement_count=12,
 app_refs=[{cloudAppId=8c190e6787aa4ed9a90bd9d5344523fb, cloudAppName=Sample App}, {cloudAppId=2c91808a77ff216301782327a50f09bf, cloudAppName=Another App}],
+start_date='2024-07-01T05:00:00.00Z',
 remove_date='2024-07-01T06:00:00.00Z',
 revocable=True,
 native_identity='dr.arden.ogahn.d',

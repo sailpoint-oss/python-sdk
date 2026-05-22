@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **display_name** | **str** | the role display name | [optional] 
 **source_name** | **str** | the associated source name if it exists | [optional] 
 **description** | **str** | the description for the role | [optional] 
+**start_date** | **str** | the date the access profile will be assigned to the specified identity, in case requested with a future start date | [optional] 
 **remove_date** | **str** | the date the role is no longer assigned to the specified identity | [optional] 
 **revocable** | **bool** | indicates whether the role is revocable | [required]
 }
@@ -36,6 +37,7 @@ access_type='role',
 display_name='sample',
 source_name='Source Name',
 description='Role - Workday/Citizenship access',
+start_date='2024-07-01T05:00:00.00Z',
 remove_date='2024-07-01T06:00:00.00Z',
 revocable=True
 )

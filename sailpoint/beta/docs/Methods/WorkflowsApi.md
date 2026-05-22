@@ -832,6 +832,9 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## post-external-execute-workflow
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 Execute workflow via external trigger
 This endpoint allows a service outside of IdentityNow to initiate a workflow that uses the "External Trigger" step.  The external service will invoke this endpoint with the input data it wants to send to the workflow in the body.
 
@@ -1051,6 +1054,9 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## test-external-execute-workflow
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 Test workflow via external trigger
 Validate a workflow with an "External Trigger" can receive input.  The response includes the input that the workflow received, which can be used to validate that the input is intact when it reaches the workflow.
 

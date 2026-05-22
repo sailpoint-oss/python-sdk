@@ -36,10 +36,11 @@ class AccessItemAccessProfileResponse(BaseModel):
     description: Optional[StrictStr] = Field(default=None, description="the description for the access profile")
     source_id: Optional[StrictStr] = Field(default=None, description="the id of the source", alias="sourceId")
     app_refs: List[AccessItemAccessProfileResponseAppRefsInner] = Field(description="the list of app ids associated with the access profile", alias="appRefs")
+    start_date: Optional[StrictStr] = Field(default=None, description="the date the access profile will be assigned to the specified identity, in case requested with a future start date", alias="startDate")
     remove_date: Optional[StrictStr] = Field(default=None, description="the date the access profile is no longer assigned to the specified identity", alias="removeDate")
     standalone: Optional[StrictBool] = Field(description="indicates whether the access profile is standalone")
     revocable: Optional[StrictBool] = Field(description="indicates whether the access profile is revocable")
-    __properties: ClassVar[List[str]] = ["id", "accessType", "displayName", "sourceName", "entitlementCount", "description", "sourceId", "appRefs", "removeDate", "standalone", "revocable"]
+    __properties: ClassVar[List[str]] = ["id", "accessType", "displayName", "sourceName", "entitlementCount", "description", "sourceId", "appRefs", "startDate", "removeDate", "standalone", "revocable"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -92,6 +93,11 @@ class AccessItemAccessProfileResponse(BaseModel):
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
 
+        # set to None if start_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.start_date is None and "start_date" in self.model_fields_set:
+            _dict['startDate'] = None
+
         # set to None if remove_date (nullable) is None
         # and model_fields_set contains the field
         if self.remove_date is None and "remove_date" in self.model_fields_set:
@@ -127,6 +133,7 @@ class AccessItemAccessProfileResponse(BaseModel):
             "description": obj.get("description"),
             "sourceId": obj.get("sourceId"),
             "appRefs": [AccessItemAccessProfileResponseAppRefsInner.from_dict(_item) for _item in obj["appRefs"]] if obj.get("appRefs") is not None else None,
+            "startDate": obj.get("startDate"),
             "removeDate": obj.get("removeDate"),
             "standalone": obj.get("standalone"),
             "revocable": obj.get("revocable")

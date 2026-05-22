@@ -3928,7 +3928,7 @@ class WorkflowsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> PostExternalExecuteWorkflow200Response:
-        """Execute workflow via external trigger
+        """(Deprecated) Execute workflow via external trigger
 
         This endpoint allows a service outside of IdentityNow to initiate a workflow that uses the \"External Trigger\" step.  The external service will invoke this endpoint with the input data it wants to send to the workflow in the body.
 
@@ -3957,6 +3957,7 @@ class WorkflowsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /workflows/execute/external/{id} is deprecated.", DeprecationWarning)
 
         _param = self._post_external_execute_workflow_serialize(
             id=id,
@@ -4004,7 +4005,7 @@ class WorkflowsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[PostExternalExecuteWorkflow200Response]:
-        """Execute workflow via external trigger
+        """(Deprecated) Execute workflow via external trigger
 
         This endpoint allows a service outside of IdentityNow to initiate a workflow that uses the \"External Trigger\" step.  The external service will invoke this endpoint with the input data it wants to send to the workflow in the body.
 
@@ -4033,6 +4034,7 @@ class WorkflowsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /workflows/execute/external/{id} is deprecated.", DeprecationWarning)
 
         _param = self._post_external_execute_workflow_serialize(
             id=id,
@@ -4080,7 +4082,7 @@ class WorkflowsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Execute workflow via external trigger
+        """(Deprecated) Execute workflow via external trigger
 
         This endpoint allows a service outside of IdentityNow to initiate a workflow that uses the \"External Trigger\" step.  The external service will invoke this endpoint with the input data it wants to send to the workflow in the body.
 
@@ -4109,6 +4111,7 @@ class WorkflowsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /workflows/execute/external/{id} is deprecated.", DeprecationWarning)
 
         _param = self._post_external_execute_workflow_serialize(
             id=id,
@@ -4816,7 +4819,7 @@ class WorkflowsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TestExternalExecuteWorkflow200Response:
-        """Test workflow via external trigger
+        """(Deprecated) Test workflow via external trigger
 
         Validate a workflow with an \"External Trigger\" can receive input.  The response includes the input that the workflow received, which can be used to validate that the input is intact when it reaches the workflow.
 
@@ -4845,6 +4848,7 @@ class WorkflowsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /workflows/execute/external/{id}/test is deprecated.", DeprecationWarning)
 
         _param = self._test_external_execute_workflow_serialize(
             id=id,
@@ -4892,7 +4896,7 @@ class WorkflowsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TestExternalExecuteWorkflow200Response]:
-        """Test workflow via external trigger
+        """(Deprecated) Test workflow via external trigger
 
         Validate a workflow with an \"External Trigger\" can receive input.  The response includes the input that the workflow received, which can be used to validate that the input is intact when it reaches the workflow.
 
@@ -4921,6 +4925,7 @@ class WorkflowsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /workflows/execute/external/{id}/test is deprecated.", DeprecationWarning)
 
         _param = self._test_external_execute_workflow_serialize(
             id=id,
@@ -4968,7 +4973,7 @@ class WorkflowsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Test workflow via external trigger
+        """(Deprecated) Test workflow via external trigger
 
         Validate a workflow with an \"External Trigger\" can receive input.  The response includes the input that the workflow received, which can be used to validate that the input is intact when it reaches the workflow.
 
@@ -4997,6 +5002,7 @@ class WorkflowsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /workflows/execute/external/{id}/test is deprecated.", DeprecationWarning)
 
         _param = self._test_external_execute_workflow_serialize(
             id=id,

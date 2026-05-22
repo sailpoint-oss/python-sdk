@@ -43,6 +43,7 @@ class TestListIdentitySnapshotAccessItems200ResponseInner(unittest.TestCase):
                 description = 'Role - Workday/Citizenship access',
                 source_id = '2793o32dwd',
                 app_refs = [{cloudAppId=8c190e6787aa4ed9a90bd9d5344523fb, cloudAppName=Sample App}, {cloudAppId=2c91808a77ff216301782327a50f09bf, cloudAppName=Another App}],
+                start_date = '2024-07-01T05:00:00.00Z',
                 remove_date = '2024-07-01T06:00:00.00Z',
                 standalone = True,
                 revocable = True,

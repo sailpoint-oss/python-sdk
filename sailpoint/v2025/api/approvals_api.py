@@ -1518,7 +1518,7 @@ class ApprovalsApi:
     @validate_call
     def get_approvals(
         self,
-        mine: Annotated[Optional[StrictBool], Field(description="Determines whether to return the list of approvals assigned to the current caller or all approvals in the org. Defaults to false if admin, true otherwise (which is the equivalent of 'approverId=${your_identity_id}').")] = None,
+        mine: Annotated[Optional[StrictBool], Field(description="Determines whether to return the list of approvals assigned to the current caller or all approvals in the org. Defaults to false if admin, true otherwise (which is the equivalent of 'approverId=[your_identity_id]').")] = None,
         requester_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given requester ID. Must match the calling user's identity ID unless they are an admin.")] = None,
         requestee_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given requesteeId ID. Must match the calling user's identity ID unless they are an admin.")] = None,
         approver_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given approverId ID. Must match the calling user's identity ID unless they are an admin.")] = None,
@@ -1546,9 +1546,9 @@ class ApprovalsApi:
     ) -> List[Approval]:
         """Get approvals
 
-        Gets a list of approvals.  One of the following query parameters should be present: 'mine', 'approverId', 'requesterId', 'requesteeId'.  The absence of all query parameters for non admins will default to mine=true (which is the equivalent of 'approverId=${your_identity_id}')  while admins will default to mine=false (which will show all approvals in the org).  For lookups by access request ID please use the following:  '/generic-approvals?mine=false&filters=referenceType+eq+\"accessRequestId\"+and+referenceId+eq+\"12345678901234567890123456789012\"'
+        Gets a list of approvals.  One of the following query parameters should be present: 'mine', 'approverId', 'requesterId', 'requesteeId'.  The absence of all query parameters for non admins will default to mine=true (which is the equivalent of 'approverId=[your_identity_id]')  while admins will default to mine=false (which will show all approvals in the org).  For lookups by access request ID please use the following:  '/generic-approvals?mine=false&filters=referenceType+eq+\"accessRequestId\"+and+referenceId+eq+\"12345678901234567890123456789012\"'
 
-        :param mine: Determines whether to return the list of approvals assigned to the current caller or all approvals in the org. Defaults to false if admin, true otherwise (which is the equivalent of 'approverId=${your_identity_id}').
+        :param mine: Determines whether to return the list of approvals assigned to the current caller or all approvals in the org. Defaults to false if admin, true otherwise (which is the equivalent of 'approverId=[your_identity_id]').
         :type mine: bool
         :param requester_id: Returns the list of approvals for a given requester ID. Must match the calling user's identity ID unless they are an admin.
         :type requester_id: str
@@ -1638,7 +1638,7 @@ class ApprovalsApi:
     @validate_call
     def get_approvals_with_http_info(
         self,
-        mine: Annotated[Optional[StrictBool], Field(description="Determines whether to return the list of approvals assigned to the current caller or all approvals in the org. Defaults to false if admin, true otherwise (which is the equivalent of 'approverId=${your_identity_id}').")] = None,
+        mine: Annotated[Optional[StrictBool], Field(description="Determines whether to return the list of approvals assigned to the current caller or all approvals in the org. Defaults to false if admin, true otherwise (which is the equivalent of 'approverId=[your_identity_id]').")] = None,
         requester_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given requester ID. Must match the calling user's identity ID unless they are an admin.")] = None,
         requestee_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given requesteeId ID. Must match the calling user's identity ID unless they are an admin.")] = None,
         approver_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given approverId ID. Must match the calling user's identity ID unless they are an admin.")] = None,
@@ -1666,9 +1666,9 @@ class ApprovalsApi:
     ) -> ApiResponse[List[Approval]]:
         """Get approvals
 
-        Gets a list of approvals.  One of the following query parameters should be present: 'mine', 'approverId', 'requesterId', 'requesteeId'.  The absence of all query parameters for non admins will default to mine=true (which is the equivalent of 'approverId=${your_identity_id}')  while admins will default to mine=false (which will show all approvals in the org).  For lookups by access request ID please use the following:  '/generic-approvals?mine=false&filters=referenceType+eq+\"accessRequestId\"+and+referenceId+eq+\"12345678901234567890123456789012\"'
+        Gets a list of approvals.  One of the following query parameters should be present: 'mine', 'approverId', 'requesterId', 'requesteeId'.  The absence of all query parameters for non admins will default to mine=true (which is the equivalent of 'approverId=[your_identity_id]')  while admins will default to mine=false (which will show all approvals in the org).  For lookups by access request ID please use the following:  '/generic-approvals?mine=false&filters=referenceType+eq+\"accessRequestId\"+and+referenceId+eq+\"12345678901234567890123456789012\"'
 
-        :param mine: Determines whether to return the list of approvals assigned to the current caller or all approvals in the org. Defaults to false if admin, true otherwise (which is the equivalent of 'approverId=${your_identity_id}').
+        :param mine: Determines whether to return the list of approvals assigned to the current caller or all approvals in the org. Defaults to false if admin, true otherwise (which is the equivalent of 'approverId=[your_identity_id]').
         :type mine: bool
         :param requester_id: Returns the list of approvals for a given requester ID. Must match the calling user's identity ID unless they are an admin.
         :type requester_id: str
@@ -1758,7 +1758,7 @@ class ApprovalsApi:
     @validate_call
     def get_approvals_without_preload_content(
         self,
-        mine: Annotated[Optional[StrictBool], Field(description="Determines whether to return the list of approvals assigned to the current caller or all approvals in the org. Defaults to false if admin, true otherwise (which is the equivalent of 'approverId=${your_identity_id}').")] = None,
+        mine: Annotated[Optional[StrictBool], Field(description="Determines whether to return the list of approvals assigned to the current caller or all approvals in the org. Defaults to false if admin, true otherwise (which is the equivalent of 'approverId=[your_identity_id]').")] = None,
         requester_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given requester ID. Must match the calling user's identity ID unless they are an admin.")] = None,
         requestee_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given requesteeId ID. Must match the calling user's identity ID unless they are an admin.")] = None,
         approver_id: Annotated[Optional[StrictStr], Field(description="Returns the list of approvals for a given approverId ID. Must match the calling user's identity ID unless they are an admin.")] = None,
@@ -1786,9 +1786,9 @@ class ApprovalsApi:
     ) -> RESTResponseType:
         """Get approvals
 
-        Gets a list of approvals.  One of the following query parameters should be present: 'mine', 'approverId', 'requesterId', 'requesteeId'.  The absence of all query parameters for non admins will default to mine=true (which is the equivalent of 'approverId=${your_identity_id}')  while admins will default to mine=false (which will show all approvals in the org).  For lookups by access request ID please use the following:  '/generic-approvals?mine=false&filters=referenceType+eq+\"accessRequestId\"+and+referenceId+eq+\"12345678901234567890123456789012\"'
+        Gets a list of approvals.  One of the following query parameters should be present: 'mine', 'approverId', 'requesterId', 'requesteeId'.  The absence of all query parameters for non admins will default to mine=true (which is the equivalent of 'approverId=[your_identity_id]')  while admins will default to mine=false (which will show all approvals in the org).  For lookups by access request ID please use the following:  '/generic-approvals?mine=false&filters=referenceType+eq+\"accessRequestId\"+and+referenceId+eq+\"12345678901234567890123456789012\"'
 
-        :param mine: Determines whether to return the list of approvals assigned to the current caller or all approvals in the org. Defaults to false if admin, true otherwise (which is the equivalent of 'approverId=${your_identity_id}').
+        :param mine: Determines whether to return the list of approvals assigned to the current caller or all approvals in the org. Defaults to false if admin, true otherwise (which is the equivalent of 'approverId=[your_identity_id]').
         :type mine: bool
         :param requester_id: Returns the list of approvals for a given requester ID. Must match the calling user's identity ID unless they are an admin.
         :type requester_id: str
