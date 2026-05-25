@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.76"
+__version__ = "1.4.77"
 
 # import apis into sdk package
 from sailpoint.v2026.api.access_model_metadata_api import AccessModelMetadataApi
@@ -64,6 +64,7 @@ from sailpoint.v2026.api.identities_api import IdentitiesApi
 from sailpoint.v2026.api.identity_attributes_api import IdentityAttributesApi
 from sailpoint.v2026.api.identity_history_api import IdentityHistoryApi
 from sailpoint.v2026.api.identity_profiles_api import IdentityProfilesApi
+from sailpoint.v2026.api.intelligence_package_api import IntelligencePackageApi
 from sailpoint.v2026.api.jit_access_api import JITAccessApi
 from sailpoint.v2026.api.jit_activations_api import JITActivationsApi
 from sailpoint.v2026.api.launchers_api import LaunchersApi
@@ -640,6 +641,7 @@ from sailpoint.v2026.models.entitlement_v2_privilege_level import EntitlementV2P
 from sailpoint.v2026.models.entitlement_v2_source import EntitlementV2Source
 from sailpoint.v2026.models.entity_created_by_dto import EntityCreatedByDTO
 from sailpoint.v2026.models.error import Error
+from sailpoint.v2026.models.error_body import ErrorBody
 from sailpoint.v2026.models.error_message import ErrorMessage
 from sailpoint.v2026.models.error_message_dto import ErrorMessageDto
 from sailpoint.v2026.models.error_response_dto import ErrorResponseDto
@@ -791,6 +793,22 @@ from sailpoint.v2026.models.import_sp_config_request import ImportSpConfigReques
 from sailpoint.v2026.models.index import Index
 from sailpoint.v2026.models.inner_hit import InnerHit
 from sailpoint.v2026.models.int64_string_key_value_pair import Int64StringKeyValuePair
+from sailpoint.v2026.models.intel_access_account_wire import IntelAccessAccountWire
+from sailpoint.v2026.models.intel_access_source_wire import IntelAccessSourceWire
+from sailpoint.v2026.models.intel_href import IntelHref
+from sailpoint.v2026.models.intel_human import IntelHuman
+from sailpoint.v2026.models.intel_identity_access_body import IntelIdentityAccessBody
+from sailpoint.v2026.models.intel_identity_access_history_body import IntelIdentityAccessHistoryBody
+from sailpoint.v2026.models.intel_identity_ambiguous_body import IntelIdentityAmbiguousBody
+from sailpoint.v2026.models.intel_identity_ambiguous_candidate import IntelIdentityAmbiguousCandidate
+from sailpoint.v2026.models.intel_identity_links import IntelIdentityLinks
+from sailpoint.v2026.models.intel_identity_not_found_body import IntelIdentityNotFoundBody
+from sailpoint.v2026.models.intel_identity_response import IntelIdentityResponse
+from sailpoint.v2026.models.intel_identity_timestamps import IntelIdentityTimestamps
+from sailpoint.v2026.models.intel_machine import IntelMachine
+from sailpoint.v2026.models.intel_machine_source import IntelMachineSource
+from sailpoint.v2026.models.intel_privileged_access_item_wire import IntelPrivilegedAccessItemWire
+from sailpoint.v2026.models.intel_privileged_access_item_wire_source import IntelPrivilegedAccessItemWireSource
 from sailpoint.v2026.models.invite_identities_request import InviteIdentitiesRequest
 from sailpoint.v2026.models.invocation import Invocation
 from sailpoint.v2026.models.invocation_status import InvocationStatus

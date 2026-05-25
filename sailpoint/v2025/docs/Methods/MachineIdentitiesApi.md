@@ -458,6 +458,7 @@ Starts a machine identity (AI Agents) aggregation on the specified source.
 
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | source_id | **str** | True  | Source ID.
    | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
  Body  | machine_identity_aggregation_request | [**MachineIdentityAggregationRequest**](../models/machine-identity-aggregation-request) | True  | 
 
@@ -492,6 +493,7 @@ configuration = Configuration()
 configuration.experimental = True
 
 with ApiClient(configuration) as api_client:
+    source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source ID. # str | Source ID.
     x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
     machine_identity_aggregation_request = '''{
           "datasetIds" : [ "source:datasetId12345", "source:datasetId12345" ],
@@ -501,9 +503,9 @@ with ApiClient(configuration) as api_client:
     try:
         # Start machine identity aggregation
         new_machine_identity_aggregation_request = MachineIdentityAggregationRequest.from_json(machine_identity_aggregation_request)
-        results = MachineIdentitiesApi(api_client).start_machine_identity_aggregation(x_sail_point_experimental=x_sail_point_experimental, machine_identity_aggregation_request=new_machine_identity_aggregation_request)
+        results = MachineIdentitiesApi(api_client).start_machine_identity_aggregation(source_id=source_id, x_sail_point_experimental=x_sail_point_experimental, machine_identity_aggregation_request=new_machine_identity_aggregation_request)
         # Below is a request that includes all optional parameters
-        # results = MachineIdentitiesApi(api_client).start_machine_identity_aggregation(x_sail_point_experimental, new_machine_identity_aggregation_request)
+        # results = MachineIdentitiesApi(api_client).start_machine_identity_aggregation(source_id, x_sail_point_experimental, new_machine_identity_aggregation_request)
         print("The response of MachineIdentitiesApi->start_machine_identity_aggregation:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:

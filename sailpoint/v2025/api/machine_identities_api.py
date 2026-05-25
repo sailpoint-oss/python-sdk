@@ -1676,6 +1676,7 @@ class MachineIdentitiesApi:
     @validate_call
     def start_machine_identity_aggregation(
         self,
+        source_id: Annotated[StrictStr, Field(description="Source ID.")],
         machine_identity_aggregation_request: MachineIdentityAggregationRequest,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
@@ -1695,6 +1696,8 @@ class MachineIdentitiesApi:
 
         Starts a machine identity (AI Agents) aggregation on the specified source.
 
+        :param source_id: Source ID. (required)
+        :type source_id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
         :param machine_identity_aggregation_request: (required)
@@ -1722,6 +1725,7 @@ class MachineIdentitiesApi:
         """ # noqa: E501
 
         _param = self._start_machine_identity_aggregation_serialize(
+            source_id=source_id,
             x_sail_point_experimental=x_sail_point_experimental,
             machine_identity_aggregation_request=machine_identity_aggregation_request,
             _request_auth=_request_auth,
@@ -1753,6 +1757,7 @@ class MachineIdentitiesApi:
     @validate_call
     def start_machine_identity_aggregation_with_http_info(
         self,
+        source_id: Annotated[StrictStr, Field(description="Source ID.")],
         machine_identity_aggregation_request: MachineIdentityAggregationRequest,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
@@ -1772,6 +1777,8 @@ class MachineIdentitiesApi:
 
         Starts a machine identity (AI Agents) aggregation on the specified source.
 
+        :param source_id: Source ID. (required)
+        :type source_id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
         :param machine_identity_aggregation_request: (required)
@@ -1799,6 +1806,7 @@ class MachineIdentitiesApi:
         """ # noqa: E501
 
         _param = self._start_machine_identity_aggregation_serialize(
+            source_id=source_id,
             x_sail_point_experimental=x_sail_point_experimental,
             machine_identity_aggregation_request=machine_identity_aggregation_request,
             _request_auth=_request_auth,
@@ -1830,6 +1838,7 @@ class MachineIdentitiesApi:
     @validate_call
     def start_machine_identity_aggregation_without_preload_content(
         self,
+        source_id: Annotated[StrictStr, Field(description="Source ID.")],
         machine_identity_aggregation_request: MachineIdentityAggregationRequest,
         x_sail_point_experimental: Annotated[StrictStr, Field(description="Use this header to enable this experimental API.")] = 'true',
         _request_timeout: Union[
@@ -1849,6 +1858,8 @@ class MachineIdentitiesApi:
 
         Starts a machine identity (AI Agents) aggregation on the specified source.
 
+        :param source_id: Source ID. (required)
+        :type source_id: str
         :param x_sail_point_experimental: Use this header to enable this experimental API. (required)
         :type x_sail_point_experimental: str
         :param machine_identity_aggregation_request: (required)
@@ -1876,6 +1887,7 @@ class MachineIdentitiesApi:
         """ # noqa: E501
 
         _param = self._start_machine_identity_aggregation_serialize(
+            source_id=source_id,
             x_sail_point_experimental=x_sail_point_experimental,
             machine_identity_aggregation_request=machine_identity_aggregation_request,
             _request_auth=_request_auth,
@@ -1902,6 +1914,7 @@ class MachineIdentitiesApi:
 
     def _start_machine_identity_aggregation_serialize(
         self,
+        source_id,
         x_sail_point_experimental,
         machine_identity_aggregation_request,
         _request_auth,
@@ -1925,6 +1938,8 @@ class MachineIdentitiesApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
         # process the query parameters
         # process the header parameters
         if x_sail_point_experimental is not None:
