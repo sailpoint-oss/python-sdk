@@ -13517,6 +13517,66 @@
               # MachineAccountsApi(api_client).delete_machine_account_subtype_by_technical_name(source_id, technical_name, x_sail_point_experimental)
           except Exception as e:
               print("Exception when calling MachineAccountsApi->delete_machine_account_subtype_by_technical_name: %s\n" % e)
+- path: /machine-accounts/bulk-disable
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/machine-accounts#disable-machine-accounts-in-bulk
+      source: |
+        from sailpoint.v2026.api.machine_accounts_api import MachineAccountsApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.account_request_async_result import AccountRequestAsyncResult
+        from sailpoint.v2026.models.mis_bulk_request import MisBulkRequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          mis_bulk_request = '''{
+          "ids" : [ "ef38f94347e94562b5bb8424a56397d8", "2c91808a7813090a017814121919ecca" ]
+        }''' # MisBulkRequest | 
+          try:
+              # Bulk disable machine accounts
+              new_mis_bulk_request = MisBulkRequest.from_json(mis_bulk_request)
+              results = MachineAccountsApi(api_client).disable_machine_accounts_in_bulk(x_sail_point_experimental=x_sail_point_experimental, mis_bulk_request=new_mis_bulk_request)
+              # Below is a request that includes all optional parameters
+              # results = MachineAccountsApi(api_client).disable_machine_accounts_in_bulk(x_sail_point_experimental, new_mis_bulk_request)
+              print("The response of MachineAccountsApi->disable_machine_accounts_in_bulk:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineAccountsApi->disable_machine_accounts_in_bulk: %s\n" % e)
+- path: /machine-accounts/bulk-enable
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/machine-accounts#enable-machine-accounts-in-bulk
+      source: |
+        from sailpoint.v2026.api.machine_accounts_api import MachineAccountsApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.account_request_async_result import AccountRequestAsyncResult
+        from sailpoint.v2026.models.mis_bulk_request import MisBulkRequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          mis_bulk_request = '''{
+          "ids" : [ "ef38f94347e94562b5bb8424a56397d8", "2c91808a7813090a017814121919ecca" ]
+        }''' # MisBulkRequest | 
+          try:
+              # Bulk enable machine accounts
+              new_mis_bulk_request = MisBulkRequest.from_json(mis_bulk_request)
+              results = MachineAccountsApi(api_client).enable_machine_accounts_in_bulk(x_sail_point_experimental=x_sail_point_experimental, mis_bulk_request=new_mis_bulk_request)
+              # Below is a request that includes all optional parameters
+              # results = MachineAccountsApi(api_client).enable_machine_accounts_in_bulk(x_sail_point_experimental, new_mis_bulk_request)
+              print("The response of MachineAccountsApi->enable_machine_accounts_in_bulk:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineAccountsApi->enable_machine_accounts_in_bulk: %s\n" % e)
 - path: /machine-accounts/{id}
   method: GET
   xCodeSample:
@@ -13748,6 +13808,37 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling MachineAccountsApi->patch_machine_account_subtype_by_technical_name: %s\n" % e)
+- path: /machine-accounts/bulk-reload
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/machine-accounts#reload-machine-accounts-in-bulk
+      source: |
+        from sailpoint.v2026.api.machine_accounts_api import MachineAccountsApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.mis_bulk_request import MisBulkRequest
+        from sailpoint.v2026.models.mis_bulk_response import MisBulkResponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          mis_bulk_request = '''{
+          "ids" : [ "ef38f94347e94562b5bb8424a56397d8", "2c91808a7813090a017814121919ecca" ]
+        }''' # MisBulkRequest | 
+          try:
+              # Bulk reload machine accounts
+              new_mis_bulk_request = MisBulkRequest.from_json(mis_bulk_request)
+              results = MachineAccountsApi(api_client).reload_machine_accounts_in_bulk(x_sail_point_experimental=x_sail_point_experimental, mis_bulk_request=new_mis_bulk_request)
+              # Below is a request that includes all optional parameters
+              # results = MachineAccountsApi(api_client).reload_machine_accounts_in_bulk(x_sail_point_experimental, new_mis_bulk_request)
+              print("The response of MachineAccountsApi->reload_machine_accounts_in_bulk:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineAccountsApi->reload_machine_accounts_in_bulk: %s\n" % e)
 - path: /machine-accounts/{id}
   method: PATCH
   xCodeSample:
@@ -13805,6 +13896,42 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling MachineAccountsApi->update_machine_account_subtype_approval_config: %s\n" % e)
+- path: /machine-accounts/bulk-update
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/machine-accounts#update-machine-accounts-in-bulk
+      source: |
+        from sailpoint.v2026.api.machine_accounts_api import MachineAccountsApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.mis_bulk_response import MisBulkResponse
+        from sailpoint.v2026.models.mis_bulk_update_request import MisBulkUpdateRequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          mis_bulk_update_request = '''{
+          "ids" : [ "ef38f94347e94562b5bb8424a56397d8" ],
+          "jsonPatch" : [ {
+            "op" : "replace",
+            "path" : "/description",
+            "value" : "Updated description"
+          } ]
+        }''' # MisBulkUpdateRequest | 
+          try:
+              # Bulk update machine accounts
+              new_mis_bulk_update_request = MisBulkUpdateRequest.from_json(mis_bulk_update_request)
+              results = MachineAccountsApi(api_client).update_machine_accounts_in_bulk(x_sail_point_experimental=x_sail_point_experimental, mis_bulk_update_request=new_mis_bulk_update_request)
+              # Below is a request that includes all optional parameters
+              # results = MachineAccountsApi(api_client).update_machine_accounts_in_bulk(x_sail_point_experimental, new_mis_bulk_update_request)
+              print("The response of MachineAccountsApi->update_machine_accounts_in_bulk:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineAccountsApi->update_machine_accounts_in_bulk: %s\n" % e)
 - path: /sources/{sourceId}/machine-classification-config
   method: DELETE
   xCodeSample:

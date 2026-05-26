@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.77"
+__version__ = "1.4.78"
 
 # import apis into sdk package
 from sailpoint.v2026.api.access_model_metadata_api import AccessModelMetadataApi
@@ -942,6 +942,9 @@ from sailpoint.v2026.models.metric_type import MetricType
 from sailpoint.v2026.models.mfa_config_test_response import MfaConfigTestResponse
 from sailpoint.v2026.models.mfa_duo_config import MfaDuoConfig
 from sailpoint.v2026.models.mfa_okta_config import MfaOktaConfig
+from sailpoint.v2026.models.mis_bulk_request import MisBulkRequest
+from sailpoint.v2026.models.mis_bulk_response import MisBulkResponse
+from sailpoint.v2026.models.mis_bulk_update_request import MisBulkUpdateRequest
 from sailpoint.v2026.models.model_schema import ModelSchema
 from sailpoint.v2026.models.multi_host_integration_template_type import MultiHostIntegrationTemplateType
 from sailpoint.v2026.models.multi_host_integrations import MultiHostIntegrations
