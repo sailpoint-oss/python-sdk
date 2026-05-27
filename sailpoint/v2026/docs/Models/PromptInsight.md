@@ -1,0 +1,50 @@
+---
+id: v2026-prompt-insight
+title: PromptInsight
+pagination_label: PromptInsight
+sidebar_label: PromptInsight
+sidebar_class_name: pythonsdk
+keywords: ['python', 'Python', 'sdk', 'PromptInsight', 'V2026PromptInsight'] 
+slug: /tools/sdk/python/v2026/models/prompt-insight
+tags: ['SDK', 'Software Development Kit', 'PromptInsight', 'V2026PromptInsight']
+---
+
+# PromptInsight
+
+A prompt security insight event.
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**timestamp** | **datetime** | Event time in UTC. | [optional] 
+**user** | **str** | User identifier or display name. | [optional] 
+**agent** | **str** | The AI agent that processed the prompt. | [optional] 
+**policy_decision** |  **Enum** [  'ALLOWED',    'REDACTED' ] | The policy decision applied to the prompt. | [optional] 
+**category** |  **Enum** [  'ANOMALIES',    'DATA_UPLOADS',    'MCP_TOOL_CALLS' ] | The category of the prompt security finding. | [optional] 
+**severity** |  **Enum** [  'LOW',    'MEDIUM',    'HIGH',    'CRITICAL' ] | The severity of the prompt security finding. | [optional] 
+**reason** | **str** | Human-readable or structured reason for the policy decision. | [optional] 
+**rule** | **str** | The rule that matched the prompt. | [optional] 
+**policy** | **str** | The policy that matched the prompt. | [optional] 
+}
+
+## Example
+
+```python
+from sailpoint.v2026.models.prompt_insight import PromptInsight
+
+prompt_insight = PromptInsight(
+timestamp='2026-05-14T10:01:02.345Z',
+user='john.doe@mail.com',
+agent='ChatGPT',
+policy_decision='REDACTED',
+category='ANOMALIES',
+severity='HIGH',
+reason='Policy matched suspicious system override pattern',
+rule='Prompt Guard - Clean',
+policy='PG-INFO:None'
+)
+
+```
+[[Back to top]](#) 
+

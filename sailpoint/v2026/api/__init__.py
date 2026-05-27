@@ -78,6 +78,7 @@ from sailpoint.v2026.api.password_sync_groups_api import PasswordSyncGroupsApi
 from sailpoint.v2026.api.personal_access_tokens_api import PersonalAccessTokensApi
 from sailpoint.v2026.api.privilege_criteria_api import PrivilegeCriteriaApi
 from sailpoint.v2026.api.privilege_criteria_configuration_api import PrivilegeCriteriaConfigurationApi
+from sailpoint.v2026.api.prompt_insights_api import PromptInsightsApi
 from sailpoint.v2026.api.public_identities_api import PublicIdentitiesApi
 from sailpoint.v2026.api.public_identities_config_api import PublicIdentitiesConfigApi
 from sailpoint.v2026.api.reports_data_extraction_api import ReportsDataExtractionApi

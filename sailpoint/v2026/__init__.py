@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.78"
+__version__ = "1.4.79"
 
 # import apis into sdk package
 from sailpoint.v2026.api.access_model_metadata_api import AccessModelMetadataApi
@@ -94,6 +94,7 @@ from sailpoint.v2026.api.password_sync_groups_api import PasswordSyncGroupsApi
 from sailpoint.v2026.api.personal_access_tokens_api import PersonalAccessTokensApi
 from sailpoint.v2026.api.privilege_criteria_api import PrivilegeCriteriaApi
 from sailpoint.v2026.api.privilege_criteria_configuration_api import PrivilegeCriteriaConfigurationApi
+from sailpoint.v2026.api.prompt_insights_api import PromptInsightsApi
 from sailpoint.v2026.api.public_identities_api import PublicIdentitiesApi
 from sailpoint.v2026.api.public_identities_config_api import PublicIdentitiesConfigApi
 from sailpoint.v2026.api.reports_data_extraction_api import ReportsDataExtractionApi
@@ -1055,6 +1056,8 @@ from sailpoint.v2026.models.privileged_recommendation_instance import Privileged
 from sailpoint.v2026.models.process_identities_request import ProcessIdentitiesRequest
 from sailpoint.v2026.models.processing_details import ProcessingDetails
 from sailpoint.v2026.models.product import Product
+from sailpoint.v2026.models.prompt_insight import PromptInsight
+from sailpoint.v2026.models.prompt_insights_metrics import PromptInsightsMetrics
 from sailpoint.v2026.models.provisioning_completed import ProvisioningCompleted
 from sailpoint.v2026.models.provisioning_completed_account_requests_inner import ProvisioningCompletedAccountRequestsInner
 from sailpoint.v2026.models.provisioning_completed_account_requests_inner_attribute_requests_inner import ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner
