@@ -40,20 +40,6 @@ class TestMachineAccountsApi(unittest.TestCase):
         """
         pass
 
-    def test_disable_machine_accounts_in_bulk(self) -> None:
-        """Test case for disable_machine_accounts_in_bulk
-
-        Bulk disable machine accounts
-        """
-        pass
-
-    def test_enable_machine_accounts_in_bulk(self) -> None:
-        """Test case for enable_machine_accounts_in_bulk
-
-        Bulk enable machine accounts
-        """
-        pass
-
     def test_get_machine_account(self) -> None:
         """Test case for get_machine_account
 
@@ -110,13 +96,6 @@ class TestMachineAccountsApi(unittest.TestCase):
         """
         pass
 
-    def test_reload_machine_accounts_in_bulk(self) -> None:
-        """Test case for reload_machine_accounts_in_bulk
-
-        Bulk reload machine accounts
-        """
-        pass
-
     def test_update_machine_account(self) -> None:
         """Test case for update_machine_account
 
@@ -128,13 +107,6 @@ class TestMachineAccountsApi(unittest.TestCase):
         """Test case for update_machine_account_subtype_approval_config
 
         Machine Subtype Approval Config
-        """
-        pass
-
-    def test_update_machine_accounts_in_bulk(self) -> None:
-        """Test case for update_machine_accounts_in_bulk
-
-        Bulk update machine accounts
         """
         pass
 

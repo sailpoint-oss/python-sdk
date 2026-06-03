@@ -16,8 +16,9 @@ tags: ['SDK', 'Software Development Kit', 'Selector', 'V2026Selector']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**application_id** | **str** | The application id | [optional] 
-**account_match_config** | [**SelectorAccountMatchConfig**](selector-account-match-config) |  | [optional] 
+**type** | [**SelectorType**](selector-type) |  | [required]
+**values** | **[]str** | The selected values.  | [required]
+**interval** | **int** | The selected interval for RANGE selectors.  | [optional] 
 }
 
 ## Example
@@ -26,11 +27,9 @@ Name | Type | Description | Notes
 from sailpoint.v2026.models.selector import Selector
 
 selector = Selector(
-application_id='2c91808874ff91550175097daaec161c"',
-account_match_config=sailpoint.v2026.models.selector_account_match_config.selector_accountMatchConfig(
-                    match_expression = sailpoint.v2026.models.selector_account_match_config_match_expression.selector_accountMatchConfig_matchExpression(
-                        match_terms = [{name=, value=, op=null, container=true, and=false, children=[{name=businessCategory, value=Service, op=eq, container=false, and=false, children=null}]}], 
-                        and = True, ), )
+type='LIST',
+values=[MON, WED],
+interval=3
 )
 
 ```

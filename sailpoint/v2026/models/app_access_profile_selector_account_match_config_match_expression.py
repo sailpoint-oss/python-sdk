@@ -24,9 +24,9 @@ from sailpoint.v2026.models.match_term import MatchTerm
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SelectorAccountMatchConfigMatchExpression(BaseModel):
+class AppAccessProfileSelectorAccountMatchConfigMatchExpression(BaseModel):
     """
-    SelectorAccountMatchConfigMatchExpression
+    AppAccessProfileSelectorAccountMatchConfigMatchExpression
     """ # noqa: E501
     match_terms: Optional[List[MatchTerm]] = Field(default=None, alias="matchTerms")
     var_and: Optional[StrictBool] = Field(default=True, description="If it is AND operators for match terms", alias="and")
@@ -50,7 +50,7 @@ class SelectorAccountMatchConfigMatchExpression(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SelectorAccountMatchConfigMatchExpression from a JSON string"""
+        """Create an instance of AppAccessProfileSelectorAccountMatchConfigMatchExpression from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -82,7 +82,7 @@ class SelectorAccountMatchConfigMatchExpression(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SelectorAccountMatchConfigMatchExpression from a dict"""
+        """Create an instance of AppAccessProfileSelectorAccountMatchConfigMatchExpression from a dict"""
         if obj is None:
             return None
 

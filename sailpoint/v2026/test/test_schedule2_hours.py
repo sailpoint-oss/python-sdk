@@ -35,14 +35,14 @@ class TestSchedule2Hours(unittest.TestCase):
         model = Schedule2Hours()
         if include_optional:
             return Schedule2Hours(
-                application_id = '2c91808874ff91550175097daaec161c"',
-                account_match_config = sailpoint.v2026.models.selector_account_match_config.selector_accountMatchConfig(
-                    match_expression = sailpoint.v2026.models.selector_account_match_config_match_expression.selector_accountMatchConfig_matchExpression(
-                        match_terms = [{name=, value=, op=null, container=true, and=false, children=[{name=businessCategory, value=Service, op=eq, container=false, and=false, children=null}]}], 
-                        and = True, ), )
+                type = 'LIST',
+                values = [MON, WED],
+                interval = 3
             )
         else:
             return Schedule2Hours(
+                type = 'LIST',
+                values = [MON, WED],
         )
         """
 

@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2026.models.selector_account_match_config_match_expression import SelectorAccountMatchConfigMatchExpression
+from sailpoint.v2026.models.app_access_profile_selector_account_match_config_match_expression import AppAccessProfileSelectorAccountMatchConfigMatchExpression
 
-class TestSelectorAccountMatchConfigMatchExpression(unittest.TestCase):
-    """SelectorAccountMatchConfigMatchExpression unit test stubs"""
+class TestAppAccessProfileSelectorAccountMatchConfigMatchExpression(unittest.TestCase):
+    """AppAccessProfileSelectorAccountMatchConfigMatchExpression unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,26 +25,26 @@ class TestSelectorAccountMatchConfigMatchExpression(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SelectorAccountMatchConfigMatchExpression:
-        """Test SelectorAccountMatchConfigMatchExpression
+    def make_instance(self, include_optional) -> AppAccessProfileSelectorAccountMatchConfigMatchExpression:
+        """Test AppAccessProfileSelectorAccountMatchConfigMatchExpression
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `SelectorAccountMatchConfigMatchExpression`
+        # uncomment below to create an instance of `AppAccessProfileSelectorAccountMatchConfigMatchExpression`
         """
-        model = SelectorAccountMatchConfigMatchExpression()
+        model = AppAccessProfileSelectorAccountMatchConfigMatchExpression()
         if include_optional:
-            return SelectorAccountMatchConfigMatchExpression(
+            return AppAccessProfileSelectorAccountMatchConfigMatchExpression(
                 match_terms = [{name=, value=, op=null, container=true, and=false, children=[{name=businessCategory, value=Service, op=eq, container=false, and=false, children=null}]}],
                 var_and = True
             )
         else:
-            return SelectorAccountMatchConfigMatchExpression(
+            return AppAccessProfileSelectorAccountMatchConfigMatchExpression(
         )
         """
 
-    def testSelectorAccountMatchConfigMatchExpression(self):
-        """Test SelectorAccountMatchConfigMatchExpression"""
+    def testAppAccessProfileSelectorAccountMatchConfigMatchExpression(self):
+        """Test AppAccessProfileSelectorAccountMatchConfigMatchExpression"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

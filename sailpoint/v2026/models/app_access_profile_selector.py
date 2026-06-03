@@ -18,18 +18,19 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2026.models.selector_account_match_config_match_expression import SelectorAccountMatchConfigMatchExpression
+from sailpoint.v2026.models.app_access_profile_selector_account_match_config import AppAccessProfileSelectorAccountMatchConfig
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SelectorAccountMatchConfig(BaseModel):
+class AppAccessProfileSelector(BaseModel):
     """
-    SelectorAccountMatchConfig
+    AppAccessProfileSelector
     """ # noqa: E501
-    match_expression: Optional[SelectorAccountMatchConfigMatchExpression] = Field(default=None, alias="matchExpression")
-    __properties: ClassVar[List[str]] = ["matchExpression"]
+    application_id: Optional[StrictStr] = Field(default=None, description="The application id", alias="applicationId")
+    account_match_config: Optional[AppAccessProfileSelectorAccountMatchConfig] = Field(default=None, alias="accountMatchConfig")
+    __properties: ClassVar[List[str]] = ["applicationId", "accountMatchConfig"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +50,7 @@ class SelectorAccountMatchConfig(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SelectorAccountMatchConfig from a JSON string"""
+        """Create an instance of AppAccessProfileSelector from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -70,14 +71,14 @@ class SelectorAccountMatchConfig(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of match_expression
-        if self.match_expression:
-            _dict['matchExpression'] = self.match_expression.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of account_match_config
+        if self.account_match_config:
+            _dict['accountMatchConfig'] = self.account_match_config.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SelectorAccountMatchConfig from a dict"""
+        """Create an instance of AppAccessProfileSelector from a dict"""
         if obj is None:
             return None
 
@@ -85,7 +86,8 @@ class SelectorAccountMatchConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "matchExpression": SelectorAccountMatchConfigMatchExpression.from_dict(obj["matchExpression"]) if obj.get("matchExpression") is not None else None
+            "applicationId": obj.get("applicationId"),
+            "accountMatchConfig": AppAccessProfileSelectorAccountMatchConfig.from_dict(obj["accountMatchConfig"]) if obj.get("accountMatchConfig") is not None else None
         })
         return _obj
 

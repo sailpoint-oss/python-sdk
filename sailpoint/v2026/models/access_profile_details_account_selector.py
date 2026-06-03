@@ -20,7 +20,7 @@ import warnings
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2026.models.selector import Selector
+from sailpoint.v2026.models.app_access_profile_selector import AppAccessProfileSelector
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +28,7 @@ class AccessProfileDetailsAccountSelector(BaseModel):
     """
     How to select account when there are multiple accounts for the user
     """ # noqa: E501
-    selectors: Optional[List[Selector]] = None
+    selectors: Optional[List[AppAccessProfileSelector]] = None
     __properties: ClassVar[List[str]] = ["selectors"]
 
     model_config = ConfigDict(
@@ -94,7 +94,7 @@ class AccessProfileDetailsAccountSelector(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "selectors": [Selector.from_dict(_item) for _item in obj["selectors"]] if obj.get("selectors") is not None else None
+            "selectors": [AppAccessProfileSelector.from_dict(_item) for _item in obj["selectors"]] if obj.get("selectors") is not None else None
         })
         return _obj
 

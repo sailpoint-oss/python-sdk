@@ -36,10 +36,10 @@ class TestAccessProfileDetailsAccountSelector(unittest.TestCase):
         if include_optional:
             return AccessProfileDetailsAccountSelector(
                 selectors = [
-                    sailpoint.v2026.models.selector.selector(
+                    sailpoint.v2026.models.app_access_profile_selector.AppAccessProfileSelector(
                         application_id = '2c91808874ff91550175097daaec161c"', 
-                        account_match_config = sailpoint.v2026.models.selector_account_match_config.selector_accountMatchConfig(
-                            match_expression = sailpoint.v2026.models.selector_account_match_config_match_expression.selector_accountMatchConfig_matchExpression(
+                        account_match_config = sailpoint.v2026.models.app_access_profile_selector_account_match_config.AppAccessProfileSelector_accountMatchConfig(
+                            match_expression = sailpoint.v2026.models.app_access_profile_selector_account_match_config_match_expression.AppAccessProfileSelector_accountMatchConfig_matchExpression(
                                 match_terms = [{name=, value=, op=null, container=true, and=false, children=[{name=businessCategory, value=Service, op=eq, container=false, and=false, children=null}]}], 
                                 and = True, ), ), )
                     ]

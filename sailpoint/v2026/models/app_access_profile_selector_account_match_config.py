@@ -18,20 +18,18 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2026.models.selector_type import SelectorType
+from sailpoint.v2026.models.app_access_profile_selector_account_match_config_match_expression import AppAccessProfileSelectorAccountMatchConfigMatchExpression
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Schedule2Months(BaseModel):
+class AppAccessProfileSelectorAccountMatchConfig(BaseModel):
     """
-    Schedule2Months
+    AppAccessProfileSelectorAccountMatchConfig
     """ # noqa: E501
-    type: SelectorType
-    values: List[StrictStr] = Field(description="The selected values. ")
-    interval: Optional[StrictInt] = Field(default=None, description="The selected interval for RANGE selectors. ")
-    __properties: ClassVar[List[str]] = ["type", "values", "interval"]
+    match_expression: Optional[AppAccessProfileSelectorAccountMatchConfigMatchExpression] = Field(default=None, alias="matchExpression")
+    __properties: ClassVar[List[str]] = ["matchExpression"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +49,7 @@ class Schedule2Months(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Schedule2Months from a JSON string"""
+        """Create an instance of AppAccessProfileSelectorAccountMatchConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,16 +70,14 @@ class Schedule2Months(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if interval (nullable) is None
-        # and model_fields_set contains the field
-        if self.interval is None and "interval" in self.model_fields_set:
-            _dict['interval'] = None
-
+        # override the default output from pydantic by calling `to_dict()` of match_expression
+        if self.match_expression:
+            _dict['matchExpression'] = self.match_expression.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Schedule2Months from a dict"""
+        """Create an instance of AppAccessProfileSelectorAccountMatchConfig from a dict"""
         if obj is None:
             return None
 
@@ -89,9 +85,7 @@ class Schedule2Months(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "type": obj.get("type"),
-            "values": obj.get("values"),
-            "interval": obj.get("interval")
+            "matchExpression": AppAccessProfileSelectorAccountMatchConfigMatchExpression.from_dict(obj["matchExpression"]) if obj.get("matchExpression") is not None else None
         })
         return _obj
 

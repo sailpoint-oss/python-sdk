@@ -874,68 +874,20 @@ with ApiClient(configuration) as api_client:
     sod_policy_schedule = '''{
           "schedule" : {
             "hours" : {
-              "accountMatchConfig" : {
-                "matchExpression" : {
-                  "and" : true,
-                  "matchTerms" : [ {
-                    "name" : "",
-                    "value" : "",
-                    "container" : true,
-                    "and" : false,
-                    "children" : [ {
-                      "name" : "businessCategory",
-                      "value" : "Service",
-                      "op" : "eq",
-                      "container" : false,
-                      "and" : false
-                    } ]
-                  } ]
-                }
-              },
-              "applicationId" : "2c91808874ff91550175097daaec161c\""
+              "values" : [ "MON", "WED" ],
+              "interval" : 3,
+              "type" : "LIST"
             },
             "months" : {
-              "accountMatchConfig" : {
-                "matchExpression" : {
-                  "and" : true,
-                  "matchTerms" : [ {
-                    "name" : "",
-                    "value" : "",
-                    "container" : true,
-                    "and" : false,
-                    "children" : [ {
-                      "name" : "businessCategory",
-                      "value" : "Service",
-                      "op" : "eq",
-                      "container" : false,
-                      "and" : false
-                    } ]
-                  } ]
-                }
-              },
-              "applicationId" : "2c91808874ff91550175097daaec161c\""
+              "values" : [ "MON", "WED" ],
+              "interval" : 3,
+              "type" : "LIST"
             },
             "timeZoneId" : "America/Chicago",
             "days" : {
-              "accountMatchConfig" : {
-                "matchExpression" : {
-                  "and" : true,
-                  "matchTerms" : [ {
-                    "name" : "",
-                    "value" : "",
-                    "container" : true,
-                    "and" : false,
-                    "children" : [ {
-                      "name" : "businessCategory",
-                      "value" : "Service",
-                      "op" : "eq",
-                      "container" : false,
-                      "and" : false
-                    } ]
-                  } ]
-                }
-              },
-              "applicationId" : "2c91808874ff91550175097daaec161c\""
+              "values" : [ "MON", "WED" ],
+              "interval" : 3,
+              "type" : "LIST"
             },
             "expiration" : "2018-06-25T20:22:28.104Z",
             "type" : "WEEKLY"

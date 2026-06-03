@@ -191,6 +191,9 @@ from sailpoint.v2026.models.aggregation_result import AggregationResult
 from sailpoint.v2026.models.aggregation_type import AggregationType
 from sailpoint.v2026.models.aggregations import Aggregations
 from sailpoint.v2026.models.app import App
+from sailpoint.v2026.models.app_access_profile_selector import AppAccessProfileSelector
+from sailpoint.v2026.models.app_access_profile_selector_account_match_config import AppAccessProfileSelectorAccountMatchConfig
+from sailpoint.v2026.models.app_access_profile_selector_account_match_config_match_expression import AppAccessProfileSelectorAccountMatchConfigMatchExpression
 from sailpoint.v2026.models.app_account_details import AppAccountDetails
 from sailpoint.v2026.models.app_account_details_source_account import AppAccountDetailsSourceAccount
 from sailpoint.v2026.models.app_all_of_account import AppAllOfAccount
@@ -1171,8 +1174,7 @@ from sailpoint.v2026.models.sed_patch import SedPatch
 from sailpoint.v2026.models.segment import Segment
 from sailpoint.v2026.models.segment_visibility_criteria import SegmentVisibilityCriteria
 from sailpoint.v2026.models.selector import Selector
-from sailpoint.v2026.models.selector_account_match_config import SelectorAccountMatchConfig
-from sailpoint.v2026.models.selector_account_match_config_match_expression import SelectorAccountMatchConfigMatchExpression
+from sailpoint.v2026.models.selector_type import SelectorType
 from sailpoint.v2026.models.self_import_export_dto import SelfImportExportDto
 from sailpoint.v2026.models.send_account_verification_request import SendAccountVerificationRequest
 from sailpoint.v2026.models.send_classify_machine_account200_response import SendClassifyMachineAccount200Response
