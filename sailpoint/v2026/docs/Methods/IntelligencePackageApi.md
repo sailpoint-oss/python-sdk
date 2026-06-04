@@ -13,7 +13,7 @@ tags: ['SDK', 'Software Development Kit', 'Intelligence_Package', 'V2026Intellig
   Read-only HTTP API that returns the Intelligence Package (identity context)
 for SecOps enrichment use cases (SIEM/SOAR connectors, MCP, browser
 extension). Backed by Atlas internal-REST calls to MICE, Shelby List Accounts,
-SDS Search, and identity-history.
+SDS Search, IDA-outliers, and identity-history.
  
 All URIs are relative to *https://sailpoint.api.identitynow.com/v2026*
 
@@ -21,6 +21,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get-intel-identity-access**](#get-intel-identity-access) | **GET** `/intelligence/identities/{identityID}/access` | Accounts merged with privileged data
 [**get-intel-identity-access-history**](#get-intel-identity-access-history) | **GET** `/intelligence/identities/{identityID}/access-history` | Return identity access-history events
+[**get-intel-identity-risk**](#get-intel-identity-risk) | **GET** `/intelligence/identities/{identityID}/risk` | Identity risk snapshot
+[**get-intel-identity-risk-outliers**](#get-intel-identity-risk-outliers) | **GET** `/intelligence/identities/{identityID}/risk/outliers` | Risk outliers continuation paging
 [**search-intel-identities**](#search-intel-identities) | **GET** `/intelligence/identities` | Resolve one identity by filter
 
 
@@ -151,6 +153,135 @@ with ApiClient(configuration) as api_client:
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling IntelligencePackageApi->get_intel_identity_access_history: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## get-intel-identity-risk
+Identity risk snapshot
+Risk snapshot envelope for the identity. The service resolves the first matching
+outlier for identityID and returns one page of access-items plus an optional
+continuation link for additional pages.
+
+Clients should continue paging using _links.outliers.href when provided.
+Requires tenant license idn:response-and-remediation.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2026/get-intel-identity-risk)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | identity_id | **str** | True  | Non-empty identity id path segment for Intelligence Package sub-resources.
+
+### Return type
+[**IntelIdentityRiskBody**](../models/intel-identity-risk-body)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | Risk envelope with first page and optional continuation link. | IntelIdentityRiskBody |  -  |
+400 | Invalid path parameter. | ErrorBody |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfig429Response |  -  |
+500 | Internal or upstream server failure. | ErrorBody |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2026.api.intelligence_package_api import IntelligencePackageApi
+from sailpoint.v2026.api_client import ApiClient
+from sailpoint.v2026.models.intel_identity_risk_body import IntelIdentityRiskBody
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    identity_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Non-empty identity id path segment for Intelligence Package sub-resources. # str | Non-empty identity id path segment for Intelligence Package sub-resources.
+
+    try:
+        # Identity risk snapshot
+        
+        results = IntelligencePackageApi(api_client).get_intel_identity_risk(identity_id=identity_id)
+        # Below is a request that includes all optional parameters
+        # results = IntelligencePackageApi(api_client).get_intel_identity_risk(identity_id)
+        print("The response of IntelligencePackageApi->get_intel_identity_risk:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling IntelligencePackageApi->get_intel_identity_risk: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## get-intel-identity-risk-outliers
+Risk outliers continuation paging
+Continuation endpoint for risk outlier access-items. Returns one page based on
+the supplied limit and offset values and includes an optional continuation link
+when more rows remain. Requires tenant license idn:response-and-remediation.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2026/get-intel-identity-risk-outliers)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | identity_id | **str** | True  | Non-empty identity id path segment for Intelligence Package sub-resources.
+  Query | limit | **int** |   (optional) (default to 250) | Maximum number of outlier rows to return for this page.
+  Query | offset | **int** |   (optional) (default to 0) | Zero-based row index for the first returned outlier item.
+
+### Return type
+[**IntelIdentityRiskBody**](../models/intel-identity-risk-body)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | One page of outlier items plus optional continuation link. | IntelIdentityRiskBody |  -  |
+400 | Invalid path or query parameters. | ErrorBody |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfig429Response |  -  |
+500 | Internal or upstream server failure. | ErrorBody |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2026.api.intelligence_package_api import IntelligencePackageApi
+from sailpoint.v2026.api_client import ApiClient
+from sailpoint.v2026.models.intel_identity_risk_body import IntelIdentityRiskBody
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    identity_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Non-empty identity id path segment for Intelligence Package sub-resources. # str | Non-empty identity id path segment for Intelligence Package sub-resources.
+    limit = 250 # int | Maximum number of outlier rows to return for this page. (optional) (default to 250) # int | Maximum number of outlier rows to return for this page. (optional) (default to 250)
+    offset = 0 # int | Zero-based row index for the first returned outlier item. (optional) (default to 0) # int | Zero-based row index for the first returned outlier item. (optional) (default to 0)
+
+    try:
+        # Risk outliers continuation paging
+        
+        results = IntelligencePackageApi(api_client).get_intel_identity_risk_outliers(identity_id=identity_id)
+        # Below is a request that includes all optional parameters
+        # results = IntelligencePackageApi(api_client).get_intel_identity_risk_outliers(identity_id, limit, offset)
+        print("The response of IntelligencePackageApi->get_intel_identity_risk_outliers:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling IntelligencePackageApi->get_intel_identity_risk_outliers: %s\n" % e)
 ```
 
 

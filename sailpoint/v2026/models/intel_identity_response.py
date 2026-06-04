@@ -29,7 +29,7 @@ from typing_extensions import Self
 
 class IntelIdentityResponse(BaseModel):
     """
-    HUMAN responses include human, top-level subtype (NERM classification: Employee, Non Employee, or Cannot Determine), and _links (access and accessHistory only). MACHINE responses include machine and top-level subtype (connector subtype string); _links is omitted. 
+    HUMAN responses include human, top-level subtype (NERM classification: Employee, Non Employee, or Cannot Determine), and _links (access, risk, and accessHistory). MACHINE responses include machine and top-level subtype (connector subtype string); _links is omitted. 
     """ # noqa: E501
     id: StrictStr = Field(description="Identity Security Cloud identifier for this identity.")
     type: StrictStr = Field(description="Discriminator indicating whether this identity is human or machine backed.")

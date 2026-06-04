@@ -19,19 +19,17 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v2026.models.intel_href import IntelHref
 from typing import Optional, Set
 from typing_extensions import Self
 
-class IntelIdentityLinks(BaseModel):
+class IntelRiskLinks(BaseModel):
     """
-    IntelIdentityLinks
+    Continuation links for risk responses.
     """ # noqa: E501
-    access: IntelHref = Field(description="Hyperlink to the Intelligence Package access document for this identity.")
-    risk: IntelHref = Field(description="Hyperlink to the Intelligence Package risk document for this identity.")
-    access_history: IntelHref = Field(description="Hyperlink to the Intelligence Package access history document for this identity.", alias="accessHistory")
-    __properties: ClassVar[List[str]] = ["access", "risk", "accessHistory"]
+    outliers: Optional[IntelHref] = Field(default=None, description="Link to fetch the next outlier page for the same identity.")
+    __properties: ClassVar[List[str]] = ["outliers"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +49,7 @@ class IntelIdentityLinks(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of IntelIdentityLinks from a JSON string"""
+        """Create an instance of IntelRiskLinks from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,20 +70,14 @@ class IntelIdentityLinks(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of access
-        if self.access:
-            _dict['access'] = self.access.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of risk
-        if self.risk:
-            _dict['risk'] = self.risk.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of access_history
-        if self.access_history:
-            _dict['accessHistory'] = self.access_history.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of outliers
+        if self.outliers:
+            _dict['outliers'] = self.outliers.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of IntelIdentityLinks from a dict"""
+        """Create an instance of IntelRiskLinks from a dict"""
         if obj is None:
             return None
 
@@ -93,9 +85,7 @@ class IntelIdentityLinks(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "access": IntelHref.from_dict(obj["access"]) if obj.get("access") is not None else None,
-            "risk": IntelHref.from_dict(obj["risk"]) if obj.get("risk") is not None else None,
-            "accessHistory": IntelHref.from_dict(obj["accessHistory"]) if obj.get("accessHistory") is not None else None
+            "outliers": IntelHref.from_dict(obj["outliers"]) if obj.get("outliers") is not None else None
         })
         return _obj
 

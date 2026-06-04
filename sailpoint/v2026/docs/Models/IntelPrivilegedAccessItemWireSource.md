@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 from sailpoint.v2026.models.intel_privileged_access_item_wire_source import IntelPrivilegedAccessItemWireSource
 
 intel_privileged_access_item_wire_source = IntelPrivilegedAccessItemWireSource(
-name='Workday',
+name='Example HR Source',
 id='src-2'
 )
 

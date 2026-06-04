@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.84"
+__version__ = "1.4.85"
 
 # import apis into sdk package
 from sailpoint.v2026.api.access_model_metadata_api import AccessModelMetadataApi
@@ -808,11 +808,14 @@ from sailpoint.v2026.models.intel_identity_ambiguous_candidate import IntelIdent
 from sailpoint.v2026.models.intel_identity_links import IntelIdentityLinks
 from sailpoint.v2026.models.intel_identity_not_found_body import IntelIdentityNotFoundBody
 from sailpoint.v2026.models.intel_identity_response import IntelIdentityResponse
+from sailpoint.v2026.models.intel_identity_risk_body import IntelIdentityRiskBody
 from sailpoint.v2026.models.intel_identity_timestamps import IntelIdentityTimestamps
 from sailpoint.v2026.models.intel_machine import IntelMachine
 from sailpoint.v2026.models.intel_machine_source import IntelMachineSource
+from sailpoint.v2026.models.intel_outlier_access_item import IntelOutlierAccessItem
 from sailpoint.v2026.models.intel_privileged_access_item_wire import IntelPrivilegedAccessItemWire
 from sailpoint.v2026.models.intel_privileged_access_item_wire_source import IntelPrivilegedAccessItemWireSource
+from sailpoint.v2026.models.intel_risk_links import IntelRiskLinks
 from sailpoint.v2026.models.invite_identities_request import InviteIdentitiesRequest
 from sailpoint.v2026.models.invocation import Invocation
 from sailpoint.v2026.models.invocation_status import InvocationStatus

@@ -28,7 +28,7 @@ from sailpoint.v2026.models.intel_machine_source import IntelMachineSource
 
 intel_machine_source = IntelMachineSource(
 id='2c9180835d2e5168015d32f890301e89',
-name='Active Directory',
+name='Example Directory',
 type='LDAP'
 )
 

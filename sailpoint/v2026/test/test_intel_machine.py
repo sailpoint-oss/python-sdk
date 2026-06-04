@@ -36,12 +36,12 @@ class TestIntelMachine(unittest.TestCase):
         if include_optional:
             return IntelMachine(
                 business_application = 'Payroll Bot',
-                native_identity = 'DEMO_AGENT1',
+                native_identity = 'example-agent-1',
                 uuid = '3fa85f64-5717-4562-b3fc-2c963f66afa6',
                 source_id = '8433902684054f09ae024c06cf5091c1',
                 source = sailpoint.v2026.models.intel_machine_source.IntelMachineSource(
                     id = '2c9180835d2e5168015d32f890301e89', 
-                    name = 'Active Directory', 
+                    name = 'Example Directory', 
                     type = 'LDAP', ),
                 dataset_id = 'dataset-001',
                 exists_on_source = True,

@@ -18,20 +18,22 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field
-from typing import Any, ClassVar, Dict, List
-from sailpoint.v2026.models.intel_href import IntelHref
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class IntelIdentityLinks(BaseModel):
+class IntelOutlierAccessItem(BaseModel):
     """
-    IntelIdentityLinks
+    One outlier access-item row.
     """ # noqa: E501
-    access: IntelHref = Field(description="Hyperlink to the Intelligence Package access document for this identity.")
-    risk: IntelHref = Field(description="Hyperlink to the Intelligence Package risk document for this identity.")
-    access_history: IntelHref = Field(description="Hyperlink to the Intelligence Package access history document for this identity.", alias="accessHistory")
-    __properties: ClassVar[List[str]] = ["access", "risk", "accessHistory"]
+    id: StrictStr = Field(description="Stable identifier of the outlier access-item row.")
+    display_name: StrictStr = Field(description="Display label of the risky access item.", alias="displayName")
+    description: Optional[StrictStr] = Field(default=None, description="Optional descriptive text for the risky access item.")
+    access_type: StrictStr = Field(description="Access item type (for example ENTITLEMENT, ROLE, ACCESS_PROFILE, ACCOUNT, or APP).", alias="accessType")
+    source_name: StrictStr = Field(description="Source name where the risky access item exists.", alias="sourceName")
+    extremely_rare: StrictBool = Field(description="Indicates whether analytics marked this item as extremely rare.", alias="extremelyRare")
+    __properties: ClassVar[List[str]] = ["id", "displayName", "description", "accessType", "sourceName", "extremelyRare"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +53,7 @@ class IntelIdentityLinks(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of IntelIdentityLinks from a JSON string"""
+        """Create an instance of IntelOutlierAccessItem from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,20 +74,16 @@ class IntelIdentityLinks(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of access
-        if self.access:
-            _dict['access'] = self.access.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of risk
-        if self.risk:
-            _dict['risk'] = self.risk.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of access_history
-        if self.access_history:
-            _dict['accessHistory'] = self.access_history.to_dict()
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of IntelIdentityLinks from a dict"""
+        """Create an instance of IntelOutlierAccessItem from a dict"""
         if obj is None:
             return None
 
@@ -93,9 +91,12 @@ class IntelIdentityLinks(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "access": IntelHref.from_dict(obj["access"]) if obj.get("access") is not None else None,
-            "risk": IntelHref.from_dict(obj["risk"]) if obj.get("risk") is not None else None,
-            "accessHistory": IntelHref.from_dict(obj["accessHistory"]) if obj.get("accessHistory") is not None else None
+            "id": obj.get("id"),
+            "displayName": obj.get("displayName"),
+            "description": obj.get("description"),
+            "accessType": obj.get("accessType"),
+            "sourceName": obj.get("sourceName"),
+            "extremelyRare": obj.get("extremelyRare")
         })
         return _obj
 

@@ -40,6 +40,20 @@ class TestIntelligencePackageApi(unittest.TestCase):
         """
         pass
 
+    def test_get_intel_identity_risk(self) -> None:
+        """Test case for get_intel_identity_risk
+
+        Identity risk snapshot
+        """
+        pass
+
+    def test_get_intel_identity_risk_outliers(self) -> None:
+        """Test case for get_intel_identity_risk_outliers
+
+        Risk outliers continuation paging
+        """
+        pass
+
     def test_search_intel_identities(self) -> None:
         """Test case for search_intel_identities
 

@@ -12402,6 +12402,58 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling IntelligencePackageApi->get_intel_identity_access_history: %s\n" % e)
+- path: /intelligence/identities/{identityID}/risk
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/intelligence-package#get-intel-identity-risk
+      source: |
+        from sailpoint.v2026.api.intelligence_package_api import IntelligencePackageApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.intel_identity_risk_body import IntelIdentityRiskBody
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          identity_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Non-empty identity id path segment for Intelligence Package sub-resources. # str | Non-empty identity id path segment for Intelligence Package sub-resources.
+          try:
+              # Identity risk snapshot
+              
+              results = IntelligencePackageApi(api_client).get_intel_identity_risk(identity_id=identity_id)
+              # Below is a request that includes all optional parameters
+              # results = IntelligencePackageApi(api_client).get_intel_identity_risk(identity_id)
+              print("The response of IntelligencePackageApi->get_intel_identity_risk:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling IntelligencePackageApi->get_intel_identity_risk: %s\n" % e)
+- path: /intelligence/identities/{identityID}/risk/outliers
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/intelligence-package#get-intel-identity-risk-outliers
+      source: |
+        from sailpoint.v2026.api.intelligence_package_api import IntelligencePackageApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.intel_identity_risk_body import IntelIdentityRiskBody
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          identity_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Non-empty identity id path segment for Intelligence Package sub-resources. # str | Non-empty identity id path segment for Intelligence Package sub-resources.
+          limit = 250 # int | Maximum number of outlier rows to return for this page. (optional) (default to 250) # int | Maximum number of outlier rows to return for this page. (optional) (default to 250)
+          offset = 0 # int | Zero-based row index for the first returned outlier item. (optional) (default to 0) # int | Zero-based row index for the first returned outlier item. (optional) (default to 0)
+          try:
+              # Risk outliers continuation paging
+              
+              results = IntelligencePackageApi(api_client).get_intel_identity_risk_outliers(identity_id=identity_id)
+              # Below is a request that includes all optional parameters
+              # results = IntelligencePackageApi(api_client).get_intel_identity_risk_outliers(identity_id, limit, offset)
+              print("The response of IntelligencePackageApi->get_intel_identity_risk_outliers:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling IntelligencePackageApi->get_intel_identity_risk_outliers: %s\n" % e)
 - path: /intelligence/identities
   method: GET
   xCodeSample:

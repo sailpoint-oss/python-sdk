@@ -36,16 +36,16 @@ class TestIntelPrivilegedAccessItemWire(unittest.TestCase):
         if include_optional:
             return IntelPrivilegedAccessItemWire(
                 privileged = True,
-                display_name = 'Absence_Administrator',
-                name = 'Absence_Administrator',
+                display_name = 'Example_Admin_Access',
+                name = 'Example_Admin_Access',
                 standalone = True,
                 id = 'ent-1',
                 source = sailpoint.v2026.models.intel_privileged_access_item_wire_source.IntelPrivilegedAccessItemWire_source(
-                    name = 'Workday', 
+                    name = 'Example HR Source', 
                     id = 'src-2', ),
-                attribute = 'USER_BASED_SECURITY_GROUPS',
+                attribute = 'EXAMPLE_PERMISSION_GROUPS',
                 type = 'ENTITLEMENT',
-                value = 'Absence_Administrator'
+                value = 'Example_Admin_Access'
             )
         else:
             return IntelPrivilegedAccessItemWire(

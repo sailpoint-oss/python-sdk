@@ -11,7 +11,7 @@ tags: ['SDK', 'Software Development Kit', 'IntelIdentityResponse', 'V2026IntelId
 
 # IntelIdentityResponse
 
-HUMAN responses include human, top-level subtype (NERM classification: Employee, Non Employee, or Cannot Determine), and _links (access and accessHistory only). MACHINE responses include machine and top-level subtype (connector subtype string); _links is omitted. 
+HUMAN responses include human, top-level subtype (NERM classification: Employee, Non Employee, or Cannot Determine), and _links (access, risk, and accessHistory). MACHINE responses include machine and top-level subtype (connector subtype string); _links is omitted. 
 
 ## Properties
 
@@ -60,7 +60,7 @@ human=sailpoint.v2026.models.intel_human.IntelHuman(
                     last_refresh_at = '2024-05-01T08:00Z', ),
 machine=sailpoint.v2026.models.intel_machine.IntelMachine(
                     business_application = 'Payroll Bot', 
-                    native_identity = 'DEMO_AGENT1', 
+                    native_identity = 'example-agent-1', 
                     uuid = '3fa85f64-5717-4562-b3fc-2c963f66afa6', 
                     source_id = '8433902684054f09ae024c06cf5091c1', 
                     source = sailpoint.v2026.models.source.source(), 
@@ -74,6 +74,7 @@ machine=sailpoint.v2026.models.intel_machine.IntelMachine(
                         ], ),
 links=sailpoint.v2026.models.intel_identity_links.IntelIdentityLinks(
                     access = {href=/v2026/intelligence/identities/ef38f94347e94562b5bb8424a56397d8/access}, 
+                    risk = {href=/v2026/intelligence/identities/ef38f94347e94562b5bb8424a56397d8/risk}, 
                     access_history = {href=/v2026/intelligence/identities/ef38f94347e94562b5bb8424a56397d8/access-history}, )
 )
 

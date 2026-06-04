@@ -36,7 +36,7 @@ class TestIntelMachineSource(unittest.TestCase):
         if include_optional:
             return IntelMachineSource(
                 id = '2c9180835d2e5168015d32f890301e89',
-                name = 'Active Directory',
+                name = 'Example Directory',
                 type = 'LDAP'
             )
         else:

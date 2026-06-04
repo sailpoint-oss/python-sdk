@@ -19,19 +19,21 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field
-from typing import Any, ClassVar, Dict, List
-from sailpoint.v2026.models.intel_href import IntelHref
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from sailpoint.v2026.models.intel_outlier_access_item import IntelOutlierAccessItem
+from sailpoint.v2026.models.intel_risk_links import IntelRiskLinks
 from typing import Optional, Set
 from typing_extensions import Self
 
-class IntelIdentityLinks(BaseModel):
+class IntelIdentityRiskBody(BaseModel):
     """
-    IntelIdentityLinks
+    Shared response envelope for risk endpoints.
     """ # noqa: E501
-    access: IntelHref = Field(description="Hyperlink to the Intelligence Package access document for this identity.")
-    risk: IntelHref = Field(description="Hyperlink to the Intelligence Package risk document for this identity.")
-    access_history: IntelHref = Field(description="Hyperlink to the Intelligence Package access history document for this identity.", alias="accessHistory")
-    __properties: ClassVar[List[str]] = ["access", "risk", "accessHistory"]
+    outliers: List[IntelOutlierAccessItem] = Field(description="Page of outlier access-items associated with the resolved identity outlier.")
+    outliers_total: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(description="Total available outlier access-item count from upstream.", alias="outliersTotal")
+    links: Optional[IntelRiskLinks] = Field(default=None, description="Continuation links map; omitted when no additional page exists.", alias="_links")
+    __properties: ClassVar[List[str]] = ["outliers", "outliersTotal", "_links"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +53,7 @@ class IntelIdentityLinks(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of IntelIdentityLinks from a JSON string"""
+        """Create an instance of IntelIdentityRiskBody from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,20 +74,31 @@ class IntelIdentityLinks(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of access
-        if self.access:
-            _dict['access'] = self.access.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of risk
-        if self.risk:
-            _dict['risk'] = self.risk.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of access_history
-        if self.access_history:
-            _dict['accessHistory'] = self.access_history.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in outliers (list)
+        _items = []
+        if self.outliers:
+            for _item_outliers in self.outliers:
+                if _item_outliers:
+                    _items.append(_item_outliers.to_dict())
+            _dict['outliers'] = _items
+        # override the default output from pydantic by calling `to_dict()` of links
+        if self.links:
+            _dict['_links'] = self.links.to_dict()
+        # set to None if outliers_total (nullable) is None
+        # and model_fields_set contains the field
+        if self.outliers_total is None and "outliers_total" in self.model_fields_set:
+            _dict['outliersTotal'] = None
+
+        # set to None if links (nullable) is None
+        # and model_fields_set contains the field
+        if self.links is None and "links" in self.model_fields_set:
+            _dict['_links'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of IntelIdentityLinks from a dict"""
+        """Create an instance of IntelIdentityRiskBody from a dict"""
         if obj is None:
             return None
 
@@ -93,9 +106,9 @@ class IntelIdentityLinks(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "access": IntelHref.from_dict(obj["access"]) if obj.get("access") is not None else None,
-            "risk": IntelHref.from_dict(obj["risk"]) if obj.get("risk") is not None else None,
-            "accessHistory": IntelHref.from_dict(obj["accessHistory"]) if obj.get("accessHistory") is not None else None
+            "outliers": [IntelOutlierAccessItem.from_dict(_item) for _item in obj["outliers"]] if obj.get("outliers") is not None else None,
+            "outliersTotal": obj.get("outliersTotal"),
+            "_links": IntelRiskLinks.from_dict(obj["_links"]) if obj.get("_links") is not None else None
         })
         return _obj
 

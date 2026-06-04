@@ -37,12 +37,16 @@ class TestIntelIdentityLinks(unittest.TestCase):
             return IntelIdentityLinks(
                 access = sailpoint.v2026.models.intel_href.IntelHref(
                     href = '/v2026/intelligence/identities/ef38f94347e94562b5bb8424a56397d8/access', ),
+                risk = sailpoint.v2026.models.intel_href.IntelHref(
+                    href = '/v2026/intelligence/identities/ef38f94347e94562b5bb8424a56397d8/access', ),
                 access_history = sailpoint.v2026.models.intel_href.IntelHref(
                     href = '/v2026/intelligence/identities/ef38f94347e94562b5bb8424a56397d8/access', )
             )
         else:
             return IntelIdentityLinks(
                 access = sailpoint.v2026.models.intel_href.IntelHref(
+                    href = '/v2026/intelligence/identities/ef38f94347e94562b5bb8424a56397d8/access', ),
+                risk = sailpoint.v2026.models.intel_href.IntelHref(
                     href = '/v2026/intelligence/identities/ef38f94347e94562b5bb8424a56397d8/access', ),
                 access_history = sailpoint.v2026.models.intel_href.IntelHref(
                     href = '/v2026/intelligence/identities/ef38f94347e94562b5bb8424a56397d8/access', ),
