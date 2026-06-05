@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **max_permitted_access_duration** | [**AccessDuration**](access-duration) |  | [optional] 
 **approval_schemes** | [**[]ApprovalSchemeForRole**](approval-scheme-for-role) | List describing the steps in approving the request | [optional] 
 **dimension_schema** | [**DimensionSchema**](dimension-schema) |  | [optional] 
+**form_definition_id** | **str** | The ID of the form definition used for the access request. If specified, the form is presented to the requester during the access request process. | [optional] 
 }
 
 ## Example
@@ -49,7 +50,8 @@ dimension_schema=sailpoint.v2026.models.dimension_schema.DimensionSchema(
                             name = 'city', 
                             display_name = 'City', 
                             derived = True, )
-                        ], )
+                        ], ),
+form_definition_id='78258e80-e9e2-4e1a-a11f-ce0b7c62f25d'
 )
 
 ```

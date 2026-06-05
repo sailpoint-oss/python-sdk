@@ -57,7 +57,8 @@ class Role(BaseModel):
     dimensional: Optional[StrictBool] = Field(default=False, description="Whether the Role is dimensional.")
     dimension_refs: Optional[List[DimensionRef]] = Field(default=None, description="List of references to dimensions to which this Role is assigned. This field is only relevant if the Role is dimensional.", alias="dimensionRefs")
     access_model_metadata: Optional[AttributeDTOList] = Field(default=None, alias="accessModelMetadata")
-    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "owner", "additionalOwners", "accessProfiles", "entitlements", "membership", "legacyMembershipInfo", "enabled", "requestable", "accessRequestConfig", "revocationRequestConfig", "segments", "dimensional", "dimensionRefs", "accessModelMetadata"]
+    privilege_level: Optional[StrictStr] = Field(default=None, description="The privilege level of the role, if applicable.", alias="privilegeLevel")
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "description", "owner", "additionalOwners", "accessProfiles", "entitlements", "membership", "legacyMembershipInfo", "enabled", "requestable", "accessRequestConfig", "revocationRequestConfig", "segments", "dimensional", "dimensionRefs", "accessModelMetadata", "privilegeLevel"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -190,6 +191,11 @@ class Role(BaseModel):
         if self.dimension_refs is None and "dimension_refs" in self.model_fields_set:
             _dict['dimensionRefs'] = None
 
+        # set to None if privilege_level (nullable) is None
+        # and model_fields_set contains the field
+        if self.privilege_level is None and "privilege_level" in self.model_fields_set:
+            _dict['privilegeLevel'] = None
+
         return _dict
 
     @classmethod
@@ -220,7 +226,8 @@ class Role(BaseModel):
             "segments": obj.get("segments"),
             "dimensional": obj.get("dimensional") if obj.get("dimensional") is not None else False,
             "dimensionRefs": [DimensionRef.from_dict(_item) for _item in obj["dimensionRefs"]] if obj.get("dimensionRefs") is not None else None,
-            "accessModelMetadata": AttributeDTOList.from_dict(obj["accessModelMetadata"]) if obj.get("accessModelMetadata") is not None else None
+            "accessModelMetadata": AttributeDTOList.from_dict(obj["accessModelMetadata"]) if obj.get("accessModelMetadata") is not None else None,
+            "privilegeLevel": obj.get("privilegeLevel")
         })
         return _obj
 

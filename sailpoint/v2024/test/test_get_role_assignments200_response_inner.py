@@ -41,6 +41,7 @@ class TestGetRoleAssignments200ResponseInner(unittest.TestCase):
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
                 added_date = '2025-07-11T18:45:37.098Z',
+                start_date = '2026-07-10T18:45:37.098Z',
                 remove_date = '2026-07-11T18:45:37.098Z',
                 comments = 'I'm a new Engineer and need this role to do my work',
                 assignment_source = 'UI',

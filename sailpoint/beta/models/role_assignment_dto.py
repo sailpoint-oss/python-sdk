@@ -41,9 +41,10 @@ class RoleAssignmentDto(BaseModel):
     assigned_dimensions: Optional[List[BaseReferenceDto1]] = Field(default=None, description="Dimensions assigned related to this role", alias="assignedDimensions")
     assignment_context: Optional[RoleAssignmentDtoAssignmentContext] = Field(default=None, alias="assignmentContext")
     account_targets: Optional[List[RoleTargetDto]] = Field(default=None, alias="accountTargets")
+    start_date: Optional[datetime] = Field(default=None, description="Date when assignment will be active, if access was requested with a future start date. If null, assignment is active immediately", alias="startDate")
     remove_date: Optional[datetime] = Field(default=None, description="Date that the assignment will be removed", alias="removeDate")
     added_date: Optional[datetime] = Field(default=None, description="Date that the assignment was added", alias="addedDate")
-    __properties: ClassVar[List[str]] = ["id", "role", "comments", "assignmentSource", "assigner", "assignedDimensions", "assignmentContext", "accountTargets", "removeDate", "addedDate"]
+    __properties: ClassVar[List[str]] = ["id", "role", "comments", "assignmentSource", "assigner", "assignedDimensions", "assignmentContext", "accountTargets", "startDate", "removeDate", "addedDate"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -112,6 +113,11 @@ class RoleAssignmentDto(BaseModel):
         if self.comments is None and "comments" in self.model_fields_set:
             _dict['comments'] = None
 
+        # set to None if start_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.start_date is None and "start_date" in self.model_fields_set:
+            _dict['startDate'] = None
+
         # set to None if remove_date (nullable) is None
         # and model_fields_set contains the field
         if self.remove_date is None and "remove_date" in self.model_fields_set:
@@ -137,6 +143,7 @@ class RoleAssignmentDto(BaseModel):
             "assignedDimensions": [BaseReferenceDto1.from_dict(_item) for _item in obj["assignedDimensions"]] if obj.get("assignedDimensions") is not None else None,
             "assignmentContext": RoleAssignmentDtoAssignmentContext.from_dict(obj["assignmentContext"]) if obj.get("assignmentContext") is not None else None,
             "accountTargets": [RoleTargetDto.from_dict(_item) for _item in obj["accountTargets"]] if obj.get("accountTargets") is not None else None,
+            "startDate": obj.get("startDate"),
             "removeDate": obj.get("removeDate"),
             "addedDate": obj.get("addedDate")
         })

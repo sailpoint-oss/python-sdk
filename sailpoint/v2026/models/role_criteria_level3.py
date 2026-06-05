@@ -31,7 +31,7 @@ class RoleCriteriaLevel3(BaseModel):
     """ # noqa: E501
     operation: Optional[Union[RoleCriteriaOperation, str]] = None
     key: Optional[RoleCriteriaKey] = None
-    string_value: Optional[StrictStr] = Field(default=None, description="String value to test the Identity attribute, Account attribute, or Entitlement specified in the key w/r/t the specified operation. If this criteria is a leaf node, that is, if the operation is one of EQUALS, NOT_EQUALS, CONTAINS, STARTS_WITH, or ENDS_WITH, this field is required. Otherwise, specifying it is an error.", alias="stringValue")
+    string_value: Optional[StrictStr] = Field(default=None, description="String value to test the Identity attribute, Account attribute, or Entitlement specified in the key w/r/t the specified operation. If this criteria is a leaf node, that is, if the operation is one of EQUALS, NOT_EQUALS, CONTAINS, DOES_NOT_CONTAIN, STARTS_WITH, or ENDS_WITH, this field is required. Otherwise, specifying it is an error.", alias="stringValue")
     __properties: ClassVar[List[str]] = ["operation", "key", "stringValue"]
 
     model_config = ConfigDict(
@@ -80,6 +80,11 @@ class RoleCriteriaLevel3(BaseModel):
         # and model_fields_set contains the field
         if self.key is None and "key" in self.model_fields_set:
             _dict['key'] = None
+
+        # set to None if string_value (nullable) is None
+        # and model_fields_set contains the field
+        if self.string_value is None and "string_value" in self.model_fields_set:
+            _dict['stringValue'] = None
 
         return _dict
 

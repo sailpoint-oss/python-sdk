@@ -120,6 +120,7 @@ with ApiClient(configuration) as api_client:
             "type" : "ENTITLEMENT"
           } ],
           "dimensional" : false,
+          "privilegeLevel" : "High",
           "created" : "2021-03-01T22:32:58.104Z",
           "dimensionRefs" : [ {
             "name" : "Role 2",
@@ -240,6 +241,7 @@ with ApiClient(configuration) as api_client:
               "approverId" : "46c79819-a69f-49a2-becb-12c971ae66c6",
               "approverType" : "GOVERNANCE_GROUP"
             } ],
+            "formDefinitionId" : "78258e80-e9e2-4e1a-a11f-ce0b7c62f25d",
             "denialCommentsRequired" : true,
             "requireEndDate" : true,
             "maxPermittedAccessDuration" : {

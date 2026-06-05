@@ -53,7 +53,8 @@ class TestRequestabilityForRole(unittest.TestCase):
                             name = 'city', 
                             display_name = 'City', 
                             derived = True, )
-                        ], )
+                        ], ),
+                form_definition_id = '78258e80-e9e2-4e1a-a11f-ce0b7c62f25d'
             )
         else:
             return RequestabilityForRole(

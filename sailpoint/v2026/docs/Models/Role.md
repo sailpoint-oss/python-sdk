@@ -36,6 +36,7 @@ Name | Type | Description | Notes
 **dimensional** | **bool** | Whether the Role is dimensional. | [optional] [default to False]
 **dimension_refs** | [**[]DimensionRef**](dimension-ref) | List of references to dimensions to which this Role is assigned. This field is only relevant if the Role is dimensional. | [optional] 
 **access_model_metadata** | [**AttributeDTOList**](attribute-dto-list) |  | [optional] 
+**privilege_level** | **str** | The privilege level of the role, if applicable. | [optional] 
 }
 
 ## Example
@@ -112,7 +113,8 @@ access_request_config=sailpoint.v2026.models.requestability_for_role.Requestabil
                                 name = 'city', 
                                 display_name = 'City', 
                                 derived = True, )
-                            ], ), ),
+                            ], ), 
+                    form_definition_id = '78258e80-e9e2-4e1a-a11f-ce0b7c62f25d', ),
 revocation_request_config=sailpoint.v2026.models.revocability_for_role.RevocabilityForRole(
                     comments_required = False, 
                     denial_comments_required = False, 
@@ -130,7 +132,8 @@ dimension_refs=[
                         name = 'Role 2', )
                     ],
 access_model_metadata=sailpoint.v2026.models.attribute_dto_list.AttributeDTOList(
-                    attributes = [{key=iscPrivacy, name=Privacy, multiselect=false, status=active, type=governance, objectTypes=[all], description=Specifies the level of privacy associated with an access item., values=[{value=public, name=Public, status=active}]}], )
+                    attributes = [{key=iscPrivacy, name=Privacy, multiselect=false, status=active, type=governance, objectTypes=[all], description=Specifies the level of privacy associated with an access item., values=[{value=public, name=Public, status=active}]}], ),
+privilege_level='High'
 )
 
 ```

@@ -61,6 +61,7 @@ class TestRoleAssignmentDto(unittest.TestCase):
                             id = 'ff8081814d977c21014da056804a0af3', 
                             name = 'Github', ), )
                     ],
+                start_date = '2026-07-10T18:45:37.098Z',
                 remove_date = '2026-07-11T18:45:37.098Z',
                 added_date = '2025-07-11T18:45:37.098Z'
             )

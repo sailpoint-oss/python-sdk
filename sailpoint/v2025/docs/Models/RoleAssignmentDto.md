@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **assigned_dimensions** | [**[]BaseReferenceDto**](base-reference-dto) | Dimensions assigned related to this role | [optional] 
 **assignment_context** | [**RoleAssignmentDtoAssignmentContext**](role-assignment-dto-assignment-context) |  | [optional] 
 **account_targets** | [**[]RoleTargetDto**](role-target-dto) |  | [optional] 
+**start_date** | **datetime** | Date when assignment will be active, if access was requested with a future start date. If null, assignment is active immediately | [optional] 
 **remove_date** | **datetime** | Date that the assignment will be removed | [optional] 
 **added_date** | **datetime** | Date that the assignment was added | [optional] 
 }
@@ -61,6 +62,7 @@ account_targets=[
                             id = '2c91808568c529c60168cca6f90c1313', 
                             name = 'William Wilson', ), )
                     ],
+start_date='2026-07-10T18:45:37.098Z',
 remove_date='2026-07-11T18:45:37.098Z',
 added_date='2025-07-11T18:45:37.098Z'
 )

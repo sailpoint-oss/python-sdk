@@ -96,7 +96,8 @@ class TestRole(unittest.TestCase):
                         sailpoint.v3.models.approval_scheme_for_role.ApprovalSchemeForRole(
                             approver_type = 'GOVERNANCE_GROUP', 
                             approver_id = '46c79819-a69f-49a2-becb-12c971ae66c6', )
-                        ], ),
+                        ], 
+                    form_definition_id = '78258e80-e9e2-4e1a-a11f-ce0b7c62f25d', ),
                 revocation_request_config = sailpoint.v3.models.revocability_for_role.RevocabilityForRole(
                     comments_required = False, 
                     denial_comments_required = False, 
@@ -114,7 +115,8 @@ class TestRole(unittest.TestCase):
                         name = 'Role 2', )
                     ],
                 access_model_metadata = sailpoint.v3.models.attribute_dto_list.AttributeDTOList(
-                    attributes = [{key=iscPrivacy, name=Privacy, multiselect=false, status=active, type=governance, objectTypes=[all], description=Specifies the level of privacy associated with an access item., values=[{value=public, name=Public, status=active}]}], )
+                    attributes = [{key=iscPrivacy, name=Privacy, multiselect=false, status=active, type=governance, objectTypes=[all], description=Specifies the level of privacy associated with an access item., values=[{value=public, name=Public, status=active}]}], ),
+                privilege_level = 'High'
             )
         else:
             return Role(

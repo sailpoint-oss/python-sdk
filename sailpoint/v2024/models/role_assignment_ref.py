@@ -32,8 +32,9 @@ class RoleAssignmentRef(BaseModel):
     id: Optional[StrictStr] = Field(default=None, description="Assignment Id")
     role: Optional[BaseReferenceDto] = None
     added_date: Optional[datetime] = Field(default=None, description="Date that the assignment was added", alias="addedDate")
+    start_date: Optional[datetime] = Field(default=None, description="Date when assignment will be active, if requested with a future date. If null, assignment is active immediately", alias="startDate")
     remove_date: Optional[datetime] = Field(default=None, description="Date that the assignment will be removed", alias="removeDate")
-    __properties: ClassVar[List[str]] = ["id", "role", "addedDate", "removeDate"]
+    __properties: ClassVar[List[str]] = ["id", "role", "addedDate", "startDate", "removeDate"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -77,6 +78,11 @@ class RoleAssignmentRef(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of role
         if self.role:
             _dict['role'] = self.role.to_dict()
+        # set to None if start_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.start_date is None and "start_date" in self.model_fields_set:
+            _dict['startDate'] = None
+
         # set to None if remove_date (nullable) is None
         # and model_fields_set contains the field
         if self.remove_date is None and "remove_date" in self.model_fields_set:
@@ -97,6 +103,7 @@ class RoleAssignmentRef(BaseModel):
             "id": obj.get("id"),
             "role": BaseReferenceDto.from_dict(obj["role"]) if obj.get("role") is not None else None,
             "addedDate": obj.get("addedDate"),
+            "startDate": obj.get("startDate"),
             "removeDate": obj.get("removeDate")
         })
         return _obj

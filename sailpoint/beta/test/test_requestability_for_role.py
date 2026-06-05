@@ -46,7 +46,8 @@ class TestRequestabilityForRole(unittest.TestCase):
                     sailpoint.beta.models.approval_scheme_for_role.ApprovalSchemeForRole(
                         approver_type = 'GOVERNANCE_GROUP', 
                         approver_id = '46c79819-a69f-49a2-becb-12c971ae66c6', )
-                    ]
+                    ],
+                form_definition_id = '78258e80-e9e2-4e1a-a11f-ce0b7c62f25d'
             )
         else:
             return RequestabilityForRole(

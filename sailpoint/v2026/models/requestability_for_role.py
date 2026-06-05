@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.v2026.models.access_duration import AccessDuration
 from sailpoint.v2026.models.approval_scheme_for_role import ApprovalSchemeForRole
@@ -37,7 +37,8 @@ class RequestabilityForRole(BaseModel):
     max_permitted_access_duration: Optional[AccessDuration] = Field(default=None, alias="maxPermittedAccessDuration")
     approval_schemes: Optional[List[ApprovalSchemeForRole]] = Field(default=None, description="List describing the steps in approving the request", alias="approvalSchemes")
     dimension_schema: Optional[DimensionSchema] = Field(default=None, alias="dimensionSchema")
-    __properties: ClassVar[List[str]] = ["commentsRequired", "denialCommentsRequired", "reauthorizationRequired", "requireEndDate", "maxPermittedAccessDuration", "approvalSchemes", "dimensionSchema"]
+    form_definition_id: Optional[StrictStr] = Field(default=None, description="The ID of the form definition used for the access request. If specified, the form is presented to the requester during the access request process.", alias="formDefinitionId")
+    __properties: ClassVar[List[str]] = ["commentsRequired", "denialCommentsRequired", "reauthorizationRequired", "requireEndDate", "maxPermittedAccessDuration", "approvalSchemes", "dimensionSchema", "formDefinitionId"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -111,6 +112,11 @@ class RequestabilityForRole(BaseModel):
         if self.max_permitted_access_duration is None and "max_permitted_access_duration" in self.model_fields_set:
             _dict['maxPermittedAccessDuration'] = None
 
+        # set to None if form_definition_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.form_definition_id is None and "form_definition_id" in self.model_fields_set:
+            _dict['formDefinitionId'] = None
+
         return _dict
 
     @classmethod
@@ -129,7 +135,8 @@ class RequestabilityForRole(BaseModel):
             "requireEndDate": obj.get("requireEndDate") if obj.get("requireEndDate") is not None else False,
             "maxPermittedAccessDuration": AccessDuration.from_dict(obj["maxPermittedAccessDuration"]) if obj.get("maxPermittedAccessDuration") is not None else None,
             "approvalSchemes": [ApprovalSchemeForRole.from_dict(_item) for _item in obj["approvalSchemes"]] if obj.get("approvalSchemes") is not None else None,
-            "dimensionSchema": DimensionSchema.from_dict(obj["dimensionSchema"]) if obj.get("dimensionSchema") is not None else None
+            "dimensionSchema": DimensionSchema.from_dict(obj["dimensionSchema"]) if obj.get("dimensionSchema") is not None else None,
+            "formDefinitionId": obj.get("formDefinitionId")
         })
         return _obj
 

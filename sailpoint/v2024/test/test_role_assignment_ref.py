@@ -41,6 +41,7 @@ class TestRoleAssignmentRef(unittest.TestCase):
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
                 added_date = '2025-07-11T18:45:37.098Z',
+                start_date = '2026-01-22T19:15Z',
                 remove_date = '2026-01-23T19:15Z'
             )
         else:
