@@ -1,0 +1,436 @@
+- path: /roles/v1
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/roles#create-role-v1
+      source: |
+        from sailpoint.roles_v1.api.roles_v1_api import RolesV1Api
+        from sailpoint.roles_v1.api_client import ApiClient
+        from sailpoint.roles_v1.models.role import Role
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          role = '''sailpoint.roles_v1.Role()''' # Role | 
+          try:
+              # Create a role
+              new_role = Role.from_json(role)
+              results = RolesV1Api(api_client).create_role_v1(role=new_role)
+              # Below is a request that includes all optional parameters
+              # results = RolesV1Api(api_client).create_role_v1(new_role)
+              print("The response of RolesV1Api->create_role_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolesV1Api->create_role_v1: %s\n" % e)
+- path: /roles/v1/bulk-delete
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/roles#delete-bulk-roles-v1
+      source: |
+        from sailpoint.roles_v1.api.roles_v1_api import RolesV1Api
+        from sailpoint.roles_v1.api_client import ApiClient
+        from sailpoint.roles_v1.models.rolebulkdeleterequest import Rolebulkdeleterequest
+        from sailpoint.roles_v1.models.taskresultdto import Taskresultdto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          rolebulkdeleterequest = '''{"roleIds":["2c91808876438bb2017668b91919ecca","2c91808876438ba801766e129f151816"]}''' # Rolebulkdeleterequest | 
+          try:
+              # Delete role(s)
+              new_rolebulkdeleterequest = Rolebulkdeleterequest.from_json(rolebulkdeleterequest)
+              results = RolesV1Api(api_client).delete_bulk_roles_v1(rolebulkdeleterequest=new_rolebulkdeleterequest)
+              # Below is a request that includes all optional parameters
+              # results = RolesV1Api(api_client).delete_bulk_roles_v1(new_rolebulkdeleterequest)
+              print("The response of RolesV1Api->delete_bulk_roles_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolesV1Api->delete_bulk_roles_v1: %s\n" % e)
+- path: /roles/v1/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/roles#delete-metadata-from-role-by-key-and-value-v1
+      source: |
+        from sailpoint.roles_v1.api.roles_v1_api import RolesV1Api
+        from sailpoint.roles_v1.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '2c91808c74ff913f0175097daa9d59cd' # str | The role's id. # str | The role's id.
+          attribute_key = 'iscPrivacy' # str | Technical name of the Attribute. # str | Technical name of the Attribute.
+          attribute_value = 'public' # str | Technical name of the Attribute Value. # str | Technical name of the Attribute Value.
+          try:
+              # Remove a metadata from role.
+              
+              RolesV1Api(api_client).delete_metadata_from_role_by_key_and_value_v1(id=id, attribute_key=attribute_key, attribute_value=attribute_value)
+              # Below is a request that includes all optional parameters
+              # RolesV1Api(api_client).delete_metadata_from_role_by_key_and_value_v1(id, attribute_key, attribute_value)
+          except Exception as e:
+              print("Exception when calling RolesV1Api->delete_metadata_from_role_by_key_and_value_v1: %s\n" % e)
+- path: /roles/v1/{id}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/roles#delete-role-v1
+      source: |
+        from sailpoint.roles_v1.api.roles_v1_api import RolesV1Api
+        from sailpoint.roles_v1.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '2c91808a7813090a017814121e121518' # str | ID of the Role # str | ID of the Role
+          try:
+              # Delete a role
+              
+              RolesV1Api(api_client).delete_role_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # RolesV1Api(api_client).delete_role_v1(id)
+          except Exception as e:
+              print("Exception when calling RolesV1Api->delete_role_v1: %s\n" % e)
+- path: /roles/v1/access-model-metadata/bulk-update/id
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/roles#get-bulk-update-status-by-id-v1
+      source: |
+        from sailpoint.roles_v1.api.roles_v1_api import RolesV1Api
+        from sailpoint.roles_v1.api_client import ApiClient
+        from sailpoint.roles_v1.models.rolebulkupdateresponse import Rolebulkupdateresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'c24359c389374d0fb8585698a2189e3d' # str | The Id of the bulk update task. # str | The Id of the bulk update task.
+          try:
+              # Get bulk-update status by id
+              
+              results = RolesV1Api(api_client).get_bulk_update_status_by_id_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = RolesV1Api(api_client).get_bulk_update_status_by_id_v1(id)
+              print("The response of RolesV1Api->get_bulk_update_status_by_id_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolesV1Api->get_bulk_update_status_by_id_v1: %s\n" % e)
+- path: /roles/v1/access-model-metadata/bulk-update
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/roles#get-bulk-update-status-v1
+      source: |
+        from sailpoint.roles_v1.api.roles_v1_api import RolesV1Api
+        from sailpoint.roles_v1.api_client import ApiClient
+        from sailpoint.roles_v1.models.rolegetallbulkupdateresponse import Rolegetallbulkupdateresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          try:
+              # Get bulk-update statuses
+              
+              results = RolesV1Api(api_client).get_bulk_update_status_v1()
+              # Below is a request that includes all optional parameters
+              # results = RolesV1Api(api_client).get_bulk_update_status_v1()
+              print("The response of RolesV1Api->get_bulk_update_status_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolesV1Api->get_bulk_update_status_v1: %s\n" % e)
+- path: /roles/v1/{id}/assigned-identities
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/roles#get-role-assigned-identities-v1
+      source: |
+        from sailpoint.roles_v1.api.roles_v1_api import RolesV1Api
+        from sailpoint.roles_v1.api_client import ApiClient
+        from sailpoint.roles_v1.models.roleidentity import Roleidentity
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '2c91808a7813090a017814121e121518' # str | ID of the Role for which the assigned Identities are to be listed # str | ID of the Role for which the assigned Identities are to be listed
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'name sw Joe' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **aliasName**: *eq, sw*  **email**: *eq, sw*  **name**: *eq, sw, co* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **aliasName**: *eq, sw*  **email**: *eq, sw*  **name**: *eq, sw, co* (optional)
+          sorters = 'aliasName,name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, aliasName, email** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, aliasName, email** (optional)
+          try:
+              # List identities assigned a role
+              
+              results = RolesV1Api(api_client).get_role_assigned_identities_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = RolesV1Api(api_client).get_role_assigned_identities_v1(id, limit, offset, count, filters, sorters)
+              print("The response of RolesV1Api->get_role_assigned_identities_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolesV1Api->get_role_assigned_identities_v1: %s\n" % e)
+- path: /roles/v1/{id}/entitlements
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/roles#get-role-entitlements-v1
+      source: |
+        from sailpoint.roles_v1.api.roles_v1_api import RolesV1Api
+        from sailpoint.roles_v1.api_client import ApiClient
+        from sailpoint.roles_v1.models.entitlement import Entitlement
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '2c91808a7813090a017814121919ecca' # str | Containing role's ID. # str | Containing role's ID.
+          limit = 50 # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50) # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'attribute eq \"memberOf\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **attribute**: *eq, sw*  **value**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **source.id**: *eq, in* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **attribute**: *eq, sw*  **value**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **source.id**: *eq, in* (optional)
+          sorters = 'name,-modified' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, attribute, value, created, modified** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, attribute, value, created, modified** (optional)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # List role's entitlements
+              
+              results = RolesV1Api(api_client).get_role_entitlements_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = RolesV1Api(api_client).get_role_entitlements_v1(id, limit, offset, count, filters, sorters, x_sail_point_experimental)
+              print("The response of RolesV1Api->get_role_entitlements_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolesV1Api->get_role_entitlements_v1: %s\n" % e)
+- path: /roles/v1/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/roles#get-role-v1
+      source: |
+        from sailpoint.roles_v1.api.roles_v1_api import RolesV1Api
+        from sailpoint.roles_v1.api_client import ApiClient
+        from sailpoint.roles_v1.models.role import Role
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '2c91808a7813090a017814121e121518' # str | ID of the Role # str | ID of the Role
+          try:
+              # Get a role
+              
+              results = RolesV1Api(api_client).get_role_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = RolesV1Api(api_client).get_role_v1(id)
+              print("The response of RolesV1Api->get_role_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolesV1Api->get_role_v1: %s\n" % e)
+- path: /roles/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/roles#list-roles-v1
+      source: |
+        from sailpoint.roles_v1.api.roles_v1_api import RolesV1Api
+        from sailpoint.roles_v1.api_client import ApiClient
+        from sailpoint.roles_v1.models.role import Role
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          for_subadmin = '5168015d32f890ca15812c9180835d2e' # str | If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin. (optional) # str | If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin. (optional)
+          limit = 50 # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50) # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'requestable eq false' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, ge, le*  **modified**: *lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*  **dimensional**: *eq* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, ge, le*  **modified**: *lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*  **dimensional**: *eq* (optional)
+          sorters = 'name,-modified' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
+          for_segment_ids = '0b5c9f25-83c6-4762-9073-e38f7bb2ae26,2e8d8180-24bc-4d21-91c6-7affdb473b0d' # str | If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error. (optional) # str | If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error. (optional)
+          include_unsegmented = True # bool | Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error. (optional) (default to True) # bool | Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error. (optional) (default to True)
+          try:
+              # List roles
+              
+              results = RolesV1Api(api_client).list_roles_v1()
+              # Below is a request that includes all optional parameters
+              # results = RolesV1Api(api_client).list_roles_v1(for_subadmin, limit, offset, count, filters, sorters, for_segment_ids, include_unsegmented)
+              print("The response of RolesV1Api->list_roles_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolesV1Api->list_roles_v1: %s\n" % e)
+- path: /roles/v1/{id}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/roles#patch-role-v1
+      source: |
+        from sailpoint.roles_v1.api.roles_v1_api import RolesV1Api
+        from sailpoint.roles_v1.api_client import ApiClient
+        from sailpoint.roles_v1.models.jsonpatchoperation import Jsonpatchoperation
+        from sailpoint.roles_v1.models.role import Role
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '2c91808a7813090a017814121e121518' # str | ID of the Role to patch # str | ID of the Role to patch
+          jsonpatchoperation = '''[{"op":"replace","path":"/requestable","value":true},{"op":"replace","path":"/enabled","value":true}]''' # List[Jsonpatchoperation] | 
+          try:
+              # Patch a specified role
+              new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
+              results = RolesV1Api(api_client).patch_role_v1(id=id, jsonpatchoperation=new_jsonpatchoperation)
+              # Below is a request that includes all optional parameters
+              # results = RolesV1Api(api_client).patch_role_v1(id, new_jsonpatchoperation)
+              print("The response of RolesV1Api->patch_role_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolesV1Api->patch_role_v1: %s\n" % e)
+- path: /roles/v1/filter
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/roles#search-roles-by-filter-v1
+      source: |
+        from sailpoint.roles_v1.api.roles_v1_api import RolesV1Api
+        from sailpoint.roles_v1.api_client import ApiClient
+        from sailpoint.roles_v1.models.role import Role
+        from sailpoint.roles_v1.models.rolelistfilterdto import Rolelistfilterdto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          for_subadmin = '5168015d32f890ca15812c9180835d2e' # str | If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin. (optional) # str | If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin. (optional)
+          limit = 50 # int | Max number of results to return See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50) # int | Max number of results to return See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | Boolean indicating whether a total count is returned, factoring in any filter parameters, in the X-Total-Count response header. The value is the total size of the collection that would be returned if limit and offset were ignored.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | Boolean indicating whether a total count is returned, factoring in any filter parameters, in the X-Total-Count response header. The value is the total size of the collection that would be returned if limit and offset were ignored.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          sorters = 'name,-modified' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
+          for_segment_ids = '0b5c9f25-83c6-4762-9073-e38f7bb2ae26,2e8d8180-24bc-4d21-91c6-7affdb473b0d' # str | If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error. (optional) # str | If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs. If segmentation is currently unavailable, specifying this parameter results in an error. (optional)
+          include_unsegmented = True # bool | Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error. (optional) (default to True) # bool | Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error. (optional) (default to True)
+          rolelistfilterdto = '''{"filters":"dimensional eq false","ammKeyValues":[{"attribute":"iscFederalClassifications","values":["secret"]}]}''' # Rolelistfilterdto |  (optional)
+          try:
+              # Filter roles by metadata
+              
+              results = RolesV1Api(api_client).search_roles_by_filter_v1()
+              # Below is a request that includes all optional parameters
+              # results = RolesV1Api(api_client).search_roles_by_filter_v1(for_subadmin, limit, offset, count, sorters, for_segment_ids, include_unsegmented, new_rolelistfilterdto)
+              print("The response of RolesV1Api->search_roles_by_filter_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolesV1Api->search_roles_by_filter_v1: %s\n" % e)
+- path: /roles/v1/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/roles#update-attribute-key-and-value-to-role-v1
+      source: |
+        from sailpoint.roles_v1.api.roles_v1_api import RolesV1Api
+        from sailpoint.roles_v1.api_client import ApiClient
+        from sailpoint.roles_v1.models.role import Role
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'c24359c389374d0fb8585698a2189e3d' # str | The Id of a role # str | The Id of a role
+          attribute_key = 'iscPrivacy' # str | Technical name of the Attribute. # str | Technical name of the Attribute.
+          attribute_value = 'public' # str | Technical name of the Attribute Value. # str | Technical name of the Attribute Value.
+          try:
+              # Add a metadata to role.
+              
+              results = RolesV1Api(api_client).update_attribute_key_and_value_to_role_v1(id=id, attribute_key=attribute_key, attribute_value=attribute_value)
+              # Below is a request that includes all optional parameters
+              # results = RolesV1Api(api_client).update_attribute_key_and_value_to_role_v1(id, attribute_key, attribute_value)
+              print("The response of RolesV1Api->update_attribute_key_and_value_to_role_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolesV1Api->update_attribute_key_and_value_to_role_v1: %s\n" % e)
+- path: /roles/v1/access-model-metadata/bulk-update/filter
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/roles#update-roles-metadata-by-filter-v1
+      source: |
+        from sailpoint.roles_v1.api.roles_v1_api import RolesV1Api
+        from sailpoint.roles_v1.api_client import ApiClient
+        from sailpoint.roles_v1.models.rolebulkupdateresponse import Rolebulkupdateresponse
+        from sailpoint.roles_v1.models.rolemetadatabulkupdatebyfilterrequest import Rolemetadatabulkupdatebyfilterrequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          rolemetadatabulkupdatebyfilterrequest = '''{"operation":"ADD","replaceScope":"ALL","filters":"requestable eq false","values":[{"attribute":"iscFederalClassifications","values":["topSecret"]}]}''' # Rolemetadatabulkupdatebyfilterrequest | 
+          try:
+              # Bulk-update roles' metadata by filters
+              new_rolemetadatabulkupdatebyfilterrequest = Rolemetadatabulkupdatebyfilterrequest.from_json(rolemetadatabulkupdatebyfilterrequest)
+              results = RolesV1Api(api_client).update_roles_metadata_by_filter_v1(rolemetadatabulkupdatebyfilterrequest=new_rolemetadatabulkupdatebyfilterrequest)
+              # Below is a request that includes all optional parameters
+              # results = RolesV1Api(api_client).update_roles_metadata_by_filter_v1(new_rolemetadatabulkupdatebyfilterrequest)
+              print("The response of RolesV1Api->update_roles_metadata_by_filter_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolesV1Api->update_roles_metadata_by_filter_v1: %s\n" % e)
+- path: /roles/v1/access-model-metadata/bulk-update/ids
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/roles#update-roles-metadata-by-ids-v1
+      source: |
+        from sailpoint.roles_v1.api.roles_v1_api import RolesV1Api
+        from sailpoint.roles_v1.api_client import ApiClient
+        from sailpoint.roles_v1.models.rolebulkupdateresponse import Rolebulkupdateresponse
+        from sailpoint.roles_v1.models.rolemetadatabulkupdatebyidrequest import Rolemetadatabulkupdatebyidrequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          rolemetadatabulkupdatebyidrequest = '''sailpoint.roles_v1.Rolemetadatabulkupdatebyidrequest()''' # Rolemetadatabulkupdatebyidrequest | 
+          try:
+              # Bulk-update roles' metadata by id
+              new_rolemetadatabulkupdatebyidrequest = Rolemetadatabulkupdatebyidrequest.from_json(rolemetadatabulkupdatebyidrequest)
+              results = RolesV1Api(api_client).update_roles_metadata_by_ids_v1(rolemetadatabulkupdatebyidrequest=new_rolemetadatabulkupdatebyidrequest)
+              # Below is a request that includes all optional parameters
+              # results = RolesV1Api(api_client).update_roles_metadata_by_ids_v1(new_rolemetadatabulkupdatebyidrequest)
+              print("The response of RolesV1Api->update_roles_metadata_by_ids_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolesV1Api->update_roles_metadata_by_ids_v1: %s\n" % e)
+- path: /roles/v1/access-model-metadata/bulk-update/query
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/roles#update-roles-metadata-by-query-v1
+      source: |
+        from sailpoint.roles_v1.api.roles_v1_api import RolesV1Api
+        from sailpoint.roles_v1.api_client import ApiClient
+        from sailpoint.roles_v1.models.rolebulkupdateresponse import Rolebulkupdateresponse
+        from sailpoint.roles_v1.models.rolemetadatabulkupdatebyqueryrequest import Rolemetadatabulkupdatebyqueryrequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          rolemetadatabulkupdatebyqueryrequest = '''{"example of a success update":{"query":{"indices":["roles"],"queryType":"TEXT","textQuery":{"terms":["test123"],"fields":["id"],"matchAny":false,"contains":true},"includeNested":false},"operation":"REPLACE","replaceScope":"ALL","values":[{"attribute":"iscFederalClassifications","values":["secret"]}]}}''' # Rolemetadatabulkupdatebyqueryrequest | 
+          try:
+              # Bulk-update roles' metadata by query
+              new_rolemetadatabulkupdatebyqueryrequest = Rolemetadatabulkupdatebyqueryrequest.from_json(rolemetadatabulkupdatebyqueryrequest)
+              results = RolesV1Api(api_client).update_roles_metadata_by_query_v1(rolemetadatabulkupdatebyqueryrequest=new_rolemetadatabulkupdatebyqueryrequest)
+              # Below is a request that includes all optional parameters
+              # results = RolesV1Api(api_client).update_roles_metadata_by_query_v1(new_rolemetadatabulkupdatebyqueryrequest)
+              print("The response of RolesV1Api->update_roles_metadata_by_query_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RolesV1Api->update_roles_metadata_by_query_v1: %s\n" % e)
+

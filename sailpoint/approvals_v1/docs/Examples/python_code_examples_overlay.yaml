@@ -1,0 +1,392 @@
+- path: /generic-approvals/v1/bulk-approve
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/approvals#approve-approval-in-bulk-v1
+      source: |
+        from sailpoint.approvals_v1.api.approvals_v1_api import ApprovalsV1Api
+        from sailpoint.approvals_v1.api_client import ApiClient
+        from sailpoint.approvals_v1.models.bulkapproverequestdto import Bulkapproverequestdto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          bulkapproverequestdto = '''sailpoint.approvals_v1.Bulkapproverequestdto()''' # Bulkapproverequestdto | 
+          try:
+              # Post Bulk Approve Approvals
+              new_bulkapproverequestdto = Bulkapproverequestdto.from_json(bulkapproverequestdto)
+              results = ApprovalsV1Api(api_client).approve_approval_in_bulk_v1(bulkapproverequestdto=new_bulkapproverequestdto)
+              # Below is a request that includes all optional parameters
+              # results = ApprovalsV1Api(api_client).approve_approval_in_bulk_v1(new_bulkapproverequestdto)
+              print("The response of ApprovalsV1Api->approve_approval_in_bulk_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ApprovalsV1Api->approve_approval_in_bulk_v1: %s\n" % e)
+- path: /generic-approvals/v1/{id}/approve
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/approvals#approve-approval-v1
+      source: |
+        from sailpoint.approvals_v1.api.approvals_v1_api import ApprovalsV1Api
+        from sailpoint.approvals_v1.api_client import ApiClient
+        from sailpoint.approvals_v1.models.approval2 import Approval2
+        from sailpoint.approvals_v1.models.approvalapproverequest import Approvalapproverequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '38453251-6be2-5f8f-df93-5ce19e295837' # str | Approval ID that correlates to an existing approval request that a user wants to approve. # str | Approval ID that correlates to an existing approval request that a user wants to approve.
+          approvalapproverequest = '''sailpoint.approvals_v1.Approvalapproverequest()''' # Approvalapproverequest |  (optional)
+          try:
+              # Post Approvals Approve
+              
+              results = ApprovalsV1Api(api_client).approve_approval_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = ApprovalsV1Api(api_client).approve_approval_v1(id, new_approvalapproverequest)
+              print("The response of ApprovalsV1Api->approve_approval_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ApprovalsV1Api->approve_approval_v1: %s\n" % e)
+- path: /generic-approvals/v1/{id}/cancel
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/approvals#cancel-approval-by-id-v1
+      source: |
+        from sailpoint.approvals_v1.api.approvals_v1_api import ApprovalsV1Api
+        from sailpoint.approvals_v1.api_client import ApiClient
+        from sailpoint.approvals_v1.models.approvalcancelrequest import Approvalcancelrequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '38453251-6be2-5f8f-df93-5ce19e295837' # str | ID of the approval request to cancel. # str | ID of the approval request to cancel.
+          approvalcancelrequest = '''sailpoint.approvals_v1.Approvalcancelrequest()''' # Approvalcancelrequest |  (optional)
+          try:
+              # Post Approval Cancel
+              
+              ApprovalsV1Api(api_client).cancel_approval_by_id_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # ApprovalsV1Api(api_client).cancel_approval_by_id_v1(id, new_approvalcancelrequest)
+          except Exception as e:
+              print("Exception when calling ApprovalsV1Api->cancel_approval_by_id_v1: %s\n" % e)
+- path: /generic-approvals/v1/bulk-cancel
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/approvals#cancel-approval-v1
+      source: |
+        from sailpoint.approvals_v1.api.approvals_v1_api import ApprovalsV1Api
+        from sailpoint.approvals_v1.api_client import ApiClient
+        from sailpoint.approvals_v1.models.bulkcancelrequestdto import Bulkcancelrequestdto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          bulkcancelrequestdto = '''sailpoint.approvals_v1.Bulkcancelrequestdto()''' # Bulkcancelrequestdto | 
+          try:
+              # Post Bulk Cancel Approvals
+              new_bulkcancelrequestdto = Bulkcancelrequestdto.from_json(bulkcancelrequestdto)
+              results = ApprovalsV1Api(api_client).cancel_approval_v1(bulkcancelrequestdto=new_bulkcancelrequestdto)
+              # Below is a request that includes all optional parameters
+              # results = ApprovalsV1Api(api_client).cancel_approval_v1(new_bulkcancelrequestdto)
+              print("The response of ApprovalsV1Api->cancel_approval_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ApprovalsV1Api->cancel_approval_v1: %s\n" % e)
+- path: /generic-approvals/v1/config/{id}/{scope}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/approvals#delete-approval-config-request-v1
+      source: |
+        from sailpoint.approvals_v1.api.approvals_v1_api import ApprovalsV1Api
+        from sailpoint.approvals_v1.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ACCESS_REQUEST_APPROVAL' # str | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # str | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
+          scope = 'APPROVAL_TYPE' # str | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # str | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
+          try:
+              # Delete Approval Configuration
+              
+              ApprovalsV1Api(api_client).delete_approval_config_request_v1(id=id, scope=scope)
+              # Below is a request that includes all optional parameters
+              # ApprovalsV1Api(api_client).delete_approval_config_request_v1(id, scope)
+          except Exception as e:
+              print("Exception when calling ApprovalsV1Api->delete_approval_config_request_v1: %s\n" % e)
+- path: /generic-approvals/v1/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/approvals#get-approval-v1
+      source: |
+        from sailpoint.approvals_v1.api.approvals_v1_api import ApprovalsV1Api
+        from sailpoint.approvals_v1.api_client import ApiClient
+        from sailpoint.approvals_v1.models.approval2 import Approval2
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '38453251-6be2-5f8f-df93-5ce19e295837' # str | ID of the approval that is to be returned # str | ID of the approval that is to be returned
+          try:
+              # Get an approval
+              
+              results = ApprovalsV1Api(api_client).get_approval_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = ApprovalsV1Api(api_client).get_approval_v1(id)
+              print("The response of ApprovalsV1Api->get_approval_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ApprovalsV1Api->get_approval_v1: %s\n" % e)
+- path: /generic-approvals/v1/config/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/approvals#get-approvals-config-v1
+      source: |
+        from sailpoint.approvals_v1.api.approvals_v1_api import ApprovalsV1Api
+        from sailpoint.approvals_v1.api_client import ApiClient
+        from sailpoint.approvals_v1.models.approvalconfig import Approvalconfig
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '1.2345678901234567E+31' # str | The id of the object the config applies to, for example one of the following: [(approvalID), (roleID), (entitlementID), (accessProfileID), \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", \"ACCOUNT_CREATE_APPROVAL_REQUEST\", \"ACCOUNT_DELETE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST\", (tenantID)] # str | The id of the object the config applies to, for example one of the following: [(approvalID), (roleID), (entitlementID), (accessProfileID), \"ENTITLEMENT_DESCRIPTIONS\", \"ACCESS_REQUEST_APPROVAL\", \"ACCOUNT_CREATE_APPROVAL_REQUEST\", \"ACCOUNT_DELETE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST\", \"MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST\", (tenantID)]
+          try:
+              # Get Approval Config
+              
+              results = ApprovalsV1Api(api_client).get_approvals_config_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = ApprovalsV1Api(api_client).get_approvals_config_v1(id)
+              print("The response of ApprovalsV1Api->get_approvals_config_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ApprovalsV1Api->get_approvals_config_v1: %s\n" % e)
+- path: /generic-approvals/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/approvals#get-approvals-v1
+      source: |
+        from sailpoint.approvals_v1.api.approvals_v1_api import ApprovalsV1Api
+        from sailpoint.approvals_v1.api_client import ApiClient
+        from sailpoint.approvals_v1.models.approval2 import Approval2
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          mine = False # bool | Determines whether to return the list of approvals assigned to the current caller or all approvals in the org. Defaults to false if admin, true otherwise (which is the equivalent of 'approverId=[your_identity_id]'). (optional) (default to False) # bool | Determines whether to return the list of approvals assigned to the current caller or all approvals in the org. Defaults to false if admin, true otherwise (which is the equivalent of 'approverId=[your_identity_id]'). (optional) (default to False)
+          requester_id = '17e633e7d57e481569df76323169deb6a' # str | Returns the list of approvals for a given requester ID. Must match the calling user's identity ID unless they are an admin. (optional) # str | Returns the list of approvals for a given requester ID. Must match the calling user's identity ID unless they are an admin. (optional)
+          requestee_id = '27e6334g757e481569df76323169db9sc' # str | Returns the list of approvals for a given requesteeId ID. Must match the calling user's identity ID unless they are an admin. (optional) # str | Returns the list of approvals for a given requesteeId ID. Must match the calling user's identity ID unless they are an admin. (optional)
+          approver_id = '37e6334g557e481569df7g2d3169db9sb' # str | Returns the list of approvals for a given approverId ID. Must match the calling user's identity ID unless they are an admin. (optional) # str | Returns the list of approvals for a given approverId ID. Must match the calling user's identity ID unless they are an admin. (optional)
+          count = False # bool | Adds X-Total-Count to the header to give the amount of total approvals returned from the query. (optional) (default to False) # bool | Adds X-Total-Count to the header to give the amount of total approvals returned from the query. (optional) (default to False)
+          count_only = False # bool | Adds X-Total-Count to the header to give the amount of total approvals returned from the query. Only returns the count and no approval objects. (optional) (default to False) # bool | Adds X-Total-Count to the header to give the amount of total approvals returned from the query. Only returns the count and no approval objects. (optional) (default to False)
+          include_comments = False # bool | If set to true in the query, the approval requests returned will include comments. (optional) (default to False) # bool | If set to true in the query, the approval requests returned will include comments. (optional) (default to False)
+          include_approvers = False # bool | If set to true in the query, the approval requests returned will include approvers. (optional) (default to False) # bool | If set to true in the query, the approval requests returned will include approvers. (optional) (default to False)
+          include_reassignment_history = False # bool | If set to true in the query, the approval requests returned will include reassignment history. (optional) (default to False) # bool | If set to true in the query, the approval requests returned will include reassignment history. (optional) (default to False)
+          include_batch_info = False # bool | If set to true in the query, the approval requests returned will include batch information. (optional) (default to False) # bool | If set to true in the query, the approval requests returned will include batch information. (optional) (default to False)
+          filters = 'filters=status eq \"PENDING\" and type eq \"ACCESS_REQUEST_APPROVAL\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, ne, in, co, sw*  **name**: *eq, ne, in, co, sw*  **priority**: *eq, ne, in, co, sw*  **type**: *eq, ne, in, co, sw*  **medium**: *eq, ne, in, co, sw*  **description**: *eq, ne, in, co, sw*  **batchId**: *eq, ne, in, co, sw*  **createdDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **dueDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **completedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **search**: *eq, ne, in, co, sw*  **referenceId**: *eq, ne, in, co, sw*  **referenceType**: *eq, ne, in, co, sw*  **referenceName**: *eq, ne, in, co, sw*  **requestedTargetId**: *eq, ne, in, co, sw*  **requestedTargetType**: *eq, ne, in, co, sw*  **requestedTargetName**: *eq, ne, in, co, sw*  **requestedTargetRequestType**: *eq, ne, in, co, sw*  **modifiedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **decisionDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **approvalId**: *eq, ne, in, co, sw*  **requesterId**: *eq, ne, in, co, sw*  **requesteeId**: *eq, ne, in, co, sw*  **approverId**: *eq, ne, in, co, sw* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, ne, in, co, sw*  **name**: *eq, ne, in, co, sw*  **priority**: *eq, ne, in, co, sw*  **type**: *eq, ne, in, co, sw*  **medium**: *eq, ne, in, co, sw*  **description**: *eq, ne, in, co, sw*  **batchId**: *eq, ne, in, co, sw*  **createdDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **dueDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **completedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **search**: *eq, ne, in, co, sw*  **referenceId**: *eq, ne, in, co, sw*  **referenceType**: *eq, ne, in, co, sw*  **referenceName**: *eq, ne, in, co, sw*  **requestedTargetId**: *eq, ne, in, co, sw*  **requestedTargetType**: *eq, ne, in, co, sw*  **requestedTargetName**: *eq, ne, in, co, sw*  **requestedTargetRequestType**: *eq, ne, in, co, sw*  **modifiedDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **decisionDate**: *eq, ne, in, co, sw, gt, ge, lt, le*  **approvalId**: *eq, ne, in, co, sw*  **requesterId**: *eq, ne, in, co, sw*  **requesteeId**: *eq, ne, in, co, sw*  **approverId**: *eq, ne, in, co, sw* (optional)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          try:
+              # Get approvals
+              
+              results = ApprovalsV1Api(api_client).get_approvals_v1()
+              # Below is a request that includes all optional parameters
+              # results = ApprovalsV1Api(api_client).get_approvals_v1(mine, requester_id, requestee_id, approver_id, count, count_only, include_comments, include_approvers, include_reassignment_history, include_batch_info, filters, limit, offset)
+              print("The response of ApprovalsV1Api->get_approvals_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ApprovalsV1Api->get_approvals_v1: %s\n" % e)
+- path: /generic-approvals/v1/bulk-reassign
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/approvals#move-approval-v1
+      source: |
+        from sailpoint.approvals_v1.api.approvals_v1_api import ApprovalsV1Api
+        from sailpoint.approvals_v1.api_client import ApiClient
+        from sailpoint.approvals_v1.models.bulkreassignrequestdto import Bulkreassignrequestdto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          bulkreassignrequestdto = '''sailpoint.approvals_v1.Bulkreassignrequestdto()''' # Bulkreassignrequestdto | 
+          try:
+              # Post Bulk Reassign Approvals
+              new_bulkreassignrequestdto = Bulkreassignrequestdto.from_json(bulkreassignrequestdto)
+              results = ApprovalsV1Api(api_client).move_approval_v1(bulkreassignrequestdto=new_bulkreassignrequestdto)
+              # Below is a request that includes all optional parameters
+              # results = ApprovalsV1Api(api_client).move_approval_v1(new_bulkreassignrequestdto)
+              print("The response of ApprovalsV1Api->move_approval_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ApprovalsV1Api->move_approval_v1: %s\n" % e)
+- path: /generic-approvals/v1/config/{id}/{scope}
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/approvals#put-approvals-config-v1
+      source: |
+        from sailpoint.approvals_v1.api.approvals_v1_api import ApprovalsV1Api
+        from sailpoint.approvals_v1.api_client import ApiClient
+        from sailpoint.approvals_v1.models.approvalconfig import Approvalconfig
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ACCESS_REQUEST_APPROVAL' # str | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # str | The ID defined by the scope field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
+          scope = 'APPROVAL_TYPE' # str | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT # str | The scope of the field, where [[id]]:[[scope]] is the following [[roleID]]:ROLE [[entitlementID]]:ENTITLEMENT [[accessProfileID]]:ACCESS_PROFILE ENTITLEMENT_DESCRIPTIONS:APPROVAL_TYPE ACCESS_REQUEST_APPROVAL:APPROVAL_TYPE ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_CREATE_APPROVAL_REQUEST:APPROVAL_TYPE MACHINE_ACCOUNT_DELETE_APPROVAL_REQUEST:APPROVAL_TYPE [[tenantID]]:TENANT [[domainObjectID]]:DOMAIN_OBJECT
+          approvalconfig = '''sailpoint.approvals_v1.Approvalconfig()''' # Approvalconfig | 
+          try:
+              # Put Approval Config
+              new_approvalconfig = Approvalconfig.from_json(approvalconfig)
+              results = ApprovalsV1Api(api_client).put_approvals_config_v1(id=id, scope=scope, approvalconfig=new_approvalconfig)
+              # Below is a request that includes all optional parameters
+              # results = ApprovalsV1Api(api_client).put_approvals_config_v1(id, scope, new_approvalconfig)
+              print("The response of ApprovalsV1Api->put_approvals_config_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ApprovalsV1Api->put_approvals_config_v1: %s\n" % e)
+- path: /generic-approvals/v1/bulk-reject
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/approvals#reject-approval-in-bulk-v1
+      source: |
+        from sailpoint.approvals_v1.api.approvals_v1_api import ApprovalsV1Api
+        from sailpoint.approvals_v1.api_client import ApiClient
+        from sailpoint.approvals_v1.models.bulkrejectrequestdto import Bulkrejectrequestdto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          bulkrejectrequestdto = '''sailpoint.approvals_v1.Bulkrejectrequestdto()''' # Bulkrejectrequestdto | 
+          try:
+              # Post Bulk Reject Approvals
+              new_bulkrejectrequestdto = Bulkrejectrequestdto.from_json(bulkrejectrequestdto)
+              results = ApprovalsV1Api(api_client).reject_approval_in_bulk_v1(bulkrejectrequestdto=new_bulkrejectrequestdto)
+              # Below is a request that includes all optional parameters
+              # results = ApprovalsV1Api(api_client).reject_approval_in_bulk_v1(new_bulkrejectrequestdto)
+              print("The response of ApprovalsV1Api->reject_approval_in_bulk_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ApprovalsV1Api->reject_approval_in_bulk_v1: %s\n" % e)
+- path: /generic-approvals/v1/{id}/reject
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/approvals#reject-approval-v1
+      source: |
+        from sailpoint.approvals_v1.api.approvals_v1_api import ApprovalsV1Api
+        from sailpoint.approvals_v1.api_client import ApiClient
+        from sailpoint.approvals_v1.models.approvalrejectrequest import Approvalrejectrequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '38453251-6be2-5f8f-df93-5ce19e295837' # str | Approval ID that correlates to an existing approval request that a user wants to reject. # str | Approval ID that correlates to an existing approval request that a user wants to reject.
+          approvalrejectrequest = '''sailpoint.approvals_v1.Approvalrejectrequest()''' # Approvalrejectrequest |  (optional)
+          try:
+              # Post Approvals Reject
+              
+              ApprovalsV1Api(api_client).reject_approval_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # ApprovalsV1Api(api_client).reject_approval_v1(id, new_approvalrejectrequest)
+          except Exception as e:
+              print("Exception when calling ApprovalsV1Api->reject_approval_v1: %s\n" % e)
+- path: /generic-approvals/v1/{id}/attributes
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/approvals#update-approvals-attributes-v1
+      source: |
+        from sailpoint.approvals_v1.api.approvals_v1_api import ApprovalsV1Api
+        from sailpoint.approvals_v1.api_client import ApiClient
+        from sailpoint.approvals_v1.models.approval2 import Approval2
+        from sailpoint.approvals_v1.models.approvalattributesrequest import Approvalattributesrequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '38453251-6be2-5f8f-df93-5ce19e295837' # str | Approval ID that correlates to an existing approval request that a user wants to change the attributes of. # str | Approval ID that correlates to an existing approval request that a user wants to change the attributes of.
+          approvalattributesrequest = '''sailpoint.approvals_v1.Approvalattributesrequest()''' # Approvalattributesrequest | 
+          try:
+              # Post Approvals Attributes
+              new_approvalattributesrequest = Approvalattributesrequest.from_json(approvalattributesrequest)
+              results = ApprovalsV1Api(api_client).update_approvals_attributes_v1(id=id, approvalattributesrequest=new_approvalattributesrequest)
+              # Below is a request that includes all optional parameters
+              # results = ApprovalsV1Api(api_client).update_approvals_attributes_v1(id, new_approvalattributesrequest)
+              print("The response of ApprovalsV1Api->update_approvals_attributes_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ApprovalsV1Api->update_approvals_attributes_v1: %s\n" % e)
+- path: /generic-approvals/v1/{id}/comments
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/approvals#update-approvals-comments-v1
+      source: |
+        from sailpoint.approvals_v1.api.approvals_v1_api import ApprovalsV1Api
+        from sailpoint.approvals_v1.api_client import ApiClient
+        from sailpoint.approvals_v1.models.approval2 import Approval2
+        from sailpoint.approvals_v1.models.approvalcommentsrequest import Approvalcommentsrequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '38453251-6be2-5f8f-df93-5ce19e295837' # str | Approval ID that correlates to an existing approval request that a user wants to add a comment to. # str | Approval ID that correlates to an existing approval request that a user wants to add a comment to.
+          approvalcommentsrequest = '''sailpoint.approvals_v1.Approvalcommentsrequest()''' # Approvalcommentsrequest | 
+          try:
+              # Post Approvals Comments
+              new_approvalcommentsrequest = Approvalcommentsrequest.from_json(approvalcommentsrequest)
+              results = ApprovalsV1Api(api_client).update_approvals_comments_v1(id=id, approvalcommentsrequest=new_approvalcommentsrequest)
+              # Below is a request that includes all optional parameters
+              # results = ApprovalsV1Api(api_client).update_approvals_comments_v1(id, new_approvalcommentsrequest)
+              print("The response of ApprovalsV1Api->update_approvals_comments_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ApprovalsV1Api->update_approvals_comments_v1: %s\n" % e)
+- path: /generic-approvals/v1/{id}/reassign
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/approvals#update-approvals-reassign-v1
+      source: |
+        from sailpoint.approvals_v1.api.approvals_v1_api import ApprovalsV1Api
+        from sailpoint.approvals_v1.api_client import ApiClient
+        from sailpoint.approvals_v1.models.approvalreassignrequest import Approvalreassignrequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '38453251-6be2-5f8f-df93-5ce19e295837' # str | Approval ID that correlates to an existing approval request that a user wants to reassign. # str | Approval ID that correlates to an existing approval request that a user wants to reassign.
+          approvalreassignrequest = '''sailpoint.approvals_v1.Approvalreassignrequest()''' # Approvalreassignrequest | 
+          try:
+              # Post Approvals Reassign
+              new_approvalreassignrequest = Approvalreassignrequest.from_json(approvalreassignrequest)
+              ApprovalsV1Api(api_client).update_approvals_reassign_v1(id=id, approvalreassignrequest=new_approvalreassignrequest)
+              # Below is a request that includes all optional parameters
+              # ApprovalsV1Api(api_client).update_approvals_reassign_v1(id, new_approvalreassignrequest)
+          except Exception as e:
+              print("Exception when calling ApprovalsV1Api->update_approvals_reassign_v1: %s\n" % e)
+

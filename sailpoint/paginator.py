@@ -1,6 +1,6 @@
 import logging
-from sailpoint.v3.api.search_api import SearchApi
-from sailpoint.v3.models.search import Search
+from sailpoint.search_v1.api.search_v1_api import SearchV1Api as SearchApi
+from sailpoint.search_v1.models.search import Search
 from typing import Any, Callable, Iterator, Optional, Tuple, Type, TypeVar, overload
 
 T = TypeVar('T')
@@ -175,7 +175,7 @@ class Paginator:
 
         while True:
             logger.debug('Paginating call')
-            results = search_api.search_post(search, None, increment)
+            results = search_api.search_post_v1(search, None, increment)
 
             for result in results:
                 yield result
@@ -213,7 +213,7 @@ class Paginator:
 
         while True:
             logger.debug('Paginating call')
-            response = search_api.search_post_with_http_info(search, None, increment)
+            response = search_api.search_post_v1_with_http_info(search, None, increment)
             batch = response.data
 
             for result in batch:
@@ -247,7 +247,7 @@ class Paginator:
         
         while True:
             logger.debug(f'Paginating call, offset = {offset}')
-            results = search_api.search_post(search, None, increment)
+            results = search_api.search_post_v1(search, None, increment)
             modified = modified + results
             
             logger.debug(f'Received {len(results)} results')
@@ -278,7 +278,7 @@ class Paginator:
         
         while True:
             logger.debug(f'Paginating call, offset = {offset}')
-            results = search_api.search_post_with_http_info(search, None, increment)
+            results = search_api.search_post_v1_with_http_info(search, None, increment)
             modified = modified + results.data
             
             logger.debug(f'Received {len(results.data)} results')

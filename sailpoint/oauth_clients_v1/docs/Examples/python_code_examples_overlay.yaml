@@ -1,0 +1,127 @@
+- path: /oauth-clients/v1
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/o-auth-clients#create-oauth-client-v1
+      source: |
+        from sailpoint.oauth_clients_v1.api.o_auth_clients_v1_api import OAuthClientsV1Api
+        from sailpoint.oauth_clients_v1.api_client import ApiClient
+        from sailpoint.oauth_clients_v1.models.createoauthclientrequest import Createoauthclientrequest
+        from sailpoint.oauth_clients_v1.models.createoauthclientresponse import Createoauthclientresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          createoauthclientrequest = '''sailpoint.oauth_clients_v1.Createoauthclientrequest()''' # Createoauthclientrequest | 
+          try:
+              # Create oauth client
+              new_createoauthclientrequest = Createoauthclientrequest.from_json(createoauthclientrequest)
+              results = OAuthClientsV1Api(api_client).create_oauth_client_v1(createoauthclientrequest=new_createoauthclientrequest)
+              # Below is a request that includes all optional parameters
+              # results = OAuthClientsV1Api(api_client).create_oauth_client_v1(new_createoauthclientrequest)
+              print("The response of OAuthClientsV1Api->create_oauth_client_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling OAuthClientsV1Api->create_oauth_client_v1: %s\n" % e)
+- path: /oauth-clients/v1/{id}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/o-auth-clients#delete-oauth-client-v1
+      source: |
+        from sailpoint.oauth_clients_v1.api.o_auth_clients_v1_api import OAuthClientsV1Api
+        from sailpoint.oauth_clients_v1.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | The OAuth client id # str | The OAuth client id
+          try:
+              # Delete oauth client
+              
+              OAuthClientsV1Api(api_client).delete_oauth_client_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # OAuthClientsV1Api(api_client).delete_oauth_client_v1(id)
+          except Exception as e:
+              print("Exception when calling OAuthClientsV1Api->delete_oauth_client_v1: %s\n" % e)
+- path: /oauth-clients/v1/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/o-auth-clients#get-oauth-client-v1
+      source: |
+        from sailpoint.oauth_clients_v1.api.o_auth_clients_v1_api import OAuthClientsV1Api
+        from sailpoint.oauth_clients_v1.api_client import ApiClient
+        from sailpoint.oauth_clients_v1.models.getoauthclientresponse import Getoauthclientresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | The OAuth client id # str | The OAuth client id
+          try:
+              # Get oauth client
+              
+              results = OAuthClientsV1Api(api_client).get_oauth_client_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = OAuthClientsV1Api(api_client).get_oauth_client_v1(id)
+              print("The response of OAuthClientsV1Api->get_oauth_client_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling OAuthClientsV1Api->get_oauth_client_v1: %s\n" % e)
+- path: /oauth-clients/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/o-auth-clients#list-oauth-clients-v1
+      source: |
+        from sailpoint.oauth_clients_v1.api.o_auth_clients_v1_api import OAuthClientsV1Api
+        from sailpoint.oauth_clients_v1.api_client import ApiClient
+        from sailpoint.oauth_clients_v1.models.getoauthclientresponse import Getoauthclientresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          filters = 'lastUsed le 2023-02-05T10:59:27.214Z' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **lastUsed**: *le, isnull* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **lastUsed**: *le, isnull* (optional)
+          try:
+              # List oauth clients
+              
+              results = OAuthClientsV1Api(api_client).list_oauth_clients_v1()
+              # Below is a request that includes all optional parameters
+              # results = OAuthClientsV1Api(api_client).list_oauth_clients_v1(filters)
+              print("The response of OAuthClientsV1Api->list_oauth_clients_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling OAuthClientsV1Api->list_oauth_clients_v1: %s\n" % e)
+- path: /oauth-clients/v1/{id}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/o-auth-clients#patch-oauth-client-v1
+      source: |
+        from sailpoint.oauth_clients_v1.api.o_auth_clients_v1_api import OAuthClientsV1Api
+        from sailpoint.oauth_clients_v1.api_client import ApiClient
+        from sailpoint.oauth_clients_v1.models.getoauthclientresponse import Getoauthclientresponse
+        from sailpoint.oauth_clients_v1.models.jsonpatchoperation import Jsonpatchoperation
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | The OAuth client id # str | The OAuth client id
+          jsonpatchoperation = '''[{"op":"replace","path":"/strongAuthSupported","value":true},{"op":"replace","path":"/businessName","value":"acme-solar"}]''' # List[Jsonpatchoperation] | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported 
+          try:
+              # Patch oauth client
+              new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
+              results = OAuthClientsV1Api(api_client).patch_oauth_client_v1(id=id, jsonpatchoperation=new_jsonpatchoperation)
+              # Below is a request that includes all optional parameters
+              # results = OAuthClientsV1Api(api_client).patch_oauth_client_v1(id, new_jsonpatchoperation)
+              print("The response of OAuthClientsV1Api->patch_oauth_client_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling OAuthClientsV1Api->patch_oauth_client_v1: %s\n" % e)
+

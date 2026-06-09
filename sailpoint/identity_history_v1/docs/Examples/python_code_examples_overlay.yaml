@@ -1,0 +1,346 @@
+- path: /historical-identities/v1/{id}/compare/{access-type}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/identity-history#compare-identity-snapshots-access-type-v1
+      source: |
+        from sailpoint.identity_history_v1.api.identity_history_v1_api import IdentityHistoryV1Api
+        from sailpoint.identity_history_v1.api_client import ApiClient
+        from sailpoint.identity_history_v1.models.accessitemdiff import Accessitemdiff
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The identity id # str | The identity id
+          access_type = 'role' # str | The specific type which needs to be compared # str | The specific type which needs to be compared
+          access_associated = 2007-03-01T13:00:00Z # bool | Indicates if added or removed access needs to be returned. true - added, false - removed, null - both added & removed (optional) # bool | Indicates if added or removed access needs to be returned. true - added, false - removed, null - both added & removed (optional)
+          snapshot1 = '2008-03-01T13:00:00Z' # str | The snapshot 1 of identity (optional) # str | The snapshot 1 of identity (optional)
+          snapshot2 = '2009-03-01T13:00:00Z' # str | The snapshot 2 of identity (optional) # str | The snapshot 2 of identity (optional)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Gets a list of differences of specific accesstype for the given identity between 2 snapshots
+              
+              results = IdentityHistoryV1Api(api_client).compare_identity_snapshots_access_type_v1(id=id, access_type=access_type)
+              # Below is a request that includes all optional parameters
+              # results = IdentityHistoryV1Api(api_client).compare_identity_snapshots_access_type_v1(id, access_type, access_associated, snapshot1, snapshot2, limit, offset, count, x_sail_point_experimental)
+              print("The response of IdentityHistoryV1Api->compare_identity_snapshots_access_type_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling IdentityHistoryV1Api->compare_identity_snapshots_access_type_v1: %s\n" % e)
+- path: /historical-identities/v1/{id}/compare
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/identity-history#compare-identity-snapshots-v1
+      source: |
+        from sailpoint.identity_history_v1.api.identity_history_v1_api import IdentityHistoryV1Api
+        from sailpoint.identity_history_v1.api_client import ApiClient
+        from sailpoint.identity_history_v1.models.identitycompareresponse import Identitycompareresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The identity id # str | The identity id
+          snapshot1 = '2007-03-01T13:00:00Z' # str | The snapshot 1 of identity (optional) # str | The snapshot 1 of identity (optional)
+          snapshot2 = '2008-03-01T13:00:00Z' # str | The snapshot 2 of identity (optional) # str | The snapshot 2 of identity (optional)
+          access_item_types = '''['access_item_types_example']''' # List[str] | An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned  (optional)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Gets a difference of count for each access item types for the given identity between 2 snapshots
+              
+              results = IdentityHistoryV1Api(api_client).compare_identity_snapshots_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = IdentityHistoryV1Api(api_client).compare_identity_snapshots_v1(id, snapshot1, snapshot2, access_item_types, limit, offset, count, x_sail_point_experimental)
+              print("The response of IdentityHistoryV1Api->compare_identity_snapshots_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling IdentityHistoryV1Api->compare_identity_snapshots_v1: %s\n" % e)
+- path: /historical-identities/v1/{id}/events
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/identity-history#get-historical-identity-events-v1
+      source: |
+        from sailpoint.identity_history_v1.api.identity_history_v1_api import IdentityHistoryV1Api
+        from sailpoint.identity_history_v1.api_client import ApiClient
+        from sailpoint.identity_history_v1.models.get_historical_identity_events_v1200_response_inner import GetHistoricalIdentityEventsV1200ResponseInner
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The identity id # str | The identity id
+          var_from = '2024-03-01T13:00:00Z' # str | The optional instant until which access events are returned (optional) # str | The optional instant until which access events are returned (optional)
+          event_types = '''['[\"AccessAddedEvent\",\"AccessRemovedEvent\"]']''' # List[str] | An optional list of event types to return.  If null or empty, all events are returned (optional)
+          access_item_types = '''['[\"entitlement\",\"account\"]']''' # List[str] | An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned (optional)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # List identity event history
+              
+              results = IdentityHistoryV1Api(api_client).get_historical_identity_events_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = IdentityHistoryV1Api(api_client).get_historical_identity_events_v1(id, var_from, event_types, access_item_types, limit, offset, count, x_sail_point_experimental)
+              print("The response of IdentityHistoryV1Api->get_historical_identity_events_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling IdentityHistoryV1Api->get_historical_identity_events_v1: %s\n" % e)
+- path: /historical-identities/v1/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/identity-history#get-historical-identity-v1
+      source: |
+        from sailpoint.identity_history_v1.api.identity_history_v1_api import IdentityHistoryV1Api
+        from sailpoint.identity_history_v1.api_client import ApiClient
+        from sailpoint.identity_history_v1.models.identityhistoryresponse import Identityhistoryresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The identity id # str | The identity id
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get latest snapshot of identity
+              
+              results = IdentityHistoryV1Api(api_client).get_historical_identity_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = IdentityHistoryV1Api(api_client).get_historical_identity_v1(id, x_sail_point_experimental)
+              print("The response of IdentityHistoryV1Api->get_historical_identity_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling IdentityHistoryV1Api->get_historical_identity_v1: %s\n" % e)
+- path: /historical-identities/v1/{id}/snapshot-summary
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/identity-history#get-identity-snapshot-summary-v1
+      source: |
+        from sailpoint.identity_history_v1.api.identity_history_v1_api import IdentityHistoryV1Api
+        from sailpoint.identity_history_v1.api_client import ApiClient
+        from sailpoint.identity_history_v1.models.metricresponse import Metricresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The identity id # str | The identity id
+          before = '2007-03-01T13:00:00Z' # str | The date before which snapshot summary is required (optional) # str | The date before which snapshot summary is required (optional)
+          interval = 'interval_example' # str | The interval indicating day or month. Defaults to month if not specified (optional) # str | The interval indicating day or month. Defaults to month if not specified (optional)
+          time_zone = 'UTC' # str | The time zone. Defaults to UTC if not provided (optional) # str | The time zone. Defaults to UTC if not provided (optional)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Gets the summary for the event count for a specific identity
+              
+              results = IdentityHistoryV1Api(api_client).get_identity_snapshot_summary_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = IdentityHistoryV1Api(api_client).get_identity_snapshot_summary_v1(id, before, interval, time_zone, limit, offset, count, x_sail_point_experimental)
+              print("The response of IdentityHistoryV1Api->get_identity_snapshot_summary_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling IdentityHistoryV1Api->get_identity_snapshot_summary_v1: %s\n" % e)
+- path: /historical-identities/v1/{id}/snapshots/{date}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/identity-history#get-identity-snapshot-v1
+      source: |
+        from sailpoint.identity_history_v1.api.identity_history_v1_api import IdentityHistoryV1Api
+        from sailpoint.identity_history_v1.api_client import ApiClient
+        from sailpoint.identity_history_v1.models.identityhistoryresponse import Identityhistoryresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The identity id # str | The identity id
+          var_date = '2007-03-01T13:00:00Z' # str | The specified date # str | The specified date
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Gets an identity snapshot at a given date
+              
+              results = IdentityHistoryV1Api(api_client).get_identity_snapshot_v1(id=id, var_date=var_date)
+              # Below is a request that includes all optional parameters
+              # results = IdentityHistoryV1Api(api_client).get_identity_snapshot_v1(id, var_date, x_sail_point_experimental)
+              print("The response of IdentityHistoryV1Api->get_identity_snapshot_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling IdentityHistoryV1Api->get_identity_snapshot_v1: %s\n" % e)
+- path: /historical-identities/v1/{id}/start-date
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/identity-history#get-identity-start-date-v1
+      source: |
+        from sailpoint.identity_history_v1.api.identity_history_v1_api import IdentityHistoryV1Api
+        from sailpoint.identity_history_v1.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The identity id # str | The identity id
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Gets the start date of the identity
+              
+              results = IdentityHistoryV1Api(api_client).get_identity_start_date_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = IdentityHistoryV1Api(api_client).get_identity_start_date_v1(id, x_sail_point_experimental)
+              print("The response of IdentityHistoryV1Api->get_identity_start_date_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling IdentityHistoryV1Api->get_identity_start_date_v1: %s\n" % e)
+- path: /historical-identities/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/identity-history#list-historical-identities-v1
+      source: |
+        from sailpoint.identity_history_v1.api.identity_history_v1_api import IdentityHistoryV1Api
+        from sailpoint.identity_history_v1.api_client import ApiClient
+        from sailpoint.identity_history_v1.models.identitylistitem import Identitylistitem
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          starts_with_query = 'Ada' # str | This param is used for starts-with search for first, last and display name of the identity (optional) # str | This param is used for starts-with search for first, last and display name of the identity (optional)
+          is_deleted = true # bool | Indicates if we want to only list down deleted identities or not. (optional) # bool | Indicates if we want to only list down deleted identities or not. (optional)
+          is_active = true # bool | Indicates if we want to only list active or inactive identities. (optional) # bool | Indicates if we want to only list active or inactive identities. (optional)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Lists all the identities
+              
+              results = IdentityHistoryV1Api(api_client).list_historical_identities_v1()
+              # Below is a request that includes all optional parameters
+              # results = IdentityHistoryV1Api(api_client).list_historical_identities_v1(starts_with_query, is_deleted, is_active, limit, offset, x_sail_point_experimental)
+              print("The response of IdentityHistoryV1Api->list_historical_identities_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling IdentityHistoryV1Api->list_historical_identities_v1: %s\n" % e)
+- path: /historical-identities/v1/{id}/access-items
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/identity-history#list-identity-access-items-v1
+      source: |
+        from sailpoint.identity_history_v1.api.identity_history_v1_api import IdentityHistoryV1Api
+        from sailpoint.identity_history_v1.api_client import ApiClient
+        from sailpoint.identity_history_v1.models.list_identity_access_items_v1200_response_inner import ListIdentityAccessItemsV1200ResponseInner
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The identity id # str | The identity id
+          type = 'account' # str | The type of access item for the identity. If not provided, it defaults to account (optional) # str | The type of access item for the identity. If not provided, it defaults to account (optional)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          try:
+              # List access items by identity
+              
+              results = IdentityHistoryV1Api(api_client).list_identity_access_items_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = IdentityHistoryV1Api(api_client).list_identity_access_items_v1(id, type, x_sail_point_experimental, limit, count, offset)
+              print("The response of IdentityHistoryV1Api->list_identity_access_items_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling IdentityHistoryV1Api->list_identity_access_items_v1: %s\n" % e)
+- path: /historical-identities/v1/{id}/snapshots/{date}/access-items
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/identity-history#list-identity-snapshot-access-items-v1
+      source: |
+        from sailpoint.identity_history_v1.api.identity_history_v1_api import IdentityHistoryV1Api
+        from sailpoint.identity_history_v1.api_client import ApiClient
+        from sailpoint.identity_history_v1.models.list_identity_snapshot_access_items_v1200_response_inner import ListIdentitySnapshotAccessItemsV1200ResponseInner
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The identity id # str | The identity id
+          var_date = '2007-03-01T13:00:00Z' # str | The specified date # str | The specified date
+          type = 'account' # str | The access item type (optional) # str | The access item type (optional)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Gets the list of identity access items at a given date filterd by item type
+              
+              results = IdentityHistoryV1Api(api_client).list_identity_snapshot_access_items_v1(id=id, var_date=var_date)
+              # Below is a request that includes all optional parameters
+              # results = IdentityHistoryV1Api(api_client).list_identity_snapshot_access_items_v1(id, var_date, type, x_sail_point_experimental)
+              print("The response of IdentityHistoryV1Api->list_identity_snapshot_access_items_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling IdentityHistoryV1Api->list_identity_snapshot_access_items_v1: %s\n" % e)
+- path: /historical-identities/v1/{id}/snapshots
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/identity-history#list-identity-snapshots-v1
+      source: |
+        from sailpoint.identity_history_v1.api.identity_history_v1_api import IdentityHistoryV1Api
+        from sailpoint.identity_history_v1.api_client import ApiClient
+        from sailpoint.identity_history_v1.models.identitysnapshotsummaryresponse import Identitysnapshotsummaryresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The identity id # str | The identity id
+          start = '2007-03-01T13:00:00Z' # str | The specified start date (optional) # str | The specified start date (optional)
+          interval = 'interval_example' # str | The interval indicating the range in day or month for the specified interval-name (optional) # str | The interval indicating the range in day or month for the specified interval-name (optional)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Lists all the snapshots for the identity
+              
+              results = IdentityHistoryV1Api(api_client).list_identity_snapshots_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = IdentityHistoryV1Api(api_client).list_identity_snapshots_v1(id, start, interval, limit, offset, count, x_sail_point_experimental)
+              print("The response of IdentityHistoryV1Api->list_identity_snapshots_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling IdentityHistoryV1Api->list_identity_snapshots_v1: %s\n" % e)
+

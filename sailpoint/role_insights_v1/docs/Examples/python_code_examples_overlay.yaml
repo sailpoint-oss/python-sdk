@@ -1,0 +1,261 @@
+- path: /role-insights/v1/requests
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/role-insights#create-role-insight-requests-v1
+      source: |
+        from sailpoint.role_insights_v1.api.role_insights_v1_api import RoleInsightsV1Api
+        from sailpoint.role_insights_v1.api_client import ApiClient
+        from sailpoint.role_insights_v1.models.roleinsightsresponse import Roleinsightsresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Generate insights for roles
+              
+              results = RoleInsightsV1Api(api_client).create_role_insight_requests_v1()
+              # Below is a request that includes all optional parameters
+              # results = RoleInsightsV1Api(api_client).create_role_insight_requests_v1(x_sail_point_experimental)
+              print("The response of RoleInsightsV1Api->create_role_insight_requests_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RoleInsightsV1Api->create_role_insight_requests_v1: %s\n" % e)
+- path: /role-insights/v1/{insightId}/entitlement-changes/download
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/role-insights#download-role-insights-entitlements-changes-v1
+      source: |
+        from sailpoint.role_insights_v1.api.role_insights_v1_api import RoleInsightsV1Api
+        from sailpoint.role_insights_v1.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          insight_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role insight id # str | The role insight id
+          sorters = 'identitiesWithAccess' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess**  The default sort is **identitiesWithAccess** in descending order. (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess**  The default sort is **identitiesWithAccess** in descending order. (optional)
+          filters = 'name sw \"r\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw* (optional)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Download entitlement insights for a role
+              
+              results = RoleInsightsV1Api(api_client).download_role_insights_entitlements_changes_v1(insight_id=insight_id)
+              # Below is a request that includes all optional parameters
+              # results = RoleInsightsV1Api(api_client).download_role_insights_entitlements_changes_v1(insight_id, sorters, filters, x_sail_point_experimental)
+              print("The response of RoleInsightsV1Api->download_role_insights_entitlements_changes_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RoleInsightsV1Api->download_role_insights_entitlements_changes_v1: %s\n" % e)
+- path: /role-insights/v1/{insightId}/entitlement-changes/{entitlementId}/identities
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/role-insights#get-entitlement-changes-identities-v1
+      source: |
+        from sailpoint.role_insights_v1.api.role_insights_v1_api import RoleInsightsV1Api
+        from sailpoint.role_insights_v1.api_client import ApiClient
+        from sailpoint.role_insights_v1.models.roleinsightsidentities import Roleinsightsidentities
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          insight_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role insight id # str | The role insight id
+          entitlement_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The entitlement id # str | The entitlement id
+          has_entitlement = False # bool | Identity has this entitlement or not (optional) (default to False) # bool | Identity has this entitlement or not (optional) (default to False)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name** (optional)
+          filters = 'name sw \"Jan\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw* (optional)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get identities for a suggested entitlement (for a role)
+              
+              results = RoleInsightsV1Api(api_client).get_entitlement_changes_identities_v1(insight_id=insight_id, entitlement_id=entitlement_id)
+              # Below is a request that includes all optional parameters
+              # results = RoleInsightsV1Api(api_client).get_entitlement_changes_identities_v1(insight_id, entitlement_id, has_entitlement, offset, limit, count, sorters, filters, x_sail_point_experimental)
+              print("The response of RoleInsightsV1Api->get_entitlement_changes_identities_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RoleInsightsV1Api->get_entitlement_changes_identities_v1: %s\n" % e)
+- path: /role-insights/v1/{insightId}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/role-insights#get-role-insight-v1
+      source: |
+        from sailpoint.role_insights_v1.api.role_insights_v1_api import RoleInsightsV1Api
+        from sailpoint.role_insights_v1.api_client import ApiClient
+        from sailpoint.role_insights_v1.models.roleinsight import Roleinsight
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          insight_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role insight id # str | The role insight id
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get a single role insight
+              
+              results = RoleInsightsV1Api(api_client).get_role_insight_v1(insight_id=insight_id)
+              # Below is a request that includes all optional parameters
+              # results = RoleInsightsV1Api(api_client).get_role_insight_v1(insight_id, x_sail_point_experimental)
+              print("The response of RoleInsightsV1Api->get_role_insight_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RoleInsightsV1Api->get_role_insight_v1: %s\n" % e)
+- path: /role-insights/v1/{insightId}/current-entitlements
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/role-insights#get-role-insights-current-entitlements-v1
+      source: |
+        from sailpoint.role_insights_v1.api.role_insights_v1_api import RoleInsightsV1Api
+        from sailpoint.role_insights_v1.api_client import ApiClient
+        from sailpoint.role_insights_v1.models.roleinsightsentitlement import Roleinsightsentitlement
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          insight_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role insight id # str | The role insight id
+          filters = 'name sw \"r\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw* (optional)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get current entitlement for a role
+              
+              results = RoleInsightsV1Api(api_client).get_role_insights_current_entitlements_v1(insight_id=insight_id)
+              # Below is a request that includes all optional parameters
+              # results = RoleInsightsV1Api(api_client).get_role_insights_current_entitlements_v1(insight_id, filters, x_sail_point_experimental)
+              print("The response of RoleInsightsV1Api->get_role_insights_current_entitlements_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RoleInsightsV1Api->get_role_insights_current_entitlements_v1: %s\n" % e)
+- path: /role-insights/v1/{insightId}/entitlement-changes
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/role-insights#get-role-insights-entitlements-changes-v1
+      source: |
+        from sailpoint.role_insights_v1.api.role_insights_v1_api import RoleInsightsV1Api
+        from sailpoint.role_insights_v1.api_client import ApiClient
+        from sailpoint.role_insights_v1.models.roleinsightsentitlementchanges import Roleinsightsentitlementchanges
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          insight_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role insight id # str | The role insight id
+          sorters = 'sorters_example' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess, name** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess, name** (optional)
+          filters = 'name sw \"Admin\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw* (optional)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get entitlement insights for a role
+              
+              results = RoleInsightsV1Api(api_client).get_role_insights_entitlements_changes_v1(insight_id=insight_id)
+              # Below is a request that includes all optional parameters
+              # results = RoleInsightsV1Api(api_client).get_role_insights_entitlements_changes_v1(insight_id, sorters, filters, x_sail_point_experimental)
+              print("The response of RoleInsightsV1Api->get_role_insights_entitlements_changes_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RoleInsightsV1Api->get_role_insights_entitlements_changes_v1: %s\n" % e)
+- path: /role-insights/v1/requests/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/role-insights#get-role-insights-requests-v1
+      source: |
+        from sailpoint.role_insights_v1.api.role_insights_v1_api import RoleInsightsV1Api
+        from sailpoint.role_insights_v1.api_client import ApiClient
+        from sailpoint.role_insights_v1.models.roleinsightsresponse import Roleinsightsresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role insights request id # str | The role insights request id
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Returns metadata from prior request.
+              
+              results = RoleInsightsV1Api(api_client).get_role_insights_requests_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = RoleInsightsV1Api(api_client).get_role_insights_requests_v1(id, x_sail_point_experimental)
+              print("The response of RoleInsightsV1Api->get_role_insights_requests_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RoleInsightsV1Api->get_role_insights_requests_v1: %s\n" % e)
+- path: /role-insights/v1/summary
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/role-insights#get-role-insights-summary-v1
+      source: |
+        from sailpoint.role_insights_v1.api.role_insights_v1_api import RoleInsightsV1Api
+        from sailpoint.role_insights_v1.api_client import ApiClient
+        from sailpoint.role_insights_v1.models.roleinsightssummary import Roleinsightssummary
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get role insights summary information
+              
+              results = RoleInsightsV1Api(api_client).get_role_insights_summary_v1()
+              # Below is a request that includes all optional parameters
+              # results = RoleInsightsV1Api(api_client).get_role_insights_summary_v1(x_sail_point_experimental)
+              print("The response of RoleInsightsV1Api->get_role_insights_summary_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RoleInsightsV1Api->get_role_insights_summary_v1: %s\n" % e)
+- path: /role-insights/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/role-insights#get-role-insights-v1
+      source: |
+        from sailpoint.role_insights_v1.api.role_insights_v1_api import RoleInsightsV1Api
+        from sailpoint.role_insights_v1.api_client import ApiClient
+        from sailpoint.role_insights_v1.models.roleinsight import Roleinsight
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          sorters = 'numberOfUpdates' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **numberOfUpdates, identitiesWithAccess, totalNumberOfIdentities** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **numberOfUpdates, identitiesWithAccess, totalNumberOfIdentities** (optional)
+          filters = 'name sw \"John\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **ownerName**: *sw*  **description**: *sw* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **ownerName**: *sw*  **description**: *sw* (optional)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get role insights
+              
+              results = RoleInsightsV1Api(api_client).get_role_insights_v1()
+              # Below is a request that includes all optional parameters
+              # results = RoleInsightsV1Api(api_client).get_role_insights_v1(offset, limit, count, sorters, filters, x_sail_point_experimental)
+              print("The response of RoleInsightsV1Api->get_role_insights_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling RoleInsightsV1Api->get_role_insights_v1: %s\n" % e)
+

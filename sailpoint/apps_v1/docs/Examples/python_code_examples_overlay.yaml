@@ -1,0 +1,415 @@
+- path: /source-apps/v1
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/apps#create-source-app-v1
+      source: |
+        from sailpoint.apps_v1.api.apps_v1_api import AppsV1Api
+        from sailpoint.apps_v1.api_client import ApiClient
+        from sailpoint.apps_v1.models.sourceapp import Sourceapp
+        from sailpoint.apps_v1.models.sourceappcreatedto import Sourceappcreatedto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          sourceappcreatedto = '''{"name":"new app name","description":"app description","matchAllAccounts":true,"accountSource":{"id":"edcb0951812949d085b60cd8bf35bc78"}}''' # Sourceappcreatedto | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Create source app
+              new_sourceappcreatedto = Sourceappcreatedto.from_json(sourceappcreatedto)
+              results = AppsV1Api(api_client).create_source_app_v1(sourceappcreatedto=new_sourceappcreatedto)
+              # Below is a request that includes all optional parameters
+              # results = AppsV1Api(api_client).create_source_app_v1(new_sourceappcreatedto, x_sail_point_experimental)
+              print("The response of AppsV1Api->create_source_app_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AppsV1Api->create_source_app_v1: %s\n" % e)
+- path: /source-apps/v1/{id}/access-profiles/bulk-remove
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/apps#delete-access-profiles-from-source-app-by-bulk-v1
+      source: |
+        from sailpoint.apps_v1.api.apps_v1_api import AppsV1Api
+        from sailpoint.apps_v1.api_client import ApiClient
+        from sailpoint.apps_v1.models.accessprofiledetails import Accessprofiledetails
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '2c91808a7813090a017814121e121518' # str | ID of the source app # str | ID of the source app
+          request_body = '''["c9575abb5e3a4e3db82b2f989a738aa2","c9dc28e148a24d65b3ccb5fb8ca5ddd9"]''' # List[str] | List of access profile IDs for removal
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Bulk remove access profiles from the specified source app
+              new_request_body = RequestBody.from_json(request_body)
+              results = AppsV1Api(api_client).delete_access_profiles_from_source_app_by_bulk_v1(id=id, request_body=new_request_body)
+              # Below is a request that includes all optional parameters
+              # results = AppsV1Api(api_client).delete_access_profiles_from_source_app_by_bulk_v1(id, new_request_body, limit, x_sail_point_experimental)
+              print("The response of AppsV1Api->delete_access_profiles_from_source_app_by_bulk_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AppsV1Api->delete_access_profiles_from_source_app_by_bulk_v1: %s\n" % e)
+- path: /source-apps/v1/{id}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/apps#delete-source-app-v1
+      source: |
+        from sailpoint.apps_v1.api.apps_v1_api import AppsV1Api
+        from sailpoint.apps_v1.api_client import ApiClient
+        from sailpoint.apps_v1.models.sourceapp import Sourceapp
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '2c9180835d191a86015d28455b4a2329' # str | source app ID. # str | source app ID.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Delete source app by id
+              
+              results = AppsV1Api(api_client).delete_source_app_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = AppsV1Api(api_client).delete_source_app_v1(id, x_sail_point_experimental)
+              print("The response of AppsV1Api->delete_source_app_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AppsV1Api->delete_source_app_v1: %s\n" % e)
+- path: /source-apps/v1/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/apps#get-source-app-v1
+      source: |
+        from sailpoint.apps_v1.api.apps_v1_api import AppsV1Api
+        from sailpoint.apps_v1.api_client import ApiClient
+        from sailpoint.apps_v1.models.sourceapp import Sourceapp
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '2c91808a7813090a017814121e121518' # str | ID of the source app # str | ID of the source app
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get source app by id
+              
+              results = AppsV1Api(api_client).get_source_app_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = AppsV1Api(api_client).get_source_app_v1(id, x_sail_point_experimental)
+              print("The response of AppsV1Api->get_source_app_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AppsV1Api->get_source_app_v1: %s\n" % e)
+- path: /source-apps/v1/{id}/access-profiles
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/apps#list-access-profiles-for-source-app-v1
+      source: |
+        from sailpoint.apps_v1.api.apps_v1_api import AppsV1Api
+        from sailpoint.apps_v1.api_client import ApiClient
+        from sailpoint.apps_v1.models.accessprofiledetails import Accessprofiledetails
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '2c91808a7813090a017814121e121518' # str | ID of the source app # str | ID of the source app
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          filters = 'name eq \"developer access profile\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le* (optional)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # List access profiles for the specified source app
+              
+              results = AppsV1Api(api_client).list_access_profiles_for_source_app_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = AppsV1Api(api_client).list_access_profiles_for_source_app_v1(id, limit, offset, filters, x_sail_point_experimental)
+              print("The response of AppsV1Api->list_access_profiles_for_source_app_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AppsV1Api->list_access_profiles_for_source_app_v1: %s\n" % e)
+- path: /source-apps/v1/all
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/apps#list-all-source-app-v1
+      source: |
+        from sailpoint.apps_v1.api.apps_v1_api import AppsV1Api
+        from sailpoint.apps_v1.api_client import ApiClient
+        from sailpoint.apps_v1.models.sourceapp import Sourceapp
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          sorters = 'name,-modified' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, owner.id, accountSource.id** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, owner.id, accountSource.id** (optional)
+          filters = 'enabled eq true' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, co, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, ge, le*  **owner.id**: *eq, in*  **enabled**: *eq* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, co, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, ge, le*  **owner.id**: *eq, in*  **enabled**: *eq* (optional)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # List all source apps
+              
+              results = AppsV1Api(api_client).list_all_source_app_v1()
+              # Below is a request that includes all optional parameters
+              # results = AppsV1Api(api_client).list_all_source_app_v1(limit, count, offset, sorters, filters, x_sail_point_experimental)
+              print("The response of AppsV1Api->list_all_source_app_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AppsV1Api->list_all_source_app_v1: %s\n" % e)
+- path: /user-apps/v1/all
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/apps#list-all-user-apps-v1
+      source: |
+        from sailpoint.apps_v1.api.apps_v1_api import AppsV1Api
+        from sailpoint.apps_v1.api_client import ApiClient
+        from sailpoint.apps_v1.models.userapp import Userapp
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          filters = 'name eq \"user app name\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **ownerId**: *eq*  **ownerName**: *eq, sw*  **ownerAlias**: *eq, sw*  **accountId**: *eq*  **sourceAppId**: *eq* # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **ownerId**: *eq*  **ownerName**: *eq, sw*  **ownerAlias**: *eq, sw*  **accountId**: *eq*  **sourceAppId**: *eq*
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # List all user apps
+              
+              results = AppsV1Api(api_client).list_all_user_apps_v1(filters=filters)
+              # Below is a request that includes all optional parameters
+              # results = AppsV1Api(api_client).list_all_user_apps_v1(filters, limit, count, offset, x_sail_point_experimental)
+              print("The response of AppsV1Api->list_all_user_apps_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AppsV1Api->list_all_user_apps_v1: %s\n" % e)
+- path: /source-apps/v1/assigned
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/apps#list-assigned-source-app-v1
+      source: |
+        from sailpoint.apps_v1.api.apps_v1_api import AppsV1Api
+        from sailpoint.apps_v1.api_client import ApiClient
+        from sailpoint.apps_v1.models.sourceapp import Sourceapp
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          sorters = 'name,-modified' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, accountSource.id** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, accountSource.id** (optional)
+          filters = 'name eq \"source app name\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, co, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **accountSource.id**: *eq, in* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, co, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **accountSource.id**: *eq, in* (optional)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # List assigned source apps
+              
+              results = AppsV1Api(api_client).list_assigned_source_app_v1()
+              # Below is a request that includes all optional parameters
+              # results = AppsV1Api(api_client).list_assigned_source_app_v1(limit, count, offset, sorters, filters, x_sail_point_experimental)
+              print("The response of AppsV1Api->list_assigned_source_app_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AppsV1Api->list_assigned_source_app_v1: %s\n" % e)
+- path: /user-apps/v1/{id}/available-accounts
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/apps#list-available-accounts-for-user-app-v1
+      source: |
+        from sailpoint.apps_v1.api.apps_v1_api import AppsV1Api
+        from sailpoint.apps_v1.api_client import ApiClient
+        from sailpoint.apps_v1.models.appaccountdetails import Appaccountdetails
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '2c91808a7813090a017814121e121518' # str | ID of the user app # str | ID of the user app
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # List available accounts for user app
+              
+              results = AppsV1Api(api_client).list_available_accounts_for_user_app_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = AppsV1Api(api_client).list_available_accounts_for_user_app_v1(id, limit, count, x_sail_point_experimental)
+              print("The response of AppsV1Api->list_available_accounts_for_user_app_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AppsV1Api->list_available_accounts_for_user_app_v1: %s\n" % e)
+- path: /source-apps/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/apps#list-available-source-apps-v1
+      source: |
+        from sailpoint.apps_v1.api.apps_v1_api import AppsV1Api
+        from sailpoint.apps_v1.api_client import ApiClient
+        from sailpoint.apps_v1.models.sourceapp import Sourceapp
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          sorters = 'name,-modified' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, owner.id, accountSource.id** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, owner.id, accountSource.id** (optional)
+          filters = 'name eq \"source app name\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, co, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **accountSource.id**: *eq, in* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, co, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **accountSource.id**: *eq, in* (optional)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # List available source apps
+              
+              results = AppsV1Api(api_client).list_available_source_apps_v1()
+              # Below is a request that includes all optional parameters
+              # results = AppsV1Api(api_client).list_available_source_apps_v1(limit, count, offset, sorters, filters, x_sail_point_experimental)
+              print("The response of AppsV1Api->list_available_source_apps_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AppsV1Api->list_available_source_apps_v1: %s\n" % e)
+- path: /user-apps/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/apps#list-owned-user-apps-v1
+      source: |
+        from sailpoint.apps_v1.api.apps_v1_api import AppsV1Api
+        from sailpoint.apps_v1.api_client import ApiClient
+        from sailpoint.apps_v1.models.userapp import Userapp
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          filters = 'name eq \"user app name\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **ownerName**: *eq, sw*  **ownerAlias**: *eq, sw*  **accountId**: *eq*  **sourceAppId**: *eq* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **ownerName**: *eq, sw*  **ownerAlias**: *eq, sw*  **accountId**: *eq*  **sourceAppId**: *eq* (optional)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # List owned user apps
+              
+              results = AppsV1Api(api_client).list_owned_user_apps_v1()
+              # Below is a request that includes all optional parameters
+              # results = AppsV1Api(api_client).list_owned_user_apps_v1(limit, count, offset, filters, x_sail_point_experimental)
+              print("The response of AppsV1Api->list_owned_user_apps_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AppsV1Api->list_owned_user_apps_v1: %s\n" % e)
+- path: /source-apps/v1/{id}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/apps#patch-source-app-v1
+      source: |
+        from sailpoint.apps_v1.api.apps_v1_api import AppsV1Api
+        from sailpoint.apps_v1.api_client import ApiClient
+        from sailpoint.apps_v1.models.jsonpatchoperation import Jsonpatchoperation
+        from sailpoint.apps_v1.models.sourceapppatchdto import Sourceapppatchdto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '2c91808a7813090a017814121e121518' # str | ID of the source app to patch # str | ID of the source app to patch
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          jsonpatchoperation = '''[{"op":"replace","path":"/enabled","value":true},{"op":"replace","path":"/matchAllAccounts","value":true}]''' # List[Jsonpatchoperation] |  (optional)
+          try:
+              # Patch source app by id
+              
+              results = AppsV1Api(api_client).patch_source_app_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = AppsV1Api(api_client).patch_source_app_v1(id, x_sail_point_experimental, new_jsonpatchoperation)
+              print("The response of AppsV1Api->patch_source_app_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AppsV1Api->patch_source_app_v1: %s\n" % e)
+- path: /user-apps/v1/{id}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/apps#patch-user-app-v1
+      source: |
+        from sailpoint.apps_v1.api.apps_v1_api import AppsV1Api
+        from sailpoint.apps_v1.api_client import ApiClient
+        from sailpoint.apps_v1.models.jsonpatchoperation import Jsonpatchoperation
+        from sailpoint.apps_v1.models.userapp import Userapp
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '2c91808a7813090a017814121e121518' # str | ID of the user app to patch # str | ID of the user app to patch
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          jsonpatchoperation = '''[sailpoint.apps_v1.Jsonpatchoperation()]''' # List[Jsonpatchoperation] |  (optional)
+          try:
+              # Patch user app by id
+              
+              results = AppsV1Api(api_client).patch_user_app_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = AppsV1Api(api_client).patch_user_app_v1(id, x_sail_point_experimental, new_jsonpatchoperation)
+              print("The response of AppsV1Api->patch_user_app_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AppsV1Api->patch_user_app_v1: %s\n" % e)
+- path: /source-apps/v1/bulk-update
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/apps#update-source-apps-in-bulk-v1
+      source: |
+        from sailpoint.apps_v1.api.apps_v1_api import AppsV1Api
+        from sailpoint.apps_v1.api_client import ApiClient
+        from sailpoint.apps_v1.models.sourceappbulkupdaterequest import Sourceappbulkupdaterequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          sourceappbulkupdaterequest = '''sailpoint.apps_v1.Sourceappbulkupdaterequest()''' # Sourceappbulkupdaterequest |  (optional)
+          try:
+              # Bulk update source apps
+              
+              AppsV1Api(api_client).update_source_apps_in_bulk_v1()
+              # Below is a request that includes all optional parameters
+              # AppsV1Api(api_client).update_source_apps_in_bulk_v1(x_sail_point_experimental, new_sourceappbulkupdaterequest)
+          except Exception as e:
+              print("Exception when calling AppsV1Api->update_source_apps_in_bulk_v1: %s\n" % e)
+

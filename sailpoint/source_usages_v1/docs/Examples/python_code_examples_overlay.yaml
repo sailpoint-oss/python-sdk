@@ -1,0 +1,56 @@
+- path: /source-usages/v1/{sourceId}/status
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/source-usages#get-status-by-source-id-v1
+      source: |
+        from sailpoint.source_usages_v1.api.source_usages_v1_api import SourceUsagesV1Api
+        from sailpoint.source_usages_v1.api_client import ApiClient
+        from sailpoint.source_usages_v1.models.sourceusagestatus import Sourceusagestatus
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          source_id = '2c9180835d191a86015d28455b4a2329' # str | ID of IDN source # str | ID of IDN source
+          try:
+              # Finds status of source usage
+              
+              results = SourceUsagesV1Api(api_client).get_status_by_source_id_v1(source_id=source_id)
+              # Below is a request that includes all optional parameters
+              # results = SourceUsagesV1Api(api_client).get_status_by_source_id_v1(source_id)
+              print("The response of SourceUsagesV1Api->get_status_by_source_id_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SourceUsagesV1Api->get_status_by_source_id_v1: %s\n" % e)
+- path: /source-usages/v1/{sourceId}/summaries
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/source-usages#get-usages-by-source-id-v1
+      source: |
+        from sailpoint.source_usages_v1.api.source_usages_v1_api import SourceUsagesV1Api
+        from sailpoint.source_usages_v1.api_client import ApiClient
+        from sailpoint.source_usages_v1.models.sourceusage import Sourceusage
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          source_id = '2c9180835d191a86015d28455b4a2329' # str | ID of IDN source # str | ID of IDN source
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          sorters = '-date' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **date** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **date** (optional)
+          try:
+              # Returns source usage insights
+              
+              results = SourceUsagesV1Api(api_client).get_usages_by_source_id_v1(source_id=source_id)
+              # Below is a request that includes all optional parameters
+              # results = SourceUsagesV1Api(api_client).get_usages_by_source_id_v1(source_id, limit, offset, count, sorters)
+              print("The response of SourceUsagesV1Api->get_usages_by_source_id_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SourceUsagesV1Api->get_usages_by_source_id_v1: %s\n" % e)
+

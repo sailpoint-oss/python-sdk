@@ -1,0 +1,196 @@
+- path: /access-request-approvals/v1/{approvalId}/approve
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/access-request-approvals#approve-access-request-v1
+      source: |
+        from sailpoint.access_request_approvals_v1.api.access_request_approvals_v1_api import AccessRequestApprovalsV1Api
+        from sailpoint.access_request_approvals_v1.api_client import ApiClient
+        from sailpoint.access_request_approvals_v1.models.commentdto import Commentdto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          approval_id = '2c91808b7294bea301729568c68c002e' # str | Approval ID. # str | Approval ID.
+          commentdto = '''sailpoint.access_request_approvals_v1.Commentdto()''' # Commentdto | Reviewer's comment. (optional)
+          try:
+              # Approve access request approval
+              
+              results = AccessRequestApprovalsV1Api(api_client).approve_access_request_v1(approval_id=approval_id)
+              # Below is a request that includes all optional parameters
+              # results = AccessRequestApprovalsV1Api(api_client).approve_access_request_v1(approval_id, new_commentdto)
+              print("The response of AccessRequestApprovalsV1Api->approve_access_request_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessRequestApprovalsV1Api->approve_access_request_v1: %s\n" % e)
+- path: /access-request-approvals/v1/{approvalId}/forward
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/access-request-approvals#forward-access-request-v1
+      source: |
+        from sailpoint.access_request_approvals_v1.api.access_request_approvals_v1_api import AccessRequestApprovalsV1Api
+        from sailpoint.access_request_approvals_v1.api_client import ApiClient
+        from sailpoint.access_request_approvals_v1.models.forwardapprovaldto import Forwardapprovaldto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          approval_id = '2c91808b7294bea301729568c68c002e' # str | Approval ID. # str | Approval ID.
+          forwardapprovaldto = '''sailpoint.access_request_approvals_v1.Forwardapprovaldto()''' # Forwardapprovaldto | Information about the forwarded approval.
+          try:
+              # Forward access request approval
+              new_forwardapprovaldto = Forwardapprovaldto.from_json(forwardapprovaldto)
+              results = AccessRequestApprovalsV1Api(api_client).forward_access_request_v1(approval_id=approval_id, forwardapprovaldto=new_forwardapprovaldto)
+              # Below is a request that includes all optional parameters
+              # results = AccessRequestApprovalsV1Api(api_client).forward_access_request_v1(approval_id, new_forwardapprovaldto)
+              print("The response of AccessRequestApprovalsV1Api->forward_access_request_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessRequestApprovalsV1Api->forward_access_request_v1: %s\n" % e)
+- path: /access-request-approvals/v1/approval-summary
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/access-request-approvals#get-access-request-approval-summary-v1
+      source: |
+        from sailpoint.access_request_approvals_v1.api.access_request_approvals_v1_api import AccessRequestApprovalsV1Api
+        from sailpoint.access_request_approvals_v1.api_client import ApiClient
+        from sailpoint.access_request_approvals_v1.models.approvalsummary import Approvalsummary
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          owner_id = '2c91808568c529c60168cca6f90c1313' # str | The ID of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional) # str | The ID of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional)
+          from_date = 'from-date=2020-03-19T19:59:11Z' # str | This is the date and time the results will be shown from. It must be in a valid ISO-8601 format. (optional) # str | This is the date and time the results will be shown from. It must be in a valid ISO-8601 format. (optional)
+          try:
+              # Get access requests approvals number
+              
+              results = AccessRequestApprovalsV1Api(api_client).get_access_request_approval_summary_v1()
+              # Below is a request that includes all optional parameters
+              # results = AccessRequestApprovalsV1Api(api_client).get_access_request_approval_summary_v1(owner_id, from_date)
+              print("The response of AccessRequestApprovalsV1Api->get_access_request_approval_summary_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessRequestApprovalsV1Api->get_access_request_approval_summary_v1: %s\n" % e)
+- path: /access-request-approvals/v1/{accessRequestId}/approvers
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/access-request-approvals#list-access-request-approvers-v1
+      source: |
+        from sailpoint.access_request_approvals_v1.api.access_request_approvals_v1_api import AccessRequestApprovalsV1Api
+        from sailpoint.access_request_approvals_v1.api_client import ApiClient
+        from sailpoint.access_request_approvals_v1.models.accessrequestapproverslistresponse import Accessrequestapproverslistresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          access_request_id = '2c91808568c529c60168cca6f90c1313' # str | Access Request ID. # str | Access Request ID.
+          limit = 250 # int | Max number of results to return. (optional) (default to 250) # int | Max number of results to return. (optional) (default to 250)
+          offset = 10 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. (optional) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. (optional)
+          count = False # bool | If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored. (optional) (default to False) # bool | If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored. (optional) (default to False)
+          try:
+              # Access request approvers
+              
+              results = AccessRequestApprovalsV1Api(api_client).list_access_request_approvers_v1(access_request_id=access_request_id)
+              # Below is a request that includes all optional parameters
+              # results = AccessRequestApprovalsV1Api(api_client).list_access_request_approvers_v1(access_request_id, limit, offset, count)
+              print("The response of AccessRequestApprovalsV1Api->list_access_request_approvers_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessRequestApprovalsV1Api->list_access_request_approvers_v1: %s\n" % e)
+- path: /access-request-approvals/v1/completed
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/access-request-approvals#list-completed-approvals-v1
+      source: |
+        from sailpoint.access_request_approvals_v1.api.access_request_approvals_v1_api import AccessRequestApprovalsV1Api
+        from sailpoint.access_request_approvals_v1.api_client import ApiClient
+        from sailpoint.access_request_approvals_v1.models.completedapproval import Completedapproval
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          owner_id = '2c91808568c529c60168cca6f90c1313' # str | If present, the value returns only completed approvals for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN users can also fetch all the approvals in the org, when owner-id is not used.    * Non-ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional) # str | If present, the value returns only completed approvals for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN users can also fetch all the approvals in the org, when owner-id is not used.    * Non-ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'id eq \"2c91808568c529c60168cca6f90c1313\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **requestedFor.id**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **modified**: *gt, lt, ge, le, eq, in, ne, sw* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **requestedFor.id**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **modified**: *gt, lt, ge, le, eq, in, ne, sw* (optional)
+          sorters = 'modified' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified** (optional)
+          try:
+              # Completed access request approvals list
+              
+              results = AccessRequestApprovalsV1Api(api_client).list_completed_approvals_v1()
+              # Below is a request that includes all optional parameters
+              # results = AccessRequestApprovalsV1Api(api_client).list_completed_approvals_v1(owner_id, limit, offset, count, filters, sorters)
+              print("The response of AccessRequestApprovalsV1Api->list_completed_approvals_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessRequestApprovalsV1Api->list_completed_approvals_v1: %s\n" % e)
+- path: /access-request-approvals/v1/pending
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/access-request-approvals#list-pending-approvals-v1
+      source: |
+        from sailpoint.access_request_approvals_v1.api.access_request_approvals_v1_api import AccessRequestApprovalsV1Api
+        from sailpoint.access_request_approvals_v1.api_client import ApiClient
+        from sailpoint.access_request_approvals_v1.models.pendingapproval import Pendingapproval
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          owner_id = '2c91808568c529c60168cca6f90c1313' # str | If present, the value returns only pending approvals for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN users can also fetch all the approvals in the org, when owner-id is not used.    * Non-ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional) # str | If present, the value returns only pending approvals for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN users can also fetch all the approvals in the org, when owner-id is not used.    * Non-ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'id eq \"2c91808568c529c60168cca6f90c1313\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **requestedFor.id**: *eq, in*  **modified**: *gt, lt, ge, le, eq, in*  **accessRequestId**: *eq, in*  **created**: *gt, lt, ge, le, eq, in* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **requestedFor.id**: *eq, in*  **modified**: *gt, lt, ge, le, eq, in*  **accessRequestId**: *eq, in*  **created**: *gt, lt, ge, le, eq, in* (optional)
+          sorters = 'modified' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified** (optional)
+          try:
+              # Pending access request approvals list
+              
+              results = AccessRequestApprovalsV1Api(api_client).list_pending_approvals_v1()
+              # Below is a request that includes all optional parameters
+              # results = AccessRequestApprovalsV1Api(api_client).list_pending_approvals_v1(owner_id, limit, offset, count, filters, sorters)
+              print("The response of AccessRequestApprovalsV1Api->list_pending_approvals_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessRequestApprovalsV1Api->list_pending_approvals_v1: %s\n" % e)
+- path: /access-request-approvals/v1/{approvalId}/reject
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/access-request-approvals#reject-access-request-v1
+      source: |
+        from sailpoint.access_request_approvals_v1.api.access_request_approvals_v1_api import AccessRequestApprovalsV1Api
+        from sailpoint.access_request_approvals_v1.api_client import ApiClient
+        from sailpoint.access_request_approvals_v1.models.commentdto import Commentdto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          approval_id = '2c91808b7294bea301729568c68c002e' # str | Approval ID. # str | Approval ID.
+          commentdto = '''sailpoint.access_request_approvals_v1.Commentdto()''' # Commentdto | Reviewer's comment.
+          try:
+              # Reject access request approval
+              new_commentdto = Commentdto.from_json(commentdto)
+              results = AccessRequestApprovalsV1Api(api_client).reject_access_request_v1(approval_id=approval_id, commentdto=new_commentdto)
+              # Below is a request that includes all optional parameters
+              # results = AccessRequestApprovalsV1Api(api_client).reject_access_request_v1(approval_id, new_commentdto)
+              print("The response of AccessRequestApprovalsV1Api->reject_access_request_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessRequestApprovalsV1Api->reject_access_request_v1: %s\n" % e)
+

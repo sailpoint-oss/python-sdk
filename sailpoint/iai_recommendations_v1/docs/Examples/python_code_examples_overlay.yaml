@@ -1,0 +1,82 @@
+- path: /recommendations/v1/config
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/iai-recommendations#get-recommendations-config-v1
+      source: |
+        from sailpoint.iai_recommendations_v1.api.iai_recommendations_v1_api import IAIRecommendationsV1Api
+        from sailpoint.iai_recommendations_v1.api_client import ApiClient
+        from sailpoint.iai_recommendations_v1.models.recommendationconfigdto import Recommendationconfigdto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get certification recommendation config values
+              
+              results = IAIRecommendationsV1Api(api_client).get_recommendations_config_v1()
+              # Below is a request that includes all optional parameters
+              # results = IAIRecommendationsV1Api(api_client).get_recommendations_config_v1(x_sail_point_experimental)
+              print("The response of IAIRecommendationsV1Api->get_recommendations_config_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling IAIRecommendationsV1Api->get_recommendations_config_v1: %s\n" % e)
+- path: /recommendations/v1/request
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/iai-recommendations#get-recommendations-v1
+      source: |
+        from sailpoint.iai_recommendations_v1.api.iai_recommendations_v1_api import IAIRecommendationsV1Api
+        from sailpoint.iai_recommendations_v1.api_client import ApiClient
+        from sailpoint.iai_recommendations_v1.models.recommendationrequestdto import Recommendationrequestdto
+        from sailpoint.iai_recommendations_v1.models.recommendationresponsedto import Recommendationresponsedto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          recommendationrequestdto = '''sailpoint.iai_recommendations_v1.Recommendationrequestdto()''' # Recommendationrequestdto | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Returns recommendation based on object
+              new_recommendationrequestdto = Recommendationrequestdto.from_json(recommendationrequestdto)
+              results = IAIRecommendationsV1Api(api_client).get_recommendations_v1(recommendationrequestdto=new_recommendationrequestdto)
+              # Below is a request that includes all optional parameters
+              # results = IAIRecommendationsV1Api(api_client).get_recommendations_v1(new_recommendationrequestdto, x_sail_point_experimental)
+              print("The response of IAIRecommendationsV1Api->get_recommendations_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling IAIRecommendationsV1Api->get_recommendations_v1: %s\n" % e)
+- path: /recommendations/v1/config
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/iai-recommendations#update-recommendations-config-v1
+      source: |
+        from sailpoint.iai_recommendations_v1.api.iai_recommendations_v1_api import IAIRecommendationsV1Api
+        from sailpoint.iai_recommendations_v1.api_client import ApiClient
+        from sailpoint.iai_recommendations_v1.models.recommendationconfigdto import Recommendationconfigdto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          recommendationconfigdto = '''sailpoint.iai_recommendations_v1.Recommendationconfigdto()''' # Recommendationconfigdto | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Update certification recommendation config values
+              new_recommendationconfigdto = Recommendationconfigdto.from_json(recommendationconfigdto)
+              results = IAIRecommendationsV1Api(api_client).update_recommendations_config_v1(recommendationconfigdto=new_recommendationconfigdto)
+              # Below is a request that includes all optional parameters
+              # results = IAIRecommendationsV1Api(api_client).update_recommendations_config_v1(new_recommendationconfigdto, x_sail_point_experimental)
+              print("The response of IAIRecommendationsV1Api->update_recommendations_config_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling IAIRecommendationsV1Api->update_recommendations_config_v1: %s\n" % e)
+

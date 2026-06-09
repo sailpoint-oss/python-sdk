@@ -1,0 +1,103 @@
+- path: /tags/v1
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/tags#create-tag-v1
+      source: |
+        from sailpoint.tags_v1.api.tags_v1_api import TagsV1Api
+        from sailpoint.tags_v1.api_client import ApiClient
+        from sailpoint.tags_v1.models.tag2 import Tag2
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          tag2 = '''sailpoint.tags_v1.Tag2()''' # Tag2 | 
+          try:
+              # Create tag
+              new_tag2 = Tag2.from_json(tag2)
+              results = TagsV1Api(api_client).create_tag_v1(tag2=new_tag2)
+              # Below is a request that includes all optional parameters
+              # results = TagsV1Api(api_client).create_tag_v1(new_tag2)
+              print("The response of TagsV1Api->create_tag_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling TagsV1Api->create_tag_v1: %s\n" % e)
+- path: /tags/v1/{id}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/tags#delete-tag-by-id-v1
+      source: |
+        from sailpoint.tags_v1.api.tags_v1_api import TagsV1Api
+        from sailpoint.tags_v1.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '329d96cf-3bdb-40a9-988a-b5037ab89022' # str | The ID of the object reference to delete. # str | The ID of the object reference to delete.
+          try:
+              # Delete tag
+              
+              TagsV1Api(api_client).delete_tag_by_id_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # TagsV1Api(api_client).delete_tag_by_id_v1(id)
+          except Exception as e:
+              print("Exception when calling TagsV1Api->delete_tag_by_id_v1: %s\n" % e)
+- path: /tags/v1/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/tags#get-tag-by-id-v1
+      source: |
+        from sailpoint.tags_v1.api.tags_v1_api import TagsV1Api
+        from sailpoint.tags_v1.api_client import ApiClient
+        from sailpoint.tags_v1.models.tag2 import Tag2
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '329d96cf-3bdb-40a9-988a-b5037ab89022' # str | The ID of the object reference to retrieve. # str | The ID of the object reference to retrieve.
+          try:
+              # Get tag by id
+              
+              results = TagsV1Api(api_client).get_tag_by_id_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = TagsV1Api(api_client).get_tag_by_id_v1(id)
+              print("The response of TagsV1Api->get_tag_by_id_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling TagsV1Api->get_tag_by_id_v1: %s\n" % e)
+- path: /tags/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/tags#list-tags-v1
+      source: |
+        from sailpoint.tags_v1.api.tags_v1_api import TagsV1Api
+        from sailpoint.tags_v1.api_client import ApiClient
+        from sailpoint.tags_v1.models.tag2 import Tag2
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'id eq \"27462f54-61c7-4140-b5da-d5dbe27fc6db\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw* (optional)
+          sorters = 'name,-modified' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified** (optional)
+          try:
+              # List tags
+              
+              results = TagsV1Api(api_client).list_tags_v1()
+              # Below is a request that includes all optional parameters
+              # results = TagsV1Api(api_client).list_tags_v1(limit, offset, count, filters, sorters)
+              print("The response of TagsV1Api->list_tags_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling TagsV1Api->list_tags_v1: %s\n" % e)
+

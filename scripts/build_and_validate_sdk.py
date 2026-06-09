@@ -39,11 +39,16 @@ def main():
         url = "https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.12.0/openapi-generator-cli-7.12.0.jar"
         urllib.request.urlretrieve(url, jar_path)
 
-    # Prescript
-    print("Running prescript...")
-    idn_path = os.path.join(api_specs_path, "idn")
-    subprocess.run(["node", "sdk-resources/prescript.js", idn_path], check=True, cwd=root)
+    # Build all versioned partitions via the unified build script
+    apis_dir = os.path.join(api_specs_path, "idn", "src", "main", "yaml", "apis")
+    print(f"Building versioned SDK partitions from {apis_dir} ...")
+    subprocess.run(
+        ["node", "sdk-resources/build-versioned-sdk.js", apis_dir],
+        check=True,
+        cwd=root,
+    )
 
+    # NERM and NERM V2025 are still built with static configs
     def build_sdk(name, spec, config, out_dir, spec_subdir="idn"):
         print(f"Building {name} SDK...")
         sailpoint_dir = os.path.join(root, "sailpoint", out_dir)
@@ -57,6 +62,7 @@ def main():
                 "-g", "python", "-o", ".",
                 "--global-property", "skipFormModel=false,apiDocs=true,modelDocs=true",
                 "--config", f"sdk-resources/{config}",
+                "--enable-post-process-file",
             ],
             check=True,
             cwd=root,
@@ -67,11 +73,6 @@ def main():
             cwd=root,
         )
 
-    build_sdk("V3", "sailpoint-api.v3.yaml", "v3-config.yaml", "v3")
-    build_sdk("Beta", "sailpoint-api.beta.yaml", "beta-config.yaml", "beta")
-    build_sdk("V2024", "sailpoint-api.v2024.yaml", "v2024-config.yaml", "v2024")
-    build_sdk("V2025", "sailpoint-api.v2025.yaml", "v2025-config.yaml", "v2025")
-    build_sdk("V2026", "sailpoint-api.v2026.yaml", "v2026-config.yaml", "v2026")
     build_sdk("NERM", "openapi.yaml", "nerm-config.yaml", "nerm", spec_subdir="nerm")
     build_sdk("NERM V2025", os.path.join("v2025", "v2025.yaml"), "v2025-nerm-config.yaml", os.path.join("nerm", "v2025"), spec_subdir="nerm")
 

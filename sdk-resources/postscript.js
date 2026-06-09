@@ -130,11 +130,8 @@ const fixFiles = async function (myArray) {
 
     if (file.includes("export_payload.py")) {
       for (const line of rawDataArra) {
-        if (line.includes("from sailpoint.beta.models.dict[str,_object_export_import_options] import Dict[str, ObjectExportImportOptions]")) {
-          fileOut.push(line.replaceAll("from sailpoint.beta.models.dict[str,_object_export_import_options] import Dict[str, ObjectExportImportOptions]", ""));
-          madeChange = true;
-        } else if (line.includes("from sailpoint.v2024.models.dict[str,_object_export_import_options] import Dict[str, ObjectExportImportOptions]")) {
-          fileOut.push(line.replaceAll("from sailpoint.v2024.models.dict[str,_object_export_import_options] import Dict[str, ObjectExportImportOptions]", ""));
+        // Remove malformed dict-type imports generated for any sailpoint package
+        if (/from sailpoint(\.[a-z_]+)*\.models\.dict\[/.test(line)) {
           madeChange = true;
         } else {
           fileOut.push(line);

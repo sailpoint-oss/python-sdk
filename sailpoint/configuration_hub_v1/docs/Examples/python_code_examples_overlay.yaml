@@ -1,0 +1,501 @@
+- path: /configuration-hub/v1/deploys
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/configuration-hub#create-deploy-v1
+      source: |
+        from sailpoint.configuration_hub_v1.api.configuration_hub_v1_api import ConfigurationHubV1Api
+        from sailpoint.configuration_hub_v1.api_client import ApiClient
+        from sailpoint.configuration_hub_v1.models.deployrequest import Deployrequest
+        from sailpoint.configuration_hub_v1.models.deployresponse import Deployresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          deployrequest = '''{"draftId":"c9a38d8c-5edf-4182-9d39-f6581d3ebd05"}''' # Deployrequest | The deploy request body.
+          try:
+              # Create a deploy
+              new_deployrequest = Deployrequest.from_json(deployrequest)
+              results = ConfigurationHubV1Api(api_client).create_deploy_v1(deployrequest=new_deployrequest)
+              # Below is a request that includes all optional parameters
+              # results = ConfigurationHubV1Api(api_client).create_deploy_v1(new_deployrequest)
+              print("The response of ConfigurationHubV1Api->create_deploy_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ConfigurationHubV1Api->create_deploy_v1: %s\n" % e)
+- path: /configuration-hub/v1/object-mappings/{sourceOrg}
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/configuration-hub#create-object-mapping-v1
+      source: |
+        from sailpoint.configuration_hub_v1.api.configuration_hub_v1_api import ConfigurationHubV1Api
+        from sailpoint.configuration_hub_v1.api_client import ApiClient
+        from sailpoint.configuration_hub_v1.models.objectmappingrequest import Objectmappingrequest
+        from sailpoint.configuration_hub_v1.models.objectmappingresponse import Objectmappingresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          source_org = 'source-org' # str | The name of the source org. # str | The name of the source org.
+          objectmappingrequest = '''{"objectType":"GOVERNANCE_GROUP","jsonPath":"$.description","sourceValue":"Sample Governance Group","targetValue":"Sample Governance Group - Updated","enabled":true}''' # Objectmappingrequest | The object mapping request body.
+          try:
+              # Creates an object mapping
+              new_objectmappingrequest = Objectmappingrequest.from_json(objectmappingrequest)
+              results = ConfigurationHubV1Api(api_client).create_object_mapping_v1(source_org=source_org, objectmappingrequest=new_objectmappingrequest)
+              # Below is a request that includes all optional parameters
+              # results = ConfigurationHubV1Api(api_client).create_object_mapping_v1(source_org, new_objectmappingrequest)
+              print("The response of ConfigurationHubV1Api->create_object_mapping_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ConfigurationHubV1Api->create_object_mapping_v1: %s\n" % e)
+- path: /configuration-hub/v1/object-mappings/{sourceOrg}/bulk-create
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/configuration-hub#create-object-mappings-v1
+      source: |
+        from sailpoint.configuration_hub_v1.api.configuration_hub_v1_api import ConfigurationHubV1Api
+        from sailpoint.configuration_hub_v1.api_client import ApiClient
+        from sailpoint.configuration_hub_v1.models.objectmappingbulkcreaterequest import Objectmappingbulkcreaterequest
+        from sailpoint.configuration_hub_v1.models.objectmappingbulkcreateresponse import Objectmappingbulkcreateresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          source_org = 'source-org' # str | The name of the source org. # str | The name of the source org.
+          objectmappingbulkcreaterequest = '''{"newObjectsMappings":[{"objectType":"SOURCE","jsonPath":"$.name","sourceValue":"Original SOURCE Name","targetValue":"New SOURCE Name","enabled":true},{"objectType":"IDENTITY","jsonPath":"$.name","sourceValue":"Original IDENTITY Name","targetValue":"New IDENTITY Name ","enabled":true}]}''' # Objectmappingbulkcreaterequest | The bulk create object mapping request body.
+          try:
+              # Bulk creates object mappings
+              new_objectmappingbulkcreaterequest = Objectmappingbulkcreaterequest.from_json(objectmappingbulkcreaterequest)
+              results = ConfigurationHubV1Api(api_client).create_object_mappings_v1(source_org=source_org, objectmappingbulkcreaterequest=new_objectmappingbulkcreaterequest)
+              # Below is a request that includes all optional parameters
+              # results = ConfigurationHubV1Api(api_client).create_object_mappings_v1(source_org, new_objectmappingbulkcreaterequest)
+              print("The response of ConfigurationHubV1Api->create_object_mappings_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ConfigurationHubV1Api->create_object_mappings_v1: %s\n" % e)
+- path: /configuration-hub/v1/scheduled-actions
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/configuration-hub#create-scheduled-action-v1
+      source: |
+        from sailpoint.configuration_hub_v1.api.configuration_hub_v1_api import ConfigurationHubV1Api
+        from sailpoint.configuration_hub_v1.api_client import ApiClient
+        from sailpoint.configuration_hub_v1.models.scheduledactionpayload import Scheduledactionpayload
+        from sailpoint.configuration_hub_v1.models.scheduledactionresponse import Scheduledactionresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          scheduledactionpayload = '''{"jobType":"BACKUP","startTime":"2024-08-16T14:16:58.389Z","cronString":"0 0 * * * *","timeZoneId":"America/Chicago","content":{"name":"Daily Backup","backupOptions":{"includeTypes":["SOURCE","IDENTITY"],"objectOptions":{"SOURCE":{"includedNames":["Source1","Source2"]}}}}}''' # Scheduledactionpayload | The scheduled action creation request body.
+          try:
+              # Create scheduled action
+              new_scheduledactionpayload = Scheduledactionpayload.from_json(scheduledactionpayload)
+              results = ConfigurationHubV1Api(api_client).create_scheduled_action_v1(scheduledactionpayload=new_scheduledactionpayload)
+              # Below is a request that includes all optional parameters
+              # results = ConfigurationHubV1Api(api_client).create_scheduled_action_v1(new_scheduledactionpayload)
+              print("The response of ConfigurationHubV1Api->create_scheduled_action_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ConfigurationHubV1Api->create_scheduled_action_v1: %s\n" % e)
+- path: /configuration-hub/v1/backups/uploads
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/configuration-hub#create-uploaded-configuration-v1
+      source: |
+        from sailpoint.configuration_hub_v1.api.configuration_hub_v1_api import ConfigurationHubV1Api
+        from sailpoint.configuration_hub_v1.api_client import ApiClient
+        from sailpoint.configuration_hub_v1.models.backupresponse import Backupresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          data = None # bytearray | JSON file containing the objects to be imported. # bytearray | JSON file containing the objects to be imported.
+          name = 'name_example' # str | Name that will be assigned to the uploaded configuration file. # str | Name that will be assigned to the uploaded configuration file.
+          try:
+              # Upload a configuration
+              
+              results = ConfigurationHubV1Api(api_client).create_uploaded_configuration_v1(data=data, name=name)
+              # Below is a request that includes all optional parameters
+              # results = ConfigurationHubV1Api(api_client).create_uploaded_configuration_v1(data, name)
+              print("The response of ConfigurationHubV1Api->create_uploaded_configuration_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ConfigurationHubV1Api->create_uploaded_configuration_v1: %s\n" % e)
+- path: /configuration-hub/v1/backups/{id}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/configuration-hub#delete-backup-v1
+      source: |
+        from sailpoint.configuration_hub_v1.api.configuration_hub_v1_api import ConfigurationHubV1Api
+        from sailpoint.configuration_hub_v1.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '07659d7d-2cce-47c0-9e49-185787ee565a' # str | The id of the backup to delete. # str | The id of the backup to delete.
+          try:
+              # Delete a backup
+              
+              ConfigurationHubV1Api(api_client).delete_backup_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # ConfigurationHubV1Api(api_client).delete_backup_v1(id)
+          except Exception as e:
+              print("Exception when calling ConfigurationHubV1Api->delete_backup_v1: %s\n" % e)
+- path: /configuration-hub/v1/drafts/{id}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/configuration-hub#delete-draft-v1
+      source: |
+        from sailpoint.configuration_hub_v1.api.configuration_hub_v1_api import ConfigurationHubV1Api
+        from sailpoint.configuration_hub_v1.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '07659d7d-2cce-47c0-9e49-185787ee565a' # str | The id of the draft to delete. # str | The id of the draft to delete.
+          try:
+              # Delete a draft
+              
+              ConfigurationHubV1Api(api_client).delete_draft_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # ConfigurationHubV1Api(api_client).delete_draft_v1(id)
+          except Exception as e:
+              print("Exception when calling ConfigurationHubV1Api->delete_draft_v1: %s\n" % e)
+- path: /configuration-hub/v1/object-mappings/{sourceOrg}/{objectMappingId}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/configuration-hub#delete-object-mapping-v1
+      source: |
+        from sailpoint.configuration_hub_v1.api.configuration_hub_v1_api import ConfigurationHubV1Api
+        from sailpoint.configuration_hub_v1.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          source_org = 'source-org' # str | The name of the source org. # str | The name of the source org.
+          object_mapping_id = '3d6e0144-963f-4bd6-8d8d-d77b4e507ce4' # str | The id of the object mapping to be deleted. # str | The id of the object mapping to be deleted.
+          try:
+              # Deletes an object mapping
+              
+              ConfigurationHubV1Api(api_client).delete_object_mapping_v1(source_org=source_org, object_mapping_id=object_mapping_id)
+              # Below is a request that includes all optional parameters
+              # ConfigurationHubV1Api(api_client).delete_object_mapping_v1(source_org, object_mapping_id)
+          except Exception as e:
+              print("Exception when calling ConfigurationHubV1Api->delete_object_mapping_v1: %s\n" % e)
+- path: /configuration-hub/v1/scheduled-actions/{id}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/configuration-hub#delete-scheduled-action-v1
+      source: |
+        from sailpoint.configuration_hub_v1.api.configuration_hub_v1_api import ConfigurationHubV1Api
+        from sailpoint.configuration_hub_v1.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde' # str | The ID of the scheduled action. # str | The ID of the scheduled action.
+          try:
+              # Delete scheduled action
+              
+              ConfigurationHubV1Api(api_client).delete_scheduled_action_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # ConfigurationHubV1Api(api_client).delete_scheduled_action_v1(id)
+          except Exception as e:
+              print("Exception when calling ConfigurationHubV1Api->delete_scheduled_action_v1: %s\n" % e)
+- path: /configuration-hub/v1/backups/uploads/{id}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/configuration-hub#delete-uploaded-configuration-v1
+      source: |
+        from sailpoint.configuration_hub_v1.api.configuration_hub_v1_api import ConfigurationHubV1Api
+        from sailpoint.configuration_hub_v1.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '3d0fe04b-57df-4a46-a83b-8f04b0f9d10b' # str | The id of the uploaded configuration. # str | The id of the uploaded configuration.
+          try:
+              # Delete an uploaded configuration
+              
+              ConfigurationHubV1Api(api_client).delete_uploaded_configuration_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # ConfigurationHubV1Api(api_client).delete_uploaded_configuration_v1(id)
+          except Exception as e:
+              print("Exception when calling ConfigurationHubV1Api->delete_uploaded_configuration_v1: %s\n" % e)
+- path: /configuration-hub/v1/deploys/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/configuration-hub#get-deploy-v1
+      source: |
+        from sailpoint.configuration_hub_v1.api.configuration_hub_v1_api import ConfigurationHubV1Api
+        from sailpoint.configuration_hub_v1.api_client import ApiClient
+        from sailpoint.configuration_hub_v1.models.deployresponse import Deployresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '3d0fe04b-57df-4a46-a83b-8f04b0f9d10b' # str | The id of the deploy. # str | The id of the deploy.
+          try:
+              # Get a deploy
+              
+              results = ConfigurationHubV1Api(api_client).get_deploy_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = ConfigurationHubV1Api(api_client).get_deploy_v1(id)
+              print("The response of ConfigurationHubV1Api->get_deploy_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ConfigurationHubV1Api->get_deploy_v1: %s\n" % e)
+- path: /configuration-hub/v1/object-mappings/{sourceOrg}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/configuration-hub#get-object-mappings-v1
+      source: |
+        from sailpoint.configuration_hub_v1.api.configuration_hub_v1_api import ConfigurationHubV1Api
+        from sailpoint.configuration_hub_v1.api_client import ApiClient
+        from sailpoint.configuration_hub_v1.models.objectmappingresponse import Objectmappingresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          source_org = 'source-org' # str | The name of the source org. # str | The name of the source org.
+          try:
+              # Gets list of object mappings
+              
+              results = ConfigurationHubV1Api(api_client).get_object_mappings_v1(source_org=source_org)
+              # Below is a request that includes all optional parameters
+              # results = ConfigurationHubV1Api(api_client).get_object_mappings_v1(source_org)
+              print("The response of ConfigurationHubV1Api->get_object_mappings_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ConfigurationHubV1Api->get_object_mappings_v1: %s\n" % e)
+- path: /configuration-hub/v1/backups/uploads/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/configuration-hub#get-uploaded-configuration-v1
+      source: |
+        from sailpoint.configuration_hub_v1.api.configuration_hub_v1_api import ConfigurationHubV1Api
+        from sailpoint.configuration_hub_v1.api_client import ApiClient
+        from sailpoint.configuration_hub_v1.models.backupresponse import Backupresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '3d0fe04b-57df-4a46-a83b-8f04b0f9d10b' # str | The id of the uploaded configuration. # str | The id of the uploaded configuration.
+          try:
+              # Get an uploaded configuration
+              
+              results = ConfigurationHubV1Api(api_client).get_uploaded_configuration_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = ConfigurationHubV1Api(api_client).get_uploaded_configuration_v1(id)
+              print("The response of ConfigurationHubV1Api->get_uploaded_configuration_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ConfigurationHubV1Api->get_uploaded_configuration_v1: %s\n" % e)
+- path: /configuration-hub/v1/backups
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/configuration-hub#list-backups-v1
+      source: |
+        from sailpoint.configuration_hub_v1.api.configuration_hub_v1_api import ConfigurationHubV1Api
+        from sailpoint.configuration_hub_v1.api_client import ApiClient
+        from sailpoint.configuration_hub_v1.models.backupresponse import Backupresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          filters = 'status eq \"COMPLETE\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq* (optional)
+          try:
+              # List backups
+              
+              results = ConfigurationHubV1Api(api_client).list_backups_v1()
+              # Below is a request that includes all optional parameters
+              # results = ConfigurationHubV1Api(api_client).list_backups_v1(filters)
+              print("The response of ConfigurationHubV1Api->list_backups_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ConfigurationHubV1Api->list_backups_v1: %s\n" % e)
+- path: /configuration-hub/v1/deploys
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/configuration-hub#list-deploys-v1
+      source: |
+        from sailpoint.configuration_hub_v1.api.configuration_hub_v1_api import ConfigurationHubV1Api
+        from sailpoint.configuration_hub_v1.api_client import ApiClient
+        from sailpoint.configuration_hub_v1.models.list_deploys_v1200_response import ListDeploysV1200Response
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          try:
+              # List deploys
+              
+              results = ConfigurationHubV1Api(api_client).list_deploys_v1()
+              # Below is a request that includes all optional parameters
+              # results = ConfigurationHubV1Api(api_client).list_deploys_v1()
+              print("The response of ConfigurationHubV1Api->list_deploys_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ConfigurationHubV1Api->list_deploys_v1: %s\n" % e)
+- path: /configuration-hub/v1/drafts
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/configuration-hub#list-drafts-v1
+      source: |
+        from sailpoint.configuration_hub_v1.api.configuration_hub_v1_api import ConfigurationHubV1Api
+        from sailpoint.configuration_hub_v1.api_client import ApiClient
+        from sailpoint.configuration_hub_v1.models.draftresponse import Draftresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          filters = 'status eq \"COMPLETE\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*  **approvalStatus**: *eq* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq*  **approvalStatus**: *eq* (optional)
+          try:
+              # List drafts
+              
+              results = ConfigurationHubV1Api(api_client).list_drafts_v1()
+              # Below is a request that includes all optional parameters
+              # results = ConfigurationHubV1Api(api_client).list_drafts_v1(filters)
+              print("The response of ConfigurationHubV1Api->list_drafts_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ConfigurationHubV1Api->list_drafts_v1: %s\n" % e)
+- path: /configuration-hub/v1/scheduled-actions
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/configuration-hub#list-scheduled-actions-v1
+      source: |
+        from sailpoint.configuration_hub_v1.api.configuration_hub_v1_api import ConfigurationHubV1Api
+        from sailpoint.configuration_hub_v1.api_client import ApiClient
+        from sailpoint.configuration_hub_v1.models.scheduledactionresponse import Scheduledactionresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          try:
+              # List scheduled actions
+              
+              results = ConfigurationHubV1Api(api_client).list_scheduled_actions_v1()
+              # Below is a request that includes all optional parameters
+              # results = ConfigurationHubV1Api(api_client).list_scheduled_actions_v1()
+              print("The response of ConfigurationHubV1Api->list_scheduled_actions_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ConfigurationHubV1Api->list_scheduled_actions_v1: %s\n" % e)
+- path: /configuration-hub/v1/backups/uploads
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/configuration-hub#list-uploaded-configurations-v1
+      source: |
+        from sailpoint.configuration_hub_v1.api.configuration_hub_v1_api import ConfigurationHubV1Api
+        from sailpoint.configuration_hub_v1.api_client import ApiClient
+        from sailpoint.configuration_hub_v1.models.backupresponse import Backupresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          filters = 'status eq \"COMPLETE\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq* (optional)
+          try:
+              # List uploaded configurations
+              
+              results = ConfigurationHubV1Api(api_client).list_uploaded_configurations_v1()
+              # Below is a request that includes all optional parameters
+              # results = ConfigurationHubV1Api(api_client).list_uploaded_configurations_v1(filters)
+              print("The response of ConfigurationHubV1Api->list_uploaded_configurations_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ConfigurationHubV1Api->list_uploaded_configurations_v1: %s\n" % e)
+- path: /configuration-hub/v1/object-mappings/{sourceOrg}/bulk-patch
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/configuration-hub#update-object-mappings-v1
+      source: |
+        from sailpoint.configuration_hub_v1.api.configuration_hub_v1_api import ConfigurationHubV1Api
+        from sailpoint.configuration_hub_v1.api_client import ApiClient
+        from sailpoint.configuration_hub_v1.models.objectmappingbulkpatchrequest import Objectmappingbulkpatchrequest
+        from sailpoint.configuration_hub_v1.models.objectmappingbulkpatchresponse import Objectmappingbulkpatchresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          source_org = 'source-org' # str | The name of the source org. # str | The name of the source org.
+          objectmappingbulkpatchrequest = '''{"patches":{"603b1a61-d03d-4ed1-864f-a508fbd1995d":[{"op":"replace","path":"/enabled","value":true}],"00bece34-f50d-4227-8878-76f620b5a971":[{"op":"replace","path":"/targetValue","value":"New Target Value"}]}}''' # Objectmappingbulkpatchrequest | The object mapping request body.
+          try:
+              # Bulk updates object mappings
+              new_objectmappingbulkpatchrequest = Objectmappingbulkpatchrequest.from_json(objectmappingbulkpatchrequest)
+              results = ConfigurationHubV1Api(api_client).update_object_mappings_v1(source_org=source_org, objectmappingbulkpatchrequest=new_objectmappingbulkpatchrequest)
+              # Below is a request that includes all optional parameters
+              # results = ConfigurationHubV1Api(api_client).update_object_mappings_v1(source_org, new_objectmappingbulkpatchrequest)
+              print("The response of ConfigurationHubV1Api->update_object_mappings_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ConfigurationHubV1Api->update_object_mappings_v1: %s\n" % e)
+- path: /configuration-hub/v1/scheduled-actions/{id}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/configuration-hub#update-scheduled-action-v1
+      source: |
+        from sailpoint.configuration_hub_v1.api.configuration_hub_v1_api import ConfigurationHubV1Api
+        from sailpoint.configuration_hub_v1.api_client import ApiClient
+        from sailpoint.configuration_hub_v1.models.jsonpatch import Jsonpatch
+        from sailpoint.configuration_hub_v1.models.scheduledactionresponse import Scheduledactionresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde' # str | The ID of the scheduled action. # str | The ID of the scheduled action.
+          jsonpatch = '''[{"op":"replace","path":"/content/name","value":"Updated Backup Name"},{"op":"replace","path":"/cronString","value":"0 0 9 * * ?"}]''' # Jsonpatch | The JSON Patch document containing the changes to apply to the scheduled action.
+          try:
+              # Update scheduled action
+              new_jsonpatch = Jsonpatch.from_json(jsonpatch)
+              results = ConfigurationHubV1Api(api_client).update_scheduled_action_v1(id=id, jsonpatch=new_jsonpatch)
+              # Below is a request that includes all optional parameters
+              # results = ConfigurationHubV1Api(api_client).update_scheduled_action_v1(id, new_jsonpatch)
+              print("The response of ConfigurationHubV1Api->update_scheduled_action_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ConfigurationHubV1Api->update_scheduled_action_v1: %s\n" % e)
+

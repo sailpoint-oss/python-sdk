@@ -1,0 +1,55 @@
+- path: /icons/v1/{objectType}/{objectId}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/icons#delete-icon-v1
+      source: |
+        from sailpoint.icons_v1.api.icons_v1_api import IconsV1Api
+        from sailpoint.icons_v1.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          object_type = 'application' # str | Object type. Available options ['application'] # str | Object type. Available options ['application']
+          object_id = 'a291e870-48c3-4953-b656-fb5ce2a93169' # str | Object id. # str | Object id.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Delete an icon
+              
+              IconsV1Api(api_client).delete_icon_v1(object_type=object_type, object_id=object_id)
+              # Below is a request that includes all optional parameters
+              # IconsV1Api(api_client).delete_icon_v1(object_type, object_id, x_sail_point_experimental)
+          except Exception as e:
+              print("Exception when calling IconsV1Api->delete_icon_v1: %s\n" % e)
+- path: /icons/v1/{objectType}/{objectId}
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/icons#set-icon-v1
+      source: |
+        from sailpoint.icons_v1.api.icons_v1_api import IconsV1Api
+        from sailpoint.icons_v1.api_client import ApiClient
+        from sailpoint.icons_v1.models.set_icon_v1200_response import SetIconV1200Response
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          object_type = 'application' # str | Object type. Available options ['application'] # str | Object type. Available options ['application']
+          object_id = 'a291e870-48c3-4953-b656-fb5ce2a93169' # str | Object id. # str | Object id.
+          image = None # bytearray | file with icon. Allowed mime-types ['image/png', 'image/jpeg'] # bytearray | file with icon. Allowed mime-types ['image/png', 'image/jpeg']
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Update an icon
+              
+              results = IconsV1Api(api_client).set_icon_v1(object_type=object_type, object_id=object_id, image=image)
+              # Below is a request that includes all optional parameters
+              # results = IconsV1Api(api_client).set_icon_v1(object_type, object_id, image, x_sail_point_experimental)
+              print("The response of IconsV1Api->set_icon_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling IconsV1Api->set_icon_v1: %s\n" % e)
+

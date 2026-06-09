@@ -1,0 +1,79 @@
+- path: /jit-activations/v1/activate
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/jit-activations#start-activate-workflow-v1
+      source: |
+        from sailpoint.jit_activations_v1.api.jit_activations_v1_api import JITActivationsV1Api
+        from sailpoint.jit_activations_v1.api_client import ApiClient
+        from sailpoint.jit_activations_v1.models.jitactivationactivaterequest import Jitactivationactivaterequest
+        from sailpoint.jit_activations_v1.models.jitactivationactivateresponse import Jitactivationactivateresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          jitactivationactivaterequest = '''sailpoint.jit_activations_v1.Jitactivationactivaterequest()''' # Jitactivationactivaterequest | 
+          try:
+              # Start JIT activation workflow
+              new_jitactivationactivaterequest = Jitactivationactivaterequest.from_json(jitactivationactivaterequest)
+              results = JITActivationsV1Api(api_client).start_activate_workflow_v1(jitactivationactivaterequest=new_jitactivationactivaterequest)
+              # Below is a request that includes all optional parameters
+              # results = JITActivationsV1Api(api_client).start_activate_workflow_v1(new_jitactivationactivaterequest)
+              print("The response of JITActivationsV1Api->start_activate_workflow_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling JITActivationsV1Api->start_activate_workflow_v1: %s\n" % e)
+- path: /jit-activations/v1/deactivate
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/jit-activations#start-deactivate-workflow-v1
+      source: |
+        from sailpoint.jit_activations_v1.api.jit_activations_v1_api import JITActivationsV1Api
+        from sailpoint.jit_activations_v1.api_client import ApiClient
+        from sailpoint.jit_activations_v1.models.jitactivationdeactivaterequest import Jitactivationdeactivaterequest
+        from sailpoint.jit_activations_v1.models.jitactivationdeactivateresponse import Jitactivationdeactivateresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          jitactivationdeactivaterequest = '''sailpoint.jit_activations_v1.Jitactivationdeactivaterequest()''' # Jitactivationdeactivaterequest | 
+          try:
+              # Deactivate JIT activation workflow
+              new_jitactivationdeactivaterequest = Jitactivationdeactivaterequest.from_json(jitactivationdeactivaterequest)
+              results = JITActivationsV1Api(api_client).start_deactivate_workflow_v1(jitactivationdeactivaterequest=new_jitactivationdeactivaterequest)
+              # Below is a request that includes all optional parameters
+              # results = JITActivationsV1Api(api_client).start_deactivate_workflow_v1(new_jitactivationdeactivaterequest)
+              print("The response of JITActivationsV1Api->start_deactivate_workflow_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling JITActivationsV1Api->start_deactivate_workflow_v1: %s\n" % e)
+- path: /jit-activations/v1/extend
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/jit-activations#start-extend-workflow-v1
+      source: |
+        from sailpoint.jit_activations_v1.api.jit_activations_v1_api import JITActivationsV1Api
+        from sailpoint.jit_activations_v1.api_client import ApiClient
+        from sailpoint.jit_activations_v1.models.jitactivationextendrequest import Jitactivationextendrequest
+        from sailpoint.jit_activations_v1.models.jitactivationextendresponse import Jitactivationextendresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          jitactivationextendrequest = '''sailpoint.jit_activations_v1.Jitactivationextendrequest()''' # Jitactivationextendrequest | 
+          try:
+              # Extend JIT activation workflow
+              new_jitactivationextendrequest = Jitactivationextendrequest.from_json(jitactivationextendrequest)
+              results = JITActivationsV1Api(api_client).start_extend_workflow_v1(jitactivationextendrequest=new_jitactivationextendrequest)
+              # Below is a request that includes all optional parameters
+              # results = JITActivationsV1Api(api_client).start_extend_workflow_v1(new_jitactivationextendrequest)
+              print("The response of JITActivationsV1Api->start_extend_workflow_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling JITActivationsV1Api->start_extend_workflow_v1: %s\n" % e)
+

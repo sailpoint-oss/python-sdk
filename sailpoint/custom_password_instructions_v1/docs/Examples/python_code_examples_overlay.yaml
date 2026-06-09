@@ -1,0 +1,81 @@
+- path: /custom-password-instructions/v1
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/custom-password-instructions#create-custom-password-instructions-v1
+      source: |
+        from sailpoint.custom_password_instructions_v1.api.custom_password_instructions_v1_api import CustomPasswordInstructionsV1Api
+        from sailpoint.custom_password_instructions_v1.api_client import ApiClient
+        from sailpoint.custom_password_instructions_v1.models.custompasswordinstruction import Custompasswordinstruction
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          custompasswordinstruction = '''{"pageId":"reset-password:enter-password","pageContent":"See company password policies for details by clicking <a href=\"url\">here</a>"}''' # Custompasswordinstruction | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Create custom password instructions
+              new_custompasswordinstruction = Custompasswordinstruction.from_json(custompasswordinstruction)
+              results = CustomPasswordInstructionsV1Api(api_client).create_custom_password_instructions_v1(custompasswordinstruction=new_custompasswordinstruction)
+              # Below is a request that includes all optional parameters
+              # results = CustomPasswordInstructionsV1Api(api_client).create_custom_password_instructions_v1(new_custompasswordinstruction, x_sail_point_experimental)
+              print("The response of CustomPasswordInstructionsV1Api->create_custom_password_instructions_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling CustomPasswordInstructionsV1Api->create_custom_password_instructions_v1: %s\n" % e)
+- path: /custom-password-instructions/v1/{pageId}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/custom-password-instructions#delete-custom-password-instructions-v1
+      source: |
+        from sailpoint.custom_password_instructions_v1.api.custom_password_instructions_v1_api import CustomPasswordInstructionsV1Api
+        from sailpoint.custom_password_instructions_v1.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          page_id = 'mfa:select' # str | The page ID of custom password instructions to delete. # str | The page ID of custom password instructions to delete.
+          locale = 'locale_example' # str | The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\". (optional) # str | The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\". (optional)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Delete custom password instructions by page id
+              
+              CustomPasswordInstructionsV1Api(api_client).delete_custom_password_instructions_v1(page_id=page_id)
+              # Below is a request that includes all optional parameters
+              # CustomPasswordInstructionsV1Api(api_client).delete_custom_password_instructions_v1(page_id, locale, x_sail_point_experimental)
+          except Exception as e:
+              print("Exception when calling CustomPasswordInstructionsV1Api->delete_custom_password_instructions_v1: %s\n" % e)
+- path: /custom-password-instructions/v1/{pageId}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/custom-password-instructions#get-custom-password-instructions-v1
+      source: |
+        from sailpoint.custom_password_instructions_v1.api.custom_password_instructions_v1_api import CustomPasswordInstructionsV1Api
+        from sailpoint.custom_password_instructions_v1.api_client import ApiClient
+        from sailpoint.custom_password_instructions_v1.models.custompasswordinstruction import Custompasswordinstruction
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          page_id = 'mfa:select' # str | The page ID of custom password instructions to query. # str | The page ID of custom password instructions to query.
+          locale = 'locale_example' # str | The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\". (optional) # str | The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\". (optional)
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get custom password instructions by page id
+              
+              results = CustomPasswordInstructionsV1Api(api_client).get_custom_password_instructions_v1(page_id=page_id)
+              # Below is a request that includes all optional parameters
+              # results = CustomPasswordInstructionsV1Api(api_client).get_custom_password_instructions_v1(page_id, locale, x_sail_point_experimental)
+              print("The response of CustomPasswordInstructionsV1Api->get_custom_password_instructions_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling CustomPasswordInstructionsV1Api->get_custom_password_instructions_v1: %s\n" % e)
+

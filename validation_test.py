@@ -1,95 +1,118 @@
 from typing import Any
 import unittest
 
-import sailpoint.beta
-import sailpoint.v3
-import sailpoint.v2024
-import sailpoint.v2025
-import sailpoint.v2026
+
+# ---------------------------------------------------------------------------
+# V1 partition imports
+# ---------------------------------------------------------------------------
+# These imports require the versioned SDK to be built first:
+#   node sdk-resources/build-versioned-sdk.js <path-to-apis>
+#
+# Each partition lives under sailpoint/{partition}_v1/.
+
+try:
+    from sailpoint import (
+        ApiClient,
+        AccountsApi, SearchApi, TransformsApi,
+        ConnectorsApi, SourcesApi, IdentityProfilesApi,
+        IdentitiesApi, TaskManagementApi,
+    )
+    HAS_V1 = True
+except ImportError:
+    HAS_V1 = False
+
 from sailpoint.configuration import Configuration, ConfigurationParams
 from sailpoint.paginator import Paginator
-from sailpoint.v3.models.search import Search
 
 
-class TestPythonSDK(unittest.TestCase):
+class TestPythonSDKV1(unittest.TestCase):
+    """Tests using the new per-partition V1 packages."""
 
-    configuration = Configuration()
-    v3_api_client = sailpoint.v3.ApiClient(configuration)
-    beta_api_client = sailpoint.beta.ApiClient(configuration)
-    configuration.experimental = True
-    v2024_api_client = sailpoint.v2024.ApiClient(configuration)
-    v2025_api_client = sailpoint.v2025.ApiClient(configuration)
-    v2026_api_client = sailpoint.v2026.ApiClient(configuration)
+    @classmethod
+    def setUpClass(cls):
+        if not HAS_V1:
+            raise unittest.SkipTest(
+                "V1 partition packages not built yet. "
+                "Run: node sdk-resources/build-versioned-sdk.js <path-to-apis>"
+            )
 
+    def setUp(self):
+        self.configuration = Configuration()
+        self.api_client = ApiClient(self.configuration)
+
+    def _accounts_client(self):
+        return self.api_client
+
+    def _search_client(self):
+        return self.api_client
+
+    def _transforms_client(self):
+        return self.api_client
 
     def test_manual_configuration(self):
-        configurationParams = ConfigurationParams()
-        configurationParams.base_url = "https://localhost:8080"
-        configurationParams.client_id = "client_id"
-        configurationParams.client_secret = "client_secret"
-        configuration = Configuration(configurationParams)
+        params = ConfigurationParams()
+        params.base_url = "https://localhost:8080"
+        params.client_id = "client_id"
+        params.client_secret = "client_secret"
+        cfg = Configuration(params)
 
-        self.assertEqual(configuration.base_url, "https://localhost:8080")
-        self.assertEqual(configuration.client_id, "client_id")
-        self.assertEqual(configuration.client_secret, "client_secret")
+        self.assertEqual(cfg.base_url, "https://localhost:8080")
+        self.assertEqual(cfg.client_id, "client_id")
+        self.assertEqual(cfg.client_secret, "client_secret")
 
-    def test_v3_accounts(self):
-        accounts = sailpoint.v3.AccountsApi(self.v3_api_client).list_accounts_with_http_info()
-        self.assertIsNotNone(accounts.data)
-        self.assertEqual(200, accounts.status_code)
+    def test_accounts_v1(self):
+        result = AccountsApi(self._accounts_client()).list_accounts_v1_with_http_info()
+        self.assertIsNotNone(result.data)
+        self.assertEqual(200, result.status_code)
 
-    def test_search_pagination(self):
-        search = Search()
-        search.indices = ['identities']
-        search.query = { 'query': '*' }
-        search.sort = ['-name']
+    def test_list_transforms_v1(self):
+        result = TransformsApi(self._transforms_client()).list_transforms_v1_with_http_info()
+        self.assertIsNotNone(result.data)
+        self.assertEqual(200, result.status_code)
 
-        search_results = Paginator.paginate_search_with_http_info(sailpoint.v3.SearchApi(self.v3_api_client), search, 10, 100)
-
-        self.assertIsNotNone(search_results)
-        self.assertEqual(100,len(search_results.data))
-        self.assertEqual(200,search_results.status_code)
-
-    def test_paginate_stream_search(self):
-        """Stream search yields same count as paginate_search when fully consumed."""
+    def test_search_pagination_v1(self):
+        from sailpoint.search_v1.models.search import Search
         search = Search()
         search.indices = ['identities']
         search.query = {'query': '*'}
         search.sort = ['-name']
 
-        stream = Paginator.paginate_stream_search(
-            sailpoint.v3.SearchApi(self.v3_api_client), search, 10, 100
+        results = Paginator.paginate_search_with_http_info(
+            SearchApi(self.api_client), search, 10, 100
         )
-        items = list(stream)
+        self.assertIsNotNone(results)
+        self.assertEqual(100, len(results.data))
+        self.assertEqual(200, results.status_code)
+
+    def test_paginate_stream_search_v1(self):
+        from sailpoint.search_v1.models.search import Search
+        search = Search()
+        search.indices = ['identities']
+        search.query = {'query': '*'}
+        search.sort = ['-name']
+
+        items = list(Paginator.paginate_stream_search(
+            SearchApi(self.api_client), search, 10, 100
+        ))
         self.assertEqual(100, len(items))
 
-    def test_list_transforms(self):
-        transforms = sailpoint.v3.TransformsApi(self.v3_api_client).list_transforms_with_http_info()
-        self.assertIsNotNone(transforms.data)
-        self.assertEqual(200, transforms.status_code)
-    
-    def test_pagination(self):
-        accounts = Paginator.paginate(sailpoint.v3.AccountsApi(self.v3_api_client).list_accounts_with_http_info, 100, limit=10)
+    def test_pagination_v1(self):
+        accounts = Paginator.paginate(
+            AccountsApi(self.api_client).list_accounts_v1_with_http_info, 100, limit=10
+        )
         self.assertIsNotNone(accounts.data)
         self.assertEqual(100, len(accounts.data))
         self.assertEqual(200, accounts.status_code)
 
-    def test_paginate_stream(self):
-        """Stream yields same count as paginate when fully consumed."""
-        stream = Paginator.paginate_stream(
-            sailpoint.v3.AccountsApi(self.v3_api_client).list_accounts_with_http_info,
-            100,
-            limit=10
-        )
-        items = list(stream)
+    def test_paginate_stream_v1(self):
+        items = list(Paginator.paginate_stream(
+            AccountsApi(self.api_client).list_accounts_v1_with_http_info, 100, limit=10
+        ))
         self.assertEqual(100, len(items))
 
-    def test_paginate_stream_consumed_incrementally(self):
-        """Stream yields items as they come; consuming first N then stopping does not require full fetch."""
+    def test_paginate_stream_consumed_incrementally_v1(self):
         stream = Paginator.paginate_stream(
-            sailpoint.v3.AccountsApi(self.v3_api_client).list_accounts_with_http_info,
-            100,
-            limit=2
+            AccountsApi(self.api_client).list_accounts_v1_with_http_info, 100, limit=2
         )
         first_three = []
         for i, item in enumerate(stream):
@@ -99,92 +122,101 @@ class TestPythonSDK(unittest.TestCase):
         self.assertGreaterEqual(len(first_three), 1)
         self.assertLessEqual(len(first_three), 3)
 
-    def test_paginate_stream_with_model_v2025(self):
-        """When model=Account is passed, yielded items are typed (and are Account instances)."""
-        from sailpoint.v2025.models.account import Account
-
+    def test_paginate_stream_with_model_v1(self):
+        from sailpoint.accounts_v1.models.account import Account
         stream = Paginator.paginate_stream(
-            sailpoint.v2025.AccountsApi(self.v2025_api_client).list_accounts_with_http_info,
-            10,
-            limit=5,
-            model=Account
+            AccountsApi(self.api_client).list_accounts_v1_with_http_info,
+            10, limit=5, model=Account
         )
         for item in stream:
             self.assertIsInstance(item, Account)
-            break  # at least one item has correct type
+            break
 
-    def test_paginate_stream_with_http_info(self):
-        """Yields (item, response) tuples; every tuple carries the response from its page."""
-        stream = Paginator.paginate_stream_with_http_info(
-            sailpoint.v3.AccountsApi(self.v3_api_client).list_accounts_with_http_info,
-            100,
-            limit=10
-        )
+    def test_paginate_stream_with_http_info_v1(self):
         items = []
-        for item, response in stream:
+        for item, response in Paginator.paginate_stream_with_http_info(
+            AccountsApi(self.api_client).list_accounts_v1_with_http_info, 100, limit=10
+        ):
             self.assertEqual(200, response.status_code)
             items.append(item)
         self.assertEqual(100, len(items))
 
-    def test_paginate_stream_search_with_http_info(self):
-        """Yields (item, response) tuples; every tuple carries the response from its page."""
+    def test_paginate_stream_search_with_http_info_v1(self):
+        from sailpoint.search_v1.models.search import Search
         search = Search()
         search.indices = ['identities']
         search.query = {'query': '*'}
         search.sort = ['-name']
 
-        stream = Paginator.paginate_stream_search_with_http_info(
-            sailpoint.v3.SearchApi(self.v3_api_client), search, 10, 100
-        )
         items = []
-        for item, response in stream:
+        for item, response in Paginator.paginate_stream_search_with_http_info(
+            SearchApi(self.api_client), search, 10, 100
+        ):
             self.assertEqual(200, response.status_code)
             items.append(item)
         self.assertEqual(100, len(items))
 
-    def test_list_accounts_beta(self):
-        accounts = sailpoint.beta.AccountsApi(self.beta_api_client).list_accounts_with_http_info()
-        self.assertIsNotNone(accounts.data)
-        self.assertEqual(200, accounts.status_code)
-    
-    def test_list_connectors_beta(self):
-        connectors = sailpoint.beta.ConnectorsApi(self.beta_api_client).get_connector_list_with_http_info()
-        self.assertIsNotNone(connectors.data)
-        self.assertEqual(200, connectors.status_code)
-    
-    def test_list_sources_beta(self):
-        sources = sailpoint.beta.SourcesApi(self.beta_api_client).list_sources_with_http_info()
-        self.assertIsNotNone(sources.data)
-        self.assertEqual(200, sources.status_code)
-    
-    def test_pagination_with_beta_endpoint(self):
-        identity_profiles = Paginator.paginate(sailpoint.beta.IdentityProfilesApi(self.beta_api_client).list_identity_profiles_with_http_info, 2, limit=1)
-        self.assertIsNotNone(identity_profiles.data)
-        self.assertEqual(200, identity_profiles.status_code)
-        self.assertEqual(2, len(identity_profiles.data))
-    
-    def test_list_identities_with_v2024_endpoint(self):
-        identities = sailpoint.v2024.IdentitiesApi(self.v2024_api_client).list_identities_with_http_info()
-        self.assertIsNotNone(identities.data)
-        self.assertEqual(200, identities.status_code)
+    def test_list_connectors_v1(self):
+        result = ConnectorsApi(self.api_client).get_connector_list_v1_with_http_info()
+        self.assertIsNotNone(result.data)
+        self.assertEqual(200, result.status_code)
 
-    def test_list_identities_with_v2026_endpoint(self):
-        tasks = sailpoint.v2026.TaskManagementApi(self.v2026_api_client).get_task_status_list_with_http_info()
-        self.assertIsNotNone(tasks.data)
-        self.assertEqual(200, tasks.status_code)
+    def test_list_sources_v1(self):
+        result = SourcesApi(self.api_client).list_sources_v1_with_http_info()
+        self.assertIsNotNone(result.data)
+        self.assertEqual(200, result.status_code)
+
+    def test_list_identity_profiles_v1(self):
+        result = Paginator.paginate(
+            IdentityProfilesApi(self.api_client).list_identity_profiles_v1_with_http_info,
+            2, limit=1
+        )
+        self.assertIsNotNone(result.data)
+        self.assertEqual(200, result.status_code)
+        self.assertEqual(2, len(result.data))
+
+    def test_list_identities_v1(self):
+        result = IdentitiesApi(self.api_client).list_identities_v1_with_http_info()
+        self.assertIsNotNone(result.data)
+        self.assertEqual(200, result.status_code)
+
+    def test_task_management_v1(self):
+        result = TaskManagementApi(self.api_client).get_task_status_list_v1_with_http_info()
+        self.assertIsNotNone(result.data)
+        self.assertEqual(200, result.status_code)
+
+    def test_sailpoint_namespace(self):
+        """SailPoint namespace exposes resource-named API classes (no version in name)."""
+        from sailpoint import SailPoint, AccountsApi, TransformsApi
+        self.assertTrue(hasattr(SailPoint, "AccountsApi"))
+        self.assertTrue(hasattr(SailPoint, "TransformsApi"))
+        self.assertIsNotNone(AccountsApi)
+        self.assertIsNotNone(TransformsApi)
+        # Versioned classes are still importable directly from the partition sub-package
+        from sailpoint.accounts_v1 import AccountsV1Api
+        from sailpoint.transforms_v1 import TransformsV1Api
+        self.assertIsNotNone(AccountsV1Api)
+        self.assertIsNotNone(TransformsV1Api)
 
 
-class TestLenientEnumsV2025(unittest.TestCase):
+class TestLenientEnumsV1(unittest.TestCase):
     """
     Validate that enum refs use Union[EnumType, str] so unknown values from the API
     are accepted as plain strings (lenient enum validation).
-    Uses RequestedItemStatus and RequestedItemStatusRequestState as the main example.
     """
 
+    @classmethod
+    def setUpClass(cls):
+        if not HAS_V1:
+            raise unittest.SkipTest(
+                "V1 partition packages not built yet. "
+                "Run: node sdk-resources/build-versioned-sdk.js <path-to-apis>"
+            )
+
     def test_requested_item_status_accepts_known_state_enum(self):
-        """Known state value is coerced to RequestedItemStatusRequestState enum member."""
-        from sailpoint.v2025.models.requested_item_status import RequestedItemStatus
-        from sailpoint.v2025.models.requested_item_status_request_state import RequestedItemStatusRequestState
+        """Known state value is coerced to the RequestedItemStatusRequestState enum member."""
+        from sailpoint.access_requests_v1.models.requested_item_status import RequestedItemStatus
+        from sailpoint.access_requests_v1.models.requested_item_status_request_state import RequestedItemStatusRequestState
 
         obj = RequestedItemStatus.model_validate({"state": "EXECUTING"})
         self.assertIsNotNone(obj.state)
@@ -192,7 +224,7 @@ class TestLenientEnumsV2025(unittest.TestCase):
 
     def test_requested_item_status_accepts_unknown_state_as_str(self):
         """Unknown state value is accepted as plain str (lenient enum)."""
-        from sailpoint.v2025.models.requested_item_status import RequestedItemStatus
+        from sailpoint.access_requests_v1.models.requested_item_status import RequestedItemStatus
 
         unknown_state = "FUTURE_STATE_NOT_IN_SPEC"
         obj = RequestedItemStatus.model_validate({"state": unknown_state})
@@ -202,8 +234,8 @@ class TestLenientEnumsV2025(unittest.TestCase):
 
     def test_requested_item_status_accepts_known_request_type_enum(self):
         """Known request_type value is coerced to AccessRequestType enum member."""
-        from sailpoint.v2025.models.requested_item_status import RequestedItemStatus
-        from sailpoint.v2025.models.access_request_type import AccessRequestType
+        from sailpoint.access_requests_v1.models.requested_item_status import RequestedItemStatus
+        from sailpoint.access_requests_v1.models.access_request_type import AccessRequestType
 
         obj = RequestedItemStatus.model_validate({"requestType": "GRANT_ACCESS"})
         self.assertIsNotNone(obj.request_type)
@@ -211,7 +243,7 @@ class TestLenientEnumsV2025(unittest.TestCase):
 
     def test_requested_item_status_accepts_unknown_request_type_as_str(self):
         """Unknown request_type value is accepted as plain str (lenient enum)."""
-        from sailpoint.v2025.models.requested_item_status import RequestedItemStatus
+        from sailpoint.access_requests_v1.models.requested_item_status import RequestedItemStatus
 
         unknown_type = "FUTURE_REQUEST_TYPE"
         obj = RequestedItemStatus.model_validate({"requestType": unknown_type})
@@ -221,7 +253,7 @@ class TestLenientEnumsV2025(unittest.TestCase):
 
     def test_requested_item_status_unknown_state_round_trips_in_dict(self):
         """Unknown state serializes and deserializes correctly (e.g. for API responses)."""
-        from sailpoint.v2025.models.requested_item_status import RequestedItemStatus
+        from sailpoint.access_requests_v1.models.requested_item_status import RequestedItemStatus
 
         unknown_state = "PENDING_NEW_BACKEND"
         obj = RequestedItemStatus.model_validate({"state": unknown_state})
@@ -230,6 +262,100 @@ class TestLenientEnumsV2025(unittest.TestCase):
         self.assertEqual(d["state"], unknown_state)
         obj2 = RequestedItemStatus.model_validate(d)
         self.assertEqual(obj2.state, unknown_state)
+
+
+# ---------------------------------------------------------------------------
+# TODO partition-strategy: legacy monolithic-version tests
+#
+# The tests below were written against the old per-year version packages
+# (sailpoint.v3, sailpoint.beta, sailpoint.v2024, sailpoint.v2025,
+# sailpoint.v2026).  Those packages have been removed and replaced by the
+# per-resource V1 partition packages above.
+#
+# Equivalent coverage is provided by TestPythonSDKV1 and TestLenientEnumsV1.
+# ---------------------------------------------------------------------------
+#
+# class TestPythonSDKLegacy(unittest.TestCase):
+#
+#     configuration = Configuration()
+#     v3_api_client = sailpoint.v3.ApiClient(configuration)
+#     beta_api_client = sailpoint.beta.ApiClient(configuration)
+#     configuration.experimental = True
+#     v2024_api_client = sailpoint.v2024.ApiClient(configuration)
+#     v2025_api_client = sailpoint.v2025.ApiClient(configuration)
+#     v2026_api_client = sailpoint.v2026.ApiClient(configuration)
+#
+#     def test_v3_accounts(self):
+#         # TODO partition-strategy: use sailpoint.accounts_v1.AccountsV1Api
+#         accounts = sailpoint.v3.AccountsApi(self.v3_api_client).list_accounts_with_http_info()
+#         self.assertIsNotNone(accounts.data)
+#         self.assertEqual(200, accounts.status_code)
+#
+#     def test_search_pagination(self):
+#         # TODO partition-strategy: use sailpoint.search_v1.SearchV1Api
+#         search = Search()
+#         search.indices = ['identities']
+#         search.query = { 'query': '*' }
+#         search.sort = ['-name']
+#         search_results = Paginator.paginate_search_with_http_info(
+#             sailpoint.v3.SearchApi(self.v3_api_client), search, 10, 100
+#         )
+#         self.assertIsNotNone(search_results)
+#         self.assertEqual(100, len(search_results.data))
+#         self.assertEqual(200, search_results.status_code)
+#
+#     def test_paginate_stream_search(self):
+#         # TODO partition-strategy: use sailpoint.search_v1.SearchV1Api
+#         ...
+#
+#     def test_list_transforms(self):
+#         # TODO partition-strategy: use sailpoint.transforms_v1.TransformsV1Api
+#         transforms = sailpoint.v3.TransformsApi(self.v3_api_client).list_transforms_with_http_info()
+#         self.assertIsNotNone(transforms.data)
+#         self.assertEqual(200, transforms.status_code)
+#
+#     def test_pagination(self):
+#         # TODO partition-strategy: use sailpoint.accounts_v1.AccountsV1Api
+#         ...
+#
+#     def test_list_accounts_beta(self):
+#         # TODO partition-strategy: use sailpoint.accounts_v1.AccountsV1Api
+#         accounts = sailpoint.beta.AccountsApi(self.beta_api_client).list_accounts_with_http_info()
+#         self.assertIsNotNone(accounts.data)
+#         self.assertEqual(200, accounts.status_code)
+#
+#     def test_list_connectors_beta(self):
+#         # TODO partition-strategy: use sailpoint.connectors_v1.ConnectorsV1Api
+#         connectors = sailpoint.beta.ConnectorsApi(self.beta_api_client).get_connector_list_with_http_info()
+#         self.assertIsNotNone(connectors.data)
+#         self.assertEqual(200, connectors.status_code)
+#
+#     def test_list_sources_beta(self):
+#         # TODO partition-strategy: use sailpoint.sources_v1.SourcesV1Api
+#         sources = sailpoint.beta.SourcesApi(self.beta_api_client).list_sources_with_http_info()
+#         self.assertIsNotNone(sources.data)
+#         self.assertEqual(200, sources.status_code)
+#
+#     def test_pagination_with_beta_endpoint(self):
+#         # TODO partition-strategy: use sailpoint.identity_profiles_v1.IdentityProfilesV1Api
+#         ...
+#
+#     def test_list_identities_with_v2024_endpoint(self):
+#         # TODO partition-strategy: use sailpoint.identities_v1.IdentitiesV1Api
+#         identities = sailpoint.v2024.IdentitiesApi(self.v2024_api_client).list_identities_with_http_info()
+#         self.assertIsNotNone(identities.data)
+#         self.assertEqual(200, identities.status_code)
+#
+#     def test_list_identities_with_v2026_endpoint(self):
+#         # TODO partition-strategy: use sailpoint.task_management_v1.TaskManagementV1Api
+#         tasks = sailpoint.v2026.TaskManagementApi(self.v2026_api_client).get_task_status_list_with_http_info()
+#         self.assertIsNotNone(tasks.data)
+#         self.assertEqual(200, tasks.status_code)
+#
+# class TestLenientEnumsV2025Legacy(unittest.TestCase):
+#     # TODO partition-strategy: migrated to TestLenientEnumsV1
+#     # (uses sailpoint.access_requests_v1 instead of sailpoint.v2025)
+#     ...
 
 
 if __name__ == '__main__':

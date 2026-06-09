@@ -1,0 +1,53 @@
+- path: /jit-activation-config/v1/{configType}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/jit-access#get-jit-activation-config-v1
+      source: |
+        from sailpoint.jit_access_v1.api.jit_access_v1_api import JITAccessV1Api
+        from sailpoint.jit_access_v1.api_client import ApiClient
+        from sailpoint.jit_access_v1.models.jitactivationconfigresponse import Jitactivationconfigresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          config_type = 'policy' # str | Configuration kind to read. Only **policy** (JIT activation policy) is supported today.  # str | Configuration kind to read. Only **policy** (JIT activation policy) is supported today. 
+          try:
+              # Get JIT activation policy configuration
+              
+              results = JITAccessV1Api(api_client).get_jit_activation_config_v1(config_type=config_type)
+              # Below is a request that includes all optional parameters
+              # results = JITAccessV1Api(api_client).get_jit_activation_config_v1(config_type)
+              print("The response of JITAccessV1Api->get_jit_activation_config_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling JITAccessV1Api->get_jit_activation_config_v1: %s\n" % e)
+- path: /jit-activation-config/v1/{configType}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v1/methods/jit-access#patch-jit-activation-config-v1
+      source: |
+        from sailpoint.jit_access_v1.api.jit_access_v1_api import JITAccessV1Api
+        from sailpoint.jit_access_v1.api_client import ApiClient
+        from sailpoint.jit_access_v1.models.jitaccessoperationrequest import Jitaccessoperationrequest
+        from sailpoint.jit_access_v1.models.jitactivationconfigresponse import Jitactivationconfigresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          config_type = 'policy' # str | Configuration kind to update. Only **policy** (JIT activation policy) is supported today.  # str | Configuration kind to update. Only **policy** (JIT activation policy) is supported today. 
+          jitaccessoperationrequest = '''[sailpoint.jit_access_v1.Jitaccessoperationrequest()]''' # List[Jitaccessoperationrequest] | 
+          try:
+              # Update JIT activation policy configuration
+              new_jitaccessoperationrequest = Jitaccessoperationrequest.from_json(jitaccessoperationrequest)
+              results = JITAccessV1Api(api_client).patch_jit_activation_config_v1(config_type=config_type, jitaccessoperationrequest=new_jitaccessoperationrequest)
+              # Below is a request that includes all optional parameters
+              # results = JITAccessV1Api(api_client).patch_jit_activation_config_v1(config_type, new_jitaccessoperationrequest)
+              print("The response of JITAccessV1Api->patch_jit_activation_config_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling JITAccessV1Api->patch_jit_activation_config_v1: %s\n" % e)
+
