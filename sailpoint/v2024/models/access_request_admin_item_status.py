@@ -61,12 +61,13 @@ class AccessRequestAdminItemStatus(BaseModel):
     pre_approval_trigger_details: Optional[RequestedItemStatusPreApprovalTriggerDetails] = Field(default=None, alias="preApprovalTriggerDetails")
     access_request_phases: Optional[List[AccessRequestPhases]] = Field(default=None, description="A list of Phases that the Access Request has gone through in order, to help determine the status of the request.", alias="accessRequestPhases")
     description: Optional[StrictStr] = Field(default=None, description="Description associated to the requested object.")
+    start_date: Optional[datetime] = Field(default=None, description="When the role access is scheduled for provisioning.", alias="startDate")
     remove_date: Optional[datetime] = Field(default=None, description="When the role access is scheduled for removal.", alias="removeDate")
     cancelable: Optional[StrictBool] = Field(default=False, description="True if the request can be canceled.")
     reauthorization_required: Optional[StrictBool] = Field(default=False, description="True if re-auth is required.", alias="reauthorizationRequired")
     access_request_id: Optional[StrictStr] = Field(default=None, description="This is the account activity id.", alias="accessRequestId")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs, if any were included in the corresponding access request", alias="clientMetadata")
-    __properties: ClassVar[List[str]] = ["id", "name", "type", "cancelledRequestDetails", "errorMessages", "state", "approvalDetails", "manualWorkItemDetails", "accountActivityItemId", "requestType", "modified", "created", "requester", "requestedFor", "requesterComment", "sodViolationContext", "provisioningDetails", "preApprovalTriggerDetails", "accessRequestPhases", "description", "removeDate", "cancelable", "reauthorizationRequired", "accessRequestId", "clientMetadata"]
+    __properties: ClassVar[List[str]] = ["id", "name", "type", "cancelledRequestDetails", "errorMessages", "state", "approvalDetails", "manualWorkItemDetails", "accountActivityItemId", "requestType", "modified", "created", "requester", "requestedFor", "requesterComment", "sodViolationContext", "provisioningDetails", "preApprovalTriggerDetails", "accessRequestPhases", "description", "startDate", "removeDate", "cancelable", "reauthorizationRequired", "accessRequestId", "clientMetadata"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -213,6 +214,11 @@ class AccessRequestAdminItemStatus(BaseModel):
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
 
+        # set to None if start_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.start_date is None and "start_date" in self.model_fields_set:
+            _dict['startDate'] = None
+
         # set to None if remove_date (nullable) is None
         # and model_fields_set contains the field
         if self.remove_date is None and "remove_date" in self.model_fields_set:
@@ -258,6 +264,7 @@ class AccessRequestAdminItemStatus(BaseModel):
             "preApprovalTriggerDetails": RequestedItemStatusPreApprovalTriggerDetails.from_dict(obj["preApprovalTriggerDetails"]) if obj.get("preApprovalTriggerDetails") is not None else None,
             "accessRequestPhases": [AccessRequestPhases.from_dict(_item) for _item in obj["accessRequestPhases"]] if obj.get("accessRequestPhases") is not None else None,
             "description": obj.get("description"),
+            "startDate": obj.get("startDate"),
             "removeDate": obj.get("removeDate"),
             "cancelable": obj.get("cancelable") if obj.get("cancelable") is not None else False,
             "reauthorizationRequired": obj.get("reauthorizationRequired") if obj.get("reauthorizationRequired") is not None else False,

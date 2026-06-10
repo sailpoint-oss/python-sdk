@@ -112,6 +112,7 @@ class TestAccessRequestAdminItemStatus(unittest.TestCase):
                         phase_reference = 'approvalDetails', )
                     ],
                 description = 'This is the Engineering role that engineers are granted.',
+                start_date = '2019-10-21T00:00Z',
                 remove_date = '2019-10-23T00:00Z',
                 cancelable = True,
                 reauthorization_required = True,
