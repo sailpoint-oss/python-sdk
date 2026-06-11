@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2026.models.source_subtype_with_source import SourceSubtypeWithSource
+from sailpoint.v2026.models.create_source_subtype_request import CreateSourceSubtypeRequest
 
-class TestSourceSubtypeWithSource(unittest.TestCase):
-    """SourceSubtypeWithSource unit test stubs"""
+class TestCreateSourceSubtypeRequest(unittest.TestCase):
+    """CreateSourceSubtypeRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,37 +25,33 @@ class TestSourceSubtypeWithSource(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SourceSubtypeWithSource:
-        """Test SourceSubtypeWithSource
+    def make_instance(self, include_optional) -> CreateSourceSubtypeRequest:
+        """Test CreateSourceSubtypeRequest
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `SourceSubtypeWithSource`
+        # uncomment below to create an instance of `CreateSourceSubtypeRequest`
         """
-        model = SourceSubtypeWithSource()
+        model = CreateSourceSubtypeRequest()
         if include_optional:
-            return SourceSubtypeWithSource(
-                id = '38453251-6be2-5f8f-df93-5ce19e295838',
-                source_id = '',
+            return CreateSourceSubtypeRequest(
+                source_id = '6d0458373bec4b4b80460992b76016da',
                 technical_name = 'foo',
                 display_name = 'Mr Foo',
                 description = 'fighters',
-                created = '2025-07-28T16:13:42.801300Z',
-                modified = '2025-07-28T16:13:42.750850Z',
-                type = 'MACHINE',
-                source = sailpoint.v2026.models.source_subtype_with_source_source.SourceSubtypeWithSource_source(
-                    type = 'SOURCE', 
-                    id = '6d0458373bec4b4b80460992b76016da', 
-                    name = 'Test Source', ),
-                system_managed = True
+                type = 'MACHINE'
             )
         else:
-            return SourceSubtypeWithSource(
+            return CreateSourceSubtypeRequest(
+                source_id = '6d0458373bec4b4b80460992b76016da',
+                technical_name = 'foo',
+                display_name = 'Mr Foo',
+                description = 'fighters',
         )
         """
 
-    def testSourceSubtypeWithSource(self):
-        """Test SourceSubtypeWithSource"""
+    def testCreateSourceSubtypeRequest(self):
+        """Test CreateSourceSubtypeRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.89"
+__version__ = "1.4.90"
 
 # import apis into sdk package
 from sailpoint.v2026.api.access_model_metadata_api import AccessModelMetadataApi
@@ -569,6 +569,7 @@ from sailpoint.v2026.models.create_privilege_criteria_request_groups_inner_crite
 from sailpoint.v2026.models.create_saved_search_request import CreateSavedSearchRequest
 from sailpoint.v2026.models.create_schedule_request import CreateScheduleRequest
 from sailpoint.v2026.models.create_scheduled_search_request import CreateScheduledSearchRequest
+from sailpoint.v2026.models.create_source_subtype_request import CreateSourceSubtypeRequest
 from sailpoint.v2026.models.create_stream_delivery_request import CreateStreamDeliveryRequest
 from sailpoint.v2026.models.create_stream_request import CreateStreamRequest
 from sailpoint.v2026.models.create_uploaded_configuration_request import CreateUploadedConfigurationRequest

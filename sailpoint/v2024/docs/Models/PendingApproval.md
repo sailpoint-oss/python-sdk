@@ -35,6 +35,9 @@ Name | Type | Description | Notes
 **remove_date** | **datetime** | The date the role or access profile or entitlement is no longer assigned to the specified identity. | [optional] 
 **remove_date_update_requested** | **bool** | If true, then the request is to change the remove date or sunset date. | [optional] [default to False]
 **current_remove_date** | **datetime** | The remove date or sunset date that was assigned at the time of the request. | [optional] 
+**start_date** | **datetime** | The date the role or access profile or entitlement is/will assigned to the specified identity. | [optional] 
+**start_update_requested** | **bool** | If true, then the request is to change the start date or sunrise date. | [optional] [default to False]
+**current_start_date** | **datetime** | The start date or sunrise date that was assigned at the time of the request. | [optional] 
 **sod_violation_context** | [**SodViolationContextCheckCompleted**](sod-violation-context-check-completed) |  | [optional] 
 **client_metadata** | **map[string]str** | Arbitrary key-value pairs, if any were included in the corresponding access request item | [optional] 
 **requested_accounts** | [**[]RequestedAccountRef**](requested-account-ref) | The accounts selected by the user for the access to be provisioned on, in case they have multiple accounts on one or more sources. | [optional] 
@@ -102,6 +105,9 @@ action_in_process='APPROVED',
 remove_date='2020-07-11T00:00Z',
 remove_date_update_requested=True,
 current_remove_date='2020-07-11T00:00Z',
+start_date='2020-07-11T00:00Z',
+start_update_requested=True,
+current_start_date='2020-07-11T00:00Z',
 sod_violation_context=sailpoint.v2024.models.sod_violation_context_check_completed.Sod Violation Context Check Completed(
                     state = 'SUCCESS', 
                     uuid = 'f73d16e9-a038-46c5-b217-1246e15fdbdd', 

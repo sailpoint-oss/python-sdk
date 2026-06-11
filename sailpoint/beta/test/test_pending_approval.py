@@ -88,6 +88,9 @@ class TestPendingApproval(unittest.TestCase):
                 remove_date = '2020-07-11T00:00Z',
                 remove_date_update_requested = True,
                 current_remove_date = '2020-07-11T00:00Z',
+                start_date = '2020-07-11T00:00Z',
+                start_update_requested = True,
+                current_start_date = '2020-07-11T00:00Z',
                 sod_violation_context = sailpoint.beta.models.sod_violation_context_check_completed.Sod Violation Context Check Completed(
                     state = 'SUCCESS', 
                     uuid = 'f73d16e9-a038-46c5-b217-1246e15fdbdd', 

@@ -13453,6 +13453,34 @@
                   print(item.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling MachineAccountMappingsApi->set_machine_account_mappings: %s\n" % e)
+- path: /source-subtypes
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/machine-account-subtypes#create-source-subtype
+      source: |
+        from sailpoint.v2026.api.machine_account_subtypes_api import MachineAccountSubtypesApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.create_source_subtype_request import CreateSourceSubtypeRequest
+        from sailpoint.v2026.models.source_subtype_with_source import SourceSubtypeWithSource
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          create_source_subtype_request = '''{sourceId=6d0458373bec4b4b80460992b76016da, technicalName=foo, displayName=Mr Foo, description=fighters, type=MACHINE}''' # CreateSourceSubtypeRequest | 
+          try:
+              # Create subtype
+              new_create_source_subtype_request = CreateSourceSubtypeRequest.from_json(create_source_subtype_request)
+              results = MachineAccountSubtypesApi(api_client).create_source_subtype(x_sail_point_experimental=x_sail_point_experimental, create_source_subtype_request=new_create_source_subtype_request)
+              # Below is a request that includes all optional parameters
+              # results = MachineAccountSubtypesApi(api_client).create_source_subtype(x_sail_point_experimental, new_create_source_subtype_request)
+              print("The response of MachineAccountSubtypesApi->create_source_subtype:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineAccountSubtypesApi->create_source_subtype: %s\n" % e)
 - path: /source-subtypes/{subtypeId}
   method: DELETE
   xCodeSample:
@@ -13464,17 +13492,46 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
+        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           subtype_id = '6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa' # str | The ID of the subtype. # str | The ID of the subtype.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           try:
               # Delete subtype by ID
               
-              MachineAccountSubtypesApi(api_client).delete_machine_account_subtype(subtype_id=subtype_id)
+              MachineAccountSubtypesApi(api_client).delete_machine_account_subtype(subtype_id=subtype_id, x_sail_point_experimental=x_sail_point_experimental)
               # Below is a request that includes all optional parameters
-              # MachineAccountSubtypesApi(api_client).delete_machine_account_subtype(subtype_id)
+              # MachineAccountSubtypesApi(api_client).delete_machine_account_subtype(subtype_id, x_sail_point_experimental)
           except Exception as e:
               print("Exception when calling MachineAccountSubtypesApi->delete_machine_account_subtype: %s\n" % e)
+- path: /source-subtypes/{subtypeId}/machine-config
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/machine-account-subtypes#get-machine-account-subtype-approval-config
+      source: |
+        from sailpoint.v2026.api.machine_account_subtypes_api import MachineAccountSubtypesApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.machine_account_subtype_config_dto import MachineAccountSubtypeConfigDto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          subtype_id = 'ef38f94347e94562b5bb8424a56498d8' # str | machine subtype id. # str | machine subtype id.
+          try:
+              # Machine Subtype Approval Config
+              
+              results = MachineAccountSubtypesApi(api_client).get_machine_account_subtype_approval_config(x_sail_point_experimental=x_sail_point_experimental, subtype_id=subtype_id)
+              # Below is a request that includes all optional parameters
+              # results = MachineAccountSubtypesApi(api_client).get_machine_account_subtype_approval_config(x_sail_point_experimental, subtype_id)
+              print("The response of MachineAccountSubtypesApi->get_machine_account_subtype_approval_config:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineAccountSubtypesApi->get_machine_account_subtype_approval_config: %s\n" % e)
 - path: /source-subtypes/{subtypeId}
   method: GET
   xCodeSample:
@@ -13487,19 +13544,81 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
+        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           subtype_id = '6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa' # str | The ID of the subtype. # str | The ID of the subtype.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           try:
               # Get subtype by ID
               
-              results = MachineAccountSubtypesApi(api_client).get_source_subtype_by_id(subtype_id=subtype_id)
+              results = MachineAccountSubtypesApi(api_client).get_source_subtype_by_id(subtype_id=subtype_id, x_sail_point_experimental=x_sail_point_experimental)
               # Below is a request that includes all optional parameters
-              # results = MachineAccountSubtypesApi(api_client).get_source_subtype_by_id(subtype_id)
+              # results = MachineAccountSubtypesApi(api_client).get_source_subtype_by_id(subtype_id, x_sail_point_experimental)
               print("The response of MachineAccountSubtypesApi->get_source_subtype_by_id:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling MachineAccountSubtypesApi->get_source_subtype_by_id: %s\n" % e)
+- path: /source-subtypes
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/machine-account-subtypes#list-source-subtypes
+      source: |
+        from sailpoint.v2026.api.machine_account_subtypes_api import MachineAccountSubtypesApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.source_subtype_with_source import SourceSubtypeWithSource
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          filters = 'displayName eq \"sail\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, sw*  **technicalName**: *eq, sw*  **source.id**: *eq, in* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **displayName**: *eq, sw*  **technicalName**: *eq, sw*  **source.id**: *eq, in* (optional)
+          sorters = 'displayName' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, technicalName** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName, technicalName** (optional)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          try:
+              # Retrieve all subtypes
+              
+              results = MachineAccountSubtypesApi(api_client).list_source_subtypes(x_sail_point_experimental=x_sail_point_experimental)
+              # Below is a request that includes all optional parameters
+              # results = MachineAccountSubtypesApi(api_client).list_source_subtypes(x_sail_point_experimental, filters, sorters, count, limit, offset)
+              print("The response of MachineAccountSubtypesApi->list_source_subtypes:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineAccountSubtypesApi->list_source_subtypes: %s\n" % e)
+- path: /source-subtypes/bulk-retrieve
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/machine-account-subtypes#load-bulk-source-subtypes
+      source: |
+        from sailpoint.v2026.api.machine_account_subtypes_api import MachineAccountSubtypesApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.source_subtype_with_source import SourceSubtypeWithSource
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          request_body = '''['request_body_example']''' # List[str] | 
+          try:
+              # Bulk Retrieve of Source Subtypes
+              new_request_body = RequestBody.from_json(request_body)
+              results = MachineAccountSubtypesApi(api_client).load_bulk_source_subtypes(x_sail_point_experimental=x_sail_point_experimental, request_body=new_request_body)
+              # Below is a request that includes all optional parameters
+              # results = MachineAccountSubtypesApi(api_client).load_bulk_source_subtypes(x_sail_point_experimental, new_request_body)
+              print("The response of MachineAccountSubtypesApi->load_bulk_source_subtypes:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineAccountSubtypesApi->load_bulk_source_subtypes: %s\n" % e)
 - path: /source-subtypes/{subtypeId}
   method: PATCH
   xCodeSample:
@@ -13512,20 +13631,51 @@
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
+        configuration.experimental = True
 
         with ApiClient(configuration) as api_client:
           subtype_id = '6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa' # str | The ID of the subtype. # str | The ID of the subtype.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
           request_body = '''[{op=replace, path=/displayName, value=Test New DisplayName}]''' # List[object] | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
           try:
               # Patch subtype by ID
               new_request_body = RequestBody.from_json(request_body)
-              results = MachineAccountSubtypesApi(api_client).patch_machine_account_subtype(subtype_id=subtype_id, request_body=new_request_body)
+              results = MachineAccountSubtypesApi(api_client).patch_machine_account_subtype(subtype_id=subtype_id, x_sail_point_experimental=x_sail_point_experimental, request_body=new_request_body)
               # Below is a request that includes all optional parameters
-              # results = MachineAccountSubtypesApi(api_client).patch_machine_account_subtype(subtype_id, new_request_body)
+              # results = MachineAccountSubtypesApi(api_client).patch_machine_account_subtype(subtype_id, x_sail_point_experimental, new_request_body)
               print("The response of MachineAccountSubtypesApi->patch_machine_account_subtype:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling MachineAccountSubtypesApi->patch_machine_account_subtype: %s\n" % e)
+- path: /source-subtypes/{subtypeId}/machine-config
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/machine-account-subtypes#update-machine-account-subtype-approval-config
+      source: |
+        from sailpoint.v2026.api.machine_account_subtypes_api import MachineAccountSubtypesApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.json_patch_operation import JsonPatchOperation
+        from sailpoint.v2026.models.machine_account_subtype_config_dto import MachineAccountSubtypeConfigDto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          subtype_id = '00eebcf881994e419d72e757fd30dc0e' # str | machine account subtype ID. # str | machine account subtype ID.
+          json_patch_operation = '''[sailpoint.v2026.JsonPatchOperation()]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the object.
+          try:
+              # Machine Subtype Approval Config
+              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
+              results = MachineAccountSubtypesApi(api_client).update_machine_account_subtype_approval_config(x_sail_point_experimental=x_sail_point_experimental, subtype_id=subtype_id, json_patch_operation=new_json_patch_operation)
+              # Below is a request that includes all optional parameters
+              # results = MachineAccountSubtypesApi(api_client).update_machine_account_subtype_approval_config(x_sail_point_experimental, subtype_id, new_json_patch_operation)
+              print("The response of MachineAccountSubtypesApi->update_machine_account_subtype_approval_config:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineAccountSubtypesApi->update_machine_account_subtype_approval_config: %s\n" % e)
 - path: /sources/{sourceId}/subtypes
   method: POST
   xCodeSample:
@@ -13607,33 +13757,6 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling MachineAccountsApi->get_machine_account: %s\n" % e)
-- path: /source-subtypes/{subtypeId}/machine-config
-  method: GET
-  xCodeSample:
-    - lang: Python
-      label: SDK_tools/sdk/python/v2026/methods/machine-accounts#get-machine-account-subtype-approval-config
-      source: |
-        from sailpoint.v2026.api.machine_accounts_api import MachineAccountsApi
-        from sailpoint.v2026.api_client import ApiClient
-        from sailpoint.v2026.models.machine_account_subtype_config_dto import MachineAccountSubtypeConfigDto
-        from sailpoint.configuration import Configuration
-        configuration = Configuration()
-
-        configuration.experimental = True
-
-        with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
-          subtype_id = 'ef38f94347e94562b5bb8424a56498d8' # str | machine subtype id. # str | machine subtype id.
-          try:
-              # Machine Subtype Approval Config
-              
-              results = MachineAccountsApi(api_client).get_machine_account_subtype_approval_config(x_sail_point_experimental=x_sail_point_experimental, subtype_id=subtype_id)
-              # Below is a request that includes all optional parameters
-              # results = MachineAccountsApi(api_client).get_machine_account_subtype_approval_config(x_sail_point_experimental, subtype_id)
-              print("The response of MachineAccountsApi->get_machine_account_subtype_approval_config:\n")
-              print(results.model_dump_json(by_alias=True, indent=4))
-          except Exception as e:
-              print("Exception when calling MachineAccountsApi->get_machine_account_subtype_approval_config: %s\n" % e)
 - path: /sources/subtypes/{subtypeId}
   method: GET
   xCodeSample:
@@ -13754,34 +13877,6 @@
                   print(item.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling MachineAccountsApi->list_machine_accounts: %s\n" % e)
-- path: /source-subtypes/bulk-retrieve
-  method: POST
-  xCodeSample:
-    - lang: Python
-      label: SDK_tools/sdk/python/v2026/methods/machine-accounts#load-bulk-source-subtypes
-      source: |
-        from sailpoint.v2026.api.machine_accounts_api import MachineAccountsApi
-        from sailpoint.v2026.api_client import ApiClient
-        from sailpoint.v2026.models.source_subtype_with_source import SourceSubtypeWithSource
-        from sailpoint.configuration import Configuration
-        configuration = Configuration()
-
-        configuration.experimental = True
-
-        with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
-          request_body = '''['request_body_example']''' # List[str] | 
-          try:
-              # Bulk Retrieve of Source Subtypes
-              new_request_body = RequestBody.from_json(request_body)
-              results = MachineAccountsApi(api_client).load_bulk_source_subtypes(x_sail_point_experimental=x_sail_point_experimental, request_body=new_request_body)
-              # Below is a request that includes all optional parameters
-              # results = MachineAccountsApi(api_client).load_bulk_source_subtypes(x_sail_point_experimental, new_request_body)
-              print("The response of MachineAccountsApi->load_bulk_source_subtypes:\n")
-              for item in results:
-                  print(item.model_dump_json(by_alias=True, indent=4))
-          except Exception as e:
-              print("Exception when calling MachineAccountsApi->load_bulk_source_subtypes: %s\n" % e)
 - path: /sources/{sourceId}/subtypes/{technicalName}
   method: PATCH
   xCodeSample:
@@ -13839,35 +13934,6 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling MachineAccountsApi->update_machine_account: %s\n" % e)
-- path: /source-subtypes/{subtypeId}/machine-config
-  method: PATCH
-  xCodeSample:
-    - lang: Python
-      label: SDK_tools/sdk/python/v2026/methods/machine-accounts#update-machine-account-subtype-approval-config
-      source: |
-        from sailpoint.v2026.api.machine_accounts_api import MachineAccountsApi
-        from sailpoint.v2026.api_client import ApiClient
-        from sailpoint.v2026.models.json_patch_operation import JsonPatchOperation
-        from sailpoint.v2026.models.machine_account_subtype_config_dto import MachineAccountSubtypeConfigDto
-        from sailpoint.configuration import Configuration
-        configuration = Configuration()
-
-        configuration.experimental = True
-
-        with ApiClient(configuration) as api_client:
-          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
-          subtype_id = '00eebcf881994e419d72e757fd30dc0e' # str | machine account subtype ID. # str | machine account subtype ID.
-          json_patch_operation = '''[sailpoint.v2026.JsonPatchOperation()]''' # List[JsonPatchOperation] | The JSONPatch payload used to update the object.
-          try:
-              # Machine Subtype Approval Config
-              new_json_patch_operation = JsonPatchOperation.from_json(json_patch_operation)
-              results = MachineAccountsApi(api_client).update_machine_account_subtype_approval_config(x_sail_point_experimental=x_sail_point_experimental, subtype_id=subtype_id, json_patch_operation=new_json_patch_operation)
-              # Below is a request that includes all optional parameters
-              # results = MachineAccountsApi(api_client).update_machine_account_subtype_approval_config(x_sail_point_experimental, subtype_id, new_json_patch_operation)
-              print("The response of MachineAccountsApi->update_machine_account_subtype_approval_config:\n")
-              print(results.model_dump_json(by_alias=True, indent=4))
-          except Exception as e:
-              print("Exception when calling MachineAccountsApi->update_machine_account_subtype_approval_config: %s\n" % e)
 - path: /sources/{sourceId}/machine-classification-config
   method: DELETE
   xCodeSample:

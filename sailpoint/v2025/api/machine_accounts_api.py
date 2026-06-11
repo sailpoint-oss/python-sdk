@@ -60,7 +60,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SourceSubtype:
-        """Create subtype
+        """(Deprecated) Create subtype
 
         Create a new machine account subtype for a source.
 
@@ -91,6 +91,7 @@ class MachineAccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /sources/{sourceId}/subtypes is deprecated.", DeprecationWarning)
 
         _param = self._create_machine_account_subtype_serialize(
             source_id=source_id,
@@ -140,7 +141,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SourceSubtype]:
-        """Create subtype
+        """(Deprecated) Create subtype
 
         Create a new machine account subtype for a source.
 
@@ -171,6 +172,7 @@ class MachineAccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /sources/{sourceId}/subtypes is deprecated.", DeprecationWarning)
 
         _param = self._create_machine_account_subtype_serialize(
             source_id=source_id,
@@ -220,7 +222,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Create subtype
+        """(Deprecated) Create subtype
 
         Create a new machine account subtype for a source.
 
@@ -251,6 +253,7 @@ class MachineAccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /sources/{sourceId}/subtypes is deprecated.", DeprecationWarning)
 
         _param = self._create_machine_account_subtype_serialize(
             source_id=source_id,
@@ -381,7 +384,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Delete subtype
+        """(Deprecated) Delete subtype
 
         Delete a machine account subtype by source ID and technical name.
 
@@ -412,6 +415,7 @@ class MachineAccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /sources/{sourceId}/subtypes/{technicalName} is deprecated.", DeprecationWarning)
 
         _param = self._delete_machine_account_subtype_serialize(
             source_id=source_id,
@@ -461,7 +465,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Delete subtype
+        """(Deprecated) Delete subtype
 
         Delete a machine account subtype by source ID and technical name.
 
@@ -492,6 +496,7 @@ class MachineAccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /sources/{sourceId}/subtypes/{technicalName} is deprecated.", DeprecationWarning)
 
         _param = self._delete_machine_account_subtype_serialize(
             source_id=source_id,
@@ -541,7 +546,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Delete subtype
+        """(Deprecated) Delete subtype
 
         Delete a machine account subtype by source ID and technical name.
 
@@ -572,6 +577,7 @@ class MachineAccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("DELETE /sources/{sourceId}/subtypes/{technicalName} is deprecated.", DeprecationWarning)
 
         _param = self._delete_machine_account_subtype_serialize(
             source_id=source_id,
@@ -968,7 +974,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SourceSubtype:
-        """Retrieve subtype by subtype id
+        """(Deprecated) Retrieve subtype by subtype id
 
         Get a machine account subtype by its unique ID.
 
@@ -997,6 +1003,7 @@ class MachineAccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /sources/subtypes/{subtypeId} is deprecated.", DeprecationWarning)
 
         _param = self._get_machine_account_subtype_by_id_serialize(
             subtype_id=subtype_id,
@@ -1044,7 +1051,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SourceSubtype]:
-        """Retrieve subtype by subtype id
+        """(Deprecated) Retrieve subtype by subtype id
 
         Get a machine account subtype by its unique ID.
 
@@ -1073,6 +1080,7 @@ class MachineAccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /sources/subtypes/{subtypeId} is deprecated.", DeprecationWarning)
 
         _param = self._get_machine_account_subtype_by_id_serialize(
             subtype_id=subtype_id,
@@ -1120,7 +1128,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Retrieve subtype by subtype id
+        """(Deprecated) Retrieve subtype by subtype id
 
         Get a machine account subtype by its unique ID.
 
@@ -1149,6 +1157,7 @@ class MachineAccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /sources/subtypes/{subtypeId} is deprecated.", DeprecationWarning)
 
         _param = self._get_machine_account_subtype_by_id_serialize(
             subtype_id=subtype_id,
@@ -1262,7 +1271,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SourceSubtype:
-        """Retrieve subtype by source and technicalName
+        """(Deprecated) Retrieve subtype by source and technicalName
 
         Get a machine account subtype by source ID and technical name.
 
@@ -1293,6 +1302,7 @@ class MachineAccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /sources/{sourceId}/subtypes/{technicalName} is deprecated.", DeprecationWarning)
 
         _param = self._get_machine_account_subtype_by_technical_name_serialize(
             source_id=source_id,
@@ -1342,7 +1352,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SourceSubtype]:
-        """Retrieve subtype by source and technicalName
+        """(Deprecated) Retrieve subtype by source and technicalName
 
         Get a machine account subtype by source ID and technical name.
 
@@ -1373,6 +1383,7 @@ class MachineAccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /sources/{sourceId}/subtypes/{technicalName} is deprecated.", DeprecationWarning)
 
         _param = self._get_machine_account_subtype_by_technical_name_serialize(
             source_id=source_id,
@@ -1422,7 +1433,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Retrieve subtype by source and technicalName
+        """(Deprecated) Retrieve subtype by source and technicalName
 
         Get a machine account subtype by source ID and technical name.
 
@@ -1453,6 +1464,7 @@ class MachineAccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /sources/{sourceId}/subtypes/{technicalName} is deprecated.", DeprecationWarning)
 
         _param = self._get_machine_account_subtype_by_technical_name_serialize(
             source_id=source_id,
@@ -1574,7 +1586,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[SourceSubtype]:
-        """Retrieve all subtypes by source
+        """(Deprecated) Retrieve all subtypes by source
 
         Get all machine account subtypes for a given source.
 
@@ -1613,6 +1625,7 @@ class MachineAccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /sources/{sourceId}/subtypes is deprecated.", DeprecationWarning)
 
         _param = self._list_machine_account_subtypes_serialize(
             source_id=source_id,
@@ -1670,7 +1683,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[SourceSubtype]]:
-        """Retrieve all subtypes by source
+        """(Deprecated) Retrieve all subtypes by source
 
         Get all machine account subtypes for a given source.
 
@@ -1709,6 +1722,7 @@ class MachineAccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /sources/{sourceId}/subtypes is deprecated.", DeprecationWarning)
 
         _param = self._list_machine_account_subtypes_serialize(
             source_id=source_id,
@@ -1766,7 +1780,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Retrieve all subtypes by source
+        """(Deprecated) Retrieve all subtypes by source
 
         Get all machine account subtypes for a given source.
 
@@ -1805,6 +1819,7 @@ class MachineAccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /sources/{sourceId}/subtypes is deprecated.", DeprecationWarning)
 
         _param = self._list_machine_account_subtypes_serialize(
             source_id=source_id,
@@ -2299,7 +2314,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SourceSubtype:
-        """Patch subtype
+        """(Deprecated) Patch subtype
 
         Update fields of a machine account subtype by source ID and technical name. Patchable fields include: `displayName`, `description`.
 
@@ -2332,6 +2347,7 @@ class MachineAccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /sources/{sourceId}/subtypes/{technicalName} is deprecated.", DeprecationWarning)
 
         _param = self._patch_machine_account_subtype_serialize(
             source_id=source_id,
@@ -2383,7 +2399,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SourceSubtype]:
-        """Patch subtype
+        """(Deprecated) Patch subtype
 
         Update fields of a machine account subtype by source ID and technical name. Patchable fields include: `displayName`, `description`.
 
@@ -2416,6 +2432,7 @@ class MachineAccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /sources/{sourceId}/subtypes/{technicalName} is deprecated.", DeprecationWarning)
 
         _param = self._patch_machine_account_subtype_serialize(
             source_id=source_id,
@@ -2467,7 +2484,7 @@ class MachineAccountsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Patch subtype
+        """(Deprecated) Patch subtype
 
         Update fields of a machine account subtype by source ID and technical name. Patchable fields include: `displayName`, `description`.
 
@@ -2500,6 +2517,7 @@ class MachineAccountsApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("PATCH /sources/{sourceId}/subtypes/{technicalName} is deprecated.", DeprecationWarning)
 
         _param = self._patch_machine_account_subtype_serialize(
             source_id=source_id,

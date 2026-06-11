@@ -47,13 +47,6 @@ class TestMachineAccountsApi(unittest.TestCase):
         """
         pass
 
-    def test_get_machine_account_subtype_approval_config(self) -> None:
-        """Test case for get_machine_account_subtype_approval_config
-
-        Machine Subtype Approval Config
-        """
-        pass
-
     def test_get_machine_account_subtype_by_id(self) -> None:
         """Test case for get_machine_account_subtype_by_id
 
@@ -82,13 +75,6 @@ class TestMachineAccountsApi(unittest.TestCase):
         """
         pass
 
-    def test_load_bulk_source_subtypes(self) -> None:
-        """Test case for load_bulk_source_subtypes
-
-        Bulk Retrieve of Source Subtypes
-        """
-        pass
-
     def test_patch_machine_account_subtype_by_technical_name(self) -> None:
         """Test case for patch_machine_account_subtype_by_technical_name
 
@@ -100,13 +86,6 @@ class TestMachineAccountsApi(unittest.TestCase):
         """Test case for update_machine_account
 
         Update machine account details
-        """
-        pass
-
-    def test_update_machine_account_subtype_approval_config(self) -> None:
-        """Test case for update_machine_account_subtype_approval_config
-
-        Machine Subtype Approval Config
         """
         pass
 

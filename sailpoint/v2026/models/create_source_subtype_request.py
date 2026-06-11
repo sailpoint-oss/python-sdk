@@ -18,28 +18,21 @@ import re  # noqa: F401
 import json
 import warnings
 
-from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from sailpoint.v2026.models.source_subtype_with_source_source import SourceSubtypeWithSourceSource
 from typing import Optional, Set
 from typing_extensions import Self
 
-class SourceSubtypeWithSource(BaseModel):
+class CreateSourceSubtypeRequest(BaseModel):
     """
-    SourceSubtypeWithSource
+    CreateSourceSubtypeRequest
     """ # noqa: E501
-    id: Optional[StrictStr] = Field(default=None, description="Unique identifier for the subtype.")
-    source_id: Optional[StrictStr] = Field(default=None, description="The ID of the source.", alias="sourceId")
-    technical_name: Optional[StrictStr] = Field(default=None, description="Technical name of the subtype.", alias="technicalName")
-    display_name: Optional[StrictStr] = Field(default=None, description="Display name of the subtype.", alias="displayName")
-    description: Optional[StrictStr] = Field(default=None, description="Description of the subtype.")
-    created: Optional[datetime] = Field(default=None, description="Creation timestamp.")
-    modified: Optional[datetime] = Field(default=None, description="Last modified timestamp.")
-    type: Optional[StrictStr] = Field(default=None, description="Type of the subtype. Either MACHINE OR null.")
-    source: Optional[SourceSubtypeWithSourceSource] = None
-    system_managed: Optional[StrictBool] = Field(default=False, description="Indicates if the subtype is managed by the system.", alias="systemManaged")
-    __properties: ClassVar[List[str]] = ["id", "sourceId", "technicalName", "displayName", "description", "created", "modified", "type", "source", "systemManaged"]
+    source_id: StrictStr = Field(description="ID of the source where subtype is created.", alias="sourceId")
+    technical_name: StrictStr = Field(description="Technical name of the subtype.", alias="technicalName")
+    display_name: StrictStr = Field(description="Display name of the subtype.", alias="displayName")
+    description: StrictStr = Field(description="Description of the subtype.")
+    type: Optional[StrictStr] = Field(default=None, description="Type of the subtype.")
+    __properties: ClassVar[List[str]] = ["sourceId", "technicalName", "displayName", "description", "type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -59,7 +52,7 @@ class SourceSubtypeWithSource(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SourceSubtypeWithSource from a JSON string"""
+        """Create an instance of CreateSourceSubtypeRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,10 +64,8 @@ class SourceSubtypeWithSource(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
-            "source_id",
         ])
 
         _dict = self.model_dump(
@@ -82,14 +73,11 @@ class SourceSubtypeWithSource(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of source
-        if self.source:
-            _dict['source'] = self.source.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SourceSubtypeWithSource from a dict"""
+        """Create an instance of CreateSourceSubtypeRequest from a dict"""
         if obj is None:
             return None
 
@@ -97,16 +85,11 @@ class SourceSubtypeWithSource(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
             "sourceId": obj.get("sourceId"),
             "technicalName": obj.get("technicalName"),
             "displayName": obj.get("displayName"),
             "description": obj.get("description"),
-            "created": obj.get("created"),
-            "modified": obj.get("modified"),
-            "type": obj.get("type"),
-            "source": SourceSubtypeWithSourceSource.from_dict(obj["source"]) if obj.get("source") is not None else None,
-            "systemManaged": obj.get("systemManaged") if obj.get("systemManaged") is not None else False
+            "type": obj.get("type")
         })
         return _obj
 
