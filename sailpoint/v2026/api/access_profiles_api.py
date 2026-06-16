@@ -2310,7 +2310,7 @@ class AccessProfilesApi:
             '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
-            '412': "UpdateAccessProfilesInBulk412Response",
+            '412': "ListEntitlementConnections412Response",
             '429': "GetAccessRequestConfig429Response",
             '500': "ErrorResponseDto",
         }
@@ -2387,7 +2387,7 @@ class AccessProfilesApi:
             '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
-            '412': "UpdateAccessProfilesInBulk412Response",
+            '412': "ListEntitlementConnections412Response",
             '429': "GetAccessRequestConfig429Response",
             '500': "ErrorResponseDto",
         }
@@ -2464,7 +2464,7 @@ class AccessProfilesApi:
             '400': "ErrorResponseDto",
             '401': "GetAccessRequestConfig401Response",
             '403': "ErrorResponseDto",
-            '412': "UpdateAccessProfilesInBulk412Response",
+            '412': "ListEntitlementConnections412Response",
             '429': "GetAccessRequestConfig429Response",
             '500': "ErrorResponseDto",
         }

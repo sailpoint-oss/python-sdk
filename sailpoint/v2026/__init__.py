@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.92"
+__version__ = "1.4.93"
 
 # import apis into sdk package
 from sailpoint.v2026.api.access_model_metadata_api import AccessModelMetadataApi
@@ -50,6 +50,7 @@ from sailpoint.v2026.api.data_access_security_api import DataAccessSecurityApi
 from sailpoint.v2026.api.data_segmentation_api import DataSegmentationApi
 from sailpoint.v2026.api.declassify_source_api import DeclassifySourceApi
 from sailpoint.v2026.api.dimensions_api import DimensionsApi
+from sailpoint.v2026.api.entitlement_connections_api import EntitlementConnectionsApi
 from sailpoint.v2026.api.entitlements_api import EntitlementsApi
 from sailpoint.v2026.api.global_tenant_security_settings_api import GlobalTenantSecuritySettingsApi
 from sailpoint.v2026.api.governance_groups_api import GovernanceGroupsApi
@@ -621,6 +622,12 @@ from sailpoint.v2026.models.entitlement_attribute_bulk_update_filter_request imp
 from sailpoint.v2026.models.entitlement_attribute_bulk_update_ids_request import EntitlementAttributeBulkUpdateIdsRequest
 from sailpoint.v2026.models.entitlement_attribute_bulk_update_query_request import EntitlementAttributeBulkUpdateQueryRequest
 from sailpoint.v2026.models.entitlement_bulk_update_request import EntitlementBulkUpdateRequest
+from sailpoint.v2026.models.entitlement_connection import EntitlementConnection
+from sailpoint.v2026.models.entitlement_connection_bulk_update_item import EntitlementConnectionBulkUpdateItem
+from sailpoint.v2026.models.entitlement_connection_bulk_update_result_item import EntitlementConnectionBulkUpdateResultItem
+from sailpoint.v2026.models.entitlement_connection_search_hit import EntitlementConnectionSearchHit
+from sailpoint.v2026.models.entitlement_connection_search_hit_entitlement import EntitlementConnectionSearchHitEntitlement
+from sailpoint.v2026.models.entitlement_connection_search_hit_entitlement_privilege_level import EntitlementConnectionSearchHitEntitlementPrivilegeLevel
 from sailpoint.v2026.models.entitlement_document import EntitlementDocument
 from sailpoint.v2026.models.entitlement_document_all_of_manually_updated_fields import EntitlementDocumentAllOfManuallyUpdatedFields
 from sailpoint.v2026.models.entitlement_document_all_of_permissions import EntitlementDocumentAllOfPermissions
@@ -832,6 +839,7 @@ from sailpoint.v2026.models.lifecyclestate_deleted import LifecyclestateDeleted
 from sailpoint.v2026.models.list_campaign_filters200_response import ListCampaignFilters200Response
 from sailpoint.v2026.models.list_complete_workflow_library200_response_inner import ListCompleteWorkflowLibrary200ResponseInner
 from sailpoint.v2026.models.list_deploys200_response import ListDeploys200Response
+from sailpoint.v2026.models.list_entitlement_connections412_response import ListEntitlementConnections412Response
 from sailpoint.v2026.models.list_form_definitions_by_tenant_response import ListFormDefinitionsByTenantResponse
 from sailpoint.v2026.models.list_form_element_data_by_element_id_response import ListFormElementDataByElementIDResponse
 from sailpoint.v2026.models.list_form_instances_by_tenant_response import ListFormInstancesByTenantResponse
@@ -1448,7 +1456,6 @@ from sailpoint.v2026.models.trigger_type import TriggerType
 from sailpoint.v2026.models.type_ahead_query import TypeAheadQuery
 from sailpoint.v2026.models.typed_reference import TypedReference
 from sailpoint.v2026.models.uncorrelated_accounts_report_arguments import UncorrelatedAccountsReportArguments
-from sailpoint.v2026.models.update_access_profiles_in_bulk412_response import UpdateAccessProfilesInBulk412Response
 from sailpoint.v2026.models.update_detail import UpdateDetail
 from sailpoint.v2026.models.update_multi_host_sources_request_inner import UpdateMultiHostSourcesRequestInner
 from sailpoint.v2026.models.update_multi_host_sources_request_inner_value import UpdateMultiHostSourcesRequestInnerValue

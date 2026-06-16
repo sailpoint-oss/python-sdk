@@ -1,6 +1,6 @@
 templateDir: ./sdk-resources/resources
 packageName: sailpoint.beta
-packageVersion: 1.4.92
+packageVersion: 1.4.93
 apiVersion: beta
 generateSourceCodeOnly: true
 functionPrefix: Beta

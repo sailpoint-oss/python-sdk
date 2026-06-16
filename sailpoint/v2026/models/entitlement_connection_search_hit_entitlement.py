@@ -18,17 +18,25 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from sailpoint.v2026.models.entitlement_connection_search_hit_entitlement_privilege_level import EntitlementConnectionSearchHitEntitlementPrivilegeLevel
 from typing import Optional, Set
 from typing_extensions import Self
 
-class UpdateAccessProfilesInBulk412Response(BaseModel):
+class EntitlementConnectionSearchHitEntitlement(BaseModel):
     """
-    UpdateAccessProfilesInBulk412Response
+    Entitlement object embedded in entitlement connection search responses.
     """ # noqa: E501
-    message: Optional[Dict[str, Any]] = Field(default=None, description="A message describing the error")
-    __properties: ClassVar[List[str]] = ["message"]
+    id: Optional[StrictStr] = Field(default=None, description="Entitlement identifier.")
+    name: Optional[StrictStr] = Field(default=None, description="Entitlement name.")
+    display_name: Optional[StrictStr] = Field(default=None, description="Human-readable entitlement label.", alias="displayName")
+    description: Optional[StrictStr] = Field(default=None, description="Entitlement description.")
+    attribute: Optional[StrictStr] = Field(default=None, description="Source attribute carrying entitlement values.")
+    value: Optional[StrictStr] = Field(default=None, description="Source entitlement value.")
+    source_schema_object_type: Optional[StrictStr] = Field(default=None, description="Source schema object type for the entitlement.", alias="sourceSchemaObjectType")
+    privilege_level: Optional[EntitlementConnectionSearchHitEntitlementPrivilegeLevel] = Field(default=None, alias="privilegeLevel")
+    __properties: ClassVar[List[str]] = ["id", "name", "displayName", "description", "attribute", "value", "sourceSchemaObjectType", "privilegeLevel"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +56,7 @@ class UpdateAccessProfilesInBulk412Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of UpdateAccessProfilesInBulk412Response from a JSON string"""
+        """Create an instance of EntitlementConnectionSearchHitEntitlement from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -69,11 +77,14 @@ class UpdateAccessProfilesInBulk412Response(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of privilege_level
+        if self.privilege_level:
+            _dict['privilegeLevel'] = self.privilege_level.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of UpdateAccessProfilesInBulk412Response from a dict"""
+        """Create an instance of EntitlementConnectionSearchHitEntitlement from a dict"""
         if obj is None:
             return None
 
@@ -81,7 +92,14 @@ class UpdateAccessProfilesInBulk412Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "message": obj.get("message")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "displayName": obj.get("displayName"),
+            "description": obj.get("description"),
+            "attribute": obj.get("attribute"),
+            "value": obj.get("value"),
+            "sourceSchemaObjectType": obj.get("sourceSchemaObjectType"),
+            "privilegeLevel": EntitlementConnectionSearchHitEntitlementPrivilegeLevel.from_dict(obj["privilegeLevel"]) if obj.get("privilegeLevel") is not None else None
         })
         return _obj
 

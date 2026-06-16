@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.v2026.models.update_access_profiles_in_bulk412_response import UpdateAccessProfilesInBulk412Response
+from sailpoint.v2026.models.entitlement_connection_bulk_update_item import EntitlementConnectionBulkUpdateItem
 
-class TestUpdateAccessProfilesInBulk412Response(unittest.TestCase):
-    """UpdateAccessProfilesInBulk412Response unit test stubs"""
+class TestEntitlementConnectionBulkUpdateItem(unittest.TestCase):
+    """EntitlementConnectionBulkUpdateItem unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,25 +25,28 @@ class TestUpdateAccessProfilesInBulk412Response(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> UpdateAccessProfilesInBulk412Response:
-        """Test UpdateAccessProfilesInBulk412Response
+    def make_instance(self, include_optional) -> EntitlementConnectionBulkUpdateItem:
+        """Test EntitlementConnectionBulkUpdateItem
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `UpdateAccessProfilesInBulk412Response`
+        # uncomment below to create an instance of `EntitlementConnectionBulkUpdateItem`
         """
-        model = UpdateAccessProfilesInBulk412Response()
+        model = EntitlementConnectionBulkUpdateItem()
         if include_optional:
-            return UpdateAccessProfilesInBulk412Response(
-                message =  API/Feature not enabled for your organization.
+            return EntitlementConnectionBulkUpdateItem(
+                connection_id = 'd532fa5cb15748e2873c6a01e5923ec4',
+                type = 'JIT'
             )
         else:
-            return UpdateAccessProfilesInBulk412Response(
+            return EntitlementConnectionBulkUpdateItem(
+                connection_id = 'd532fa5cb15748e2873c6a01e5923ec4',
+                type = 'JIT',
         )
         """
 
-    def testUpdateAccessProfilesInBulk412Response(self):
-        """Test UpdateAccessProfilesInBulk412Response"""
+    def testEntitlementConnectionBulkUpdateItem(self):
+        """Test EntitlementConnectionBulkUpdateItem"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

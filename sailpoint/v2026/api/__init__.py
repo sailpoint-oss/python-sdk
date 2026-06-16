@@ -34,6 +34,7 @@ from sailpoint.v2026.api.data_access_security_api import DataAccessSecurityApi
 from sailpoint.v2026.api.data_segmentation_api import DataSegmentationApi
 from sailpoint.v2026.api.declassify_source_api import DeclassifySourceApi
 from sailpoint.v2026.api.dimensions_api import DimensionsApi
+from sailpoint.v2026.api.entitlement_connections_api import EntitlementConnectionsApi
 from sailpoint.v2026.api.entitlements_api import EntitlementsApi
 from sailpoint.v2026.api.global_tenant_security_settings_api import GlobalTenantSecuritySettingsApi
 from sailpoint.v2026.api.governance_groups_api import GovernanceGroupsApi
