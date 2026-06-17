@@ -65,7 +65,7 @@ class IdentityProfilesApi:
     ) -> IdentityProfile:
         """Create identity profile
 
-        Creates an identity profile.    
+        Creates an identity profile.
 
         :param identity_profile: (required)
         :type identity_profile: IdentityProfile
@@ -137,7 +137,7 @@ class IdentityProfilesApi:
     ) -> ApiResponse[IdentityProfile]:
         """Create identity profile
 
-        Creates an identity profile.    
+        Creates an identity profile.
 
         :param identity_profile: (required)
         :type identity_profile: IdentityProfile
@@ -209,7 +209,7 @@ class IdentityProfilesApi:
     ) -> RESTResponseType:
         """Create identity profile
 
-        Creates an identity profile.    
+        Creates an identity profile.
 
         :param identity_profile: (required)
         :type identity_profile: IdentityProfile
@@ -315,7 +315,8 @@ class IdentityProfilesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -595,7 +596,8 @@ class IdentityProfilesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -886,7 +888,8 @@ class IdentityProfilesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1514,7 +1517,8 @@ class IdentityProfilesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -2724,7 +2728,8 @@ class IdentityProfilesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -3004,7 +3009,8 @@ class IdentityProfilesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -3313,7 +3319,8 @@ class IdentityProfilesApi:
         # authentication setting
         _auth_settings: List[str] = [
             'userAuth', 
-            'userAuth'
+            'userAuth', 
+            'applicationAuth'
         ]
 
         return self.api_client.param_serialize(
