@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.94"
+__version__ = "1.4.95"
 
 # import apis into sdk package
 from sailpoint.v2026.api.access_model_metadata_api import AccessModelMetadataApi
@@ -1351,6 +1351,9 @@ from sailpoint.v2026.models.source_connections_dto import SourceConnectionsDto
 from sailpoint.v2026.models.source_created import SourceCreated
 from sailpoint.v2026.models.source_created_actor import SourceCreatedActor
 from sailpoint.v2026.models.source_creation_errors import SourceCreationErrors
+from sailpoint.v2026.models.source_dataset import SourceDataset
+from sailpoint.v2026.models.source_dataset_resource import SourceDatasetResource
+from sailpoint.v2026.models.source_dataset_resources_inner import SourceDatasetResourcesInner
 from sailpoint.v2026.models.source_deleted import SourceDeleted
 from sailpoint.v2026.models.source_deleted_actor import SourceDeletedActor
 from sailpoint.v2026.models.source_entitlement_request_config import SourceEntitlementRequestConfig

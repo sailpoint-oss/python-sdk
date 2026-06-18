@@ -173,6 +173,20 @@ class TestSourcesApi(unittest.TestCase):
         """
         pass
 
+    def test_get_source_dataset(self) -> None:
+        """Test case for get_source_dataset
+
+        Get source dataset by id
+        """
+        pass
+
+    def test_get_source_datasets(self) -> None:
+        """Test case for get_source_datasets
+
+        List datasets on source
+        """
+        pass
+
     def test_get_source_entitlement_request_config(self) -> None:
         """Test case for get_source_entitlement_request_config
 
@@ -184,6 +198,20 @@ class TestSourcesApi(unittest.TestCase):
         """Test case for get_source_health
 
         Fetches source health by id
+        """
+        pass
+
+    def test_get_source_resource(self) -> None:
+        """Test case for get_source_resource
+
+        Get source resource by id
+        """
+        pass
+
+    def test_get_source_resources(self) -> None:
+        """Test case for get_source_resources
+
+        List resources for a source
         """
         pass
 

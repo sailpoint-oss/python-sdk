@@ -22942,6 +22942,58 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling SourcesApi->get_source_connections: %s\n" % e)
+- path: /sources/{sourceId}/datasets/{datasetId}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/sources#get-source-dataset
+      source: |
+        from sailpoint.v2026.api.sources_api import SourcesApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.source_dataset import SourceDataset
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          source_id = '2c9180835d191a86015d28455b4a2329' # str | Source ID. # str | Source ID.
+          dataset_id = 'cmdb-servicenow:applications' # str | Dataset ID. # str | Dataset ID.
+          try:
+              # Get source dataset by id
+              
+              results = SourcesApi(api_client).get_source_dataset(source_id=source_id, dataset_id=dataset_id)
+              # Below is a request that includes all optional parameters
+              # results = SourcesApi(api_client).get_source_dataset(source_id, dataset_id)
+              print("The response of SourcesApi->get_source_dataset:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SourcesApi->get_source_dataset: %s\n" % e)
+- path: /sources/{sourceId}/datasets
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/sources#get-source-datasets
+      source: |
+        from sailpoint.v2026.api.sources_api import SourcesApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.source_dataset import SourceDataset
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          source_id = '2c9180835d191a86015d28455b4a2329' # str | Source ID. # str | Source ID.
+          try:
+              # List datasets on source
+              
+              results = SourcesApi(api_client).get_source_datasets(source_id=source_id)
+              # Below is a request that includes all optional parameters
+              # results = SourcesApi(api_client).get_source_datasets(source_id)
+              print("The response of SourcesApi->get_source_datasets:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SourcesApi->get_source_datasets: %s\n" % e)
 - path: /sources/{id}/entitlement-request-config
   method: GET
   xCodeSample:
@@ -22994,6 +23046,58 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling SourcesApi->get_source_health: %s\n" % e)
+- path: /sources/{sourceId}/resources/{resourceId}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/sources#get-source-resource
+      source: |
+        from sailpoint.v2026.api.sources_api import SourcesApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.source_dataset_resource import SourceDatasetResource
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          source_id = '2c9180835d191a86015d28455b4a2329' # str | Source ID. # str | Source ID.
+          resource_id = 'account' # str | Resource ID (CIS schema object type for the source). # str | Resource ID (CIS schema object type for the source).
+          try:
+              # Get source resource by id
+              
+              results = SourcesApi(api_client).get_source_resource(source_id=source_id, resource_id=resource_id)
+              # Below is a request that includes all optional parameters
+              # results = SourcesApi(api_client).get_source_resource(source_id, resource_id)
+              print("The response of SourcesApi->get_source_resource:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SourcesApi->get_source_resource: %s\n" % e)
+- path: /sources/{sourceId}/resources
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/v2026/methods/sources#get-source-resources
+      source: |
+        from sailpoint.v2026.api.sources_api import SourcesApi
+        from sailpoint.v2026.api_client import ApiClient
+        from sailpoint.v2026.models.source_dataset_resource import SourceDatasetResource
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          source_id = '2c9180835d191a86015d28455b4a2329' # str | Source ID. # str | Source ID.
+          try:
+              # List resources for a source
+              
+              results = SourcesApi(api_client).get_source_resources(source_id=source_id)
+              # Below is a request that includes all optional parameters
+              # results = SourcesApi(api_client).get_source_resources(source_id)
+              print("The response of SourcesApi->get_source_resources:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SourcesApi->get_source_resources: %s\n" % e)
 - path: /sources/{sourceId}/schedules/{scheduleType}
   method: GET
   xCodeSample:

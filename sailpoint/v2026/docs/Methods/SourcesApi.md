@@ -93,8 +93,12 @@ Method | HTTP request | Description
 [**get-source-attr-sync-config**](#get-source-attr-sync-config) | **GET** `/sources/{id}/attribute-sync-config` | Attribute sync config
 [**get-source-config**](#get-source-config) | **GET** `/sources/{id}/connectors/source-config` | Gets source config with language-translations
 [**get-source-connections**](#get-source-connections) | **GET** `/sources/{sourceId}/connections` | Get source connections by id
+[**get-source-dataset**](#get-source-dataset) | **GET** `/sources/{sourceId}/datasets/{datasetId}` | Get source dataset by id
+[**get-source-datasets**](#get-source-datasets) | **GET** `/sources/{sourceId}/datasets` | List datasets on source
 [**get-source-entitlement-request-config**](#get-source-entitlement-request-config) | **GET** `/sources/{id}/entitlement-request-config` | Get source entitlement request configuration
 [**get-source-health**](#get-source-health) | **GET** `/sources/{sourceId}/source-health` | Fetches source health by id
+[**get-source-resource**](#get-source-resource) | **GET** `/sources/{sourceId}/resources/{resourceId}` | Get source resource by id
+[**get-source-resources**](#get-source-resources) | **GET** `/sources/{sourceId}/resources` | List resources for a source
 [**get-source-schedule**](#get-source-schedule) | **GET** `/sources/{sourceId}/schedules/{scheduleType}` | Get source schedule by type
 [**get-source-schedules**](#get-source-schedules) | **GET** `/sources/{sourceId}/schedules` | List schedules on source
 [**get-source-schema**](#get-source-schema) | **GET** `/sources/{sourceId}/schemas/{schemaId}` | Get source schema by id
@@ -1519,6 +1523,129 @@ with ApiClient(configuration) as api_client:
 
 [[Back to top]](#) 
 
+## get-source-dataset
+Get source dataset by id
+Use this API to get a dataset by id for the specified source in Identity Security Cloud (ISC).
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2026/get-source-dataset)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | source_id | **str** | True  | Source ID.
+Path   | dataset_id | **str** | True  | Dataset ID.
+
+### Return type
+[**SourceDataset**](../models/source-dataset)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | The requested dataset was successfully retrieved. | SourceDataset |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfig429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2026.api.sources_api import SourcesApi
+from sailpoint.v2026.api_client import ApiClient
+from sailpoint.v2026.models.source_dataset import SourceDataset
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    source_id = '2c9180835d191a86015d28455b4a2329' # str | Source ID. # str | Source ID.
+    dataset_id = 'cmdb-servicenow:applications' # str | Dataset ID. # str | Dataset ID.
+
+    try:
+        # Get source dataset by id
+        
+        results = SourcesApi(api_client).get_source_dataset(source_id=source_id, dataset_id=dataset_id)
+        # Below is a request that includes all optional parameters
+        # results = SourcesApi(api_client).get_source_dataset(source_id, dataset_id)
+        print("The response of SourcesApi->get_source_dataset:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling SourcesApi->get_source_dataset: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## get-source-datasets
+List datasets on source
+Use this API to list datasets for the specified source in Identity Security Cloud (ISC).
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2026/get-source-datasets)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | source_id | **str** | True  | Source ID.
+
+### Return type
+[**List[SourceDataset]**](../models/source-dataset)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | The datasets were successfully retrieved. | List[SourceDataset] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfig429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2026.api.sources_api import SourcesApi
+from sailpoint.v2026.api_client import ApiClient
+from sailpoint.v2026.models.source_dataset import SourceDataset
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    source_id = '2c9180835d191a86015d28455b4a2329' # str | Source ID. # str | Source ID.
+
+    try:
+        # List datasets on source
+        
+        results = SourcesApi(api_client).get_source_datasets(source_id=source_id)
+        # Below is a request that includes all optional parameters
+        # results = SourcesApi(api_client).get_source_datasets(source_id)
+        print("The response of SourcesApi->get_source_datasets:\n")
+        for item in results:
+            print(item.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling SourcesApi->get_source_datasets: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
 ## get-source-entitlement-request-config
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
@@ -1648,6 +1775,130 @@ with ApiClient(configuration) as api_client:
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling SourcesApi->get_source_health: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## get-source-resource
+Get source resource by id
+Use this API to get a resource by id on the specified source in Identity Security Cloud (ISC).
+The response includes the full CIS schema for the resource.
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2026/get-source-resource)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | source_id | **str** | True  | Source ID.
+Path   | resource_id | **str** | True  | Resource ID (CIS schema object type for the source).
+
+### Return type
+[**SourceDatasetResource**](../models/source-dataset-resource)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | The requested source resource was successfully retrieved. | SourceDatasetResource |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfig429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2026.api.sources_api import SourcesApi
+from sailpoint.v2026.api_client import ApiClient
+from sailpoint.v2026.models.source_dataset_resource import SourceDatasetResource
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    source_id = '2c9180835d191a86015d28455b4a2329' # str | Source ID. # str | Source ID.
+    resource_id = 'account' # str | Resource ID (CIS schema object type for the source). # str | Resource ID (CIS schema object type for the source).
+
+    try:
+        # Get source resource by id
+        
+        results = SourcesApi(api_client).get_source_resource(source_id=source_id, resource_id=resource_id)
+        # Below is a request that includes all optional parameters
+        # results = SourcesApi(api_client).get_source_resource(source_id, resource_id)
+        print("The response of SourcesApi->get_source_resource:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling SourcesApi->get_source_resource: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## get-source-resources
+List resources for a source
+Use this API to list resources defined on the specified source in Identity Security Cloud (ISC).
+
+
+[API Spec](https://developer.sailpoint.com/docs/api/v2026/get-source-resources)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | source_id | **str** | True  | Source ID.
+
+### Return type
+[**List[SourceDatasetResource]**](../models/source-dataset-resource)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | The source resources were successfully retrieved. | List[SourceDatasetResource] |  -  |
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetAccessRequestConfig401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetAccessRequestConfig429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.v2026.api.sources_api import SourcesApi
+from sailpoint.v2026.api_client import ApiClient
+from sailpoint.v2026.models.source_dataset_resource import SourceDatasetResource
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    source_id = '2c9180835d191a86015d28455b4a2329' # str | Source ID. # str | Source ID.
+
+    try:
+        # List resources for a source
+        
+        results = SourcesApi(api_client).get_source_resources(source_id=source_id)
+        # Below is a request that includes all optional parameters
+        # results = SourcesApi(api_client).get_source_resources(source_id)
+        print("The response of SourcesApi->get_source_resources:\n")
+        for item in results:
+            print(item.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling SourcesApi->get_source_resources: %s\n" % e)
 ```
 
 
