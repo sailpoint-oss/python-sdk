@@ -71,7 +71,7 @@ class TestPythonSDKV1(unittest.TestCase):
         self.assertEqual(200, result.status_code)
 
     def test_search_pagination_v1(self):
-        from sailpoint.search_v1.models.search import Search
+        from sailpoint.search.models.search import Search
         search = Search()
         search.indices = ['identities']
         search.query = {'query': '*'}
@@ -85,7 +85,7 @@ class TestPythonSDKV1(unittest.TestCase):
         self.assertEqual(200, results.status_code)
 
     def test_paginate_stream_search_v1(self):
-        from sailpoint.search_v1.models.search import Search
+        from sailpoint.search.models.search import Search
         search = Search()
         search.indices = ['identities']
         search.query = {'query': '*'}
@@ -123,7 +123,7 @@ class TestPythonSDKV1(unittest.TestCase):
         self.assertLessEqual(len(first_three), 3)
 
     def test_paginate_stream_with_model_v1(self):
-        from sailpoint.accounts_v1.models.account import Account
+        from sailpoint.accounts.models.account import Account
         stream = Paginator.paginate_stream(
             AccountsApi(self.api_client).list_accounts_v1_with_http_info,
             10, limit=5, model=Account
@@ -142,7 +142,7 @@ class TestPythonSDKV1(unittest.TestCase):
         self.assertEqual(100, len(items))
 
     def test_paginate_stream_search_with_http_info_v1(self):
-        from sailpoint.search_v1.models.search import Search
+        from sailpoint.search.models.search import Search
         search = Search()
         search.indices = ['identities']
         search.query = {'query': '*'}
@@ -193,10 +193,10 @@ class TestPythonSDKV1(unittest.TestCase):
         self.assertIsNotNone(AccountsApi)
         self.assertIsNotNone(TransformsApi)
         # Versioned classes are still importable directly from the partition sub-package
-        from sailpoint.accounts_v1 import AccountsV1Api
-        from sailpoint.transforms_v1 import TransformsV1Api
-        self.assertIsNotNone(AccountsV1Api)
-        self.assertIsNotNone(TransformsV1Api)
+        from sailpoint.accounts import AccountsApi as _AccountsApi
+        from sailpoint.transforms import TransformsApi as _TransformsApi
+        self.assertIsNotNone(_AccountsApi)
+        self.assertIsNotNone(_TransformsApi)
 
 
 class TestLenientEnumsV1(unittest.TestCase):
@@ -215,52 +215,52 @@ class TestLenientEnumsV1(unittest.TestCase):
 
     def test_requested_item_status_accepts_known_state_enum(self):
         """Known state value is coerced to the RequestedItemStatusRequestState enum member."""
-        from sailpoint.access_requests_v1.models.requested_item_status import RequestedItemStatus
-        from sailpoint.access_requests_v1.models.requested_item_status_request_state import RequestedItemStatusRequestState
+        from sailpoint.access_requests.models.requesteditemstatus import Requesteditemstatus
+        from sailpoint.access_requests.models.requesteditemstatusrequeststate import Requesteditemstatusrequeststate
 
-        obj = RequestedItemStatus.model_validate({"state": "EXECUTING"})
+        obj = Requesteditemstatus.model_validate({"state": "EXECUTING"})
         self.assertIsNotNone(obj.state)
-        self.assertEqual(obj.state, RequestedItemStatusRequestState.EXECUTING)
+        self.assertEqual(obj.state, Requesteditemstatusrequeststate.EXECUTING)
 
     def test_requested_item_status_accepts_unknown_state_as_str(self):
         """Unknown state value is accepted as plain str (lenient enum)."""
-        from sailpoint.access_requests_v1.models.requested_item_status import RequestedItemStatus
+        from sailpoint.access_requests.models.requesteditemstatus import Requesteditemstatus
 
         unknown_state = "FUTURE_STATE_NOT_IN_SPEC"
-        obj = RequestedItemStatus.model_validate({"state": unknown_state})
+        obj = Requesteditemstatus.model_validate({"state": unknown_state})
         self.assertIsNotNone(obj.state)
         self.assertEqual(obj.state, unknown_state)
         self.assertIsInstance(obj.state, str)
 
     def test_requested_item_status_accepts_known_request_type_enum(self):
         """Known request_type value is coerced to AccessRequestType enum member."""
-        from sailpoint.access_requests_v1.models.requested_item_status import RequestedItemStatus
-        from sailpoint.access_requests_v1.models.access_request_type import AccessRequestType
+        from sailpoint.access_requests.models.requesteditemstatus import Requesteditemstatus
+        from sailpoint.access_requests.models.accessrequesttype import Accessrequesttype
 
-        obj = RequestedItemStatus.model_validate({"requestType": "GRANT_ACCESS"})
+        obj = Requesteditemstatus.model_validate({"requestType": "GRANT_ACCESS"})
         self.assertIsNotNone(obj.request_type)
-        self.assertEqual(obj.request_type, AccessRequestType.GRANT_ACCESS)
+        self.assertEqual(obj.request_type, Accessrequesttype.GRANT_ACCESS)
 
     def test_requested_item_status_accepts_unknown_request_type_as_str(self):
         """Unknown request_type value is accepted as plain str (lenient enum)."""
-        from sailpoint.access_requests_v1.models.requested_item_status import RequestedItemStatus
+        from sailpoint.access_requests.models.requesteditemstatus import Requesteditemstatus
 
         unknown_type = "FUTURE_REQUEST_TYPE"
-        obj = RequestedItemStatus.model_validate({"requestType": unknown_type})
+        obj = Requesteditemstatus.model_validate({"requestType": unknown_type})
         self.assertIsNotNone(obj.request_type)
         self.assertEqual(obj.request_type, unknown_type)
         self.assertIsInstance(obj.request_type, str)
 
     def test_requested_item_status_unknown_state_round_trips_in_dict(self):
         """Unknown state serializes and deserializes correctly (e.g. for API responses)."""
-        from sailpoint.access_requests_v1.models.requested_item_status import RequestedItemStatus
+        from sailpoint.access_requests.models.requesteditemstatus import Requesteditemstatus
 
         unknown_state = "PENDING_NEW_BACKEND"
-        obj = RequestedItemStatus.model_validate({"state": unknown_state})
+        obj = Requesteditemstatus.model_validate({"state": unknown_state})
         d = obj.model_dump(by_alias=True)
         self.assertIn("state", d)
         self.assertEqual(d["state"], unknown_state)
-        obj2 = RequestedItemStatus.model_validate(d)
+        obj2 = Requesteditemstatus.model_validate(d)
         self.assertEqual(obj2.state, unknown_state)
 
 
@@ -354,7 +354,7 @@ class TestLenientEnumsV1(unittest.TestCase):
 #
 # class TestLenientEnumsV2025Legacy(unittest.TestCase):
 #     # TODO partition-strategy: migrated to TestLenientEnumsV1
-#     # (uses sailpoint.access_requests_v1 instead of sailpoint.v2025)
+#     # (uses sailpoint.access_requests instead of sailpoint.v2025)
 #     ...
 
 

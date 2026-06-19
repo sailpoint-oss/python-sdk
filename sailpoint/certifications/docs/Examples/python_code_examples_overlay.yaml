@@ -1,0 +1,314 @@
+- path: /certification-tasks/v1/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/certifications/methods/certifications#get-certification-task-v1
+      source: |
+        from sailpoint.certifications.api.certifications_api import CertificationsApi
+        from sailpoint.certifications.api_client import ApiClient
+        from sailpoint.certifications.models.certificationtask import Certificationtask
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '63b32151-26c0-42f4-9299-8898dc1c9daa' # str | The task ID # str | The task ID
+          try:
+              # Certification task by id
+              
+              results = CertificationsApi(api_client).get_certification_task_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = CertificationsApi(api_client).get_certification_task_v1(id)
+              print("The response of CertificationsApi->get_certification_task_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling CertificationsApi->get_certification_task_v1: %s\n" % e)
+- path: /certifications/v1/{certificationId}/access-review-items/{itemId}/permissions
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/certifications/methods/certifications#get-identity-certification-item-permissions-v1
+      source: |
+        from sailpoint.certifications.api.certifications_api import CertificationsApi
+        from sailpoint.certifications.api_client import ApiClient
+        from sailpoint.certifications.models.permissiondto import Permissiondto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          certification_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The certification ID # str | The certification ID
+          item_id = '2c91808671bcbab40171bd945d961227' # str | The certification item ID # str | The certification item ID
+          filters = 'target eq \"SYS.OBJAUTH2\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **target**: *eq, sw*  **rights**: *ca*  Supported composite operators: *and, or*  All field values (second filter operands) are case-insensitive for this API.  Only a single *and* or *or* composite filter operator may be used. It must also be used between a target filter and a rights filter, not between 2 filters for the same field.  For example, the following is valid: `?filters=rights+ca+(%22CREATE%22)+and+target+eq+%22SYS.OBJAUTH2%22`  The following is invalid: 1?filters=rights+ca+(%22CREATE%22)+and+rights+ca+(%SELECT%22)1 (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **target**: *eq, sw*  **rights**: *ca*  Supported composite operators: *and, or*  All field values (second filter operands) are case-insensitive for this API.  Only a single *and* or *or* composite filter operator may be used. It must also be used between a target filter and a rights filter, not between 2 filters for the same field.  For example, the following is valid: `?filters=rights+ca+(%22CREATE%22)+and+target+eq+%22SYS.OBJAUTH2%22`  The following is invalid: 1?filters=rights+ca+(%22CREATE%22)+and+rights+ca+(%SELECT%22)1 (optional)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          try:
+              # Permissions for entitlement certification item
+              
+              results = CertificationsApi(api_client).get_identity_certification_item_permissions_v1(certification_id=certification_id, item_id=item_id)
+              # Below is a request that includes all optional parameters
+              # results = CertificationsApi(api_client).get_identity_certification_item_permissions_v1(certification_id, item_id, filters, limit, offset, count)
+              print("The response of CertificationsApi->get_identity_certification_item_permissions_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling CertificationsApi->get_identity_certification_item_permissions_v1: %s\n" % e)
+- path: /certifications/v1/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/certifications/methods/certifications#get-identity-certification-v1
+      source: |
+        from sailpoint.certifications.api.certifications_api import CertificationsApi
+        from sailpoint.certifications.api_client import ApiClient
+        from sailpoint.certifications.models.identitycertificationdto import Identitycertificationdto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | The certification id # str | The certification id
+          try:
+              # Identity certification by id
+              
+              results = CertificationsApi(api_client).get_identity_certification_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = CertificationsApi(api_client).get_identity_certification_v1(id)
+              print("The response of CertificationsApi->get_identity_certification_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling CertificationsApi->get_identity_certification_v1: %s\n" % e)
+- path: /certification-tasks/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/certifications/methods/certifications#get-pending-certification-tasks-v1
+      source: |
+        from sailpoint.certifications.api.certifications_api import CertificationsApi
+        from sailpoint.certifications.api_client import ApiClient
+        from sailpoint.certifications.models.certificationtask import Certificationtask
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          reviewer_identity = 'Ada.1de82e55078344' # str | The ID of reviewer identity. *me* indicates the current user. (optional) # str | The ID of reviewer identity. *me* indicates the current user. (optional)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'type eq \"ADMIN_REASSIGN\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **targetId**: *eq, in*  **type**: *eq, in* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **targetId**: *eq, in*  **type**: *eq, in* (optional)
+          try:
+              # List of pending certification tasks
+              
+              results = CertificationsApi(api_client).get_pending_certification_tasks_v1()
+              # Below is a request that includes all optional parameters
+              # results = CertificationsApi(api_client).get_pending_certification_tasks_v1(reviewer_identity, limit, offset, count, filters)
+              print("The response of CertificationsApi->get_pending_certification_tasks_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling CertificationsApi->get_pending_certification_tasks_v1: %s\n" % e)
+- path: /certifications/v1/{id}/reviewers
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/certifications/methods/certifications#list-certification-reviewers-v1
+      source: |
+        from sailpoint.certifications.api.certifications_api import CertificationsApi
+        from sailpoint.certifications.api_client import ApiClient
+        from sailpoint.certifications.models.identityreferencewithnameandemail import Identityreferencewithnameandemail
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | The certification ID # str | The certification ID
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'name eq \"Bob\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **email**: *eq, sw* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **email**: *eq, sw* (optional)
+          sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, email** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, email** (optional)
+          try:
+              # List of reviewers for certification
+              
+              results = CertificationsApi(api_client).list_certification_reviewers_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = CertificationsApi(api_client).list_certification_reviewers_v1(id, limit, offset, count, filters, sorters)
+              print("The response of CertificationsApi->list_certification_reviewers_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling CertificationsApi->list_certification_reviewers_v1: %s\n" % e)
+- path: /certifications/v1/{id}/access-review-items
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/certifications/methods/certifications#list-identity-access-review-items-v1
+      source: |
+        from sailpoint.certifications.api.certifications_api import CertificationsApi
+        from sailpoint.certifications.api_client import ApiClient
+        from sailpoint.certifications.models.accessreviewitem import Accessreviewitem
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | The identity campaign certification ID # str | The identity campaign certification ID
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'id eq \"ef38f94347e94562b5bb8424a56397d8\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **type**: *eq*  **access.type**: *eq*  **completed**: *eq, ne*  **identitySummary.id**: *eq, in*  **identitySummary.name**: *eq, sw*  **access.id**: *eq, in*  **access.name**: *eq, sw*  **entitlement.sourceName**: *eq, sw*  **accessProfile.sourceName**: *eq, sw* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **type**: *eq*  **access.type**: *eq*  **completed**: *eq, ne*  **identitySummary.id**: *eq, in*  **identitySummary.name**: *eq, sw*  **access.id**: *eq, in*  **access.name**: *eq, sw*  **entitlement.sourceName**: *eq, sw*  **accessProfile.sourceName**: *eq, sw* (optional)
+          sorters = 'access.name,-accessProfile.sourceName' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitySummary.name, access.name, access.type, entitlement.sourceName, accessProfile.sourceName** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitySummary.name, access.name, access.type, entitlement.sourceName, accessProfile.sourceName** (optional)
+          entitlements = 'identityEntitlement' # str | Filter results to view access review items that pertain to any of the specified comma-separated entitlement IDs.  An error will occur if this param is used with **access-profiles** or **roles** as only one of these query params can be used at a time. (optional) # str | Filter results to view access review items that pertain to any of the specified comma-separated entitlement IDs.  An error will occur if this param is used with **access-profiles** or **roles** as only one of these query params can be used at a time. (optional)
+          access_profiles = 'accessProfile1' # str | Filter results to view access review items that pertain to any of the specified comma-separated access-profle IDs.  An error will occur if this param is used with **entitlements** or **roles** as only one of these query params can be used at a time. (optional) # str | Filter results to view access review items that pertain to any of the specified comma-separated access-profle IDs.  An error will occur if this param is used with **entitlements** or **roles** as only one of these query params can be used at a time. (optional)
+          roles = 'userRole' # str | Filter results to view access review items that pertain to any of the specified comma-separated role IDs.  An error will occur if this param is used with **entitlements** or **access-profiles** as only one of these query params can be used at a time. (optional) # str | Filter results to view access review items that pertain to any of the specified comma-separated role IDs.  An error will occur if this param is used with **entitlements** or **access-profiles** as only one of these query params can be used at a time. (optional)
+          try:
+              # List of access review items
+              
+              results = CertificationsApi(api_client).list_identity_access_review_items_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = CertificationsApi(api_client).list_identity_access_review_items_v1(id, limit, offset, count, filters, sorters, entitlements, access_profiles, roles)
+              print("The response of CertificationsApi->list_identity_access_review_items_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling CertificationsApi->list_identity_access_review_items_v1: %s\n" % e)
+- path: /certifications/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/certifications/methods/certifications#list-identity-certifications-v1
+      source: |
+        from sailpoint.certifications.api.certifications_api import CertificationsApi
+        from sailpoint.certifications.api_client import ApiClient
+        from sailpoint.certifications.models.identitycertificationdto import Identitycertificationdto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          reviewer_identity = 'me' # str | Reviewer's identity. *me* indicates the current user. (optional) # str | Reviewer's identity. *me* indicates the current user. (optional)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'id eq \"ef38f94347e94562b5bb8424a56397d8\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **campaign.id**: *eq, in*  **phase**: *eq*  **completed**: *eq* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **campaign.id**: *eq, in*  **phase**: *eq*  **completed**: *eq* (optional)
+          sorters = 'name,due' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, due, signed** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, due, signed** (optional)
+          try:
+              # List identity campaign certifications
+              
+              results = CertificationsApi(api_client).list_identity_certifications_v1()
+              # Below is a request that includes all optional parameters
+              # results = CertificationsApi(api_client).list_identity_certifications_v1(reviewer_identity, limit, offset, count, filters, sorters)
+              print("The response of CertificationsApi->list_identity_certifications_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling CertificationsApi->list_identity_certifications_v1: %s\n" % e)
+- path: /certifications/v1/{id}/decide
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/certifications/methods/certifications#make-identity-decision-v1
+      source: |
+        from sailpoint.certifications.api.certifications_api import CertificationsApi
+        from sailpoint.certifications.api_client import ApiClient
+        from sailpoint.certifications.models.identitycertificationdto import Identitycertificationdto
+        from sailpoint.certifications.models.reviewdecision import Reviewdecision
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the identity campaign certification on which to make decisions # str | The ID of the identity campaign certification on which to make decisions
+          reviewdecision = '''[{"id":"ef38f94347e94562b5bb8424a56396b5","decision":"APPROVE","bulk":true,"comments":"This user still needs access to this source."},{"id":"ef38f94347e94562b5bb8424a56397d8","decision":"APPROVE","bulk":true,"comments":"This user still needs access to this source too."}]''' # List[Reviewdecision] | A non-empty array of decisions to be made.
+          try:
+              # Decide on a certification item
+              new_reviewdecision = Reviewdecision.from_json(reviewdecision)
+              results = CertificationsApi(api_client).make_identity_decision_v1(id=id, reviewdecision=new_reviewdecision)
+              # Below is a request that includes all optional parameters
+              # results = CertificationsApi(api_client).make_identity_decision_v1(id, new_reviewdecision)
+              print("The response of CertificationsApi->make_identity_decision_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling CertificationsApi->make_identity_decision_v1: %s\n" % e)
+- path: /certifications/v1/{id}/reassign
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/certifications/methods/certifications#reassign-identity-certifications-v1
+      source: |
+        from sailpoint.certifications.api.certifications_api import CertificationsApi
+        from sailpoint.certifications.api_client import ApiClient
+        from sailpoint.certifications.models.identitycertificationdto import Identitycertificationdto
+        from sailpoint.certifications.models.reviewreassign import Reviewreassign
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | The identity campaign certification ID # str | The identity campaign certification ID
+          reviewreassign = '''sailpoint.certifications.Reviewreassign()''' # Reviewreassign | 
+          try:
+              # Reassign identities or items
+              new_reviewreassign = Reviewreassign.from_json(reviewreassign)
+              results = CertificationsApi(api_client).reassign_identity_certifications_v1(id=id, reviewreassign=new_reviewreassign)
+              # Below is a request that includes all optional parameters
+              # results = CertificationsApi(api_client).reassign_identity_certifications_v1(id, new_reviewreassign)
+              print("The response of CertificationsApi->reassign_identity_certifications_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling CertificationsApi->reassign_identity_certifications_v1: %s\n" % e)
+- path: /certifications/v1/{id}/sign-off
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/certifications/methods/certifications#sign-off-identity-certification-v1
+      source: |
+        from sailpoint.certifications.api.certifications_api import CertificationsApi
+        from sailpoint.certifications.api_client import ApiClient
+        from sailpoint.certifications.models.identitycertificationdto import Identitycertificationdto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | The identity campaign certification ID # str | The identity campaign certification ID
+          try:
+              # Finalize identity certification decisions
+              
+              results = CertificationsApi(api_client).sign_off_identity_certification_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = CertificationsApi(api_client).sign_off_identity_certification_v1(id)
+              print("The response of CertificationsApi->sign_off_identity_certification_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling CertificationsApi->sign_off_identity_certification_v1: %s\n" % e)
+- path: /certifications/v1/{id}/reassign-async
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/certifications/methods/certifications#submit-reassign-certs-async-v1
+      source: |
+        from sailpoint.certifications.api.certifications_api import CertificationsApi
+        from sailpoint.certifications.api_client import ApiClient
+        from sailpoint.certifications.models.certificationtask import Certificationtask
+        from sailpoint.certifications.models.reviewreassign import Reviewreassign
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | The identity campaign certification ID # str | The identity campaign certification ID
+          reviewreassign = '''sailpoint.certifications.Reviewreassign()''' # Reviewreassign | 
+          try:
+              # Reassign certifications asynchronously
+              new_reviewreassign = Reviewreassign.from_json(reviewreassign)
+              results = CertificationsApi(api_client).submit_reassign_certs_async_v1(id=id, reviewreassign=new_reviewreassign)
+              # Below is a request that includes all optional parameters
+              # results = CertificationsApi(api_client).submit_reassign_certs_async_v1(id, new_reviewreassign)
+              print("The response of CertificationsApi->submit_reassign_certs_async_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling CertificationsApi->submit_reassign_certs_async_v1: %s\n" % e)
+

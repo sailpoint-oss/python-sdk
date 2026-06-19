@@ -1,0 +1,273 @@
+- path: /workgroups/v1
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/governance-groups/methods/governance-groups#create-workgroup-v1
+      source: |
+        from sailpoint.governance_groups.api.governance_groups_api import GovernanceGroupsApi
+        from sailpoint.governance_groups.api_client import ApiClient
+        from sailpoint.governance_groups.models.workgroupdto import Workgroupdto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          workgroupdto = '''sailpoint.governance_groups.Workgroupdto()''' # Workgroupdto | 
+          try:
+              # Create a new governance group.
+              new_workgroupdto = Workgroupdto.from_json(workgroupdto)
+              results = GovernanceGroupsApi(api_client).create_workgroup_v1(workgroupdto=new_workgroupdto)
+              # Below is a request that includes all optional parameters
+              # results = GovernanceGroupsApi(api_client).create_workgroup_v1(new_workgroupdto)
+              print("The response of GovernanceGroupsApi->create_workgroup_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling GovernanceGroupsApi->create_workgroup_v1: %s\n" % e)
+- path: /workgroups/v1/{workgroupId}/members/bulk-delete
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/governance-groups/methods/governance-groups#delete-workgroup-members-v1
+      source: |
+        from sailpoint.governance_groups.api.governance_groups_api import GovernanceGroupsApi
+        from sailpoint.governance_groups.api_client import ApiClient
+        from sailpoint.governance_groups.models.bulkworkgroupmembersrequest_inner import BulkworkgroupmembersrequestInner
+        from sailpoint.governance_groups.models.workgroupmemberdeleteitem import Workgroupmemberdeleteitem
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          workgroup_id = '2c91808a7813090a017814121919ecca' # str | ID of the Governance Group. # str | ID of the Governance Group.
+          bulkworkgroupmembersrequest_inner = '''[sailpoint.governance_groups.BulkworkgroupmembersrequestInner()]''' # List[BulkworkgroupmembersrequestInner] | List of identities to be removed from  a Governance Group members list.
+          try:
+              # Remove members from governance group
+              new_bulkworkgroupmembersrequest_inner = BulkworkgroupmembersrequestInner.from_json(bulkworkgroupmembersrequest_inner)
+              results = GovernanceGroupsApi(api_client).delete_workgroup_members_v1(workgroup_id=workgroup_id, bulkworkgroupmembersrequest_inner=new_bulkworkgroupmembersrequest_inner)
+              # Below is a request that includes all optional parameters
+              # results = GovernanceGroupsApi(api_client).delete_workgroup_members_v1(workgroup_id, new_bulkworkgroupmembersrequest_inner)
+              print("The response of GovernanceGroupsApi->delete_workgroup_members_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling GovernanceGroupsApi->delete_workgroup_members_v1: %s\n" % e)
+- path: /workgroups/v1/{id}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/governance-groups/methods/governance-groups#delete-workgroup-v1
+      source: |
+        from sailpoint.governance_groups.api.governance_groups_api import GovernanceGroupsApi
+        from sailpoint.governance_groups.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '2c9180837ca6693d017ca8d097500149' # str | ID of the Governance Group # str | ID of the Governance Group
+          try:
+              # Delete a governance group
+              
+              GovernanceGroupsApi(api_client).delete_workgroup_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # GovernanceGroupsApi(api_client).delete_workgroup_v1(id)
+          except Exception as e:
+              print("Exception when calling GovernanceGroupsApi->delete_workgroup_v1: %s\n" % e)
+- path: /workgroups/v1/bulk-delete
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/governance-groups/methods/governance-groups#delete-workgroups-in-bulk-v1
+      source: |
+        from sailpoint.governance_groups.api.governance_groups_api import GovernanceGroupsApi
+        from sailpoint.governance_groups.api_client import ApiClient
+        from sailpoint.governance_groups.models.workgroupbulkdeleterequest import Workgroupbulkdeleterequest
+        from sailpoint.governance_groups.models.workgroupdeleteitem import Workgroupdeleteitem
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          workgroupbulkdeleterequest = '''{"ids":["567a697e-885b-495a-afc5-d55e1c23a302","c7b0f7b2-1e78-4063-b294-a555333dacd2"]}''' # Workgroupbulkdeleterequest | 
+          try:
+              # Delete governance group(s)
+              new_workgroupbulkdeleterequest = Workgroupbulkdeleterequest.from_json(workgroupbulkdeleterequest)
+              results = GovernanceGroupsApi(api_client).delete_workgroups_in_bulk_v1(workgroupbulkdeleterequest=new_workgroupbulkdeleterequest)
+              # Below is a request that includes all optional parameters
+              # results = GovernanceGroupsApi(api_client).delete_workgroups_in_bulk_v1(new_workgroupbulkdeleterequest)
+              print("The response of GovernanceGroupsApi->delete_workgroups_in_bulk_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling GovernanceGroupsApi->delete_workgroups_in_bulk_v1: %s\n" % e)
+- path: /workgroups/v1/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/governance-groups/methods/governance-groups#get-workgroup-v1
+      source: |
+        from sailpoint.governance_groups.api.governance_groups_api import GovernanceGroupsApi
+        from sailpoint.governance_groups.api_client import ApiClient
+        from sailpoint.governance_groups.models.workgroupdto import Workgroupdto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '2c9180837ca6693d017ca8d097500149' # str | ID of the Governance Group # str | ID of the Governance Group
+          try:
+              # Get governance group by id
+              
+              results = GovernanceGroupsApi(api_client).get_workgroup_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = GovernanceGroupsApi(api_client).get_workgroup_v1(id)
+              print("The response of GovernanceGroupsApi->get_workgroup_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling GovernanceGroupsApi->get_workgroup_v1: %s\n" % e)
+- path: /workgroups/v1/{workgroupId}/connections
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/governance-groups/methods/governance-groups#list-connections-v1
+      source: |
+        from sailpoint.governance_groups.api.governance_groups_api import GovernanceGroupsApi
+        from sailpoint.governance_groups.api_client import ApiClient
+        from sailpoint.governance_groups.models.workgroupconnectiondto import Workgroupconnectiondto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          workgroup_id = '2c91808a7813090a017814121919ecca' # str | ID of the Governance Group. # str | ID of the Governance Group.
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          limit = 50 # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50) # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          sorters = 'name,-modified' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
+          try:
+              # List connections for governance group
+              
+              results = GovernanceGroupsApi(api_client).list_connections_v1(workgroup_id=workgroup_id)
+              # Below is a request that includes all optional parameters
+              # results = GovernanceGroupsApi(api_client).list_connections_v1(workgroup_id, offset, limit, count, sorters)
+              print("The response of GovernanceGroupsApi->list_connections_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling GovernanceGroupsApi->list_connections_v1: %s\n" % e)
+- path: /workgroups/v1/{workgroupId}/members
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/governance-groups/methods/governance-groups#list-workgroup-members-v1
+      source: |
+        from sailpoint.governance_groups.api.governance_groups_api import GovernanceGroupsApi
+        from sailpoint.governance_groups.api_client import ApiClient
+        from sailpoint.governance_groups.models.list_workgroup_members_v1200_response_inner import ListWorkgroupMembersV1200ResponseInner
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          workgroup_id = '2c91808a7813090a017814121919ecca' # str | ID of the Governance Group. # str | ID of the Governance Group.
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          limit = 50 # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50) # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          sorters = 'name,-modified' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
+          try:
+              # List governance group members
+              
+              results = GovernanceGroupsApi(api_client).list_workgroup_members_v1(workgroup_id=workgroup_id)
+              # Below is a request that includes all optional parameters
+              # results = GovernanceGroupsApi(api_client).list_workgroup_members_v1(workgroup_id, offset, limit, count, sorters)
+              print("The response of GovernanceGroupsApi->list_workgroup_members_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling GovernanceGroupsApi->list_workgroup_members_v1: %s\n" % e)
+- path: /workgroups/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/governance-groups/methods/governance-groups#list-workgroups-v1
+      source: |
+        from sailpoint.governance_groups.api.governance_groups_api import GovernanceGroupsApi
+        from sailpoint.governance_groups.api_client import ApiClient
+        from sailpoint.governance_groups.models.workgroupdto import Workgroupdto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'name sw \"Test\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **name**: *eq, sw, in*  **memberships.identityId**: *eq, in* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **name**: *eq, sw, in*  **memberships.identityId**: *eq, in* (optional)
+          sorters = 'name,-modified' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, description** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, description** (optional)
+          try:
+              # List governance groups
+              
+              results = GovernanceGroupsApi(api_client).list_workgroups_v1()
+              # Below is a request that includes all optional parameters
+              # results = GovernanceGroupsApi(api_client).list_workgroups_v1(offset, limit, count, filters, sorters)
+              print("The response of GovernanceGroupsApi->list_workgroups_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling GovernanceGroupsApi->list_workgroups_v1: %s\n" % e)
+- path: /workgroups/v1/{id}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/governance-groups/methods/governance-groups#patch-workgroup-v1
+      source: |
+        from sailpoint.governance_groups.api.governance_groups_api import GovernanceGroupsApi
+        from sailpoint.governance_groups.api_client import ApiClient
+        from sailpoint.governance_groups.models.jsonpatchoperation import Jsonpatchoperation
+        from sailpoint.governance_groups.models.workgroupdto import Workgroupdto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '2c9180837ca6693d017ca8d097500149' # str | ID of the Governance Group # str | ID of the Governance Group
+          jsonpatchoperation = '''[{"op":"replace","path":"/description","value":"Governance Group new description."}]''' # List[Jsonpatchoperation] |  (optional)
+          try:
+              # Patch a governance group
+              
+              results = GovernanceGroupsApi(api_client).patch_workgroup_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = GovernanceGroupsApi(api_client).patch_workgroup_v1(id, new_jsonpatchoperation)
+              print("The response of GovernanceGroupsApi->patch_workgroup_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling GovernanceGroupsApi->patch_workgroup_v1: %s\n" % e)
+- path: /workgroups/v1/{workgroupId}/members/bulk-add
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/governance-groups/methods/governance-groups#update-workgroup-members-v1
+      source: |
+        from sailpoint.governance_groups.api.governance_groups_api import GovernanceGroupsApi
+        from sailpoint.governance_groups.api_client import ApiClient
+        from sailpoint.governance_groups.models.bulkworkgroupmembersrequest_inner import BulkworkgroupmembersrequestInner
+        from sailpoint.governance_groups.models.workgroupmemberadditem import Workgroupmemberadditem
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          workgroup_id = '2c91808a7813090a017814121919ecca' # str | ID of the Governance Group. # str | ID of the Governance Group.
+          bulkworkgroupmembersrequest_inner = '''[sailpoint.governance_groups.BulkworkgroupmembersrequestInner()]''' # List[BulkworkgroupmembersrequestInner] | List of identities to be added to a Governance Group members list.
+          try:
+              # Add members to governance group
+              new_bulkworkgroupmembersrequest_inner = BulkworkgroupmembersrequestInner.from_json(bulkworkgroupmembersrequest_inner)
+              results = GovernanceGroupsApi(api_client).update_workgroup_members_v1(workgroup_id=workgroup_id, bulkworkgroupmembersrequest_inner=new_bulkworkgroupmembersrequest_inner)
+              # Below is a request that includes all optional parameters
+              # results = GovernanceGroupsApi(api_client).update_workgroup_members_v1(workgroup_id, new_bulkworkgroupmembersrequest_inner)
+              print("The response of GovernanceGroupsApi->update_workgroup_members_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling GovernanceGroupsApi->update_workgroup_members_v1: %s\n" % e)
+

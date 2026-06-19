@@ -1,0 +1,351 @@
+- path: /access-request-approvals/v1/bulk-approve
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-requests/methods/access-requests#approve-bulk-access-request-v1
+      source: |
+        from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
+        from sailpoint.access_requests.api_client import ApiClient
+        from sailpoint.access_requests.models.bulkapproveaccessrequest import Bulkapproveaccessrequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          bulkapproveaccessrequest = '''{"accessRequestIds":["2c91808568c529c60168cca6f90c1313","2c91808568c529c60168cca6f90c1314"],"comment":"I approve these request items"}''' # Bulkapproveaccessrequest | 
+          try:
+              # Bulk approve access request
+              new_bulkapproveaccessrequest = Bulkapproveaccessrequest.from_json(bulkapproveaccessrequest)
+              results = AccessRequestsApi(api_client).approve_bulk_access_request_v1(bulkapproveaccessrequest=new_bulkapproveaccessrequest)
+              # Below is a request that includes all optional parameters
+              # results = AccessRequestsApi(api_client).approve_bulk_access_request_v1(new_bulkapproveaccessrequest)
+              print("The response of AccessRequestsApi->approve_bulk_access_request_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessRequestsApi->approve_bulk_access_request_v1: %s\n" % e)
+- path: /access-requests/v1/bulk-cancel
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-requests/methods/access-requests#cancel-access-request-in-bulk-v1
+      source: |
+        from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
+        from sailpoint.access_requests.api_client import ApiClient
+        from sailpoint.access_requests.models.bulkcancelaccessrequest import Bulkcancelaccessrequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          bulkcancelaccessrequest = '''{"accessRequestIds":["2c91808568c529c60168cca6f90c1313","2c91808568c529c60168cca6f90c1314"],"comment":"I requested this role by mistake."}''' # Bulkcancelaccessrequest | 
+          try:
+              # Bulk cancel access request
+              new_bulkcancelaccessrequest = Bulkcancelaccessrequest.from_json(bulkcancelaccessrequest)
+              results = AccessRequestsApi(api_client).cancel_access_request_in_bulk_v1(bulkcancelaccessrequest=new_bulkcancelaccessrequest)
+              # Below is a request that includes all optional parameters
+              # results = AccessRequestsApi(api_client).cancel_access_request_in_bulk_v1(new_bulkcancelaccessrequest)
+              print("The response of AccessRequestsApi->cancel_access_request_in_bulk_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessRequestsApi->cancel_access_request_in_bulk_v1: %s\n" % e)
+- path: /access-requests/v1/cancel
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-requests/methods/access-requests#cancel-access-request-v1
+      source: |
+        from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
+        from sailpoint.access_requests.api_client import ApiClient
+        from sailpoint.access_requests.models.cancelaccessrequest import Cancelaccessrequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          cancelaccessrequest = '''{"accountActivityId":"2c91808568c529c60168cca6f90c1313","comment":"I requested this role by mistake."}''' # Cancelaccessrequest | 
+          try:
+              # Cancel access request
+              new_cancelaccessrequest = Cancelaccessrequest.from_json(cancelaccessrequest)
+              results = AccessRequestsApi(api_client).cancel_access_request_v1(cancelaccessrequest=new_cancelaccessrequest)
+              # Below is a request that includes all optional parameters
+              # results = AccessRequestsApi(api_client).cancel_access_request_v1(new_cancelaccessrequest)
+              print("The response of AccessRequestsApi->cancel_access_request_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessRequestsApi->cancel_access_request_v1: %s\n" % e)
+- path: /access-requests/v1/close
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-requests/methods/access-requests#close-access-request-v1
+      source: |
+        from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
+        from sailpoint.access_requests.api_client import ApiClient
+        from sailpoint.access_requests.models.closeaccessrequest import Closeaccessrequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          closeaccessrequest = '''{"accessRequestIds":["2c90ad2a70ace7d50170acf22ca90010"],"executionStatus":"Terminated","completionStatus":"Failure","message":"The IdentityNow Administrator manually closed this request."}''' # Closeaccessrequest | 
+          try:
+              # Close access request
+              new_closeaccessrequest = Closeaccessrequest.from_json(closeaccessrequest)
+              results = AccessRequestsApi(api_client).close_access_request_v1(closeaccessrequest=new_closeaccessrequest)
+              # Below is a request that includes all optional parameters
+              # results = AccessRequestsApi(api_client).close_access_request_v1(new_closeaccessrequest)
+              print("The response of AccessRequestsApi->close_access_request_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessRequestsApi->close_access_request_v1: %s\n" % e)
+- path: /access-requests/v1
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-requests/methods/access-requests#create-access-request-v1
+      source: |
+        from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
+        from sailpoint.access_requests.api_client import ApiClient
+        from sailpoint.access_requests.models.accessrequest import Accessrequest
+        from sailpoint.access_requests.models.accessrequestresponse import Accessrequestresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          accessrequest = '''sailpoint.access_requests.Accessrequest()''' # Accessrequest | 
+          try:
+              # Submit access request
+              new_accessrequest = Accessrequest.from_json(accessrequest)
+              results = AccessRequestsApi(api_client).create_access_request_v1(accessrequest=new_accessrequest)
+              # Below is a request that includes all optional parameters
+              # results = AccessRequestsApi(api_client).create_access_request_v1(new_accessrequest)
+              print("The response of AccessRequestsApi->create_access_request_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessRequestsApi->create_access_request_v1: %s\n" % e)
+- path: /access-request-config/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-requests/methods/access-requests#get-access-request-config-v1
+      source: |
+        from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
+        from sailpoint.access_requests.api_client import ApiClient
+        from sailpoint.access_requests.models.accessrequestconfigv1 import Accessrequestconfigv1
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          try:
+              # Get access request configuration
+              
+              results = AccessRequestsApi(api_client).get_access_request_config_v1()
+              # Below is a request that includes all optional parameters
+              # results = AccessRequestsApi(api_client).get_access_request_config_v1()
+              print("The response of AccessRequestsApi->get_access_request_config_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessRequestsApi->get_access_request_config_v1: %s\n" % e)
+- path: /access-request-config/v2
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-requests/methods/access-requests#get-access-request-config-v2
+      source: |
+        from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
+        from sailpoint.access_requests.api_client import ApiClient
+        from sailpoint.access_requests.models.accessrequestconfigv2 import Accessrequestconfigv2
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          try:
+              # Get access request configuration
+              
+              results = AccessRequestsApi(api_client).get_access_request_config_v2()
+              # Below is a request that includes all optional parameters
+              # results = AccessRequestsApi(api_client).get_access_request_config_v2()
+              print("The response of AccessRequestsApi->get_access_request_config_v2:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessRequestsApi->get_access_request_config_v2: %s\n" % e)
+- path: /revocable-objects/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-requests/methods/access-requests#get-entitlement-details-for-identity-v1
+      source: |
+        from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
+        from sailpoint.access_requests.api_client import ApiClient
+        from sailpoint.access_requests.models.identityentitlementdetails import Identityentitlementdetails
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          identity_id = '7025c863c2704ba6beeaedf3cb091573' # str | The identity ID. # str | The identity ID.
+          entitlement_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The entitlement ID # str | The entitlement ID
+          try:
+              # Identity entitlement details
+              
+              results = AccessRequestsApi(api_client).get_entitlement_details_for_identity_v1(identity_id=identity_id, entitlement_id=entitlement_id)
+              # Below is a request that includes all optional parameters
+              # results = AccessRequestsApi(api_client).get_entitlement_details_for_identity_v1(identity_id, entitlement_id)
+              print("The response of AccessRequestsApi->get_entitlement_details_for_identity_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessRequestsApi->get_entitlement_details_for_identity_v1: %s\n" % e)
+- path: /access-request-status/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-requests/methods/access-requests#list-access-request-status-v1
+      source: |
+        from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
+        from sailpoint.access_requests.api_client import ApiClient
+        from sailpoint.access_requests.models.requesteditemstatus import Requesteditemstatus
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          requested_for = '2c9180877b2b6ea4017b2c545f971429' # str | Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional) # str | Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional)
+          requested_by = '2c9180877b2b6ea4017b2c545f971429' # str | Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional) # str | Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional)
+          regarding_identity = '2c9180877b2b6ea4017b2c545f971429' # str | Filter the results by the specified identity who is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*. (optional) # str | Filter the results by the specified identity who is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*. (optional)
+          assigned_to = '2c9180877b2b6ea4017b2c545f971429' # str | Filter the results by the specified identity who is the owner of the Identity Request Work Item. *me* indicates the current user. (optional) # str | Filter the results by the specified identity who is the owner of the Identity Request Work Item. *me* indicates the current user. (optional)
+          count = False # bool | If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored. (optional) (default to False) # bool | If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored. (optional) (default to False)
+          limit = 250 # int | Max number of results to return. (optional) (default to 250) # int | Max number of results to return. (optional) (default to 250)
+          offset = 10 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. (optional) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. (optional)
+          filters = 'accountActivityItemId eq \"2c918086771c86df0177401efcdf54c0\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accessRequestId**: *eq, ge, gt, le, lt, ne, sw*  **accountActivityItemId**: *eq, in, ge, gt, le, ne, sw*  **created**: *eq, ge, gt, le, lt, ne* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accessRequestId**: *eq, ge, gt, le, lt, ne, sw*  **accountActivityItemId**: *eq, in, ge, gt, le, ne, sw*  **created**: *eq, ge, gt, le, lt, ne* (optional)
+          sorters = 'created' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name** (optional)
+          request_state = 'request-state=EXECUTING' # str | Filter the results by the state of the request. The only valid value is *EXECUTING*. (optional) # str | Filter the results by the state of the request. The only valid value is *EXECUTING*. (optional)
+          try:
+              # Access request status
+              
+              results = AccessRequestsApi(api_client).list_access_request_status_v1()
+              # Below is a request that includes all optional parameters
+              # results = AccessRequestsApi(api_client).list_access_request_status_v1(requested_for, requested_by, regarding_identity, assigned_to, count, limit, offset, filters, sorters, request_state)
+              print("The response of AccessRequestsApi->list_access_request_status_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessRequestsApi->list_access_request_status_v1: %s\n" % e)
+- path: /access-request-administration/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-requests/methods/access-requests#list-administrators-access-request-status-v1
+      source: |
+        from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
+        from sailpoint.access_requests.api_client import ApiClient
+        from sailpoint.access_requests.models.accessrequestadminitemstatus import Accessrequestadminitemstatus
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
+          requested_for = '2c9180877b2b6ea4017b2c545f971429' # str | Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional) # str | Filter the results by the identity the requests were made for. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional)
+          requested_by = '2c9180877b2b6ea4017b2c545f971429' # str | Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional) # str | Filter the results by the identity who made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional)
+          regarding_identity = '2c9180877b2b6ea4017b2c545f971429' # str | Filter the results by the specified identity who is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*. (optional) # str | Filter the results by the specified identity who is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*. (optional)
+          assigned_to = '2c9180877b2b6ea4017b2c545f971429' # str | Filter the results by the specified identity who is the owner of the Identity Request Work Item. *me* indicates the current user. (optional) # str | Filter the results by the specified identity who is the owner of the Identity Request Work Item. *me* indicates the current user. (optional)
+          count = False # bool | If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored. (optional) (default to False) # bool | If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored. (optional) (default to False)
+          limit = 250 # int | Max number of results to return. (optional) (default to 250) # int | Max number of results to return. (optional) (default to 250)
+          offset = 10 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. (optional) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. (optional)
+          filters = 'accountActivityItemId eq \"2c918086771c86df0177401efcdf54c0\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in, eq, ne, ge, gt, le, lt, sw*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in, eq, ne, ge, gt, le, lt, sw*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw* (optional)
+          sorters = 'created' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId** (optional)
+          request_state = 'request-state=EXECUTING' # str | Filter the results by the state of the request. The only valid value is *EXECUTING*. (optional) # str | Filter the results by the state of the request. The only valid value is *EXECUTING*. (optional)
+          try:
+              # Access request status for administrators
+              
+              results = AccessRequestsApi(api_client).list_administrators_access_request_status_v1(x_sail_point_experimental=x_sail_point_experimental)
+              # Below is a request that includes all optional parameters
+              # results = AccessRequestsApi(api_client).list_administrators_access_request_status_v1(x_sail_point_experimental, requested_for, requested_by, regarding_identity, assigned_to, count, limit, offset, filters, sorters, request_state)
+              print("The response of AccessRequestsApi->list_administrators_access_request_status_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessRequestsApi->list_administrators_access_request_status_v1: %s\n" % e)
+- path: /access-requests/v1/accounts-selection
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-requests/methods/access-requests#load-account-selections-v1
+      source: |
+        from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
+        from sailpoint.access_requests.api_client import ApiClient
+        from sailpoint.access_requests.models.accountsselectionrequest import Accountsselectionrequest
+        from sailpoint.access_requests.models.accountsselectionresponse import Accountsselectionresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          accountsselectionrequest = '''sailpoint.access_requests.Accountsselectionrequest()''' # Accountsselectionrequest | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Get accounts selections for identity
+              new_accountsselectionrequest = Accountsselectionrequest.from_json(accountsselectionrequest)
+              results = AccessRequestsApi(api_client).load_account_selections_v1(accountsselectionrequest=new_accountsselectionrequest)
+              # Below is a request that includes all optional parameters
+              # results = AccessRequestsApi(api_client).load_account_selections_v1(new_accountsselectionrequest, x_sail_point_experimental)
+              print("The response of AccessRequestsApi->load_account_selections_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessRequestsApi->load_account_selections_v1: %s\n" % e)
+- path: /access-request-config/v1
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-requests/methods/access-requests#set-access-request-config-v1
+      source: |
+        from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
+        from sailpoint.access_requests.api_client import ApiClient
+        from sailpoint.access_requests.models.accessrequestconfigv1 import Accessrequestconfigv1
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          accessrequestconfigv1 = '''sailpoint.access_requests.Accessrequestconfigv1()''' # Accessrequestconfigv1 | 
+          try:
+              # Update access request configuration
+              new_accessrequestconfig = Accessrequestconfigv1.from_json(accessrequestconfigv1)
+              results = AccessRequestsApi(api_client).set_access_request_config_v1(accessrequestconfigv1=new_accessrequestconfig)
+              # Below is a request that includes all optional parameters
+              # results = AccessRequestsApi(api_client).set_access_request_config_v1(new_accessrequestconfig)
+              print("The response of AccessRequestsApi->set_access_request_config_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessRequestsApi->set_access_request_config_v1: %s\n" % e)
+- path: /access-request-config/v2
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-requests/methods/access-requests#set-access-request-config-v2
+      source: |
+        from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
+        from sailpoint.access_requests.api_client import ApiClient
+        from sailpoint.access_requests.models.accessrequestconfigv2 import Accessrequestconfigv2
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          accessrequestconfigv2 = '''sailpoint.access_requests.Accessrequestconfigv2()''' # Accessrequestconfigv2 | 
+          try:
+              # Update access request configuration
+              new_accessrequestconfigv2 = Accessrequestconfigv2.from_json(accessrequestconfigv2)
+              results = AccessRequestsApi(api_client).set_access_request_config_v2(accessrequestconfigv2=new_accessrequestconfigv2)
+              # Below is a request that includes all optional parameters
+              # results = AccessRequestsApi(api_client).set_access_request_config_v2(new_accessrequestconfigv2)
+              print("The response of AccessRequestsApi->set_access_request_config_v2:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessRequestsApi->set_access_request_config_v2: %s\n" % e)
+

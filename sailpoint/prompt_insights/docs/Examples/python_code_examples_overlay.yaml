@@ -1,0 +1,55 @@
+- path: /prompt-insights/v1/metrics
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/prompt-insights/methods/prompt-insights#get-prompt-insights-metrics-v1
+      source: |
+        from sailpoint.prompt_insights.api.prompt_insights_api import PromptInsightsApi
+        from sailpoint.prompt_insights.api_client import ApiClient
+        from sailpoint.prompt_insights.models.promptinsightsmetrics import Promptinsightsmetrics
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          interval = '-7d' # str | Relative lookback window for metrics aggregation. # str | Relative lookback window for metrics aggregation.
+          try:
+              # Get prompt insights metrics
+              
+              results = PromptInsightsApi(api_client).get_prompt_insights_metrics_v1(interval=interval)
+              # Below is a request that includes all optional parameters
+              # results = PromptInsightsApi(api_client).get_prompt_insights_metrics_v1(interval)
+              print("The response of PromptInsightsApi->get_prompt_insights_metrics_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling PromptInsightsApi->get_prompt_insights_metrics_v1: %s\n" % e)
+- path: /prompt-insights/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/prompt-insights/methods/prompt-insights#list-prompt-insights-v1
+      source: |
+        from sailpoint.prompt_insights.api.prompt_insights_api import PromptInsightsApi
+        from sailpoint.prompt_insights.api_client import ApiClient
+        from sailpoint.prompt_insights.models.promptinsight import Promptinsight
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          interval = '-30d' # str | Relative lookback window for prompt insights. # str | Relative lookback window for prompt insights.
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          filters = 'policyDecision eq \"REDACTED\" and severity eq \"CRITICAL\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **policyDecision**: *eq*  **category**: *eq*  **severity**: *eq*  **user**: *eq, sw, co*  **agent**: *eq, sw, co*  **reason**: *eq, sw, co*  **rule**: *eq, sw, co*  **policy**: *eq, sw, co* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **policyDecision**: *eq*  **category**: *eq*  **severity**: *eq*  **user**: *eq, sw, co*  **agent**: *eq, sw, co*  **reason**: *eq, sw, co*  **rule**: *eq, sw, co*  **policy**: *eq, sw, co* (optional)
+          try:
+              # List prompt insights
+              
+              results = PromptInsightsApi(api_client).list_prompt_insights_v1(interval=interval)
+              # Below is a request that includes all optional parameters
+              # results = PromptInsightsApi(api_client).list_prompt_insights_v1(interval, limit, offset, filters)
+              print("The response of PromptInsightsApi->list_prompt_insights_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling PromptInsightsApi->list_prompt_insights_v1: %s\n" % e)
+

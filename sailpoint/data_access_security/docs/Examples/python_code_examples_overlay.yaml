@@ -1,0 +1,527 @@
+- path: /das/v1/tasks/cancel/{id}
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/data-access-security/methods/data-access-security#cancel-task-v1
+      source: |
+        from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 1001 # int | The unique identifier of the task to cancel. # int | The unique identifier of the task to cancel.
+          try:
+              # Cancel a DAS task.
+              
+              DataAccessSecurityApi(api_client).cancel_task_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # DataAccessSecurityApi(api_client).cancel_task_v1(id)
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->cancel_task_v1: %s\n" % e)
+- path: /das/v1/applications
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/data-access-security/methods/data-access-security#create-application-v1
+      source: |
+        from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.data_access_security.models.basecreateapplicationrequest import Basecreateapplicationrequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          basecreateapplicationrequest = '''sailpoint.data_access_security.Basecreateapplicationrequest()''' # Basecreateapplicationrequest | Request body containing the details required to create a new application.
+          try:
+              # Create application
+              new_basecreateapplicationrequest = Basecreateapplicationrequest.from_json(basecreateapplicationrequest)
+              DataAccessSecurityApi(api_client).create_application_v1(basecreateapplicationrequest=new_basecreateapplicationrequest)
+              # Below is a request that includes all optional parameters
+              # DataAccessSecurityApi(api_client).create_application_v1(new_basecreateapplicationrequest)
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->create_application_v1: %s\n" % e)
+- path: /das/v1/tasks/schedules
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/data-access-security/methods/data-access-security#create-schedule-v1
+      source: |
+        from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.data_access_security.models.createschedulerequest import Createschedulerequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          createschedulerequest = '''sailpoint.data_access_security.Createschedulerequest()''' # Createschedulerequest | 
+          try:
+              # Create a new schedule.
+              new_createschedulerequest = Createschedulerequest.from_json(createschedulerequest)
+              results = DataAccessSecurityApi(api_client).create_schedule_v1(createschedulerequest=new_createschedulerequest)
+              # Below is a request that includes all optional parameters
+              # results = DataAccessSecurityApi(api_client).create_schedule_v1(new_createschedulerequest)
+              print("The response of DataAccessSecurityApi->create_schedule_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->create_schedule_v1: %s\n" % e)
+- path: /das/v1/owners/assign
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/data-access-security/methods/data-access-security#das-v1-owners-assign-post
+      source: |
+        from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.data_access_security.models.assignresourceownerrequest import Assignresourceownerrequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          assignresourceownerrequest = '''sailpoint.data_access_security.Assignresourceownerrequest()''' # Assignresourceownerrequest | The request body must contain the application ID, resource path, and identity ID to be assigned as the resource owner.
+          try:
+              # Assign owner to application resource.
+              new_assignresourceownerrequest = Assignresourceownerrequest.from_json(assignresourceownerrequest)
+              results = DataAccessSecurityApi(api_client).das_v1_owners_assign_post(assignresourceownerrequest=new_assignresourceownerrequest)
+              # Below is a request that includes all optional parameters
+              # results = DataAccessSecurityApi(api_client).das_v1_owners_assign_post(new_assignresourceownerrequest)
+              print("The response of DataAccessSecurityApi->das_v1_owners_assign_post:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->das_v1_owners_assign_post: %s\n" % e)
+- path: /das/v1/owners/{ownerIdentityId}/resources
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/data-access-security/methods/data-access-security#das-v1-owners-owner-identity-id-resources-get
+      source: |
+        from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.data_access_security.models.resourcemodel import Resourcemodel
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          owner_identity_id = 'a3f1c2d4-5678-4e9b-8c2d-123456789abc' # str | Unique identifier for the owner. This should be a UUID representing the owner's identity. # str | Unique identifier for the owner. This should be a UUID representing the owner's identity.
+          limit = 250 # int | Not applicable for this endpoint. Do not use. (optional) (default to 250) # int | Not applicable for this endpoint. Do not use. (optional) (default to 250)
+          offset = 0 # int | Not applicable for this endpoint. Do not use. (optional) (default to 0) # int | Not applicable for this endpoint. Do not use. (optional) (default to 0)
+          try:
+              # List resources for owner.
+              
+              results = DataAccessSecurityApi(api_client).das_v1_owners_owner_identity_id_resources_get(owner_identity_id=owner_identity_id)
+              # Below is a request that includes all optional parameters
+              # results = DataAccessSecurityApi(api_client).das_v1_owners_owner_identity_id_resources_get(owner_identity_id, limit, offset)
+              print("The response of DataAccessSecurityApi->das_v1_owners_owner_identity_id_resources_get:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->das_v1_owners_owner_identity_id_resources_get: %s\n" % e)
+- path: /das/v1/owners/reelect
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/data-access-security/methods/data-access-security#das-v1-owners-reelect-post
+      source: |
+        from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.data_access_security.models.reelectrequest import Reelectrequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          reelectrequest = '''sailpoint.data_access_security.Reelectrequest()''' # Reelectrequest | The request body must contain details for re-electing a resource owner. Date/time fields should use epoch format in seconds.
+          try:
+              # Re-elect resource owner.
+              new_reelectrequest = Reelectrequest.from_json(reelectrequest)
+              results = DataAccessSecurityApi(api_client).das_v1_owners_reelect_post(reelectrequest=new_reelectrequest)
+              # Below is a request that includes all optional parameters
+              # results = DataAccessSecurityApi(api_client).das_v1_owners_reelect_post(new_reelectrequest)
+              print("The response of DataAccessSecurityApi->das_v1_owners_reelect_post:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->das_v1_owners_reelect_post: %s\n" % e)
+- path: /das/v1/owners/resources/{resourceId}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/data-access-security/methods/data-access-security#das-v1-owners-resources-resource-id-get
+      source: |
+        from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          resource_id = 101 # int | Unique identifier for the resource. # int | Unique identifier for the resource.
+          limit = 250 # int | Not applicable for this endpoint. Do not use. (optional) (default to 250) # int | Not applicable for this endpoint. Do not use. (optional) (default to 250)
+          offset = 0 # int | Not applicable for this endpoint. Do not use. (optional) (default to 0) # int | Not applicable for this endpoint. Do not use. (optional) (default to 0)
+          try:
+              # List owners for resource.
+              
+              results = DataAccessSecurityApi(api_client).das_v1_owners_resources_resource_id_get(resource_id=resource_id)
+              # Below is a request that includes all optional parameters
+              # results = DataAccessSecurityApi(api_client).das_v1_owners_resources_resource_id_get(resource_id, limit, offset)
+              print("The response of DataAccessSecurityApi->das_v1_owners_resources_resource_id_get:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->das_v1_owners_resources_resource_id_get: %s\n" % e)
+- path: /das/v1/owners/{sourceIdentityId}/reassign/{destinationIdentityId}
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/data-access-security/methods/data-access-security#das-v1-owners-source-identity-id-reassign-destination-identity-id-post
+      source: |
+        from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          source_identity_id = 'a3f1c2d4-5678-4e9b-8c2d-123456789abc' # str | Unique identifier for the source owner. This should be a UUID representing the identity to reassign from. # str | Unique identifier for the source owner. This should be a UUID representing the identity to reassign from.
+          destination_identity_id = 'b4e2d3c5-6789-4f0a-9d3e-234567890bcd' # str | Unique identifier for the destination owner. This should be a UUID representing the identity to reassign to. # str | Unique identifier for the destination owner. This should be a UUID representing the identity to reassign to.
+          try:
+              # Reassign resource owner.
+              
+              results = DataAccessSecurityApi(api_client).das_v1_owners_source_identity_id_reassign_destination_identity_id_post(source_identity_id=source_identity_id, destination_identity_id=destination_identity_id)
+              # Below is a request that includes all optional parameters
+              # results = DataAccessSecurityApi(api_client).das_v1_owners_source_identity_id_reassign_destination_identity_id_post(source_identity_id, destination_identity_id)
+              print("The response of DataAccessSecurityApi->das_v1_owners_source_identity_id_reassign_destination_identity_id_post:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->das_v1_owners_source_identity_id_reassign_destination_identity_id_post: %s\n" % e)
+- path: /das/v1/applications/{id}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/data-access-security/methods/data-access-security#delete-application-v1
+      source: |
+        from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 12345 # int | The unique identifier of the application to delete. # int | The unique identifier of the application to delete.
+          try:
+              # Delete an application by identifier.
+              
+              DataAccessSecurityApi(api_client).delete_application_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # DataAccessSecurityApi(api_client).delete_application_v1(id)
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->delete_application_v1: %s\n" % e)
+- path: /das/v1/tasks/schedules/{id}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/data-access-security/methods/data-access-security#delete-schedule-v1
+      source: |
+        from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 1001 # int | The unique identifier of the schedule to delete. # int | The unique identifier of the schedule to delete.
+          try:
+              # Delete a DAS schedule.
+              
+              DataAccessSecurityApi(api_client).delete_schedule_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # DataAccessSecurityApi(api_client).delete_schedule_v1(id)
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->delete_schedule_v1: %s\n" % e)
+- path: /das/v1/tasks/{id}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/data-access-security/methods/data-access-security#delete-task-v1
+      source: |
+        from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 1001 # int | The unique identifier of the task to delete. # int | The unique identifier of the task to delete.
+          try:
+              # Delete a DAS task.
+              
+              DataAccessSecurityApi(api_client).delete_task_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # DataAccessSecurityApi(api_client).delete_task_v1(id)
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->delete_task_v1: %s\n" % e)
+- path: /das/v1/applications/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/data-access-security/methods/data-access-security#get-application-v1
+      source: |
+        from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.data_access_security.models.applicationitem import Applicationitem
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 12345 # int | The unique identifier of the application to retrieve. # int | The unique identifier of the application to retrieve.
+          try:
+              # Retrieve application details by identifier.
+              
+              results = DataAccessSecurityApi(api_client).get_application_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = DataAccessSecurityApi(api_client).get_application_v1(id)
+              print("The response of DataAccessSecurityApi->get_application_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->get_application_v1: %s\n" % e)
+- path: /das/v1/applications
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/data-access-security/methods/data-access-security#get-applications-v1
+      source: |
+        from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.data_access_security.models.applicationitem import Applicationitem
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          filters = 'AppType eq \'ActiveDirectory\' and Statuses eq \'Passed\'' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **appIds**: *eq, in*  **tagIds**: *eq, in*  **statuses**: *eq, in*  **groupCodes**: *eq, in*  **virtualAppId**: *eq*  **appName**: *eq*  **supportsValidation**: *eq*  Supported composite operators are *and, or* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **appIds**: *eq, in*  **tagIds**: *eq, in*  **statuses**: *eq, in*  **groupCodes**: *eq, in*  **virtualAppId**: *eq*  **appName**: *eq*  **supportsValidation**: *eq*  Supported composite operators are *and, or* (optional)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          try:
+              # Search applications in DAS.
+              
+              results = DataAccessSecurityApi(api_client).get_applications_v1()
+              # Below is a request that includes all optional parameters
+              # results = DataAccessSecurityApi(api_client).get_applications_v1(filters, limit, offset, count)
+              print("The response of DataAccessSecurityApi->get_applications_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->get_applications_v1: %s\n" % e)
+- path: /das/v1/owners/applications/{appId}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/data-access-security/methods/data-access-security#get-owners-v1
+      source: |
+        from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.data_access_security.models.dataownermodel import Dataownermodel
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          app_id = 2001 # int | The unique identifier of the application for which to retrieve owners. # int | The unique identifier of the application for which to retrieve owners.
+          limit = 250 # int | Not applicable for this endpoint. Do not use. (optional) (default to 250) # int | Not applicable for this endpoint. Do not use. (optional) (default to 250)
+          offset = 0 # int | Not applicable for this endpoint. Do not use. (optional) (default to 0) # int | Not applicable for this endpoint. Do not use. (optional) (default to 0)
+          try:
+              # Retrieve owners per application.
+              
+              results = DataAccessSecurityApi(api_client).get_owners_v1(app_id=app_id)
+              # Below is a request that includes all optional parameters
+              # results = DataAccessSecurityApi(api_client).get_owners_v1(app_id, limit, offset)
+              print("The response of DataAccessSecurityApi->get_owners_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->get_owners_v1: %s\n" % e)
+- path: /das/v1/tasks/schedules/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/data-access-security/methods/data-access-security#get-schedule-v1
+      source: |
+        from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.data_access_security.models.scheduleinfo import Scheduleinfo
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 1001 # int | The unique identifier of the schedule to retrieve. # int | The unique identifier of the schedule to retrieve.
+          try:
+              # Get a DAS schedule.
+              
+              results = DataAccessSecurityApi(api_client).get_schedule_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = DataAccessSecurityApi(api_client).get_schedule_v1(id)
+              print("The response of DataAccessSecurityApi->get_schedule_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->get_schedule_v1: %s\n" % e)
+- path: /das/v1/tasks/schedules
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/data-access-security/methods/data-access-security#get-schedules-v1
+      source: |
+        from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.data_access_security.models.scheduleinfo import Scheduleinfo
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          filters = 'ScheduleType eq \"Daily\" and startTime eq 1762237200' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **scheduleTaskIds**: *eq, in*  **taskTypeName**: *eq, in*  **status**: *eq*  **applicationId**: *eq*  **fullName**: *eq*  **nameSubString**: *eq*  **scheduleType**: *eq*  Supported composite operators are *and, or* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **scheduleTaskIds**: *eq, in*  **taskTypeName**: *eq, in*  **status**: *eq*  **applicationId**: *eq*  **fullName**: *eq*  **nameSubString**: *eq*  **scheduleType**: *eq*  Supported composite operators are *and, or* (optional)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          try:
+              # List all schedules.
+              
+              results = DataAccessSecurityApi(api_client).get_schedules_v1()
+              # Below is a request that includes all optional parameters
+              # results = DataAccessSecurityApi(api_client).get_schedules_v1(filters, limit, offset, count)
+              print("The response of DataAccessSecurityApi->get_schedules_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->get_schedules_v1: %s\n" % e)
+- path: /das/v1/tasks/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/data-access-security/methods/data-access-security#get-task-v1
+      source: |
+        from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.data_access_security.models.taskinfo import Taskinfo
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 1001 # int | The unique identifier of the task to retrieve. # int | The unique identifier of the task to retrieve.
+          try:
+              # Get a DAS task.
+              
+              results = DataAccessSecurityApi(api_client).get_task_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = DataAccessSecurityApi(api_client).get_task_v1(id)
+              print("The response of DataAccessSecurityApi->get_task_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->get_task_v1: %s\n" % e)
+- path: /das/v1/tasks
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/data-access-security/methods/data-access-security#get-tasks-v1
+      source: |
+        from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.data_access_security.models.taskinfo import Taskinfo
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          filters = 'TaskTypeName eq \"DataClassification and EndBeforeTime eq 1762240800' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **taskIds**: *eq, in*  **statuses**: *eq, in*  **taskTypeName**: *eq, in*  **taskName**: *eq*  **endBeforeTime**: *eq*  Supported composite operators are *and, or*  Example: taskTypeName eq \"DataSync\" and endBeforeTime eq 1762240800 (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **taskIds**: *eq, in*  **statuses**: *eq, in*  **taskTypeName**: *eq, in*  **taskName**: *eq*  **endBeforeTime**: *eq*  Supported composite operators are *and, or*  Example: taskTypeName eq \"DataSync\" and endBeforeTime eq 1762240800 (optional)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          try:
+              # Lists all DAS tasks.
+              
+              results = DataAccessSecurityApi(api_client).get_tasks_v1()
+              # Below is a request that includes all optional parameters
+              # results = DataAccessSecurityApi(api_client).get_tasks_v1(filters, limit, offset, count)
+              print("The response of DataAccessSecurityApi->get_tasks_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->get_tasks_v1: %s\n" % e)
+- path: /das/v1/applications/{id}
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/data-access-security/methods/data-access-security#put-application-v1
+      source: |
+        from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.data_access_security.models.basecreateapplicationrequest import Basecreateapplicationrequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 12345 # int | The unique identifier of the application to update. # int | The unique identifier of the application to update.
+          basecreateapplicationrequest = '''sailpoint.data_access_security.Basecreateapplicationrequest()''' # Basecreateapplicationrequest | Request body containing the updated details for the application.
+          try:
+              # Update application by identifier.
+              new_basecreateapplicationrequest = Basecreateapplicationrequest.from_json(basecreateapplicationrequest)
+              DataAccessSecurityApi(api_client).put_application_v1(id=id, basecreateapplicationrequest=new_basecreateapplicationrequest)
+              # Below is a request that includes all optional parameters
+              # DataAccessSecurityApi(api_client).put_application_v1(id, new_basecreateapplicationrequest)
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->put_application_v1: %s\n" % e)
+- path: /das/v1/tasks/schedules/{id}
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/data-access-security/methods/data-access-security#put-schedule-v1
+      source: |
+        from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.data_access_security.models.updateschedulerequest import Updateschedulerequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 1001 # int | The unique identifier of the schedule to update. # int | The unique identifier of the schedule to update.
+          updateschedulerequest = '''sailpoint.data_access_security.Updateschedulerequest()''' # Updateschedulerequest | 
+          try:
+              # Update a schedule.
+              new_updateschedulerequest = Updateschedulerequest.from_json(updateschedulerequest)
+              DataAccessSecurityApi(api_client).put_schedule_v1(id=id, updateschedulerequest=new_updateschedulerequest)
+              # Below is a request that includes all optional parameters
+              # DataAccessSecurityApi(api_client).put_schedule_v1(id, new_updateschedulerequest)
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->put_schedule_v1: %s\n" % e)
+- path: /das/v1/tasks/rerun/{id}
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/data-access-security/methods/data-access-security#start-task-rerun-v1
+      source: |
+        from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 1001 # int | The unique identifier of the task to rerun. # int | The unique identifier of the task to rerun.
+          try:
+              # Rerun a DAS task.
+              
+              DataAccessSecurityApi(api_client).start_task_rerun_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # DataAccessSecurityApi(api_client).start_task_rerun_v1(id)
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->start_task_rerun_v1: %s\n" % e)
+

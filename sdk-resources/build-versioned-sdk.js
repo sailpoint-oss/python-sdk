@@ -43,6 +43,10 @@ const { spawnSync } = require("child_process");
 
 const SDK_ROOT      = path.resolve(__dirname, "..");
 const SAILPOINT_DIR = path.join(SDK_ROOT, "sailpoint");
+
+// Directories inside sailpoint/ that are never auto-generated and must be
+// preserved during the clean step.
+const CLEAN_PRESERVE_DIRS = new Set(["nerm", "nerm/v2025"]);
 const TEMP_DIR      = path.join(SDK_ROOT, ".sdk-build-tmp");
 const BUNDLED_DIR   = path.join(TEMP_DIR, "bundled");
 const ERROR_DIR     = path.join(SDK_ROOT, "build-errors");
@@ -228,7 +232,7 @@ function bundlePartition(partitionName, tempApisDir) {
 // ---------------------------------------------------------------------------
 
 function writePartitionConfig(partitionName) {
-  const packageDir  = `${partitionName.replaceAll("-", "_")}_v1`;
+  const packageDir  = partitionName.replaceAll("-", "_");
   const packageName = `${PACKAGE_NAME_PREFIX}.${packageDir}`;
 
   const config = [
@@ -237,7 +241,7 @@ function writePartitionConfig(partitionName) {
     `packageVersion: ${PACKAGE_VERSION}`,
     `apiVersion: ${API_VERSION}`,
     `generateSourceCodeOnly: true`,
-    `subModuleName: V1`,
+    `subModuleName: ${partitionName}`,
     `files:`,
     `  developerSite_code_examples.mustache:`,
     `    templateType: SupportingFiles`,
@@ -260,7 +264,7 @@ function writePartitionConfig(partitionName) {
 // ---------------------------------------------------------------------------
 
 function generatePartition(partitionName, bundledSpec, configPath) {
-  const packageDir = `${partitionName.replaceAll("-", "_")}_v1`;
+  const packageDir = partitionName.replaceAll("-", "_");
   const outputDir  = path.join(SAILPOINT_DIR, packageDir);
 
   if (fs.existsSync(outputDir)) {
@@ -277,7 +281,7 @@ function generatePartition(partitionName, bundledSpec, configPath) {
       "-o", SDK_ROOT,
       "--global-property", "skipFormModel=false,apiDocs=true,modelDocs=true",
       "--config", configPath,
-      "--api-name-suffix", "V1Api",
+      "--api-name-suffix", "Api",
       "--enable-post-process-file",
     ],
     { encoding: "utf8", cwd: SDK_ROOT }
@@ -290,6 +294,89 @@ function generatePartition(partitionName, bundledSpec, configPath) {
     outputDir,
     packageDir,
   };
+}
+
+// ---------------------------------------------------------------------------
+// Version unversioned models when a versioned sibling exists
+//
+// After generation, if models/ contains both `accessrequestconfig.py` and
+// `accessrequestconfigv2.py`, the base file is renamed to `accessrequestconfigv1.py`
+// and all references within the package are updated to match.
+//
+// Pattern: a model file whose name (without .py) does NOT end in v\d+ but where
+// another model file with the same base name + v\d+ suffix exists.
+// ---------------------------------------------------------------------------
+
+function escapeRegex(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function versionUnversionedModels(outputDir) {
+  const modelsDir = path.join(outputDir, "models");
+  const testDir   = path.join(outputDir, "test");
+  if (!fs.existsSync(modelsDir)) return 0;
+
+  const modelFiles = fs.readdirSync(modelsDir)
+    .filter(f => f.endsWith(".py") && f !== "__init__.py");
+
+  const modelNames = new Set(modelFiles.map(f => f.slice(0, -3)));
+  const toVersion  = [];
+
+  for (const name of modelNames) {
+    if (/v\d+$/.test(name)) continue; // already versioned
+    const pattern = new RegExp(`^${escapeRegex(name)}v\\d+$`);
+    if ([...modelNames].some(other => pattern.test(other))) {
+      toVersion.push(name);
+    }
+  }
+
+  if (toVersion.length === 0) return 0;
+
+  // Build the full set of replacements first, then apply all at once before
+  // renaming any files.  This avoids the ordering problem where a file renamed
+  // in iteration N is no longer findable by iteration N+1 via the stale path
+  // list.
+  const replacements = toVersion.map(baseName => ({
+    baseName,
+    newBaseName:  `${baseName}v1`,
+    className:    baseName[0].toUpperCase() + baseName.slice(1),
+    newClassName: `${baseName[0].toUpperCase() + baseName.slice(1)}v1`,
+    // \b…\b enforces a complete word match so "entitlement" can't match
+    // inside "entitlementaccessrequestconfig" (where the next char is still a
+    // word character).  (?!v) guards the already-versioned siblings (v2, …).
+    classRe:  new RegExp(`\\b${escapeRegex(baseName[0].toUpperCase() + baseName.slice(1))}(?!v)\\b`, "g"),
+    moduleRe: new RegExp(`\\b${escapeRegex(baseName)}(?!v)\\b`, "g"),
+  }));
+
+  // Pass 1: update content in all files (while every file still has its original name)
+  const allFiles = walkSync(outputDir)
+    .filter(f => f.endsWith(".py") || f.endsWith(".md") || f.endsWith(".yaml"));
+
+  for (const f of allFiles) {
+    let content = readFileSafe(f);
+    let updated = content;
+    for (const { classRe, moduleRe, newClassName, newBaseName } of replacements) {
+      updated = updated.replace(classRe, newClassName).replace(moduleRe, newBaseName);
+    }
+    if (updated !== content) fs.writeFileSync(f, updated, "utf8");
+  }
+
+  // Pass 2: rename files (now that all content is consistent)
+  for (const { baseName, newBaseName, className, newClassName } of replacements) {
+    const oldModel = path.join(modelsDir, `${baseName}.py`);
+    const newModel = path.join(modelsDir, `${newBaseName}.py`);
+    if (fs.existsSync(oldModel)) fs.renameSync(oldModel, newModel);
+
+    if (fs.existsSync(testDir)) {
+      const oldTest = path.join(testDir, `test_${baseName}.py`);
+      const newTest = path.join(testDir, `test_${newBaseName}.py`);
+      if (fs.existsSync(oldTest)) fs.renameSync(oldTest, newTest);
+    }
+
+    console.log(`    versioned model: ${className} → ${newClassName}`);
+  }
+
+  return toVersion.length;
 }
 
 // ---------------------------------------------------------------------------
@@ -432,18 +519,19 @@ node sdk-resources/build-versioned-sdk.js <path-to-apis>
 // ---------------------------------------------------------------------------
 // Regenerate sailpoint/__init__.py from discovered partition packages
 //
-// Scans sailpoint/*_v{n}/api/*_api.py files to discover generated API classes,
+// Scans sailpoint/*/api/*_api.py files to discover generated API classes,
 // then writes sailpoint/__init__.py exposing:
-//   - Each versioned API class as a named top-level export (AccountsV1Api, …)
-//   - A SailPoint namespace class using resource names without version suffix:
-//       SailPoint.AccountsApi   — single version today, combined class when v2 lands
-//       SailPoint.AccountsV1Api + SailPoint.AccountsV2Api if two versions co-exist
+//   - Each API class as a named top-level export (AccountsApi, …)
+//   - A SailPoint namespace class:
+//       SailPoint.AccountsApi   — single partition
+//       SailPoint.AccountsApi   — combined via multiple inheritance if two partitions
+//                                 resolve to the same resource name
 //   - Common utilities (Configuration, Paginator)
 //
-// Namespace naming: AccountsV1Api → AccountsApi  (strip V\d+ before Api)
-// Multi-version:    Python multiple inheritance gives the cleanest combination —
+// Partition packages are detected by the presence of an api/ subdirectory.
+// Multi-version: Python multiple inheritance gives the cleanest combination —
 //   class AccountsApi(AccountsV2Api, AccountsV1Api): pass
-//   MRO ensures v2 methods win on name conflicts; v1-only methods remain accessible.
+//   MRO ensures the later-sorted class wins on name conflicts.
 // ---------------------------------------------------------------------------
 
 /** AccountsV1Api → AccountsApi */
@@ -463,11 +551,16 @@ function generateInitPy() {
   }
 
   const partitionDirs = fs.readdirSync(SAILPOINT_DIR)
-    .filter(d => /^[a-z].+_v\d+$/.test(d) && fs.statSync(path.join(SAILPOINT_DIR, d)).isDirectory())
+    .filter(d => {
+      const fullPath = path.join(SAILPOINT_DIR, d);
+      if (!fs.statSync(fullPath).isDirectory()) return false;
+      // Partition packages are identified by having an api/ subdirectory
+      return fs.existsSync(path.join(fullPath, "api"));
+    })
     .sort();
 
   if (partitionDirs.length === 0) {
-    console.log("  No *_v1 partition packages found, skipping __init__.py regeneration.");
+    console.log("  No partition packages found, skipping __init__.py regeneration.");
     return;
   }
 
@@ -490,7 +583,7 @@ function generateInitPy() {
   }
 
   if (partitions.length === 0) {
-    console.log("  No API classes found in *_v1 packages, skipping __init__.py regeneration.");
+    console.log("  No API classes found in partition packages, skipping __init__.py regeneration.");
     return;
   }
 
@@ -582,10 +675,14 @@ function generateInitPy() {
   patchAndCopyRootFile("rest.py");
   patchAndCopyRootFile("api_client.py");
 
-  // Imports: one private alias per versioned class
-  const imports = partitions.map(p =>
-    `from sailpoint.${p.partDir}.api.${p.module} import ${p.className} as _${p.className}`
-  ).join("\n");
+  // Imports: one private alias per versioned class.
+  // Use the partition dir as a disambiguating prefix so two partitions that
+  // happen to generate the same class name (e.g. both NERM and ISC expose a
+  // RolesApi) don't clobber each other's alias.
+  const imports = partitions.map(p => {
+    const alias = `_${p.partDir}__${p.className}`;
+    return `from sailpoint.${p.partDir}.api.${p.module} import ${p.className} as ${alias}`;
+  }).join("\n");
 
   // SailPoint namespace members and any combined-class declarations
   const combinedClassLines = [];
@@ -594,12 +691,12 @@ function generateInitPy() {
 
   for (const [resourceApiName, group] of byResource.entries()) {
     if (group.length === 1) {
-      const alias = `_${group[0].className}`;
+      const alias = `_${group[0].partDir}__${group[0].className}`;
       resourceExportLines.push(`${resourceApiName} = ${alias}`);
       nsMembers.push(`    ${resourceApiName} = ${alias}`);
     } else {
       // Multi-version — Python multiple inheritance: latest first so its MRO wins
-      const bases = [...group].reverse().map(p => `_${p.className}`).join(", ");
+      const bases = [...group].reverse().map(p => `_${p.partDir}__${p.className}`).join(", ");
       const combinedVar = `_${resourceApiName}Combined`;
       combinedClassLines.push(`class ${combinedVar}(${bases}): pass`);
       resourceExportLines.push(`${resourceApiName} = ${combinedVar}`);
@@ -607,6 +704,8 @@ function generateInitPy() {
     }
   }
 
+  // Combined classes must be declared BEFORE the resource export assignments
+  // that reference them, otherwise Python raises a NameError at import time.
   const combinedSection = combinedClassLines.length > 0
     ? `\n# --- Combined multi-version API classes ---\n${combinedClassLines.join("\n")}\n`
     : "";
@@ -621,10 +720,10 @@ function generateInitPy() {
 #   from sailpoint import SailPoint, ApiClient
 #   api = SailPoint.SourcesApi(ApiClient(configuration))
 #
-# To import a versioned class directly, use the partition sub-package:
-#   from sailpoint.sources_v1 import SourcesV1Api
+# To import a class directly from a partition sub-package:
+#   from sailpoint.sources import SourcesApi
 #
-# When a v2 partition lands, SourcesApi automatically includes v2 methods too
+# If two partitions share a resource name, SourcesApi automatically combines both
 # via Python multiple inheritance — existing imports never change.
 
 # --- Shared ApiClient ---
@@ -632,10 +731,10 @@ from sailpoint.api_client import ApiClient
 
 # --- Partition API class imports (private) ---
 ${imports}
-
+${combinedSection}
 # --- Resource-named exports ---
 ${resourceExportLines.join("\n")}
-${combinedSection}
+
 # --- SailPoint namespace (all resources grouped, alternative style) ---
 class SailPoint:
 ${nsMembers.join("\n")}
@@ -694,6 +793,51 @@ async function main() {
   // Clear any previous error reports
   if (fs.existsSync(ERROR_DIR)) fs.rmSync(ERROR_DIR, { recursive: true, force: true });
 
+  // Clean only the sailpoint/* directories and loose files that correspond to
+  // partitions in this run's apisDir.  This prevents a NERM build from wiping
+  // ISC partition output (or vice versa) when two separate builds are used.
+  //
+  // Partition output dir name = partition name with '-' → '_'.
+  // Loose README files follow the same naming convention.
+  // CLEAN_PRESERVE_DIRS entries are never touched regardless.
+  // Skipped for single-partition rebuilds (--partition flag) since generatePartition
+  // already deletes and regenerates that one directory.
+  if (!onlyPartition && fs.existsSync(SAILPOINT_DIR)) {
+    console.log("[CLEAN] Removing stale sailpoint/* directories for this build's partitions ...");
+
+    // The output directory name for each partition in this run
+    const thisRunDirs = new Set(partitions.map(p => p.replaceAll("-", "_")));
+
+    const entries = fs.readdirSync(SAILPOINT_DIR, { withFileTypes: true });
+
+    const staleDirs = entries
+      .filter(e => e.isDirectory()
+        && thisRunDirs.has(e.name)
+        && !CLEAN_PRESERVE_DIRS.has(e.name)
+        && fs.existsSync(path.join(SAILPOINT_DIR, e.name, "api")))
+      .map(e => e.name);
+    for (const d of staleDirs) {
+      fs.rmSync(path.join(SAILPOINT_DIR, d), { recursive: true, force: true });
+      console.log(`  removed sailpoint/${d}/`);
+    }
+
+    // Remove loose README files dropped by the generator for this run's partitions
+    const looseFiles = entries
+      .filter(e => {
+        if (!e.isFile() || !e.name.endsWith("_README.md")) return false;
+        // Match <packageDir>_README.md patterns for partitions in this run
+        const stem = e.name.slice(0, -"_README.md".length);
+        return thisRunDirs.has(stem);
+      })
+      .map(e => e.name);
+    for (const f of looseFiles) {
+      fs.rmSync(path.join(SAILPOINT_DIR, f));
+      console.log(`  removed sailpoint/${f}`);
+    }
+
+    console.log(`  cleaned ${staleDirs.length} director${staleDirs.length === 1 ? "y" : "ies"}, ${looseFiles.length} loose file(s)\n`);
+  }
+
   const results = {
     total:   partitions.length,
     success: [],
@@ -706,7 +850,7 @@ async function main() {
     console.log(`${"=".repeat(60)}`);
 
     // --- Step 1: Bundle ---
-    console.log("  [1/4] Bundling spec ...");
+    console.log("  [1/5] Bundling spec ...");
     const bundle = bundlePartition(partition, path.join(TEMP_DIR, "apis"));
     if (!bundle.ok) {
       const errorOutput = [bundle.stdout, bundle.stderr].filter(Boolean).join("\n");
@@ -717,11 +861,11 @@ async function main() {
     }
 
     // --- Step 2: Config ---
-    console.log("  [2/4] Writing generator config ...");
+    console.log("  [2/5] Writing generator config ...");
     const configPath = writePartitionConfig(partition);
 
     // --- Step 3: Generate ---
-    console.log("  [3/4] Generating Python SDK ...");
+    console.log("  [3/5] Generating Python SDK ...");
     const gen = generatePartition(partition, bundle.outputSpec, configPath);
     if (!gen.ok) {
       const errorOutput = [gen.stdout, gen.stderr].filter(Boolean).join("\n");
@@ -731,12 +875,19 @@ async function main() {
       continue;
     }
 
-    // --- Step 4: Postscript ---
-    console.log("  [4/4] Running postscript ...");
+    // --- Step 4: Version unversioned models ---
+    console.log("  [4/5] Versioning unversioned models ...");
+    const versioned = versionUnversionedModels(gen.outputDir);
+    if (versioned > 0) {
+      console.log(`    renamed ${versioned} unversioned model(s) to v1`);
+    }
+
+    // --- Step 5: Postscript ---
+    console.log("  [5/5] Running postscript ...");
     const post = runPostscript(gen.outputDir);
     if (!post.ok) {
       const errorOutput = [post.stdout, post.stderr].filter(Boolean).join("\n");
-      console.error(`  ✗ postscript failed`);
+      console.error("  ✗ postscript failed");
       const reportPath = writeErrorReport(partition, "postscript", errorOutput, TEMP_DIR, apisDir);
       results.failed.push({ partition, step: "postscript", reportPath });
       continue;

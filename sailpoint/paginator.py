@@ -1,6 +1,6 @@
 import logging
-from sailpoint.search_v1.api.search_v1_api import SearchV1Api as SearchApi
-from sailpoint.search_v1.models.search import Search
+from sailpoint.search.api.search_api import SearchApi
+from sailpoint.search.models.search import Search
 from typing import Any, Callable, Iterator, Optional, Tuple, Type, TypeVar, overload
 
 T = TypeVar('T')

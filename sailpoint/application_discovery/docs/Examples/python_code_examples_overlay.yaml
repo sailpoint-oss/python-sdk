@@ -1,0 +1,106 @@
+- path: /discovered-applications/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/application-discovery/methods/application-discovery#get-discovered-applications-v1
+      source: |
+        from sailpoint.application_discovery.api.application_discovery_api import ApplicationDiscoveryApi
+        from sailpoint.application_discovery.api_client import ApiClient
+        from sailpoint.application_discovery.models.get_discovered_applications_v1200_response_inner import GetDiscoveredApplicationsV1200ResponseInner
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          detail = 'FULL' # str | Determines whether slim, or increased level of detail is provided for each discovered application in the returned list. SLIM is the default behavior. (optional) # str | Determines whether slim, or increased level of detail is provided for each discovered application in the returned list. SLIM is the default behavior. (optional)
+          filter = 'name eq \"Okta\" and description co \"Okta\" and discoverySource in (\"csv\", \"Okta Saas\")' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co*  **createdAtStart**: *eq, le, ge*  **createdAtEnd**: *eq, le, ge*  **discoveredAtStart**: *eq, le, ge*  **discoveredAtEnd**: *eq, le, ge*  **discoverySource**: *eq, in*  **discoverySourceName**: *eq, in*  **discoverySourceCategory**: *eq, in*  (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, sw, co*  **description**: *eq, sw, co*  **createdAtStart**: *eq, le, ge*  **createdAtEnd**: *eq, le, ge*  **discoveredAtStart**: *eq, le, ge*  **discoveredAtEnd**: *eq, le, ge*  **discoverySource**: *eq, in*  **discoverySourceName**: *eq, in*  **discoverySourceCategory**: *eq, in*  (optional)
+          sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, discoveredAt, discoverySource, discoverySourceName, discoverySourceCategory** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, discoveredAt, discoverySource, discoverySourceName, discoverySourceCategory** (optional)
+          try:
+              # Get discovered applications for tenant
+              
+              results = ApplicationDiscoveryApi(api_client).get_discovered_applications_v1()
+              # Below is a request that includes all optional parameters
+              # results = ApplicationDiscoveryApi(api_client).get_discovered_applications_v1(limit, offset, detail, filter, sorters)
+              print("The response of ApplicationDiscoveryApi->get_discovered_applications_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ApplicationDiscoveryApi->get_discovered_applications_v1: %s\n" % e)
+- path: /manual-discover-applications-template/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/application-discovery/methods/application-discovery#get-manual-discover-applications-csv-template-v1
+      source: |
+        from sailpoint.application_discovery.api.application_discovery_api import ApplicationDiscoveryApi
+        from sailpoint.application_discovery.api_client import ApiClient
+        from sailpoint.application_discovery.models.manualdiscoverapplicationstemplate import Manualdiscoverapplicationstemplate
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          try:
+              # Download csv template for discovery
+              
+              results = ApplicationDiscoveryApi(api_client).get_manual_discover_applications_csv_template_v1()
+              # Below is a request that includes all optional parameters
+              # results = ApplicationDiscoveryApi(api_client).get_manual_discover_applications_csv_template_v1()
+              print("The response of ApplicationDiscoveryApi->get_manual_discover_applications_csv_template_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ApplicationDiscoveryApi->get_manual_discover_applications_csv_template_v1: %s\n" % e)
+- path: /manual-discover-applications/v1
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/application-discovery/methods/application-discovery#send-manual-discover-applications-csv-template-v1
+      source: |
+        from sailpoint.application_discovery.api.application_discovery_api import ApplicationDiscoveryApi
+        from sailpoint.application_discovery.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          file = None # bytearray | The CSV file to upload containing `application_name` and `description` columns. Each row represents an application to be discovered. # bytearray | The CSV file to upload containing `application_name` and `description` columns. Each row represents an application to be discovered.
+          try:
+              # Upload csv to discover applications
+              
+              ApplicationDiscoveryApi(api_client).send_manual_discover_applications_csv_template_v1(file=file)
+              # Below is a request that includes all optional parameters
+              # ApplicationDiscoveryApi(api_client).send_manual_discover_applications_csv_template_v1(file)
+          except Exception as e:
+              print("Exception when calling ApplicationDiscoveryApi->send_manual_discover_applications_csv_template_v1: %s\n" % e)
+- path: /sources/v1/{sourceId}/discover-applications
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/application-discovery/methods/application-discovery#start-application-discovery-v1
+      source: |
+        from sailpoint.application_discovery.api.application_discovery_api import ApplicationDiscoveryApi
+        from sailpoint.application_discovery.api_client import ApiClient
+        from sailpoint.application_discovery.models.applicationdiscoveryrequest import Applicationdiscoveryrequest
+        from sailpoint.application_discovery.models.applicationdiscoveryresponse import Applicationdiscoveryresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          source_id = 'source_id_example' # str | The sourceId. # str | The sourceId.
+          applicationdiscoveryrequest = '''sailpoint.application_discovery.Applicationdiscoveryrequest()''' # Applicationdiscoveryrequest | 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Start Application Discovery
+              new_applicationdiscoveryrequest = Applicationdiscoveryrequest.from_json(applicationdiscoveryrequest)
+              results = ApplicationDiscoveryApi(api_client).start_application_discovery_v1(source_id=source_id, applicationdiscoveryrequest=new_applicationdiscoveryrequest)
+              # Below is a request that includes all optional parameters
+              # results = ApplicationDiscoveryApi(api_client).start_application_discovery_v1(source_id, new_applicationdiscoveryrequest, x_sail_point_experimental)
+              print("The response of ApplicationDiscoveryApi->start_application_discovery_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ApplicationDiscoveryApi->start_application_discovery_v1: %s\n" % e)
+

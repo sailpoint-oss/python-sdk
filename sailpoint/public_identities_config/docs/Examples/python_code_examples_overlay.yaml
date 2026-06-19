@@ -1,0 +1,50 @@
+- path: /public-identities-config/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/public-identities-config/methods/public-identities-config#get-public-identity-config-v1
+      source: |
+        from sailpoint.public_identities_config.api.public_identities_config_api import PublicIdentitiesConfigApi
+        from sailpoint.public_identities_config.api_client import ApiClient
+        from sailpoint.public_identities_config.models.publicidentityconfig import Publicidentityconfig
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          try:
+              # Get the public identities configuration
+              
+              results = PublicIdentitiesConfigApi(api_client).get_public_identity_config_v1()
+              # Below is a request that includes all optional parameters
+              # results = PublicIdentitiesConfigApi(api_client).get_public_identity_config_v1()
+              print("The response of PublicIdentitiesConfigApi->get_public_identity_config_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling PublicIdentitiesConfigApi->get_public_identity_config_v1: %s\n" % e)
+- path: /public-identities-config/v1
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/public-identities-config/methods/public-identities-config#update-public-identity-config-v1
+      source: |
+        from sailpoint.public_identities_config.api.public_identities_config_api import PublicIdentitiesConfigApi
+        from sailpoint.public_identities_config.api_client import ApiClient
+        from sailpoint.public_identities_config.models.publicidentityconfig import Publicidentityconfig
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          publicidentityconfig = '''sailpoint.public_identities_config.Publicidentityconfig()''' # Publicidentityconfig | 
+          try:
+              # Update the public identities configuration
+              new_publicidentityconfig = Publicidentityconfig.from_json(publicidentityconfig)
+              results = PublicIdentitiesConfigApi(api_client).update_public_identity_config_v1(publicidentityconfig=new_publicidentityconfig)
+              # Below is a request that includes all optional parameters
+              # results = PublicIdentitiesConfigApi(api_client).update_public_identity_config_v1(new_publicidentityconfig)
+              print("The response of PublicIdentitiesConfigApi->update_public_identity_config_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling PublicIdentitiesConfigApi->update_public_identity_config_v1: %s\n" % e)
+
