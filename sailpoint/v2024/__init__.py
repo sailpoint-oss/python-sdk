@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.95"
+__version__ = "1.4.96"
 
 # import apis into sdk package
 from sailpoint.v2024.api.access_model_metadata_api import AccessModelMetadataApi
