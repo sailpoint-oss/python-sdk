@@ -264,6 +264,37 @@ class TestLenientEnumsV1(unittest.TestCase):
         self.assertEqual(obj2.state, unknown_state)
 
 
+class TestNermSDK(unittest.TestCase):
+    """Tests for the NERM SDK (base and v2025)."""
+
+    @classmethod
+    def setUpClass(cls):
+        cfg = Configuration()
+        if not cfg.nerm_base_url:
+            raise unittest.SkipTest(
+                "NERM not configured. Set NermBaseUrl in config.json or SAIL_NERM_BASE_URL env var."
+            )
+
+    def setUp(self):
+        self.configuration = Configuration()
+        from sailpoint.nerm.api_client import ApiClient as NermApiClient
+        from sailpoint.nerm.v2025.api_client import ApiClient as NermV2025ApiClient
+        self.nerm_api_client = NermApiClient(self.configuration)
+        self.nerm_v2025_api_client = NermV2025ApiClient(self.configuration)
+
+    def test_nerm_list_users(self):
+        from sailpoint.nerm.api.users_api import UsersApi
+        result = UsersApi(self.nerm_api_client).get_users_with_http_info()
+        self.assertIsNotNone(result.data)
+        self.assertEqual(200, result.status_code)
+
+    def test_nerm_v2025_list_delegations(self):
+        from sailpoint.nerm.v2025.api.delegations_api import DelegationsApi
+        result = DelegationsApi(self.nerm_v2025_api_client).delegations_get_with_http_info()
+        self.assertIsNotNone(result.data)
+        self.assertEqual(200, result.status_code)
+
+
 # ---------------------------------------------------------------------------
 # TODO partition-strategy: legacy monolithic-version tests
 #

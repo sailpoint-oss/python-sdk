@@ -188,7 +188,7 @@ class Configuration:
                 config.base_url = data["BaseURL"]
                 config.client_id = data["ClientId"]
                 config.client_secret = data["ClientSecret"]
-                config.nerm_base_url = data["NermBaseUrl"]
+                config.nerm_base_url = data.get("NermBaseUrl")
                 config.token_url = config.base_url + "/oauth/token"
         
         return config
