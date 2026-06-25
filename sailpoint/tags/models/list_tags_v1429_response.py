@@ -23,9 +23,15 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
+<<<<<<<< HEAD:sailpoint/tags/models/list_tags_v1429_response.py
 class ListTagsV1429Response(BaseModel):
     """
     ListTagsV1429Response
+========
+class ListEntitlementConnections412Response(BaseModel):
+    """
+    ListEntitlementConnections412Response
+>>>>>>>> main:sailpoint/triggers/models/list_entitlement_connections412_response.py
     """ # noqa: E501
     message: Optional[Any] = Field(default=None, description="A message describing the error")
     __properties: ClassVar[List[str]] = ["message"]
@@ -48,7 +54,11 @@ class ListTagsV1429Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
+<<<<<<<< HEAD:sailpoint/tags/models/list_tags_v1429_response.py
         """Create an instance of ListTagsV1429Response from a JSON string"""
+========
+        """Create an instance of ListEntitlementConnections412Response from a JSON string"""
+>>>>>>>> main:sailpoint/triggers/models/list_entitlement_connections412_response.py
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -78,7 +88,11 @@ class ListTagsV1429Response(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+<<<<<<<< HEAD:sailpoint/tags/models/list_tags_v1429_response.py
         """Create an instance of ListTagsV1429Response from a dict"""
+========
+        """Create an instance of ListEntitlementConnections412Response from a dict"""
+>>>>>>>> main:sailpoint/triggers/models/list_entitlement_connections412_response.py
         if obj is None:
             return None
 

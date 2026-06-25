@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Recommendation', 'Recommendation']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** |  **Enum** [  'HUMAN',    'MACHINE' ] | Recommended type of account. | [required]
+**type** |  **Enum** [  'HUMAN',    'MACHINE',    'AGENT' ] | Recommended type of account. | [required]
 **method** |  **Enum** [  'DISCOVERY',    'SOURCE',    'CRITERIA' ] | Method used to produce the recommendation. DISCOVERY - suggested by AI, SOURCE - the account comes from a source flagged as containing machine accounts, CRITERIA - the account satisfies classification criteria. | [required]
 }
 

@@ -14,10 +14,17 @@
 
 import unittest
 
+<<<<<<<< HEAD:sailpoint/access_profiles/test/test_update_access_profiles_in_bulk_v1412_response.py
 from sailpoint.access_profiles.models.update_access_profiles_in_bulk_v1412_response import UpdateAccessProfilesInBulkV1412Response
 
 class TestUpdateAccessProfilesInBulkV1412Response(unittest.TestCase):
     """UpdateAccessProfilesInBulkV1412Response unit test stubs"""
+========
+from sailpoint.v2026.models.list_entitlement_connections412_response import ListEntitlementConnections412Response
+
+class TestListEntitlementConnections412Response(unittest.TestCase):
+    """ListEntitlementConnections412Response unit test stubs"""
+>>>>>>>> main:sailpoint/triggers/test/test_list_entitlement_connections412_response.py
 
     def setUp(self):
         pass
@@ -25,6 +32,7 @@ class TestUpdateAccessProfilesInBulkV1412Response(unittest.TestCase):
     def tearDown(self):
         pass
 
+<<<<<<<< HEAD:sailpoint/access_profiles/test/test_update_access_profiles_in_bulk_v1412_response.py
     def make_instance(self, include_optional) -> UpdateAccessProfilesInBulkV1412Response:
         """Test UpdateAccessProfilesInBulkV1412Response
             include_optional is a boolean, when False only required
@@ -44,6 +52,27 @@ class TestUpdateAccessProfilesInBulkV1412Response(unittest.TestCase):
 
     def testUpdateAccessProfilesInBulkV1412Response(self):
         """Test UpdateAccessProfilesInBulkV1412Response"""
+========
+    def make_instance(self, include_optional) -> ListEntitlementConnections412Response:
+        """Test ListEntitlementConnections412Response
+            include_optional is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # uncomment below to create an instance of `ListEntitlementConnections412Response`
+        """
+        model = ListEntitlementConnections412Response()
+        if include_optional:
+            return ListEntitlementConnections412Response(
+                message =  API/Feature not enabled for your organization.
+            )
+        else:
+            return ListEntitlementConnections412Response(
+        )
+        """
+
+    def testListEntitlementConnections412Response(self):
+        """Test ListEntitlementConnections412Response"""
+>>>>>>>> main:sailpoint/triggers/test/test_list_entitlement_connections412_response.py
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

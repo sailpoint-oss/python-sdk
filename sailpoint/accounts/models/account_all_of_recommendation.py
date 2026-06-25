@@ -34,8 +34,8 @@ class AccountAllOfRecommendation(BaseModel):
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['HUMAN', 'MACHINE']):
-            warnings.warn(f"must be one of enum values ('HUMAN', 'MACHINE') unknown value: {value}")
+        if value not in set(['HUMAN', 'MACHINE', 'AGENT']):
+            warnings.warn(f"must be one of enum values ('HUMAN', 'MACHINE', 'AGENT') unknown value: {value}")
         return value
 
     @field_validator('method')

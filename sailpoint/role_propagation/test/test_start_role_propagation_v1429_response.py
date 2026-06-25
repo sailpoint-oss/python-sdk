@@ -14,10 +14,17 @@
 
 import unittest
 
+<<<<<<<< HEAD:sailpoint/role_propagation/test/test_start_role_propagation_v1429_response.py
 from sailpoint.role_propagation.models.start_role_propagation_v1429_response import StartRolePropagationV1429Response
 
 class TestStartRolePropagationV1429Response(unittest.TestCase):
     """StartRolePropagationV1429Response unit test stubs"""
+========
+from sailpoint.v2026.models.entitlement_connection_bulk_update_result_item import EntitlementConnectionBulkUpdateResultItem
+
+class TestEntitlementConnectionBulkUpdateResultItem(unittest.TestCase):
+    """EntitlementConnectionBulkUpdateResultItem unit test stubs"""
+>>>>>>>> main:sailpoint/triggers/test/test_entitlement_connection_bulk_update_result_item.py
 
     def setUp(self):
         pass
@@ -25,6 +32,7 @@ class TestStartRolePropagationV1429Response(unittest.TestCase):
     def tearDown(self):
         pass
 
+<<<<<<<< HEAD:sailpoint/role_propagation/test/test_start_role_propagation_v1429_response.py
     def make_instance(self, include_optional) -> StartRolePropagationV1429Response:
         """Test StartRolePropagationV1429Response
             include_optional is a boolean, when False only required
@@ -44,6 +52,30 @@ class TestStartRolePropagationV1429Response(unittest.TestCase):
 
     def testStartRolePropagationV1429Response(self):
         """Test StartRolePropagationV1429Response"""
+========
+    def make_instance(self, include_optional) -> EntitlementConnectionBulkUpdateResultItem:
+        """Test EntitlementConnectionBulkUpdateResultItem
+            include_optional is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # uncomment below to create an instance of `EntitlementConnectionBulkUpdateResultItem`
+        """
+        model = EntitlementConnectionBulkUpdateResultItem()
+        if include_optional:
+            return EntitlementConnectionBulkUpdateResultItem(
+                connection_id = 'd532fa5cb15748e2873c6a01e5923ec4',
+                type = 'JIT',
+                status = 201,
+                description = 'success'
+            )
+        else:
+            return EntitlementConnectionBulkUpdateResultItem(
+        )
+        """
+
+    def testEntitlementConnectionBulkUpdateResultItem(self):
+        """Test EntitlementConnectionBulkUpdateResultItem"""
+>>>>>>>> main:sailpoint/triggers/test/test_entitlement_connection_bulk_update_result_item.py
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
