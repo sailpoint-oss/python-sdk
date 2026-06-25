@@ -1,0 +1,131 @@
+- path: /intelligence/v1/identities/{identityID}/access-history
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/intelligence-package/methods/intelligence-package#get-intel-identity-access-history-v1
+      source: |
+        from sailpoint.intelligence_package.api.intelligence_package_api import IntelligencePackageApi
+        from sailpoint.intelligence_package.api_client import ApiClient
+        from sailpoint.intelligence_package.models.intelidentityaccesshistorybody import Intelidentityaccesshistorybody
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          identity_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Non-empty identity id path segment for Intelligence Package sub-resources. # str | Non-empty identity id path segment for Intelligence Package sub-resources.
+          limit = 100 # int | Maximum number of historical events to return in this page of results. (optional) # int | Maximum number of historical events to return in this page of results. (optional)
+          offset = 0 # int | Zero-based index of the first event row to return for pagination. (optional) # int | Zero-based index of the first event row to return for pagination. (optional)
+          count = False # bool | When true, the service may include total count metadata alongside the result list. (optional) (default to False) # bool | When true, the service may include total count metadata alongside the result list. (optional) (default to False)
+          try:
+              # Return identity access-history events
+              
+              results = IntelligencePackageApi(api_client).get_intel_identity_access_history_v1(identity_id=identity_id)
+              # Below is a request that includes all optional parameters
+              # results = IntelligencePackageApi(api_client).get_intel_identity_access_history_v1(identity_id, limit, offset, count)
+              print("The response of IntelligencePackageApi->get_intel_identity_access_history_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling IntelligencePackageApi->get_intel_identity_access_history_v1: %s\n" % e)
+- path: /intelligence/v1/identities/{identityID}/access
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/intelligence-package/methods/intelligence-package#get-intel-identity-access-v1
+      source: |
+        from sailpoint.intelligence_package.api.intelligence_package_api import IntelligencePackageApi
+        from sailpoint.intelligence_package.api_client import ApiClient
+        from sailpoint.intelligence_package.models.intelidentityaccessbody import Intelidentityaccessbody
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          identity_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Non-empty identity id path segment for Intelligence Package sub-resources. # str | Non-empty identity id path segment for Intelligence Package sub-resources.
+          try:
+              # Accounts merged with privileged data
+              
+              results = IntelligencePackageApi(api_client).get_intel_identity_access_v1(identity_id=identity_id)
+              # Below is a request that includes all optional parameters
+              # results = IntelligencePackageApi(api_client).get_intel_identity_access_v1(identity_id)
+              print("The response of IntelligencePackageApi->get_intel_identity_access_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling IntelligencePackageApi->get_intel_identity_access_v1: %s\n" % e)
+- path: /intelligence/v1/identities/{identityID}/risk/outliers
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/intelligence-package/methods/intelligence-package#get-intel-identity-risk-outliers-v1
+      source: |
+        from sailpoint.intelligence_package.api.intelligence_package_api import IntelligencePackageApi
+        from sailpoint.intelligence_package.api_client import ApiClient
+        from sailpoint.intelligence_package.models.intelidentityriskbody import Intelidentityriskbody
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          identity_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Non-empty identity id path segment for Intelligence Package sub-resources. # str | Non-empty identity id path segment for Intelligence Package sub-resources.
+          limit = 250 # int | Maximum number of outlier rows to return for this page. (optional) (default to 250) # int | Maximum number of outlier rows to return for this page. (optional) (default to 250)
+          offset = 0 # int | Zero-based row index for the first returned outlier item. (optional) (default to 0) # int | Zero-based row index for the first returned outlier item. (optional) (default to 0)
+          try:
+              # Risk outliers continuation paging
+              
+              results = IntelligencePackageApi(api_client).get_intel_identity_risk_outliers_v1(identity_id=identity_id)
+              # Below is a request that includes all optional parameters
+              # results = IntelligencePackageApi(api_client).get_intel_identity_risk_outliers_v1(identity_id, limit, offset)
+              print("The response of IntelligencePackageApi->get_intel_identity_risk_outliers_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling IntelligencePackageApi->get_intel_identity_risk_outliers_v1: %s\n" % e)
+- path: /intelligence/v1/identities/{identityID}/risk
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/intelligence-package/methods/intelligence-package#get-intel-identity-risk-v1
+      source: |
+        from sailpoint.intelligence_package.api.intelligence_package_api import IntelligencePackageApi
+        from sailpoint.intelligence_package.api_client import ApiClient
+        from sailpoint.intelligence_package.models.intelidentityriskbody import Intelidentityriskbody
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          identity_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Non-empty identity id path segment for Intelligence Package sub-resources. # str | Non-empty identity id path segment for Intelligence Package sub-resources.
+          try:
+              # Identity risk snapshot
+              
+              results = IntelligencePackageApi(api_client).get_intel_identity_risk_v1(identity_id=identity_id)
+              # Below is a request that includes all optional parameters
+              # results = IntelligencePackageApi(api_client).get_intel_identity_risk_v1(identity_id)
+              print("The response of IntelligencePackageApi->get_intel_identity_risk_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling IntelligencePackageApi->get_intel_identity_risk_v1: %s\n" % e)
+- path: /intelligence/v1/identities
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/intelligence-package/methods/intelligence-package#search-intel-identities-v1
+      source: |
+        from sailpoint.intelligence_package.api.intelligence_package_api import IntelligencePackageApi
+        from sailpoint.intelligence_package.api_client import ApiClient
+        from sailpoint.intelligence_package.models.intelidentityresponse import Intelidentityresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          filters = 'id eq \"00000000-0000-0000-0000-000000000000\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq* # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq*
+          try:
+              # Resolve one identity by filter
+              
+              results = IntelligencePackageApi(api_client).search_intel_identities_v1(filters=filters)
+              # Below is a request that includes all optional parameters
+              # results = IntelligencePackageApi(api_client).search_intel_identities_v1(filters)
+              print("The response of IntelligencePackageApi->search_intel_identities_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling IntelligencePackageApi->search_intel_identities_v1: %s\n" % e)
+

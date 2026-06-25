@@ -14,17 +14,10 @@
 
 import unittest
 
-<<<<<<<< HEAD:sailpoint/triggers/test/test_identityattributeschanged_changes_inner_new_value.py
 from sailpoint.triggers.models.identityattributeschanged_changes_inner_new_value import IdentityattributeschangedChangesInnerNewValue
 
 class TestIdentityattributeschangedChangesInnerNewValue(unittest.TestCase):
     """IdentityattributeschangedChangesInnerNewValue unit test stubs"""
-========
-from sailpoint.v2026.models.entitlement_connection_search_hit_entitlement_privilege_level import EntitlementConnectionSearchHitEntitlementPrivilegeLevel
-
-class TestEntitlementConnectionSearchHitEntitlementPrivilegeLevel(unittest.TestCase):
-    """EntitlementConnectionSearchHitEntitlementPrivilegeLevel unit test stubs"""
->>>>>>>> main:sailpoint/triggers/test/test_entitlement_connection_search_hit_entitlement_privilege_level.py
 
     def setUp(self):
         pass
@@ -32,7 +25,6 @@ class TestEntitlementConnectionSearchHitEntitlementPrivilegeLevel(unittest.TestC
     def tearDown(self):
         pass
 
-<<<<<<<< HEAD:sailpoint/triggers/test/test_identityattributeschanged_changes_inner_new_value.py
     def make_instance(self, include_optional) -> IdentityattributeschangedChangesInnerNewValue:
         """Test IdentityattributeschangedChangesInnerNewValue
             include_optional is a boolean, when False only required
@@ -51,27 +43,6 @@ class TestEntitlementConnectionSearchHitEntitlementPrivilegeLevel(unittest.TestC
 
     def testIdentityattributeschangedChangesInnerNewValue(self):
         """Test IdentityattributeschangedChangesInnerNewValue"""
-========
-    def make_instance(self, include_optional) -> EntitlementConnectionSearchHitEntitlementPrivilegeLevel:
-        """Test EntitlementConnectionSearchHitEntitlementPrivilegeLevel
-            include_optional is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # uncomment below to create an instance of `EntitlementConnectionSearchHitEntitlementPrivilegeLevel`
-        """
-        model = EntitlementConnectionSearchHitEntitlementPrivilegeLevel()
-        if include_optional:
-            return EntitlementConnectionSearchHitEntitlementPrivilegeLevel(
-                effective = 'HIGH'
-            )
-        else:
-            return EntitlementConnectionSearchHitEntitlementPrivilegeLevel(
-        )
-        """
-
-    def testEntitlementConnectionSearchHitEntitlementPrivilegeLevel(self):
-        """Test EntitlementConnectionSearchHitEntitlementPrivilegeLevel"""
->>>>>>>> main:sailpoint/triggers/test/test_entitlement_connection_search_hit_entitlement_privilege_level.py
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -66,6 +66,7 @@ from sailpoint.identities.api.identities_api import IdentitiesApi as _identities
 from sailpoint.identity_attributes.api.identity_attributes_api import IdentityAttributesApi as _identity_attributes__IdentityAttributesApi
 from sailpoint.identity_history.api.identity_history_api import IdentityHistoryApi as _identity_history__IdentityHistoryApi
 from sailpoint.identity_profiles.api.identity_profiles_api import IdentityProfilesApi as _identity_profiles__IdentityProfilesApi
+from sailpoint.intelligence_package.api.intelligence_package_api import IntelligencePackageApi as _intelligence_package__IntelligencePackageApi
 from sailpoint.jit_access.api.jit_access_api import JITAccessApi as _jit_access__JITAccessApi
 from sailpoint.jit_activations.api.jit_activations_api import JITActivationsApi as _jit_activations__JITActivationsApi
 from sailpoint.launchers.api.launchers_api import LaunchersApi as _launchers__LaunchersApi
@@ -217,6 +218,7 @@ IdentitiesApi = _identities__IdentitiesApi
 IdentityAttributesApi = _identity_attributes__IdentityAttributesApi
 IdentityHistoryApi = _identity_history__IdentityHistoryApi
 IdentityProfilesApi = _identity_profiles__IdentityProfilesApi
+IntelligencePackageApi = _intelligence_package__IntelligencePackageApi
 JITAccessApi = _jit_access__JITAccessApi
 JITActivationsApi = _jit_activations__JITActivationsApi
 LaunchersApi = _launchers__LaunchersApi
@@ -363,6 +365,7 @@ class SailPoint:
     IdentityAttributesApi = _identity_attributes__IdentityAttributesApi
     IdentityHistoryApi = _identity_history__IdentityHistoryApi
     IdentityProfilesApi = _identity_profiles__IdentityProfilesApi
+    IntelligencePackageApi = _intelligence_package__IntelligencePackageApi
     JITAccessApi = _jit_access__JITAccessApi
     JITActivationsApi = _jit_activations__JITActivationsApi
     LaunchersApi = _launchers__LaunchersApi

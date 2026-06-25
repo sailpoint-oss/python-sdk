@@ -19,11 +19,10 @@ import json
 import warnings
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-<<<<<<<< HEAD:sailpoint/identities/models/localizedmessage.py
 class Localizedmessage(BaseModel):
     """
     Localized error message to indicate a failed invocation or error if any.
@@ -31,14 +30,6 @@ class Localizedmessage(BaseModel):
     locale: StrictStr = Field(description="Message locale")
     message: StrictStr = Field(description="Message text")
     __properties: ClassVar[List[str]] = ["locale", "message"]
-========
-class EntitlementConnectionSearchHitEntitlementPrivilegeLevel(BaseModel):
-    """
-    Privilege classification details for the entitlement.
-    """ # noqa: E501
-    effective: Optional[StrictStr] = Field(default=None, description="Effective privilege level.")
-    __properties: ClassVar[List[str]] = ["effective"]
->>>>>>>> main:sailpoint/triggers/models/entitlement_connection_search_hit_entitlement_privilege_level.py
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -58,11 +49,7 @@ class EntitlementConnectionSearchHitEntitlementPrivilegeLevel(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-<<<<<<<< HEAD:sailpoint/identities/models/localizedmessage.py
         """Create an instance of Localizedmessage from a JSON string"""
-========
-        """Create an instance of EntitlementConnectionSearchHitEntitlementPrivilegeLevel from a JSON string"""
->>>>>>>> main:sailpoint/triggers/models/entitlement_connection_search_hit_entitlement_privilege_level.py
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -87,11 +74,7 @@ class EntitlementConnectionSearchHitEntitlementPrivilegeLevel(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-<<<<<<<< HEAD:sailpoint/identities/models/localizedmessage.py
         """Create an instance of Localizedmessage from a dict"""
-========
-        """Create an instance of EntitlementConnectionSearchHitEntitlementPrivilegeLevel from a dict"""
->>>>>>>> main:sailpoint/triggers/models/entitlement_connection_search_hit_entitlement_privilege_level.py
         if obj is None:
             return None
 
@@ -99,12 +82,8 @@ class EntitlementConnectionSearchHitEntitlementPrivilegeLevel(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-<<<<<<<< HEAD:sailpoint/identities/models/localizedmessage.py
             "locale": obj.get("locale"),
             "message": obj.get("message")
-========
-            "effective": obj.get("effective")
->>>>>>>> main:sailpoint/triggers/models/entitlement_connection_search_hit_entitlement_privilege_level.py
         })
         return _obj
 

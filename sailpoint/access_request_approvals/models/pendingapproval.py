@@ -58,15 +58,12 @@ class Pendingapproval(BaseModel):
     remove_date: Optional[datetime] = Field(default=None, description="The date the role or access profile or entitlement is no longer assigned to the specified identity.", alias="removeDate")
     remove_date_update_requested: Optional[StrictBool] = Field(default=False, description="If true, then the request is to change the remove date or sunset date.", alias="removeDateUpdateRequested")
     current_remove_date: Optional[datetime] = Field(default=None, description="The remove date or sunset date that was assigned at the time of the request.", alias="currentRemoveDate")
-    start_date: Optional[datetime] = Field(default=None, description="The date the role or access profile or entitlement is/will assigned to the specified identity.", alias="startDate")
-    start_update_requested: Optional[StrictBool] = Field(default=False, description="If true, then the request is to change the start date or sunrise date.", alias="startUpdateRequested")
-    current_start_date: Optional[datetime] = Field(default=None, description="The start date or sunrise date that was assigned at the time of the request.", alias="currentStartDate")
     sod_violation_context: Optional[Sodviolationcontextcheckcompleted] = Field(default=None, alias="sodViolationContext")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs, if any were included in the corresponding access request item", alias="clientMetadata")
     requested_accounts: Optional[List[Requestedaccountref]] = Field(default=None, description="The accounts selected by the user for the access to be provisioned on, in case they have multiple accounts on one or more sources.", alias="requestedAccounts")
     privilege_level: Optional[StrictStr] = Field(default=None, description="The privilege level of the requested access item, if applicable.", alias="privilegeLevel")
     max_permitted_access_duration: Optional[PendingapprovalMaxPermittedAccessDuration] = Field(default=None, alias="maxPermittedAccessDuration")
-    __properties: ClassVar[List[str]] = ["id", "accessRequestId", "name", "created", "modified", "requestCreated", "requestType", "requester", "requestedFor", "owner", "requestedObject", "requesterComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "actionInProcess", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "startDate", "startUpdateRequested", "currentStartDate", "sodViolationContext", "clientMetadata", "requestedAccounts", "privilegeLevel", "maxPermittedAccessDuration"]
+    __properties: ClassVar[List[str]] = ["id", "accessRequestId", "name", "created", "modified", "requestCreated", "requestType", "requester", "requestedFor", "owner", "requestedObject", "requesterComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "actionInProcess", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "sodViolationContext", "clientMetadata", "requestedAccounts", "privilegeLevel", "maxPermittedAccessDuration"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -210,9 +207,6 @@ class Pendingapproval(BaseModel):
             "removeDate": obj.get("removeDate"),
             "removeDateUpdateRequested": obj.get("removeDateUpdateRequested") if obj.get("removeDateUpdateRequested") is not None else False,
             "currentRemoveDate": obj.get("currentRemoveDate"),
-            "startDate": obj.get("startDate"),
-            "startUpdateRequested": obj.get("startUpdateRequested") if obj.get("startUpdateRequested") is not None else False,
-            "currentStartDate": obj.get("currentStartDate"),
             "sodViolationContext": Sodviolationcontextcheckcompleted.from_dict(obj["sodViolationContext"]) if obj.get("sodViolationContext") is not None else None,
             "clientMetadata": obj.get("clientMetadata"),
             "requestedAccounts": [Requestedaccountref.from_dict(_item) for _item in obj["requestedAccounts"]] if obj.get("requestedAccounts") is not None else None,

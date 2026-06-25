@@ -1,15 +1,15 @@
 ---
-id: entitlementrequestconfigv1
-title: Entitlementrequestconfigv1
-pagination_label: Entitlementrequestconfigv1
-sidebar_label: Entitlementrequestconfigv1
+id: entitlementrequestconfig
+title: Entitlementrequestconfig
+pagination_label: Entitlementrequestconfig
+sidebar_label: Entitlementrequestconfig
 sidebar_class_name: pythonsdk
-keywords: ['python', 'Python', 'sdk', 'Entitlementrequestconfigv1', 'Entitlementrequestconfigv1'] 
-slug: /tools/sdk/python/access-requests/models/entitlementrequestconfigv1
-tags: ['SDK', 'Software Development Kit', 'Entitlementrequestconfigv1', 'Entitlementrequestconfigv1']
+keywords: ['python', 'Python', 'sdk', 'Entitlementrequestconfig', 'Entitlementrequestconfig'] 
+slug: /tools/sdk/python/access-requests/models/entitlementrequestconfig
+tags: ['SDK', 'Software Development Kit', 'Entitlementrequestconfig', 'Entitlementrequestconfig']
 ---
 
-# Entitlementrequestconfigv1
+# Entitlementrequestconfig
 
 
 ## Properties
@@ -23,9 +23,9 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from sailpoint.access_requests.models.entitlementrequestconfigv1 import Entitlementrequestconfigv1
+from sailpoint.access_requests.models.entitlementrequestconfig import Entitlementrequestconfig
 
-entitlementrequestconfigv1 = Entitlementrequestconfigv1(
+entitlementrequestconfig = Entitlementrequestconfig(
 access_request_config=sailpoint.access_requests.models.entitlement_access_request_config.Entitlement Access Request Config(
                     approval_schemes = [
                         sailpoint.access_requests.models.entitlement_approval_scheme.Entitlement Approval Scheme(

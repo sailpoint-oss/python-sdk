@@ -18,12 +18,11 @@ import re  # noqa: F401
 import json
 import warnings
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-<<<<<<<< HEAD:sailpoint/entitlements/models/loadentitlementtask_returns_inner.py
 class LoadentitlementtaskReturnsInner(BaseModel):
     """
     LoadentitlementtaskReturnsInner
@@ -31,17 +30,6 @@ class LoadentitlementtaskReturnsInner(BaseModel):
     display_label: Optional[StrictStr] = Field(default=None, description="The display label for the return value", alias="displayLabel")
     attribute_name: Optional[StrictStr] = Field(default=None, description="The attribute name for the return value", alias="attributeName")
     __properties: ClassVar[List[str]] = ["displayLabel", "attributeName"]
-========
-class EntitlementConnectionBulkUpdateResultItem(BaseModel):
-    """
-    EntitlementConnectionBulkUpdateResultItem
-    """ # noqa: E501
-    connection_id: Optional[StrictStr] = Field(default=None, description="Connection ID processed in this row.", alias="connectionId")
-    type: Optional[StrictStr] = Field(default=None, description="Requested or resulting connection type for the row.")
-    status: Optional[StrictInt] = Field(default=None, description="Item-level result status code.")
-    description: Optional[StrictStr] = Field(default=None, description="Item-level result message.")
-    __properties: ClassVar[List[str]] = ["connectionId", "type", "status", "description"]
->>>>>>>> main:sailpoint/triggers/models/entitlement_connection_bulk_update_result_item.py
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -61,11 +49,7 @@ class EntitlementConnectionBulkUpdateResultItem(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-<<<<<<<< HEAD:sailpoint/entitlements/models/loadentitlementtask_returns_inner.py
         """Create an instance of LoadentitlementtaskReturnsInner from a JSON string"""
-========
-        """Create an instance of EntitlementConnectionBulkUpdateResultItem from a JSON string"""
->>>>>>>> main:sailpoint/triggers/models/entitlement_connection_bulk_update_result_item.py
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -90,11 +74,7 @@ class EntitlementConnectionBulkUpdateResultItem(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-<<<<<<<< HEAD:sailpoint/entitlements/models/loadentitlementtask_returns_inner.py
         """Create an instance of LoadentitlementtaskReturnsInner from a dict"""
-========
-        """Create an instance of EntitlementConnectionBulkUpdateResultItem from a dict"""
->>>>>>>> main:sailpoint/triggers/models/entitlement_connection_bulk_update_result_item.py
         if obj is None:
             return None
 
@@ -102,15 +82,8 @@ class EntitlementConnectionBulkUpdateResultItem(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-<<<<<<<< HEAD:sailpoint/entitlements/models/loadentitlementtask_returns_inner.py
             "displayLabel": obj.get("displayLabel"),
             "attributeName": obj.get("attributeName")
-========
-            "connectionId": obj.get("connectionId"),
-            "type": obj.get("type"),
-            "status": obj.get("status"),
-            "description": obj.get("description")
->>>>>>>> main:sailpoint/triggers/models/entitlement_connection_bulk_update_result_item.py
         })
         return _obj
 

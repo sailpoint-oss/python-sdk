@@ -205,7 +205,7 @@ class ApiClient:
                 self.parameters_to_tuples(header_params,collection_formats)
             )
         # Add Authentication header to request
-        header_params['Authorization'] = 'Bearer ' + self.configuration.access_token
+        header_params['Authorization'] = "Bearer " + self.configuration.access_token
 
         if not self.configuration.experimental and 'X-SailPoint-Experimental' in header_params:
             raise Exception(f"{bcolors.WARNING}You are using Experimental APIs. Set configuration.experimental = True to enable these APIs in the SDK.{bcolors.ENDC}")

@@ -19,7 +19,7 @@ import json
 import warnings
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sailpoint.machine_account_subtypes.models.sourcesubtypewithsource_source import SourcesubtypewithsourceSource
 from typing import Optional, Set
@@ -38,8 +38,7 @@ class Sourcesubtypewithsource(BaseModel):
     modified: Optional[datetime] = Field(default=None, description="Last modified timestamp.")
     type: Optional[StrictStr] = Field(default=None, description="Type of the subtype. Either MACHINE OR null.")
     source: Optional[SourcesubtypewithsourceSource] = None
-    system_managed: Optional[StrictBool] = Field(default=False, description="Indicates if the subtype is managed by the system.", alias="systemManaged")
-    __properties: ClassVar[List[str]] = ["id", "sourceId", "technicalName", "displayName", "description", "created", "modified", "type", "source", "systemManaged"]
+    __properties: ClassVar[List[str]] = ["id", "sourceId", "technicalName", "displayName", "description", "created", "modified", "type", "source"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -105,8 +104,7 @@ class Sourcesubtypewithsource(BaseModel):
             "created": obj.get("created"),
             "modified": obj.get("modified"),
             "type": obj.get("type"),
-            "source": SourcesubtypewithsourceSource.from_dict(obj["source"]) if obj.get("source") is not None else None,
-            "systemManaged": obj.get("systemManaged") if obj.get("systemManaged") is not None else False
+            "source": SourcesubtypewithsourceSource.from_dict(obj["source"]) if obj.get("source") is not None else None
         })
         return _obj
 
