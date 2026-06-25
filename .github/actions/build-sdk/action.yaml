@@ -24,6 +24,10 @@ runs:
       with:
         python-version: "3.x"
 
+    - name: Install Node dependencies
+      shell: bash
+      run: npm install
+
     - name: Set up Java
       uses: actions/setup-java@v4
       with:
