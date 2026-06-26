@@ -2,7 +2,7 @@
   method: POST
   xCodeSample:
     - lang: Python
-      label: SDK_tools/sdk/python/entitlements/methods/entitlements#create-access-model-metadata-for-entitlementv1-v1
+      label: SDK_tools/sdk/python/entitlements/methods/entitlements#create-access-model-metadata-for-entitlement-v1
       source: |
         from sailpoint.entitlements.api.entitlements_api import EntitlementsApi
         from sailpoint.entitlements.api_client import ApiClient
@@ -29,7 +29,7 @@
   method: DELETE
   xCodeSample:
     - lang: Python
-      label: SDK_tools/sdk/python/entitlements/methods/entitlements#delete-access-model-metadata-from-entitlementv1-v1
+      label: SDK_tools/sdk/python/entitlements/methods/entitlements#delete-access-model-metadata-from-entitlement-v1
       source: |
         from sailpoint.entitlements.api.entitlements_api import EntitlementsApi
         from sailpoint.entitlements.api_client import ApiClient
@@ -78,7 +78,7 @@
   method: GET
   xCodeSample:
     - lang: Python
-      label: SDK_tools/sdk/python/entitlements/methods/entitlements#get-entitlementv1-v1
+      label: SDK_tools/sdk/python/entitlements/methods/entitlements#get-entitlement-v1
       source: |
         from sailpoint.entitlements.api.entitlements_api import EntitlementsApi
         from sailpoint.entitlements.api_client import ApiClient
@@ -129,7 +129,7 @@
   method: GET
   xCodeSample:
     - lang: Python
-      label: SDK_tools/sdk/python/entitlements/methods/entitlements#list-entitlementv1-children-v1
+      label: SDK_tools/sdk/python/entitlements/methods/entitlements#list-entitlement-children-v1
       source: |
         from sailpoint.entitlements.api.entitlements_api import EntitlementsApi
         from sailpoint.entitlements.api_client import ApiClient
@@ -161,7 +161,7 @@
   method: GET
   xCodeSample:
     - lang: Python
-      label: SDK_tools/sdk/python/entitlements/methods/entitlements#list-entitlementv1-parents-v1
+      label: SDK_tools/sdk/python/entitlements/methods/entitlements#list-entitlement-parents-v1
       source: |
         from sailpoint.entitlements.api.entitlements_api import EntitlementsApi
         from sailpoint.entitlements.api_client import ApiClient
@@ -258,7 +258,7 @@
   method: PATCH
   xCodeSample:
     - lang: Python
-      label: SDK_tools/sdk/python/entitlements/methods/entitlements#patch-entitlementv1-v1
+      label: SDK_tools/sdk/python/entitlements/methods/entitlements#patch-entitlement-v1
       source: |
         from sailpoint.entitlements.api.entitlements_api import EntitlementsApi
         from sailpoint.entitlements.api_client import ApiClient

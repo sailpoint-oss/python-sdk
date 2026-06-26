@@ -1,14 +1,14 @@
 ---
-id: methods
+id: parameter-storage-methods
 title: Methods
 pagination_label: Methods
 sidebar_label: Methods
-sidebar_key: v1-python-methods
+sidebar_key: parameter-storage-python-methods
 sidebar_position: 3
 sidebar_class_name: methods
-keywords: ['python', 'Python', 'sdk', 'methods'] 
-slug: /tools/sdk/python/v1/methods
-tags: ['SDK', 'Software Development Kit', 'v1', 'methods']
+keywords: ['python', 'Python', 'sdk', 'parameter-storage', 'methods'] 
+slug: /tools/sdk/python/parameter-storage/methods
+tags: ['SDK', 'Software Development Kit', 'parameter-storage', 'methods']
 ---
 
 Method documents provide detailed information about each API operation (or method). They describe what the method does and details its input parameters, expected return values, and any considerations to be aware of when using it.

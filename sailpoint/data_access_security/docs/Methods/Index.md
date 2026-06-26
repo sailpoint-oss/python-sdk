@@ -1,14 +1,14 @@
 ---
-id: methods
+id: data-access-security-methods
 title: Methods
 pagination_label: Methods
 sidebar_label: Methods
-sidebar_key: v1-python-methods
+sidebar_key: data-access-security-python-methods
 sidebar_position: 3
 sidebar_class_name: methods
-keywords: ['python', 'Python', 'sdk', 'methods'] 
-slug: /tools/sdk/python/v1/methods
-tags: ['SDK', 'Software Development Kit', 'v1', 'methods']
+keywords: ['python', 'Python', 'sdk', 'data-access-security', 'methods'] 
+slug: /tools/sdk/python/data-access-security/methods
+tags: ['SDK', 'Software Development Kit', 'data-access-security', 'methods']
 ---
 
 Method documents provide detailed information about each API operation (or method). They describe what the method does and details its input parameters, expected return values, and any considerations to be aware of when using it.

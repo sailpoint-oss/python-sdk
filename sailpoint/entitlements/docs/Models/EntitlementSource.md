@@ -1,11 +1,11 @@
 ---
-id: entitlementv1-source
+id: entitlement-source
 title: EntitlementSource
 pagination_label: EntitlementSource
 sidebar_label: EntitlementSource
 sidebar_class_name: pythonsdk
 keywords: ['python', 'Python', 'sdk', 'EntitlementSource', 'EntitlementSource'] 
-slug: /tools/sdk/python/entitlements/models/entitlementv1-source
+slug: /tools/sdk/python/entitlements/models/entitlement-source
 tags: ['SDK', 'Software Development Kit', 'EntitlementSource', 'EntitlementSource']
 ---
 

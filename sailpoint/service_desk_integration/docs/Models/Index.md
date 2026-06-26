@@ -1,14 +1,14 @@
 ---
-id: models
+id: service-desk-integration-models
 title: Models
 pagination_label: Models
 sidebar_label: Models
-sidebar_key: v1-python-models
+sidebar_key: service-desk-integration-python-models
 sidebar_position: 3
 sidebar_class_name: models
-keywords: ['python', 'Python', 'sdk', 'models'] 
-slug: /tools/sdk/python/v1/models
-tags: ['SDK', 'Software Development Kit', 'v1', 'models']
+keywords: ['python', 'Python', 'sdk', 'service-desk-integration', 'models'] 
+slug: /tools/sdk/python/service-desk-integration/models
+tags: ['SDK', 'Software Development Kit', 'service-desk-integration', 'models']
 ---
 
 The Python SDK uses data models to structure and manage data within the API. These models provide essential details about the data, including their attributes, data types, and how the models relate to each other. Understanding these models is crucial to effectively interact with the API.

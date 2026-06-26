@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 **access_model_metadata** | [**Entitlementv2AccessModelMetadata**](entitlementv2-access-model-metadata) |  | [optional] 
 **created** | **datetime** | Time when the entitlementv1 was created | [optional] 
 **modified** | **datetime** | Time when the entitlementv1 was last modified | [optional] 
-**source** | [**EntitlementSource**](entitlementv1-source) |  | [optional] 
+**source** | [**EntitlementSource**](entitlement-source) |  | [optional] 
 **attributes** | **map[string]object** | A map of free-form key-value pairs from the source system | [optional] 
 **segments** | **[]str** | List of IDs of segments, if any, to which this Entitlementv1 is assigned. | [optional] 
 **direct_permissions** | [**[]Permissiondto**](permissiondto) |  | [optional] 

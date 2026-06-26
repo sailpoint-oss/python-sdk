@@ -1,12 +1,12 @@
 ---
-id: models
+id: -models
 title: Models
 pagination_label: Models
 sidebar_label: Models
 sidebar_key: -python-models
 sidebar_position: 3
 sidebar_class_name: models
-keywords: ['python', 'Python', 'sdk', 'models'] 
+keywords: ['python', 'Python', 'sdk', '', 'models'] 
 slug: /tools/sdk/python//models
 tags: ['SDK', 'Software Development Kit', '', 'models']
 ---

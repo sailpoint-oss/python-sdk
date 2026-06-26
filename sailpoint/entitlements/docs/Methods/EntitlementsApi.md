@@ -15,26 +15,26 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create-access-model-metadata-for-entitlementv1-v1**](#create-access-model-metadata-for-entitlementv1-v1) | **POST** `/entitlements/v1/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}` | Add metadata to an entitlementv1.
-[**delete-access-model-metadata-from-entitlementv1-v1**](#delete-access-model-metadata-from-entitlementv1-v1) | **DELETE** `/entitlements/v1/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}` | Remove metadata from an entitlementv1.
+[**create-access-model-metadata-for-entitlement-v1**](#create-access-model-metadata-for-entitlement-v1) | **POST** `/entitlements/v1/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}` | Add metadata to an entitlementv1.
+[**delete-access-model-metadata-from-entitlement-v1**](#delete-access-model-metadata-from-entitlement-v1) | **DELETE** `/entitlements/v1/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}` | Remove metadata from an entitlementv1.
 [**get-entitlement-request-config-v1**](#get-entitlement-request-config-v1) | **GET** `/entitlements/v1/{id}/entitlement-request-config` | Get entitlementv1 request config
-[**get-entitlementv1-v1**](#get-entitlementv1-v1) | **GET** `/entitlements/v1/{id}` | Get an entitlementv1
+[**get-entitlement-v1**](#get-entitlement-v1) | **GET** `/entitlements/v1/{id}` | Get an entitlementv1
 [**import-entitlements-by-source-v1**](#import-entitlements-by-source-v1) | **POST** `/entitlements/v1/aggregate/sources/{id}` | Aggregate entitlements
-[**list-entitlementv1-children-v1**](#list-entitlementv1-children-v1) | **GET** `/entitlements/v1/{id}/children` | List of entitlements children
-[**list-entitlementv1-parents-v1**](#list-entitlementv1-parents-v1) | **GET** `/entitlements/v1/{id}/parents` | List of entitlements parents
+[**list-entitlement-children-v1**](#list-entitlement-children-v1) | **GET** `/entitlements/v1/{id}/children` | List of entitlements children
+[**list-entitlement-parents-v1**](#list-entitlement-parents-v1) | **GET** `/entitlements/v1/{id}/parents` | List of entitlements parents
 [**list-entitlements-by-account-v1**](#list-entitlements-by-account-v1) | **GET** `/entitlements/v1/account/{accountId}/entitlements` | Get entitlements for an account
 [**list-entitlements-v1**](#list-entitlements-v1) | **GET** `/entitlements/v1` | Gets a list of entitlements.
-[**patch-entitlementv1-v1**](#patch-entitlementv1-v1) | **PATCH** `/entitlements/v1/{id}` | Patch an entitlementv1
+[**patch-entitlement-v1**](#patch-entitlement-v1) | **PATCH** `/entitlements/v1/{id}` | Patch an entitlementv1
 [**put-entitlement-request-config-v1**](#put-entitlement-request-config-v1) | **PUT** `/entitlements/v1/{id}/entitlement-request-config` | Replace entitlementv1 request config
 [**reset-source-entitlements-v1**](#reset-source-entitlements-v1) | **POST** `/entitlements/v1/reset/sources/{id}` | Reset source entitlements
 [**update-entitlements-in-bulk-v1**](#update-entitlements-in-bulk-v1) | **POST** `/entitlements/v1/bulk-update` | Bulk update an entitlementv1 list
 
 
-## create-access-model-metadata-for-entitlementv1-v1
+## create-access-model-metadata-for-entitlement-v1
 Add metadata to an entitlementv1.
 Add single Access Model Metadata to an entitlementv1.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/create-access-model-metadata-for-entitlementv1-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/v1/create-access-model-metadata-for-entitlement-v1)
 
 ### Parameters 
 
@@ -92,11 +92,11 @@ with ApiClient(configuration) as api_client:
 
 [[Back to top]](#) 
 
-## delete-access-model-metadata-from-entitlementv1-v1
+## delete-access-model-metadata-from-entitlement-v1
 Remove metadata from an entitlementv1.
 Remove single Access Model Metadata from an entitlementv1.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/delete-access-model-metadata-from-entitlementv1-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/v1/delete-access-model-metadata-from-entitlement-v1)
 
 ### Parameters 
 
@@ -210,11 +210,11 @@ with ApiClient(configuration) as api_client:
 
 [[Back to top]](#) 
 
-## get-entitlementv1-v1
+## get-entitlement-v1
 Get an entitlementv1
 This API returns an entitlementv1 by its ID.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-entitlementv1-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/v1/get-entitlement-v1)
 
 ### Parameters 
 
@@ -336,11 +336,11 @@ with ApiClient(configuration) as api_client:
 
 [[Back to top]](#) 
 
-## list-entitlementv1-children-v1
+## list-entitlement-children-v1
 List of entitlements children
 This API returns a list of all child entitlements of a given entitlementv1.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/list-entitlementv1-children-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/v1/list-entitlement-children-v1)
 
 ### Parameters 
 
@@ -408,11 +408,11 @@ with ApiClient(configuration) as api_client:
 
 [[Back to top]](#) 
 
-## list-entitlementv1-parents-v1
+## list-entitlement-parents-v1
 List of entitlements parents
 This API returns a list of all parent entitlements of a given entitlementv1.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/list-entitlementv1-parents-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/v1/list-entitlement-parents-v1)
 
 ### Parameters 
 
@@ -625,7 +625,7 @@ with ApiClient(configuration) as api_client:
 
 [[Back to top]](#) 
 
-## patch-entitlementv1-v1
+## patch-entitlement-v1
 Patch an entitlementv1
 This API updates an existing entitlementv1 using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
 
@@ -633,7 +633,7 @@ The following fields are patchable: **requestable**, **segments**, **privilegeOv
 
 When you're patching owner, only owner type and owner id must be provided. Owner name is optional, and it won't be modified. If the owner name is provided, it should correspond to the real name. The only owner type currently supported is IDENTITY.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/patch-entitlementv1-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/v1/patch-entitlement-v1)
 
 ### Parameters 
 
