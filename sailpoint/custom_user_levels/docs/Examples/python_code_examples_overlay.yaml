@@ -1,0 +1,259 @@
+- path: /authorization/v1/custom-user-levels
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/custom-user-levels/methods/custom-user-levels#create-custom-user-level-v1
+      source: |
+        from sailpoint.custom_user_levels.api.custom_user_levels_api import CustomUserLevelsApi
+        from sailpoint.custom_user_levels.api_client import ApiClient
+        from sailpoint.custom_user_levels.models.userlevelrequest import Userlevelrequest
+        from sailpoint.custom_user_levels.models.userlevelsummarydto import Userlevelsummarydto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          userlevelrequest = '''{"name":"Identity And Access Management","description":"This is a description of the custom user level.","owner":{"id":"29b9da8273b441239238bc041c386817","name":"John Doe"},"rightSets":["idn:ui-identity-manage-example","idn:ui-identity-manage-child-one-example"]}''' # Userlevelrequest | Payload containing the details of the user level to be created.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Create a custom user level
+              new_userlevelrequest = Userlevelrequest.from_json(userlevelrequest)
+              results = CustomUserLevelsApi(api_client).create_custom_user_level_v1(userlevelrequest=new_userlevelrequest)
+              # Below is a request that includes all optional parameters
+              # results = CustomUserLevelsApi(api_client).create_custom_user_level_v1(new_userlevelrequest, x_sail_point_experimental)
+              print("The response of CustomUserLevelsApi->create_custom_user_level_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling CustomUserLevelsApi->create_custom_user_level_v1: %s\n" % e)
+- path: /authorization/v1/custom-user-levels/{id}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/custom-user-levels/methods/custom-user-levels#delete-user-level-v1
+      source: |
+        from sailpoint.custom_user_levels.api.custom_user_levels_api import CustomUserLevelsApi
+        from sailpoint.custom_user_levels.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '6e110911-5984-491b-be74-2707980a46a7' # str | The unique identifier of the user level. # str | The unique identifier of the user level.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Delete a user level
+              
+              CustomUserLevelsApi(api_client).delete_user_level_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # CustomUserLevelsApi(api_client).delete_user_level_v1(id, x_sail_point_experimental)
+          except Exception as e:
+              print("Exception when calling CustomUserLevelsApi->delete_user_level_v1: %s\n" % e)
+- path: /authorization/v1/custom-user-levels/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/custom-user-levels/methods/custom-user-levels#get-user-level-v1
+      source: |
+        from sailpoint.custom_user_levels.api.custom_user_levels_api import CustomUserLevelsApi
+        from sailpoint.custom_user_levels.api_client import ApiClient
+        from sailpoint.custom_user_levels.models.userlevelsummarydto import Userlevelsummarydto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '6e110911-5984-491b-be74-2707980a46a7' # str | The unique identifier of the user level. # str | The unique identifier of the user level.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Retrieve a user level
+              
+              results = CustomUserLevelsApi(api_client).get_user_level_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = CustomUserLevelsApi(api_client).get_user_level_v1(id, x_sail_point_experimental)
+              print("The response of CustomUserLevelsApi->get_user_level_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling CustomUserLevelsApi->get_user_level_v1: %s\n" % e)
+- path: /authorization/v1/authorization-assignable-right-sets
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/custom-user-levels/methods/custom-user-levels#list-all-authorization-right-sets-v1
+      source: |
+        from sailpoint.custom_user_levels.api.custom_user_levels_api import CustomUserLevelsApi
+        from sailpoint.custom_user_levels.api_client import ApiClient
+        from sailpoint.custom_user_levels.models.hierarchicalrightset import Hierarchicalrightset
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          filters = 'category eq \"identity\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **category**: *eq* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **category**: *eq* (optional)
+          sorters = 'name, -id, -category' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, category** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, category** (optional)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          try:
+              # List all uiAssignable right sets
+              
+              results = CustomUserLevelsApi(api_client).list_all_authorization_right_sets_v1()
+              # Below is a request that includes all optional parameters
+              # results = CustomUserLevelsApi(api_client).list_all_authorization_right_sets_v1(x_sail_point_experimental, filters, sorters, limit, offset)
+              print("The response of CustomUserLevelsApi->list_all_authorization_right_sets_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling CustomUserLevelsApi->list_all_authorization_right_sets_v1: %s\n" % e)
+- path: /authorization/v1/user-levels/{id}/identities
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/custom-user-levels/methods/custom-user-levels#list-user-level-identities-v1
+      source: |
+        from sailpoint.custom_user_levels.api.custom_user_levels_api import CustomUserLevelsApi
+        from sailpoint.custom_user_levels.api_client import ApiClient
+        from sailpoint.custom_user_levels.models.authuserslimresponse import Authuserslimresponse
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = 'idn:access-request-administrator' # str | The unique identifier of the user level. # str | The unique identifier of the user level.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          count = False # bool | If true, X-Total-Count header with the the total number of identities for this user level will be included in the response. (optional) (default to False) # bool | If true, X-Total-Count header with the the total number of identities for this user level will be included in the response. (optional) (default to False)
+          sorters = 'displayName' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName** (optional)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          try:
+              # List user level identities
+              
+              results = CustomUserLevelsApi(api_client).list_user_level_identities_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = CustomUserLevelsApi(api_client).list_user_level_identities_v1(id, x_sail_point_experimental, count, sorters, limit, offset)
+              print("The response of CustomUserLevelsApi->list_user_level_identities_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling CustomUserLevelsApi->list_user_level_identities_v1: %s\n" % e)
+- path: /authorization/v1/custom-user-levels
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/custom-user-levels/methods/custom-user-levels#list-user-levels-v1
+      source: |
+        from sailpoint.custom_user_levels.api.custom_user_levels_api import CustomUserLevelsApi
+        from sailpoint.custom_user_levels.api_client import ApiClient
+        from sailpoint.custom_user_levels.models.userlevelsummarydto import Userlevelsummarydto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          detail_level = basic # str | Specifies the level of detail for the user levels. (optional) (default to basic) # str | Specifies the level of detail for the user levels. (optional) (default to basic)
+          filters = 'name co \"identity\", owner co \"john\", status eq \"active\", description co \"some description\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *co*    **owner**: *co*    **status**: *eq*  **description**: *co* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *co*    **owner**: *co*    **status**: *eq*  **description**: *co* (optional)
+          sorters = 'name, -created, description, status, owner' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, description, status, owner** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, description, status, owner** (optional)
+          limit = 50 # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50) # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          try:
+              # List user levels
+              
+              results = CustomUserLevelsApi(api_client).list_user_levels_v1()
+              # Below is a request that includes all optional parameters
+              # results = CustomUserLevelsApi(api_client).list_user_levels_v1(x_sail_point_experimental, detail_level, filters, sorters, limit, offset)
+              print("The response of CustomUserLevelsApi->list_user_levels_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling CustomUserLevelsApi->list_user_levels_v1: %s\n" % e)
+- path: /authorization/v1/custom-user-levels/{id}/publish
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/custom-user-levels/methods/custom-user-levels#publish-custom-user-level-v1
+      source: |
+        from sailpoint.custom_user_levels.api.custom_user_levels_api import CustomUserLevelsApi
+        from sailpoint.custom_user_levels.api_client import ApiClient
+        from sailpoint.custom_user_levels.models.userlevelpublishsummary import Userlevelpublishsummary
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '6e110911-5984-491b-be74-2707980a46a7' # str | The unique identifier of the user level to publish. # str | The unique identifier of the user level to publish.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Publish a custom user level
+              
+              results = CustomUserLevelsApi(api_client).publish_custom_user_level_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = CustomUserLevelsApi(api_client).publish_custom_user_level_v1(id, x_sail_point_experimental)
+              print("The response of CustomUserLevelsApi->publish_custom_user_level_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling CustomUserLevelsApi->publish_custom_user_level_v1: %s\n" % e)
+- path: /authorization/v1/user-levels/get-identity-count
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/custom-user-levels/methods/custom-user-levels#show-user-level-counts-v1
+      source: |
+        from sailpoint.custom_user_levels.api.custom_user_levels_api import CustomUserLevelsApi
+        from sailpoint.custom_user_levels.api_client import ApiClient
+        from sailpoint.custom_user_levels.models.authuserlevelsidentitycount import Authuserlevelsidentitycount
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          request_body = '''['request_body_example']''' # List[str] | List of user level ids. Max 50 identifiers can be passed in a single request.
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Count user levels identities
+              new_request_body = RequestBody.from_json(request_body)
+              results = CustomUserLevelsApi(api_client).show_user_level_counts_v1(request_body=new_request_body)
+              # Below is a request that includes all optional parameters
+              # results = CustomUserLevelsApi(api_client).show_user_level_counts_v1(new_request_body, x_sail_point_experimental)
+              print("The response of CustomUserLevelsApi->show_user_level_counts_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling CustomUserLevelsApi->show_user_level_counts_v1: %s\n" % e)
+- path: /authorization/v1/custom-user-levels/{id}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/custom-user-levels/methods/custom-user-levels#update-user-level-v1
+      source: |
+        from sailpoint.custom_user_levels.api.custom_user_levels_api import CustomUserLevelsApi
+        from sailpoint.custom_user_levels.api_client import ApiClient
+        from sailpoint.custom_user_levels.models.jsonpatch import Jsonpatch
+        from sailpoint.custom_user_levels.models.userlevelsummarydto import Userlevelsummarydto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+        configuration.experimental = True
+
+        with ApiClient(configuration) as api_client:
+          id = '6e110911-5984-491b-be74-2707980a46a7' # str | The unique identifier of the user level. # str | The unique identifier of the user level.
+          jsonpatch = '''[{"op":"replace","path":"/rightSets","value":["idn:ui-identity-manage-example"]}]''' # Jsonpatch | JSON Patch payload for updating the user level.   - If only a parent right set id is included in the request body, all child right sets associated with that parent will be automatically assigned.   - If the request body includes both a parent right set and a subset of its children, only the explicitly listed right sets (parent and specified children) will be assigned. Implicit inheritance is not applied in this case. 
+          x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+          try:
+              # Update a user level
+              new_jsonpatch = Jsonpatch.from_json(jsonpatch)
+              results = CustomUserLevelsApi(api_client).update_user_level_v1(id=id, jsonpatch=new_jsonpatch)
+              # Below is a request that includes all optional parameters
+              # results = CustomUserLevelsApi(api_client).update_user_level_v1(id, new_jsonpatch, x_sail_point_experimental)
+              print("The response of CustomUserLevelsApi->update_user_level_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling CustomUserLevelsApi->update_user_level_v1: %s\n" % e)
+

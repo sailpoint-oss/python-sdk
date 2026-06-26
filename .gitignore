@@ -71,3 +71,6 @@ target/
 config.json
 api-specs/
 test.py
+.sdk-build-tmp/
+build-errors/
+node_modules/

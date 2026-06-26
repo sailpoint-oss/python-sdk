@@ -1,0 +1,27 @@
+- path: /access-request-identity-metrics/v1/{identityId}/requested-objects/{requestedObjectId}/type/{type}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-request-identity-metrics/methods/access-request-identity-metrics#get-access-request-identity-metrics-v1
+      source: |
+        from sailpoint.access_request_identity_metrics.api.access_request_identity_metrics_api import AccessRequestIdentityMetricsApi
+        from sailpoint.access_request_identity_metrics.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          identity_id = '7025c863-c270-4ba6-beea-edf3cb091573' # str | Manager's identity ID. # str | Manager's identity ID.
+          requested_object_id = '2db501be-f0fb-4cc5-a695-334133c52891' # str | Requested access item's ID. # str | Requested access item's ID.
+          type = 'ENTITLEMENT' # str | Requested access item's type. # str | Requested access item's type.
+          try:
+              # Return access request identity metrics
+              
+              results = AccessRequestIdentityMetricsApi(api_client).get_access_request_identity_metrics_v1(identity_id=identity_id, requested_object_id=requested_object_id, type=type)
+              # Below is a request that includes all optional parameters
+              # results = AccessRequestIdentityMetricsApi(api_client).get_access_request_identity_metrics_v1(identity_id, requested_object_id, type)
+              print("The response of AccessRequestIdentityMetricsApi->get_access_request_identity_metrics_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessRequestIdentityMetricsApi->get_access_request_identity_metrics_v1: %s\n" % e)
+

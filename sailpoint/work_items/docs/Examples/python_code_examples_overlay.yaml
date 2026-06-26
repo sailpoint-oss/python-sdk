@@ -1,0 +1,337 @@
+- path: /work-items/v1/{id}/approve/{approvalItemId}
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/work-items/methods/work-items#approve-approval-item-v1
+      source: |
+        from sailpoint.work_items.api.work_items_api import WorkItemsApi
+        from sailpoint.work_items.api_client import ApiClient
+        from sailpoint.work_items.models.workitems import Workitems
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item # str | The ID of the work item
+          approval_item_id = '1211bcaa32112bcef6122adb21cef1ac' # str | The ID of the approval item. # str | The ID of the approval item.
+          try:
+              # Approve an approval item
+              
+              results = WorkItemsApi(api_client).approve_approval_item_v1(id=id, approval_item_id=approval_item_id)
+              # Below is a request that includes all optional parameters
+              # results = WorkItemsApi(api_client).approve_approval_item_v1(id, approval_item_id)
+              print("The response of WorkItemsApi->approve_approval_item_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling WorkItemsApi->approve_approval_item_v1: %s\n" % e)
+- path: /work-items/v1/bulk-approve/{id}
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/work-items/methods/work-items#approve-approval-items-in-bulk-v1
+      source: |
+        from sailpoint.work_items.api.work_items_api import WorkItemsApi
+        from sailpoint.work_items.api_client import ApiClient
+        from sailpoint.work_items.models.workitems import Workitems
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item # str | The ID of the work item
+          try:
+              # Bulk approve approval items
+              
+              results = WorkItemsApi(api_client).approve_approval_items_in_bulk_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = WorkItemsApi(api_client).approve_approval_items_in_bulk_v1(id)
+              print("The response of WorkItemsApi->approve_approval_items_in_bulk_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling WorkItemsApi->approve_approval_items_in_bulk_v1: %s\n" % e)
+- path: /work-items/v1/{id}
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/work-items/methods/work-items#complete-work-item-v1
+      source: |
+        from sailpoint.work_items.api.work_items_api import WorkItemsApi
+        from sailpoint.work_items.api_client import ApiClient
+        from sailpoint.work_items.models.workitems import Workitems
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item # str | The ID of the work item
+          body = 'body_example' # str | Body is the request payload to create form definition request (optional) # str | Body is the request payload to create form definition request (optional)
+          try:
+              # Complete a work item
+              
+              results = WorkItemsApi(api_client).complete_work_item_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = WorkItemsApi(api_client).complete_work_item_v1(id, new_body)
+              print("The response of WorkItemsApi->complete_work_item_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling WorkItemsApi->complete_work_item_v1: %s\n" % e)
+- path: /work-items/v1/{id}/forward
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/work-items/methods/work-items#forward-work-item-v1
+      source: |
+        from sailpoint.work_items.api.work_items_api import WorkItemsApi
+        from sailpoint.work_items.api_client import ApiClient
+        from sailpoint.work_items.models.workitemforward import Workitemforward
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item # str | The ID of the work item
+          workitemforward = '''sailpoint.work_items.Workitemforward()''' # Workitemforward | 
+          try:
+              # Forward a work item
+              new_workitemforward = Workitemforward.from_json(workitemforward)
+              WorkItemsApi(api_client).forward_work_item_v1(id=id, workitemforward=new_workitemforward)
+              # Below is a request that includes all optional parameters
+              # WorkItemsApi(api_client).forward_work_item_v1(id, new_workitemforward)
+          except Exception as e:
+              print("Exception when calling WorkItemsApi->forward_work_item_v1: %s\n" % e)
+- path: /work-items/v1/completed
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/work-items/methods/work-items#get-completed-work-items-v1
+      source: |
+        from sailpoint.work_items.api.work_items_api import WorkItemsApi
+        from sailpoint.work_items.api_client import ApiClient
+        from sailpoint.work_items.models.workitems import Workitems
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          owner_id = '1211bcaa32112bcef6122adb21cef1ac' # str | The id of the owner of the work item list being requested.  Either an admin, or the owning/current user must make this request. (optional) # str | The id of the owner of the work item list being requested.  Either an admin, or the owning/current user must make this request. (optional)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          try:
+              # Completed work items
+              
+              results = WorkItemsApi(api_client).get_completed_work_items_v1()
+              # Below is a request that includes all optional parameters
+              # results = WorkItemsApi(api_client).get_completed_work_items_v1(owner_id, limit, offset, count)
+              print("The response of WorkItemsApi->get_completed_work_items_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling WorkItemsApi->get_completed_work_items_v1: %s\n" % e)
+- path: /work-items/v1/completed/count
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/work-items/methods/work-items#get-count-completed-work-items-v1
+      source: |
+        from sailpoint.work_items.api.work_items_api import WorkItemsApi
+        from sailpoint.work_items.api_client import ApiClient
+        from sailpoint.work_items.models.workitemscount import Workitemscount
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          owner_id = 'owner_id_example' # str | ID of the work item owner. (optional) # str | ID of the work item owner. (optional)
+          try:
+              # Count completed work items
+              
+              results = WorkItemsApi(api_client).get_count_completed_work_items_v1()
+              # Below is a request that includes all optional parameters
+              # results = WorkItemsApi(api_client).get_count_completed_work_items_v1(owner_id)
+              print("The response of WorkItemsApi->get_count_completed_work_items_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling WorkItemsApi->get_count_completed_work_items_v1: %s\n" % e)
+- path: /work-items/v1/count
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/work-items/methods/work-items#get-count-work-items-v1
+      source: |
+        from sailpoint.work_items.api.work_items_api import WorkItemsApi
+        from sailpoint.work_items.api_client import ApiClient
+        from sailpoint.work_items.models.workitemscount import Workitemscount
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          owner_id = 'ef38f94347e94562b5bb8424a56397d8' # str | ID of the work item owner. (optional) # str | ID of the work item owner. (optional)
+          try:
+              # Count work items
+              
+              results = WorkItemsApi(api_client).get_count_work_items_v1()
+              # Below is a request that includes all optional parameters
+              # results = WorkItemsApi(api_client).get_count_work_items_v1(owner_id)
+              print("The response of WorkItemsApi->get_count_work_items_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling WorkItemsApi->get_count_work_items_v1: %s\n" % e)
+- path: /work-items/v1/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/work-items/methods/work-items#get-work-item-v1
+      source: |
+        from sailpoint.work_items.api.work_items_api import WorkItemsApi
+        from sailpoint.work_items.api_client import ApiClient
+        from sailpoint.work_items.models.workitems import Workitems
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '2c9180835d191a86015d28455b4a2329' # str | ID of the work item. # str | ID of the work item.
+          try:
+              # Get a work item
+              
+              results = WorkItemsApi(api_client).get_work_item_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = WorkItemsApi(api_client).get_work_item_v1(id)
+              print("The response of WorkItemsApi->get_work_item_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling WorkItemsApi->get_work_item_v1: %s\n" % e)
+- path: /work-items/v1/summary
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/work-items/methods/work-items#get-work-items-summary-v1
+      source: |
+        from sailpoint.work_items.api.work_items_api import WorkItemsApi
+        from sailpoint.work_items.api_client import ApiClient
+        from sailpoint.work_items.models.workitemssummary import Workitemssummary
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          owner_id = '1211bcaa32112bcef6122adb21cef1ac' # str | ID of the work item owner. (optional) # str | ID of the work item owner. (optional)
+          try:
+              # Work items summary
+              
+              results = WorkItemsApi(api_client).get_work_items_summary_v1()
+              # Below is a request that includes all optional parameters
+              # results = WorkItemsApi(api_client).get_work_items_summary_v1(owner_id)
+              print("The response of WorkItemsApi->get_work_items_summary_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling WorkItemsApi->get_work_items_summary_v1: %s\n" % e)
+- path: /work-items/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/work-items/methods/work-items#list-work-items-v1
+      source: |
+        from sailpoint.work_items.api.work_items_api import WorkItemsApi
+        from sailpoint.work_items.api_client import ApiClient
+        from sailpoint.work_items.models.workitems import Workitems
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          owner_id = '1211bcaa32112bcef6122adb21cef1ac' # str | ID of the work item owner. (optional) # str | ID of the work item owner. (optional)
+          try:
+              # List work items
+              
+              results = WorkItemsApi(api_client).list_work_items_v1()
+              # Below is a request that includes all optional parameters
+              # results = WorkItemsApi(api_client).list_work_items_v1(limit, offset, count, owner_id)
+              print("The response of WorkItemsApi->list_work_items_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling WorkItemsApi->list_work_items_v1: %s\n" % e)
+- path: /work-items/v1/{id}/reject/{approvalItemId}
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/work-items/methods/work-items#reject-approval-item-v1
+      source: |
+        from sailpoint.work_items.api.work_items_api import WorkItemsApi
+        from sailpoint.work_items.api_client import ApiClient
+        from sailpoint.work_items.models.workitems import Workitems
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item # str | The ID of the work item
+          approval_item_id = '1211bcaa32112bcef6122adb21cef1ac' # str | The ID of the approval item. # str | The ID of the approval item.
+          try:
+              # Reject an approval item
+              
+              results = WorkItemsApi(api_client).reject_approval_item_v1(id=id, approval_item_id=approval_item_id)
+              # Below is a request that includes all optional parameters
+              # results = WorkItemsApi(api_client).reject_approval_item_v1(id, approval_item_id)
+              print("The response of WorkItemsApi->reject_approval_item_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling WorkItemsApi->reject_approval_item_v1: %s\n" % e)
+- path: /work-items/v1/bulk-reject/{id}
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/work-items/methods/work-items#reject-approval-items-in-bulk-v1
+      source: |
+        from sailpoint.work_items.api.work_items_api import WorkItemsApi
+        from sailpoint.work_items.api_client import ApiClient
+        from sailpoint.work_items.models.workitems import Workitems
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item # str | The ID of the work item
+          try:
+              # Bulk reject approval items
+              
+              results = WorkItemsApi(api_client).reject_approval_items_in_bulk_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = WorkItemsApi(api_client).reject_approval_items_in_bulk_v1(id)
+              print("The response of WorkItemsApi->reject_approval_items_in_bulk_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling WorkItemsApi->reject_approval_items_in_bulk_v1: %s\n" % e)
+- path: /work-items/v1/{id}/submit-account-selection
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/work-items/methods/work-items#submit-account-selection-v1
+      source: |
+        from sailpoint.work_items.api.work_items_api import WorkItemsApi
+        from sailpoint.work_items.api_client import ApiClient
+        from sailpoint.work_items.models.workitems import Workitems
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item # str | The ID of the work item
+          request_body = {"fieldName":"fieldValue"} # Dict[str, object] | Account Selection Data map, keyed on fieldName # Dict[str, object] | Account Selection Data map, keyed on fieldName
+          try:
+              # Submit account selections
+              new_request_body = RequestBody.from_json(request_body)
+              results = WorkItemsApi(api_client).submit_account_selection_v1(id=id, request_body=new_request_body)
+              # Below is a request that includes all optional parameters
+              # results = WorkItemsApi(api_client).submit_account_selection_v1(id, new_request_body)
+              print("The response of WorkItemsApi->submit_account_selection_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling WorkItemsApi->submit_account_selection_v1: %s\n" % e)
+

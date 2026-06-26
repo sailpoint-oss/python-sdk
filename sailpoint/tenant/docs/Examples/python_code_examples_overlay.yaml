@@ -1,0 +1,25 @@
+- path: /tenant/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/tenant/methods/tenant#get-tenant-v1
+      source: |
+        from sailpoint.tenant.api.tenant_api import TenantApi
+        from sailpoint.tenant.api_client import ApiClient
+        from sailpoint.tenant.models.tenant import Tenant
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          try:
+              # Get tenant information.
+              
+              results = TenantApi(api_client).get_tenant_v1()
+              # Below is a request that includes all optional parameters
+              # results = TenantApi(api_client).get_tenant_v1()
+              print("The response of TenantApi->get_tenant_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling TenantApi->get_tenant_v1: %s\n" % e)
+

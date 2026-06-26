@@ -1,0 +1,164 @@
+- path: /identity-profiles/v1/{identity-profile-id}/lifecycle-states
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/lifecycle-states/methods/lifecycle-states#create-lifecycle-state-v1
+      source: |
+        from sailpoint.lifecycle_states.api.lifecycle_states_api import LifecycleStatesApi
+        from sailpoint.lifecycle_states.api_client import ApiClient
+        from sailpoint.lifecycle_states.models.lifecyclestate import Lifecyclestate
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          identity_profile_id = '2b838de9-db9b-abcf-e646-d4f274ad4238' # str | Identity profile ID. # str | Identity profile ID.
+          lifecyclestate = '''sailpoint.lifecycle_states.Lifecyclestate()''' # Lifecyclestate | Lifecycle state to be created.
+          try:
+              # Create lifecycle state
+              new_lifecyclestate = Lifecyclestate.from_json(lifecyclestate)
+              results = LifecycleStatesApi(api_client).create_lifecycle_state_v1(identity_profile_id=identity_profile_id, lifecyclestate=new_lifecyclestate)
+              # Below is a request that includes all optional parameters
+              # results = LifecycleStatesApi(api_client).create_lifecycle_state_v1(identity_profile_id, new_lifecyclestate)
+              print("The response of LifecycleStatesApi->create_lifecycle_state_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling LifecycleStatesApi->create_lifecycle_state_v1: %s\n" % e)
+- path: /identity-profiles/v1/{identity-profile-id}/lifecycle-states/{lifecycle-state-id}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/lifecycle-states/methods/lifecycle-states#delete-lifecycle-state-v1
+      source: |
+        from sailpoint.lifecycle_states.api.lifecycle_states_api import LifecycleStatesApi
+        from sailpoint.lifecycle_states.api_client import ApiClient
+        from sailpoint.lifecycle_states.models.lifecyclestatedeleted import Lifecyclestatedeleted
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          identity_profile_id = '2b838de9-db9b-abcf-e646-d4f274ad4238' # str | Identity profile ID. # str | Identity profile ID.
+          lifecycle_state_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Lifecycle state ID. # str | Lifecycle state ID.
+          try:
+              # Delete lifecycle state
+              
+              results = LifecycleStatesApi(api_client).delete_lifecycle_state_v1(identity_profile_id=identity_profile_id, lifecycle_state_id=lifecycle_state_id)
+              # Below is a request that includes all optional parameters
+              # results = LifecycleStatesApi(api_client).delete_lifecycle_state_v1(identity_profile_id, lifecycle_state_id)
+              print("The response of LifecycleStatesApi->delete_lifecycle_state_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling LifecycleStatesApi->delete_lifecycle_state_v1: %s\n" % e)
+- path: /identity-profiles/v1/{identity-profile-id}/lifecycle-states/{lifecycle-state-id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/lifecycle-states/methods/lifecycle-states#get-lifecycle-state-v1
+      source: |
+        from sailpoint.lifecycle_states.api.lifecycle_states_api import LifecycleStatesApi
+        from sailpoint.lifecycle_states.api_client import ApiClient
+        from sailpoint.lifecycle_states.models.lifecyclestate import Lifecyclestate
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          identity_profile_id = '2b838de9-db9b-abcf-e646-d4f274ad4238' # str | Identity profile ID. # str | Identity profile ID.
+          lifecycle_state_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Lifecycle state ID. # str | Lifecycle state ID.
+          try:
+              # Get lifecycle state
+              
+              results = LifecycleStatesApi(api_client).get_lifecycle_state_v1(identity_profile_id=identity_profile_id, lifecycle_state_id=lifecycle_state_id)
+              # Below is a request that includes all optional parameters
+              # results = LifecycleStatesApi(api_client).get_lifecycle_state_v1(identity_profile_id, lifecycle_state_id)
+              print("The response of LifecycleStatesApi->get_lifecycle_state_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling LifecycleStatesApi->get_lifecycle_state_v1: %s\n" % e)
+- path: /identity-profiles/v1/{identity-profile-id}/lifecycle-states
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/lifecycle-states/methods/lifecycle-states#get-lifecycle-states-v1
+      source: |
+        from sailpoint.lifecycle_states.api.lifecycle_states_api import LifecycleStatesApi
+        from sailpoint.lifecycle_states.api_client import ApiClient
+        from sailpoint.lifecycle_states.models.lifecyclestate import Lifecyclestate
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          identity_profile_id = '2b838de9-db9b-abcf-e646-d4f274ad4238' # str | Identity profile ID. # str | Identity profile ID.
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          sorters = 'created,modified' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, priority, created, modified** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, priority, created, modified** (optional)
+          try:
+              # Lists lifecyclestates
+              
+              results = LifecycleStatesApi(api_client).get_lifecycle_states_v1(identity_profile_id=identity_profile_id)
+              # Below is a request that includes all optional parameters
+              # results = LifecycleStatesApi(api_client).get_lifecycle_states_v1(identity_profile_id, limit, offset, count, sorters)
+              print("The response of LifecycleStatesApi->get_lifecycle_states_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling LifecycleStatesApi->get_lifecycle_states_v1: %s\n" % e)
+- path: /identities/v1/{identity-id}/set-lifecycle-state
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/lifecycle-states/methods/lifecycle-states#set-lifecycle-state-v1
+      source: |
+        from sailpoint.lifecycle_states.api.lifecycle_states_api import LifecycleStatesApi
+        from sailpoint.lifecycle_states.api_client import ApiClient
+        from sailpoint.lifecycle_states.models.set_lifecycle_state_v1200_response import SetLifecycleStateV1200Response
+        from sailpoint.lifecycle_states.models.set_lifecycle_state_v1_request import SetLifecycleStateV1Request
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          identity_id = '2c9180857893f1290178944561990364' # str | ID of the identity to update. # str | ID of the identity to update.
+          set_lifecycle_state_v1_request = '''sailpoint.lifecycle_states.SetLifecycleStateV1Request()''' # SetLifecycleStateV1Request | 
+          try:
+              # Set lifecycle state
+              new_set_lifecycle_state_v1_request = SetLifecycleStateV1Request.from_json(set_lifecycle_state_v1_request)
+              results = LifecycleStatesApi(api_client).set_lifecycle_state_v1(identity_id=identity_id, set_lifecycle_state_v1_request=new_set_lifecycle_state_v1_request)
+              # Below is a request that includes all optional parameters
+              # results = LifecycleStatesApi(api_client).set_lifecycle_state_v1(identity_id, new_set_lifecycle_state_v1_request)
+              print("The response of LifecycleStatesApi->set_lifecycle_state_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling LifecycleStatesApi->set_lifecycle_state_v1: %s\n" % e)
+- path: /identity-profiles/v1/{identity-profile-id}/lifecycle-states/{lifecycle-state-id}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/lifecycle-states/methods/lifecycle-states#update-lifecycle-states-v1
+      source: |
+        from sailpoint.lifecycle_states.api.lifecycle_states_api import LifecycleStatesApi
+        from sailpoint.lifecycle_states.api_client import ApiClient
+        from sailpoint.lifecycle_states.models.jsonpatchoperation import Jsonpatchoperation
+        from sailpoint.lifecycle_states.models.lifecyclestate import Lifecyclestate
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          identity_profile_id = '2b838de9-db9b-abcf-e646-d4f274ad4238' # str | Identity profile ID. # str | Identity profile ID.
+          lifecycle_state_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Lifecycle state ID. # str | Lifecycle state ID.
+          jsonpatchoperation = '''[{"op":"replace","path":"/description","value":"Updated description!"},{"op":"replace","path":"/accessProfileIds","value":["2c918087742bab150174407a80f3125e","2c918087742bab150174407a80f3124f"]},{"op":"replace","path":"/accountActions","value":[{"action":"ENABLE","sourceIds":["2c9180846a2f82fb016a481c1b1560c5","2c9180846a2f82fb016a481c1b1560cc"],"excludeSourceIds":null,"allSources":false},{"action":"DISABLE","sourceIds":null,"excludeSourceIds":["3b551ccf5566478b9b77f37de25303aa"],"allSources":true},{"action":"DELETE","sourceIds":["3c9180846a2f82fb016a481c1b1560c5","8n9180846a2f82fb016a481c1b1560cc"],"excludeSourceIds":null,"allSources":false}]},{"op":"replace","path":"/emailNotificationOption","value":{"notifyManagers":true,"notifyAllAdmins":false,"notifySpecificUsers":false,"emailAddressList":[]}},{"op":"replace","path":"/accessActionConfiguration","value":{"removeAllAccessEnabled":true}}]''' # List[Jsonpatchoperation] | A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption * accessActionConfiguration * priority 
+          try:
+              # Update lifecycle state
+              new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
+              results = LifecycleStatesApi(api_client).update_lifecycle_states_v1(identity_profile_id=identity_profile_id, lifecycle_state_id=lifecycle_state_id, jsonpatchoperation=new_jsonpatchoperation)
+              # Below is a request that includes all optional parameters
+              # results = LifecycleStatesApi(api_client).update_lifecycle_states_v1(identity_profile_id, lifecycle_state_id, new_jsonpatchoperation)
+              print("The response of LifecycleStatesApi->update_lifecycle_states_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling LifecycleStatesApi->update_lifecycle_states_v1: %s\n" % e)
+

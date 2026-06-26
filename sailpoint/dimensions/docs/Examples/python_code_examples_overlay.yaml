@@ -1,0 +1,227 @@
+- path: /roles/v1/{roleId}/dimensions
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/dimensions/methods/dimensions#create-dimension-v1
+      source: |
+        from sailpoint.dimensions.api.dimensions_api import DimensionsApi
+        from sailpoint.dimensions.api_client import ApiClient
+        from sailpoint.dimensions.models.dimension import Dimension
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          role_id = '6603fba3004f43c687610a29195252ce' # str | Parent Role Id of the dimension. # str | Parent Role Id of the dimension.
+          dimension = '''sailpoint.dimensions.Dimension()''' # Dimension | 
+          try:
+              # Create a dimension
+              new_dimension = Dimension.from_json(dimension)
+              results = DimensionsApi(api_client).create_dimension_v1(role_id=role_id, dimension=new_dimension)
+              # Below is a request that includes all optional parameters
+              # results = DimensionsApi(api_client).create_dimension_v1(role_id, new_dimension)
+              print("The response of DimensionsApi->create_dimension_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DimensionsApi->create_dimension_v1: %s\n" % e)
+- path: /roles/v1/{roleId}/dimensions/bulk-delete
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/dimensions/methods/dimensions#delete-bulk-dimensions-v1
+      source: |
+        from sailpoint.dimensions.api.dimensions_api import DimensionsApi
+        from sailpoint.dimensions.api_client import ApiClient
+        from sailpoint.dimensions.models.dimensionbulkdeleterequest import Dimensionbulkdeleterequest
+        from sailpoint.dimensions.models.taskresultdto import Taskresultdto
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          role_id = '6603fba3004f43c687610a29195252ce' # str | Parent Role Id of the dimensions. # str | Parent Role Id of the dimensions.
+          dimensionbulkdeleterequest = '''{"dimensionIds":["2c91808876438bb2017668b91919ecca","2c91808876438ba801766e129f151816"]}''' # Dimensionbulkdeleterequest | 
+          try:
+              # Delete dimension(s)
+              new_dimensionbulkdeleterequest = Dimensionbulkdeleterequest.from_json(dimensionbulkdeleterequest)
+              results = DimensionsApi(api_client).delete_bulk_dimensions_v1(role_id=role_id, dimensionbulkdeleterequest=new_dimensionbulkdeleterequest)
+              # Below is a request that includes all optional parameters
+              # results = DimensionsApi(api_client).delete_bulk_dimensions_v1(role_id, new_dimensionbulkdeleterequest)
+              print("The response of DimensionsApi->delete_bulk_dimensions_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DimensionsApi->delete_bulk_dimensions_v1: %s\n" % e)
+- path: /roles/v1/{roleId}/dimensions/{dimensionId}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/dimensions/methods/dimensions#delete-dimension-v1
+      source: |
+        from sailpoint.dimensions.api.dimensions_api import DimensionsApi
+        from sailpoint.dimensions.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          role_id = '6603fba3004f43c687610a29195252ce' # str | Parent Role Id of the dimension. # str | Parent Role Id of the dimension.
+          dimension_id = '2c9180835d191a86015d28455b4a2329' # str | Id of the Dimension # str | Id of the Dimension
+          try:
+              # Delete a dimension
+              
+              DimensionsApi(api_client).delete_dimension_v1(role_id=role_id, dimension_id=dimension_id)
+              # Below is a request that includes all optional parameters
+              # DimensionsApi(api_client).delete_dimension_v1(role_id, dimension_id)
+          except Exception as e:
+              print("Exception when calling DimensionsApi->delete_dimension_v1: %s\n" % e)
+- path: /roles/v1/{roleId}/dimensions/{dimensionId}/entitlements
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/dimensions/methods/dimensions#get-dimension-entitlements-v1
+      source: |
+        from sailpoint.dimensions.api.dimensions_api import DimensionsApi
+        from sailpoint.dimensions.api_client import ApiClient
+        from sailpoint.dimensions.models.entitlement import Entitlement
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          role_id = '6603fba3004f43c687610a29195252ce' # str | Parent Role Id of the dimension. # str | Parent Role Id of the dimension.
+          dimension_id = '2c9180835d191a86015d28455b4a2329' # str | Id of the Dimension # str | Id of the Dimension
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'attribute eq \"memberOf\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **attribute**: *eq, sw*  **value**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **source.id**: *eq, in* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **attribute**: *eq, sw*  **value**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **source.id**: *eq, in* (optional)
+          sorters = 'name,-modified' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, attribute, value, created, modified** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, attribute, value, created, modified** (optional)
+          try:
+              # List dimension's entitlements
+              
+              results = DimensionsApi(api_client).get_dimension_entitlements_v1(role_id=role_id, dimension_id=dimension_id)
+              # Below is a request that includes all optional parameters
+              # results = DimensionsApi(api_client).get_dimension_entitlements_v1(role_id, dimension_id, limit, offset, count, filters, sorters)
+              print("The response of DimensionsApi->get_dimension_entitlements_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DimensionsApi->get_dimension_entitlements_v1: %s\n" % e)
+- path: /roles/v1/{roleId}/dimensions/{dimensionId}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/dimensions/methods/dimensions#get-dimension-v1
+      source: |
+        from sailpoint.dimensions.api.dimensions_api import DimensionsApi
+        from sailpoint.dimensions.api_client import ApiClient
+        from sailpoint.dimensions.models.dimension import Dimension
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          role_id = '6603fba3004f43c687610a29195252ce' # str | Parent Role Id of the dimension. # str | Parent Role Id of the dimension.
+          dimension_id = '2c9180835d191a86015d28455b4a2329' # str | Id of the Dimension # str | Id of the Dimension
+          try:
+              # Get a dimension under role.
+              
+              results = DimensionsApi(api_client).get_dimension_v1(role_id=role_id, dimension_id=dimension_id)
+              # Below is a request that includes all optional parameters
+              # results = DimensionsApi(api_client).get_dimension_v1(role_id, dimension_id)
+              print("The response of DimensionsApi->get_dimension_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DimensionsApi->get_dimension_v1: %s\n" % e)
+- path: /roles/v1/{roleId}/dimensions/{dimensionId}/access-profiles
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/dimensions/methods/dimensions#list-dimension-access-profiles-v1
+      source: |
+        from sailpoint.dimensions.api.dimensions_api import DimensionsApi
+        from sailpoint.dimensions.api_client import ApiClient
+        from sailpoint.dimensions.models.accessprofile import Accessprofile
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          role_id = '6603fba3004f43c687610a29195252ce' # str | Parent Role Id of the dimension. # str | Parent Role Id of the dimension.
+          dimension_id = '2c9180835d191a86015d28455b4a2329' # str | Id of the Dimension # str | Id of the Dimension
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'source.id eq \"2c91808982f979270182f99e386d00fa\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **source.id**: *eq, in* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **source.id**: *eq, in* (optional)
+          sorters = 'name,-modified' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
+          try:
+              # List dimension's access profiles
+              
+              results = DimensionsApi(api_client).list_dimension_access_profiles_v1(role_id=role_id, dimension_id=dimension_id)
+              # Below is a request that includes all optional parameters
+              # results = DimensionsApi(api_client).list_dimension_access_profiles_v1(role_id, dimension_id, limit, offset, count, filters, sorters)
+              print("The response of DimensionsApi->list_dimension_access_profiles_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DimensionsApi->list_dimension_access_profiles_v1: %s\n" % e)
+- path: /roles/v1/{roleId}/dimensions
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/dimensions/methods/dimensions#list-dimensions-v1
+      source: |
+        from sailpoint.dimensions.api.dimensions_api import DimensionsApi
+        from sailpoint.dimensions.api_client import ApiClient
+        from sailpoint.dimensions.models.dimension import Dimension
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          role_id = '6603fba3004f43c687610a29195252ce' # str | Parent Role Id of the dimension. # str | Parent Role Id of the dimension.
+          for_subadmin = '5168015d32f890ca15812c9180835d2e' # str | If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin. (optional) # str | If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin. (optional)
+          limit = 50 # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50) # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          filters = 'id eq \'2c918086749d78830174a1a40e121518\'' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in* (optional)
+          sorters = 'name,-modified' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
+          try:
+              # List dimensions
+              
+              results = DimensionsApi(api_client).list_dimensions_v1(role_id=role_id)
+              # Below is a request that includes all optional parameters
+              # results = DimensionsApi(api_client).list_dimensions_v1(role_id, for_subadmin, limit, offset, count, filters, sorters)
+              print("The response of DimensionsApi->list_dimensions_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DimensionsApi->list_dimensions_v1: %s\n" % e)
+- path: /roles/v1/{roleId}/dimensions/{dimensionId}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/dimensions/methods/dimensions#patch-dimension-v1
+      source: |
+        from sailpoint.dimensions.api.dimensions_api import DimensionsApi
+        from sailpoint.dimensions.api_client import ApiClient
+        from sailpoint.dimensions.models.dimension import Dimension
+        from sailpoint.dimensions.models.jsonpatchoperation import Jsonpatchoperation
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          role_id = '6603fba3004f43c687610a29195252ce' # str | Parent Role Id of the dimension. # str | Parent Role Id of the dimension.
+          dimension_id = '2c9180835d191a86015d28455b4a2329' # str | Id of the Dimension # str | Id of the Dimension
+          jsonpatchoperation = '''[{"op":"replace","path":"/description","value":"Test Description"},{"op":"replace","path":"/name","value":"new name"}]''' # List[Jsonpatchoperation] | 
+          try:
+              # Patch a specified dimension
+              new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
+              results = DimensionsApi(api_client).patch_dimension_v1(role_id=role_id, dimension_id=dimension_id, jsonpatchoperation=new_jsonpatchoperation)
+              # Below is a request that includes all optional parameters
+              # results = DimensionsApi(api_client).patch_dimension_v1(role_id, dimension_id, new_jsonpatchoperation)
+              print("The response of DimensionsApi->patch_dimension_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DimensionsApi->patch_dimension_v1: %s\n" % e)
+

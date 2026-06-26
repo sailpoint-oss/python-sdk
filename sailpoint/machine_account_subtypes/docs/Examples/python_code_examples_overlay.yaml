@@ -1,0 +1,74 @@
+- path: /source-subtypes/v1/{subtypeId}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/machine-account-subtypes/methods/machine-account-subtypes#delete-machine-account-subtype-v1
+      source: |
+        from sailpoint.machine_account_subtypes.api.machine_account_subtypes_api import MachineAccountSubtypesApi
+        from sailpoint.machine_account_subtypes.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          subtype_id = '6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa' # str | The ID of the subtype. # str | The ID of the subtype.
+          try:
+              # Delete subtype by ID
+              
+              MachineAccountSubtypesApi(api_client).delete_machine_account_subtype_v1(subtype_id=subtype_id)
+              # Below is a request that includes all optional parameters
+              # MachineAccountSubtypesApi(api_client).delete_machine_account_subtype_v1(subtype_id)
+          except Exception as e:
+              print("Exception when calling MachineAccountSubtypesApi->delete_machine_account_subtype_v1: %s\n" % e)
+- path: /source-subtypes/v1/{subtypeId}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/machine-account-subtypes/methods/machine-account-subtypes#get-source-subtype-by-id-v1
+      source: |
+        from sailpoint.machine_account_subtypes.api.machine_account_subtypes_api import MachineAccountSubtypesApi
+        from sailpoint.machine_account_subtypes.api_client import ApiClient
+        from sailpoint.machine_account_subtypes.models.sourcesubtypewithsource import Sourcesubtypewithsource
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          subtype_id = '6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa' # str | The ID of the subtype. # str | The ID of the subtype.
+          try:
+              # Get subtype by ID
+              
+              results = MachineAccountSubtypesApi(api_client).get_source_subtype_by_id_v1(subtype_id=subtype_id)
+              # Below is a request that includes all optional parameters
+              # results = MachineAccountSubtypesApi(api_client).get_source_subtype_by_id_v1(subtype_id)
+              print("The response of MachineAccountSubtypesApi->get_source_subtype_by_id_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineAccountSubtypesApi->get_source_subtype_by_id_v1: %s\n" % e)
+- path: /source-subtypes/v1/{subtypeId}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/machine-account-subtypes/methods/machine-account-subtypes#patch-machine-account-subtype-v1
+      source: |
+        from sailpoint.machine_account_subtypes.api.machine_account_subtypes_api import MachineAccountSubtypesApi
+        from sailpoint.machine_account_subtypes.api_client import ApiClient
+        from sailpoint.machine_account_subtypes.models.sourcesubtypewithsource import Sourcesubtypewithsource
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          subtype_id = '6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa' # str | The ID of the subtype. # str | The ID of the subtype.
+          request_body = '''[{"op":"replace","path":"/displayName","value":"Test New DisplayName"}]''' # List[object] | A JSON of updated values [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+          try:
+              # Patch subtype by ID
+              new_request_body = RequestBody.from_json(request_body)
+              results = MachineAccountSubtypesApi(api_client).patch_machine_account_subtype_v1(subtype_id=subtype_id, request_body=new_request_body)
+              # Below is a request that includes all optional parameters
+              # results = MachineAccountSubtypesApi(api_client).patch_machine_account_subtype_v1(subtype_id, new_request_body)
+              print("The response of MachineAccountSubtypesApi->patch_machine_account_subtype_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling MachineAccountSubtypesApi->patch_machine_account_subtype_v1: %s\n" % e)
+

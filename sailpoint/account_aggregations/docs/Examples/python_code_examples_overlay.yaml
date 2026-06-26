@@ -1,0 +1,26 @@
+- path: /account-aggregations/v1/{id}/status
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/account-aggregations/methods/account-aggregations#get-account-aggregation-status-v1
+      source: |
+        from sailpoint.account_aggregations.api.account_aggregations_api import AccountAggregationsApi
+        from sailpoint.account_aggregations.api_client import ApiClient
+        from sailpoint.account_aggregations.models.accountaggregationstatus import Accountaggregationstatus
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = '2c91808477a6b0c60177a81146b8110b' # str | The account aggregation id # str | The account aggregation id
+          try:
+              # In-progress account aggregation status
+              
+              results = AccountAggregationsApi(api_client).get_account_aggregation_status_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = AccountAggregationsApi(api_client).get_account_aggregation_status_v1(id)
+              print("The response of AccountAggregationsApi->get_account_aggregation_status_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccountAggregationsApi->get_account_aggregation_status_v1: %s\n" % e)
+

@@ -1,0 +1,146 @@
+- path: /entitlement-connections/v1/current-identity
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/entitlement-connections/methods/entitlement-connections#list-entitlement-connections-for-current-identity-v1
+      source: |
+        from sailpoint.entitlement_connections.api.entitlement_connections_api import EntitlementConnectionsApi
+        from sailpoint.entitlement_connections.api_client import ApiClient
+        from sailpoint.entitlement_connections.models.entitlementconnectionsearchhit import Entitlementconnectionsearchhit
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          search_after = 'Account Payable,2c91808375d8e80a0175e1f88a575221' # str | Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement. (optional) # str | Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement. (optional)
+          filters = 'state.value co \"Available\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **identity.id**: *eq, in*  **identity.name**: *eq, in, co*  **source.id**: *eq, in*  **source.name**: *eq, in, co*  **account.id**: *eq, in*  **account.name**: *eq, in, co*  **entitlement.id**: *eq, in*  **entitlement.attribute**: *eq, in, co*  **entitlement.value**: *eq, in, co*  **entitlement.privilegeLevel.effective**: *eq, in, co*  **type**: *eq, in*  **state.value**: *eq, in, co*  **standalone**: *eq, in*  **jit.activation**: *gt, lt, ge, le*  **jit.provision**: *gt, lt, ge, le*  **jit.deactivation**: *gt, lt, ge, le*  **jit.deprovision**: *gt, lt, ge, le*  **jit.expiration**: *gt, lt, ge, le*  The authenticated identity scope is always applied by the service.  (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **identity.id**: *eq, in*  **identity.name**: *eq, in, co*  **source.id**: *eq, in*  **source.name**: *eq, in, co*  **account.id**: *eq, in*  **account.name**: *eq, in, co*  **entitlement.id**: *eq, in*  **entitlement.attribute**: *eq, in, co*  **entitlement.value**: *eq, in, co*  **entitlement.privilegeLevel.effective**: *eq, in, co*  **type**: *eq, in*  **state.value**: *eq, in, co*  **standalone**: *eq, in*  **jit.activation**: *gt, lt, ge, le*  **jit.provision**: *gt, lt, ge, le*  **jit.deactivation**: *gt, lt, ge, le*  **jit.deprovision**: *gt, lt, ge, le*  **jit.expiration**: *gt, lt, ge, le*  The authenticated identity scope is always applied by the service.  (optional)
+          sorters = 'id' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, identity.id, identity.name, source.id, source.name, account.id, account.name, entitlement.id, entitlement.displayName, entitlement.attribute, entitlement.privilegeLevel.effective, type, state.value, standalone, jit.activation, jit.provision, jit.deactivation, jit.deprovision, jit.expiration**  (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, identity.id, identity.name, source.id, source.name, account.id, account.name, entitlement.id, entitlement.displayName, entitlement.attribute, entitlement.privilegeLevel.effective, type, state.value, standalone, jit.activation, jit.provision, jit.deactivation, jit.deprovision, jit.expiration**  (optional)
+          try:
+              # List my entitlement connections
+              
+              results = EntitlementConnectionsApi(api_client).list_entitlement_connections_for_current_identity_v1()
+              # Below is a request that includes all optional parameters
+              # results = EntitlementConnectionsApi(api_client).list_entitlement_connections_for_current_identity_v1(offset, limit, count, search_after, filters, sorters)
+              print("The response of EntitlementConnectionsApi->list_entitlement_connections_for_current_identity_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling EntitlementConnectionsApi->list_entitlement_connections_for_current_identity_v1: %s\n" % e)
+- path: /entitlement-connections/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/entitlement-connections/methods/entitlement-connections#list-entitlement-connections-v1
+      source: |
+        from sailpoint.entitlement_connections.api.entitlement_connections_api import EntitlementConnectionsApi
+        from sailpoint.entitlement_connections.api_client import ApiClient
+        from sailpoint.entitlement_connections.models.entitlementconnectionsearchhit import Entitlementconnectionsearchhit
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          search_after = 'Account Payable,2c91808375d8e80a0175e1f88a575221' # str | Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement. (optional) # str | Used to begin the search window at the values specified.  This parameter consists of the last values of the sorted fields in the current record set.  searchAfter length must match the number of sorters.  This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.  It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging.  For example, if you are sorting by name you will also want to include ID, for example searchAfter=Account Payable,2c91808375d8e80a0175e1f88a575221&sorters=name,id.  If the last entitlement ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last name is \"Account Payable\", then using that name and ID will start a new search after this entitlement. (optional)
+          filters = 'type eq \"JIT\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **identity.id**: *eq, in*  **identity.name**: *eq, in, co*  **source.id**: *eq, in*  **source.name**: *eq, in, co*  **account.id**: *eq, in*  **account.name**: *eq, in, co*  **entitlement.id**: *eq, in*  **entitlement.attribute**: *eq, in, co*  **entitlement.value**: *eq, in, co*  **entitlement.privilegeLevel.effective**: *eq, in, co*  **type**: *eq, in*  **state.value**: *eq, in, co*  **standalone**: *eq, in*  **jit.activation**: *gt, lt, ge, le*  **jit.provision**: *gt, lt, ge, le*  **jit.deactivation**: *gt, lt, ge, le*  **jit.deprovision**: *gt, lt, ge, le*  **jit.expiration**: *gt, lt, ge, le*  (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **identity.id**: *eq, in*  **identity.name**: *eq, in, co*  **source.id**: *eq, in*  **source.name**: *eq, in, co*  **account.id**: *eq, in*  **account.name**: *eq, in, co*  **entitlement.id**: *eq, in*  **entitlement.attribute**: *eq, in, co*  **entitlement.value**: *eq, in, co*  **entitlement.privilegeLevel.effective**: *eq, in, co*  **type**: *eq, in*  **state.value**: *eq, in, co*  **standalone**: *eq, in*  **jit.activation**: *gt, lt, ge, le*  **jit.provision**: *gt, lt, ge, le*  **jit.deactivation**: *gt, lt, ge, le*  **jit.deprovision**: *gt, lt, ge, le*  **jit.expiration**: *gt, lt, ge, le*  (optional)
+          sorters = '-type,id' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, identity.id, identity.name, source.id, source.name, account.id, account.name, entitlement.id, entitlement.displayName, entitlement.attribute, entitlement.privilegeLevel.effective, type, state.value, standalone, jit.activation, jit.provision, jit.deactivation, jit.deprovision, jit.expiration**  Prefix a field with `-` for descending order.  (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, identity.id, identity.name, source.id, source.name, account.id, account.name, entitlement.id, entitlement.displayName, entitlement.attribute, entitlement.privilegeLevel.effective, type, state.value, standalone, jit.activation, jit.provision, jit.deactivation, jit.deprovision, jit.expiration**  Prefix a field with `-` for descending order.  (optional)
+          try:
+              # List entitlement connections
+              
+              results = EntitlementConnectionsApi(api_client).list_entitlement_connections_v1()
+              # Below is a request that includes all optional parameters
+              # results = EntitlementConnectionsApi(api_client).list_entitlement_connections_v1(offset, limit, count, search_after, filters, sorters)
+              print("The response of EntitlementConnectionsApi->list_entitlement_connections_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling EntitlementConnectionsApi->list_entitlement_connections_v1: %s\n" % e)
+- path: /entitlement-connections/v1/{connectionId}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/entitlement-connections/methods/entitlement-connections#patch-entitlement-connection-by-id-v1
+      source: |
+        from sailpoint.entitlement_connections.api.entitlement_connections_api import EntitlementConnectionsApi
+        from sailpoint.entitlement_connections.api_client import ApiClient
+        from sailpoint.entitlement_connections.models.entitlementconnection import Entitlementconnection
+        from sailpoint.entitlement_connections.models.jsonpatchoperation import Jsonpatchoperation
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          connection_id = '6c692d9972f8400ca4560a68f62c4c5f' # str | Connection ID (UUID with or without hyphens). # str | Connection ID (UUID with or without hyphens).
+          jsonpatchoperation = '''[sailpoint.entitlement_connections.Jsonpatchoperation()]''' # List[Jsonpatchoperation] | 
+          try:
+              # Update entitlement connection
+              new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
+              results = EntitlementConnectionsApi(api_client).patch_entitlement_connection_by_id_v1(connection_id=connection_id, jsonpatchoperation=new_jsonpatchoperation)
+              # Below is a request that includes all optional parameters
+              # results = EntitlementConnectionsApi(api_client).patch_entitlement_connection_by_id_v1(connection_id, new_jsonpatchoperation)
+              print("The response of EntitlementConnectionsApi->patch_entitlement_connection_by_id_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling EntitlementConnectionsApi->patch_entitlement_connection_by_id_v1: %s\n" % e)
+- path: /entitlement-connections/v1
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/entitlement-connections/methods/entitlement-connections#patch-entitlement-connection-by-query-v1
+      source: |
+        from sailpoint.entitlement_connections.api.entitlement_connections_api import EntitlementConnectionsApi
+        from sailpoint.entitlement_connections.api_client import ApiClient
+        from sailpoint.entitlement_connections.models.entitlementconnection import Entitlementconnection
+        from sailpoint.entitlement_connections.models.jsonpatchoperation import Jsonpatchoperation
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          entitlement_id = 'dcfd09e551644ad5aa162ce977862031' # str | Entitlement ID (UUID with or without hyphens). # str | Entitlement ID (UUID with or without hyphens).
+          identity_id = '5470d8d4817a4207a8020bf533187da9' # str | Identity ID (UUID with or without hyphens). # str | Identity ID (UUID with or without hyphens).
+          account_id = '323bfddfb3dd4197b8f10f7735307d27' # str | Account ID (UUID with or without hyphens). # str | Account ID (UUID with or without hyphens).
+          jsonpatchoperation = '''[sailpoint.entitlement_connections.Jsonpatchoperation()]''' # List[Jsonpatchoperation] | 
+          try:
+              # Update connection by query
+              new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
+              results = EntitlementConnectionsApi(api_client).patch_entitlement_connection_by_query_v1(entitlement_id=entitlement_id, identity_id=identity_id, account_id=account_id, jsonpatchoperation=new_jsonpatchoperation)
+              # Below is a request that includes all optional parameters
+              # results = EntitlementConnectionsApi(api_client).patch_entitlement_connection_by_query_v1(entitlement_id, identity_id, account_id, new_jsonpatchoperation)
+              print("The response of EntitlementConnectionsApi->patch_entitlement_connection_by_query_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling EntitlementConnectionsApi->patch_entitlement_connection_by_query_v1: %s\n" % e)
+- path: /entitlement-connections/v1
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/entitlement-connections/methods/entitlement-connections#update-entitlement-connections-bulk-v1
+      source: |
+        from sailpoint.entitlement_connections.api.entitlement_connections_api import EntitlementConnectionsApi
+        from sailpoint.entitlement_connections.api_client import ApiClient
+        from sailpoint.entitlement_connections.models.entitlementconnectionbulkupdateitem import Entitlementconnectionbulkupdateitem
+        from sailpoint.entitlement_connections.models.entitlementconnectionbulkupdateresultitem import Entitlementconnectionbulkupdateresultitem
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          entitlementconnectionbulkupdateitem = '''[{"connectionId":"d532fa5cb15748e2873c6a01e5923ec4","type":"JIT"},{"connectionId":"57bdbfcab8a34afb91c0a9fb4dba52b8","type":"STANDING"},{"connectionId":"0f571cefc8a2411790e0ee09f77e25a3","type":"STANDING"},{"connectionId":"025542c7e42144258c6f2325b6feeba8","type":"JIT"},{"connectionId":"6bccbc42381f49028dac9bfe68dbad2e","type":"JIT"}]''' # List[Entitlementconnectionbulkupdateitem] | 
+          try:
+              # Update connections in bulk
+              new_entitlementconnectionbulkupdateitem = Entitlementconnectionbulkupdateitem.from_json(entitlementconnectionbulkupdateitem)
+              results = EntitlementConnectionsApi(api_client).update_entitlement_connections_bulk_v1(entitlementconnectionbulkupdateitem=new_entitlementconnectionbulkupdateitem)
+              # Below is a request that includes all optional parameters
+              # results = EntitlementConnectionsApi(api_client).update_entitlement_connections_bulk_v1(new_entitlementconnectionbulkupdateitem)
+              print("The response of EntitlementConnectionsApi->update_entitlement_connections_bulk_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling EntitlementConnectionsApi->update_entitlement_connections_bulk_v1: %s\n" % e)
+

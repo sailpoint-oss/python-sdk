@@ -1,0 +1,130 @@
+- path: /managed-cluster-types/v1
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/managed-cluster-types/methods/managed-cluster-types#create-managed-cluster-type-v1
+      source: |
+        from sailpoint.managed_cluster_types.api.managed_cluster_types_api import ManagedClusterTypesApi
+        from sailpoint.managed_cluster_types.api_client import ApiClient
+        from sailpoint.managed_cluster_types.models.managedclustertype import Managedclustertype
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          managedclustertype = '''sailpoint.managed_cluster_types.Managedclustertype()''' # Managedclustertype | 
+          try:
+              # Create new managed cluster type
+              new_managedclustertype = Managedclustertype.from_json(managedclustertype)
+              results = ManagedClusterTypesApi(api_client).create_managed_cluster_type_v1(managedclustertype=new_managedclustertype)
+              # Below is a request that includes all optional parameters
+              # results = ManagedClusterTypesApi(api_client).create_managed_cluster_type_v1(new_managedclustertype)
+              print("The response of ManagedClusterTypesApi->create_managed_cluster_type_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ManagedClusterTypesApi->create_managed_cluster_type_v1: %s\n" % e)
+- path: /managed-cluster-types/v1/{id}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/managed-cluster-types/methods/managed-cluster-types#delete-managed-cluster-type-v1
+      source: |
+        from sailpoint.managed_cluster_types.api.managed_cluster_types_api import ManagedClusterTypesApi
+        from sailpoint.managed_cluster_types.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'aClusterTypeId' # str | The Managed Cluster Type ID # str | The Managed Cluster Type ID
+          try:
+              # Delete a managed cluster type
+              
+              ManagedClusterTypesApi(api_client).delete_managed_cluster_type_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # ManagedClusterTypesApi(api_client).delete_managed_cluster_type_v1(id)
+          except Exception as e:
+              print("Exception when calling ManagedClusterTypesApi->delete_managed_cluster_type_v1: %s\n" % e)
+- path: /managed-cluster-types/v1/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/managed-cluster-types/methods/managed-cluster-types#get-managed-cluster-type-v1
+      source: |
+        from sailpoint.managed_cluster_types.api.managed_cluster_types_api import ManagedClusterTypesApi
+        from sailpoint.managed_cluster_types.api_client import ApiClient
+        from sailpoint.managed_cluster_types.models.managedclustertype import Managedclustertype
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'aClusterTypeId' # str | The Managed Cluster Type ID # str | The Managed Cluster Type ID
+          try:
+              # Get a managed cluster type
+              
+              results = ManagedClusterTypesApi(api_client).get_managed_cluster_type_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = ManagedClusterTypesApi(api_client).get_managed_cluster_type_v1(id)
+              print("The response of ManagedClusterTypesApi->get_managed_cluster_type_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ManagedClusterTypesApi->get_managed_cluster_type_v1: %s\n" % e)
+- path: /managed-cluster-types/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/managed-cluster-types/methods/managed-cluster-types#get-managed-cluster-types-v1
+      source: |
+        from sailpoint.managed_cluster_types.api.managed_cluster_types_api import ManagedClusterTypesApi
+        from sailpoint.managed_cluster_types.api_client import ApiClient
+        from sailpoint.managed_cluster_types.models.managedclustertype import Managedclustertype
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          type = 'IDN' # str | Type descriptor (optional) # str | Type descriptor (optional)
+          pod = 'megapod-useast1' # str | Pinned pod (or default) (optional) # str | Pinned pod (or default) (optional)
+          org = 'denali-xyz' # str | Pinned org (or default) (optional) # str | Pinned org (or default) (optional)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          try:
+              # List managed cluster types
+              
+              results = ManagedClusterTypesApi(api_client).get_managed_cluster_types_v1()
+              # Below is a request that includes all optional parameters
+              # results = ManagedClusterTypesApi(api_client).get_managed_cluster_types_v1(type, pod, org, offset, limit)
+              print("The response of ManagedClusterTypesApi->get_managed_cluster_types_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ManagedClusterTypesApi->get_managed_cluster_types_v1: %s\n" % e)
+- path: /managed-cluster-types/v1/{id}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/managed-cluster-types/methods/managed-cluster-types#update-managed-cluster-type-v1
+      source: |
+        from sailpoint.managed_cluster_types.api.managed_cluster_types_api import ManagedClusterTypesApi
+        from sailpoint.managed_cluster_types.api_client import ApiClient
+        from sailpoint.managed_cluster_types.models.jsonpatch import Jsonpatch
+        from sailpoint.managed_cluster_types.models.managedclustertype import Managedclustertype
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'aClusterTypeId' # str | The Managed Cluster Type ID # str | The Managed Cluster Type ID
+          jsonpatch = '''sailpoint.managed_cluster_types.Jsonpatch()''' # Jsonpatch | The JSONPatch payload used to update the schema.
+          try:
+              # Update a managed cluster type
+              new_jsonpatch = Jsonpatch.from_json(jsonpatch)
+              results = ManagedClusterTypesApi(api_client).update_managed_cluster_type_v1(id=id, jsonpatch=new_jsonpatch)
+              # Below is a request that includes all optional parameters
+              # results = ManagedClusterTypesApi(api_client).update_managed_cluster_type_v1(id, new_jsonpatch)
+              print("The response of ManagedClusterTypesApi->update_managed_cluster_type_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling ManagedClusterTypesApi->update_managed_cluster_type_v1: %s\n" % e)
+

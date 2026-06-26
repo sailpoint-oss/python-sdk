@@ -1,0 +1,53 @@
+- path: /auth-users/v1/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/auth-users/methods/auth-users#get-auth-user-v1
+      source: |
+        from sailpoint.auth_users.api.auth_users_api import AuthUsersApi
+        from sailpoint.auth_users.api_client import ApiClient
+        from sailpoint.auth_users.models.authuser import Authuser
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | Identity ID # str | Identity ID
+          try:
+              # Auth user details
+              
+              results = AuthUsersApi(api_client).get_auth_user_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # results = AuthUsersApi(api_client).get_auth_user_v1(id)
+              print("The response of AuthUsersApi->get_auth_user_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AuthUsersApi->get_auth_user_v1: %s\n" % e)
+- path: /auth-users/v1/{id}
+  method: PATCH
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/auth-users/methods/auth-users#patch-auth-user-v1
+      source: |
+        from sailpoint.auth_users.api.auth_users_api import AuthUsersApi
+        from sailpoint.auth_users.api_client import ApiClient
+        from sailpoint.auth_users.models.authuser import Authuser
+        from sailpoint.auth_users.models.jsonpatchoperation import Jsonpatchoperation
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 'ef38f94347e94562b5bb8424a56397d8' # str | Identity ID # str | Identity ID
+          jsonpatchoperation = '''[{"op":"replace","path":"/capabilities","value":["ORG_ADMIN"]}]''' # List[Jsonpatchoperation] | A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+          try:
+              # Auth user update
+              new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
+              results = AuthUsersApi(api_client).patch_auth_user_v1(id=id, jsonpatchoperation=new_jsonpatchoperation)
+              # Below is a request that includes all optional parameters
+              # results = AuthUsersApi(api_client).patch_auth_user_v1(id, new_jsonpatchoperation)
+              print("The response of AuthUsersApi->patch_auth_user_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AuthUsersApi->patch_auth_user_v1: %s\n" % e)
+

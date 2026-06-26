@@ -1,0 +1,107 @@
+- path: /search/v1/aggregate
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/search/methods/search#search-aggregate-v1
+      source: |
+        from sailpoint.search.api.search_api import SearchApi
+        from sailpoint.search.api_client import ApiClient
+        from sailpoint.search.models.aggregationresult import Aggregationresult
+        from sailpoint.search.models.search import Search
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          search = '''sailpoint.search.Search()''' # Search | 
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          try:
+              # Perform a search query aggregation
+              new_search = Search.from_json(search)
+              results = SearchApi(api_client).search_aggregate_v1(search=new_search)
+              # Below is a request that includes all optional parameters
+              # results = SearchApi(api_client).search_aggregate_v1(new_search, offset, limit, count)
+              print("The response of SearchApi->search_aggregate_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SearchApi->search_aggregate_v1: %s\n" % e)
+- path: /search/v1/count
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/search/methods/search#search-count-v1
+      source: |
+        from sailpoint.search.api.search_api import SearchApi
+        from sailpoint.search.api_client import ApiClient
+        from sailpoint.search.models.search import Search
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          search = '''sailpoint.search.Search()''' # Search | 
+          try:
+              # Count documents satisfying a query
+              new_search = Search.from_json(search)
+              SearchApi(api_client).search_count_v1(search=new_search)
+              # Below is a request that includes all optional parameters
+              # SearchApi(api_client).search_count_v1(new_search)
+          except Exception as e:
+              print("Exception when calling SearchApi->search_count_v1: %s\n" % e)
+- path: /search/v1/{index}/{id}
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/search/methods/search#search-get-v1
+      source: |
+        from sailpoint.search.api.search_api import SearchApi
+        from sailpoint.search.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          index = 'identities' # str | The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*.  # str | The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*. 
+          id = '2c91808568c529c60168cca6f90c1313' # str | ID of the requested document. # str | ID of the requested document.
+          try:
+              # Get a document by id
+              
+              results = SearchApi(api_client).search_get_v1(index=index, id=id)
+              # Below is a request that includes all optional parameters
+              # results = SearchApi(api_client).search_get_v1(index, id)
+              print("The response of SearchApi->search_get_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SearchApi->search_get_v1: %s\n" % e)
+- path: /search/v1
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/search/methods/search#search-post-v1
+      source: |
+        from sailpoint.search.api.search_api import SearchApi
+        from sailpoint.search.api_client import ApiClient
+        from sailpoint.search.models.search import Search
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          search = '''sailpoint.search.Search()''' # Search | 
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          try:
+              # Perform search
+              new_search = Search.from_json(search)
+              results = SearchApi(api_client).search_post_v1(search=new_search)
+              # Below is a request that includes all optional parameters
+              # results = SearchApi(api_client).search_post_v1(new_search, offset, limit, count)
+              print("The response of SearchApi->search_post_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling SearchApi->search_post_v1: %s\n" % e)
+
