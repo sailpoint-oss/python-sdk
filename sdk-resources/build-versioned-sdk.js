@@ -344,8 +344,12 @@ function versionUnversionedModels(outputDir) {
     // \b…\b enforces a complete word match so "entitlement" can't match
     // inside "entitlementaccessrequestconfig" (where the next char is still a
     // word character).  (?!v) guards the already-versioned siblings (v2, …).
+    // (?![-/]) prevents matching inside URL path segments: Python identifiers
+    // never precede a hyphen or slash, but URL paths do (e.g.
+    // "entitlement-request-config"), so without this guard the regex would
+    // corrupt resource_path strings in the generated API files.
     classRe:  new RegExp(`\\b${escapeRegex(baseName[0].toUpperCase() + baseName.slice(1))}(?!v)\\b`, "g"),
-    moduleRe: new RegExp(`\\b${escapeRegex(baseName)}(?!v)\\b`, "g"),
+    moduleRe: new RegExp(`\\b${escapeRegex(baseName)}(?!v)(?![-/])\\b`, "g"),
   }));
 
   // Pass 1: update content in all files (while every file still has its original name)

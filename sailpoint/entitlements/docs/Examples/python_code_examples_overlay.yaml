@@ -49,11 +49,11 @@
               # EntitlementsApi(api_client).delete_access_model_metadata_from_entitlement_v1(id, attribute_key, attribute_value)
           except Exception as e:
               print("Exception when calling EntitlementsApi->delete_access_model_metadata_from_entitlement_v1: %s\n" % e)
-- path: /entitlements/v1/{id}/entitlementv1-request-config
+- path: /entitlements/v1/{id}/entitlement-request-config
   method: GET
   xCodeSample:
     - lang: Python
-      label: SDK_tools/sdk/python/entitlements/methods/entitlements#get-entitlementv1-request-config-v1
+      label: SDK_tools/sdk/python/entitlements/methods/entitlements#get-entitlement-request-config-v1
       source: |
         from sailpoint.entitlements.api.entitlements_api import EntitlementsApi
         from sailpoint.entitlements.api_client import ApiClient
@@ -281,11 +281,11 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling EntitlementsApi->patch_entitlement_v1: %s\n" % e)
-- path: /entitlements/v1/{id}/entitlementv1-request-config
+- path: /entitlements/v1/{id}/entitlement-request-config
   method: PUT
   xCodeSample:
     - lang: Python
-      label: SDK_tools/sdk/python/entitlements/methods/entitlements#put-entitlementv1-request-config-v1
+      label: SDK_tools/sdk/python/entitlements/methods/entitlements#put-entitlement-request-config-v1
       source: |
         from sailpoint.entitlements.api.entitlements_api import EntitlementsApi
         from sailpoint.entitlements.api_client import ApiClient

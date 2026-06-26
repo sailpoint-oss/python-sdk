@@ -17,7 +17,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create-access-model-metadata-for-entitlementv1-v1**](#create-access-model-metadata-for-entitlementv1-v1) | **POST** `/entitlements/v1/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}` | Add metadata to an entitlementv1.
 [**delete-access-model-metadata-from-entitlementv1-v1**](#delete-access-model-metadata-from-entitlementv1-v1) | **DELETE** `/entitlements/v1/{id}/access-model-metadata/{attributeKey}/values/{attributeValue}` | Remove metadata from an entitlementv1.
-[**get-entitlementv1-request-config-v1**](#get-entitlementv1-request-config-v1) | **GET** `/entitlements/v1/{id}/entitlementv1-request-config` | Get entitlementv1 request config
+[**get-entitlement-request-config-v1**](#get-entitlement-request-config-v1) | **GET** `/entitlements/v1/{id}/entitlement-request-config` | Get entitlementv1 request config
 [**get-entitlementv1-v1**](#get-entitlementv1-v1) | **GET** `/entitlements/v1/{id}` | Get an entitlementv1
 [**import-entitlements-by-source-v1**](#import-entitlements-by-source-v1) | **POST** `/entitlements/v1/aggregate/sources/{id}` | Aggregate entitlements
 [**list-entitlementv1-children-v1**](#list-entitlementv1-children-v1) | **GET** `/entitlements/v1/{id}/children` | List of entitlements children
@@ -25,7 +25,7 @@ Method | HTTP request | Description
 [**list-entitlements-by-account-v1**](#list-entitlements-by-account-v1) | **GET** `/entitlements/v1/account/{accountId}/entitlements` | Get entitlements for an account
 [**list-entitlements-v1**](#list-entitlements-v1) | **GET** `/entitlements/v1` | Gets a list of entitlements.
 [**patch-entitlementv1-v1**](#patch-entitlementv1-v1) | **PATCH** `/entitlements/v1/{id}` | Patch an entitlementv1
-[**put-entitlementv1-request-config-v1**](#put-entitlementv1-request-config-v1) | **PUT** `/entitlements/v1/{id}/entitlementv1-request-config` | Replace entitlementv1 request config
+[**put-entitlement-request-config-v1**](#put-entitlement-request-config-v1) | **PUT** `/entitlements/v1/{id}/entitlement-request-config` | Replace entitlementv1 request config
 [**reset-source-entitlements-v1**](#reset-source-entitlements-v1) | **POST** `/entitlements/v1/reset/sources/{id}` | Reset source entitlements
 [**update-entitlements-in-bulk-v1**](#update-entitlements-in-bulk-v1) | **POST** `/entitlements/v1/bulk-update` | Bulk update an entitlementv1 list
 
@@ -151,11 +151,11 @@ with ApiClient(configuration) as api_client:
 
 [[Back to top]](#) 
 
-## get-entitlementv1-request-config-v1
+## get-entitlement-request-config-v1
 Get entitlementv1 request config
 This API returns the entitlementv1 request config for a specified entitlementv1.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-entitlementv1-request-config-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/v1/get-entitlement-request-config-v1)
 
 ### Parameters 
 
@@ -691,11 +691,11 @@ with ApiClient(configuration) as api_client:
 
 [[Back to top]](#) 
 
-## put-entitlementv1-request-config-v1
+## put-entitlement-request-config-v1
 Replace entitlementv1 request config
 This API replaces the entitlementv1 request config for a specified entitlementv1.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/put-entitlementv1-request-config-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/v1/put-entitlement-request-config-v1)
 
 ### Parameters 
 
