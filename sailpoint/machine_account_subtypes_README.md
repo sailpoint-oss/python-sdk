@@ -47,13 +47,16 @@ configuration = sailpoint.machine_account_subtypes.Configuration(
 with sailpoint.machine_account_subtypes.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.machine_account_subtypes.MachineAccountSubtypesApi(api_client)
-    subtype_id = '6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa' # str | The ID of the subtype.
+    create_source_subtype_v1_request = {"sourceId":"6d0458373bec4b4b80460992b76016da","technicalName":"foo","displayName":"Mr Foo","description":"fighters","type":"MACHINE"} # CreateSourceSubtypeV1Request | 
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true')
 
     try:
-        # Delete subtype by ID
-        api_instance.delete_machine_account_subtype_v1(subtype_id)
+        # Create subtype
+        api_response = api_instance.create_source_subtype_v1(create_source_subtype_v1_request, x_sail_point_experimental=x_sail_point_experimental)
+        print("The response of MachineAccountSubtypesApi->create_source_subtype_v1:\n")
+        pprint(api_response)
     except ApiException as e:
-        print("Exception when calling MachineAccountSubtypesApi->delete_machine_account_subtype_v1: %s\n" % e)
+        print("Exception when calling MachineAccountSubtypesApi->create_source_subtype_v1: %s\n" % e)
 
 ```
 
@@ -63,18 +66,31 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*MachineAccountSubtypesApi* | [**create_source_subtype_v1**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#create_source_subtype_v1) | **POST** /source-subtypes/v1 | Create subtype
 *MachineAccountSubtypesApi* | [**delete_machine_account_subtype_v1**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#delete_machine_account_subtype_v1) | **DELETE** /source-subtypes/v1/{subtypeId} | Delete subtype by ID
+*MachineAccountSubtypesApi* | [**get_machine_account_subtype_approval_config_v1**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#get_machine_account_subtype_approval_config_v1) | **GET** /source-subtypes/v1/{subtypeId}/machine-config | Machine Subtype Approval Config
 *MachineAccountSubtypesApi* | [**get_source_subtype_by_id_v1**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#get_source_subtype_by_id_v1) | **GET** /source-subtypes/v1/{subtypeId} | Get subtype by ID
+*MachineAccountSubtypesApi* | [**list_source_subtypes_v1**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#list_source_subtypes_v1) | **GET** /source-subtypes/v1 | Retrieve all subtypes
+*MachineAccountSubtypesApi* | [**load_bulk_source_subtypes_v1**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#load_bulk_source_subtypes_v1) | **POST** /source-subtypes/v1/bulk-retrieve | Bulk Retrieve of Source Subtypes
 *MachineAccountSubtypesApi* | [**patch_machine_account_subtype_v1**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#patch_machine_account_subtype_v1) | **PATCH** /source-subtypes/v1/{subtypeId} | Patch subtype by ID
+*MachineAccountSubtypesApi* | [**update_machine_account_subtype_approval_config_v1**](sailpoint/machine_account_subtypes/docs/MachineAccountSubtypesApi.md#update_machine_account_subtype_approval_config_v1) | **PATCH** /source-subtypes/v1/{subtypeId}/machine-config | Machine Subtype Approval Config
 
 
 ## Documentation For Models
 
+ - [ArrayInner](sailpoint/machine_account_subtypes/docs/ArrayInner.md)
+ - [CreateSourceSubtypeV1Request](sailpoint/machine_account_subtypes/docs/CreateSourceSubtypeV1Request.md)
  - [Errormessagedto](sailpoint/machine_account_subtypes/docs/Errormessagedto.md)
  - [Errorresponsedto](sailpoint/machine_account_subtypes/docs/Errorresponsedto.md)
- - [GetSourceSubtypeByIdV1401Response](sailpoint/machine_account_subtypes/docs/GetSourceSubtypeByIdV1401Response.md)
- - [GetSourceSubtypeByIdV1429Response](sailpoint/machine_account_subtypes/docs/GetSourceSubtypeByIdV1429Response.md)
+ - [Jsonpatchoperation](sailpoint/machine_account_subtypes/docs/Jsonpatchoperation.md)
+ - [JsonpatchoperationValue](sailpoint/machine_account_subtypes/docs/JsonpatchoperationValue.md)
+ - [LoadBulkSourceSubtypesV1401Response](sailpoint/machine_account_subtypes/docs/LoadBulkSourceSubtypesV1401Response.md)
+ - [LoadBulkSourceSubtypesV1429Response](sailpoint/machine_account_subtypes/docs/LoadBulkSourceSubtypesV1429Response.md)
  - [Localeorigin](sailpoint/machine_account_subtypes/docs/Localeorigin.md)
+ - [Machineaccountsubtypeconfigdto](sailpoint/machine_account_subtypes/docs/Machineaccountsubtypeconfigdto.md)
+ - [MachineaccountsubtypeconfigdtoMachineAccountCreate](sailpoint/machine_account_subtypes/docs/MachineaccountsubtypeconfigdtoMachineAccountCreate.md)
+ - [MachineaccountsubtypeconfigdtoMachineAccountDelete](sailpoint/machine_account_subtypes/docs/MachineaccountsubtypeconfigdtoMachineAccountDelete.md)
+ - [Machinesubtypeapprovalconfig](sailpoint/machine_account_subtypes/docs/Machinesubtypeapprovalconfig.md)
  - [Sourcesubtypewithsource](sailpoint/machine_account_subtypes/docs/Sourcesubtypewithsource.md)
  - [SourcesubtypewithsourceSource](sailpoint/machine_account_subtypes/docs/SourcesubtypewithsourceSource.md)
 

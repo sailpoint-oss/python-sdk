@@ -46,7 +46,8 @@ class TestSourcesubtypewithsource(unittest.TestCase):
                 source = sailpoint.machine_account_subtypes.models.sourcesubtypewithsource_source.sourcesubtypewithsource_source(
                     type = 'SOURCE', 
                     id = '6d0458373bec4b4b80460992b76016da', 
-                    name = 'Test Source', )
+                    name = 'Test Source', ),
+                system_managed = True
             )
         else:
             return Sourcesubtypewithsource(

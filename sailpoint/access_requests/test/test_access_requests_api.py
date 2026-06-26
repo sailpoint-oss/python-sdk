@@ -68,6 +68,13 @@ class TestAccessRequestsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_access_request_config_v2(self) -> None:
+        """Test case for get_access_request_config_v2
+
+        Get access request configuration
+        """
+        pass
+
     def test_get_entitlement_details_for_identity_v1(self) -> None:
         """Test case for get_entitlement_details_for_identity_v1
 
@@ -98,6 +105,13 @@ class TestAccessRequestsApi(unittest.TestCase):
 
     def test_set_access_request_config_v1(self) -> None:
         """Test case for set_access_request_config_v1
+
+        Update access request configuration
+        """
+        pass
+
+    def test_set_access_request_config_v2(self) -> None:
+        """Test case for set_access_request_config_v2
 
         Update access request configuration
         """

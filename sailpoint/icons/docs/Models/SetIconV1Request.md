@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 from sailpoint.icons.models.set_icon_v1_request import SetIconV1Request
 
 set_icon_v1_request = SetIconV1Request(
-image='[B@69ce2f62'
+image='[B@522b2631'
 )
 
 ```

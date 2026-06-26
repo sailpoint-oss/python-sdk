@@ -42,6 +42,7 @@ class TestRequestedfordtoref(unittest.TestCase):
                         id = '2c9180835d2e5168015d32f890ca1581', 
                         comment = 'Requesting access profile for John Doe', 
                         client_metadata = {"requestedAppName":"test-app","requestedAppId":"2c91808f7892918f0178b78da4a305a1"}, 
+                        start_date = '2020-06-12T21:22:23Z', 
                         remove_date = '2020-07-11T21:23:15Z', 
                         account_selection = [
                             sailpoint.access_requests.models.sourceitemref.sourceitemref(
@@ -63,6 +64,7 @@ class TestRequestedfordtoref(unittest.TestCase):
                         id = '2c9180835d2e5168015d32f890ca1581', 
                         comment = 'Requesting access profile for John Doe', 
                         client_metadata = {"requestedAppName":"test-app","requestedAppId":"2c91808f7892918f0178b78da4a305a1"}, 
+                        start_date = '2020-06-12T21:22:23Z', 
                         remove_date = '2020-07-11T21:23:15Z', 
                         account_selection = [
                             sailpoint.access_requests.models.sourceitemref.sourceitemref(

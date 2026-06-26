@@ -65,6 +65,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *DataAccessSecurityApi* | [**cancel_task_v1**](sailpoint/data_access_security/docs/DataAccessSecurityApi.md#cancel_task_v1) | **POST** /das/v1/tasks/cancel/{id} | Cancel a DAS task.
 *DataAccessSecurityApi* | [**create_application_v1**](sailpoint/data_access_security/docs/DataAccessSecurityApi.md#create_application_v1) | **POST** /das/v1/applications | Create application
+*DataAccessSecurityApi* | [**create_identity_collector_v1**](sailpoint/data_access_security/docs/DataAccessSecurityApi.md#create_identity_collector_v1) | **POST** /das/identity-collectors/v1 | Create identity collector
 *DataAccessSecurityApi* | [**create_schedule_v1**](sailpoint/data_access_security/docs/DataAccessSecurityApi.md#create_schedule_v1) | **POST** /das/v1/tasks/schedules | Create a new schedule.
 *DataAccessSecurityApi* | [**das_v1_owners_assign_post**](sailpoint/data_access_security/docs/DataAccessSecurityApi.md#das_v1_owners_assign_post) | **POST** /das/v1/owners/assign | Assign owner to application resource.
 *DataAccessSecurityApi* | [**das_v1_owners_owner_identity_id_resources_get**](sailpoint/data_access_security/docs/DataAccessSecurityApi.md#das_v1_owners_owner_identity_id_resources_get) | **GET** /das/v1/owners/{ownerIdentityId}/resources | List resources for owner.
@@ -72,6 +73,7 @@ Class | Method | HTTP request | Description
 *DataAccessSecurityApi* | [**das_v1_owners_resources_resource_id_get**](sailpoint/data_access_security/docs/DataAccessSecurityApi.md#das_v1_owners_resources_resource_id_get) | **GET** /das/v1/owners/resources/{resourceId} | List owners for resource.
 *DataAccessSecurityApi* | [**das_v1_owners_source_identity_id_reassign_destination_identity_id_post**](sailpoint/data_access_security/docs/DataAccessSecurityApi.md#das_v1_owners_source_identity_id_reassign_destination_identity_id_post) | **POST** /das/v1/owners/{sourceIdentityId}/reassign/{destinationIdentityId} | Reassign resource owner.
 *DataAccessSecurityApi* | [**delete_application_v1**](sailpoint/data_access_security/docs/DataAccessSecurityApi.md#delete_application_v1) | **DELETE** /das/v1/applications/{id} | Delete an application by identifier.
+*DataAccessSecurityApi* | [**delete_identity_collector_v1**](sailpoint/data_access_security/docs/DataAccessSecurityApi.md#delete_identity_collector_v1) | **DELETE** /das/identity-collectors/v1/{id} | Delete identity collector by identifier
 *DataAccessSecurityApi* | [**delete_schedule_v1**](sailpoint/data_access_security/docs/DataAccessSecurityApi.md#delete_schedule_v1) | **DELETE** /das/v1/tasks/schedules/{id} | Delete a DAS schedule.
 *DataAccessSecurityApi* | [**delete_task_v1**](sailpoint/data_access_security/docs/DataAccessSecurityApi.md#delete_task_v1) | **DELETE** /das/v1/tasks/{id} | Delete a DAS task.
 *DataAccessSecurityApi* | [**get_application_v1**](sailpoint/data_access_security/docs/DataAccessSecurityApi.md#get_application_v1) | **GET** /das/v1/applications/{id} | Retrieve application details by identifier.
@@ -81,7 +83,9 @@ Class | Method | HTTP request | Description
 *DataAccessSecurityApi* | [**get_schedules_v1**](sailpoint/data_access_security/docs/DataAccessSecurityApi.md#get_schedules_v1) | **GET** /das/v1/tasks/schedules | List all schedules.
 *DataAccessSecurityApi* | [**get_task_v1**](sailpoint/data_access_security/docs/DataAccessSecurityApi.md#get_task_v1) | **GET** /das/v1/tasks/{id} | Get a DAS task.
 *DataAccessSecurityApi* | [**get_tasks_v1**](sailpoint/data_access_security/docs/DataAccessSecurityApi.md#get_tasks_v1) | **GET** /das/v1/tasks | Lists all DAS tasks.
+*DataAccessSecurityApi* | [**list_identity_collectors_v1**](sailpoint/data_access_security/docs/DataAccessSecurityApi.md#list_identity_collectors_v1) | **GET** /das/identity-collectors/v1 | List identity collectors
 *DataAccessSecurityApi* | [**put_application_v1**](sailpoint/data_access_security/docs/DataAccessSecurityApi.md#put_application_v1) | **PUT** /das/v1/applications/{id} | Update application by identifier.
+*DataAccessSecurityApi* | [**put_identity_collector_v1**](sailpoint/data_access_security/docs/DataAccessSecurityApi.md#put_identity_collector_v1) | **PUT** /das/identity-collectors/v1/{id} | Update identity collector by identifier
 *DataAccessSecurityApi* | [**put_schedule_v1**](sailpoint/data_access_security/docs/DataAccessSecurityApi.md#put_schedule_v1) | **PUT** /das/v1/tasks/schedules/{id} | Update a schedule.
 *DataAccessSecurityApi* | [**start_task_rerun_v1**](sailpoint/data_access_security/docs/DataAccessSecurityApi.md#start_task_rerun_v1) | **POST** /das/v1/tasks/rerun/{id} | Rerun a DAS task.
 
@@ -97,6 +101,8 @@ Class | Method | HTTP request | Description
  - [Basesettings](sailpoint/data_access_security/docs/Basesettings.md)
  - [Businessservicetype](sailpoint/data_access_security/docs/Businessservicetype.md)
  - [Crawlresourcessizesoptions](sailpoint/data_access_security/docs/Crawlresourcessizesoptions.md)
+ - [CreateIdentityCollectorV1200Response](sailpoint/data_access_security/docs/CreateIdentityCollectorV1200Response.md)
+ - [Createidentitycollectorrequest](sailpoint/data_access_security/docs/Createidentitycollectorrequest.md)
  - [Createschedulerequest](sailpoint/data_access_security/docs/Createschedulerequest.md)
  - [Dataclassificationsettings](sailpoint/data_access_security/docs/Dataclassificationsettings.md)
  - [Dataownermodel](sailpoint/data_access_security/docs/Dataownermodel.md)
@@ -104,14 +110,18 @@ Class | Method | HTTP request | Description
  - [Errorresponsedto](sailpoint/data_access_security/docs/Errorresponsedto.md)
  - [GetTasksV1401Response](sailpoint/data_access_security/docs/GetTasksV1401Response.md)
  - [GetTasksV1429Response](sailpoint/data_access_security/docs/GetTasksV1429Response.md)
+ - [Identitycollectorlistitem](sailpoint/data_access_security/docs/Identitycollectorlistitem.md)
  - [Int64stringkeyvaluepair](sailpoint/data_access_security/docs/Int64stringkeyvaluepair.md)
  - [Localeorigin](sailpoint/data_access_security/docs/Localeorigin.md)
  - [Permissioncollectorsettings](sailpoint/data_access_security/docs/Permissioncollectorsettings.md)
+ - [PutIdentityCollectorV1409Response](sailpoint/data_access_security/docs/PutIdentityCollectorV1409Response.md)
+ - [PutIdentityCollectorV1409ResponseMessagesInner](sailpoint/data_access_security/docs/PutIdentityCollectorV1409ResponseMessagesInner.md)
  - [Reelectrequest](sailpoint/data_access_security/docs/Reelectrequest.md)
  - [Resourcemodel](sailpoint/data_access_security/docs/Resourcemodel.md)
  - [Scheduleinfo](sailpoint/data_access_security/docs/Scheduleinfo.md)
  - [Tag](sailpoint/data_access_security/docs/Tag.md)
  - [Taskinfo](sailpoint/data_access_security/docs/Taskinfo.md)
+ - [Updateidentitycollectorrequest](sailpoint/data_access_security/docs/Updateidentitycollectorrequest.md)
  - [Updateschedulerequest](sailpoint/data_access_security/docs/Updateschedulerequest.md)
 
 

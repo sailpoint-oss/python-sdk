@@ -42,7 +42,7 @@ class TestBrandingitemcreate(unittest.TestCase):
                 navigation_color = '011E69',
                 email_from_address = 'no-reply@sailpoint.com',
                 login_informational_message = '',
-                file_standard = '[B@659a2455'
+                file_standard = '[B@5c92166b'
             )
         else:
             return Brandingitemcreate(

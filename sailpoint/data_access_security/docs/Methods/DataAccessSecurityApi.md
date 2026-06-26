@@ -19,6 +19,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**cancel-task-v1**](#cancel-task-v1) | **POST** `/das/v1/tasks/cancel/{id}` | Cancel a DAS task.
 [**create-application-v1**](#create-application-v1) | **POST** `/das/v1/applications` | Create application
+[**create-identity-collector-v1**](#create-identity-collector-v1) | **POST** `/das/identity-collectors/v1` | Create identity collector
 [**create-schedule-v1**](#create-schedule-v1) | **POST** `/das/v1/tasks/schedules` | Create a new schedule.
 [**das-v1-owners-assign-post**](#das-v1-owners-assign-post) | **POST** `/das/v1/owners/assign` | Assign owner to application resource.
 [**das-v1-owners-owner-identity-id-resources-get**](#das-v1-owners-owner-identity-id-resources-get) | **GET** `/das/v1/owners/{ownerIdentityId}/resources` | List resources for owner.
@@ -26,6 +27,7 @@ Method | HTTP request | Description
 [**das-v1-owners-resources-resource-id-get**](#das-v1-owners-resources-resource-id-get) | **GET** `/das/v1/owners/resources/{resourceId}` | List owners for resource.
 [**das-v1-owners-source-identity-id-reassign-destination-identity-id-post**](#das-v1-owners-source-identity-id-reassign-destination-identity-id-post) | **POST** `/das/v1/owners/{sourceIdentityId}/reassign/{destinationIdentityId}` | Reassign resource owner.
 [**delete-application-v1**](#delete-application-v1) | **DELETE** `/das/v1/applications/{id}` | Delete an application by identifier.
+[**delete-identity-collector-v1**](#delete-identity-collector-v1) | **DELETE** `/das/identity-collectors/v1/{id}` | Delete identity collector by identifier
 [**delete-schedule-v1**](#delete-schedule-v1) | **DELETE** `/das/v1/tasks/schedules/{id}` | Delete a DAS schedule.
 [**delete-task-v1**](#delete-task-v1) | **DELETE** `/das/v1/tasks/{id}` | Delete a DAS task.
 [**get-application-v1**](#get-application-v1) | **GET** `/das/v1/applications/{id}` | Retrieve application details by identifier.
@@ -35,7 +37,9 @@ Method | HTTP request | Description
 [**get-schedules-v1**](#get-schedules-v1) | **GET** `/das/v1/tasks/schedules` | List all schedules.
 [**get-task-v1**](#get-task-v1) | **GET** `/das/v1/tasks/{id}` | Get a DAS task.
 [**get-tasks-v1**](#get-tasks-v1) | **GET** `/das/v1/tasks` | Lists all DAS tasks.
+[**list-identity-collectors-v1**](#list-identity-collectors-v1) | **GET** `/das/identity-collectors/v1` | List identity collectors
 [**put-application-v1**](#put-application-v1) | **PUT** `/das/v1/applications/{id}` | Update application by identifier.
+[**put-identity-collector-v1**](#put-identity-collector-v1) | **PUT** `/das/identity-collectors/v1/{id}` | Update identity collector by identifier
 [**put-schedule-v1**](#put-schedule-v1) | **PUT** `/das/v1/tasks/schedules/{id}` | Update a schedule.
 [**start-task-rerun-v1**](#start-task-rerun-v1) | **POST** `/das/v1/tasks/rerun/{id}` | Rerun a DAS task.
 
@@ -147,6 +151,66 @@ with ApiClient(configuration) as api_client:
         # DataAccessSecurityApi(api_client).create_application_v1(new_basecreateapplicationrequest)
     except Exception as e:
         print("Exception when calling DataAccessSecurityApi->create_application_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## create-identity-collector-v1
+Create identity collector
+This endpoint creates a new identity collector in Data Access Security for the specified source. The identity collector type is derived from the source.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v1/create-identity-collector-v1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | createidentitycollectorrequest | [**Createidentitycollectorrequest**](../models/createidentitycollectorrequest) | True  | Request body containing the details required to create a new identity collector.
+
+### Return type
+[**CreateIdentityCollectorV1200Response**](../models/create-identity-collector-v1200-response)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | The identity collector was created successfully. | CreateIdentityCollectorV1200Response |  -  |
+400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+from sailpoint.data_access_security.api_client import ApiClient
+from sailpoint.data_access_security.models.create_identity_collector_v1200_response import CreateIdentityCollectorV1200Response
+from sailpoint.data_access_security.models.createidentitycollectorrequest import Createidentitycollectorrequest
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    createidentitycollectorrequest = '''sailpoint.data_access_security.Createidentitycollectorrequest()''' # Createidentitycollectorrequest | Request body containing the details required to create a new identity collector.
+
+    try:
+        # Create identity collector
+        new_createidentitycollectorrequest = Createidentitycollectorrequest.from_json(createidentitycollectorrequest)
+        results = DataAccessSecurityApi(api_client).create_identity_collector_v1(createidentitycollectorrequest=new_createidentitycollectorrequest)
+        # Below is a request that includes all optional parameters
+        # results = DataAccessSecurityApi(api_client).create_identity_collector_v1(new_createidentitycollectorrequest)
+        print("The response of DataAccessSecurityApi->create_identity_collector_v1:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling DataAccessSecurityApi->create_identity_collector_v1: %s\n" % e)
 ```
 
 
@@ -567,6 +631,62 @@ with ApiClient(configuration) as api_client:
         # DataAccessSecurityApi(api_client).delete_application_v1(id)
     except Exception as e:
         print("Exception when calling DataAccessSecurityApi->delete_application_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## delete-identity-collector-v1
+Delete identity collector by identifier
+This endpoint deletes an identity collector from Data Access Security by its unique identifier.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v1/delete-identity-collector-v1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **int** | True  | The unique identifier of the identity collector to delete.
+
+### Return type
+ (empty response body)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+204 | No Content |  |  -  |
+400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+from sailpoint.data_access_security.api_client import ApiClient
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    id = 12345 # int | The unique identifier of the identity collector to delete. # int | The unique identifier of the identity collector to delete.
+
+    try:
+        # Delete identity collector by identifier
+        
+        DataAccessSecurityApi(api_client).delete_identity_collector_v1(id=id)
+        # Below is a request that includes all optional parameters
+        # DataAccessSecurityApi(api_client).delete_identity_collector_v1(id)
+    except Exception as e:
+        print("Exception when calling DataAccessSecurityApi->delete_identity_collector_v1: %s\n" % e)
 ```
 
 
@@ -1125,6 +1245,74 @@ with ApiClient(configuration) as api_client:
 
 [[Back to top]](#) 
 
+## list-identity-collectors-v1
+List identity collectors
+This endpoint lists the identity collectors in Data Access Security with optional filtering and pagination.
+
+Sorting is not supported for this endpoint; supplying the `sorters` query parameter results in a validation error.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v1/list-identity-collectors-v1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+  Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  **type**: *eq, in*  **id**: *eq, in*  Supported composite operators are *and, or*
+  Query | limit | **int** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | offset | **int** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | count | **bool** |   (optional) (default to False) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+
+### Return type
+[**List[Identitycollectorlistitem]**](../models/identitycollectorlistitem)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | A list of identity collectors matching the filter criteria. | List[Identitycollectorlistitem] |  * X-Total-Count - The total number of results matching the filter criteria, regardless of paging limits.  |
+400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+from sailpoint.data_access_security.api_client import ApiClient
+from sailpoint.data_access_security.models.identitycollectorlistitem import Identitycollectorlistitem
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    filters = 'sourceId eq \"2c9180835d2e5168015d32f890ca1581\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  **type**: *eq, in*  **id**: *eq, in*  Supported composite operators are *and, or* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  **type**: *eq, in*  **id**: *eq, in*  Supported composite operators are *and, or* (optional)
+    limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+
+    try:
+        # List identity collectors
+        
+        results = DataAccessSecurityApi(api_client).list_identity_collectors_v1()
+        # Below is a request that includes all optional parameters
+        # results = DataAccessSecurityApi(api_client).list_identity_collectors_v1(filters, limit, offset, count)
+        print("The response of DataAccessSecurityApi->list_identity_collectors_v1:\n")
+        for item in results:
+            print(item.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling DataAccessSecurityApi->list_identity_collectors_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
 ## put-application-v1
 Update application by identifier.
 This endpoint updates an existing application in Data Access Security with the specified configuration.
@@ -1178,6 +1366,66 @@ with ApiClient(configuration) as api_client:
         # DataAccessSecurityApi(api_client).put_application_v1(id, new_basecreateapplicationrequest)
     except Exception as e:
         print("Exception when calling DataAccessSecurityApi->put_application_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## put-identity-collector-v1
+Update identity collector by identifier
+This endpoint updates the name of an existing identity collector in Data Access Security. The `sourceId` and `type` cannot be changed and must match the current values.
+
+[API Spec](https://developer.sailpoint.com/docs/api/v1/put-identity-collector-v1)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **int** | True  | The unique identifier of the identity collector to update.
+ Body  | updateidentitycollectorrequest | [**Updateidentitycollectorrequest**](../models/updateidentitycollectorrequest) | True  | Request body containing the updated details for the identity collector.
+
+### Return type
+ (empty response body)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+204 | No Content |  |  -  |
+400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | GetTasksV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+409 | Conflict - Returned if an identity collector with the same name already exists. | PutIdentityCollectorV1409Response |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | GetTasksV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+from sailpoint.data_access_security.api_client import ApiClient
+from sailpoint.data_access_security.models.updateidentitycollectorrequest import Updateidentitycollectorrequest
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+
+with ApiClient(configuration) as api_client:
+    id = 12345 # int | The unique identifier of the identity collector to update. # int | The unique identifier of the identity collector to update.
+    updateidentitycollectorrequest = '''sailpoint.data_access_security.Updateidentitycollectorrequest()''' # Updateidentitycollectorrequest | Request body containing the updated details for the identity collector.
+
+    try:
+        # Update identity collector by identifier
+        new_updateidentitycollectorrequest = Updateidentitycollectorrequest.from_json(updateidentitycollectorrequest)
+        DataAccessSecurityApi(api_client).put_identity_collector_v1(id=id, updateidentitycollectorrequest=new_updateidentitycollectorrequest)
+        # Below is a request that includes all optional parameters
+        # DataAccessSecurityApi(api_client).put_identity_collector_v1(id, new_updateidentitycollectorrequest)
+    except Exception as e:
+        print("Exception when calling DataAccessSecurityApi->put_identity_collector_v1: %s\n" % e)
 ```
 
 

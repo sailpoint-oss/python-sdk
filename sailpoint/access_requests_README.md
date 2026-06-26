@@ -71,11 +71,13 @@ Class | Method | HTTP request | Description
 *AccessRequestsApi* | [**close_access_request_v1**](sailpoint/access_requests/docs/AccessRequestsApi.md#close_access_request_v1) | **POST** /access-requests/v1/close | Close access request
 *AccessRequestsApi* | [**create_access_request_v1**](sailpoint/access_requests/docs/AccessRequestsApi.md#create_access_request_v1) | **POST** /access-requests/v1 | Submit access request
 *AccessRequestsApi* | [**get_access_request_config_v1**](sailpoint/access_requests/docs/AccessRequestsApi.md#get_access_request_config_v1) | **GET** /access-request-config/v1 | Get access request configuration
+*AccessRequestsApi* | [**get_access_request_config_v2**](sailpoint/access_requests/docs/AccessRequestsApi.md#get_access_request_config_v2) | **GET** /access-request-config/v2 | Get access request configuration
 *AccessRequestsApi* | [**get_entitlement_details_for_identity_v1**](sailpoint/access_requests/docs/AccessRequestsApi.md#get_entitlement_details_for_identity_v1) | **GET** /revocable-objects/v1 | Identity entitlement details
 *AccessRequestsApi* | [**list_access_request_status_v1**](sailpoint/access_requests/docs/AccessRequestsApi.md#list_access_request_status_v1) | **GET** /access-request-status/v1 | Access request status
 *AccessRequestsApi* | [**list_administrators_access_request_status_v1**](sailpoint/access_requests/docs/AccessRequestsApi.md#list_administrators_access_request_status_v1) | **GET** /access-request-administration/v1 | Access request status for administrators
 *AccessRequestsApi* | [**load_account_selections_v1**](sailpoint/access_requests/docs/AccessRequestsApi.md#load_account_selections_v1) | **POST** /access-requests/v1/accounts-selection | Get accounts selections for identity
 *AccessRequestsApi* | [**set_access_request_config_v1**](sailpoint/access_requests/docs/AccessRequestsApi.md#set_access_request_config_v1) | **PUT** /access-request-config/v1 | Update access request configuration
+*AccessRequestsApi* | [**set_access_request_config_v2**](sailpoint/access_requests/docs/AccessRequestsApi.md#set_access_request_config_v2) | **PUT** /access-request-config/v2 | Update access request configuration
 
 
 ## Documentation For Models
@@ -85,6 +87,7 @@ Class | Method | HTTP request | Description
  - [Accessrequest](sailpoint/access_requests/docs/Accessrequest.md)
  - [Accessrequestadminitemstatus](sailpoint/access_requests/docs/Accessrequestadminitemstatus.md)
  - [Accessrequestconfig](sailpoint/access_requests/docs/Accessrequestconfig.md)
+ - [Accessrequestconfigv2](sailpoint/access_requests/docs/Accessrequestconfigv2.md)
  - [Accessrequestitem](sailpoint/access_requests/docs/Accessrequestitem.md)
  - [Accessrequestphases](sailpoint/access_requests/docs/Accessrequestphases.md)
  - [Accessrequestresponse](sailpoint/access_requests/docs/Accessrequestresponse.md)
@@ -95,6 +98,7 @@ Class | Method | HTTP request | Description
  - [Accountsselectionrequest](sailpoint/access_requests/docs/Accountsselectionrequest.md)
  - [Accountsselectionresponse](sailpoint/access_requests/docs/Accountsselectionresponse.md)
  - [Approvalforwardhistory](sailpoint/access_requests/docs/Approvalforwardhistory.md)
+ - [Approvalreminderandescalationconfig](sailpoint/access_requests/docs/Approvalreminderandescalationconfig.md)
  - [Approvalscheme](sailpoint/access_requests/docs/Approvalscheme.md)
  - [Approvalstatusdto](sailpoint/access_requests/docs/Approvalstatusdto.md)
  - [ApprovalstatusdtoCurrentOwner](sailpoint/access_requests/docs/ApprovalstatusdtoCurrentOwner.md)
@@ -111,6 +115,7 @@ Class | Method | HTTP request | Description
  - [EntitlementaccessrequestconfigMaxPermittedAccessDuration](sailpoint/access_requests/docs/EntitlementaccessrequestconfigMaxPermittedAccessDuration.md)
  - [Entitlementapprovalscheme](sailpoint/access_requests/docs/Entitlementapprovalscheme.md)
  - [Entitlementrequestconfig](sailpoint/access_requests/docs/Entitlementrequestconfig.md)
+ - [Entitlementrequestconfigv2](sailpoint/access_requests/docs/Entitlementrequestconfigv2.md)
  - [Entitlementrevocationrequestconfig](sailpoint/access_requests/docs/Entitlementrevocationrequestconfig.md)
  - [Errormessagedto](sailpoint/access_requests/docs/Errormessagedto.md)
  - [Errorresponsedto](sailpoint/access_requests/docs/Errorresponsedto.md)
@@ -120,6 +125,7 @@ Class | Method | HTTP request | Description
  - [Identityentitlementdetails](sailpoint/access_requests/docs/Identityentitlementdetails.md)
  - [Identityentitlementdetailsaccounttarget](sailpoint/access_requests/docs/Identityentitlementdetailsaccounttarget.md)
  - [Identityentitlementdetailsentitlementdto](sailpoint/access_requests/docs/Identityentitlementdetailsentitlementdto.md)
+ - [Identityreferencewithnameandemail](sailpoint/access_requests/docs/Identityreferencewithnameandemail.md)
  - [Localeorigin](sailpoint/access_requests/docs/Localeorigin.md)
  - [Manualworkitemdetails](sailpoint/access_requests/docs/Manualworkitemdetails.md)
  - [ManualworkitemdetailsCurrentOwner](sailpoint/access_requests/docs/ManualworkitemdetailsCurrentOwner.md)
@@ -143,6 +149,7 @@ Class | Method | HTTP request | Description
  - [RequesteditemstatusSodViolationContext](sailpoint/access_requests/docs/RequesteditemstatusSodViolationContext.md)
  - [Requesteditemstatusrequeststate](sailpoint/access_requests/docs/Requesteditemstatusrequeststate.md)
  - [Requestonbehalfofconfig](sailpoint/access_requests/docs/Requestonbehalfofconfig.md)
+ - [Requestonbehalfofconfigv2](sailpoint/access_requests/docs/Requestonbehalfofconfigv2.md)
  - [Sodexemptcriteria](sailpoint/access_requests/docs/Sodexemptcriteria.md)
  - [Sodpolicydto](sailpoint/access_requests/docs/Sodpolicydto.md)
  - [Sodviolationcheckresult](sailpoint/access_requests/docs/Sodviolationcheckresult.md)

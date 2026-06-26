@@ -113,6 +113,7 @@ class TestRequesteditemstatus(unittest.TestCase):
                         phase_reference = 'approvalDetails', )
                     ],
                 description = 'This is the Engineering role that engineers are granted.',
+                start_date = '2019-10-21T00:00Z',
                 remove_date = '2019-10-23T00:00Z',
                 cancelable = True,
                 access_request_id = '2b838de9-db9b-abcf-e646-d4f274ad4238',

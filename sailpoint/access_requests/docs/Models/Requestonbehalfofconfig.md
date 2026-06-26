@@ -1,15 +1,15 @@
 ---
-id: requestonbehalfofconfig
-title: Requestonbehalfofconfig
-pagination_label: Requestonbehalfofconfig
-sidebar_label: Requestonbehalfofconfig
+id: requestonbehalfofconfigv1
+title: Requestonbehalfofconfigv1
+pagination_label: Requestonbehalfofconfigv1
+sidebar_label: Requestonbehalfofconfigv1
 sidebar_class_name: pythonsdk
-keywords: ['python', 'Python', 'sdk', 'Requestonbehalfofconfig', 'Requestonbehalfofconfig'] 
-slug: /tools/sdk/python/access-requests/models/requestonbehalfofconfig
-tags: ['SDK', 'Software Development Kit', 'Requestonbehalfofconfig', 'Requestonbehalfofconfig']
+keywords: ['python', 'Python', 'sdk', 'Requestonbehalfofconfigv1', 'Requestonbehalfofconfigv1'] 
+slug: /tools/sdk/python/access-requests/models/requestonbehalfofconfigv1
+tags: ['SDK', 'Software Development Kit', 'Requestonbehalfofconfigv1', 'Requestonbehalfofconfigv1']
 ---
 
-# Requestonbehalfofconfig
+# Requestonbehalfofconfigv1
 
 
 ## Properties
@@ -23,9 +23,9 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from sailpoint.access_requests.models.requestonbehalfofconfig import Requestonbehalfofconfig
+from sailpoint.access_requests.models.requestonbehalfofconfigv1 import Requestonbehalfofconfigv1
 
-requestonbehalfofconfig = Requestonbehalfofconfig(
+requestonbehalfofconfigv1 = Requestonbehalfofconfigv1(
 allow_request_on_behalf_of_anyone_by_anyone=True,
 allow_request_on_behalf_of_employee_by_manager=True
 )

@@ -26,10 +26,24 @@ class TestMachineAccountSubtypesApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_create_source_subtype_v1(self) -> None:
+        """Test case for create_source_subtype_v1
+
+        Create subtype
+        """
+        pass
+
     def test_delete_machine_account_subtype_v1(self) -> None:
         """Test case for delete_machine_account_subtype_v1
 
         Delete subtype by ID
+        """
+        pass
+
+    def test_get_machine_account_subtype_approval_config_v1(self) -> None:
+        """Test case for get_machine_account_subtype_approval_config_v1
+
+        Machine Subtype Approval Config
         """
         pass
 
@@ -40,10 +54,31 @@ class TestMachineAccountSubtypesApi(unittest.TestCase):
         """
         pass
 
+    def test_list_source_subtypes_v1(self) -> None:
+        """Test case for list_source_subtypes_v1
+
+        Retrieve all subtypes
+        """
+        pass
+
+    def test_load_bulk_source_subtypes_v1(self) -> None:
+        """Test case for load_bulk_source_subtypes_v1
+
+        Bulk Retrieve of Source Subtypes
+        """
+        pass
+
     def test_patch_machine_account_subtype_v1(self) -> None:
         """Test case for patch_machine_account_subtype_v1
 
         Patch subtype by ID
+        """
+        pass
+
+    def test_update_machine_account_subtype_approval_config_v1(self) -> None:
+        """Test case for update_machine_account_subtype_approval_config_v1
+
+        Machine Subtype Approval Config
         """
         pass
 
