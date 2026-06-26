@@ -17,19 +17,19 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create-machine-account-subtype-v1**](#create-machine-account-subtype-v1) | **POST** `/sources/v1/{sourceId}/subtypes` | Create subtype
 [**delete-machine-account-subtype-by-technical-name-v1**](#delete-machine-account-subtype-by-technical-name-v1) | **DELETE** `/sources/v1/{sourceId}/subtypes/{technicalName}` | Delete subtype
-[**get-machine-account-subtype-approval-config-v1**](#get-machine-account-subtype-approval-config-v1) | **GET** `/source-subtypes/v1/{subtypeId}/machine-config` | Machine Subtype Approval Config
 [**get-machine-account-subtype-by-id-v1**](#get-machine-account-subtype-by-id-v1) | **GET** `/sources/v1/subtypes/{subtypeId}` | Retrieve subtype by subtype id
 [**get-machine-account-subtype-by-technical-name-v1**](#get-machine-account-subtype-by-technical-name-v1) | **GET** `/sources/v1/{sourceId}/subtypes/{technicalName}` | Retrieve subtype by source and technicalName
 [**get-machine-account-v1**](#get-machine-account-v1) | **GET** `/machine-accounts/v1/{id}` | Get machine account details
 [**list-machine-account-subtypes-v1**](#list-machine-account-subtypes-v1) | **GET** `/sources/v1/{sourceId}/subtypes` | Retrieve all subtypes by source
 [**list-machine-accounts-v1**](#list-machine-accounts-v1) | **GET** `/machine-accounts/v1` | List machine accounts
-[**load-bulk-source-subtypes-v1**](#load-bulk-source-subtypes-v1) | **POST** `/source-subtypes/v1/bulk-retrieve` | Bulk Retrieve of Source Subtypes
 [**patch-machine-account-subtype-by-technical-name-v1**](#patch-machine-account-subtype-by-technical-name-v1) | **PATCH** `/sources/v1/{sourceId}/subtypes/{technicalName}` | Patch subtype
-[**update-machine-account-subtype-approval-config-v1**](#update-machine-account-subtype-approval-config-v1) | **PATCH** `/source-subtypes/v1/{subtypeId}/machine-config` | Machine Subtype Approval Config
 [**update-machine-account-v1**](#update-machine-account-v1) | **PATCH** `/machine-accounts/v1/{id}` | Update machine account details
 
 
 ## create-machine-account-subtype-v1
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
 :::
@@ -105,6 +105,9 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## delete-machine-account-subtype-by-technical-name-v1
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
 :::
@@ -175,80 +178,10 @@ with ApiClient(configuration) as api_client:
 
 [[Back to top]](#) 
 
-## get-machine-account-subtype-approval-config-v1
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
-Machine Subtype Approval Config
-This endpoint retrieves the approval configuration for machine account creation and deletion at the machine subtype level. By providing a specific subtypeId in the path, clients can fetch the approval rules and settings (such as required approvers and comments policy) that govern account creation and deletion for that particular machine subtype. The response includes a MachineAccountSubtypeConfigDto object detailing these configurations, enabling clients to understand or display the approval workflow required for creating and deleting machine accounts of the given subtype. Use this endpoint to get machine subtype level approval config for account creation and deletion.
-
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-machine-account-subtype-approval-config-v1)
-
-### Parameters 
-
-Param Type | Name | Data Type | Required  | Description
-------------- | ------------- | ------------- | ------------- | ------------- 
-   | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
-Path   | subtype_id | **str** | True  | machine subtype id.
-
-### Return type
-[**Machineaccountsubtypeconfigdto**](../models/machineaccountsubtypeconfigdto)
-
-### Responses
-Code | Description  | Data Type | Response headers |
-------------- | ------------- | ------------- |------------------|
-200 | Responds with a MachineAccountSubtypeConfigDto for machine account creation and deletion approval config by subtypeId. | Machineaccountsubtypeconfigdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
-401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineAccountsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
-429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineAccountsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
-
-### HTTP request headers
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### Example
-
-```python
-from sailpoint.machine_accounts.api.machine_accounts_api import MachineAccountsApi
-from sailpoint.machine_accounts.api_client import ApiClient
-from sailpoint.machine_accounts.models.machineaccountsubtypeconfigdto import Machineaccountsubtypeconfigdto
-from sailpoint.configuration import Configuration
-configuration = Configuration()
-
-configuration.experimental = True
-
-with ApiClient(configuration) as api_client:
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
-    subtype_id = 'ef38f94347e94562b5bb8424a56498d8' # str | machine subtype id. # str | machine subtype id.
-
-    try:
-        # Machine Subtype Approval Config
-        
-        results = MachineAccountsApi(api_client).get_machine_account_subtype_approval_config_v1(x_sail_point_experimental=x_sail_point_experimental, subtype_id=subtype_id)
-        # Below is a request that includes all optional parameters
-        # results = MachineAccountsApi(api_client).get_machine_account_subtype_approval_config_v1(x_sail_point_experimental, subtype_id)
-        print("The response of MachineAccountsApi->get_machine_account_subtype_approval_config_v1:\n")
-        print(results.model_dump_json(by_alias=True, indent=4))
-    except Exception as e:
-        print("Exception when calling MachineAccountsApi->get_machine_account_subtype_approval_config_v1: %s\n" % e)
-```
-
-
-
-[[Back to top]](#) 
-
 ## get-machine-account-subtype-by-id-v1
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
 :::
@@ -321,6 +254,9 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## get-machine-account-subtype-by-technical-name-v1
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
 :::
@@ -468,6 +404,9 @@ with ApiClient(configuration) as api_client:
 [[Back to top]](#) 
 
 ## list-machine-account-subtypes-v1
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
 :::
@@ -632,81 +571,10 @@ with ApiClient(configuration) as api_client:
 
 [[Back to top]](#) 
 
-## load-bulk-source-subtypes-v1
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
-Bulk Retrieve of Source Subtypes
-This endpoint retrieves the subtypes for given subtypeIds.
-
-[API Spec](https://developer.sailpoint.com/docs/api/v1/load-bulk-source-subtypes-v1)
-
-### Parameters 
-
-Param Type | Name | Data Type | Required  | Description
-------------- | ------------- | ------------- | ------------- | ------------- 
-   | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
- Body  | request_body | **[]str** | True  | 
-
-### Return type
-[**List[Sourcesubtypewithsource]**](../models/sourcesubtypewithsource)
-
-### Responses
-Code | Description  | Data Type | Response headers |
-------------- | ------------- | ------------- |------------------|
-200 | List of source subtypes. | List[Sourcesubtypewithsource] |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
-401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineAccountsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
-429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineAccountsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
-
-### HTTP request headers
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### Example
-
-```python
-from sailpoint.machine_accounts.api.machine_accounts_api import MachineAccountsApi
-from sailpoint.machine_accounts.api_client import ApiClient
-from sailpoint.machine_accounts.models.sourcesubtypewithsource import Sourcesubtypewithsource
-from sailpoint.configuration import Configuration
-configuration = Configuration()
-
-configuration.experimental = True
-
-with ApiClient(configuration) as api_client:
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
-    request_body = '''['request_body_example']''' # List[str] | 
-
-    try:
-        # Bulk Retrieve of Source Subtypes
-        new_request_body = RequestBody.from_json(request_body)
-        results = MachineAccountsApi(api_client).load_bulk_source_subtypes_v1(x_sail_point_experimental=x_sail_point_experimental, request_body=new_request_body)
-        # Below is a request that includes all optional parameters
-        # results = MachineAccountsApi(api_client).load_bulk_source_subtypes_v1(x_sail_point_experimental, new_request_body)
-        print("The response of MachineAccountsApi->load_bulk_source_subtypes_v1:\n")
-        for item in results:
-            print(item.model_dump_json(by_alias=True, indent=4))
-    except Exception as e:
-        print("Exception when calling MachineAccountsApi->load_bulk_source_subtypes_v1: %s\n" % e)
-```
-
-
-
-[[Back to top]](#) 
-
 ## patch-machine-account-subtype-by-technical-name-v1
+:::caution deprecated 
+This endpoint has been deprecated and may be replaced or removed in future versions of the API.
+:::
 :::warning experimental 
 This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
 :::
@@ -777,82 +645,6 @@ with ApiClient(configuration) as api_client:
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling MachineAccountsApi->patch_machine_account_subtype_by_technical_name_v1: %s\n" % e)
-```
-
-
-
-[[Back to top]](#) 
-
-## update-machine-account-subtype-approval-config-v1
-:::warning experimental 
-This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
-:::
-:::tip setting x-sailpoint-experimental header
- on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
- Example:
- ```python
-   configuration = Configuration()
-   configuration.experimental = True
- ```
-:::
-Machine Subtype Approval Config
-Updates the approval configuration for machine account deletion at the specified machine subtype level. This endpoint allows clients to modify approval rules and settings (such as required approvers and comments policy) for account creation and deletion workflows associated with a given subtypeId. Use this to customize or enforce approval requirements for creating and deleting machine accounts of a particular subtype.
-
-[API Spec](https://developer.sailpoint.com/docs/api/v1/update-machine-account-subtype-approval-config-v1)
-
-### Parameters 
-
-Param Type | Name | Data Type | Required  | Description
-------------- | ------------- | ------------- | ------------- | ------------- 
-   | x_sail_point_experimental | **str** | True  (default to 'true') | Use this header to enable this experimental API.
-Path   | subtype_id | **str** | True  | machine account subtype ID.
- Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | The JSONPatch payload used to update the object.
-
-### Return type
-[**Machineaccountsubtypeconfigdto**](../models/machineaccountsubtypeconfigdto)
-
-### Responses
-Code | Description  | Data Type | Response headers |
-------------- | ------------- | ------------- |------------------|
-200 | This response indicates the PATCH operation succeeded and the API returns the updated MachineAccountSubtypeConfigDto object. | Machineaccountsubtypeconfigdto |  -  |
-400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
-401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListMachineAccountsV1401Response |  -  |
-403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
-404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
-429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListMachineAccountsV1429Response |  -  |
-500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
-
-### HTTP request headers
- - **Content-Type**: application/json-patch+json
- - **Accept**: application/json
-
-### Example
-
-```python
-from sailpoint.machine_accounts.api.machine_accounts_api import MachineAccountsApi
-from sailpoint.machine_accounts.api_client import ApiClient
-from sailpoint.machine_accounts.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.machine_accounts.models.machineaccountsubtypeconfigdto import Machineaccountsubtypeconfigdto
-from sailpoint.configuration import Configuration
-configuration = Configuration()
-
-configuration.experimental = True
-
-with ApiClient(configuration) as api_client:
-    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (default to 'true') # str | Use this header to enable this experimental API. (default to 'true')
-    subtype_id = '00eebcf881994e419d72e757fd30dc0e' # str | machine account subtype ID. # str | machine account subtype ID.
-    jsonpatchoperation = '''[sailpoint.machine_accounts.Jsonpatchoperation()]''' # List[Jsonpatchoperation] | The JSONPatch payload used to update the object.
-
-    try:
-        # Machine Subtype Approval Config
-        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
-        results = MachineAccountsApi(api_client).update_machine_account_subtype_approval_config_v1(x_sail_point_experimental=x_sail_point_experimental, subtype_id=subtype_id, jsonpatchoperation=new_jsonpatchoperation)
-        # Below is a request that includes all optional parameters
-        # results = MachineAccountsApi(api_client).update_machine_account_subtype_approval_config_v1(x_sail_point_experimental, subtype_id, new_jsonpatchoperation)
-        print("The response of MachineAccountsApi->update_machine_account_subtype_approval_config_v1:\n")
-        print(results.model_dump_json(by_alias=True, indent=4))
-    except Exception as e:
-        print("Exception when calling MachineAccountsApi->update_machine_account_subtype_approval_config_v1: %s\n" % e)
 ```
 
 

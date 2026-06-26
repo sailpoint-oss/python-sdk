@@ -36,6 +36,7 @@ Name | Type | Description | Notes
 **pre_approval_trigger_details** | [**RequesteditemstatusPreApprovalTriggerDetails**](requesteditemstatus-pre-approval-trigger-details) |  | [optional] 
 **access_request_phases** | [**[]Accessrequestphases**](accessrequestphases) | A list of Phases that the Access Request has gone through in order, to help determine the status of the request. | [optional] 
 **description** | **str** | Description associated to the requested object. | [optional] 
+**start_date** | **datetime** | When the role access is scheduled for provisioning. | [optional] 
 **remove_date** | **datetime** | When the role access is scheduled for removal. | [optional] 
 **cancelable** | **bool** | True if the request can be canceled. | [optional] [default to False]
 **reauthorization_required** | **bool** | True if re-auth is required. | [optional] [default to False]
@@ -126,6 +127,7 @@ access_request_phases=[
                         phase_reference = 'approvalDetails', )
                     ],
 description='This is the Engineering role that engineers are granted.',
+start_date='2019-10-21T00:00Z',
 remove_date='2019-10-23T00:00Z',
 cancelable=True,
 reauthorization_required=True,

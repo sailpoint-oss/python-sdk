@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 from sailpoint.application_discovery.models.manualdiscoverapplications import Manualdiscoverapplications
 
 manualdiscoverapplications = Manualdiscoverapplications(
-file='[B@ef1695a'
+file='[B@260ff5b7'
 )
 
 ```

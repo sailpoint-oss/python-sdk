@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **modified** | **datetime** | Last modified timestamp. | [optional] 
 **type** | **str** | Type of the subtype. Either MACHINE OR null. | [optional] 
 **source** | [**SourcesubtypewithsourceSource**](sourcesubtypewithsource-source) |  | [optional] 
+**system_managed** | **bool** | Indicates if the subtype is managed by the system. | [optional] [default to False]
 }
 
 ## Example
@@ -44,7 +45,8 @@ type='MACHINE',
 source=sailpoint.machine_account_subtypes.models.sourcesubtypewithsource_source.sourcesubtypewithsource_source(
                     type = 'SOURCE', 
                     id = '6d0458373bec4b4b80460992b76016da', 
-                    name = 'Test Source', )
+                    name = 'Test Source', ),
+system_managed=True
 )
 
 ```

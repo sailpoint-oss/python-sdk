@@ -132,7 +132,7 @@
       source: |
         from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
         from sailpoint.access_requests.api_client import ApiClient
-        from sailpoint.access_requests.models.accessrequestconfig import Accessrequestconfig
+        from sailpoint.access_requests.models.accessrequestconfigv1 import Accessrequestconfigv1
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
@@ -148,6 +148,30 @@
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling AccessRequestsApi->get_access_request_config_v1: %s\n" % e)
+- path: /access-request-config/v2
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-requests/methods/access-requests#get-access-request-config-v2
+      source: |
+        from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
+        from sailpoint.access_requests.api_client import ApiClient
+        from sailpoint.access_requests.models.accessrequestconfigv2 import Accessrequestconfigv2
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          try:
+              # Get access request configuration
+              
+              results = AccessRequestsApi(api_client).get_access_request_config_v2()
+              # Below is a request that includes all optional parameters
+              # results = AccessRequestsApi(api_client).get_access_request_config_v2()
+              print("The response of AccessRequestsApi->get_access_request_config_v2:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessRequestsApi->get_access_request_config_v2: %s\n" % e)
 - path: /revocable-objects/v1
   method: GET
   xCodeSample:
@@ -232,7 +256,7 @@
           count = False # bool | If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored. (optional) (default to False) # bool | If this is true, the *X-Total-Count* response header populates with the number of results that would be returned if limit and offset were ignored. (optional) (default to False)
           limit = 250 # int | Max number of results to return. (optional) (default to 250) # int | Max number of results to return. (optional) (default to 250)
           offset = 10 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. (optional) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. (optional)
-          filters = 'accountActivityItemId eq \"2c918086771c86df0177401efcdf54c0\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw* (optional)
+          filters = 'accountActivityItemId eq \"2c918086771c86df0177401efcdf54c0\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in, eq, ne, ge, gt, le, lt, sw*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **accessRequestId**: *in, eq, ne, ge, gt, le, lt, sw*  **status**: *in, eq, ne*  **created**: *eq, in, ge, gt, le, lt, ne, isnull, sw* (optional)
           sorters = 'created' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId** (optional) # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name, accessRequestId** (optional)
           request_state = 'request-state=EXECUTING' # str | Filter the results by the state of the request. The only valid value is *EXECUTING*. (optional) # str | Filter the results by the state of the request. The only valid value is *EXECUTING*. (optional)
           try:
@@ -282,21 +306,46 @@
       source: |
         from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
         from sailpoint.access_requests.api_client import ApiClient
-        from sailpoint.access_requests.models.accessrequestconfig import Accessrequestconfig
+        from sailpoint.access_requests.models.accessrequestconfigv1 import Accessrequestconfigv1
         from sailpoint.configuration import Configuration
         configuration = Configuration()
 
 
         with ApiClient(configuration) as api_client:
-          accessrequestconfig = '''sailpoint.access_requests.Accessrequestconfig()''' # Accessrequestconfig | 
+          accessrequestconfigv1 = '''sailpoint.access_requests.Accessrequestconfigv1()''' # Accessrequestconfigv1 | 
           try:
               # Update access request configuration
-              new_accessrequestconfig = Accessrequestconfig.from_json(accessrequestconfig)
-              results = AccessRequestsApi(api_client).set_access_request_config_v1(accessrequestconfig=new_accessrequestconfig)
+              new_accessrequestconfig = Accessrequestconfigv1.from_json(accessrequestconfigv1)
+              results = AccessRequestsApi(api_client).set_access_request_config_v1(accessrequestconfigv1=new_accessrequestconfig)
               # Below is a request that includes all optional parameters
               # results = AccessRequestsApi(api_client).set_access_request_config_v1(new_accessrequestconfig)
               print("The response of AccessRequestsApi->set_access_request_config_v1:\n")
               print(results.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling AccessRequestsApi->set_access_request_config_v1: %s\n" % e)
+- path: /access-request-config/v2
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/access-requests/methods/access-requests#set-access-request-config-v2
+      source: |
+        from sailpoint.access_requests.api.access_requests_api import AccessRequestsApi
+        from sailpoint.access_requests.api_client import ApiClient
+        from sailpoint.access_requests.models.accessrequestconfigv2 import Accessrequestconfigv2
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          accessrequestconfigv2 = '''sailpoint.access_requests.Accessrequestconfigv2()''' # Accessrequestconfigv2 | 
+          try:
+              # Update access request configuration
+              new_accessrequestconfigv2 = Accessrequestconfigv2.from_json(accessrequestconfigv2)
+              results = AccessRequestsApi(api_client).set_access_request_config_v2(accessrequestconfigv2=new_accessrequestconfigv2)
+              # Below is a request that includes all optional parameters
+              # results = AccessRequestsApi(api_client).set_access_request_config_v2(new_accessrequestconfigv2)
+              print("The response of AccessRequestsApi->set_access_request_config_v2:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling AccessRequestsApi->set_access_request_config_v2: %s\n" % e)
 

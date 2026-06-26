@@ -40,6 +40,13 @@ class TestDataAccessSecurityApi(unittest.TestCase):
         """
         pass
 
+    def test_create_identity_collector_v1(self) -> None:
+        """Test case for create_identity_collector_v1
+
+        Create identity collector
+        """
+        pass
+
     def test_create_schedule_v1(self) -> None:
         """Test case for create_schedule_v1
 
@@ -86,6 +93,13 @@ class TestDataAccessSecurityApi(unittest.TestCase):
         """Test case for delete_application_v1
 
         Delete an application by identifier.
+        """
+        pass
+
+    def test_delete_identity_collector_v1(self) -> None:
+        """Test case for delete_identity_collector_v1
+
+        Delete identity collector by identifier
         """
         pass
 
@@ -152,10 +166,24 @@ class TestDataAccessSecurityApi(unittest.TestCase):
         """
         pass
 
+    def test_list_identity_collectors_v1(self) -> None:
+        """Test case for list_identity_collectors_v1
+
+        List identity collectors
+        """
+        pass
+
     def test_put_application_v1(self) -> None:
         """Test case for put_application_v1
 
         Update application by identifier.
+        """
+        pass
+
+    def test_put_identity_collector_v1(self) -> None:
+        """Test case for put_identity_collector_v1
+
+        Update identity collector by identifier
         """
         pass
 

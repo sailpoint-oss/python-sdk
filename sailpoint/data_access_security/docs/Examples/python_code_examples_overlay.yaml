@@ -43,6 +43,32 @@
               # DataAccessSecurityApi(api_client).create_application_v1(new_basecreateapplicationrequest)
           except Exception as e:
               print("Exception when calling DataAccessSecurityApi->create_application_v1: %s\n" % e)
+- path: /das/identity-collectors/v1
+  method: POST
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/data-access-security/methods/data-access-security#create-identity-collector-v1
+      source: |
+        from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.data_access_security.models.create_identity_collector_v1200_response import CreateIdentityCollectorV1200Response
+        from sailpoint.data_access_security.models.createidentitycollectorrequest import Createidentitycollectorrequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          createidentitycollectorrequest = '''sailpoint.data_access_security.Createidentitycollectorrequest()''' # Createidentitycollectorrequest | Request body containing the details required to create a new identity collector.
+          try:
+              # Create identity collector
+              new_createidentitycollectorrequest = Createidentitycollectorrequest.from_json(createidentitycollectorrequest)
+              results = DataAccessSecurityApi(api_client).create_identity_collector_v1(createidentitycollectorrequest=new_createidentitycollectorrequest)
+              # Below is a request that includes all optional parameters
+              # results = DataAccessSecurityApi(api_client).create_identity_collector_v1(new_createidentitycollectorrequest)
+              print("The response of DataAccessSecurityApi->create_identity_collector_v1:\n")
+              print(results.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->create_identity_collector_v1: %s\n" % e)
 - path: /das/v1/tasks/schedules
   method: POST
   xCodeSample:
@@ -220,6 +246,28 @@
               # DataAccessSecurityApi(api_client).delete_application_v1(id)
           except Exception as e:
               print("Exception when calling DataAccessSecurityApi->delete_application_v1: %s\n" % e)
+- path: /das/identity-collectors/v1/{id}
+  method: DELETE
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/data-access-security/methods/data-access-security#delete-identity-collector-v1
+      source: |
+        from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 12345 # int | The unique identifier of the identity collector to delete. # int | The unique identifier of the identity collector to delete.
+          try:
+              # Delete identity collector by identifier
+              
+              DataAccessSecurityApi(api_client).delete_identity_collector_v1(id=id)
+              # Below is a request that includes all optional parameters
+              # DataAccessSecurityApi(api_client).delete_identity_collector_v1(id)
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->delete_identity_collector_v1: %s\n" % e)
 - path: /das/v1/tasks/schedules/{id}
   method: DELETE
   xCodeSample:
@@ -454,6 +502,35 @@
                   print(item.model_dump_json(by_alias=True, indent=4))
           except Exception as e:
               print("Exception when calling DataAccessSecurityApi->get_tasks_v1: %s\n" % e)
+- path: /das/identity-collectors/v1
+  method: GET
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/data-access-security/methods/data-access-security#list-identity-collectors-v1
+      source: |
+        from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.data_access_security.models.identitycollectorlistitem import Identitycollectorlistitem
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          filters = 'sourceId eq \"2c9180835d2e5168015d32f890ca1581\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  **type**: *eq, in*  **id**: *eq, in*  Supported composite operators are *and, or* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  **type**: *eq, in*  **id**: *eq, in*  Supported composite operators are *and, or* (optional)
+          limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250) # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+          offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0) # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+          count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False) # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+          try:
+              # List identity collectors
+              
+              results = DataAccessSecurityApi(api_client).list_identity_collectors_v1()
+              # Below is a request that includes all optional parameters
+              # results = DataAccessSecurityApi(api_client).list_identity_collectors_v1(filters, limit, offset, count)
+              print("The response of DataAccessSecurityApi->list_identity_collectors_v1:\n")
+              for item in results:
+                  print(item.model_dump_json(by_alias=True, indent=4))
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->list_identity_collectors_v1: %s\n" % e)
 - path: /das/v1/applications/{id}
   method: PUT
   xCodeSample:
@@ -478,6 +555,30 @@
               # DataAccessSecurityApi(api_client).put_application_v1(id, new_basecreateapplicationrequest)
           except Exception as e:
               print("Exception when calling DataAccessSecurityApi->put_application_v1: %s\n" % e)
+- path: /das/identity-collectors/v1/{id}
+  method: PUT
+  xCodeSample:
+    - lang: Python
+      label: SDK_tools/sdk/python/data-access-security/methods/data-access-security#put-identity-collector-v1
+      source: |
+        from sailpoint.data_access_security.api.data_access_security_api import DataAccessSecurityApi
+        from sailpoint.data_access_security.api_client import ApiClient
+        from sailpoint.data_access_security.models.updateidentitycollectorrequest import Updateidentitycollectorrequest
+        from sailpoint.configuration import Configuration
+        configuration = Configuration()
+
+
+        with ApiClient(configuration) as api_client:
+          id = 12345 # int | The unique identifier of the identity collector to update. # int | The unique identifier of the identity collector to update.
+          updateidentitycollectorrequest = '''sailpoint.data_access_security.Updateidentitycollectorrequest()''' # Updateidentitycollectorrequest | Request body containing the updated details for the identity collector.
+          try:
+              # Update identity collector by identifier
+              new_updateidentitycollectorrequest = Updateidentitycollectorrequest.from_json(updateidentitycollectorrequest)
+              DataAccessSecurityApi(api_client).put_identity_collector_v1(id=id, updateidentitycollectorrequest=new_updateidentitycollectorrequest)
+              # Below is a request that includes all optional parameters
+              # DataAccessSecurityApi(api_client).put_identity_collector_v1(id, new_updateidentitycollectorrequest)
+          except Exception as e:
+              print("Exception when calling DataAccessSecurityApi->put_identity_collector_v1: %s\n" % e)
 - path: /das/v1/tasks/schedules/{id}
   method: PUT
   xCodeSample:
