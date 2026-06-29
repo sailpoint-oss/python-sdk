@@ -284,7 +284,7 @@ function generatePartition(partitionName, bundledSpec, configPath) {
       "--api-name-suffix", "Api",
       "--enable-post-process-file",
     ],
-    { encoding: "utf8", cwd: SDK_ROOT }
+    { cwd: SDK_ROOT, encoding: "utf8" }
   );
 
   return {
@@ -391,7 +391,7 @@ function runPostscript(outputDir) {
   const result = spawnSync(
     "node",
     [POSTSCRIPT, outputDir],
-    { encoding: "utf8", cwd: SDK_ROOT }
+    { cwd: SDK_ROOT, encoding: "utf8" }
   );
 
   return {
@@ -757,7 +757,7 @@ from sailpoint.paginator import Paginator
 // Main
 // ---------------------------------------------------------------------------
 
-async function main() {
+function main() {
   if (!fs.existsSync(apisDir)) {
     console.error(`Error: apis directory not found: ${apisDir}`);
     process.exit(1);
@@ -935,7 +935,4 @@ async function main() {
   }
 }
 
-main().catch(err => {
-  console.error(`Unexpected error: ${err.message}`);
-  process.exit(1);
-});
+main();
