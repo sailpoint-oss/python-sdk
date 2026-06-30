@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateWorkflowActionPerformerRequest'
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow_action_performers** | [**WorkflowActionPerformers1**](workflow-action-performers1) |  | [optional] 
+**workflow_action_performers** | **WorkflowActionPerformers1** |  | [optional] 
 }
 
 ## Example

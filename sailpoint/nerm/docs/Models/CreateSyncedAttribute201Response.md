@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateSyncedAttribute201Response', 'C
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**synced_attribute** | [**SyncedAttribute**](synced-attribute) |  | [optional] 
+**synced_attribute** | **SyncedAttribute** |  | [optional] 
 }
 
 ## Example

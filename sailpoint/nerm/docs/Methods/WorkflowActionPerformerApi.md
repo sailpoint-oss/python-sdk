@@ -22,7 +22,7 @@ Method | HTTP request | Description
 Create a workflow action performer
 Create a workflow action performer for an existing workflow action
 
-[API Spec](https://developer.sailpoint.com/docs/api//create-workflow-action-performer)
+[API Spec](https://developer.sailpoint.com/docs/api/create-workflow-action-performer)
 
 ### Parameters 
 

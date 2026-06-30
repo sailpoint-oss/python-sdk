@@ -29,7 +29,7 @@ Method | HTTP request | Description
 Create a form attribute
 This endpoint can create a form attribute
 
-[API Spec](https://developer.sailpoint.com/docs/api//create-form-attribute)
+[API Spec](https://developer.sailpoint.com/docs/api/create-form-attribute)
 
 ### Parameters 
 
@@ -85,7 +85,7 @@ with ApiClient(configuration) as api_client:
 Delete form attribute
 Delete form attribute by id
 
-[API Spec](https://developer.sailpoint.com/docs/api//delete-form-attribute-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-form-attribute-by-id)
 
 ### Parameters 
 
@@ -141,7 +141,7 @@ with ApiClient(configuration) as api_client:
 Delete form attribute
 Delete form attribute by UID
 
-[API Spec](https://developer.sailpoint.com/docs/api//delete-form-attribute-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-form-attribute-by-uid)
 
 ### Parameters 
 
@@ -197,7 +197,7 @@ with ApiClient(configuration) as api_client:
 Get form attribute data
 Gets info for a specific form attribute by ID
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-form-attribute-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/get-form-attribute-by-id)
 
 ### Parameters 
 
@@ -253,7 +253,7 @@ with ApiClient(configuration) as api_client:
 Get form attribute data
 Get info for a specific form attribute by UID
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-form-attribute-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/get-form-attribute-by-uid)
 
 ### Parameters 
 
@@ -309,7 +309,7 @@ with ApiClient(configuration) as api_client:
 Get form attributes
 Get defined form attribute in the system
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-form-attributes)
+[API Spec](https://developer.sailpoint.com/docs/api/get-form-attributes)
 
 ### Parameters 
 This endpoint does not need any parameter. 
@@ -361,7 +361,7 @@ with ApiClient(configuration) as api_client:
 Update form attribute data
 Update info for a specific form attribute by ID
 
-[API Spec](https://developer.sailpoint.com/docs/api//update-form-attribute-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/update-form-attribute-by-id)
 
 ### Parameters 
 
@@ -420,7 +420,7 @@ with ApiClient(configuration) as api_client:
 Update form attribute data
 Update info for a specific form attribute by UID
 
-[API Spec](https://developer.sailpoint.com/docs/api//update-form-attribute-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/update-form-attribute-by-uid)
 
 ### Parameters 
 

@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **entitlement_ids** | **[]str** | The list of entitlement ids for this role mining session. | [optional] 
 **excluded_entitlements** | **[]str** | The list of excluded entitlement ids. | [optional] 
 **modified** | **datetime** | Last modified date | [optional] 
-**type** | [**Roleminingroletype**](roleminingroletype) |  | [optional] 
+**type** | **Roleminingroletype** |  | [optional] 
 **id** | **str** | Id of the potential draft role | [optional] 
 **created_date** | **datetime** | The date-time when this potential draft role was created. | [optional] 
 **modified_date** | **datetime** | The date-time when this potential draft role was modified. | [optional] 

@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **created** | **datetime** | The date and time the certification was created. | [required]
 **modified** | **datetime** | The date and time the certification was last modified. | [optional] 
 **campaign_ref** | [**Campaignreference**](campaignreference) |  | [required]
-**phase** | [**Certificationphase**](certificationphase) |  | [required]
+**phase** | **Certificationphase** |  | [required]
 **due** | **datetime** | The due date of the certification. | [required]
 **signed** | **datetime** | The date the reviewer signed off on the certification. | [required]
 **reviewer** | [**Reviewer**](reviewer) |  | [required]

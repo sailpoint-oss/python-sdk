@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateProfileCheckActionRequest', 'Cr
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow_action** | [**ProfileCheckAction**](profile-check-action) |  | [optional] 
+**workflow_action** | **ProfileCheckAction** |  | [optional] 
 }
 
 ## Example

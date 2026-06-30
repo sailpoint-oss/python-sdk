@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 **non_employee_source** | [**Nonemployeesourcelite**](nonemployeesourcelite) |  | [optional] 
 **data** | **map[string]str** | Additional attributes for a non-employee. Up to 10 custom attributes can be added. | [optional] 
 **approval_items** | [**[]Nonemployeeapprovalitembase**](nonemployeeapprovalitembase) | List of approval item for the request | [optional] 
-**approval_status** | [**Approvalstatus**](approvalstatus) |  | [optional] 
+**approval_status** | **Approvalstatus** |  | [optional] 
 **comment** | **str** | Comment of requester | [optional] 
 **completion_date** | **datetime** | When the request was completely approved. | [optional] 
 **start_date** | **datetime** | Non-Employee employment start date. | [optional] 

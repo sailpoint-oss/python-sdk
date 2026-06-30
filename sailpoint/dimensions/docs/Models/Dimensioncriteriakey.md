@@ -17,7 +17,7 @@ Refers to a specific Identity attribute used in Dimension membership criteria.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**Dimensioncriteriakeytype**](dimensioncriteriakeytype) |  | [required]
+**type** | **Dimensioncriteriakeytype** |  | [required]
 **var_property** | **str** | The name of the identity attribute to which the associated criteria applies. | [required]
 }
 

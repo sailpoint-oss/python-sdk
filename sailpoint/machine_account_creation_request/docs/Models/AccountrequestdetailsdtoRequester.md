@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'AccountrequestdetailsdtoRequester', '
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**Dtotype**](dtotype) |  | [optional] 
+**type** | **Dtotype** |  | [optional] 
 **id** | **str** | ID of the object to which this reference applies | [optional] 
 **name** | **str** | Human-readable display name of the object to which this reference applies | [optional] 
 }

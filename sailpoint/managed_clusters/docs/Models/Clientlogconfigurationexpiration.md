@@ -19,8 +19,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **client_id** | **str** | Log configuration's client ID | [optional] 
 **expiration** | **datetime** | Expiration date-time of the log configuration request.  Can be no greater than 24 hours from current date-time. | [optional] 
-**root_level** | [**Standardlevel**](standardlevel) |  | [required]
-**log_levels** | [**map[string]Standardlevel**](standardlevel) | Mapping of identifiers to Standard Log Level values | [optional] 
+**root_level** | **Standardlevel** |  | [required]
+**log_levels** | **map[string]Standardlevel** | Mapping of identifiers to Standard Log Level values | [optional] 
 }
 
 ## Example

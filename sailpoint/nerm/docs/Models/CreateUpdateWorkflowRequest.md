@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateUpdateWorkflowRequest', 'Create
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow** | [**UpdateWorkflow**](update-workflow) |  | [optional] 
+**workflow** | **UpdateWorkflow** |  | [optional] 
 }
 
 ## Example

@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateFormAttributeRequest', 'CreateF
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**form_attribute** | [**FormAttributes**](form-attributes) |  | [optional] 
+**form_attribute** | **FormAttributes** |  | [optional] 
 }
 
 ## Example

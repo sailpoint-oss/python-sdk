@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreatePasswordResetActionRequest', 'C
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow_action** | [**PasswordResetAction**](password-reset-action) |  | [optional] 
+**workflow_action** | **PasswordResetAction** |  | [optional] 
 }
 
 ## Example

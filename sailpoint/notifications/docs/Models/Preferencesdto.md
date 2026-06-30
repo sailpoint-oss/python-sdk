@@ -18,7 +18,7 @@ Maps an Identity's attribute key to a list of preferred notification mediums.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **key** | **str** | The template notification key. | [optional] 
-**mediums** | [**[]Medium**](medium) | List of preferred notification mediums, i.e., the mediums (or method) for which notifications are enabled. More mediums may be added in the future. | [optional] 
+**mediums** | **[]Medium** | List of preferred notification mediums, i.e., the mediums (or method) for which notifications are enabled. More mediums may be added in the future. | [optional] 
 **modified** | **datetime** | Modified date of preference | [optional] 
 }
 

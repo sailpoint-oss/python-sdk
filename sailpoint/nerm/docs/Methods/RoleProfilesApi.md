@@ -28,7 +28,7 @@ Method | HTTP request | Description
 Delete a role profile assignment
 Delete a role profile assignment
 
-[API Spec](https://developer.sailpoint.com/docs/api//delete-role-profile)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-role-profile)
 
 ### Parameters 
 
@@ -82,7 +82,7 @@ with ApiClient(configuration) as api_client:
 Find role-profile contributor relationship
 Find role-profile contributor relationship by id
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-role-profile)
+[API Spec](https://developer.sailpoint.com/docs/api/get-role-profile)
 
 ### Parameters 
 
@@ -137,7 +137,7 @@ with ApiClient(configuration) as api_client:
 Get role-profile contributor relationships
 Get role-profile contributor relationships
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-role-profiles)
+[API Spec](https://developer.sailpoint.com/docs/api/get-role-profiles)
 
 ### Parameters 
 
@@ -202,7 +202,7 @@ with ApiClient(configuration) as api_client:
 Update a role-profile contributor relationship
 Update a role-profile contributor relationship by id
 
-[API Spec](https://developer.sailpoint.com/docs/api//patch-role-profile)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-role-profile)
 
 ### Parameters 
 
@@ -260,7 +260,7 @@ with ApiClient(configuration) as api_client:
 Update multiple role-profile contributor relationships
 Update multiple role-profile contributor relationships
 
-[API Spec](https://developer.sailpoint.com/docs/api//patch-role-profiles)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-role-profiles)
 
 ### Parameters 
 
@@ -316,7 +316,7 @@ with ApiClient(configuration) as api_client:
 Create a role-profile contributor relationship
 Create a role-profile contributor relationship
 
-[API Spec](https://developer.sailpoint.com/docs/api//submit-role-profile)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-role-profile)
 
 ### Parameters 
 
@@ -371,7 +371,7 @@ with ApiClient(configuration) as api_client:
 Create multiple role-profile contributor relationships
 Create multiple role-profile contributor relationships
 
-[API Spec](https://developer.sailpoint.com/docs/api//submit-role-profiles)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-role-profiles)
 
 ### Parameters 
 

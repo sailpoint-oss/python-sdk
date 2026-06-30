@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **original_owner** | [**ManualworkitemdetailsOriginalOwner**](manualworkitemdetails-original-owner) |  | [optional] 
 **current_owner** | [**ManualworkitemdetailsCurrentOwner**](manualworkitemdetails-current-owner) |  | [optional] 
 **modified** | **datetime** | Time at which item was modified. | [optional] 
-**status** | [**Manualworkitemstate**](manualworkitemstate) |  | [optional] 
+**status** | **Manualworkitemstate** |  | [optional] 
 **forward_history** | [**[]Approvalforwardhistory**](approvalforwardhistory) | The history of approval forward action. | [optional] 
 }
 

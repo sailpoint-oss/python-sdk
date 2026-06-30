@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateNotificationActionRequest', 'Cr
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow_action** | [**NotificationAction**](notification-action) |  | [optional] 
+**workflow_action** | **NotificationAction** |  | [optional] 
 }
 
 ## Example

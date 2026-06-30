@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **requested_items** | [**[]Requesteditemaccountselections**](requesteditemaccountselections) | Available account selections for the identity, per requested item | [optional] 
 **accounts_selection_required** | **bool** | A boolean indicating whether any account selections will be required for the user to raise an access request | [optional] [default to False]
-**type** | [**Dtotype**](dtotype) |  | [optional] 
+**type** | **Dtotype** |  | [optional] 
 **id** | **str** | The identity id for the user | [optional] 
 **name** | **str** | The name of the identity | [optional] 
 }

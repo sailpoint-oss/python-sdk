@@ -25,15 +25,15 @@ Name | Type | Description | Notes
 **description** | **str** | Description of the machine identity. | [optional] 
 **attributes** | **map[string]object** | The attributes assigned to the identity. | [optional] 
 **subtype** |  **Enum** [  'AI Agent',    'Application' ] | Subtype of the machine identity. | [required]
-**owners** | [**[]Machineidentityownerreference**](machineidentityownerreference) | List of owners. | [optional] 
+**owners** | **[]Machineidentityownerreference** | List of owners. | [optional] 
 **source_id** | **str** | Source identifier. | [optional] 
 **uuid** | **str** | UUID of the machine identity. | [optional] 
 **native_identity** | **str** | Native identity value. | [optional] 
 **manually_edited** | **bool** | Indicates if manually edited. | [required][default to False]
 **manually_created** | **bool** | Indicates if manually created. | [optional] [default to False]
 **dataset_id** | **str** | Dataset identifier. | [optional] 
-**source** | [**Machineidentitysourcereference**](machineidentitysourcereference) |  | [optional] 
-**user_entitlements** | [**[]Machineidentityuserentitlements**](machineidentityuserentitlements) | List of user entitlements. | [optional] 
+**source** | **Machineidentitysourcereference** |  | [optional] 
+**user_entitlements** | **[]Machineidentityuserentitlements** | List of user entitlements. | [optional] 
 **exists_on_source** | **str** | Existence status on source. | [optional] 
 }
 

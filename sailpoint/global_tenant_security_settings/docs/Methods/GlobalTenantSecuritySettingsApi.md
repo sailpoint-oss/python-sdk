@@ -33,7 +33,7 @@ Method | HTTP request | Description
 Create security network configuration.
 This API returns the details of an org's network auth configuration. Requires security scope of: 'sp:auth-org:manage'
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/create-auth-org-network-config-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/create-auth-org-network-config-v-1)
 
 ### Parameters 
 
@@ -92,7 +92,7 @@ with ApiClient(configuration) as api_client:
 Get auth org lockout configuration.
 This API returns the details of an org's lockout auth configuration.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-auth-org-lockout-config-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-auth-org-lockout-config-v-1)
 
 ### Parameters 
 This endpoint does not need any parameter. 
@@ -147,7 +147,7 @@ with ApiClient(configuration) as api_client:
 Get security network configuration.
 This API returns the details of an org's network auth configuration.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-auth-org-network-config-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-auth-org-network-config-v-1)
 
 ### Parameters 
 This endpoint does not need any parameter. 
@@ -202,7 +202,7 @@ with ApiClient(configuration) as api_client:
 Get service provider configuration.
 This API returns the details of an org's service provider auth configuration.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-auth-org-service-provider-config-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-auth-org-service-provider-config-v-1)
 
 ### Parameters 
 This endpoint does not need any parameter. 
@@ -257,7 +257,7 @@ with ApiClient(configuration) as api_client:
 Get auth org session configuration.
 This API returns the details of an org's session auth configuration.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-auth-org-session-config-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-auth-org-session-config-v-1)
 
 ### Parameters 
 This endpoint does not need any parameter. 
@@ -313,7 +313,7 @@ Update auth org lockout configuration
 This API updates an existing lockout configuration for an org using PATCH
 
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/patch-auth-org-lockout-config-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-auth-org-lockout-config-v-1)
 
 ### Parameters 
 
@@ -374,7 +374,7 @@ Update security network configuration.
 This API updates an existing network configuration for an org using PATCH
  Requires security scope of:  'sp:auth-org:manage'
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/patch-auth-org-network-config-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-auth-org-network-config-v-1)
 
 ### Parameters 
 
@@ -434,7 +434,7 @@ with ApiClient(configuration) as api_client:
 Update service provider configuration
 This API updates an existing service provider configuration for an org using PATCH.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/patch-auth-org-service-provider-config-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-auth-org-service-provider-config-v-1)
 
 ### Parameters 
 
@@ -494,7 +494,7 @@ with ApiClient(configuration) as api_client:
 Update auth org session configuration
 This API updates an existing session configuration for an org using PATCH.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/patch-auth-org-session-config-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-auth-org-session-config-v-1)
 
 ### Parameters 
 

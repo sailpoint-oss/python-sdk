@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateProfileTypeRoleRequest', 'Creat
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**profile_type_role** | [**ProfileTypeRoles1**](profile-type-roles1) |  | [optional] 
+**profile_type_role** | **ProfileTypeRoles1** |  | [optional] 
 }
 
 ## Example

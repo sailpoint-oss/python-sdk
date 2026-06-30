@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **entitlement_id** | **str** | Entitlement identifier. | [required]
 **display_name** | **str** | Display name of the entitlement. | [required]
-**source** | [**Machineidentitysourcereference**](machineidentitysourcereference) |  | [required]
+**source** | **Machineidentitysourcereference** |  | [required]
 }
 
 ## Example

@@ -18,7 +18,7 @@ The calculation done on the results of the query
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | The name of the metric aggregate to be included in the result. If the metric aggregation is omitted, the resulting aggregation will be a count of the documents in the search results. | [required]
-**type** | [**Metrictype**](metrictype) |  | [optional] [default to Metrictype.UNIQUE_COUNT]
+**type** | **Metrictype** |  | [optional] [default to Metrictype.UNIQUE_COUNT]
 **var_field** | **str** | The field the calculation is performed on.  Prefix the field name with '@' to reference a nested object.  | [required]
 }
 

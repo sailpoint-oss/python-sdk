@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | The name of the attribute. | [optional] 
 **native_name** | **str** | Attribute name in the native system. | [optional] 
-**type** | [**Attributedefinitiontype**](attributedefinitiontype) |  | [optional] 
+**type** | **Attributedefinitiontype** |  | [optional] 
 **var_schema** | [**AttributedefinitionSchema**](attributedefinition-schema) |  | [optional] 
 **description** | **str** | A human-readable description of the attribute. | [optional] 
 **is_multi** | **bool** | Flag indicating whether or not the attribute is multi-valued. | [optional] [default to False]

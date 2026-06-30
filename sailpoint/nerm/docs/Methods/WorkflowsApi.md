@@ -28,7 +28,7 @@ Method | HTTP request | Description
 Create an automated workflow
 Create an automated workflow
 
-[API Spec](https://developer.sailpoint.com/docs/api//create-automated-workflow)
+[API Spec](https://developer.sailpoint.com/docs/api/create-automated-workflow)
 
 ### Parameters 
 
@@ -84,7 +84,7 @@ with ApiClient(configuration) as api_client:
 Create a batch workflow
 Create a batch workflow
 
-[API Spec](https://developer.sailpoint.com/docs/api//create-batch-workflow)
+[API Spec](https://developer.sailpoint.com/docs/api/create-batch-workflow)
 
 ### Parameters 
 
@@ -140,7 +140,7 @@ with ApiClient(configuration) as api_client:
 Create a create workflow
 Create a create workflow
 
-[API Spec](https://developer.sailpoint.com/docs/api//create-create-workflow)
+[API Spec](https://developer.sailpoint.com/docs/api/create-create-workflow)
 
 ### Parameters 
 
@@ -196,7 +196,7 @@ with ApiClient(configuration) as api_client:
 Create a login workflow
 Create a login workflow
 
-[API Spec](https://developer.sailpoint.com/docs/api//create-login-workflow)
+[API Spec](https://developer.sailpoint.com/docs/api/create-login-workflow)
 
 ### Parameters 
 
@@ -252,7 +252,7 @@ with ApiClient(configuration) as api_client:
 Create a password reset workflow
 Create a password reset workflow
 
-[API Spec](https://developer.sailpoint.com/docs/api//create-password-update-workflow)
+[API Spec](https://developer.sailpoint.com/docs/api/create-password-update-workflow)
 
 ### Parameters 
 
@@ -308,7 +308,7 @@ with ApiClient(configuration) as api_client:
 Create a registration workflow
 Create a registration workflow
 
-[API Spec](https://developer.sailpoint.com/docs/api//create-registration-workflow)
+[API Spec](https://developer.sailpoint.com/docs/api/create-registration-workflow)
 
 ### Parameters 
 
@@ -364,7 +364,7 @@ with ApiClient(configuration) as api_client:
 Create an update workflow
 Create an update workflow
 
-[API Spec](https://developer.sailpoint.com/docs/api//create-update-workflow)
+[API Spec](https://developer.sailpoint.com/docs/api/create-update-workflow)
 
 ### Parameters 
 

@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateRunWorkflowActionRequest', 'Cre
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow_action** | [**RunWorkflowAction**](run-workflow-action) |  | [optional] 
+**workflow_action** | **RunWorkflowAction** |  | [optional] 
 }
 
 ## Example

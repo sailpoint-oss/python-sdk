@@ -16,8 +16,8 @@ tags: ['SDK', 'Software Development Kit', 'Search', 'Search']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**indices** | [**[]Index**](index) | The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched. | [optional] 
-**query_type** | [**Querytype**](querytype) |  | [optional] [default to Querytype.SAILPOINT]
+**indices** | **[]Index** | The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched. | [optional] 
+**query_type** | **Querytype** |  | [optional] [default to Querytype.SAILPOINT]
 **query_version** | **str** |  | [optional] 
 **query** | [**Query**](query) |  | [optional] 
 **query_dsl** | **object** | The search query using the Elasticsearch [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/7.10/query-dsl.html) syntax. | [optional] 
@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **type_ahead_query** | [**Typeaheadquery**](typeaheadquery) |  | [optional] 
 **include_nested** | **bool** | Indicates whether nested objects from returned search results should be included. | [optional] [default to True]
 **query_result_filter** | [**Queryresultfilter**](queryresultfilter) |  | [optional] 
-**aggregation_type** | [**Aggregationtype**](aggregationtype) |  | [optional] [default to Aggregationtype.DSL]
+**aggregation_type** | **Aggregationtype** |  | [optional] [default to Aggregationtype.DSL]
 **aggregations_version** | **str** |  | [optional] 
 **aggregations_dsl** | **object** | The aggregation search query using Elasticsearch [Aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-aggregations.html) syntax. | [optional] 
 **aggregations** | [**Searchaggregationspecification**](searchaggregationspecification) |  | [optional] 

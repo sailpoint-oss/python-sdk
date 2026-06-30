@@ -29,7 +29,7 @@ Method | HTTP request | Description
 Create a page content entry
 This endpoint can create page content
 
-[API Spec](https://developer.sailpoint.com/docs/api//create-page-content)
+[API Spec](https://developer.sailpoint.com/docs/api/create-page-content)
 
 ### Parameters 
 
@@ -85,7 +85,7 @@ with ApiClient(configuration) as api_client:
 Delete page content record
 Delete page content by id
 
-[API Spec](https://developer.sailpoint.com/docs/api//delete-page-content-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-page-content-by-id)
 
 ### Parameters 
 
@@ -140,7 +140,7 @@ with ApiClient(configuration) as api_client:
 Delete page content record
 Delete page content by by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api//delete-page-content-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-page-content-by-uid)
 
 ### Parameters 
 
@@ -196,7 +196,7 @@ with ApiClient(configuration) as api_client:
 Find page content record
 Info for a specific page content record
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-page-content-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/get-page-content-by-id)
 
 ### Parameters 
 
@@ -251,7 +251,7 @@ with ApiClient(configuration) as api_client:
 Find a page content record
 Info for a specific page content record by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-page-content-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/get-page-content-by-uid)
 
 ### Parameters 
 
@@ -306,7 +306,7 @@ with ApiClient(configuration) as api_client:
 Get page contents data
 This endpoint can retrieve page content data.
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-page-contents)
+[API Spec](https://developer.sailpoint.com/docs/api/get-page-contents)
 
 ### Parameters 
 This endpoint does not need any parameter. 
@@ -357,7 +357,7 @@ with ApiClient(configuration) as api_client:
 Update page content record
 Update info for a specific page content record by id
 
-[API Spec](https://developer.sailpoint.com/docs/api//update-page-content-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/update-page-content-by-id)
 
 ### Parameters 
 
@@ -416,7 +416,7 @@ with ApiClient(configuration) as api_client:
 Update page content record
 Update info for a specific page content record by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api//update-page-content-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/update-page-content-by-uid)
 
 ### Parameters 
 

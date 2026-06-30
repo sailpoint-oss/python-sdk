@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **system** | **bool** | True if this schema attribute is mandatory on all non-employees sources. | [optional] [default to False]
 **modified** | **datetime** | When the schema attribute was last modified. | [optional] 
 **created** | **datetime** | When the schema attribute was created. | [optional] 
-**type** | [**Nonemployeeschemaattributetype**](nonemployeeschemaattributetype) |  | [required]
+**type** | **Nonemployeeschemaattributetype** |  | [required]
 **label** | **str** | Label displayed on the UI for this schema attribute. | [required]
 **technical_name** | **str** | The technical name of the attribute. Must be unique per source. | [required]
 **help_text** | **str** | help text displayed by UI. | [optional] 

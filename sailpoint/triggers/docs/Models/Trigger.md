@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Unique identifier of the trigger. | [required]
 **name** | **str** | Trigger Name. | [required]
-**type** | [**Triggertype**](triggertype) |  | [required]
+**type** | **Triggertype** |  | [required]
 **description** | **str** | Trigger Description. | [optional] 
 **input_schema** | **str** | The JSON schema of the payload that will be sent by the trigger to the subscribed service. | [required]
 **example_input** | [**TriggerExampleInput**](trigger-example-input) |  | [required]

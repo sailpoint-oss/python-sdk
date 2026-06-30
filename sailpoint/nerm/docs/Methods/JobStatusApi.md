@@ -22,7 +22,7 @@ Method | HTTP request | Description
 Get bulk job status
 Retrieve the status of a bulk job
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-job-status)
+[API Spec](https://developer.sailpoint.com/docs/api/get-job-status)
 
 ### Parameters 
 

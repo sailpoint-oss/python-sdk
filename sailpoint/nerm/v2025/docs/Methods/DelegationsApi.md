@@ -26,7 +26,7 @@ Method | HTTP request | Description
 List delegations
 Returns a list of delegation records, optionally filtered by delegate, delegator, or expiration status.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v2025/delegations-get)
+[API Spec](https://developer.sailpoint.com/docs/api/delegations-get)
 
 ### Parameters 
 
@@ -90,7 +90,7 @@ with ApiClient(configuration) as api_client:
 Delete a delegation
 Delete an existing delegation record.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v2025/delegations-id-delete)
+[API Spec](https://developer.sailpoint.com/docs/api/delegations-id-delete)
 
 ### Parameters 
 
@@ -142,7 +142,7 @@ with ApiClient(configuration) as api_client:
 Get a single delegation
 Returns a single delegation record by its ID.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v2025/delegations-id-get)
+[API Spec](https://developer.sailpoint.com/docs/api/delegations-id-get)
 
 ### Parameters 
 
@@ -197,7 +197,7 @@ with ApiClient(configuration) as api_client:
 Update a delegation
 Update an existing delegation record.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v2025/delegations-id-patch)
+[API Spec](https://developer.sailpoint.com/docs/api/delegations-id-patch)
 
 ### Parameters 
 
@@ -255,7 +255,7 @@ with ApiClient(configuration) as api_client:
 Create a delegation
 Create a new delegation record.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v2025/delegations-post)
+[API Spec](https://developer.sailpoint.com/docs/api/delegations-post)
 
 ### Parameters 
 

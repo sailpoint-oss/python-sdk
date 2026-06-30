@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'GetRiskScore200Response', 'GetRiskSco
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**risk_score** | [**RiskScore**](risk-score) |  | [optional] 
+**risk_score** | **RiskScore** |  | [optional] 
 }
 
 ## Example

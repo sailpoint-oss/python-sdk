@@ -33,7 +33,7 @@ Method | HTTP request | Description
 Create multiple profiles
 Create multiple profiles
 
-[API Spec](https://developer.sailpoint.com/docs/api//create-profiles)
+[API Spec](https://developer.sailpoint.com/docs/api/create-profiles)
 
 ### Parameters 
 
@@ -89,7 +89,7 @@ with ApiClient(configuration) as api_client:
 Delete a single profile
 Delete a single profile
 
-[API Spec](https://developer.sailpoint.com/docs/api//delete-profile-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-profile-by-id)
 
 ### Parameters 
 
@@ -141,7 +141,7 @@ with ApiClient(configuration) as api_client:
 Delete multiple profiles
 Delete multiple profiles
 
-[API Spec](https://developer.sailpoint.com/docs/api//delete-profiles)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-profiles)
 
 ### Parameters 
 
@@ -197,7 +197,7 @@ with ApiClient(configuration) as api_client:
 Retrieves profile avatar URL
 Retrieves the URL of the profile avatar
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-profile-avatar)
+[API Spec](https://developer.sailpoint.com/docs/api/get-profile-avatar)
 
 ### Parameters 
 
@@ -252,7 +252,7 @@ with ApiClient(configuration) as api_client:
 Find profile by id
 Find profile by id
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-profile-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/get-profile-by-id)
 
 ### Parameters 
 
@@ -307,7 +307,7 @@ with ApiClient(configuration) as api_client:
 Retrieves profile attribute attachment URL
 Retrieves the URL of an attachment attribute value from a profile
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-profile-upload)
+[API Spec](https://developer.sailpoint.com/docs/api/get-profile-upload)
 
 ### Parameters 
 
@@ -364,7 +364,7 @@ with ApiClient(configuration) as api_client:
 Get profiles
 Get profiles
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-profiles)
+[API Spec](https://developer.sailpoint.com/docs/api/get-profiles)
 
 ### Parameters 
 
@@ -437,7 +437,7 @@ with ApiClient(configuration) as api_client:
 Update a profile by id
 Update a profile by id
 
-[API Spec](https://developer.sailpoint.com/docs/api//patch-profile-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-profile-by-id)
 
 ### Parameters 
 
@@ -495,7 +495,7 @@ with ApiClient(configuration) as api_client:
 Update multiple profiles
 Update multiple profiles
 
-[API Spec](https://developer.sailpoint.com/docs/api//patch-profiles)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-profiles)
 
 ### Parameters 
 
@@ -551,7 +551,7 @@ with ApiClient(configuration) as api_client:
 Create a profile
 Create a profile
 
-[API Spec](https://developer.sailpoint.com/docs/api//submit-profile)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-profile)
 
 ### Parameters 
 
@@ -607,7 +607,7 @@ with ApiClient(configuration) as api_client:
 Uploads new profile avatar
 Uploads a new profile avatar
 
-[API Spec](https://developer.sailpoint.com/docs/api//submit-profile-avatar)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-profile-avatar)
 
 ### Parameters 
 
@@ -665,7 +665,7 @@ Uploads profile attachment attribute
 Uploads a new attachment attribute value to a profile. The upload must be a FORM data type; this is not a JSON API. The upload must include the binary content of the payload under the 'file' named form element. The upload must not attempt to include the file name or its content type as a other form or JSON as parameters. The upload must not attempt to upload the file body as the POST body payload; it has to arrive as a FORM parameter. Do not use a `File/Binary` payload type for the POST operation in your API client.
 
 
-[API Spec](https://developer.sailpoint.com/docs/api//submit-profile-upload)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-profile-upload)
 
 ### Parameters 
 

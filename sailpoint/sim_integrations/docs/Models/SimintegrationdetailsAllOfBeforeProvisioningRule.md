@@ -17,7 +17,7 @@ Before provisioning rule of integration
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**Dtotype**](dtotype) |  | [optional] 
+**type** | **Dtotype** |  | [optional] 
 **id** | **str** | ID of the rule | [optional] 
 **name** | **str** | Human-readable display name of the rule | [optional] 
 }

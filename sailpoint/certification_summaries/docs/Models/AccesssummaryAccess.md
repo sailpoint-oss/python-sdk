@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'AccesssummaryAccess', 'AccesssummaryA
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**Dtotype**](dtotype) |  | [optional] 
+**type** | **Dtotype** |  | [optional] 
 **id** | **str** | The ID of the item being certified | [optional] 
 **name** | **str** | The name of the item being certified | [optional] 
 }

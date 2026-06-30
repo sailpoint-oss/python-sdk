@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Filter', 'Filter']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**Filtertype**](filtertype) |  | [optional] 
+**type** | **Filtertype** |  | [optional] 
 **range** | [**Range**](range) |  | [optional] 
 **terms** | **[]str** | The terms to be filtered. | [optional] 
 **exclude** | **bool** | Indicates if the filter excludes results. | [optional] [default to False]

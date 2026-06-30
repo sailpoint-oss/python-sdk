@@ -44,7 +44,7 @@ This API is currently in an experimental state. The API is subject to change bas
 Generate insights for roles
 Submits a create role insights request to the role insights application. At this time there are no parameters. All business roles will be processed for the customer.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/create-role-insight-requests-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/create-role-insight-requests-v-1)
 
 ### Parameters 
 
@@ -114,7 +114,7 @@ This API is currently in an experimental state. The API is subject to change bas
 Download entitlement insights for a role
 This endpoint returns the entitlement insights for a role.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/download-role-insights-entitlements-changes-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/download-role-insights-entitlements-changes-v-1)
 
 ### Parameters 
 
@@ -188,7 +188,7 @@ This API is currently in an experimental state. The API is subject to change bas
 Get identities for a suggested entitlement (for a role)
 Role insights suggests entitlements to be added for a role. This endpoint returns a list of identities in the role, with or without the entitlements, for a suggested entitlement so that the user can see which identities would be affected if the suggested entitlement were to be added to the role.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-entitlement-changes-identities-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-entitlement-changes-identities-v-1)
 
 ### Parameters 
 
@@ -274,7 +274,7 @@ This API is currently in an experimental state. The API is subject to change bas
 Get a single role insight
 This endpoint gets role insights information for a role.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-role-insight-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-role-insight-v-1)
 
 ### Parameters 
 
@@ -345,7 +345,7 @@ This API is currently in an experimental state. The API is subject to change bas
 Get current entitlement for a role
 This endpoint gets the entitlements for a role. The term "current" is to distinguish from the entitlement(s) an insight might recommend adding.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-role-insights-current-entitlements-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-role-insights-current-entitlements-v-1)
 
 ### Parameters 
 
@@ -419,7 +419,7 @@ This API is currently in an experimental state. The API is subject to change bas
 Get entitlement insights for a role
 This endpoint returns entitlement insights for a role.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-role-insights-entitlements-changes-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-role-insights-entitlements-changes-v-1)
 
 ### Parameters 
 
@@ -498,7 +498,7 @@ This API is currently in an experimental state. The API is subject to change bas
 Returns metadata from prior request.
 This endpoint returns details of a prior role insights request. 
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-role-insights-requests-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-role-insights-requests-v-1)
 
 ### Parameters 
 
@@ -570,7 +570,7 @@ This API is currently in an experimental state. The API is subject to change bas
 Get role insights summary information
 This method returns high level summary information for role insights for a customer.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-role-insights-summary-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-role-insights-summary-v-1)
 
 ### Parameters 
 
@@ -639,7 +639,7 @@ This API is currently in an experimental state. The API is subject to change bas
 Get role insights
 This method returns detailed role insights for each role.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-role-insights-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-role-insights-v-1)
 
 ### Parameters 
 

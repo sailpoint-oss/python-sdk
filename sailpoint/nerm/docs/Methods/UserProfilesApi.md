@@ -29,7 +29,7 @@ Method | HTTP request | Description
 Create multiple user-profile contributor relationships
 Create multiple user-profile contributor relationships
 
-[API Spec](https://developer.sailpoint.com/docs/api//create-user-profiles)
+[API Spec](https://developer.sailpoint.com/docs/api/create-user-profiles)
 
 ### Parameters 
 
@@ -85,7 +85,7 @@ with ApiClient(configuration) as api_client:
 Delete a user profile assignment
 Delete a user profile assignment
 
-[API Spec](https://developer.sailpoint.com/docs/api//delete-user-profile)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-user-profile)
 
 ### Parameters 
 
@@ -139,7 +139,7 @@ with ApiClient(configuration) as api_client:
 Delete multiple user-profile contributor relationships
 Delete multiple user-profile contributor relationships
 
-[API Spec](https://developer.sailpoint.com/docs/api//delete-user-profiles)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-user-profiles)
 
 ### Parameters 
 
@@ -195,7 +195,7 @@ with ApiClient(configuration) as api_client:
 Find user-profile contributor relationship
 Find user-profile contributor relationship by id
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-user-profile)
+[API Spec](https://developer.sailpoint.com/docs/api/get-user-profile)
 
 ### Parameters 
 
@@ -250,7 +250,7 @@ with ApiClient(configuration) as api_client:
 Get user-profile contributor relationships
 Get user-profile contributor relationships
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-user-profiles)
+[API Spec](https://developer.sailpoint.com/docs/api/get-user-profiles)
 
 ### Parameters 
 
@@ -319,7 +319,7 @@ with ApiClient(configuration) as api_client:
 Update a user-profile contributor relationship
 Update a user-profile contributor relationship by id
 
-[API Spec](https://developer.sailpoint.com/docs/api//patch-user-profile)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-user-profile)
 
 ### Parameters 
 
@@ -377,7 +377,7 @@ with ApiClient(configuration) as api_client:
 Update multiple user-profile contributor relationships
 Update multiple user-profile contributor relationships
 
-[API Spec](https://developer.sailpoint.com/docs/api//patch-user-profiles)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-user-profiles)
 
 ### Parameters 
 
@@ -433,7 +433,7 @@ with ApiClient(configuration) as api_client:
 Create a user-profile contributor relationship
 Create a user-profile contributor relationship
 
-[API Spec](https://developer.sailpoint.com/docs/api//submit-user-profile)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-user-profile)
 
 ### Parameters 
 

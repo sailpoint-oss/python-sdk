@@ -47,7 +47,7 @@ Method | HTTP request | Description
 Generate json schema dynamically.
 
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/create-form-definition-dynamic-schema-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/create-form-definition-dynamic-schema-v-1)
 
 ### Parameters 
 
@@ -107,7 +107,7 @@ with ApiClient(configuration) as api_client:
 Upload new form definition file.
 Parameter `{formDefinitionID}` should match a form definition ID.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/create-form-definition-file-request-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/create-form-definition-file-request-v-1)
 
 ### Parameters 
 
@@ -171,7 +171,7 @@ with ApiClient(configuration) as api_client:
 Creates a form definition.
 
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/create-form-definition-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/create-form-definition-v-1)
 
 ### Parameters 
 
@@ -230,7 +230,7 @@ with ApiClient(configuration) as api_client:
 Creates a form instance.
 
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/create-form-instance-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/create-form-instance-v-1)
 
 ### Parameters 
 
@@ -289,7 +289,7 @@ with ApiClient(configuration) as api_client:
 Deletes a form definition.
 Parameter `{formDefinitionID}` should match a form definition ID.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/delete-form-definition-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-form-definition-v-1)
 
 ### Parameters 
 
@@ -347,7 +347,7 @@ with ApiClient(configuration) as api_client:
 List form definitions by tenant.
 No parameters required.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/export-form-definitions-by-tenant-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/export-form-definitions-by-tenant-v-1)
 
 ### Parameters 
 
@@ -412,7 +412,7 @@ with ApiClient(configuration) as api_client:
 Download definition file by fileid.
 
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-file-from-s3-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-file-from-s3-v-1)
 
 ### Parameters 
 
@@ -473,7 +473,7 @@ with ApiClient(configuration) as api_client:
 Return a form definition.
 Parameter `{formDefinitionID}` should match a form definition ID.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-form-definition-by-key-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-form-definition-by-key-v-1)
 
 ### Parameters 
 
@@ -534,7 +534,7 @@ Parameter `{formInstanceID}` should match a form instance ID.
 
 Only the assigned recipient (`recipients[].id` when `type` is `IDENTITY`) may call this.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-form-instance-by-key-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-form-instance-by-key-v-1)
 
 ### Parameters 
 
@@ -593,7 +593,7 @@ with ApiClient(configuration) as api_client:
 Download instance file by fileid.
 
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-form-instance-file-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-form-instance-file-v-1)
 
 ### Parameters 
 
@@ -654,7 +654,7 @@ with ApiClient(configuration) as api_client:
 Import form definitions from export.
 
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/import-form-definitions-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/import-form-definitions-v-1)
 
 ### Parameters 
 
@@ -713,7 +713,7 @@ with ApiClient(configuration) as api_client:
 Patch a form definition.
 Parameter `{formDefinitionID}` should match a form definition ID.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/patch-form-definition-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-form-definition-v-1)
 
 ### Parameters 
 
@@ -776,7 +776,7 @@ Parameter `{formInstanceID}` should match a form instance ID.
 
 Only the assigned recipient (`recipients[].id` when `type` is `IDENTITY`) may call this.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/patch-form-instance-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-form-instance-v-1)
 
 ### Parameters 
 
@@ -838,7 +838,7 @@ with ApiClient(configuration) as api_client:
 Export form definitions by tenant.
 No parameters required.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/search-form-definitions-by-tenant-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/search-form-definitions-by-tenant-v-1)
 
 ### Parameters 
 
@@ -903,7 +903,7 @@ Retrieves dynamic data by element.
 Parameter `{formInstanceID}` should match a form instance ID.
 Parameter `{formElementID}` should match a form element ID at the data source configuration.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/search-form-element-data-by-element-idv1)
+[API Spec](https://developer.sailpoint.com/docs/api/search-form-element-data-by-element-idv1)
 
 ### Parameters 
 
@@ -970,7 +970,7 @@ with ApiClient(configuration) as api_client:
 List form instances by tenant.
 Returns a list of form instances for the tenant. Optionally filter by form definition ID.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/search-form-instances-by-tenant-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/search-form-instances-by-tenant-v-1)
 
 ### Parameters 
 
@@ -1033,7 +1033,7 @@ with ApiClient(configuration) as api_client:
 List predefined select options.
 No parameters required.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/search-pre-defined-select-options-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/search-pre-defined-select-options-v-1)
 
 ### Parameters 
 This endpoint does not need any parameter. 
@@ -1087,7 +1087,7 @@ with ApiClient(configuration) as api_client:
 Preview form definition data source.
 
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/show-preview-data-source-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/show-preview-data-source-v-1)
 
 ### Parameters 
 

@@ -17,7 +17,7 @@ When present, specifies that the Role is to be granted to Identities which eithe
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**Rolemembershipselectortype**](rolemembershipselectortype) |  | [optional] 
+**type** | **Rolemembershipselectortype** |  | [optional] 
 **criteria** | [**Rolecriterialevel1**](rolecriterialevel1) |  | [optional] 
 **identities** | [**[]Rolemembershipidentity**](rolemembershipidentity) | Defines role membership as being exclusive to the specified Identities, when type is IDENTITY_LIST. | [optional] 
 }

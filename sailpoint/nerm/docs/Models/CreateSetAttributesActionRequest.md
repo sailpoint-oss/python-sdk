@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateSetAttributesActionRequest', 'C
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow_action** | [**SetAttributesAction**](set-attributes-action) |  | [optional] 
+**workflow_action** | **SetAttributesAction** |  | [optional] 
 }
 
 ## Example

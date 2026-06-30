@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **min_entitlement_popularity** | **int** | The minimum popularity among identities in the role which an entitlement must have to be included in the report | [optional] 
 **include_common_access** | **bool** | If false, do not include entitlements that are highly popular among the entire orginization | [optional] 
 **export_id** | **str** | ID used to reference this export | [optional] 
-**status** | [**Roleminingpotentialroleexportstate**](roleminingpotentialroleexportstate) |  | [optional] 
+**status** | **Roleminingpotentialroleexportstate** |  | [optional] 
 }
 
 ## Example

@@ -17,7 +17,7 @@ A typed reference to the object.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**Dtotype**](dtotype) |  | [required]
+**type** | **Dtotype** |  | [required]
 **id** | **str** | The id of the object.  | [required]
 }
 

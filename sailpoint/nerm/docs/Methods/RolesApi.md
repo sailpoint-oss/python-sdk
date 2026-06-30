@@ -27,7 +27,7 @@ Method | HTTP request | Description
 Find role by id
 Info for a specific user role
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-role)
+[API Spec](https://developer.sailpoint.com/docs/api/get-role)
 
 ### Parameters 
 
@@ -82,7 +82,7 @@ with ApiClient(configuration) as api_client:
 Get roles
 This endpoint can retrieve roles from NERM. Optionally you can provide parameters to filter results.
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-roles)
+[API Spec](https://developer.sailpoint.com/docs/api/get-roles)
 
 ### Parameters 
 
@@ -145,7 +145,7 @@ with ApiClient(configuration) as api_client:
 Update an existing role
 Update an existing role
 
-[API Spec](https://developer.sailpoint.com/docs/api//patch-role)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-role)
 
 ### Parameters 
 
@@ -203,7 +203,7 @@ with ApiClient(configuration) as api_client:
 Update multiple roles
 Update multiple users
 
-[API Spec](https://developer.sailpoint.com/docs/api//patch-roles)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-roles)
 
 ### Parameters 
 
@@ -259,7 +259,7 @@ with ApiClient(configuration) as api_client:
 Create a new role
 Create a new role
 
-[API Spec](https://developer.sailpoint.com/docs/api//submit-role)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-role)
 
 ### Parameters 
 
@@ -315,7 +315,7 @@ with ApiClient(configuration) as api_client:
 Create multiple new roles
 Create multiple new users
 
-[API Spec](https://developer.sailpoint.com/docs/api//submit-roles)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-roles)
 
 ### Parameters 
 

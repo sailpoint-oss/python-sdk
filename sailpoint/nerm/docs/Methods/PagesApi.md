@@ -23,7 +23,7 @@ Method | HTTP request | Description
 Create a profile page
 Create a profile page
 
-[API Spec](https://developer.sailpoint.com/docs/api//create-profile-page)
+[API Spec](https://developer.sailpoint.com/docs/api/create-profile-page)
 
 ### Parameters 
 
@@ -79,7 +79,7 @@ with ApiClient(configuration) as api_client:
 Create a workflow page
 Create a workflow page
 
-[API Spec](https://developer.sailpoint.com/docs/api//create-workflow-page)
+[API Spec](https://developer.sailpoint.com/docs/api/create-workflow-page)
 
 ### Parameters 
 

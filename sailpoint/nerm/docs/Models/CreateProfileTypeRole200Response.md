@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateProfileTypeRole200Response', 'C
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**profile_type_roles** | [**ProfileTypeRoles**](profile-type-roles) |  | [optional] 
+**profile_type_roles** | **ProfileTypeRoles** |  | [optional] 
 }
 
 ## Example

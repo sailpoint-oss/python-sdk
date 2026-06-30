@@ -17,7 +17,7 @@ The request body of Reassignment Configuration Details for a specific identity a
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**config_type** | [**Configtypeenum**](configtypeenum) |  | [optional] 
+**config_type** | **Configtypeenum** |  | [optional] 
 **target_identity** | [**Identity2**](identity2) |  | [optional] 
 **start_date** | **datetime** | The date from which to start reassigning work items | [optional] 
 **end_date** | **datetime** | The date from which to stop reassigning work items.  If this is an empty string it indicates a permanent reassignment. | [optional] 

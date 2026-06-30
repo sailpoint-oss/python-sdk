@@ -29,7 +29,7 @@ Method | HTTP request | Description
 Create a form
 This endpoint can create a form
 
-[API Spec](https://developer.sailpoint.com/docs/api//create-form)
+[API Spec](https://developer.sailpoint.com/docs/api/create-form)
 
 ### Parameters 
 
@@ -85,7 +85,7 @@ with ApiClient(configuration) as api_client:
 Delete form by id
 Delete form by id
 
-[API Spec](https://developer.sailpoint.com/docs/api//delete-form-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-form-by-id)
 
 ### Parameters 
 
@@ -141,7 +141,7 @@ with ApiClient(configuration) as api_client:
 Delete form by UID
 Delete form by UID
 
-[API Spec](https://developer.sailpoint.com/docs/api//delete-form-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-form-by-uid)
 
 ### Parameters 
 
@@ -197,7 +197,7 @@ with ApiClient(configuration) as api_client:
 Get form data by Id
 Info for a specific form
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-form-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/get-form-by-id)
 
 ### Parameters 
 
@@ -253,7 +253,7 @@ with ApiClient(configuration) as api_client:
 Get form data by UID
 Info for a specific form
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-form-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/get-form-by-uid)
 
 ### Parameters 
 
@@ -309,7 +309,7 @@ with ApiClient(configuration) as api_client:
 Get forms
 Get defined forms in the system
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-forms)
+[API Spec](https://developer.sailpoint.com/docs/api/get-forms)
 
 ### Parameters 
 This endpoint does not need any parameter. 
@@ -361,7 +361,7 @@ with ApiClient(configuration) as api_client:
 Update form data by id
 Update info for a specific form
 
-[API Spec](https://developer.sailpoint.com/docs/api//update-form-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/update-form-by-id)
 
 ### Parameters 
 
@@ -420,7 +420,7 @@ with ApiClient(configuration) as api_client:
 Update form data by UID
 Update info for a specific form
 
-[API Spec](https://developer.sailpoint.com/docs/api//update-form-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/update-form-by-uid)
 
 ### Parameters 
 

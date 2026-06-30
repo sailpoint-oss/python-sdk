@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateSoapApiActionRequest', 'CreateS
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow_action** | [**SoapApiAction**](soap-api-action) |  | [optional] 
+**workflow_action** | **SoapApiAction** |  | [optional] 
 }
 
 ## Example

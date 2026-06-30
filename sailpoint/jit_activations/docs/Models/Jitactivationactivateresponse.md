@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **activation_id** | **str** | Persistent activation record identifier for this JIT activation. | [required]
 **connection_id** | **str** | Entitlement connection identifier for the activation. | [required]
 **activation_period_mins** | **int** | Activation duration in minutes for this workflow. | [required]
-**status** | [**Activationworkflowstatus**](activationworkflowstatus) |  | [required]
+**status** | **Activationworkflowstatus** |  | [required]
 **start_time** | **datetime** | Time when the activation workflow was started (ISO-8601). | [required]
 }
 

@@ -18,8 +18,8 @@ Changes to owners.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **attribute_name** | **str** | Name of the attribute that changed. | [optional] 
-**added** | [**[]Machineidentityownerreference**](machineidentityownerreference) | Owners that were added. | [optional] 
-**removed** | [**[]Machineidentityownerreference**](machineidentityownerreference) | Owners that were removed. | [optional] 
+**added** | **[]Machineidentityownerreference** | Owners that were added. | [optional] 
+**removed** | **[]Machineidentityownerreference** | Owners that were removed. | [optional] 
 }
 
 ## Example

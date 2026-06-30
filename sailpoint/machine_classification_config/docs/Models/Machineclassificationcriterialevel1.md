@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Machineclassificationcriterialevel1',
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**operation** | [**Machineclassificationcriteriaoperation**](machineclassificationcriteriaoperation) |  | [optional] 
+**operation** | **Machineclassificationcriteriaoperation** |  | [optional] 
 **case_sensitive** | **bool** | Indicates whether case matters when evaluating the criteria | [optional] [default to False]
 **data_type** | **str** | The data type of the attribute being evaluated | [optional] 
 **attribute** | **str** | The attribute to evaluate in the classification criteria | [optional] 

@@ -17,7 +17,7 @@ The manager for the identity.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**Dtotype**](dtotype) |  | [optional] 
+**type** | **Dtotype** |  | [optional] 
 **id** | **str** | Identity id | [optional] 
 **name** | **str** | Human-readable display name of identity. | [optional] 
 }

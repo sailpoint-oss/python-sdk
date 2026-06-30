@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **alias_name** | **str** | The alias / username of the Identity | [optional] 
 **name** | **str** | The human-readable display name of the Identity | [optional] 
 **email** | **str** | Email address of the Identity | [optional] 
-**role_assignment_source** | [**Roleassignmentsourcetype**](roleassignmentsourcetype) |  | [optional] 
+**role_assignment_source** | **Roleassignmentsourcetype** |  | [optional] 
 }
 
 ## Example

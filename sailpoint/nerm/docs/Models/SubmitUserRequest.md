@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'SubmitUserRequest', 'SubmitUserReques
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user** | [**User1**](user1) |  | [optional] 
+**user** | **User1** |  | [optional] 
 }
 
 ## Example

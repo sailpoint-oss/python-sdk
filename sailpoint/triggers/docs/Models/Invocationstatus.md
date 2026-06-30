@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **trigger_id** | **str** | Trigger ID | [required]
 **subscription_name** | **str** | Subscription name | [required]
 **subscription_id** | **str** | Subscription ID | [required]
-**type** | [**Invocationstatustype**](invocationstatustype) |  | [required]
+**type** | **Invocationstatustype** |  | [required]
 **created** | **datetime** | Invocation created timestamp. ISO-8601 in UTC. | [required]
 **completed** | **datetime** | Invocation completed timestamp; empty fields imply invocation is in-flight or not completed. ISO-8601 in UTC. | [optional] 
 **start_invocation_input** | [**Startinvocationinput**](startinvocationinput) |  | [required]

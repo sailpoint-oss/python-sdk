@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreatePermissionRequest', 'CreatePerm
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**permission** | [**Permission1**](permission1) |  | [optional] 
+**permission** | **Permission1** |  | [optional] 
 }
 
 ## Example

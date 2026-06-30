@@ -17,7 +17,7 @@ tags: ['SDK', 'Software Development Kit', 'Accountsselectionrequest', 'Accountss
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **requested_for** | **[]str** | A list of Identity IDs for whom the Access is requested. | [required]
-**request_type** | [**Accessrequesttype**](accessrequesttype) |  | [optional] 
+**request_type** | **Accessrequesttype** |  | [optional] 
 **requested_items** | [**[]Accessrequestitem**](accessrequestitem) |  | [required]
 **client_metadata** | **map[string]str** | Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities.   | [optional] 
 }

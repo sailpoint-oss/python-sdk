@@ -31,7 +31,7 @@ Method | HTTP request | Description
 Create a branding item
 This API endpoint creates a branding item.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/create-branding-item-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/create-branding-item-v-1)
 
 ### Parameters 
 
@@ -103,7 +103,7 @@ with ApiClient(configuration) as api_client:
 Delete a branding item
 This API endpoint delete information for an existing branding item by name.    
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/delete-branding-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-branding-v-1)
 
 ### Parameters 
 
@@ -159,7 +159,7 @@ with ApiClient(configuration) as api_client:
 List of branding items
 This API endpoint returns a list of branding items.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-branding-list-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-branding-list-v-1)
 
 ### Parameters 
 This endpoint does not need any parameter. 
@@ -214,7 +214,7 @@ with ApiClient(configuration) as api_client:
 Get a branding item
 This API endpoint retrieves information for an existing branding item by name.    
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-branding-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-branding-v-1)
 
 ### Parameters 
 
@@ -273,7 +273,7 @@ with ApiClient(configuration) as api_client:
 Update a branding item
 This API endpoint updates information for an existing branding item.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/set-branding-item-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/set-branding-item-v-1)
 
 ### Parameters 
 

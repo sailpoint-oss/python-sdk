@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'GetProfileTypeAttributes200Response',
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**profile_type_attributes** | [**ProfileTypeAttributes**](profile-type-attributes) |  | [optional] 
+**profile_type_attributes** | **ProfileTypeAttributes** |  | [optional] 
 }
 
 ## Example

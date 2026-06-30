@@ -18,7 +18,7 @@ Request to create Managed Cluster
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | ManagedCluster name | [required]
-**type** | [**Managedclustertypes**](managedclustertypes) |  | [optional] 
+**type** | **Managedclustertypes** |  | [optional] 
 **configuration** | **map[string]str** | ManagedProcess configuration map | [optional] 
 **description** | **str** | ManagedCluster description | [optional] 
 }

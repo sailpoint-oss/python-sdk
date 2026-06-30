@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | the provisioning policy name | [required]
 **description** | **str** | the description of the provisioning policy | [optional] 
-**usage_type** | [**Usagetype**](usagetype) |  | [optional] 
+**usage_type** | **Usagetype** |  | [optional] 
 **fields** | [**[]Fielddetailsdto**](fielddetailsdto) |  | [optional] 
 }
 

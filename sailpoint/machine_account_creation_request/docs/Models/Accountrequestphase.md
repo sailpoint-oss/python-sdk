@@ -18,7 +18,7 @@ Contains detailed information about each phase in the account request process, i
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** |  **Enum** [  'APPROVAL_PHASE',    'PROVISIONING_PHASE' ] | Enum of account request phase type | [optional] 
-**state** | [**Accountrequestphasestate**](accountrequestphasestate) |  | [optional] 
+**state** | **Accountrequestphasestate** |  | [optional] 
 **started** | **datetime** | Start date of account request phase. | [optional] [readonly] 
 **finished** | **datetime** | Finish date of account request phase. | [optional] [readonly] 
 }

@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreatePermission200Response', 'Create
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**permission** | [**Permission**](permission) |  | [optional] 
+**permission** | **Permission** |  | [optional] 
 }
 
 ## Example

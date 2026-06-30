@@ -46,7 +46,7 @@ Method | HTTP request | Description
 Add a new parameter.
 Add a new parameter.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/create-parameter-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/create-parameter-v-1)
 
 ### Parameters 
 
@@ -105,7 +105,7 @@ with ApiClient(configuration) as api_client:
 Delete a parameter.
 Delete a parameter. Will only delete parameters without existing references.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/delete-parameter-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-parameter-v-1)
 
 ### Parameters 
 
@@ -162,7 +162,7 @@ with ApiClient(configuration) as api_client:
 Get an attestation document.
 Get an attestation document containing a NIST P-384 service public key for an ECDHE handshake, enabling the end-to-end-encrypted transport of parameter private fields.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-attestation-document-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-attestation-document-v-1)
 
 ### Parameters 
 
@@ -220,7 +220,7 @@ with ApiClient(configuration) as api_client:
 Get parameter references.
 Get the references for a given parameter.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-parameter-references-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-parameter-references-v-1)
 
 ### Parameters 
 
@@ -297,7 +297,7 @@ This API is currently in an experimental state. The API is subject to change bas
 Get specifications for parameter types.
 Get the specifications for all parameter types. All parameters must conform to this specification document.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-parameter-storage-specification-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-parameter-storage-specification-v-1)
 
 ### Parameters 
 
@@ -353,7 +353,7 @@ with ApiClient(configuration) as api_client:
 Get a specific parameter.
 Get a parameter by ID. This will only return the public fields for the parameter.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-parameter-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-parameter-v-1)
 
 ### Parameters 
 
@@ -412,7 +412,7 @@ with ApiClient(configuration) as api_client:
 Query stored parameters.
 Query a stored parameter.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/search-parameters-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/search-parameters-v-1)
 
 ### Parameters 
 
@@ -477,7 +477,7 @@ with ApiClient(configuration) as api_client:
 Update a parameter.
 Update a parameter. You cannot change a parameter's type once set. Only the name, owner, description, public fields, and private fields can be updated. Private field updates are made via JWE AES256 encrypted blobs.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/update-parameter-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/update-parameter-v-1)
 
 ### Parameters 
 

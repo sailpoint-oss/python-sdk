@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateCreateWorkflow200Response', 'Cr
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow** | [**WorkflowSession**](workflow-session) |  | [optional] 
+**workflow** | **WorkflowSession** |  | [optional] 
 }
 
 ## Example

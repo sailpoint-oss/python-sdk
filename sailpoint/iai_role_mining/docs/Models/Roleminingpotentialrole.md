@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 **role_id** | **str** | The roleId of a potential role. | [optional] 
 **saved** | **bool** | The potential role's saved status. | [optional] [default to False]
 **session** | [**Roleminingsessionparametersdto**](roleminingsessionparametersdto) |  | [optional] 
-**type** | [**Roleminingroletype**](roleminingroletype) |  | [optional] 
+**type** | **Roleminingroletype** |  | [optional] 
 **id** | **str** | Id of the potential role | [optional] 
 **created_date** | **datetime** | The date-time when this potential role was created. | [optional] 
 **modified_date** | **datetime** | The date-time when this potential role was modified. | [optional] 

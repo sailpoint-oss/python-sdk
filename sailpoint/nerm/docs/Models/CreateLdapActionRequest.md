@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateLdapActionRequest', 'CreateLdap
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow_action** | [**LdapAction**](ldap-action) |  | [optional] 
+**workflow_action** | **LdapAction** |  | [optional] 
 }
 
 ## Example

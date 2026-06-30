@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Sourceaccountselections', 'Sourceacco
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**Dtotype**](dtotype) |  | [optional] 
+**type** | **Dtotype** |  | [optional] 
 **id** | **str** | The source id | [optional] 
 **name** | **str** | The source name | [optional] 
 **accounts** | [**[]Accountinforef**](accountinforef) | The accounts information for a particular source in the requested item | [optional] 

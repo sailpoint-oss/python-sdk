@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateContributorsActionRequest', 'Cr
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow_action** | [**ContributorsAction**](contributors-action) |  | [optional] 
+**workflow_action** | **ContributorsAction** |  | [optional] 
 }
 
 ## Example

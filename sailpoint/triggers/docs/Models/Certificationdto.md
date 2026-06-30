@@ -17,7 +17,7 @@ tags: ['SDK', 'Software Development Kit', 'Certificationdto', 'Certificationdto'
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **campaign_ref** | [**Campaignreference**](campaignreference) |  | [required]
-**phase** | [**Certificationphase**](certificationphase) |  | [required]
+**phase** | **Certificationphase** |  | [required]
 **due** | **datetime** | The due date of the certification. | [required]
 **signed** | **datetime** | The date the reviewer signed off on the certification. | [required]
 **reviewer** | [**Reviewer**](reviewer) |  | [required]

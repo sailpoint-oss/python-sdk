@@ -48,7 +48,7 @@ Method | HTTP request | Description
 Cancel a DAS task.
 This end-point sends a request to cancel a task in Data Access Security.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/cancel-task-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/cancel-task-v-1)
 
 ### Parameters 
 
@@ -104,7 +104,7 @@ with ApiClient(configuration) as api_client:
 Create application
 This endpoint creates a new application in Data Access Security with the specified configuration.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/create-application-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/create-application-v-1)
 
 ### Parameters 
 
@@ -161,7 +161,7 @@ with ApiClient(configuration) as api_client:
 Create identity collector
 This endpoint creates a new identity collector in Data Access Security for the specified source. The identity collector type is derived from the source.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/create-identity-collector-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/create-identity-collector-v-1)
 
 ### Parameters 
 
@@ -221,7 +221,7 @@ with ApiClient(configuration) as api_client:
 Create a new schedule.
 
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/create-schedule-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/create-schedule-v-1)
 
 ### Parameters 
 
@@ -280,7 +280,7 @@ with ApiClient(configuration) as api_client:
 Assign owner to application resource.
 
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/das-v1-owners-assign-post)
+[API Spec](https://developer.sailpoint.com/docs/api/das-v1-owners-assign-post)
 
 ### Parameters 
 
@@ -339,7 +339,7 @@ with ApiClient(configuration) as api_client:
 List resources for owner.
 
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/das-v1-owners-owner-identity-id-resources-get)
+[API Spec](https://developer.sailpoint.com/docs/api/das-v1-owners-owner-identity-id-resources-get)
 
 ### Parameters 
 
@@ -403,7 +403,7 @@ with ApiClient(configuration) as api_client:
 Re-elect resource owner.
 
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/das-v1-owners-reelect-post)
+[API Spec](https://developer.sailpoint.com/docs/api/das-v1-owners-reelect-post)
 
 ### Parameters 
 
@@ -462,7 +462,7 @@ with ApiClient(configuration) as api_client:
 List owners for resource.
 
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/das-v1-owners-resources-resource-id-get)
+[API Spec](https://developer.sailpoint.com/docs/api/das-v1-owners-resources-resource-id-get)
 
 ### Parameters 
 
@@ -525,7 +525,7 @@ with ApiClient(configuration) as api_client:
 Reassign resource owner.
 
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/das-v1-owners-source-identity-id-reassign-destination-identity-id-post)
+[API Spec](https://developer.sailpoint.com/docs/api/das-v1-owners-source-identity-id-reassign-destination-identity-id-post)
 
 ### Parameters 
 
@@ -585,7 +585,7 @@ with ApiClient(configuration) as api_client:
 Delete an application by identifier.
 This endpoint deletes an application from Data Access Security by its unique identifier.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/delete-application-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-application-v-1)
 
 ### Parameters 
 
@@ -641,7 +641,7 @@ with ApiClient(configuration) as api_client:
 Delete identity collector by identifier
 This endpoint deletes an identity collector from Data Access Security by its unique identifier.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/delete-identity-collector-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-identity-collector-v-1)
 
 ### Parameters 
 
@@ -697,7 +697,7 @@ with ApiClient(configuration) as api_client:
 Delete a DAS schedule.
 This end-point sends a request to delete a schedule in Data Access Security.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/delete-schedule-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-schedule-v-1)
 
 ### Parameters 
 
@@ -754,7 +754,7 @@ Delete a DAS task.
 This end-point sends a request to delete a task in Data Access Security.
 
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/delete-task-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-task-v-1)
 
 ### Parameters 
 
@@ -810,7 +810,7 @@ with ApiClient(configuration) as api_client:
 Retrieve application details by identifier.
 This endpoint retrieves the details of a specific application in Data Access Security by its unique identifier.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-application-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-application-v-1)
 
 ### Parameters 
 
@@ -869,7 +869,7 @@ with ApiClient(configuration) as api_client:
 Search applications in DAS.
 This endpoint lists all the applications in Data Access Security with optional filtering.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-applications-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-applications-v-1)
 
 ### Parameters 
 
@@ -935,7 +935,7 @@ with ApiClient(configuration) as api_client:
 Retrieve owners per application.
 
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-owners-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-owners-v-1)
 
 ### Parameters 
 
@@ -999,7 +999,7 @@ with ApiClient(configuration) as api_client:
 Get a DAS schedule.
 This end-point gets a schedule in Data Access Security.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-schedule-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-schedule-v-1)
 
 ### Parameters 
 
@@ -1058,7 +1058,7 @@ with ApiClient(configuration) as api_client:
 List all schedules.
 This end-point lists all the schedules in Data Access Security.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-schedules-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-schedules-v-1)
 
 ### Parameters 
 
@@ -1124,7 +1124,7 @@ with ApiClient(configuration) as api_client:
 Get a DAS task.
 This end-point gets a task in Data Access Security.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-task-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-task-v-1)
 
 ### Parameters 
 
@@ -1183,7 +1183,7 @@ with ApiClient(configuration) as api_client:
 Lists all DAS tasks.
 This end-point lists all the tasks in Data Access Security.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-tasks-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-tasks-v-1)
 
 ### Parameters 
 
@@ -1251,7 +1251,7 @@ This endpoint lists the identity collectors in Data Access Security with optiona
 
 Sorting is not supported for this endpoint; supplying the `sorters` query parameter results in a validation error.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/list-identity-collectors-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/list-identity-collectors-v-1)
 
 ### Parameters 
 
@@ -1317,7 +1317,7 @@ with ApiClient(configuration) as api_client:
 Update application by identifier.
 This endpoint updates an existing application in Data Access Security with the specified configuration.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/put-application-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/put-application-v-1)
 
 ### Parameters 
 
@@ -1376,7 +1376,7 @@ with ApiClient(configuration) as api_client:
 Update identity collector by identifier
 This endpoint updates the name of an existing identity collector in Data Access Security. The `sourceId` and `type` cannot be changed and must match the current values.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/put-identity-collector-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/put-identity-collector-v-1)
 
 ### Parameters 
 
@@ -1436,7 +1436,7 @@ with ApiClient(configuration) as api_client:
 Update a schedule.
 
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/put-schedule-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/put-schedule-v-1)
 
 ### Parameters 
 
@@ -1495,7 +1495,7 @@ with ApiClient(configuration) as api_client:
 Rerun a DAS task.
 This end-point sends a request to re-run a task in Data Access Security.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/start-task-rerun-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/start-task-rerun-v-1)
 
 ### Parameters 
 

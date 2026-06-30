@@ -31,7 +31,7 @@ Method | HTTP request | Description
 Delete option based attribute value
 Delete a option based attribute value by id
 
-[API Spec](https://developer.sailpoint.com/docs/api//delete-attribute-option-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-attribute-option-by-id)
 
 ### Parameters 
 
@@ -86,7 +86,7 @@ with ApiClient(configuration) as api_client:
 Delete option value
 Delete a option based attribute value by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api//delete-attribute-option-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-attribute-option-by-uid)
 
 ### Parameters 
 
@@ -141,7 +141,7 @@ with ApiClient(configuration) as api_client:
 Find option based attribute value
 Info for a specific option based attribute value by id
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-attribute-option-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/get-attribute-option-by-id)
 
 ### Parameters 
 
@@ -196,7 +196,7 @@ with ApiClient(configuration) as api_client:
 Find option attribute value
 Get a specific option based attribute value by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-attribute-option-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/get-attribute-option-by-uid)
 
 ### Parameters 
 
@@ -251,7 +251,7 @@ with ApiClient(configuration) as api_client:
 Get option based attribute values
 Get option based attribute values
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-attribute-options)
+[API Spec](https://developer.sailpoint.com/docs/api/get-attribute-options)
 
 ### Parameters 
 
@@ -314,7 +314,7 @@ with ApiClient(configuration) as api_client:
 Update option based attribute value
 Update a option based attribute value by id
 
-[API Spec](https://developer.sailpoint.com/docs/api//patch-attribute-option-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-attribute-option-by-id)
 
 ### Parameters 
 
@@ -372,7 +372,7 @@ with ApiClient(configuration) as api_client:
 Update option value
 Update a option based attribute value by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api//patch-attribute-option-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-attribute-option-by-uid)
 
 ### Parameters 
 
@@ -430,7 +430,7 @@ with ApiClient(configuration) as api_client:
 Update multiple option values
 Update multiple option based attribute values
 
-[API Spec](https://developer.sailpoint.com/docs/api//patch-attribute-options)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-attribute-options)
 
 ### Parameters 
 
@@ -486,7 +486,7 @@ with ApiClient(configuration) as api_client:
 Add value to option
 Adds a value to an option based attribute
 
-[API Spec](https://developer.sailpoint.com/docs/api//submit-attribute-option)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-attribute-option)
 
 ### Parameters 
 
@@ -541,7 +541,7 @@ with ApiClient(configuration) as api_client:
 Create multiple option values
 Create multiple new option based attribute values
 
-[API Spec](https://developer.sailpoint.com/docs/api//submit-attribute-options)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-attribute-options)
 
 ### Parameters 
 

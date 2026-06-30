@@ -58,7 +58,7 @@ Method | HTTP request | Description
 Create password sync group
 This API creates a password sync group based on the specifications provided.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/create-password-sync-group-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/create-password-sync-group-v-1)
 
 ### Parameters 
 
@@ -116,7 +116,7 @@ with ApiClient(configuration) as api_client:
 Delete password sync group by id
 This API deletes the specified password sync group.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/delete-password-sync-group-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-password-sync-group-v-1)
 
 ### Parameters 
 
@@ -171,7 +171,7 @@ with ApiClient(configuration) as api_client:
 Get password sync group by id
 This API returns the sync group for the specified ID.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-password-sync-group-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-password-sync-group-v-1)
 
 ### Parameters 
 
@@ -230,7 +230,7 @@ with ApiClient(configuration) as api_client:
 Get password sync group list
 This API returns a list of password sync groups.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-password-sync-groups-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-password-sync-groups-v-1)
 
 ### Parameters 
 
@@ -293,7 +293,7 @@ with ApiClient(configuration) as api_client:
 Update password sync group by id
 This API updates the specified password sync group.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/update-password-sync-group-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/update-password-sync-group-v-1)
 
 ### Parameters 
 

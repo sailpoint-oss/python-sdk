@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateUnassignActionRequest', 'Create
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow_action** | [**UnassignAction**](unassign-action) |  | [optional] 
+**workflow_action** | **UnassignAction** |  | [optional] 
 }
 
 ## Example

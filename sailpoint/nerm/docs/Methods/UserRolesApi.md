@@ -28,7 +28,7 @@ Method | HTTP request | Description
 Delete a user role assignment
 Delete a user role assignment
 
-[API Spec](https://developer.sailpoint.com/docs/api//delete-user-role)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-user-role)
 
 ### Parameters 
 
@@ -82,7 +82,7 @@ with ApiClient(configuration) as api_client:
 Find user role pairing
 Info for a specific user role pairing
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-user-role)
+[API Spec](https://developer.sailpoint.com/docs/api/get-user-role)
 
 ### Parameters 
 
@@ -137,7 +137,7 @@ with ApiClient(configuration) as api_client:
 Get user role pairings
 This endpoint can retrieve user role pairings from Lifecycle or you can search for user role pairings using parameters
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-user-roles)
+[API Spec](https://developer.sailpoint.com/docs/api/get-user-roles)
 
 ### Parameters 
 
@@ -202,7 +202,7 @@ with ApiClient(configuration) as api_client:
 Update a user role pairing
 Update a user role pairing by id
 
-[API Spec](https://developer.sailpoint.com/docs/api//patch-user-role)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-user-role)
 
 ### Parameters 
 
@@ -260,7 +260,7 @@ with ApiClient(configuration) as api_client:
 Update multiple user role pairings
 Update multiple user role pairings
 
-[API Spec](https://developer.sailpoint.com/docs/api//patch-user-roles)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-user-roles)
 
 ### Parameters 
 
@@ -316,7 +316,7 @@ with ApiClient(configuration) as api_client:
 Assign new role to user
 Assign a new role to a user
 
-[API Spec](https://developer.sailpoint.com/docs/api//submit-user-role)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-user-role)
 
 ### Parameters 
 
@@ -372,7 +372,7 @@ with ApiClient(configuration) as api_client:
 Create new user role pairings
 Create multiple new user role pairings
 
-[API Spec](https://developer.sailpoint.com/docs/api//submit-user-roles)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-user-roles)
 
 ### Parameters 
 

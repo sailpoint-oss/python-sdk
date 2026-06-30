@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'SubmitUserManagerRequest', 'SubmitUse
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user_manager** | [**UserManager1**](user-manager1) |  | [optional] 
+**user_manager** | **UserManager1** |  | [optional] 
 }
 
 ## Example

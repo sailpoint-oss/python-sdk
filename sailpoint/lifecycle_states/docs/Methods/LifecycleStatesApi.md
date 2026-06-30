@@ -65,7 +65,7 @@ Method | HTTP request | Description
 Create lifecycle state
 Use this endpoint to create a lifecycle state.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/create-lifecycle-state-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/create-lifecycle-state-v-1)
 
 ### Parameters 
 
@@ -125,7 +125,7 @@ with ApiClient(configuration) as api_client:
 Delete lifecycle state
 Use this endpoint to delete the lifecycle state by its ID.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/delete-lifecycle-state-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-lifecycle-state-v-1)
 
 ### Parameters 
 
@@ -186,7 +186,7 @@ with ApiClient(configuration) as api_client:
 Get lifecycle state
 Use this endpoint to get a lifecycle state by its ID and its associated identity profile ID.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-lifecycle-state-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-lifecycle-state-v-1)
 
 ### Parameters 
 
@@ -247,7 +247,7 @@ with ApiClient(configuration) as api_client:
 Lists lifecyclestates
 Use this endpoint to list all lifecycle states by their associated identity profiles. 
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-lifecycle-states-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-lifecycle-states-v-1)
 
 ### Parameters 
 
@@ -314,7 +314,7 @@ with ApiClient(configuration) as api_client:
 Set lifecycle state
 Use this API to set/update an identity's lifecycle state to the one provided and update the corresponding identity profile.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/set-lifecycle-state-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/set-lifecycle-state-v-1)
 
 ### Parameters 
 
@@ -376,7 +376,7 @@ with ApiClient(configuration) as api_client:
 Update lifecycle state
 Use this endpoint to update individual lifecycle state fields, using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/update-lifecycle-states-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/update-lifecycle-states-v-1)
 
 ### Parameters 
 

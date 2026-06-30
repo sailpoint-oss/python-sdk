@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **id** | **str** | The review item's id | [optional] 
 **completed** | **bool** | Whether the review item is complete | [optional] 
 **new_access** | **bool** | Indicates whether the review item is for new access to a source | [optional] 
-**decision** | [**Certificationdecision**](certificationdecision) |  | [optional] 
+**decision** | **Certificationdecision** |  | [optional] 
 **comments** | **str** | Comments for this review item | [optional] 
 }
 

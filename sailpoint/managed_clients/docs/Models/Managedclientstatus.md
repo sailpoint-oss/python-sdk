@@ -18,8 +18,8 @@ Managed Client Status
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **body** | **object** | ManagedClientStatus body information | [required]
-**status** | [**Managedclientstatuscode**](managedclientstatuscode) |  | [required]
-**type** | [**Managedclienttype**](managedclienttype) |  | [required]
+**status** | **Managedclientstatuscode** |  | [required]
+**type** | **Managedclienttype** |  | [required]
 **timestamp** | **datetime** | timestamp on the Client Status update | [required]
 }
 

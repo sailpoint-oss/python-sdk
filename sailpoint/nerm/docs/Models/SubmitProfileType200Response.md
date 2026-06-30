@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'SubmitProfileType200Response', 'Submi
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**profile_type** | [**ProfileType**](profile-type) |  | [optional] 
+**profile_type** | **ProfileType** |  | [optional] 
 }
 
 ## Example

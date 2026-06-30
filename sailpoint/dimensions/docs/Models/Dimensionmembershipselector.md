@@ -17,7 +17,7 @@ When present, specifies that the Dimension is to be granted to Identities which 
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**Dimensionmembershipselectortype**](dimensionmembershipselectortype) |  | [optional] 
+**type** | **Dimensionmembershipselectortype** |  | [optional] 
 **criteria** | [**Dimensioncriterialevel1**](dimensioncriterialevel1) |  | [optional] 
 }
 

@@ -22,7 +22,7 @@ Method | HTTP request | Description
 Get system roles
 This endpoint can retrieve system roles from NERM. Optionally you can provide parameters to filter results.
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-system-roles)
+[API Spec](https://developer.sailpoint.com/docs/api/get-system-roles)
 
 ### Parameters 
 

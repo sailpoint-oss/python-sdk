@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'SubmitRoleProfileRequest', 'SubmitRol
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**role_profile** | [**RoleProfile1**](role-profile1) |  | [optional] 
+**role_profile** | **RoleProfile1** |  | [optional] 
 }
 
 ## Example

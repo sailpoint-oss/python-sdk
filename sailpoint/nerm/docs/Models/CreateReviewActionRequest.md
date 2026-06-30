@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateReviewActionRequest', 'CreateRe
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow_action** | [**ReviewAction**](review-action) |  | [optional] 
+**workflow_action** | **ReviewAction** |  | [optional] 
 }
 
 ## Example

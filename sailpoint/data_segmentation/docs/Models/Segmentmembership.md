@@ -18,7 +18,7 @@ Contains the segments and types that an identity is associated with
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **segments** | **[]str** | List of segment ids that the identity is associated with. | [optional] 
-**all_access_scopes** | [**[]Scopetype**](scopetype) | They type of scopes that are assigned to the identity. | [optional] 
+**all_access_scopes** | **[]Scopetype** | They type of scopes that are assigned to the identity. | [optional] 
 **refresh_by** | **datetime** | Date time string that lets you know when the membership data is going to be refreshed. | [optional] 
 }
 

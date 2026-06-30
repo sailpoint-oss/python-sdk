@@ -39,7 +39,7 @@ Method | HTTP request | Description
 Post Bulk Approve Approvals
 Bulk Approves specified approval requests on behalf of the caller
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/approve-approval-in-bulk-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/approve-approval-in-bulk-v-1)
 
 ### Parameters 
 
@@ -99,7 +99,7 @@ Post Approvals Approve
 Approves a specified approval request on behalf of the caller. The approval request must be in a state that allows it to be approved. This endpoint does not support access request IDs.
 If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/approve-approval-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/approve-approval-v-1)
 
 ### Parameters 
 
@@ -163,7 +163,7 @@ Cancels a specified approval requests on behalf of the caller.
 Note: This endpoint does not support access request IDs. To cancel access request approvals, please use the following:
 /access-requests/cancel
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/cancel-approval-by-id-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/cancel-approval-by-id-v-1)
 
 ### Parameters 
 
@@ -224,7 +224,7 @@ Bulk cancels specified approval requests on behalf of the caller.
 Note: To bulk cancel access request approvals, please use the following:
 /access-requests/bulk-cancel
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/cancel-approval-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/cancel-approval-v-1)
 
 ### Parameters 
 
@@ -284,7 +284,7 @@ Delete Approval Configuration
 Deletes an approval configuration.
 Configurations at the APPROVAL_REQUEST scope cannot be deleted.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/delete-approval-config-request-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-approval-config-request-v-1)
 
 ### Parameters 
 
@@ -343,7 +343,7 @@ Get an approval
 Fetches an approval request by it's approval ID. For lookups by access request ID please use the following:
 /generic-approvals?filters=referenceType+eq+"accessRequestId"+and+referenceId+eq+"12345678901234567890123456789012"
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-approval-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-approval-v-1)
 
 ### Parameters 
 
@@ -401,7 +401,7 @@ with ApiClient(configuration) as api_client:
 Get Approval Config
 Retrieves a singular approval configuration that matches the given ID
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-approvals-config-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-approvals-config-v-1)
 
 ### Parameters 
 
@@ -468,7 +468,7 @@ For lookups by access request ID please use the following:
 
 '/generic-approvals?mine=false&filters=referenceType+eq+"accessRequestId"+and+referenceId+eq+"12345678901234567890123456789012"'
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-approvals-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-approvals-v-1)
 
 ### Parameters 
 
@@ -551,7 +551,7 @@ with ApiClient(configuration) as api_client:
 Post Bulk Reassign Approvals
 Bulk reassigns specified approval requests on behalf of the caller
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/move-approval-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/move-approval-v-1)
 
 ### Parameters 
 
@@ -611,7 +611,7 @@ Put Approval Config
 Upserts a singular approval configuration that matches the given configID and configScope. 
 For example to update the approval configurations for all Access Request Approvals please use: '/generic-approvals/config/ACCESS_REQUEST_APPROVAL/APPROVAL_TYPE'
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/put-approvals-config-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/put-approvals-config-v-1)
 
 ### Parameters 
 
@@ -674,7 +674,7 @@ with ApiClient(configuration) as api_client:
 Post Bulk Reject Approvals
 Bulk reject specified approval requests on behalf of the caller
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/reject-approval-in-bulk-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/reject-approval-in-bulk-v-1)
 
 ### Parameters 
 
@@ -734,7 +734,7 @@ Post Approvals Reject
 Rejects a specified approval request on behalf of the caller. This endpoint does not support access request IDs.
 If called by an admin and the admin is not listed as an approver, the approval request will be reassigned from a random approver to the admin user and approved.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/reject-approval-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/reject-approval-v-1)
 
 ### Parameters 
 
@@ -793,7 +793,7 @@ with ApiClient(configuration) as api_client:
 Post Approvals Attributes
 Allows for the edit/addition/removal of the key/value pair additional attributes map for an existing approval request. This endpoint does not support access request IDs.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/update-approvals-attributes-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/update-approvals-attributes-v-1)
 
 ### Parameters 
 
@@ -855,7 +855,7 @@ with ApiClient(configuration) as api_client:
 Post Approvals Comments
 Adds comments to a specified approval request. This endpoint does not support access request IDs.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/update-approvals-comments-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/update-approvals-comments-v-1)
 
 ### Parameters 
 
@@ -917,7 +917,7 @@ with ApiClient(configuration) as api_client:
 Post Approvals Reassign
 Reassigns an approval request to another identity resulting in that identity being added as an authorized approver. This endpoint does not support access request IDs.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/update-approvals-reassign-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/update-approvals-reassign-v-1)
 
 ### Parameters 
 

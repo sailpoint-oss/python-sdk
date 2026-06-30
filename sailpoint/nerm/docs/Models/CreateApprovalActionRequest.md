@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateApprovalActionRequest', 'Create
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow_action** | [**ApprovalAction**](approval-action) |  | [optional] 
+**workflow_action** | **ApprovalAction** |  | [optional] 
 }
 
 ## Example

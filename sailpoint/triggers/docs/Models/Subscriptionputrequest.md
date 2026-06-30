@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Subscription name. | [optional] 
 **description** | **str** | Subscription description. | [optional] 
-**type** | [**Subscriptiontype**](subscriptiontype) |  | [optional] 
+**type** | **Subscriptiontype** |  | [optional] 
 **response_deadline** | **str** | Deadline for completing REQUEST_RESPONSE trigger invocation, represented in ISO-8601 duration format. | [optional] [default to 'PT1H']
 **http_config** | [**Httpconfig**](httpconfig) |  | [optional] 
 **event_bridge_config** | [**Eventbridgeconfig**](eventbridgeconfig) |  | [optional] 

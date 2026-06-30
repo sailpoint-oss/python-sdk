@@ -22,7 +22,7 @@ Method | HTTP request | Description
 Get identity proofing result data
 Retrieves identity proofing result data in bulk from Lifecycle
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-identity-proofing-results)
+[API Spec](https://developer.sailpoint.com/docs/api/get-identity-proofing-results)
 
 ### Parameters 
 

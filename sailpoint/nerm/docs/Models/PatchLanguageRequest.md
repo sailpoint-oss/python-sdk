@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'PatchLanguageRequest', 'PatchLanguage
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**language** | [**Language**](language) |  | [optional] 
+**language** | **Language** |  | [optional] 
 }
 
 ## Example

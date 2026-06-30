@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'UpdatePageContentTranslationByIdReque
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**page_content_translation** | [**PageContent1**](page-content1) |  | [optional] 
+**page_content_translation** | **PageContent1** |  | [optional] 
 }
 
 ## Example

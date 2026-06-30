@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Selector', 'Selector']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**Selectortype**](selectortype) |  | [required]
+**type** | **Selectortype** |  | [required]
 **values** | **[]str** | The selected values.  | [required]
 **interval** | **int** | The selected interval for RANGE selectors.  | [optional] 
 }

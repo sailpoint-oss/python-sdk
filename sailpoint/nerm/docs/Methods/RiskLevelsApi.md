@@ -23,7 +23,7 @@ Method | HTTP request | Description
 Find risk level data
 Find risk level data by id
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-risk-level)
+[API Spec](https://developer.sailpoint.com/docs/api/get-risk-level)
 
 ### Parameters 
 
@@ -78,7 +78,7 @@ with ApiClient(configuration) as api_client:
 Get risk level data
 This endpoint can retrieve risk level data in bulk from Lifecycle
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-risk-levels)
+[API Spec](https://developer.sailpoint.com/docs/api/get-risk-levels)
 
 ### Parameters 
 

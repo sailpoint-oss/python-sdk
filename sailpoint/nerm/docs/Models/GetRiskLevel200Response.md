@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'GetRiskLevel200Response', 'GetRiskLev
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**risk_level** | [**RiskLevel**](risk-level) |  | [optional] 
+**risk_level** | **RiskLevel** |  | [optional] 
 }
 
 ## Example

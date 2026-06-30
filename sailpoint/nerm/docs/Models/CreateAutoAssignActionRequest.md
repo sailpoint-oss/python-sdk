@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateAutoAssignActionRequest', 'Crea
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow_action** | [**AutoAssignAction**](auto-assign-action) |  | [optional] 
+**workflow_action** | **AutoAssignAction** |  | [optional] 
 }
 
 ## Example

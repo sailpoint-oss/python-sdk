@@ -29,7 +29,7 @@ Method | HTTP request | Description
 Create a page element entry
 Creates a page element.
 
-[API Spec](https://developer.sailpoint.com/docs/api//create-page-element)
+[API Spec](https://developer.sailpoint.com/docs/api/create-page-element)
 
 ### Parameters 
 
@@ -85,7 +85,7 @@ with ApiClient(configuration) as api_client:
 Delete page element
 Delete page element by id
 
-[API Spec](https://developer.sailpoint.com/docs/api//delete-page-element-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-page-element-by-id)
 
 ### Parameters 
 
@@ -140,7 +140,7 @@ with ApiClient(configuration) as api_client:
 Delete page element
 Delete page element by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api//delete-page-element-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-page-element-by-uid)
 
 ### Parameters 
 
@@ -195,7 +195,7 @@ with ApiClient(configuration) as api_client:
 Find a page element
 Info for a specific page element record
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-page-element-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/get-page-element-by-id)
 
 ### Parameters 
 
@@ -250,7 +250,7 @@ with ApiClient(configuration) as api_client:
 Find page element
 Info for a specific page element record by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-page-element-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/get-page-element-by-uid)
 
 ### Parameters 
 
@@ -305,7 +305,7 @@ with ApiClient(configuration) as api_client:
 Get page element data
 Retrieves page elements data.
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-page-elements)
+[API Spec](https://developer.sailpoint.com/docs/api/get-page-elements)
 
 ### Parameters 
 This endpoint does not need any parameter. 
@@ -356,7 +356,7 @@ with ApiClient(configuration) as api_client:
 Update page element
 Update info for a specific page element record by id
 
-[API Spec](https://developer.sailpoint.com/docs/api//update-page-element-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/update-page-element-by-id)
 
 ### Parameters 
 
@@ -415,7 +415,7 @@ with ApiClient(configuration) as api_client:
 Update page element
 Update info for a specific page element record by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api//update-page-element-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/update-page-element-by-uid)
 
 ### Parameters 
 

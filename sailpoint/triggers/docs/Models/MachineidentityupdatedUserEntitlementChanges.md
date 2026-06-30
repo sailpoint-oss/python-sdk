@@ -18,8 +18,8 @@ Changes to user entitlements.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **attribute_name** | **str** | Name of the attribute that changed. | [optional] 
-**added** | [**[]Machineidentityuserentitlements**](machineidentityuserentitlements) | User entitlements that were added. | [optional] 
-**removed** | [**[]Machineidentityuserentitlements**](machineidentityuserentitlements) | User entitlements that were removed. | [optional] 
+**added** | **[]Machineidentityuserentitlements** | User entitlements that were added. | [optional] 
+**removed** | **[]Machineidentityuserentitlements** | User entitlements that were removed. | [optional] 
 }
 
 ## Example

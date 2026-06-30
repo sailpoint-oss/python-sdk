@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'SubmitWorkflowSessionRequest', 'Submi
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow_session** | [**WorkflowSession1**](workflow-session1) |  | [optional] 
+**workflow_session** | **WorkflowSession1** |  | [optional] 
 }
 
 ## Example

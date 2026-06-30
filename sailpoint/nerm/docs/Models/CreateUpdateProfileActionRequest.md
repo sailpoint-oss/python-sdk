@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateUpdateProfileActionRequest', 'C
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow_action** | [**UpdateProfileAction**](update-profile-action) |  | [optional] 
+**workflow_action** | **UpdateProfileAction** |  | [optional] 
 }
 
 ## Example

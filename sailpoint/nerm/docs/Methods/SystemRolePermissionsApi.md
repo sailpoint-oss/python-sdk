@@ -22,7 +22,7 @@ Method | HTTP request | Description
 Create a system role permission
 This endpoint can create system role permissions for Lifecycle System Roles
 
-[API Spec](https://developer.sailpoint.com/docs/api//create-system-role-permission)
+[API Spec](https://developer.sailpoint.com/docs/api/create-system-role-permission)
 
 ### Parameters 
 

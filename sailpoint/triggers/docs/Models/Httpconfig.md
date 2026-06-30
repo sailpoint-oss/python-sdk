@@ -17,8 +17,8 @@ tags: ['SDK', 'Software Development Kit', 'Httpconfig', 'Httpconfig']
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **url** | **str** | URL of the external/custom integration. | [required]
-**http_dispatch_mode** | [**Httpdispatchmode**](httpdispatchmode) |  | [required]
-**http_authentication_type** | [**Httpauthenticationtype**](httpauthenticationtype) |  | [optional] [default to Httpauthenticationtype.NO_AUTH]
+**http_dispatch_mode** | **Httpdispatchmode** |  | [required]
+**http_authentication_type** | **Httpauthenticationtype** |  | [optional] [default to Httpauthenticationtype.NO_AUTH]
 **basic_auth_config** | [**Basicauthconfig**](basicauthconfig) |  | [optional] 
 **bearer_token_auth_config** | [**Bearertokenauthconfig**](bearertokenauthconfig) |  | [optional] 
 }

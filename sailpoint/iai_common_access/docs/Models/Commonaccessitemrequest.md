@@ -17,7 +17,7 @@ tags: ['SDK', 'Software Development Kit', 'Commonaccessitemrequest', 'Commonacce
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **access** | [**Commonaccessitemaccess**](commonaccessitemaccess) |  | [optional] 
-**status** | [**Commonaccessitemstate**](commonaccessitemstate) |  | [optional] 
+**status** | **Commonaccessitemstate** |  | [optional] 
 }
 
 ## Example

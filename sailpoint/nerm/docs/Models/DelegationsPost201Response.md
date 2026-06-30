@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'DelegationsPost201Response', 'Delegat
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**delegation** | [**Delegation**](delegation) |  | [optional] 
+**delegation** | **Delegation** |  | [optional] 
 }
 
 ## Example

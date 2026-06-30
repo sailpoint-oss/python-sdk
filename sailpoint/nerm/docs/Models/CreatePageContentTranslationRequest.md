@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreatePageContentTranslationRequest',
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**page_content_translation** | [**PageContentTranslation1**](page-content-translation1) |  | [optional] 
+**page_content_translation** | **PageContentTranslation1** |  | [optional] 
 }
 
 ## Example

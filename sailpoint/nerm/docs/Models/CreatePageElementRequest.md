@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreatePageElementRequest', 'CreatePag
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**page_element** | [**PageElement1**](page-element1) |  | [optional] 
+**page_element** | **PageElement1** |  | [optional] 
 }
 
 ## Example

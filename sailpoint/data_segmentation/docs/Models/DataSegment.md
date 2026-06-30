@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **scopes** | [**[]Scope**](scope) | List of Scopes that are assigned to the segment | [optional] 
 **member_selection** | [**[]Ref**](ref) | List of Identities that are assigned to the segment | [optional] 
 **member_filter** | [**Visibilitycriteria**](visibilitycriteria) |  | [optional] 
-**membership** | [**Membershiptype**](membershiptype) |  | [optional] 
+**membership** | **Membershiptype** |  | [optional] 
 **enabled** | **bool** | This boolean indicates whether the segment is currently active. Inactive segments have no effect. | [optional] [default to False]
 **published** | **bool** | This boolean indicates whether the segment is being applied to the accounts. If unpublished its being actively modified to until published | [optional] [default to False]
 }

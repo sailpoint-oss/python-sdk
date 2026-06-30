@@ -18,7 +18,7 @@ If the access request submitted event trigger is configured and this access requ
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **comment** | **str** | The comment from the trigger | [optional] 
-**decision** | [**Completedapprovalstate**](completedapprovalstate) |  | [optional] 
+**decision** | **Completedapprovalstate** |  | [optional] 
 **reviewer** | **str** | The name of the approver | [optional] 
 **var_date** | **datetime** | The date and time the trigger decided on the request | [optional] 
 }

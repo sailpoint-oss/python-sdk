@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Roleminingsessionstatus', 'Rolemining
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**state** | [**Roleminingsessionstate**](roleminingsessionstate) |  | [optional] 
+**state** | **Roleminingsessionstate** |  | [optional] 
 }
 
 ## Example

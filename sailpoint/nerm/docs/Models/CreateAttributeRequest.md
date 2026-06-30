@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateAttributeRequest', 'CreateAttri
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ne_attribute** | [**Attribute1**](attribute1) |  | [optional] 
+**ne_attribute** | **Attribute1** |  | [optional] 
 }
 
 ## Example

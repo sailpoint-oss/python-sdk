@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Ref', 'Ref']
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**Dtotype**](dtotype) |  | [optional] 
+**type** | **Dtotype** |  | [optional] 
 **id** | **str** | ID of the object to which this reference applies | [optional] 
 }
 

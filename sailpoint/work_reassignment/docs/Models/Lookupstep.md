@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reassigned_to_id** | **str** | The ID of the Identity who work is reassigned to | [optional] 
 **reassigned_from_id** | **str** | The ID of the Identity who work is reassigned from | [optional] 
-**reassignment_type** | [**Reassignmenttypeenum**](reassignmenttypeenum) |  | [optional] 
+**reassignment_type** | **Reassignmenttypeenum** |  | [optional] 
 }
 
 ## Example

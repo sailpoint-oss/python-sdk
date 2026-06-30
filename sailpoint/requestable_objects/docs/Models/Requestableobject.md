@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **created** | **datetime** | The time when the requestable object was created | [optional] 
 **modified** | **datetime** | The time when the requestable object was last modified | [optional] 
 **description** | **str** | Description of the requestable object. | [optional] 
-**type** | [**Requestableobjecttype**](requestableobjecttype) |  | [optional] 
+**type** | **Requestableobjecttype** |  | [optional] 
 **request_status** | [**Requestableobjectrequeststatus**](requestableobjectrequeststatus) |  | [optional] 
 **identity_request_id** | **str** | If *requestStatus* is *PENDING*, indicates the id of the associated account activity. | [optional] 
 **owner_ref** | [**Identityreferencewithnameandemail**](identityreferencewithnameandemail) |  | [optional] 

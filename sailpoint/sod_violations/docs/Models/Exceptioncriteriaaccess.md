@@ -17,7 +17,7 @@ Access reference with addition of boolean existing flag to indicate whether the 
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**Dtotype**](dtotype) |  | [optional] 
+**type** | **Dtotype** |  | [optional] 
 **id** | **str** | ID of the object to which this reference applies | [optional] 
 **name** | **str** | Human-readable display name of the object to which this reference applies | [optional] 
 **existing** | **bool** | Whether the subject identity already had that access or not | [optional] [default to False]

@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateLoginWorkflowRequest', 'CreateL
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow** | [**LoginWorkflow**](login-workflow) |  | [optional] 
+**workflow** | **LoginWorkflow** |  | [optional] 
 }
 
 ## Example

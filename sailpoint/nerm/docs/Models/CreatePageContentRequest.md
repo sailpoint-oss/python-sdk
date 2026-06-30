@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreatePageContentRequest', 'CreatePag
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**page_content** | [**PageContent1**](page-content1) |  | [optional] 
+**page_content** | **PageContent1** |  | [optional] 
 }
 
 ## Example

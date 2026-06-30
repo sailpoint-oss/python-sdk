@@ -17,7 +17,7 @@ A reference to an Identity in an IDENTITY_LIST role membership criteria.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**Dtotype**](dtotype) |  | [optional] 
+**type** | **Dtotype** |  | [optional] 
 **id** | **str** | Identity id | [optional] 
 **name** | **str** | Human-readable display name of the Identity. | [optional] 
 **alias_name** | **str** | User name of the Identity | [optional] 

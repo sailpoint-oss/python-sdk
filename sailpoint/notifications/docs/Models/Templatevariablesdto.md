@@ -18,7 +18,7 @@ Variables available for use in a notification template. Variables can be templat
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **key** | **str** | The notification template key. | [optional] 
-**medium** | [**Templatemediumdto**](templatemediumdto) |  | [optional] 
+**medium** | **Templatemediumdto** |  | [optional] 
 **global_variables** | [**[]Templatevariable**](templatevariable) | Global variables available to all templates for this tenant (e.g. __global.*, __recipient, __util.*, __dateTool.*, __esc.*). Includes both data variables and function-type helpers.  | [optional] 
 **template_variables** | [**[]Templatevariable**](templatevariable) | Template-specific variables for the given key and medium (e.g. approverPath, requester, attributes). | [optional] 
 }

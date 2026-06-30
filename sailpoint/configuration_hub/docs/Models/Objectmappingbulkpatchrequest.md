@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'Objectmappingbulkpatchrequest', 'Obje
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**patches** | [**map[string]List[Jsonpatchoperation]**](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists) | Map of id of the object mapping to a JsonPatchOperation describing what to patch on that object mapping. | [required]
+**patches** | **map[string]List[Jsonpatchoperation]** | Map of id of the object mapping to a JsonPatchOperation describing what to patch on that object mapping. | [required]
 }
 
 ## Example

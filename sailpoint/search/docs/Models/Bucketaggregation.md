@@ -18,7 +18,7 @@ The bucket to group the results of the aggregation query by.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | The name of the bucket aggregate to be included in the result. | [required]
-**type** | [**Buckettype**](buckettype) |  | [optional] [default to Buckettype.TERMS]
+**type** | **Buckettype** |  | [optional] [default to Buckettype.TERMS]
 **var_field** | **str** | The field to bucket on. Prefix the field name with '@' to reference a nested object. | [required]
 **size** | **int** | Maximum number of buckets to include. | [optional] 
 **min_doc_count** | **int** | Minimum number of documents a bucket should have. | [optional] 

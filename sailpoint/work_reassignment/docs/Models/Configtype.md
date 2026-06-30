@@ -18,8 +18,8 @@ Type of Reassignment Configuration.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **priority** | **int** |  | [optional] 
-**internal_name** | [**Configtypeenumcamel**](configtypeenumcamel) |  | [optional] 
-**internal_name_camel** | [**Configtypeenum**](configtypeenum) |  | [optional] 
+**internal_name** | **Configtypeenumcamel** |  | [optional] 
+**internal_name_camel** | **Configtypeenum** |  | [optional] 
 **display_name** | **str** | Human readable display name of the type to be shown on UI | [optional] 
 **description** | **str** | Description of the type of work to be reassigned, displayed by the UI. | [optional] 
 }

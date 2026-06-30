@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateInvitationActionRequest', 'Crea
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow_action** | [**InvitationAction**](invitation-action) |  | [optional] 
+**workflow_action** | **InvitationAction** |  | [optional] 
 }
 
 ## Example

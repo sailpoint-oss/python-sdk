@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateFulfillmentActionRequest', 'Cre
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow_action** | [**FulfillmentAction**](fulfillment-action) |  | [optional] 
+**workflow_action** | **FulfillmentAction** |  | [optional] 
 }
 
 ## Example

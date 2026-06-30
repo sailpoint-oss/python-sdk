@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'SubmitUserRole200Response', 'SubmitUs
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user_role** | [**UserRole**](user-role) |  | [optional] 
+**user_role** | **UserRole** |  | [optional] 
 }
 
 ## Example

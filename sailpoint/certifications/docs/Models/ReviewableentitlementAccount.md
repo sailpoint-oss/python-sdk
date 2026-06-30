@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **native_identity** | **str** | The native identity for this account | [optional] 
 **disabled** | **bool** | Indicates whether this account is currently disabled | [optional] [default to False]
 **locked** | **bool** | Indicates whether this account is currently locked | [optional] [default to False]
-**type** | [**Dtotype**](dtotype) |  | [optional] 
+**type** | **Dtotype** |  | [optional] 
 **id** | **str** | The id associated with the account | [optional] 
 **name** | **str** | The account name | [optional] 
 **created** | **datetime** | When the account was created | [optional] 

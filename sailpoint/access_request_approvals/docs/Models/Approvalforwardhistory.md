@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **comment** | **str** | Comment made while forwarding. | [optional] 
 **modified** | **datetime** | Time at which approval was forwarded. | [optional] 
 **forwarder_name** | **str** | Display name of forwarder who forwarded the approval. | [optional] 
-**reassignment_type** | [**Reassignmenttype**](reassignmenttype) |  | [optional] 
+**reassignment_type** | **Reassignmenttype** |  | [optional] 
 }
 
 ## Example

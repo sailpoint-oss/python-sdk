@@ -17,7 +17,7 @@ tags: ['SDK', 'Software Development Kit', 'Accessrequest', 'Accessrequest']
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **requested_for** | **[]str** | A list of Identity IDs for whom the Access is requested. If it's a Revoke request, there can only be one Identity ID. | [required]
-**request_type** | [**Accessrequesttype**](accessrequesttype) |  | [optional] 
+**request_type** | **Accessrequesttype** |  | [optional] 
 **requested_items** | [**[]Accessrequestitem**](accessrequestitem) |  | [required]
 **client_metadata** | **map[string]str** | Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities. | [optional] 
 **requested_for_with_requested_items** | [**[]Requestedfordtoref**](requestedfordtoref) | Additional submit data structure with requestedFor containing requestedItems allowing distinction for each request item and Identity. * Can only be used when 'requestedFor' and 'requestedItems' are not separately provided * Adds ability to specify which account the user wants the access on, in case they have multiple accounts on a source * Allows the ability to request items with different start dates * Allows the ability to request items with different remove dates * Also allows different combinations of request items and identities in the same request * Only for use in GRANT_ACCESS type requests  | [optional] 

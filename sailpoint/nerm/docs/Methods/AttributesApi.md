@@ -29,7 +29,7 @@ Method | HTTP request | Description
 Create an attribute
 This endpoint can create an attribute
 
-[API Spec](https://developer.sailpoint.com/docs/api//create-attribute)
+[API Spec](https://developer.sailpoint.com/docs/api/create-attribute)
 
 ### Parameters 
 
@@ -85,7 +85,7 @@ with ApiClient(configuration) as api_client:
 Delete attribute by id
 Delete attribute by id
 
-[API Spec](https://developer.sailpoint.com/docs/api//delete-attribute-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-attribute-by-id)
 
 ### Parameters 
 
@@ -140,7 +140,7 @@ with ApiClient(configuration) as api_client:
 Delete attribute
 Delete attribute by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api//delete-attribute-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/delete-attribute-by-uid)
 
 ### Parameters 
 
@@ -195,7 +195,7 @@ with ApiClient(configuration) as api_client:
 Find attribute data by id
 Info for a specific attribute
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-attribute-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/get-attribute-by-id)
 
 ### Parameters 
 
@@ -250,7 +250,7 @@ with ApiClient(configuration) as api_client:
 Find attribute data
 Info for a specific attribute by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-attribute-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/get-attribute-by-uid)
 
 ### Parameters 
 
@@ -305,7 +305,7 @@ with ApiClient(configuration) as api_client:
 Get attribute data in bulk
 This endpoint can retrieve attribute data in bulk from Lifecycle or you can search for attributes using parameters
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-attributes)
+[API Spec](https://developer.sailpoint.com/docs/api/get-attributes)
 
 ### Parameters 
 
@@ -370,7 +370,7 @@ with ApiClient(configuration) as api_client:
 Update attribute data by id
 Update info for a specific attribute
 
-[API Spec](https://developer.sailpoint.com/docs/api//update-attribute-by-id)
+[API Spec](https://developer.sailpoint.com/docs/api/update-attribute-by-id)
 
 ### Parameters 
 
@@ -428,7 +428,7 @@ with ApiClient(configuration) as api_client:
 Update attribute data
 Update info for a specific attribute by UID (user-specified identifier)
 
-[API Spec](https://developer.sailpoint.com/docs/api//update-attribute-by-uid)
+[API Spec](https://developer.sailpoint.com/docs/api/update-attribute-by-uid)
 
 ### Parameters 
 

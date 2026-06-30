@@ -17,7 +17,7 @@ tags: ['SDK', 'Software Development Kit', 'Errormessagedto', 'Errormessagedto']
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **locale** | **str** | The locale for the message text, a BCP 47 language tag. | [optional] 
-**locale_origin** | [**Localeorigin**](localeorigin) |  | [optional] 
+**locale_origin** | **Localeorigin** |  | [optional] 
 **text** | **str** | Actual text of the error message in the indicated locale. | [optional] 
 }
 

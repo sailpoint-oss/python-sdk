@@ -48,7 +48,7 @@ Method | HTTP request | Description
 Approve an approval item
 This API approves an Approval Item. Either an admin, or the owning/current user must make this request.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/approve-approval-item-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/approve-approval-item-v-1)
 
 ### Parameters 
 
@@ -109,7 +109,7 @@ with ApiClient(configuration) as api_client:
 Bulk approve approval items
 This API bulk approves Approval Items. Either an admin, or the owning/current user must make this request.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/approve-approval-items-in-bulk-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/approve-approval-items-in-bulk-v-1)
 
 ### Parameters 
 
@@ -168,7 +168,7 @@ with ApiClient(configuration) as api_client:
 Complete a work item
 This API completes a work item. Either an admin, or the owning/current user must make this request.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/complete-work-item-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/complete-work-item-v-1)
 
 ### Parameters 
 
@@ -229,7 +229,7 @@ with ApiClient(configuration) as api_client:
 Forward a work item
 This API forwards a work item to a new owner. Either an admin, or the owning/current user must make this request.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/forward-work-item-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/forward-work-item-v-1)
 
 ### Parameters 
 
@@ -287,7 +287,7 @@ with ApiClient(configuration) as api_client:
 Completed work items
 This gets a collection of completed work items belonging to either the specified user(admin required), or the current user.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-completed-work-items-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-completed-work-items-v-1)
 
 ### Parameters 
 
@@ -352,7 +352,7 @@ with ApiClient(configuration) as api_client:
 Count completed work items
 This gets a count of completed work items belonging to either the specified user(admin required), or the current user.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-count-completed-work-items-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-count-completed-work-items-v-1)
 
 ### Parameters 
 
@@ -408,7 +408,7 @@ with ApiClient(configuration) as api_client:
 Count work items
 This gets a count of work items belonging to either the specified user(admin required), or the current user.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-count-work-items-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-count-work-items-v-1)
 
 ### Parameters 
 
@@ -466,7 +466,7 @@ with ApiClient(configuration) as api_client:
 Get a work item
 This gets the details of a Work Item belonging to either the specified user(admin required), or the current user.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-work-item-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-work-item-v-1)
 
 ### Parameters 
 
@@ -524,7 +524,7 @@ with ApiClient(configuration) as api_client:
 Work items summary
 This gets a summary of work items belonging to either the specified user(admin required), or the current user.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/get-work-items-summary-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/get-work-items-summary-v-1)
 
 ### Parameters 
 
@@ -582,7 +582,7 @@ with ApiClient(configuration) as api_client:
 List work items
 This gets a collection of work items belonging to either the specified user(admin required), or the current user.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/list-work-items-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/list-work-items-v-1)
 
 ### Parameters 
 
@@ -647,7 +647,7 @@ with ApiClient(configuration) as api_client:
 Reject an approval item
 This API rejects an Approval Item. Either an admin, or the owning/current user must make this request.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/reject-approval-item-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/reject-approval-item-v-1)
 
 ### Parameters 
 
@@ -708,7 +708,7 @@ with ApiClient(configuration) as api_client:
 Bulk reject approval items
 This API bulk rejects Approval Items. Either an admin, or the owning/current user must make this request.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/reject-approval-items-in-bulk-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/reject-approval-items-in-bulk-v-1)
 
 ### Parameters 
 
@@ -767,7 +767,7 @@ with ApiClient(configuration) as api_client:
 Submit account selections
 This API submits account selections. Either an admin, or the owning/current user must make this request.
 
-[API Spec](https://developer.sailpoint.com/docs/api/v1/submit-account-selection-v1)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-account-selection-v-1)
 
 ### Parameters 
 

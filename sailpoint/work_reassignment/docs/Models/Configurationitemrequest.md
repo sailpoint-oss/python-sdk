@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reassigned_from_id** | **str** | The identity id to reassign an item from | [optional] 
 **reassigned_to_id** | **str** | The identity id to reassign an item to | [optional] 
-**config_type** | [**Configtypeenum**](configtypeenum) |  | [optional] 
+**config_type** | **Configtypeenum** |  | [optional] 
 **start_date** | **datetime** | The date from which to start reassigning work items | [optional] 
 **end_date** | **datetime** | The date from which to stop reassigning work items.  If this is an null string it indicates a permanent reassignment. | [optional] 
 }

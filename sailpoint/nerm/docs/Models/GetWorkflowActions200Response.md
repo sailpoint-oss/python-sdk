@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'GetWorkflowActions200Response', 'GetW
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow_actions** | [**WorkflowAction**](workflow-action) |  | [optional] 
+**workflow_actions** | **WorkflowAction** |  | [optional] 
 }
 
 ## Example

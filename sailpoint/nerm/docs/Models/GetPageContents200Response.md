@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'GetPageContents200Response', 'GetPage
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**page** | [**PageContent**](page-content) |  | [optional] 
+**page** | **PageContent** |  | [optional] 
 }
 
 ## Example

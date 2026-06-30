@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **parent_name** | **str** | Name of the parent task if exists. | [optional] 
 **messages** | [**[]LoadaccountstaskTaskMessagesInner**](loadaccountstask-task-messages-inner) | List of the messages dedicated to the report.  From task definition perspective here usually should be warnings or errors. | [optional] 
 **progress** | **str** | Current task state. | [optional] 
-**attributes** | [**LoadaccountstaskTaskAttributes**](loadaccountstask-task-attributes) |  | [optional] 
+**attributes** | **LoadaccountstaskTaskAttributes** |  | [optional] 
 **returns** | [**[]LoadaccountstaskTaskReturnsInner**](loadaccountstask-task-returns-inner) | Return values from the task | [optional] 
 }
 

@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **id** | **str** | Non-Employee approval item id | [optional] 
 **approver** | [**Nonemployeeidentityreferencewithid**](nonemployeeidentityreferencewithid) |  | [optional] 
 **account_name** | **str** | Requested identity account name | [optional] 
-**approval_status** | [**Approvalstatus**](approvalstatus) |  | [optional] 
+**approval_status** | **Approvalstatus** |  | [optional] 
 **approval_order** | **float** | Approval order | [optional] 
 **comment** | **str** | comment of approver | [optional] 
 **modified** | **datetime** | When the request was last modified. | [optional] 

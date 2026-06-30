@@ -17,7 +17,7 @@ The schedule information.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**Scheduletype**](scheduletype) |  | [required]
+**type** | **Scheduletype** |  | [required]
 **months** | [**ScheduleMonths**](schedule-months) |  | [optional] 
 **days** | [**ScheduleDays**](schedule-days) |  | [optional] 
 **hours** | [**ScheduleHours**](schedule-hours) |  | [required]

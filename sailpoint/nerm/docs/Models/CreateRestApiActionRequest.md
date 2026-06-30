@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateRestApiActionRequest', 'CreateR
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow_action** | [**RestApiAction**](rest-api-action) |  | [optional] 
+**workflow_action** | **RestApiAction** |  | [optional] 
 }
 
 ## Example

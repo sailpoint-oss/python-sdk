@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **id** | **str** | SOD policy violation report result ID. | [optional] 
 **name** | **str** | Human-readable name of the SOD policy violation report result. | [optional] 
 **status** |  **Enum** [  'SUCCESS',    'WARNING',    'ERROR',    'TERMINATED',    'TEMP_ERROR',    'PENDING' ] | Status of a SOD policy violation report. | [optional] 
-**report_type** | [**Reporttype**](reporttype) |  | [required]
+**report_type** | **Reporttype** |  | [required]
 **last_run_at** | **datetime** | The most recent date and time this report was run | [optional] [readonly] 
 }
 

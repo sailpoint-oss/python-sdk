@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 **id** | **str** | Session Id for this role mining session | [optional] 
 **created_date** | **datetime** | The date-time when this role mining session was created. | [optional] 
 **modified_date** | **datetime** | The date-time when this role mining session was completed. | [optional] 
-**type** | [**Roleminingroletype**](roleminingroletype) |  | [optional] 
+**type** | **Roleminingroletype** |  | [optional] 
 }
 
 ## Example

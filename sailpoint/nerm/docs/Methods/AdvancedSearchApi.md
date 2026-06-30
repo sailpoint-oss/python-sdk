@@ -26,7 +26,7 @@ Method | HTTP request | Description
 Get saved advanced search queries
 Get saved advanced search queries
 
-[API Spec](https://developer.sailpoint.com/docs/api//get-advanced-search)
+[API Spec](https://developer.sailpoint.com/docs/api/get-advanced-search)
 
 ### Parameters 
 This endpoint does not need any parameter. 
@@ -75,7 +75,7 @@ with ApiClient(configuration) as api_client:
 Update a saved advanced search
 Update a saved advanced search query
 
-[API Spec](https://developer.sailpoint.com/docs/api//patch-advanced-search)
+[API Spec](https://developer.sailpoint.com/docs/api/patch-advanced-search)
 
 ### Parameters 
 
@@ -131,7 +131,7 @@ with ApiClient(configuration) as api_client:
 Run profiles advanced search
 Run an advanced search for profiles, without saving the query
 
-[API Spec](https://developer.sailpoint.com/docs/api//search-advanced-search)
+[API Spec](https://developer.sailpoint.com/docs/api/search-advanced-search)
 
 ### Parameters 
 
@@ -191,7 +191,7 @@ with ApiClient(configuration) as api_client:
 Run a saved advanced search
 Run a saved advanced search query
 
-[API Spec](https://developer.sailpoint.com/docs/api//search-advanced-searchby-id)
+[API Spec](https://developer.sailpoint.com/docs/api/search-advanced-searchby-id)
 
 ### Parameters 
 
@@ -250,7 +250,7 @@ with ApiClient(configuration) as api_client:
 Save an advanced search query
 Save an advanced search query for later use
 
-[API Spec](https://developer.sailpoint.com/docs/api//submit-advanced-search)
+[API Spec](https://developer.sailpoint.com/docs/api/submit-advanced-search)
 
 ### Parameters 
 

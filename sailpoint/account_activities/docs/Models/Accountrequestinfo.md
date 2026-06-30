@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **requested_object_id** | **str** | Id of requested object | [optional] 
 **requested_object_name** | **str** | Human-readable name of requested object | [optional] 
-**requested_object_type** | [**Requestableobjecttype**](requestableobjecttype) |  | [optional] 
+**requested_object_type** | **Requestableobjecttype** |  | [optional] 
 }
 
 ## Example

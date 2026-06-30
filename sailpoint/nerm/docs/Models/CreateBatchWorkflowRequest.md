@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateBatchWorkflowRequest', 'CreateB
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow** | [**BatchWorkflow**](batch-workflow) |  | [optional] 
+**workflow** | **BatchWorkflow** |  | [optional] 
 }
 
 ## Example

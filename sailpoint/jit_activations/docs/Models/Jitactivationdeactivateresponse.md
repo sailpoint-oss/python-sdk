@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **id** | **str** | Workflow or business identifier for this activation. | [required]
 **activation_id** | **str** | Persistent activation record identifier for this JIT activation. | [required]
 **connection_id** | **str** | Entitlement connection identifier for the activation. | [required]
-**status** | [**Activationworkflowstatus**](activationworkflowstatus) |  | [required]
+**status** | **Activationworkflowstatus** |  | [required]
 **start_time** | **datetime** | Time associated with this deactivation request (ISO-8601). | [required]
 }
 

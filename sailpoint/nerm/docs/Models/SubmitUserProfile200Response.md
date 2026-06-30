@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'SubmitUserProfile200Response', 'Submi
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user_profile** | [**UserProfile**](user-profile) |  | [optional] 
+**user_profile** | **UserProfile** |  | [optional] 
 }
 
 ## Example

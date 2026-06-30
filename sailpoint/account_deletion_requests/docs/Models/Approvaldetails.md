@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **approver_comments** | **str** | Comments added by approver while rejecting or approving the account deletion request. | [optional] 
 **decision_date** | **datetime** | Decision date of approval rejected or approved. | [optional] [readonly] 
 **serial_order** | **int** | SerialOrder of approval details. | [optional] 
-**status** | [**Accountrequestphasestate**](accountrequestphasestate) |  | [optional] 
+**status** | **Accountrequestphasestate** |  | [optional] 
 }
 
 ## Example

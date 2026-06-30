@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateAutomatedWorkflowRequest', 'Cre
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow** | [**AutomatedWorkflow**](automated-workflow) |  | [optional] 
+**workflow** | **AutomatedWorkflow** |  | [optional] 
 }
 
 ## Example

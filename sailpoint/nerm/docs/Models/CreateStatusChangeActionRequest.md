@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateStatusChangeActionRequest', 'Cr
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow_action** | [**StatusChangeAction**](status-change-action) |  | [optional] 
+**workflow_action** | **StatusChangeAction** |  | [optional] 
 }
 
 ## Example

@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'GetFormAttributes200Response', 'GetFo
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**form_attribute** | [**FormAttribute**](form-attribute) |  | [optional] 
+**form_attribute** | **FormAttribute** |  | [optional] 
 }
 
 ## Example

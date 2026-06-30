@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateRequestActionRequest', 'CreateR
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow_action** | [**RequestAction**](request-action) |  | [optional] 
+**workflow_action** | **RequestAction** |  | [optional] 
 }
 
 ## Example

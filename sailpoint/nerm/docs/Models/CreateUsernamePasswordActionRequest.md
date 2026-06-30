@@ -16,7 +16,7 @@ tags: ['SDK', 'Software Development Kit', 'CreateUsernamePasswordActionRequest',
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workflow_action** | [**UsernamePasswordAction**](username-password-action) |  | [optional] 
+**workflow_action** | **UsernamePasswordAction** |  | [optional] 
 }
 
 ## Example
