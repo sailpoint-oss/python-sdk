@@ -39,12 +39,6 @@ runs:
       run: |
         wget -q https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.12.0/openapi-generator-cli-7.12.0.jar -O openapi-generator-cli.jar
 
-    - name: Build Versioned SDK (per-partition)
-      shell: bash
-      run: |
-        node sdk-resources/build-versioned-sdk.js \
-          ${{ inputs.api-specs-path }}/idn/apis
-
     - name: Build NERM SDK
       shell: bash
       run: |
@@ -68,6 +62,12 @@ runs:
           --config sdk-resources/v2025-nerm-config.yaml \
           --enable-post-process-file
         node sdk-resources/postscript.js ./sailpoint/nerm/v2025
+
+    - name: Build Versioned SDK (per-partition)
+      shell: bash
+      run: |
+        node sdk-resources/build-versioned-sdk.js \
+          ${{ inputs.api-specs-path }}/idn/apis
 
     - name: Build and Test
       shell: bash

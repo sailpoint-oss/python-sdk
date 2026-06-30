@@ -21,3 +21,9 @@
 #docs/*.md
 # Then explicitly reverse the ignore rule for a single file:
 #!docs/README.md
+
+# The top-level package init is hand-authored by build-versioned-sdk.js
+# (generateInitPy). Every `openapi-generator -o .` run for a sailpoint.* package
+# would otherwise regenerate this as an empty namespace stub, wiping the
+# ApiClient + resource API exports and breaking `from sailpoint import ...`.
+sailpoint/__init__.py
