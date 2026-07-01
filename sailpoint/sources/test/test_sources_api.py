@@ -33,6 +33,13 @@ class TestSourcesApi(unittest.TestCase):
         """
         pass
 
+    def test_create_provisioning_policy_v2(self) -> None:
+        """Test case for create_provisioning_policy_v2
+
+        Create provisioning policy
+        """
+        pass
+
     def test_create_source_schedule_v1(self) -> None:
         """Test case for create_source_schedule_v1
 
@@ -72,6 +79,13 @@ class TestSourcesApi(unittest.TestCase):
         """Test case for delete_provisioning_policy_v1
 
         Delete provisioning policy by usagetype
+        """
+        pass
+
+    def test_delete_provisioning_policy_v2(self) -> None:
+        """Test case for delete_provisioning_policy_v2
+
+        Delete provisioning policy by ID
         """
         pass
 
@@ -142,6 +156,13 @@ class TestSourcesApi(unittest.TestCase):
         """Test case for get_provisioning_policy_v1
 
         Get provisioning policy by usagetype
+        """
+        pass
+
+    def test_get_provisioning_policy_v2(self) -> None:
+        """Test case for get_provisioning_policy_v2
+
+        Get provisioning policy by ID
         """
         pass
 
@@ -271,6 +292,13 @@ class TestSourcesApi(unittest.TestCase):
         """
         pass
 
+    def test_list_provisioning_policies_v2(self) -> None:
+        """Test case for list_provisioning_policies_v2
+
+        Lists Provisioning Policies
+        """
+        pass
+
     def test_list_sources_v1(self) -> None:
         """Test case for list_sources_v1
 
@@ -303,6 +331,13 @@ class TestSourcesApi(unittest.TestCase):
         """Test case for put_provisioning_policy_v1
 
         Update provisioning policy by usagetype
+        """
+        pass
+
+    def test_put_provisioning_policy_v2(self) -> None:
+        """Test case for put_provisioning_policy_v2
+
+        Update provisioning policy by ID
         """
         pass
 
@@ -385,6 +420,13 @@ class TestSourcesApi(unittest.TestCase):
 
     def test_update_provisioning_policy_v1(self) -> None:
         """Test case for update_provisioning_policy_v1
+
+        Partial update of provisioning policy
+        """
+        pass
+
+    def test_update_provisioning_policy_v2(self) -> None:
+        """Test case for update_provisioning_policy_v2
 
         Partial update of provisioning policy
         """

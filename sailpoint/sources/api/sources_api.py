@@ -31,7 +31,8 @@ from sailpoint.sources.models.loaduncorrelatedaccountstask import Loaduncorrelat
 from sailpoint.sources.models.model_schema import ModelSchema
 from sailpoint.sources.models.nativechangedetectionconfig import Nativechangedetectionconfig
 from sailpoint.sources.models.passwordpolicyholdersdto_inner import PasswordpolicyholdersdtoInner
-from sailpoint.sources.models.provisioningpolicydto import Provisioningpolicydto
+from sailpoint.sources.models.provisioningpolicydtov1 import Provisioningpolicydtov1
+from sailpoint.sources.models.provisioningpolicydtov2 import Provisioningpolicydtov2
 from sailpoint.sources.models.resourceobjectsrequest import Resourceobjectsrequest
 from sailpoint.sources.models.resourceobjectsresponse import Resourceobjectsresponse
 from sailpoint.sources.models.schedule3 import Schedule3
@@ -66,7 +67,7 @@ class SourcesApi:
     def create_provisioning_policy_v1(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id")],
-        provisioningpolicydto: Provisioningpolicydto,
+        provisioningpolicydtov1: Provisioningpolicydtov1,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -79,15 +80,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Provisioningpolicydto:
+    ) -> Provisioningpolicydtov1:
         """Create provisioning policy
 
         This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
 
         :param source_id: The Source id (required)
         :type source_id: str
-        :param provisioningpolicydto: (required)
-        :type provisioningpolicydto: Provisioningpolicydto
+        :param provisioningpolicydtov1: (required)
+        :type provisioningpolicydtov1: Provisioningpolicydtov1
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -112,7 +113,7 @@ class SourcesApi:
 
         _param = self._create_provisioning_policy_v1_serialize(
             source_id=source_id,
-            provisioningpolicydto=provisioningpolicydto,
+            provisioningpolicydtov1=provisioningpolicydtov1,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -120,7 +121,7 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Provisioningpolicydto",
+            '201': "Provisioningpolicydtov1",
             '400': "Errorresponsedto",
             '401': "ListSourcesV1401Response",
             '403': "Errorresponsedto",
@@ -143,7 +144,7 @@ class SourcesApi:
     def create_provisioning_policy_v1_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id")],
-        provisioningpolicydto: Provisioningpolicydto,
+        provisioningpolicydtov1: Provisioningpolicydtov1,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -156,15 +157,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Provisioningpolicydto]:
+    ) -> ApiResponse[Provisioningpolicydtov1]:
         """Create provisioning policy
 
         This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
 
         :param source_id: The Source id (required)
         :type source_id: str
-        :param provisioningpolicydto: (required)
-        :type provisioningpolicydto: Provisioningpolicydto
+        :param provisioningpolicydtov1: (required)
+        :type provisioningpolicydtov1: Provisioningpolicydtov1
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -189,7 +190,7 @@ class SourcesApi:
 
         _param = self._create_provisioning_policy_v1_serialize(
             source_id=source_id,
-            provisioningpolicydto=provisioningpolicydto,
+            provisioningpolicydtov1=provisioningpolicydtov1,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -197,7 +198,7 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Provisioningpolicydto",
+            '201': "Provisioningpolicydtov1",
             '400': "Errorresponsedto",
             '401': "ListSourcesV1401Response",
             '403': "Errorresponsedto",
@@ -220,7 +221,7 @@ class SourcesApi:
     def create_provisioning_policy_v1_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id")],
-        provisioningpolicydto: Provisioningpolicydto,
+        provisioningpolicydtov1: Provisioningpolicydtov1,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -240,8 +241,8 @@ class SourcesApi:
 
         :param source_id: The Source id (required)
         :type source_id: str
-        :param provisioningpolicydto: (required)
-        :type provisioningpolicydto: Provisioningpolicydto
+        :param provisioningpolicydtov1: (required)
+        :type provisioningpolicydtov1: Provisioningpolicydtov1
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -266,7 +267,7 @@ class SourcesApi:
 
         _param = self._create_provisioning_policy_v1_serialize(
             source_id=source_id,
-            provisioningpolicydto=provisioningpolicydto,
+            provisioningpolicydtov1=provisioningpolicydtov1,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -274,7 +275,7 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Provisioningpolicydto",
+            '201': "Provisioningpolicydtov1",
             '400': "Errorresponsedto",
             '401': "ListSourcesV1401Response",
             '403': "Errorresponsedto",
@@ -292,7 +293,7 @@ class SourcesApi:
     def _create_provisioning_policy_v1_serialize(
         self,
         source_id,
-        provisioningpolicydto,
+        provisioningpolicydtov1,
         _request_auth,
         _content_type,
         _headers,
@@ -320,8 +321,8 @@ class SourcesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if provisioningpolicydto is not None:
-            _body_params = provisioningpolicydto
+        if provisioningpolicydtov1 is not None:
+            _body_params = provisioningpolicydtov1
 
 
         # set the HTTP header `Accept`
@@ -353,6 +354,344 @@ class SourcesApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/sources/v1/{sourceId}/provisioning-policies',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def create_provisioning_policy_v2(
+        self,
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
+        provisioningpolicydtov2: Provisioningpolicydtov2,
+        use_default_fields: Annotated[Optional[StrictBool], Field(description="If passed as true, then it uses default fields from the connector template.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> Provisioningpolicydtov2:
+        """Create provisioning policy
+
+        This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. The V2 API allows you to use a unique identifier (id) for each provisioning policy instead of usageType. This enables read, update, and delete operations on policies using their id. Note: The subtypeId field is required if usageType is CREATE_MACHINE_ACCOUNT. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
+
+        :param source_id: The Source id (required)
+        :type source_id: str
+        :param provisioningpolicydtov2: (required)
+        :type provisioningpolicydtov2: Provisioningpolicydtov2
+        :param use_default_fields: If passed as true, then it uses default fields from the connector template.
+        :type use_default_fields: bool
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_provisioning_policy_v2_serialize(
+            source_id=source_id,
+            provisioningpolicydtov2=provisioningpolicydtov2,
+            use_default_fields=use_default_fields,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "Provisioningpolicydtov2",
+            '400': "Errorresponsedto",
+            '401': "ListSourcesV1401Response",
+            '403': "Errorresponsedto",
+            '404': "Errorresponsedto",
+            '429': "ListSourcesV1429Response",
+            '500': "Errorresponsedto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def create_provisioning_policy_v2_with_http_info(
+        self,
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
+        provisioningpolicydtov2: Provisioningpolicydtov2,
+        use_default_fields: Annotated[Optional[StrictBool], Field(description="If passed as true, then it uses default fields from the connector template.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[Provisioningpolicydtov2]:
+        """Create provisioning policy
+
+        This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. The V2 API allows you to use a unique identifier (id) for each provisioning policy instead of usageType. This enables read, update, and delete operations on policies using their id. Note: The subtypeId field is required if usageType is CREATE_MACHINE_ACCOUNT. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
+
+        :param source_id: The Source id (required)
+        :type source_id: str
+        :param provisioningpolicydtov2: (required)
+        :type provisioningpolicydtov2: Provisioningpolicydtov2
+        :param use_default_fields: If passed as true, then it uses default fields from the connector template.
+        :type use_default_fields: bool
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_provisioning_policy_v2_serialize(
+            source_id=source_id,
+            provisioningpolicydtov2=provisioningpolicydtov2,
+            use_default_fields=use_default_fields,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "Provisioningpolicydtov2",
+            '400': "Errorresponsedto",
+            '401': "ListSourcesV1401Response",
+            '403': "Errorresponsedto",
+            '404': "Errorresponsedto",
+            '429': "ListSourcesV1429Response",
+            '500': "Errorresponsedto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def create_provisioning_policy_v2_without_preload_content(
+        self,
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
+        provisioningpolicydtov2: Provisioningpolicydtov2,
+        use_default_fields: Annotated[Optional[StrictBool], Field(description="If passed as true, then it uses default fields from the connector template.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Create provisioning policy
+
+        This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. The V2 API allows you to use a unique identifier (id) for each provisioning policy instead of usageType. This enables read, update, and delete operations on policies using their id. Note: The subtypeId field is required if usageType is CREATE_MACHINE_ACCOUNT. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
+
+        :param source_id: The Source id (required)
+        :type source_id: str
+        :param provisioningpolicydtov2: (required)
+        :type provisioningpolicydtov2: Provisioningpolicydtov2
+        :param use_default_fields: If passed as true, then it uses default fields from the connector template.
+        :type use_default_fields: bool
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_provisioning_policy_v2_serialize(
+            source_id=source_id,
+            provisioningpolicydtov2=provisioningpolicydtov2,
+            use_default_fields=use_default_fields,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "Provisioningpolicydtov2",
+            '400': "Errorresponsedto",
+            '401': "ListSourcesV1401Response",
+            '403': "Errorresponsedto",
+            '404': "Errorresponsedto",
+            '429': "ListSourcesV1429Response",
+            '500': "Errorresponsedto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _create_provisioning_policy_v2_serialize(
+        self,
+        source_id,
+        provisioningpolicydtov2,
+        use_default_fields,
+        x_sail_point_experimental,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
+        # process the query parameters
+        if use_default_fields is not None:
+            
+            _query_params.append(('useDefaultFields', use_default_fields))
+            
+        # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
+        # process the form parameters
+        # process the body parameter
+        if provisioningpolicydtov2 is not None:
+            _body_params = provisioningpolicydtov2
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/sources/v2/{sourceId}/provisioning-policies',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2110,6 +2449,314 @@ class SourcesApi:
         return self.api_client.param_serialize(
             method='DELETE',
             resource_path='/sources/v1/{sourceId}/provisioning-policies/{usageType}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def delete_provisioning_policy_v2(
+        self,
+        source_id: Annotated[StrictStr, Field(description="The Source ID.")],
+        id: Annotated[StrictStr, Field(description="The provisioning policy ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Delete provisioning policy by ID
+
+        Deletes the provisioning policy with the specified ID on an application.
+
+        :param source_id: The Source ID. (required)
+        :type source_id: str
+        :param id: The provisioning policy ID. (required)
+        :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_provisioning_policy_v2_serialize(
+            source_id=source_id,
+            id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "Errorresponsedto",
+            '401': "ListSourcesV1401Response",
+            '403': "Errorresponsedto",
+            '404': "Errorresponsedto",
+            '429': "ListSourcesV1429Response",
+            '500': "Errorresponsedto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def delete_provisioning_policy_v2_with_http_info(
+        self,
+        source_id: Annotated[StrictStr, Field(description="The Source ID.")],
+        id: Annotated[StrictStr, Field(description="The provisioning policy ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Delete provisioning policy by ID
+
+        Deletes the provisioning policy with the specified ID on an application.
+
+        :param source_id: The Source ID. (required)
+        :type source_id: str
+        :param id: The provisioning policy ID. (required)
+        :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_provisioning_policy_v2_serialize(
+            source_id=source_id,
+            id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "Errorresponsedto",
+            '401': "ListSourcesV1401Response",
+            '403': "Errorresponsedto",
+            '404': "Errorresponsedto",
+            '429': "ListSourcesV1429Response",
+            '500': "Errorresponsedto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def delete_provisioning_policy_v2_without_preload_content(
+        self,
+        source_id: Annotated[StrictStr, Field(description="The Source ID.")],
+        id: Annotated[StrictStr, Field(description="The provisioning policy ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Delete provisioning policy by ID
+
+        Deletes the provisioning policy with the specified ID on an application.
+
+        :param source_id: The Source ID. (required)
+        :type source_id: str
+        :param id: The provisioning policy ID. (required)
+        :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_provisioning_policy_v2_serialize(
+            source_id=source_id,
+            id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "Errorresponsedto",
+            '401': "ListSourcesV1401Response",
+            '403': "Errorresponsedto",
+            '404': "Errorresponsedto",
+            '429': "ListSourcesV1429Response",
+            '500': "Errorresponsedto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _delete_provisioning_policy_v2_serialize(
+        self,
+        source_id,
+        id,
+        x_sail_point_experimental,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/sources/v2/{sourceId}/provisioning-policies/{id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -4687,7 +5334,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Provisioningpolicydto:
+    ) -> Provisioningpolicydtov1:
         """Get provisioning policy by usagetype
 
         This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow.
@@ -4728,7 +5375,7 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydto",
+            '200': "Provisioningpolicydtov1",
             '400': "Errorresponsedto",
             '401': "ListSourcesV1401Response",
             '403': "Errorresponsedto",
@@ -4764,7 +5411,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Provisioningpolicydto]:
+    ) -> ApiResponse[Provisioningpolicydtov1]:
         """Get provisioning policy by usagetype
 
         This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow.
@@ -4805,7 +5452,7 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydto",
+            '200': "Provisioningpolicydtov1",
             '400': "Errorresponsedto",
             '401': "ListSourcesV1401Response",
             '403': "Errorresponsedto",
@@ -4882,7 +5529,7 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydto",
+            '200': "Provisioningpolicydtov1",
             '400': "Errorresponsedto",
             '401': "ListSourcesV1401Response",
             '403': "Errorresponsedto",
@@ -4948,6 +5595,314 @@ class SourcesApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/sources/v1/{sourceId}/provisioning-policies/{usageType}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def get_provisioning_policy_v2(
+        self,
+        source_id: Annotated[StrictStr, Field(description="The Source ID.")],
+        id: Annotated[StrictStr, Field(description="The provisioning policy ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> Provisioningpolicydtov2:
+        """Get provisioning policy by ID
+
+        This end-point retrieves the ProvisioningPolicy with the specified ID on the specified Source in Identity Security Cloud.
+
+        :param source_id: The Source ID. (required)
+        :type source_id: str
+        :param id: The provisioning policy ID. (required)
+        :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_provisioning_policy_v2_serialize(
+            source_id=source_id,
+            id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Provisioningpolicydtov2",
+            '400': "Errorresponsedto",
+            '401': "ListSourcesV1401Response",
+            '403': "Errorresponsedto",
+            '404': "Errorresponsedto",
+            '429': "ListSourcesV1429Response",
+            '500': "Errorresponsedto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def get_provisioning_policy_v2_with_http_info(
+        self,
+        source_id: Annotated[StrictStr, Field(description="The Source ID.")],
+        id: Annotated[StrictStr, Field(description="The provisioning policy ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[Provisioningpolicydtov2]:
+        """Get provisioning policy by ID
+
+        This end-point retrieves the ProvisioningPolicy with the specified ID on the specified Source in Identity Security Cloud.
+
+        :param source_id: The Source ID. (required)
+        :type source_id: str
+        :param id: The provisioning policy ID. (required)
+        :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_provisioning_policy_v2_serialize(
+            source_id=source_id,
+            id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Provisioningpolicydtov2",
+            '400': "Errorresponsedto",
+            '401': "ListSourcesV1401Response",
+            '403': "Errorresponsedto",
+            '404': "Errorresponsedto",
+            '429': "ListSourcesV1429Response",
+            '500': "Errorresponsedto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def get_provisioning_policy_v2_without_preload_content(
+        self,
+        source_id: Annotated[StrictStr, Field(description="The Source ID.")],
+        id: Annotated[StrictStr, Field(description="The provisioning policy ID.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Get provisioning policy by ID
+
+        This end-point retrieves the ProvisioningPolicy with the specified ID on the specified Source in Identity Security Cloud.
+
+        :param source_id: The Source ID. (required)
+        :type source_id: str
+        :param id: The provisioning policy ID. (required)
+        :type id: str
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_provisioning_policy_v2_serialize(
+            source_id=source_id,
+            id=id,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Provisioningpolicydtov2",
+            '400': "Errorresponsedto",
+            '401': "ListSourcesV1401Response",
+            '403': "Errorresponsedto",
+            '404': "Errorresponsedto",
+            '429': "ListSourcesV1429Response",
+            '500': "Errorresponsedto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_provisioning_policy_v2_serialize(
+        self,
+        source_id,
+        id,
+        x_sail_point_experimental,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/sources/v2/{sourceId}/provisioning-policies/{id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -10048,7 +11003,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Provisioningpolicydto]:
+    ) -> List[Provisioningpolicydtov1]:
         """Lists provisioningpolicies
 
         This end-point lists all the ProvisioningPolicies in IdentityNow.
@@ -10092,7 +11047,7 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Provisioningpolicydto]",
+            '200': "List[Provisioningpolicydtov1]",
             '400': "Errorresponsedto",
             '401': "ListSourcesV1401Response",
             '403': "Errorresponsedto",
@@ -10129,7 +11084,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Provisioningpolicydto]]:
+    ) -> ApiResponse[List[Provisioningpolicydtov1]]:
         """Lists provisioningpolicies
 
         This end-point lists all the ProvisioningPolicies in IdentityNow.
@@ -10173,7 +11128,7 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Provisioningpolicydto]",
+            '200': "List[Provisioningpolicydtov1]",
             '400': "Errorresponsedto",
             '401': "ListSourcesV1401Response",
             '403': "Errorresponsedto",
@@ -10254,7 +11209,7 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Provisioningpolicydto]",
+            '200': "List[Provisioningpolicydtov1]",
             '400': "Errorresponsedto",
             '401': "ListSourcesV1401Response",
             '403': "Errorresponsedto",
@@ -10327,6 +11282,350 @@ class SourcesApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/sources/v1/{sourceId}/provisioning-policies',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def list_provisioning_policies_v2(
+        self,
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **subtypeId**: *eq*  **usageType**: *eq*")] = None,
+        offset: Annotated[Optional[StrictInt], Field(description="Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Limit Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[Provisioningpolicydtov2]:
+        """Lists Provisioning Policies
+
+        This end-point lists all the ProvisioningPolicies in IdentityNow.
+
+        :param source_id: The Source id (required)
+        :type source_id: str
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **subtypeId**: *eq*  **usageType**: *eq*
+        :type filters: str
+        :param offset: Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
+        :type offset: int
+        :param limit: Limit Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
+        :type limit: int
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_provisioning_policies_v2_serialize(
+            source_id=source_id,
+            filters=filters,
+            offset=offset,
+            limit=limit,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[Provisioningpolicydtov2]",
+            '400': "Errorresponsedto",
+            '401': "ListSourcesV1401Response",
+            '403': "Errorresponsedto",
+            '404': "Errorresponsedto",
+            '429': "ListSourcesV1429Response",
+            '500': "Errorresponsedto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def list_provisioning_policies_v2_with_http_info(
+        self,
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **subtypeId**: *eq*  **usageType**: *eq*")] = None,
+        offset: Annotated[Optional[StrictInt], Field(description="Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Limit Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[Provisioningpolicydtov2]]:
+        """Lists Provisioning Policies
+
+        This end-point lists all the ProvisioningPolicies in IdentityNow.
+
+        :param source_id: The Source id (required)
+        :type source_id: str
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **subtypeId**: *eq*  **usageType**: *eq*
+        :type filters: str
+        :param offset: Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
+        :type offset: int
+        :param limit: Limit Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
+        :type limit: int
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_provisioning_policies_v2_serialize(
+            source_id=source_id,
+            filters=filters,
+            offset=offset,
+            limit=limit,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[Provisioningpolicydtov2]",
+            '400': "Errorresponsedto",
+            '401': "ListSourcesV1401Response",
+            '403': "Errorresponsedto",
+            '404': "Errorresponsedto",
+            '429': "ListSourcesV1429Response",
+            '500': "Errorresponsedto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def list_provisioning_policies_v2_without_preload_content(
+        self,
+        source_id: Annotated[StrictStr, Field(description="The Source id")],
+        filters: Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **subtypeId**: *eq*  **usageType**: *eq*")] = None,
+        offset: Annotated[Optional[StrictInt], Field(description="Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=0)]], Field(description="Limit Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Lists Provisioning Policies
+
+        This end-point lists all the ProvisioningPolicies in IdentityNow.
+
+        :param source_id: The Source id (required)
+        :type source_id: str
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **subtypeId**: *eq*  **usageType**: *eq*
+        :type filters: str
+        :param offset: Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
+        :type offset: int
+        :param limit: Limit Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
+        :type limit: int
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_provisioning_policies_v2_serialize(
+            source_id=source_id,
+            filters=filters,
+            offset=offset,
+            limit=limit,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[Provisioningpolicydtov2]",
+            '400': "Errorresponsedto",
+            '401': "ListSourcesV1401Response",
+            '403': "Errorresponsedto",
+            '404': "Errorresponsedto",
+            '429': "ListSourcesV1429Response",
+            '500': "Errorresponsedto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _list_provisioning_policies_v2_serialize(
+        self,
+        source_id,
+        filters,
+        offset,
+        limit,
+        x_sail_point_experimental,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
+        # process the query parameters
+        if filters is not None:
+            
+            _query_params.append(('filters', filters))
+            
+        if offset is not None:
+            
+            _query_params.append(('offset', offset))
+            
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/sources/v2/{sourceId}/provisioning-policies',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -11619,7 +12918,7 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="The Source ID.")],
         usage_type: Annotated[Usagetype, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
-        provisioningpolicydto: Provisioningpolicydto,
+        provisioningpolicydtov1: Provisioningpolicydtov1,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11632,7 +12931,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Provisioningpolicydto:
+    ) -> Provisioningpolicydtov1:
         """Update provisioning policy by usagetype
 
         This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
@@ -11641,8 +12940,8 @@ class SourcesApi:
         :type source_id: str
         :param usage_type: The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. (required)
         :type usage_type: Usagetype
-        :param provisioningpolicydto: (required)
-        :type provisioningpolicydto: Provisioningpolicydto
+        :param provisioningpolicydtov1: (required)
+        :type provisioningpolicydtov1: Provisioningpolicydtov1
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11668,7 +12967,7 @@ class SourcesApi:
         _param = self._put_provisioning_policy_v1_serialize(
             source_id=source_id,
             usage_type=usage_type,
-            provisioningpolicydto=provisioningpolicydto,
+            provisioningpolicydtov1=provisioningpolicydtov1,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11676,7 +12975,7 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydto",
+            '200': "Provisioningpolicydtov1",
             '400': "Errorresponsedto",
             '401': "ListSourcesV1401Response",
             '403': "Errorresponsedto",
@@ -11700,7 +12999,7 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="The Source ID.")],
         usage_type: Annotated[Usagetype, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
-        provisioningpolicydto: Provisioningpolicydto,
+        provisioningpolicydtov1: Provisioningpolicydtov1,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11713,7 +13012,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Provisioningpolicydto]:
+    ) -> ApiResponse[Provisioningpolicydtov1]:
         """Update provisioning policy by usagetype
 
         This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
@@ -11722,8 +13021,8 @@ class SourcesApi:
         :type source_id: str
         :param usage_type: The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. (required)
         :type usage_type: Usagetype
-        :param provisioningpolicydto: (required)
-        :type provisioningpolicydto: Provisioningpolicydto
+        :param provisioningpolicydtov1: (required)
+        :type provisioningpolicydtov1: Provisioningpolicydtov1
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11749,7 +13048,7 @@ class SourcesApi:
         _param = self._put_provisioning_policy_v1_serialize(
             source_id=source_id,
             usage_type=usage_type,
-            provisioningpolicydto=provisioningpolicydto,
+            provisioningpolicydtov1=provisioningpolicydtov1,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11757,7 +13056,7 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydto",
+            '200': "Provisioningpolicydtov1",
             '400': "Errorresponsedto",
             '401': "ListSourcesV1401Response",
             '403': "Errorresponsedto",
@@ -11781,7 +13080,7 @@ class SourcesApi:
         self,
         source_id: Annotated[StrictStr, Field(description="The Source ID.")],
         usage_type: Annotated[Usagetype, Field(description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.")],
-        provisioningpolicydto: Provisioningpolicydto,
+        provisioningpolicydtov1: Provisioningpolicydtov1,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -11803,8 +13102,8 @@ class SourcesApi:
         :type source_id: str
         :param usage_type: The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. (required)
         :type usage_type: Usagetype
-        :param provisioningpolicydto: (required)
-        :type provisioningpolicydto: Provisioningpolicydto
+        :param provisioningpolicydtov1: (required)
+        :type provisioningpolicydtov1: Provisioningpolicydtov1
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -11830,7 +13129,7 @@ class SourcesApi:
         _param = self._put_provisioning_policy_v1_serialize(
             source_id=source_id,
             usage_type=usage_type,
-            provisioningpolicydto=provisioningpolicydto,
+            provisioningpolicydtov1=provisioningpolicydtov1,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -11838,7 +13137,7 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydto",
+            '200': "Provisioningpolicydtov1",
             '400': "Errorresponsedto",
             '401': "ListSourcesV1401Response",
             '403': "Errorresponsedto",
@@ -11857,7 +13156,7 @@ class SourcesApi:
         self,
         source_id,
         usage_type,
-        provisioningpolicydto,
+        provisioningpolicydtov1,
         _request_auth,
         _content_type,
         _headers,
@@ -11887,8 +13186,8 @@ class SourcesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if provisioningpolicydto is not None:
-            _body_params = provisioningpolicydto
+        if provisioningpolicydtov1 is not None:
+            _body_params = provisioningpolicydtov1
 
 
         # set the HTTP header `Accept`
@@ -11920,6 +13219,342 @@ class SourcesApi:
         return self.api_client.param_serialize(
             method='PUT',
             resource_path='/sources/v1/{sourceId}/provisioning-policies/{usageType}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def put_provisioning_policy_v2(
+        self,
+        source_id: Annotated[StrictStr, Field(description="The Source ID.")],
+        id: Annotated[StrictStr, Field(description="The provisioning policy ID.")],
+        provisioningpolicydtov2: Provisioningpolicydtov2,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> Provisioningpolicydtov2:
+        """Update provisioning policy by ID
+
+        This end-point updates the provisioning policy with the specified ID on the specified source in Identity Security Cloud. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
+
+        :param source_id: The Source ID. (required)
+        :type source_id: str
+        :param id: The provisioning policy ID. (required)
+        :type id: str
+        :param provisioningpolicydtov2: (required)
+        :type provisioningpolicydtov2: Provisioningpolicydtov2
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._put_provisioning_policy_v2_serialize(
+            source_id=source_id,
+            id=id,
+            provisioningpolicydtov2=provisioningpolicydtov2,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Provisioningpolicydtov2",
+            '400': "Errorresponsedto",
+            '401': "ListSourcesV1401Response",
+            '403': "Errorresponsedto",
+            '404': "Errorresponsedto",
+            '429': "ListSourcesV1429Response",
+            '500': "Errorresponsedto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def put_provisioning_policy_v2_with_http_info(
+        self,
+        source_id: Annotated[StrictStr, Field(description="The Source ID.")],
+        id: Annotated[StrictStr, Field(description="The provisioning policy ID.")],
+        provisioningpolicydtov2: Provisioningpolicydtov2,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[Provisioningpolicydtov2]:
+        """Update provisioning policy by ID
+
+        This end-point updates the provisioning policy with the specified ID on the specified source in Identity Security Cloud. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
+
+        :param source_id: The Source ID. (required)
+        :type source_id: str
+        :param id: The provisioning policy ID. (required)
+        :type id: str
+        :param provisioningpolicydtov2: (required)
+        :type provisioningpolicydtov2: Provisioningpolicydtov2
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._put_provisioning_policy_v2_serialize(
+            source_id=source_id,
+            id=id,
+            provisioningpolicydtov2=provisioningpolicydtov2,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Provisioningpolicydtov2",
+            '400': "Errorresponsedto",
+            '401': "ListSourcesV1401Response",
+            '403': "Errorresponsedto",
+            '404': "Errorresponsedto",
+            '429': "ListSourcesV1429Response",
+            '500': "Errorresponsedto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def put_provisioning_policy_v2_without_preload_content(
+        self,
+        source_id: Annotated[StrictStr, Field(description="The Source ID.")],
+        id: Annotated[StrictStr, Field(description="The provisioning policy ID.")],
+        provisioningpolicydtov2: Provisioningpolicydtov2,
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Update provisioning policy by ID
+
+        This end-point updates the provisioning policy with the specified ID on the specified source in Identity Security Cloud. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
+
+        :param source_id: The Source ID. (required)
+        :type source_id: str
+        :param id: The provisioning policy ID. (required)
+        :type id: str
+        :param provisioningpolicydtov2: (required)
+        :type provisioningpolicydtov2: Provisioningpolicydtov2
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._put_provisioning_policy_v2_serialize(
+            source_id=source_id,
+            id=id,
+            provisioningpolicydtov2=provisioningpolicydtov2,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Provisioningpolicydtov2",
+            '400': "Errorresponsedto",
+            '401': "ListSourcesV1401Response",
+            '403': "Errorresponsedto",
+            '404': "Errorresponsedto",
+            '429': "ListSourcesV1429Response",
+            '500': "Errorresponsedto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _put_provisioning_policy_v2_serialize(
+        self,
+        source_id,
+        id,
+        provisioningpolicydtov2,
+        x_sail_point_experimental,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
+        # process the form parameters
+        # process the body parameter
+        if provisioningpolicydtov2 is not None:
+            _body_params = provisioningpolicydtov2
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='PUT',
+            resource_path='/sources/v2/{sourceId}/provisioning-policies/{id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -14963,7 +16598,7 @@ class SourcesApi:
     def update_provisioning_policies_in_bulk_v1(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
-        provisioningpolicydto: List[Provisioningpolicydto],
+        provisioningpolicydtov1: List[Provisioningpolicydtov1],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -14976,15 +16611,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Provisioningpolicydto]:
+    ) -> List[Provisioningpolicydtov1]:
         """Bulk update provisioning policies
 
         This end-point updates a list of provisioning policies on the specified source in IdentityNow.
 
         :param source_id: The Source id. (required)
         :type source_id: str
-        :param provisioningpolicydto: (required)
-        :type provisioningpolicydto: List[Provisioningpolicydto]
+        :param provisioningpolicydtov1: (required)
+        :type provisioningpolicydtov1: List[Provisioningpolicydtov1]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -15009,7 +16644,7 @@ class SourcesApi:
 
         _param = self._update_provisioning_policies_in_bulk_v1_serialize(
             source_id=source_id,
-            provisioningpolicydto=provisioningpolicydto,
+            provisioningpolicydtov1=provisioningpolicydtov1,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -15017,7 +16652,7 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Provisioningpolicydto]",
+            '200': "List[Provisioningpolicydtov1]",
             '400': "Errorresponsedto",
             '401': "ListSourcesV1401Response",
             '403': "Errorresponsedto",
@@ -15040,7 +16675,7 @@ class SourcesApi:
     def update_provisioning_policies_in_bulk_v1_with_http_info(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
-        provisioningpolicydto: List[Provisioningpolicydto],
+        provisioningpolicydtov1: List[Provisioningpolicydtov1],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -15053,15 +16688,15 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Provisioningpolicydto]]:
+    ) -> ApiResponse[List[Provisioningpolicydtov1]]:
         """Bulk update provisioning policies
 
         This end-point updates a list of provisioning policies on the specified source in IdentityNow.
 
         :param source_id: The Source id. (required)
         :type source_id: str
-        :param provisioningpolicydto: (required)
-        :type provisioningpolicydto: List[Provisioningpolicydto]
+        :param provisioningpolicydtov1: (required)
+        :type provisioningpolicydtov1: List[Provisioningpolicydtov1]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -15086,7 +16721,7 @@ class SourcesApi:
 
         _param = self._update_provisioning_policies_in_bulk_v1_serialize(
             source_id=source_id,
-            provisioningpolicydto=provisioningpolicydto,
+            provisioningpolicydtov1=provisioningpolicydtov1,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -15094,7 +16729,7 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Provisioningpolicydto]",
+            '200': "List[Provisioningpolicydtov1]",
             '400': "Errorresponsedto",
             '401': "ListSourcesV1401Response",
             '403': "Errorresponsedto",
@@ -15117,7 +16752,7 @@ class SourcesApi:
     def update_provisioning_policies_in_bulk_v1_without_preload_content(
         self,
         source_id: Annotated[StrictStr, Field(description="The Source id.")],
-        provisioningpolicydto: List[Provisioningpolicydto],
+        provisioningpolicydtov1: List[Provisioningpolicydtov1],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -15137,8 +16772,8 @@ class SourcesApi:
 
         :param source_id: The Source id. (required)
         :type source_id: str
-        :param provisioningpolicydto: (required)
-        :type provisioningpolicydto: List[Provisioningpolicydto]
+        :param provisioningpolicydtov1: (required)
+        :type provisioningpolicydtov1: List[Provisioningpolicydtov1]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -15163,7 +16798,7 @@ class SourcesApi:
 
         _param = self._update_provisioning_policies_in_bulk_v1_serialize(
             source_id=source_id,
-            provisioningpolicydto=provisioningpolicydto,
+            provisioningpolicydtov1=provisioningpolicydtov1,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -15171,7 +16806,7 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Provisioningpolicydto]",
+            '200': "List[Provisioningpolicydtov1]",
             '400': "Errorresponsedto",
             '401': "ListSourcesV1401Response",
             '403': "Errorresponsedto",
@@ -15189,7 +16824,7 @@ class SourcesApi:
     def _update_provisioning_policies_in_bulk_v1_serialize(
         self,
         source_id,
-        provisioningpolicydto,
+        provisioningpolicydtov1,
         _request_auth,
         _content_type,
         _headers,
@@ -15199,7 +16834,7 @@ class SourcesApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'Provisioningpolicydto': '',
+            'Provisioningpolicydtov1': '',
         }
 
         _path_params: Dict[str, str] = {}
@@ -15218,8 +16853,8 @@ class SourcesApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if provisioningpolicydto is not None:
-            _body_params = provisioningpolicydto
+        if provisioningpolicydtov1 is not None:
+            _body_params = provisioningpolicydtov1
 
 
         # set the HTTP header `Accept`
@@ -15284,7 +16919,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Provisioningpolicydto:
+    ) -> Provisioningpolicydtov1:
         """Partial update of provisioning policy
 
         This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
@@ -15328,7 +16963,7 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydto",
+            '200': "Provisioningpolicydtov1",
             '400': "Errorresponsedto",
             '401': "ListSourcesV1401Response",
             '403': "Errorresponsedto",
@@ -15365,7 +17000,7 @@ class SourcesApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Provisioningpolicydto]:
+    ) -> ApiResponse[Provisioningpolicydtov1]:
         """Partial update of provisioning policy
 
         This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
@@ -15409,7 +17044,7 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydto",
+            '200': "Provisioningpolicydtov1",
             '400': "Errorresponsedto",
             '401': "ListSourcesV1401Response",
             '403': "Errorresponsedto",
@@ -15490,7 +17125,7 @@ class SourcesApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Provisioningpolicydto",
+            '200': "Provisioningpolicydtov1",
             '400': "Errorresponsedto",
             '401': "ListSourcesV1401Response",
             '403': "Errorresponsedto",
@@ -15573,6 +17208,343 @@ class SourcesApi:
         return self.api_client.param_serialize(
             method='PATCH',
             resource_path='/sources/v1/{sourceId}/provisioning-policies/{usageType}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_provisioning_policy_v2(
+        self,
+        source_id: Annotated[StrictStr, Field(description="The Source id.")],
+        id: Annotated[StrictStr, Field(description="The provisioning policy ID.")],
+        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the schema.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> Provisioningpolicydtov2:
+        """Partial update of provisioning policy
+
+        This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
+
+        :param source_id: The Source id. (required)
+        :type source_id: str
+        :param id: The provisioning policy ID. (required)
+        :type id: str
+        :param jsonpatchoperation: The JSONPatch payload used to update the schema. (required)
+        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_provisioning_policy_v2_serialize(
+            source_id=source_id,
+            id=id,
+            jsonpatchoperation=jsonpatchoperation,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Provisioningpolicydtov2",
+            '400': "Errorresponsedto",
+            '401': "ListSourcesV1401Response",
+            '403': "Errorresponsedto",
+            '404': "Errorresponsedto",
+            '429': "ListSourcesV1429Response",
+            '500': "Errorresponsedto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def update_provisioning_policy_v2_with_http_info(
+        self,
+        source_id: Annotated[StrictStr, Field(description="The Source id.")],
+        id: Annotated[StrictStr, Field(description="The provisioning policy ID.")],
+        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the schema.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[Provisioningpolicydtov2]:
+        """Partial update of provisioning policy
+
+        This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
+
+        :param source_id: The Source id. (required)
+        :type source_id: str
+        :param id: The provisioning policy ID. (required)
+        :type id: str
+        :param jsonpatchoperation: The JSONPatch payload used to update the schema. (required)
+        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_provisioning_policy_v2_serialize(
+            source_id=source_id,
+            id=id,
+            jsonpatchoperation=jsonpatchoperation,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Provisioningpolicydtov2",
+            '400': "Errorresponsedto",
+            '401': "ListSourcesV1401Response",
+            '403': "Errorresponsedto",
+            '404': "Errorresponsedto",
+            '429': "ListSourcesV1429Response",
+            '500': "Errorresponsedto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def update_provisioning_policy_v2_without_preload_content(
+        self,
+        source_id: Annotated[StrictStr, Field(description="The Source id.")],
+        id: Annotated[StrictStr, Field(description="The provisioning policy ID.")],
+        jsonpatchoperation: Annotated[List[Jsonpatchoperation], Field(description="The JSONPatch payload used to update the schema.")],
+        x_sail_point_experimental: Annotated[Optional[StrictStr], Field(description="Use this header to enable this experimental API.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Partial update of provisioning policy
+
+        This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
+
+        :param source_id: The Source id. (required)
+        :type source_id: str
+        :param id: The provisioning policy ID. (required)
+        :type id: str
+        :param jsonpatchoperation: The JSONPatch payload used to update the schema. (required)
+        :type jsonpatchoperation: List[Jsonpatchoperation]
+        :param x_sail_point_experimental: Use this header to enable this experimental API.
+        :type x_sail_point_experimental: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_provisioning_policy_v2_serialize(
+            source_id=source_id,
+            id=id,
+            jsonpatchoperation=jsonpatchoperation,
+            x_sail_point_experimental=x_sail_point_experimental,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "Provisioningpolicydtov2",
+            '400': "Errorresponsedto",
+            '401': "ListSourcesV1401Response",
+            '403': "Errorresponsedto",
+            '404': "Errorresponsedto",
+            '429': "ListSourcesV1429Response",
+            '500': "Errorresponsedto",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_provisioning_policy_v2_serialize(
+        self,
+        source_id,
+        id,
+        jsonpatchoperation,
+        x_sail_point_experimental,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            'Jsonpatchoperation': '',
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if source_id is not None:
+            _path_params['sourceId'] = source_id
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        if x_sail_point_experimental is not None:
+            _header_params['X-SailPoint-Experimental'] = x_sail_point_experimental
+        # process the form parameters
+        # process the body parameter
+        if jsonpatchoperation is not None:
+            _body_params = jsonpatchoperation
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept( _query_params,
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json-patch+json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path='/sources/v2/{sourceId}/provisioning-policies/{id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

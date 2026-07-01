@@ -63,7 +63,8 @@ from sailpoint.sources.models.entitlementapprovalscheme import Entitlementapprov
 from sailpoint.sources.models.entitlementrevocationrequestconfig import Entitlementrevocationrequestconfig
 from sailpoint.sources.models.errormessagedto import Errormessagedto
 from sailpoint.sources.models.errorresponsedto import Errorresponsedto
-from sailpoint.sources.models.fielddetailsdto import Fielddetailsdto
+from sailpoint.sources.models.fielddetailsdtov1 import Fielddetailsdtov1
+from sailpoint.sources.models.fielddetailsdtov2 import Fielddetailsdtov2
 from sailpoint.sources.models.identityprofilesconnections import Identityprofilesconnections
 from sailpoint.sources.models.import_accounts_schema_v1_request import ImportAccountsSchemaV1Request
 from sailpoint.sources.models.import_accounts_v1_request import ImportAccountsV1Request
@@ -90,7 +91,8 @@ from sailpoint.sources.models.nativechangedetectionconfig import Nativechangedet
 from sailpoint.sources.models.passwordpolicyholdersdto_inner import PasswordpolicyholdersdtoInner
 from sailpoint.sources.models.passwordpolicyholdersdtoattributes import Passwordpolicyholdersdtoattributes
 from sailpoint.sources.models.passwordpolicyholdersdtoattributes_identity_attr_inner import PasswordpolicyholdersdtoattributesIdentityAttrInner
-from sailpoint.sources.models.provisioningpolicydto import Provisioningpolicydto
+from sailpoint.sources.models.provisioningpolicydtov1 import Provisioningpolicydtov1
+from sailpoint.sources.models.provisioningpolicydtov2 import Provisioningpolicydtov2
 from sailpoint.sources.models.resourceobject import Resourceobject
 from sailpoint.sources.models.resourceobjectsrequest import Resourceobjectsrequest
 from sailpoint.sources.models.resourceobjectsresponse import Resourceobjectsresponse

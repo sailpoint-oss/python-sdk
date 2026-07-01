@@ -73,12 +73,14 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create-provisioning-policy-v1**](#create-provisioning-policy-v1) | **POST** `/sources/v1/{sourceId}/provisioning-policies` | Create provisioning policy
+[**create-provisioning-policy-v2**](#create-provisioning-policy-v2) | **POST** `/sources/v2/{sourceId}/provisioning-policies` | Create provisioning policy
 [**create-source-schedule-v1**](#create-source-schedule-v1) | **POST** `/sources/v1/{sourceId}/schedules` | Create schedule on source
 [**create-source-schema-v1**](#create-source-schema-v1) | **POST** `/sources/v1/{sourceId}/schemas` | Create schema on source
 [**create-source-v1**](#create-source-v1) | **POST** `/sources/v1` | Creates a source in identitynow.
 [**delete-accounts-async-v1**](#delete-accounts-async-v1) | **POST** `/sources/v1/{id}/remove-accounts` | Remove all accounts in source
 [**delete-native-change-detection-config-v1**](#delete-native-change-detection-config-v1) | **DELETE** `/sources/v1/{sourceId}/native-change-detection-config` | Delete native change detection configuration
 [**delete-provisioning-policy-v1**](#delete-provisioning-policy-v1) | **DELETE** `/sources/v1/{sourceId}/provisioning-policies/{usageType}` | Delete provisioning policy by usagetype
+[**delete-provisioning-policy-v2**](#delete-provisioning-policy-v2) | **DELETE** `/sources/v2/{sourceId}/provisioning-policies/{id}` | Delete provisioning policy by ID
 [**delete-source-schedule-v1**](#delete-source-schedule-v1) | **DELETE** `/sources/v1/{sourceId}/schedules/{scheduleType}` | Delete source schedule by type.
 [**delete-source-schema-v1**](#delete-source-schema-v1) | **DELETE** `/sources/v1/{sourceId}/schemas/{schemaId}` | Delete source schema by id
 [**delete-source-v1**](#delete-source-v1) | **DELETE** `/sources/v1/{id}` | Delete source by id
@@ -89,6 +91,7 @@ Method | HTTP request | Description
 [**get-machine-account-deletion-approval-config-by-source-v1**](#get-machine-account-deletion-approval-config-by-source-v1) | **GET** `/sources/v1/{sourceId}/approval-config/machine-account-delete` | Machine Account Deletion Approval Config
 [**get-native-change-detection-config-v1**](#get-native-change-detection-config-v1) | **GET** `/sources/v1/{sourceId}/native-change-detection-config` | Native change detection configuration
 [**get-provisioning-policy-v1**](#get-provisioning-policy-v1) | **GET** `/sources/v1/{sourceId}/provisioning-policies/{usageType}` | Get provisioning policy by usagetype
+[**get-provisioning-policy-v2**](#get-provisioning-policy-v2) | **GET** `/sources/v2/{sourceId}/provisioning-policies/{id}` | Get provisioning policy by ID
 [**get-source-attr-sync-config-v1**](#get-source-attr-sync-config-v1) | **GET** `/sources/v1/{id}/attribute-sync-config` | Attribute sync config
 [**get-source-config-v1**](#get-source-config-v1) | **GET** `/sources/v1/{id}/connectors/source-config` | Gets source config with language-translations
 [**get-source-connections-v1**](#get-source-connections-v1) | **GET** `/sources/v1/{sourceId}/connections` | Get source connections by id
@@ -107,11 +110,13 @@ Method | HTTP request | Description
 [**import-uncorrelated-accounts-v1**](#import-uncorrelated-accounts-v1) | **POST** `/sources/v1/{id}/load-uncorrelated-accounts` | Process uncorrelated accounts
 [**list-password-policy-holders-on-source-v1**](#list-password-policy-holders-on-source-v1) | **GET** `/sources/v1/{sourceId}/password-policies` | Get Password Policy for source
 [**list-provisioning-policies-v1**](#list-provisioning-policies-v1) | **GET** `/sources/v1/{sourceId}/provisioning-policies` | Lists provisioningpolicies
+[**list-provisioning-policies-v2**](#list-provisioning-policies-v2) | **GET** `/sources/v2/{sourceId}/provisioning-policies` | Lists Provisioning Policies
 [**list-sources-v1**](#list-sources-v1) | **GET** `/sources/v1` | Lists all sources in identitynow.
 [**ping-cluster-v1**](#ping-cluster-v1) | **POST** `/sources/v1/{sourceId}/connector/ping-cluster` | Ping cluster for source connector
 [**put-correlation-config-v1**](#put-correlation-config-v1) | **PUT** `/sources/v1/{id}/correlation-config` | Update source correlation configuration
 [**put-native-change-detection-config-v1**](#put-native-change-detection-config-v1) | **PUT** `/sources/v1/{sourceId}/native-change-detection-config` | Update native change detection configuration
 [**put-provisioning-policy-v1**](#put-provisioning-policy-v1) | **PUT** `/sources/v1/{sourceId}/provisioning-policies/{usageType}` | Update provisioning policy by usagetype
+[**put-provisioning-policy-v2**](#put-provisioning-policy-v2) | **PUT** `/sources/v2/{sourceId}/provisioning-policies/{id}` | Update provisioning policy by ID
 [**put-source-attr-sync-config-v1**](#put-source-attr-sync-config-v1) | **PUT** `/sources/v1/{id}/attribute-sync-config` | Update attribute sync config
 [**put-source-schema-v1**](#put-source-schema-v1) | **PUT** `/sources/v1/{sourceId}/schemas/{schemaId}` | Update source schema (full)
 [**put-source-v1**](#put-source-v1) | **PUT** `/sources/v1/{id}` | Update source (full)
@@ -124,6 +129,7 @@ Method | HTTP request | Description
 [**update-password-policy-holders-v1**](#update-password-policy-holders-v1) | **PATCH** `/sources/v1/{sourceId}/password-policies` | Update password policy
 [**update-provisioning-policies-in-bulk-v1**](#update-provisioning-policies-in-bulk-v1) | **POST** `/sources/v1/{sourceId}/provisioning-policies/bulk-update` | Bulk update provisioning policies
 [**update-provisioning-policy-v1**](#update-provisioning-policy-v1) | **PATCH** `/sources/v1/{sourceId}/provisioning-policies/{usageType}` | Partial update of provisioning policy
+[**update-provisioning-policy-v2**](#update-provisioning-policy-v2) | **PATCH** `/sources/v2/{sourceId}/provisioning-policies/{id}` | Partial update of provisioning policy
 [**update-source-entitlement-request-config-v1**](#update-source-entitlement-request-config-v1) | **PUT** `/sources/v1/{id}/entitlement-request-config` | Update source entitlement request configuration
 [**update-source-schedule-v1**](#update-source-schedule-v1) | **PATCH** `/sources/v1/{sourceId}/schedules/{scheduleType}` | Update source schedule (partial)
 [**update-source-schema-v1**](#update-source-schema-v1) | **PATCH** `/sources/v1/{sourceId}/schemas/{schemaId}` | Update source schema (partial)
@@ -143,15 +149,15 @@ Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/d
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | The Source id
- Body  | provisioningpolicydto | [**Provisioningpolicydto**](../models/provisioningpolicydto) | True  | 
+ Body  | provisioningpolicydtov1 | [**Provisioningpolicydtov1**](../models/provisioningpolicydtov1) | True  | 
 
 ### Return type
-[**Provisioningpolicydto**](../models/provisioningpolicydto)
+[**Provisioningpolicydtov1**](../models/provisioningpolicydtov1)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-201 | Created ProvisioningPolicyDto object | Provisioningpolicydto |  -  |
+201 | Created ProvisioningPolicyDto object | Provisioningpolicydtov1 |  -  |
 400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
@@ -168,25 +174,106 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.provisioningpolicydto import Provisioningpolicydto
+from sailpoint.sources.models.provisioningpolicydtov1 import Provisioningpolicydtov1
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id # str | The Source id
-    provisioningpolicydto = '''{"name":"Account","description":"Account Provisioning Policy","usageType":"CREATE","fields":[{"name":"displayName","transform":{"type":"identityAttribute","attributes":{"name":"displayName"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false},{"name":"distinguishedName","transform":{"type":"usernameGenerator","attributes":{"sourceCheck":true,"patterns":["CN=$fi $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fti $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn$ln${uniqueCounter},OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"],"fn":{"type":"identityAttribute","attributes":{"name":"firstname"}},"ln":{"type":"identityAttribute","attributes":{"name":"lastname"}},"fi":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":1}},"fti":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":2}}}},"attributes":{"cloudMaxUniqueChecks":"5","cloudMaxSize":"100","cloudRequired":"true"},"isRequired":false,"type":"","isMultiValued":false},{"name":"description","transform":{"type":"static","attributes":{"value":""}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}]}''' # Provisioningpolicydto | 
+    provisioningpolicydtov1 = '''{"name":"Account","description":"Account Provisioning Policy","usageType":"CREATE","fields":[{"name":"displayName","transform":{"type":"identityAttribute","attributes":{"name":"displayName"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false},{"name":"distinguishedName","transform":{"type":"usernameGenerator","attributes":{"sourceCheck":true,"patterns":["CN=$fi $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fti $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn$ln${uniqueCounter},OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"],"fn":{"type":"identityAttribute","attributes":{"name":"firstname"}},"ln":{"type":"identityAttribute","attributes":{"name":"lastname"}},"fi":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":1}},"fti":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":2}}}},"attributes":{"cloudMaxUniqueChecks":"5","cloudMaxSize":"100","cloudRequired":"true"},"isRequired":false,"type":"","isMultiValued":false},{"name":"description","transform":{"type":"static","attributes":{"value":""}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}]}''' # Provisioningpolicydtov1 | 
 
     try:
         # Create provisioning policy
-        new_provisioningpolicydto = Provisioningpolicydto.from_json(provisioningpolicydto)
-        results = SourcesApi(api_client).create_provisioning_policy_v1(source_id=source_id, provisioningpolicydto=new_provisioningpolicydto)
+        new_provisioningpolicydto = Provisioningpolicydtov1.from_json(provisioningpolicydtov1)
+        results = SourcesApi(api_client).create_provisioning_policy_v1(source_id=source_id, provisioningpolicydtov1=new_provisioningpolicydto)
         # Below is a request that includes all optional parameters
         # results = SourcesApi(api_client).create_provisioning_policy_v1(source_id, new_provisioningpolicydto)
         print("The response of SourcesApi->create_provisioning_policy_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling SourcesApi->create_provisioning_policy_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## create-provisioning-policy-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
+Create provisioning policy
+This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types.
+Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
+The V2 API allows you to use a unique identifier (id) for each provisioning policy instead of usageType. This enables read, update, and delete operations on policies using their id.
+Note: The subtypeId field is required if usageType is CREATE_MACHINE_ACCOUNT.
+Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
+
+[API Spec](https://developer.sailpoint.com/docs/api/create-provisioning-policy-v-2)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | source_id | **str** | True  | The Source id
+ Body  | provisioningpolicydtov2 | [**Provisioningpolicydtov2**](../models/provisioningpolicydtov2) | True  | 
+  Query | use_default_fields | **bool** |   (optional) (default to False) | If passed as true, then it uses default fields from the connector template.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
+
+### Return type
+[**Provisioningpolicydtov2**](../models/provisioningpolicydtov2)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+201 | Created ProvisioningPolicyDtoV2 object | Provisioningpolicydtov2 |  -  |
+400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.sources.api.sources_api import SourcesApi
+from sailpoint.sources.api_client import ApiClient
+from sailpoint.sources.models.provisioningpolicydtov2 import Provisioningpolicydtov2
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+configuration.experimental = True
+
+with ApiClient(configuration) as api_client:
+    source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id # str | The Source id
+    provisioningpolicydtov2 = '''{"name":"Account","description":"Account Provisioning Policy","usageType":"CREATE","fields":[{"name":"displayName","transform":{"type":"identityAttribute","attributes":{"name":"displayName"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false},{"name":"distinguishedName","transform":{"type":"usernameGenerator","attributes":{"sourceCheck":true,"patterns":["CN=$fi $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fti $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com","CN=$fn$ln<uniqueCounter>,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com"],"fn":{"type":"identityAttribute","attributes":{"name":"firstname"}},"ln":{"type":"identityAttribute","attributes":{"name":"lastname"}},"fi":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":1}},"fti":{"type":"substring","attributes":{"input":{"type":"identityAttribute","attributes":{"name":"firstname"}},"begin":0,"end":2}}}},"attributes":{"cloudMaxUniqueChecks":"5","cloudMaxSize":"100","cloudRequired":"true"},"isRequired":false,"type":"","isMultiValued":false},{"name":"description","transform":{"type":"static","attributes":{"value":""}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}]}''' # Provisioningpolicydtov2 | 
+    use_default_fields = False # bool | If passed as true, then it uses default fields from the connector template. (optional) (default to False) # bool | If passed as true, then it uses default fields from the connector template. (optional) (default to False)
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+
+    try:
+        # Create provisioning policy
+        new_provisioningpolicydtov2 = Provisioningpolicydtov2.from_json(provisioningpolicydtov2)
+        results = SourcesApi(api_client).create_provisioning_policy_v2(source_id=source_id, provisioningpolicydtov2=new_provisioningpolicydtov2)
+        # Below is a request that includes all optional parameters
+        # results = SourcesApi(api_client).create_provisioning_policy_v2(source_id, new_provisioningpolicydtov2, use_default_fields, x_sail_point_experimental)
+        print("The response of SourcesApi->create_provisioning_policy_v2:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling SourcesApi->create_provisioning_policy_v2: %s\n" % e)
 ```
 
 
@@ -548,6 +635,78 @@ with ApiClient(configuration) as api_client:
         # SourcesApi(api_client).delete_provisioning_policy_v1(source_id, usage_type)
     except Exception as e:
         print("Exception when calling SourcesApi->delete_provisioning_policy_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## delete-provisioning-policy-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
+Delete provisioning policy by ID
+Deletes the provisioning policy with the specified ID on an application.
+
+[API Spec](https://developer.sailpoint.com/docs/api/delete-provisioning-policy-v-2)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | source_id | **str** | True  | The Source ID.
+Path   | id | **str** | True  | The provisioning policy ID.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
+
+### Return type
+ (empty response body)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+204 | No content - indicates the request was successful but there is no content to be returned in the response. |  |  -  |
+400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.sources.api.sources_api import SourcesApi
+from sailpoint.sources.api_client import ApiClient
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+configuration.experimental = True
+
+with ApiClient(configuration) as api_client:
+    source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID. # str | The Source ID.
+    id = 'f5dd23fe-3414-42b7-bb1c-869400ad7a10' # str | The provisioning policy ID. # str | The provisioning policy ID.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+
+    try:
+        # Delete provisioning policy by ID
+        
+        SourcesApi(api_client).delete_provisioning_policy_v2(source_id=source_id, id=id)
+        # Below is a request that includes all optional parameters
+        # SourcesApi(api_client).delete_provisioning_policy_v2(source_id, id, x_sail_point_experimental)
+    except Exception as e:
+        print("Exception when calling SourcesApi->delete_provisioning_policy_v2: %s\n" % e)
 ```
 
 
@@ -1098,12 +1257,12 @@ Path   | source_id | **str** | True  | The Source ID.
 Path   | usage_type | [**Usagetype**](../models/usagetype) | True  | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
 
 ### Return type
-[**Provisioningpolicydto**](../models/provisioningpolicydto)
+[**Provisioningpolicydtov1**](../models/provisioningpolicydtov1)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The requested ProvisioningPolicyDto was successfully retrieved. | Provisioningpolicydto |  -  |
+200 | The requested ProvisioningPolicyDto was successfully retrieved. | Provisioningpolicydtov1 |  -  |
 400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
@@ -1120,7 +1279,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.provisioningpolicydto import Provisioningpolicydto
+from sailpoint.sources.models.provisioningpolicydtov1 import Provisioningpolicydtov1
 from sailpoint.sources.models.usagetype import Usagetype
 from sailpoint.configuration import Configuration
 configuration = Configuration()
@@ -1140,6 +1299,81 @@ with ApiClient(configuration) as api_client:
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling SourcesApi->get_provisioning_policy_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## get-provisioning-policy-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
+Get provisioning policy by ID
+This end-point retrieves the ProvisioningPolicy with the specified ID on the specified Source in Identity Security Cloud.
+
+[API Spec](https://developer.sailpoint.com/docs/api/get-provisioning-policy-v-2)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | source_id | **str** | True  | The Source ID.
+Path   | id | **str** | True  | The provisioning policy ID.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
+
+### Return type
+[**Provisioningpolicydtov2**](../models/provisioningpolicydtov2)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | The requested ProvisioningPolicyDtoV2 was successfully retrieved. | Provisioningpolicydtov2 |  -  |
+400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.sources.api.sources_api import SourcesApi
+from sailpoint.sources.api_client import ApiClient
+from sailpoint.sources.models.provisioningpolicydtov2 import Provisioningpolicydtov2
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+configuration.experimental = True
+
+with ApiClient(configuration) as api_client:
+    source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID. # str | The Source ID.
+    id = 'f5dd23fe-3414-42b7-bb1c-869400ad7a10' # str | The provisioning policy ID. # str | The provisioning policy ID.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+
+    try:
+        # Get provisioning policy by ID
+        
+        results = SourcesApi(api_client).get_provisioning_policy_v2(source_id=source_id, id=id)
+        # Below is a request that includes all optional parameters
+        # results = SourcesApi(api_client).get_provisioning_policy_v2(source_id, id, x_sail_point_experimental)
+        print("The response of SourcesApi->get_provisioning_policy_v2:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling SourcesApi->get_provisioning_policy_v2: %s\n" % e)
 ```
 
 
@@ -2253,12 +2487,12 @@ Path   | source_id | **str** | True  | The Source id
   Query | limit | **int** |   (optional) (default to 250) | Limit        Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
 
 ### Return type
-[**List[Provisioningpolicydto]**](../models/provisioningpolicydto)
+[**List[Provisioningpolicydtov1]**](../models/provisioningpolicydtov1)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | List of ProvisioningPolicyDto objects | List[Provisioningpolicydto] |  -  |
+200 | List of ProvisioningPolicyDto objects | List[Provisioningpolicydtov1] |  -  |
 400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
@@ -2275,7 +2509,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.provisioningpolicydto import Provisioningpolicydto
+from sailpoint.sources.models.provisioningpolicydtov1 import Provisioningpolicydtov1
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
@@ -2296,6 +2530,86 @@ with ApiClient(configuration) as api_client:
             print(item.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling SourcesApi->list_provisioning_policies_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## list-provisioning-policies-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
+Lists Provisioning Policies
+This end-point lists all the ProvisioningPolicies in IdentityNow.
+
+[API Spec](https://developer.sailpoint.com/docs/api/list-provisioning-policies-v-2)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | source_id | **str** | True  | The Source id
+  Query | filters | **str** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **subtypeId**: *eq*  **usageType**: *eq*
+  Query | offset | **int** |   (optional) (default to 0) | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.
+  Query | limit | **int** |   (optional) (default to 250) | Limit Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
+
+### Return type
+[**List[Provisioningpolicydtov2]**](../models/provisioningpolicydtov2)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | List of ProvisioningPolicyDto objects | List[Provisioningpolicydtov2] |  -  |
+400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.sources.api.sources_api import SourcesApi
+from sailpoint.sources.api_client import ApiClient
+from sailpoint.sources.models.provisioningpolicydtov2 import Provisioningpolicydtov2
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+configuration.experimental = True
+
+with ApiClient(configuration) as api_client:
+    source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id # str | The Source id
+    filters = 'subtypeId eq \"6d28b7c1-620c-49c6-b6d5-cbf81eb4b5fa\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **subtypeId**: *eq*  **usageType**: *eq* (optional) # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **subtypeId**: *eq*  **usageType**: *eq* (optional)
+    offset = 0 # int | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0) # int | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0)
+    limit = 250 # int | Limit Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250) # int | Limit Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250)
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+
+    try:
+        # Lists Provisioning Policies
+        
+        results = SourcesApi(api_client).list_provisioning_policies_v2(source_id=source_id)
+        # Below is a request that includes all optional parameters
+        # results = SourcesApi(api_client).list_provisioning_policies_v2(source_id, filters, offset, limit, x_sail_point_experimental)
+        print("The response of SourcesApi->list_provisioning_policies_v2:\n")
+        for item in results:
+            print(item.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling SourcesApi->list_provisioning_policies_v2: %s\n" % e)
 ```
 
 
@@ -2569,15 +2883,15 @@ Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | The Source ID.
 Path   | usage_type | [**Usagetype**](../models/usagetype) | True  | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
- Body  | provisioningpolicydto | [**Provisioningpolicydto**](../models/provisioningpolicydto) | True  | 
+ Body  | provisioningpolicydtov1 | [**Provisioningpolicydtov1**](../models/provisioningpolicydtov1) | True  | 
 
 ### Return type
-[**Provisioningpolicydto**](../models/provisioningpolicydto)
+[**Provisioningpolicydtov1**](../models/provisioningpolicydtov1)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The ProvisioningPolicyDto was successfully replaced. | Provisioningpolicydto |  -  |
+200 | The ProvisioningPolicyDto was successfully replaced. | Provisioningpolicydtov1 |  -  |
 400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
@@ -2594,7 +2908,7 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.provisioningpolicydto import Provisioningpolicydto
+from sailpoint.sources.models.provisioningpolicydtov1 import Provisioningpolicydtov1
 from sailpoint.sources.models.usagetype import Usagetype
 from sailpoint.configuration import Configuration
 configuration = Configuration()
@@ -2603,18 +2917,97 @@ configuration = Configuration()
 with ApiClient(configuration) as api_client:
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID. # str | The Source ID.
     usage_type = sailpoint.sources.Usagetype() # Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. # Usagetype | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs.
-    provisioningpolicydto = '''sailpoint.sources.Provisioningpolicydto()''' # Provisioningpolicydto | 
+    provisioningpolicydtov1 = '''sailpoint.sources.Provisioningpolicydtov1()''' # Provisioningpolicydtov1 | 
 
     try:
         # Update provisioning policy by usagetype
-        new_provisioningpolicydto = Provisioningpolicydto.from_json(provisioningpolicydto)
-        results = SourcesApi(api_client).put_provisioning_policy_v1(source_id=source_id, usage_type=usage_type, provisioningpolicydto=new_provisioningpolicydto)
+        new_provisioningpolicydto = Provisioningpolicydtov1.from_json(provisioningpolicydtov1)
+        results = SourcesApi(api_client).put_provisioning_policy_v1(source_id=source_id, usage_type=usage_type, provisioningpolicydtov1=new_provisioningpolicydto)
         # Below is a request that includes all optional parameters
         # results = SourcesApi(api_client).put_provisioning_policy_v1(source_id, usage_type, new_provisioningpolicydto)
         print("The response of SourcesApi->put_provisioning_policy_v1:\n")
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling SourcesApi->put_provisioning_policy_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## put-provisioning-policy-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
+Update provisioning policy by ID
+This end-point updates the provisioning policy with the specified ID on the specified source in Identity Security Cloud.
+Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
+Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
+
+[API Spec](https://developer.sailpoint.com/docs/api/put-provisioning-policy-v-2)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | source_id | **str** | True  | The Source ID.
+Path   | id | **str** | True  | The provisioning policy ID.
+ Body  | provisioningpolicydtov2 | [**Provisioningpolicydtov2**](../models/provisioningpolicydtov2) | True  | 
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
+
+### Return type
+[**Provisioningpolicydtov2**](../models/provisioningpolicydtov2)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | The ProvisioningPolicyDto was successfully replaced. | Provisioningpolicydtov2 |  -  |
+400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.sources.api.sources_api import SourcesApi
+from sailpoint.sources.api_client import ApiClient
+from sailpoint.sources.models.provisioningpolicydtov2 import Provisioningpolicydtov2
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+configuration.experimental = True
+
+with ApiClient(configuration) as api_client:
+    source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID. # str | The Source ID.
+    id = 'f5dd23fe-3414-42b7-bb1c-869400ad7a10' # str | The provisioning policy ID. # str | The provisioning policy ID.
+    provisioningpolicydtov2 = '''sailpoint.sources.Provisioningpolicydtov2()''' # Provisioningpolicydtov2 | 
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+
+    try:
+        # Update provisioning policy by ID
+        new_provisioningpolicydtov2 = Provisioningpolicydtov2.from_json(provisioningpolicydtov2)
+        results = SourcesApi(api_client).put_provisioning_policy_v2(source_id=source_id, id=id, provisioningpolicydtov2=new_provisioningpolicydtov2)
+        # Below is a request that includes all optional parameters
+        # results = SourcesApi(api_client).put_provisioning_policy_v2(source_id, id, new_provisioningpolicydtov2, x_sail_point_experimental)
+        print("The response of SourcesApi->put_provisioning_policy_v2:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling SourcesApi->put_provisioning_policy_v2: %s\n" % e)
 ```
 
 
@@ -3300,15 +3693,15 @@ This end-point updates a list of provisioning policies on the specified source i
 Param Type | Name | Data Type | Required  | Description
 ------------- | ------------- | ------------- | ------------- | ------------- 
 Path   | source_id | **str** | True  | The Source id.
- Body  | provisioningpolicydto | [**[]Provisioningpolicydto**](../models/provisioningpolicydto) | True  | 
+ Body  | provisioningpolicydtov1 | [**[]Provisioningpolicydtov1**](../models/provisioningpolicydtov1) | True  | 
 
 ### Return type
-[**List[Provisioningpolicydto]**](../models/provisioningpolicydto)
+[**List[Provisioningpolicydtov1]**](../models/provisioningpolicydtov1)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | A list of the ProvisioningPolicyDto was successfully replaced. | List[Provisioningpolicydto] |  -  |
+200 | A list of the ProvisioningPolicyDto was successfully replaced. | List[Provisioningpolicydtov1] |  -  |
 400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
@@ -3325,19 +3718,19 @@ Code | Description  | Data Type | Response headers |
 ```python
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
-from sailpoint.sources.models.provisioningpolicydto import Provisioningpolicydto
+from sailpoint.sources.models.provisioningpolicydtov1 import Provisioningpolicydtov1
 from sailpoint.configuration import Configuration
 configuration = Configuration()
 
 
 with ApiClient(configuration) as api_client:
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id. # str | The Source id.
-    provisioningpolicydto = '''[sailpoint.sources.Provisioningpolicydto()]''' # List[Provisioningpolicydto] | 
+    provisioningpolicydtov1 = '''[sailpoint.sources.Provisioningpolicydtov1()]''' # List[Provisioningpolicydtov1] | 
 
     try:
         # Bulk update provisioning policies
-        new_provisioningpolicydto = Provisioningpolicydto.from_json(provisioningpolicydto)
-        results = SourcesApi(api_client).update_provisioning_policies_in_bulk_v1(source_id=source_id, provisioningpolicydto=new_provisioningpolicydto)
+        new_provisioningpolicydto = Provisioningpolicydtov1.from_json(provisioningpolicydtov1)
+        results = SourcesApi(api_client).update_provisioning_policies_in_bulk_v1(source_id=source_id, provisioningpolicydtov1=new_provisioningpolicydto)
         # Below is a request that includes all optional parameters
         # results = SourcesApi(api_client).update_provisioning_policies_in_bulk_v1(source_id, new_provisioningpolicydto)
         print("The response of SourcesApi->update_provisioning_policies_in_bulk_v1:\n")
@@ -3368,12 +3761,12 @@ Path   | usage_type | [**Usagetype**](../models/usagetype) | True  | The type of
  Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | The JSONPatch payload used to update the schema.
 
 ### Return type
-[**Provisioningpolicydto**](../models/provisioningpolicydto)
+[**Provisioningpolicydtov1**](../models/provisioningpolicydtov1)
 
 ### Responses
 Code | Description  | Data Type | Response headers |
 ------------- | ------------- | ------------- |------------------|
-200 | The ProvisioningPolicyDto was successfully updated. | Provisioningpolicydto |  -  |
+200 | The ProvisioningPolicyDto was successfully updated. | Provisioningpolicydtov1 |  -  |
 400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
 401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
 403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
@@ -3391,7 +3784,7 @@ Code | Description  | Data Type | Response headers |
 from sailpoint.sources.api.sources_api import SourcesApi
 from sailpoint.sources.api_client import ApiClient
 from sailpoint.sources.models.jsonpatchoperation import Jsonpatchoperation
-from sailpoint.sources.models.provisioningpolicydto import Provisioningpolicydto
+from sailpoint.sources.models.provisioningpolicydtov1 import Provisioningpolicydtov1
 from sailpoint.sources.models.usagetype import Usagetype
 from sailpoint.configuration import Configuration
 configuration = Configuration()
@@ -3412,6 +3805,86 @@ with ApiClient(configuration) as api_client:
         print(results.model_dump_json(by_alias=True, indent=4))
     except Exception as e:
         print("Exception when calling SourcesApi->update_provisioning_policy_v1: %s\n" % e)
+```
+
+
+
+[[Back to top]](#) 
+
+## update-provisioning-policy-v2
+:::warning experimental 
+This API is currently in an experimental state. The API is subject to change based on feedback and further testing. You must include the X-SailPoint-Experimental header and set it to `true` to use this endpoint.
+:::
+:::tip setting x-sailpoint-experimental header
+ on the configuration object you can set the `x-sailpoint-experimental` header to `true' to enable all experimantl endpoints within the SDK.
+ Example:
+ ```python
+   configuration = Configuration()
+   configuration.experimental = True
+ ```
+:::
+Partial update of provisioning policy
+This API selectively updates an existing Provisioning Policy using a JSONPatch payload.
+Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
+Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/docs/extensibility/transforms/guides/transforms-in-provisioning-policies) for more information.
+
+[API Spec](https://developer.sailpoint.com/docs/api/update-provisioning-policy-v-2)
+
+### Parameters 
+
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | source_id | **str** | True  | The Source id.
+Path   | id | **str** | True  | The provisioning policy ID.
+ Body  | jsonpatchoperation | [**[]Jsonpatchoperation**](../models/jsonpatchoperation) | True  | The JSONPatch payload used to update the schema.
+   | x_sail_point_experimental | **str** |   (optional) (default to 'true') | Use this header to enable this experimental API.
+
+### Return type
+[**Provisioningpolicydtov2**](../models/provisioningpolicydtov2)
+
+### Responses
+Code | Description  | Data Type | Response headers |
+------------- | ------------- | ------------- |------------------|
+200 | The ProvisioningPolicyDtoV2 was successfully updated. | Provisioningpolicydtov2 |  -  |
+400 | Client Error - Returned if the request body is invalid. | Errorresponsedto |  -  |
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListSourcesV1401Response |  -  |
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | Errorresponsedto |  -  |
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | Errorresponsedto |  -  |
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListSourcesV1429Response |  -  |
+500 | Internal Server Error - Returned if there is an unexpected error. | Errorresponsedto |  -  |
+
+### HTTP request headers
+ - **Content-Type**: application/json-patch+json
+ - **Accept**: application/json
+
+### Example
+
+```python
+from sailpoint.sources.api.sources_api import SourcesApi
+from sailpoint.sources.api_client import ApiClient
+from sailpoint.sources.models.jsonpatchoperation import Jsonpatchoperation
+from sailpoint.sources.models.provisioningpolicydtov2 import Provisioningpolicydtov2
+from sailpoint.configuration import Configuration
+configuration = Configuration()
+
+configuration.experimental = True
+
+with ApiClient(configuration) as api_client:
+    source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id. # str | The Source id.
+    id = 'f5dd23fe-3414-42b7-bb1c-869400ad7a10' # str | The provisioning policy ID. # str | The provisioning policy ID.
+    jsonpatchoperation = '''[{"op":"add","path":"/fields/0","value":{"name":"email","transform":{"type":"identityAttribute","attributes":{"name":"email"}},"attributes":{},"isRequired":false,"type":"string","isMultiValued":false}}]''' # List[Jsonpatchoperation] | The JSONPatch payload used to update the schema.
+    x_sail_point_experimental = 'true' # str | Use this header to enable this experimental API. (optional) (default to 'true') # str | Use this header to enable this experimental API. (optional) (default to 'true')
+
+    try:
+        # Partial update of provisioning policy
+        new_jsonpatchoperation = Jsonpatchoperation.from_json(jsonpatchoperation)
+        results = SourcesApi(api_client).update_provisioning_policy_v2(source_id=source_id, id=id, jsonpatchoperation=new_jsonpatchoperation)
+        # Below is a request that includes all optional parameters
+        # results = SourcesApi(api_client).update_provisioning_policy_v2(source_id, id, new_jsonpatchoperation, x_sail_point_experimental)
+        print("The response of SourcesApi->update_provisioning_policy_v2:\n")
+        print(results.model_dump_json(by_alias=True, indent=4))
+    except Exception as e:
+        print("Exception when calling SourcesApi->update_provisioning_policy_v2: %s\n" % e)
 ```
 
 

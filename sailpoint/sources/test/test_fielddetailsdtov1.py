@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.sources.models.fielddetailsdto import Fielddetailsdto
+from sailpoint.sources.models.fielddetailsdtov1 import Fielddetailsdtov1
 
 class TestFielddetailsdto(unittest.TestCase):
-    """Fielddetailsdto unit test stubs"""
+    """Fielddetailsdtov1 unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,16 +25,16 @@ class TestFielddetailsdto(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> Fielddetailsdto:
-        """Test Fielddetailsdto
+    def make_instance(self, include_optional) -> Fielddetailsdtov1:
+        """Test Fielddetailsdtov1
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Fielddetailsdto`
+        # uncomment below to create an instance of `Fielddetailsdtov1`
         """
-        model = Fielddetailsdto()
+        model = Fielddetailsdtov1()
         if include_optional:
-            return Fielddetailsdto(
+            return Fielddetailsdtov1(
                 name = 'userName',
                 transform = {"type":"rule","attributes":{"name":"Create Unique LDAP Attribute"}},
                 attributes = {"template":"${firstname}.${lastname}${uniqueCounter}","cloudMaxUniqueChecks":"50","cloudMaxSize":"20","cloudRequired":"true"},
@@ -43,12 +43,12 @@ class TestFielddetailsdto(unittest.TestCase):
                 is_multi_valued = False
             )
         else:
-            return Fielddetailsdto(
+            return Fielddetailsdtov1(
         )
         """
 
     def testFielddetailsdto(self):
-        """Test Fielddetailsdto"""
+        """Test Fielddetailsdtov1"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

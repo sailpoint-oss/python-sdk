@@ -1,15 +1,15 @@
 ---
-id: provisioningpolicydto
-title: Provisioningpolicydto
-pagination_label: Provisioningpolicydto
-sidebar_label: Provisioningpolicydto
+id: provisioningpolicydtov1
+title: Provisioningpolicydtov1
+pagination_label: Provisioningpolicydtov1
+sidebar_label: Provisioningpolicydtov1
 sidebar_class_name: pythonsdk
-keywords: ['python', 'Python', 'sdk', 'Provisioningpolicydto', 'Provisioningpolicydto'] 
-slug: /tools/sdk/python/sources/models/provisioningpolicydto
-tags: ['SDK', 'Software Development Kit', 'Provisioningpolicydto', 'Provisioningpolicydto']
+keywords: ['python', 'Python', 'sdk', 'Provisioningpolicydtov1', 'Provisioningpolicydtov1'] 
+slug: /tools/sdk/python/sources/models/provisioningpolicydtov1
+tags: ['SDK', 'Software Development Kit', 'Provisioningpolicydtov1', 'Provisioningpolicydtov1']
 ---
 
-# Provisioningpolicydto
+# Provisioningpolicydtov1
 
 
 ## Properties
@@ -19,15 +19,15 @@ Name | Type | Description | Notes
 **name** | **str** | the provisioning policy name | [required]
 **description** | **str** | the description of the provisioning policy | [optional] 
 **usage_type** | **Usagetype** |  | [optional] 
-**fields** | [**[]Fielddetailsdto**](fielddetailsdto) |  | [optional] 
+**fields** | [**[]Fielddetailsdtov1**](fielddetailsdtov1) |  | [optional] 
 }
 
 ## Example
 
 ```python
-from sailpoint.sources.models.provisioningpolicydto import Provisioningpolicydto
+from sailpoint.sources.models.provisioningpolicydtov1 import Provisioningpolicydtov1
 
-provisioningpolicydto = Provisioningpolicydto(
+provisioningpolicydtov1 = Provisioningpolicydtov1(
 name='example provisioning policy for inactive identities',
 description='this provisioning policy creates access based on an identity going inactive',
 usage_type='CREATE',

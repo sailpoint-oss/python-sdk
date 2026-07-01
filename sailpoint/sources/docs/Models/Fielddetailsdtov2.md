@@ -1,15 +1,15 @@
 ---
-id: fielddetailsdtov1
-title: Fielddetailsdtov1
-pagination_label: Fielddetailsdtov1
-sidebar_label: Fielddetailsdtov1
+id: fielddetailsdtov2
+title: Fielddetailsdtov2
+pagination_label: Fielddetailsdtov2
+sidebar_label: Fielddetailsdtov2
 sidebar_class_name: pythonsdk
-keywords: ['python', 'Python', 'sdk', 'Fielddetailsdtov1', 'Fielddetailsdtov1'] 
-slug: /tools/sdk/python/sources/models/fielddetailsdtov1
-tags: ['SDK', 'Software Development Kit', 'Fielddetailsdtov1', 'Fielddetailsdtov1']
+keywords: ['python', 'Python', 'sdk', 'Fielddetailsdtov2', 'Fielddetailsdtov2'] 
+slug: /tools/sdk/python/sources/models/fielddetailsdtov2
+tags: ['SDK', 'Software Development Kit', 'Fielddetailsdtov2', 'Fielddetailsdtov2']
 ---
 
-# Fielddetailsdtov1
+# Fielddetailsdtov2
 
 
 ## Properties
@@ -27,12 +27,12 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from sailpoint.sources.models.fielddetailsdtov1 import Fielddetailsdtov1
+from sailpoint.sources.models.fielddetailsdtov2 import Fielddetailsdtov2
 
-fielddetailsdtov1 = Fielddetailsdtov1(
+fielddetailsdtov2 = Fielddetailsdtov2(
 name='userName',
 transform={"type":"rule","attributes":{"name":"Create Unique LDAP Attribute"}},
-attributes={"template":"${firstname}.${lastname}${uniqueCounter}","cloudMaxUniqueChecks":"50","cloudMaxSize":"20","cloudRequired":"true"},
+attributes={"template":"firstname.lastname.uniqueCounter","cloudMaxUniqueChecks":"50","cloudMaxSize":"20","cloudRequired":"true"},
 is_required=False,
 type='string',
 is_multi_valued=False

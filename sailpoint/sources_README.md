@@ -67,12 +67,14 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *SourcesApi* | [**create_provisioning_policy_v1**](sailpoint/sources/docs/SourcesApi.md#create_provisioning_policy_v1) | **POST** /sources/v1/{sourceId}/provisioning-policies | Create provisioning policy
+*SourcesApi* | [**create_provisioning_policy_v2**](sailpoint/sources/docs/SourcesApi.md#create_provisioning_policy_v2) | **POST** /sources/v2/{sourceId}/provisioning-policies | Create provisioning policy
 *SourcesApi* | [**create_source_schedule_v1**](sailpoint/sources/docs/SourcesApi.md#create_source_schedule_v1) | **POST** /sources/v1/{sourceId}/schedules | Create schedule on source
 *SourcesApi* | [**create_source_schema_v1**](sailpoint/sources/docs/SourcesApi.md#create_source_schema_v1) | **POST** /sources/v1/{sourceId}/schemas | Create schema on source
 *SourcesApi* | [**create_source_v1**](sailpoint/sources/docs/SourcesApi.md#create_source_v1) | **POST** /sources/v1 | Creates a source in identitynow.
 *SourcesApi* | [**delete_accounts_async_v1**](sailpoint/sources/docs/SourcesApi.md#delete_accounts_async_v1) | **POST** /sources/v1/{id}/remove-accounts | Remove all accounts in source
 *SourcesApi* | [**delete_native_change_detection_config_v1**](sailpoint/sources/docs/SourcesApi.md#delete_native_change_detection_config_v1) | **DELETE** /sources/v1/{sourceId}/native-change-detection-config | Delete native change detection configuration
 *SourcesApi* | [**delete_provisioning_policy_v1**](sailpoint/sources/docs/SourcesApi.md#delete_provisioning_policy_v1) | **DELETE** /sources/v1/{sourceId}/provisioning-policies/{usageType} | Delete provisioning policy by usagetype
+*SourcesApi* | [**delete_provisioning_policy_v2**](sailpoint/sources/docs/SourcesApi.md#delete_provisioning_policy_v2) | **DELETE** /sources/v2/{sourceId}/provisioning-policies/{id} | Delete provisioning policy by ID
 *SourcesApi* | [**delete_source_schedule_v1**](sailpoint/sources/docs/SourcesApi.md#delete_source_schedule_v1) | **DELETE** /sources/v1/{sourceId}/schedules/{scheduleType} | Delete source schedule by type.
 *SourcesApi* | [**delete_source_schema_v1**](sailpoint/sources/docs/SourcesApi.md#delete_source_schema_v1) | **DELETE** /sources/v1/{sourceId}/schemas/{schemaId} | Delete source schema by id
 *SourcesApi* | [**delete_source_v1**](sailpoint/sources/docs/SourcesApi.md#delete_source_v1) | **DELETE** /sources/v1/{id} | Delete source by id
@@ -83,6 +85,7 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**get_machine_account_deletion_approval_config_by_source_v1**](sailpoint/sources/docs/SourcesApi.md#get_machine_account_deletion_approval_config_by_source_v1) | **GET** /sources/v1/{sourceId}/approval-config/machine-account-delete | Machine Account Deletion Approval Config
 *SourcesApi* | [**get_native_change_detection_config_v1**](sailpoint/sources/docs/SourcesApi.md#get_native_change_detection_config_v1) | **GET** /sources/v1/{sourceId}/native-change-detection-config | Native change detection configuration
 *SourcesApi* | [**get_provisioning_policy_v1**](sailpoint/sources/docs/SourcesApi.md#get_provisioning_policy_v1) | **GET** /sources/v1/{sourceId}/provisioning-policies/{usageType} | Get provisioning policy by usagetype
+*SourcesApi* | [**get_provisioning_policy_v2**](sailpoint/sources/docs/SourcesApi.md#get_provisioning_policy_v2) | **GET** /sources/v2/{sourceId}/provisioning-policies/{id} | Get provisioning policy by ID
 *SourcesApi* | [**get_source_attr_sync_config_v1**](sailpoint/sources/docs/SourcesApi.md#get_source_attr_sync_config_v1) | **GET** /sources/v1/{id}/attribute-sync-config | Attribute sync config
 *SourcesApi* | [**get_source_config_v1**](sailpoint/sources/docs/SourcesApi.md#get_source_config_v1) | **GET** /sources/v1/{id}/connectors/source-config | Gets source config with language-translations
 *SourcesApi* | [**get_source_connections_v1**](sailpoint/sources/docs/SourcesApi.md#get_source_connections_v1) | **GET** /sources/v1/{sourceId}/connections | Get source connections by id
@@ -101,11 +104,13 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**import_uncorrelated_accounts_v1**](sailpoint/sources/docs/SourcesApi.md#import_uncorrelated_accounts_v1) | **POST** /sources/v1/{id}/load-uncorrelated-accounts | Process uncorrelated accounts
 *SourcesApi* | [**list_password_policy_holders_on_source_v1**](sailpoint/sources/docs/SourcesApi.md#list_password_policy_holders_on_source_v1) | **GET** /sources/v1/{sourceId}/password-policies | Get Password Policy for source
 *SourcesApi* | [**list_provisioning_policies_v1**](sailpoint/sources/docs/SourcesApi.md#list_provisioning_policies_v1) | **GET** /sources/v1/{sourceId}/provisioning-policies | Lists provisioningpolicies
+*SourcesApi* | [**list_provisioning_policies_v2**](sailpoint/sources/docs/SourcesApi.md#list_provisioning_policies_v2) | **GET** /sources/v2/{sourceId}/provisioning-policies | Lists Provisioning Policies
 *SourcesApi* | [**list_sources_v1**](sailpoint/sources/docs/SourcesApi.md#list_sources_v1) | **GET** /sources/v1 | Lists all sources in identitynow.
 *SourcesApi* | [**ping_cluster_v1**](sailpoint/sources/docs/SourcesApi.md#ping_cluster_v1) | **POST** /sources/v1/{sourceId}/connector/ping-cluster | Ping cluster for source connector
 *SourcesApi* | [**put_correlation_config_v1**](sailpoint/sources/docs/SourcesApi.md#put_correlation_config_v1) | **PUT** /sources/v1/{id}/correlation-config | Update source correlation configuration
 *SourcesApi* | [**put_native_change_detection_config_v1**](sailpoint/sources/docs/SourcesApi.md#put_native_change_detection_config_v1) | **PUT** /sources/v1/{sourceId}/native-change-detection-config | Update native change detection configuration
 *SourcesApi* | [**put_provisioning_policy_v1**](sailpoint/sources/docs/SourcesApi.md#put_provisioning_policy_v1) | **PUT** /sources/v1/{sourceId}/provisioning-policies/{usageType} | Update provisioning policy by usagetype
+*SourcesApi* | [**put_provisioning_policy_v2**](sailpoint/sources/docs/SourcesApi.md#put_provisioning_policy_v2) | **PUT** /sources/v2/{sourceId}/provisioning-policies/{id} | Update provisioning policy by ID
 *SourcesApi* | [**put_source_attr_sync_config_v1**](sailpoint/sources/docs/SourcesApi.md#put_source_attr_sync_config_v1) | **PUT** /sources/v1/{id}/attribute-sync-config | Update attribute sync config
 *SourcesApi* | [**put_source_schema_v1**](sailpoint/sources/docs/SourcesApi.md#put_source_schema_v1) | **PUT** /sources/v1/{sourceId}/schemas/{schemaId} | Update source schema (full)
 *SourcesApi* | [**put_source_v1**](sailpoint/sources/docs/SourcesApi.md#put_source_v1) | **PUT** /sources/v1/{id} | Update source (full)
@@ -118,6 +123,7 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**update_password_policy_holders_v1**](sailpoint/sources/docs/SourcesApi.md#update_password_policy_holders_v1) | **PATCH** /sources/v1/{sourceId}/password-policies | Update password policy
 *SourcesApi* | [**update_provisioning_policies_in_bulk_v1**](sailpoint/sources/docs/SourcesApi.md#update_provisioning_policies_in_bulk_v1) | **POST** /sources/v1/{sourceId}/provisioning-policies/bulk-update | Bulk update provisioning policies
 *SourcesApi* | [**update_provisioning_policy_v1**](sailpoint/sources/docs/SourcesApi.md#update_provisioning_policy_v1) | **PATCH** /sources/v1/{sourceId}/provisioning-policies/{usageType} | Partial update of provisioning policy
+*SourcesApi* | [**update_provisioning_policy_v2**](sailpoint/sources/docs/SourcesApi.md#update_provisioning_policy_v2) | **PATCH** /sources/v2/{sourceId}/provisioning-policies/{id} | Partial update of provisioning policy
 *SourcesApi* | [**update_source_entitlement_request_config_v1**](sailpoint/sources/docs/SourcesApi.md#update_source_entitlement_request_config_v1) | **PUT** /sources/v1/{id}/entitlement-request-config | Update source entitlement request configuration
 *SourcesApi* | [**update_source_schedule_v1**](sailpoint/sources/docs/SourcesApi.md#update_source_schedule_v1) | **PATCH** /sources/v1/{sourceId}/schedules/{scheduleType} | Update source schedule (partial)
 *SourcesApi* | [**update_source_schema_v1**](sailpoint/sources/docs/SourcesApi.md#update_source_schema_v1) | **PATCH** /sources/v1/{sourceId}/schemas/{schemaId} | Update source schema (partial)
@@ -159,6 +165,7 @@ Class | Method | HTTP request | Description
  - [Errormessagedto](sailpoint/sources/docs/Errormessagedto.md)
  - [Errorresponsedto](sailpoint/sources/docs/Errorresponsedto.md)
  - [Fielddetailsdto](sailpoint/sources/docs/Fielddetailsdto.md)
+ - [Fielddetailsdtov2](sailpoint/sources/docs/Fielddetailsdtov2.md)
  - [Identityprofilesconnections](sailpoint/sources/docs/Identityprofilesconnections.md)
  - [ImportAccountsSchemaV1Request](sailpoint/sources/docs/ImportAccountsSchemaV1Request.md)
  - [ImportAccountsV1Request](sailpoint/sources/docs/ImportAccountsV1Request.md)
@@ -186,6 +193,7 @@ Class | Method | HTTP request | Description
  - [Passwordpolicyholdersdtoattributes](sailpoint/sources/docs/Passwordpolicyholdersdtoattributes.md)
  - [PasswordpolicyholdersdtoattributesIdentityAttrInner](sailpoint/sources/docs/PasswordpolicyholdersdtoattributesIdentityAttrInner.md)
  - [Provisioningpolicydto](sailpoint/sources/docs/Provisioningpolicydto.md)
+ - [Provisioningpolicydtov2](sailpoint/sources/docs/Provisioningpolicydtov2.md)
  - [Resourceobject](sailpoint/sources/docs/Resourceobject.md)
  - [Resourceobjectsrequest](sailpoint/sources/docs/Resourceobjectsrequest.md)
  - [Resourceobjectsresponse](sailpoint/sources/docs/Resourceobjectsresponse.md)
