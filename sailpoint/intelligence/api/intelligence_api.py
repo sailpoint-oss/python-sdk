@@ -62,7 +62,7 @@ class IntelligenceApi:
     ) -> Intelidentityaggregate:
         """Get identity by filter
 
-        Requires tenant license idn:response-and-remediation.  Resolves exactly one identity by SCIM-style filters expression and returns the Intelligence envelope. Supported queryable fields are id and email only. The response embeds the first page of accounts, rare access, access-history access items, and access-history certifications. Paged slices include a next link only when more results exist. The privilegedAccess slice contains the full result and is not paged. The outliers slice is omitted when the tenant lacks the IDA-outliers license.  A single match returns HTTP 200 with IntelIdentityAggregate.  Zero matches returns HTTP 404 with detailCode IDC_IDENTITY_NOT_FOUND.  Multiple matches returns HTTP 409 with detailCode IDC_IDENTITY_AMBIGUOUS and candidates listing each match. 
+        Requires tenant license idn:response-and-remediation.  Resolves exactly one identity by SCIM-style filters expression and returns the Intelligence envelope. Supported queryable fields are id and email only. The response embeds the first page of accounts, rare access, access-history access items, and access-history certifications. Paged slices include a next link only when more results exist. The privilegedAccess slice contains the full result and is not paged. The outliers slice is omitted when the tenant lacks the IDA-outliers license. 
 
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq* (required)
         :type filters: str
@@ -98,13 +98,13 @@ class IntelligenceApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Intelidentityaggregate",
-            '400': "Errorbody",
+            '400': "Errorresponsedto",
             '401': "GetIdentityIntelligenceV1401Response",
             '403': "Errorresponsedto",
-            '404': "Intelidentitynotfoundbody",
-            '409': "Intelidentityambiguousbody",
+            '404': "Errorresponsedto",
+            '409': "Errorresponsedto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorbody",
+            '500': "Errorresponsedto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -136,7 +136,7 @@ class IntelligenceApi:
     ) -> ApiResponse[Intelidentityaggregate]:
         """Get identity by filter
 
-        Requires tenant license idn:response-and-remediation.  Resolves exactly one identity by SCIM-style filters expression and returns the Intelligence envelope. Supported queryable fields are id and email only. The response embeds the first page of accounts, rare access, access-history access items, and access-history certifications. Paged slices include a next link only when more results exist. The privilegedAccess slice contains the full result and is not paged. The outliers slice is omitted when the tenant lacks the IDA-outliers license.  A single match returns HTTP 200 with IntelIdentityAggregate.  Zero matches returns HTTP 404 with detailCode IDC_IDENTITY_NOT_FOUND.  Multiple matches returns HTTP 409 with detailCode IDC_IDENTITY_AMBIGUOUS and candidates listing each match. 
+        Requires tenant license idn:response-and-remediation.  Resolves exactly one identity by SCIM-style filters expression and returns the Intelligence envelope. Supported queryable fields are id and email only. The response embeds the first page of accounts, rare access, access-history access items, and access-history certifications. Paged slices include a next link only when more results exist. The privilegedAccess slice contains the full result and is not paged. The outliers slice is omitted when the tenant lacks the IDA-outliers license. 
 
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq* (required)
         :type filters: str
@@ -172,13 +172,13 @@ class IntelligenceApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Intelidentityaggregate",
-            '400': "Errorbody",
+            '400': "Errorresponsedto",
             '401': "GetIdentityIntelligenceV1401Response",
             '403': "Errorresponsedto",
-            '404': "Intelidentitynotfoundbody",
-            '409': "Intelidentityambiguousbody",
+            '404': "Errorresponsedto",
+            '409': "Errorresponsedto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorbody",
+            '500': "Errorresponsedto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -210,7 +210,7 @@ class IntelligenceApi:
     ) -> RESTResponseType:
         """Get identity by filter
 
-        Requires tenant license idn:response-and-remediation.  Resolves exactly one identity by SCIM-style filters expression and returns the Intelligence envelope. Supported queryable fields are id and email only. The response embeds the first page of accounts, rare access, access-history access items, and access-history certifications. Paged slices include a next link only when more results exist. The privilegedAccess slice contains the full result and is not paged. The outliers slice is omitted when the tenant lacks the IDA-outliers license.  A single match returns HTTP 200 with IntelIdentityAggregate.  Zero matches returns HTTP 404 with detailCode IDC_IDENTITY_NOT_FOUND.  Multiple matches returns HTTP 409 with detailCode IDC_IDENTITY_AMBIGUOUS and candidates listing each match. 
+        Requires tenant license idn:response-and-remediation.  Resolves exactly one identity by SCIM-style filters expression and returns the Intelligence envelope. Supported queryable fields are id and email only. The response embeds the first page of accounts, rare access, access-history access items, and access-history certifications. Paged slices include a next link only when more results exist. The privilegedAccess slice contains the full result and is not paged. The outliers slice is omitted when the tenant lacks the IDA-outliers license. 
 
         :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **email**: *eq* (required)
         :type filters: str
@@ -246,13 +246,13 @@ class IntelligenceApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Intelidentityaggregate",
-            '400': "Errorbody",
+            '400': "Errorresponsedto",
             '401': "GetIdentityIntelligenceV1401Response",
             '403': "Errorresponsedto",
-            '404': "Intelidentitynotfoundbody",
-            '409': "Intelidentityambiguousbody",
+            '404': "Errorresponsedto",
+            '409': "Errorresponsedto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorbody",
+            '500': "Errorresponsedto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -389,11 +389,11 @@ class IntelligenceApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Intelaccessitemhistoryevent]",
-            '400': "Errorbody",
+            '400': "Errorresponsedto",
             '401': "GetIdentityIntelligenceV1401Response",
             '403': "Errorresponsedto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorbody",
+            '500': "Errorresponsedto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -469,11 +469,11 @@ class IntelligenceApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Intelaccessitemhistoryevent]",
-            '400': "Errorbody",
+            '400': "Errorresponsedto",
             '401': "GetIdentityIntelligenceV1401Response",
             '403': "Errorresponsedto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorbody",
+            '500': "Errorresponsedto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -549,11 +549,11 @@ class IntelligenceApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Intelaccessitemhistoryevent]",
-            '400': "Errorbody",
+            '400': "Errorresponsedto",
             '401': "GetIdentityIntelligenceV1401Response",
             '403': "Errorresponsedto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorbody",
+            '500': "Errorresponsedto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -698,11 +698,11 @@ class IntelligenceApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Intelaccessaccountwire]",
-            '400': "Errorbody",
+            '400': "Errorresponsedto",
             '401': "GetIdentityIntelligenceV1401Response",
             '403': "Errorresponsedto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorbody",
+            '500': "Errorresponsedto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -778,11 +778,11 @@ class IntelligenceApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Intelaccessaccountwire]",
-            '400': "Errorbody",
+            '400': "Errorresponsedto",
             '401': "GetIdentityIntelligenceV1401Response",
             '403': "Errorresponsedto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorbody",
+            '500': "Errorresponsedto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -858,11 +858,11 @@ class IntelligenceApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Intelaccessaccountwire]",
-            '400': "Errorbody",
+            '400': "Errorresponsedto",
             '401': "GetIdentityIntelligenceV1401Response",
             '403': "Errorresponsedto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorbody",
+            '500': "Errorresponsedto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1007,11 +1007,11 @@ class IntelligenceApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Intelcertificationhistoryevent]",
-            '400': "Errorbody",
+            '400': "Errorresponsedto",
             '401': "GetIdentityIntelligenceV1401Response",
             '403': "Errorresponsedto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorbody",
+            '500': "Errorresponsedto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1087,11 +1087,11 @@ class IntelligenceApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Intelcertificationhistoryevent]",
-            '400': "Errorbody",
+            '400': "Errorresponsedto",
             '401': "GetIdentityIntelligenceV1401Response",
             '403': "Errorresponsedto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorbody",
+            '500': "Errorresponsedto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1167,11 +1167,11 @@ class IntelligenceApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Intelcertificationhistoryevent]",
-            '400': "Errorbody",
+            '400': "Errorresponsedto",
             '401': "GetIdentityIntelligenceV1401Response",
             '403': "Errorresponsedto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorbody",
+            '500': "Errorresponsedto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1316,11 +1316,11 @@ class IntelligenceApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Inteloutlieraccessitem]",
-            '400': "Errorbody",
+            '400': "Errorresponsedto",
             '401': "GetIdentityIntelligenceV1401Response",
             '403': "Errorresponsedto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorbody",
+            '500': "Errorresponsedto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1396,11 +1396,11 @@ class IntelligenceApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Inteloutlieraccessitem]",
-            '400': "Errorbody",
+            '400': "Errorresponsedto",
             '401': "GetIdentityIntelligenceV1401Response",
             '403': "Errorresponsedto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorbody",
+            '500': "Errorresponsedto",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1476,11 +1476,11 @@ class IntelligenceApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Inteloutlieraccessitem]",
-            '400': "Errorbody",
+            '400': "Errorresponsedto",
             '401': "GetIdentityIntelligenceV1401Response",
             '403': "Errorresponsedto",
             '429': "GetIdentityIntelligenceV1429Response",
-            '500': "Errorbody",
+            '500': "Errorresponsedto",
         }
         response_data = self.api_client.call_api(
             *_param,

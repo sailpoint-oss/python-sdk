@@ -44,7 +44,7 @@ class Intelidentityaggregate(BaseModel):
     alias: Optional[StrictStr] = Field(default=None, description="Primary login or account alias for the identity.")
     email: Optional[StrictStr] = Field(default=None, description="Primary business email address for the identity.")
     identity_status: Optional[StrictStr] = Field(default=None, description="Current identity lifecycle status label from Identity Security Cloud.", alias="identityStatus")
-    is_manager: StrictBool = Field(description="True when the identity is flagged as a people manager in the organization.", alias="isManager")
+    is_manager: Optional[StrictBool] = Field(default=False, description="True when the identity is flagged as a people manager in the organization.", alias="isManager")
     accounts: Intelaccountsslice = Field(description="First page of accounts for the identity.")
     privileged_access: Intelprivilegedaccessslice = Field(description="Full privileged access result for the identity.", alias="privilegedAccess")
     outliers: Optional[Inteloutliersslice] = Field(default=None, description="Rare access slice; omitted when the tenant lacks the IDA-outliers license.")
@@ -158,7 +158,7 @@ class Intelidentityaggregate(BaseModel):
             "alias": obj.get("alias"),
             "email": obj.get("email"),
             "identityStatus": obj.get("identityStatus"),
-            "isManager": obj.get("isManager"),
+            "isManager": obj.get("isManager") if obj.get("isManager") is not None else False,
             "accounts": Intelaccountsslice.from_dict(obj["accounts"]) if obj.get("accounts") is not None else None,
             "privilegedAccess": Intelprivilegedaccessslice.from_dict(obj["privilegedAccess"]) if obj.get("privilegedAccess") is not None else None,
             "outliers": Inteloutliersslice.from_dict(obj["outliers"]) if obj.get("outliers") is not None else None,

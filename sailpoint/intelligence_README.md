@@ -74,7 +74,6 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [Errorbody](sailpoint/intelligence/docs/Errorbody.md)
  - [Errormessagedto](sailpoint/intelligence/docs/Errormessagedto.md)
  - [Errorresponsedto](sailpoint/intelligence/docs/Errorresponsedto.md)
  - [GetIdentityIntelligenceV1401Response](sailpoint/intelligence/docs/GetIdentityIntelligenceV1401Response.md)
@@ -88,9 +87,6 @@ Class | Method | HTTP request | Description
  - [Intelaccountsslice](sailpoint/intelligence/docs/Intelaccountsslice.md)
  - [Intelcertificationhistoryevent](sailpoint/intelligence/docs/Intelcertificationhistoryevent.md)
  - [Intelidentityaggregate](sailpoint/intelligence/docs/Intelidentityaggregate.md)
- - [Intelidentityambiguousbody](sailpoint/intelligence/docs/Intelidentityambiguousbody.md)
- - [Intelidentityambiguouscandidate](sailpoint/intelligence/docs/Intelidentityambiguouscandidate.md)
- - [Intelidentitynotfoundbody](sailpoint/intelligence/docs/Intelidentitynotfoundbody.md)
  - [Inteloutlieraccessitem](sailpoint/intelligence/docs/Inteloutlieraccessitem.md)
  - [Inteloutliersslice](sailpoint/intelligence/docs/Inteloutliersslice.md)
  - [Intelprivilegedaccessitemwire](sailpoint/intelligence/docs/Intelprivilegedaccessitemwire.md)

@@ -89,7 +89,6 @@ class TestIntelidentityaggregate(unittest.TestCase):
             return Intelidentityaggregate(
                 id = 'ef38f94347e94562b5bb8424a56397d8',
                 type = 'HUMAN',
-                is_manager = False,
                 accounts = sailpoint.intelligence.models.intelaccountsslice.intelaccountsslice(
                     items = [
                         sailpoint.intelligence.models.intelaccessaccountwire.intelaccessaccountwire(

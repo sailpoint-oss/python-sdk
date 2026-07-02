@@ -14,7 +14,6 @@
 
 
 # import models into model package
-from sailpoint.intelligence.models.errorbody import Errorbody
 from sailpoint.intelligence.models.errormessagedto import Errormessagedto
 from sailpoint.intelligence.models.errorresponsedto import Errorresponsedto
 from sailpoint.intelligence.models.get_identity_intelligence_v1401_response import GetIdentityIntelligenceV1401Response
@@ -28,9 +27,6 @@ from sailpoint.intelligence.models.intelaccesssourcewire import Intelaccesssourc
 from sailpoint.intelligence.models.intelaccountsslice import Intelaccountsslice
 from sailpoint.intelligence.models.intelcertificationhistoryevent import Intelcertificationhistoryevent
 from sailpoint.intelligence.models.intelidentityaggregate import Intelidentityaggregate
-from sailpoint.intelligence.models.intelidentityambiguousbody import Intelidentityambiguousbody
-from sailpoint.intelligence.models.intelidentityambiguouscandidate import Intelidentityambiguouscandidate
-from sailpoint.intelligence.models.intelidentitynotfoundbody import Intelidentitynotfoundbody
 from sailpoint.intelligence.models.inteloutlieraccessitem import Inteloutlieraccessitem
 from sailpoint.intelligence.models.inteloutliersslice import Inteloutliersslice
 from sailpoint.intelligence.models.intelprivilegedaccessitemwire import Intelprivilegedaccessitemwire
