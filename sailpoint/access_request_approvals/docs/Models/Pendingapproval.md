@@ -43,6 +43,7 @@ Name | Type | Description | Notes
 **requested_accounts** | [**[]Requestedaccountref**](requestedaccountref) | The accounts selected by the user for the access to be provisioned on, in case they have multiple accounts on one or more sources. | [optional] 
 **privilege_level** | **str** | The privilege level of the requested access item, if applicable. | [optional] 
 **max_permitted_access_duration** | [**PendingapprovalMaxPermittedAccessDuration**](pendingapproval-max-permitted-access-duration) |  | [optional] 
+**jit_details** | **[]Entitlementstatesnapshotjitdetail** | JIT (Just-In-Time) details for the requested access item, if applicable. | [optional] 
 }
 
 ## Example
@@ -151,7 +152,10 @@ requested_accounts=[
 privilege_level='High',
 max_permitted_access_duration=sailpoint.access_request_approvals.models.pendingapproval_max_permitted_access_duration.pendingapproval_maxPermittedAccessDuration(
                     value = 5, 
-                    time_unit = 'DAYS', )
+                    time_unit = 'DAYS', ),
+jit_details=[
+                    { }
+                    ]
 )
 
 ```

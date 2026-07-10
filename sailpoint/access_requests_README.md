@@ -117,6 +117,7 @@ Class | Method | HTTP request | Description
  - [Entitlementrequestconfig](sailpoint/access_requests/docs/Entitlementrequestconfig.md)
  - [Entitlementrequestconfigv2](sailpoint/access_requests/docs/Entitlementrequestconfigv2.md)
  - [Entitlementrevocationrequestconfig](sailpoint/access_requests/docs/Entitlementrevocationrequestconfig.md)
+ - [Entitlementstatesnapshotjitdetail](sailpoint/access_requests/docs/Entitlementstatesnapshotjitdetail.md)
  - [Errormessagedto](sailpoint/access_requests/docs/Errormessagedto.md)
  - [Errorresponsedto](sailpoint/access_requests/docs/Errorresponsedto.md)
  - [GetAccessRequestConfigV1401Response](sailpoint/access_requests/docs/GetAccessRequestConfigV1401Response.md)

@@ -126,7 +126,10 @@ class TestRequesteditemstatus(unittest.TestCase):
                         account_id = 'CN=Glen 067da3248e914,OU=YOUROU,OU=org-data-service,DC=YOURDC,DC=local', 
                         source_name = 'Multi Account AD source name', )
                     ],
-                privilege_level = 'High'
+                privilege_level = 'High',
+                jit_details = [
+                    { }
+                    ]
             )
         else:
             return Requesteditemstatus(

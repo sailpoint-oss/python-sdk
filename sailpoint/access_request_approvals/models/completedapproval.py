@@ -31,6 +31,7 @@ from sailpoint.access_request_approvals.models.completedapproval_requested_for i
 from sailpoint.access_request_approvals.models.completedapproval_requester_comment import CompletedapprovalRequesterComment
 from sailpoint.access_request_approvals.models.completedapproval_reviewer_comment import CompletedapprovalReviewerComment
 from sailpoint.access_request_approvals.models.completedapprovalstate import Completedapprovalstate
+from sailpoint.access_request_approvals.models.entitlementstatesnapshotjitdetail import Entitlementstatesnapshotjitdetail
 from sailpoint.access_request_approvals.models.ownerdto import Ownerdto
 from sailpoint.access_request_approvals.models.pendingapproval_max_permitted_access_duration import PendingapprovalMaxPermittedAccessDuration
 from sailpoint.access_request_approvals.models.requestableobjectreference import Requestableobjectreference
@@ -72,7 +73,8 @@ class Completedapproval(BaseModel):
     requested_accounts: Optional[List[Requestedaccountref]] = Field(default=None, description="The accounts selected by the user for the access to be provisioned on, in case they have multiple accounts on one or more sources.", alias="requestedAccounts")
     privilege_level: Optional[StrictStr] = Field(default=None, description="The privilege level of the requested access item, if applicable.", alias="privilegeLevel")
     max_permitted_access_duration: Optional[PendingapprovalMaxPermittedAccessDuration] = Field(default=None, alias="maxPermittedAccessDuration")
-    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "requestCreated", "requestType", "requester", "requestedFor", "reviewedBy", "owner", "requestedObject", "requesterComment", "reviewerComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "state", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "startDate", "startUpdateRequested", "currentStartDate", "sodViolationContext", "preApprovalTriggerResult", "clientMetadata", "requestedAccounts", "privilegeLevel", "maxPermittedAccessDuration"]
+    jit_details: Optional[List[Entitlementstatesnapshotjitdetail]] = Field(default=None, description="JIT (Just-In-Time) details for the requested access item, if applicable.", alias="jitDetails")
+    __properties: ClassVar[List[str]] = ["id", "name", "created", "modified", "requestCreated", "requestType", "requester", "requestedFor", "reviewedBy", "owner", "requestedObject", "requesterComment", "reviewerComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "state", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "startDate", "startUpdateRequested", "currentStartDate", "sodViolationContext", "preApprovalTriggerResult", "clientMetadata", "requestedAccounts", "privilegeLevel", "maxPermittedAccessDuration", "jitDetails"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -164,6 +166,13 @@ class Completedapproval(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of max_permitted_access_duration
         if self.max_permitted_access_duration:
             _dict['maxPermittedAccessDuration'] = self.max_permitted_access_duration.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in jit_details (list)
+        _items = []
+        if self.jit_details:
+            for _item_jit_details in self.jit_details:
+                if _item_jit_details:
+                    _items.append(_item_jit_details.to_dict())
+            _dict['jitDetails'] = _items
         # set to None if request_type (nullable) is None
         # and model_fields_set contains the field
         if self.request_type is None and "request_type" in self.model_fields_set:
@@ -203,6 +212,11 @@ class Completedapproval(BaseModel):
         # and model_fields_set contains the field
         if self.max_permitted_access_duration is None and "max_permitted_access_duration" in self.model_fields_set:
             _dict['maxPermittedAccessDuration'] = None
+
+        # set to None if jit_details (nullable) is None
+        # and model_fields_set contains the field
+        if self.jit_details is None and "jit_details" in self.model_fields_set:
+            _dict['jitDetails'] = None
 
         return _dict
 
@@ -244,7 +258,8 @@ class Completedapproval(BaseModel):
             "clientMetadata": obj.get("clientMetadata"),
             "requestedAccounts": [Requestedaccountref.from_dict(_item) for _item in obj["requestedAccounts"]] if obj.get("requestedAccounts") is not None else None,
             "privilegeLevel": obj.get("privilegeLevel"),
-            "maxPermittedAccessDuration": PendingapprovalMaxPermittedAccessDuration.from_dict(obj["maxPermittedAccessDuration"]) if obj.get("maxPermittedAccessDuration") is not None else None
+            "maxPermittedAccessDuration": PendingapprovalMaxPermittedAccessDuration.from_dict(obj["maxPermittedAccessDuration"]) if obj.get("maxPermittedAccessDuration") is not None else None,
+            "jitDetails": [Entitlementstatesnapshotjitdetail.from_dict(_item) for _item in obj["jitDetails"]] if obj.get("jitDetails") is not None else None
         })
         return _obj
 

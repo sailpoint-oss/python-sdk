@@ -93,6 +93,7 @@ Class | Method | HTTP request | Description
  - [CompletedapprovalReviewerComment](sailpoint/access_request_approvals/docs/CompletedapprovalReviewerComment.md)
  - [Completedapprovalstate](sailpoint/access_request_approvals/docs/Completedapprovalstate.md)
  - [Dtotype](sailpoint/access_request_approvals/docs/Dtotype.md)
+ - [Entitlementstatesnapshotjitdetail](sailpoint/access_request_approvals/docs/Entitlementstatesnapshotjitdetail.md)
  - [Errormessagedto](sailpoint/access_request_approvals/docs/Errormessagedto.md)
  - [Errorresponsedto](sailpoint/access_request_approvals/docs/Errorresponsedto.md)
  - [Forwardapprovaldto](sailpoint/access_request_approvals/docs/Forwardapprovaldto.md)

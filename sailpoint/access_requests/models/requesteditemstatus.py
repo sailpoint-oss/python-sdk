@@ -25,6 +25,7 @@ from sailpoint.access_requests.models.accessitemrequester import Accessitemreque
 from sailpoint.access_requests.models.accessrequestphases import Accessrequestphases
 from sailpoint.access_requests.models.accessrequesttype import Accessrequesttype
 from sailpoint.access_requests.models.approvalstatusdto import Approvalstatusdto
+from sailpoint.access_requests.models.entitlementstatesnapshotjitdetail import Entitlementstatesnapshotjitdetail
 from sailpoint.access_requests.models.errormessagedto import Errormessagedto
 from sailpoint.access_requests.models.manualworkitemdetails import Manualworkitemdetails
 from sailpoint.access_requests.models.requestedaccountref import Requestedaccountref
@@ -70,7 +71,8 @@ class Requesteditemstatus(BaseModel):
     client_metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Arbitrary key-value pairs, if any were included in the corresponding access request", alias="clientMetadata")
     requested_accounts: Optional[List[Requestedaccountref]] = Field(default=None, description="The accounts selected by the user for the access to be provisioned on, in case they have multiple accounts on one or more sources.", alias="requestedAccounts")
     privilege_level: Optional[StrictStr] = Field(default=None, description="The privilege level of the requested access item, if applicable.", alias="privilegeLevel")
-    __properties: ClassVar[List[str]] = ["id", "name", "type", "cancelledRequestDetails", "errorMessages", "state", "approvalDetails", "approvalIds", "manualWorkItemDetails", "accountActivityItemId", "requestType", "modified", "created", "requester", "requestedFor", "requesterComment", "sodViolationContext", "provisioningDetails", "preApprovalTriggerDetails", "accessRequestPhases", "description", "startDate", "removeDate", "cancelable", "accessRequestId", "clientMetadata", "requestedAccounts", "privilegeLevel"]
+    jit_details: Optional[List[Entitlementstatesnapshotjitdetail]] = Field(default=None, description="JIT (Just-In-Time) details for the requested access item, if applicable.", alias="jitDetails")
+    __properties: ClassVar[List[str]] = ["id", "name", "type", "cancelledRequestDetails", "errorMessages", "state", "approvalDetails", "approvalIds", "manualWorkItemDetails", "accountActivityItemId", "requestType", "modified", "created", "requester", "requestedFor", "requesterComment", "sodViolationContext", "provisioningDetails", "preApprovalTriggerDetails", "accessRequestPhases", "description", "startDate", "removeDate", "cancelable", "accessRequestId", "clientMetadata", "requestedAccounts", "privilegeLevel", "jitDetails"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
@@ -179,6 +181,13 @@ class Requesteditemstatus(BaseModel):
                 if _item_requested_accounts:
                     _items.append(_item_requested_accounts.to_dict())
             _dict['requestedAccounts'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in jit_details (list)
+        _items = []
+        if self.jit_details:
+            for _item_jit_details in self.jit_details:
+                if _item_jit_details:
+                    _items.append(_item_jit_details.to_dict())
+            _dict['jitDetails'] = _items
         # set to None if id (nullable) is None
         # and model_fields_set contains the field
         if self.id is None and "id" in self.model_fields_set:
@@ -254,6 +263,11 @@ class Requesteditemstatus(BaseModel):
         if self.privilege_level is None and "privilege_level" in self.model_fields_set:
             _dict['privilegeLevel'] = None
 
+        # set to None if jit_details (nullable) is None
+        # and model_fields_set contains the field
+        if self.jit_details is None and "jit_details" in self.model_fields_set:
+            _dict['jitDetails'] = None
+
         return _dict
 
     @classmethod
@@ -296,7 +310,8 @@ class Requesteditemstatus(BaseModel):
             "accessRequestId": obj.get("accessRequestId"),
             "clientMetadata": obj.get("clientMetadata"),
             "requestedAccounts": [Requestedaccountref.from_dict(_item) for _item in obj["requestedAccounts"]] if obj.get("requestedAccounts") is not None else None,
-            "privilegeLevel": obj.get("privilegeLevel")
+            "privilegeLevel": obj.get("privilegeLevel"),
+            "jitDetails": [Entitlementstatesnapshotjitdetail.from_dict(_item) for _item in obj["jitDetails"]] if obj.get("jitDetails") is not None else None
         })
         return _obj
 

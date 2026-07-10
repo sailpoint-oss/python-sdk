@@ -138,7 +138,10 @@ class TestCompletedapproval(unittest.TestCase):
                 privilege_level = 'High',
                 max_permitted_access_duration = sailpoint.access_request_approvals.models.pendingapproval_max_permitted_access_duration.pendingapproval_maxPermittedAccessDuration(
                     value = 5, 
-                    time_unit = 'DAYS', )
+                    time_unit = 'DAYS', ),
+                jit_details = [
+                    { }
+                    ]
             )
         else:
             return Completedapproval(
