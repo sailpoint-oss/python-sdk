@@ -33,10 +33,31 @@ class TestMachineIdentitiesApi(unittest.TestCase):
         """
         pass
 
+    def test_create_machine_identity_v2(self) -> None:
+        """Test case for create_machine_identity_v2
+
+        Create machine identity
+        """
+        pass
+
     def test_delete_machine_identity_v1(self) -> None:
         """Test case for delete_machine_identity_v1
 
         Delete machine identity
+        """
+        pass
+
+    def test_delete_machine_identity_v2(self) -> None:
+        """Test case for delete_machine_identity_v2
+
+        Delete machine identity
+        """
+        pass
+
+    def test_delete_ownership_correlation_config_v1(self) -> None:
+        """Test case for delete_ownership_correlation_config_v1
+
+        Delete ownership correlation config
         """
         pass
 
@@ -47,8 +68,29 @@ class TestMachineIdentitiesApi(unittest.TestCase):
         """
         pass
 
+    def test_get_machine_identity_v2(self) -> None:
+        """Test case for get_machine_identity_v2
+
+        Get machine identity details
+        """
+        pass
+
+    def test_get_ownership_correlation_config_v1(self) -> None:
+        """Test case for get_ownership_correlation_config_v1
+
+        Get ownership correlation config
+        """
+        pass
+
     def test_list_machine_identities_v1(self) -> None:
         """Test case for list_machine_identities_v1
+
+        List machine identities
+        """
+        pass
+
+    def test_list_machine_identities_v2(self) -> None:
+        """Test case for list_machine_identities_v2
 
         List machine identities
         """
@@ -58,6 +100,20 @@ class TestMachineIdentitiesApi(unittest.TestCase):
         """Test case for list_machine_identity_user_entitlements_v1
 
         List machine identity's user entitlements
+        """
+        pass
+
+    def test_list_ownership_correlation_configs_v1(self) -> None:
+        """Test case for list_ownership_correlation_configs_v1
+
+        List ownership correlation configs
+        """
+        pass
+
+    def test_patch_ownership_correlation_config_v1(self) -> None:
+        """Test case for patch_ownership_correlation_config_v1
+
+        Patch ownership correlation config
         """
         pass
 
@@ -72,6 +128,13 @@ class TestMachineIdentitiesApi(unittest.TestCase):
         """Test case for update_machine_identity_v1
 
         Update machine identity details
+        """
+        pass
+
+    def test_update_machine_identity_v2(self) -> None:
+        """Test case for update_machine_identity_v2
+
+        Partial update of machine identity
         """
         pass
 

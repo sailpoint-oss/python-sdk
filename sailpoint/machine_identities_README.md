@@ -67,21 +67,38 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *MachineIdentitiesApi* | [**create_machine_identity_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#create_machine_identity_v1) | **POST** /machine-identities/v1 | Create machine identity
+*MachineIdentitiesApi* | [**create_machine_identity_v2**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#create_machine_identity_v2) | **POST** /machine-identities/v2 | Create machine identity
 *MachineIdentitiesApi* | [**delete_machine_identity_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#delete_machine_identity_v1) | **DELETE** /machine-identities/v1/{id} | Delete machine identity
+*MachineIdentitiesApi* | [**delete_machine_identity_v2**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#delete_machine_identity_v2) | **DELETE** /machine-identities/v2/{id} | Delete machine identity
+*MachineIdentitiesApi* | [**delete_ownership_correlation_config_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#delete_ownership_correlation_config_v1) | **DELETE** /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs/{configId} | Delete ownership correlation config
 *MachineIdentitiesApi* | [**get_machine_identity_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#get_machine_identity_v1) | **GET** /machine-identities/v1/{id} | Get machine identity details
+*MachineIdentitiesApi* | [**get_machine_identity_v2**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#get_machine_identity_v2) | **GET** /machine-identities/v2/{id} | Get machine identity details
+*MachineIdentitiesApi* | [**get_ownership_correlation_config_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#get_ownership_correlation_config_v1) | **GET** /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs/{configId} | Get ownership correlation config
 *MachineIdentitiesApi* | [**list_machine_identities_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#list_machine_identities_v1) | **GET** /machine-identities/v1 | List machine identities
+*MachineIdentitiesApi* | [**list_machine_identities_v2**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#list_machine_identities_v2) | **GET** /machine-identities/v2 | List machine identities
 *MachineIdentitiesApi* | [**list_machine_identity_user_entitlements_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#list_machine_identity_user_entitlements_v1) | **GET** /machine-identity-user-entitlements/v1 | List machine identity&#39;s user entitlements
+*MachineIdentitiesApi* | [**list_ownership_correlation_configs_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#list_ownership_correlation_configs_v1) | **GET** /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs | List ownership correlation configs
+*MachineIdentitiesApi* | [**patch_ownership_correlation_config_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#patch_ownership_correlation_config_v1) | **PATCH** /sources/v1/{sourceId}/resources/{resourceId}/correlation-configs/{configId} | Patch ownership correlation config
 *MachineIdentitiesApi* | [**start_machine_identity_aggregation_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#start_machine_identity_aggregation_v1) | **POST** /sources/v1/{sourceId}/aggregate-agents | Start machine identity aggregation
 *MachineIdentitiesApi* | [**update_machine_identity_v1**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#update_machine_identity_v1) | **PATCH** /machine-identities/v1/{id} | Update machine identity details
+*MachineIdentitiesApi* | [**update_machine_identity_v2**](sailpoint/machine_identities/docs/MachineIdentitiesApi.md#update_machine_identity_v2) | **PATCH** /machine-identities/v2/{id} | Partial update of machine identity
 
 
 ## Documentation For Models
 
+ - [ArrayInner](sailpoint/machine_identities/docs/ArrayInner.md)
  - [Basecommondto](sailpoint/machine_identities/docs/Basecommondto.md)
  - [Basereferencedto](sailpoint/machine_identities/docs/Basereferencedto.md)
+ - [Businessapplicationref](sailpoint/machine_identities/docs/Businessapplicationref.md)
+ - [Correlationcondition](sailpoint/machine_identities/docs/Correlationcondition.md)
+ - [Correlationconfig](sailpoint/machine_identities/docs/Correlationconfig.md)
+ - [Correlationrule](sailpoint/machine_identities/docs/Correlationrule.md)
+ - [Correlationruleaction](sailpoint/machine_identities/docs/Correlationruleaction.md)
  - [Dtotype](sailpoint/machine_identities/docs/Dtotype.md)
  - [Errormessagedto](sailpoint/machine_identities/docs/Errormessagedto.md)
  - [Errorresponsedto](sailpoint/machine_identities/docs/Errorresponsedto.md)
+ - [Jsonpatchoperation](sailpoint/machine_identities/docs/Jsonpatchoperation.md)
+ - [JsonpatchoperationValue](sailpoint/machine_identities/docs/JsonpatchoperationValue.md)
  - [ListMachineIdentitiesV1401Response](sailpoint/machine_identities/docs/ListMachineIdentitiesV1401Response.md)
  - [ListMachineIdentitiesV1429Response](sailpoint/machine_identities/docs/ListMachineIdentitiesV1429Response.md)
  - [Localeorigin](sailpoint/machine_identities/docs/Localeorigin.md)
@@ -89,19 +106,28 @@ Class | Method | HTTP request | Description
  - [MachineIdentityDtoOwners](sailpoint/machine_identities/docs/MachineIdentityDtoOwners.md)
  - [MachineIdentityRequestUserEntitlements](sailpoint/machine_identities/docs/MachineIdentityRequestUserEntitlements.md)
  - [MachineIdentityResponseUserEntitlements](sailpoint/machine_identities/docs/MachineIdentityResponseUserEntitlements.md)
+ - [MachineIdentityV2Risk](sailpoint/machine_identities/docs/MachineIdentityV2Risk.md)
+ - [MachineIdentityV2Source](sailpoint/machine_identities/docs/MachineIdentityV2Source.md)
  - [Machineidentity](sailpoint/machine_identities/docs/Machineidentity.md)
  - [Machineidentityaggregationrequest](sailpoint/machine_identities/docs/Machineidentityaggregationrequest.md)
  - [Machineidentityaggregationresponse](sailpoint/machine_identities/docs/Machineidentityaggregationresponse.md)
  - [MachineidentityaggregationresponseTarget](sailpoint/machine_identities/docs/MachineidentityaggregationresponseTarget.md)
+ - [Machineidentityownersv2](sailpoint/machine_identities/docs/Machineidentityownersv2.md)
+ - [Machineidentityownersv2Primary](sailpoint/machine_identities/docs/Machineidentityownersv2Primary.md)
  - [Machineidentityrequest](sailpoint/machine_identities/docs/Machineidentityrequest.md)
  - [Machineidentityresponse](sailpoint/machine_identities/docs/Machineidentityresponse.md)
  - [Machineidentityuserentitlementresponse](sailpoint/machine_identities/docs/Machineidentityuserentitlementresponse.md)
  - [MachineidentityuserentitlementresponseEntitlement](sailpoint/machine_identities/docs/MachineidentityuserentitlementresponseEntitlement.md)
  - [MachineidentityuserentitlementresponseSource](sailpoint/machine_identities/docs/MachineidentityuserentitlementresponseSource.md)
+ - [Machineidentityv2](sailpoint/machine_identities/docs/Machineidentityv2.md)
+ - [Resourcev2](sailpoint/machine_identities/docs/Resourcev2.md)
+ - [Sanctionedstatus](sailpoint/machine_identities/docs/Sanctionedstatus.md)
  - [Taskdefinitionsummary](sailpoint/machine_identities/docs/Taskdefinitionsummary.md)
  - [Taskreturndetails](sailpoint/machine_identities/docs/Taskreturndetails.md)
  - [Taskstatusmessage](sailpoint/machine_identities/docs/Taskstatusmessage.md)
  - [TaskstatusmessageParametersInner](sailpoint/machine_identities/docs/TaskstatusmessageParametersInner.md)
+ - [Userentitlementv2](sailpoint/machine_identities/docs/Userentitlementv2.md)
+ - [Userentitlementv2Source](sailpoint/machine_identities/docs/Userentitlementv2Source.md)
 
 
 <a id="documentation-for-authorization"></a>

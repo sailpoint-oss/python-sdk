@@ -14,10 +14,10 @@
 
 import unittest
 
-from sailpoint.machine_identities.models.machineidentity import Machineidentity
+from sailpoint.machine_identities.models.machineidentityv1 import Machineidentityv1
 
 class TestMachineidentity(unittest.TestCase):
-    """Machineidentity unit test stubs"""
+    """Machineidentityv1 unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,16 +25,16 @@ class TestMachineidentity(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> Machineidentity:
-        """Test Machineidentity
+    def make_instance(self, include_optional) -> Machineidentityv1:
+        """Test Machineidentityv1
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Machineidentity`
+        # uncomment below to create an instance of `Machineidentityv1`
         """
-        model = Machineidentity()
+        model = Machineidentityv1()
         if include_optional:
-            return Machineidentity(
+            return Machineidentityv1(
                 id = 'id12345',
                 name = 'aName',
                 created = '2015-05-28T14:07:17Z',
@@ -55,7 +55,7 @@ class TestMachineidentity(unittest.TestCase):
                 uuid = 'f5dd23fe-3414-42b7-bb1c-869400ad7a10'
             )
         else:
-            return Machineidentity(
+            return Machineidentityv1(
                 name = 'aName',
                 native_identity = 'abc:123:dddd',
                 subtype = 'Application',
@@ -63,7 +63,7 @@ class TestMachineidentity(unittest.TestCase):
         """
 
     def testMachineidentity(self):
-        """Test Machineidentity"""
+        """Test Machineidentityv1"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -1,15 +1,15 @@
 ---
-id: machineidentity
-title: Machineidentity
-pagination_label: Machineidentity
-sidebar_label: Machineidentity
+id: machineidentityv1
+title: Machineidentityv1
+pagination_label: Machineidentityv1
+sidebar_label: Machineidentityv1
 sidebar_class_name: pythonsdk
-keywords: ['python', 'Python', 'sdk', 'Machineidentity', 'Machineidentity'] 
-slug: /tools/sdk/python/machine-identities/models/machineidentity
-tags: ['SDK', 'Software Development Kit', 'Machineidentity', 'Machineidentity']
+keywords: ['python', 'Python', 'sdk', 'Machineidentityv1', 'Machineidentityv1'] 
+slug: /tools/sdk/python/machine-identities/models/machineidentityv1
+tags: ['SDK', 'Software Development Kit', 'Machineidentityv1', 'Machineidentityv1']
 ---
 
-# Machineidentity
+# Machineidentityv1
 
 
 ## Properties
@@ -32,9 +32,9 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from sailpoint.machine_identities.models.machineidentity import Machineidentity
+from sailpoint.machine_identities.models.machineidentityv1 import Machineidentityv1
 
-machineidentity = Machineidentity(
+machineidentityv1 = Machineidentityv1(
 id='id12345',
 name='aName',
 created='2015-05-28T14:07:17Z',

@@ -25,9 +25,9 @@ from sailpoint.machine_identities.models.machine_identity_dto_owners import Mach
 from typing import Optional, Set
 from typing_extensions import Self
 
-class Machineidentity(BaseModel):
+class Machineidentityv1(BaseModel):
     """
-    Machineidentity
+    Machineidentityv1
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="System-generated unique ID of the Object")
     name: Optional[StrictStr] = Field(description="Name of the Object")
@@ -60,7 +60,7 @@ class Machineidentity(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Machineidentity from a JSON string"""
+        """Create an instance of Machineidentityv1 from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -99,7 +99,7 @@ class Machineidentity(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Machineidentity from a dict"""
+        """Create an instance of Machineidentityv1 from a dict"""
         if obj is None:
             return None
 
