@@ -19,13 +19,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **org_name** | **str** | The name of the org. | [optional] 
 **time_zone** | **str** | The selected time zone which is to be used for the org.  This directly affects when scheduled tasks are executed.  Valid options can be found at /beta/org-config/valid-time-zones | [optional] 
-**lcs_change_honors_source_enable_feature** | **bool** | Flag to determine whether the LCS_CHANGE_HONORS_SOURCE_ENABLE_FEATURE flag is enabled for the current org. | [optional] 
+**lcs_change_honors_source_enable_feature** | **bool** | Flag to determine whether the LCS_CHANGE_HONORS_SOURCE_ENABLE_FEATURE flag is enabled for the current org. | [optional] [default to False]
 **arm_customer_id** | **str** | ARM Customer ID | [optional] 
 **arm_sap_system_id_mappings** | **str** | A list of IDN::sourceId to ARM::systemId mappings. | [optional] 
 **arm_auth** | **str** | ARM authentication string | [optional] 
 **arm_db** | **str** | ARM database name | [optional] 
 **arm_sso_url** | **str** | ARM SSO URL | [optional] 
-**iai_enable_certification_recommendations** | **bool** | Flag to determine whether IAI Certification Recommendations are enabled for the current org | [optional] 
+**iai_enable_certification_recommendations** | **bool** | Flag to determine whether IAI Certification Recommendations are enabled for the current org | [optional] [default to True]
+**ai_agent_delete_request_enabled** | **bool** | Org opt-in flag that enables AI Agent delete-at-source lifecycle requests for the current org. | [optional] [default to False]
 **sod_report_configs** | [**[]Reportconfigdto**](reportconfigdto) |  | [optional] 
 }
 
@@ -44,6 +45,7 @@ arm_auth='epiYNTRYA2S7swisDWk1Zv4VMNgvqEjiBh5_ufuCWsma2m-5XADijqBg0ijXLby5nS6lxZ
 arm_db='EU',
 arm_sso_url='https://your-arm-sso-url',
 iai_enable_certification_recommendations=True,
+ai_agent_delete_request_enabled=False,
 sod_report_configs=[
                     sailpoint.org_config.models.report_config_dto.Report Config DTO(
                         column_name = 'SOD Business Name', 

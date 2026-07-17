@@ -30,15 +30,16 @@ class Orgconfig(BaseModel):
     """ # noqa: E501
     org_name: Optional[StrictStr] = Field(default=None, description="The name of the org.", alias="orgName")
     time_zone: Optional[StrictStr] = Field(default=None, description="The selected time zone which is to be used for the org.  This directly affects when scheduled tasks are executed.  Valid options can be found at /beta/org-config/valid-time-zones", alias="timeZone")
-    lcs_change_honors_source_enable_feature: Optional[StrictBool] = Field(default=None, description="Flag to determine whether the LCS_CHANGE_HONORS_SOURCE_ENABLE_FEATURE flag is enabled for the current org.", alias="lcsChangeHonorsSourceEnableFeature")
+    lcs_change_honors_source_enable_feature: Optional[StrictBool] = Field(default=False, description="Flag to determine whether the LCS_CHANGE_HONORS_SOURCE_ENABLE_FEATURE flag is enabled for the current org.", alias="lcsChangeHonorsSourceEnableFeature")
     arm_customer_id: Optional[StrictStr] = Field(default=None, description="ARM Customer ID", alias="armCustomerId")
     arm_sap_system_id_mappings: Optional[StrictStr] = Field(default=None, description="A list of IDN::sourceId to ARM::systemId mappings.", alias="armSapSystemIdMappings")
     arm_auth: Optional[StrictStr] = Field(default=None, description="ARM authentication string", alias="armAuth")
     arm_db: Optional[StrictStr] = Field(default=None, description="ARM database name", alias="armDb")
     arm_sso_url: Optional[StrictStr] = Field(default=None, description="ARM SSO URL", alias="armSsoUrl")
-    iai_enable_certification_recommendations: Optional[StrictBool] = Field(default=None, description="Flag to determine whether IAI Certification Recommendations are enabled for the current org", alias="iaiEnableCertificationRecommendations")
+    iai_enable_certification_recommendations: Optional[StrictBool] = Field(default=True, description="Flag to determine whether IAI Certification Recommendations are enabled for the current org", alias="iaiEnableCertificationRecommendations")
+    ai_agent_delete_request_enabled: Optional[StrictBool] = Field(default=False, description="Org opt-in flag that enables AI Agent delete-at-source lifecycle requests for the current org.", alias="aiAgentDeleteRequestEnabled")
     sod_report_configs: Optional[List[Reportconfigdto]] = Field(default=None, alias="sodReportConfigs")
-    __properties: ClassVar[List[str]] = ["orgName", "timeZone", "lcsChangeHonorsSourceEnableFeature", "armCustomerId", "armSapSystemIdMappings", "armAuth", "armDb", "armSsoUrl", "iaiEnableCertificationRecommendations", "sodReportConfigs"]
+    __properties: ClassVar[List[str]] = ["orgName", "timeZone", "lcsChangeHonorsSourceEnableFeature", "armCustomerId", "armSapSystemIdMappings", "armAuth", "armDb", "armSsoUrl", "iaiEnableCertificationRecommendations", "aiAgentDeleteRequestEnabled", "sodReportConfigs"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -111,6 +112,11 @@ class Orgconfig(BaseModel):
         if self.arm_sso_url is None and "arm_sso_url" in self.model_fields_set:
             _dict['armSsoUrl'] = None
 
+        # set to None if ai_agent_delete_request_enabled (nullable) is None
+        # and model_fields_set contains the field
+        if self.ai_agent_delete_request_enabled is None and "ai_agent_delete_request_enabled" in self.model_fields_set:
+            _dict['aiAgentDeleteRequestEnabled'] = None
+
         return _dict
 
     @classmethod
@@ -125,13 +131,14 @@ class Orgconfig(BaseModel):
         _obj = cls.model_validate({
             "orgName": obj.get("orgName"),
             "timeZone": obj.get("timeZone"),
-            "lcsChangeHonorsSourceEnableFeature": obj.get("lcsChangeHonorsSourceEnableFeature"),
+            "lcsChangeHonorsSourceEnableFeature": obj.get("lcsChangeHonorsSourceEnableFeature") if obj.get("lcsChangeHonorsSourceEnableFeature") is not None else False,
             "armCustomerId": obj.get("armCustomerId"),
             "armSapSystemIdMappings": obj.get("armSapSystemIdMappings"),
             "armAuth": obj.get("armAuth"),
             "armDb": obj.get("armDb"),
             "armSsoUrl": obj.get("armSsoUrl"),
-            "iaiEnableCertificationRecommendations": obj.get("iaiEnableCertificationRecommendations"),
+            "iaiEnableCertificationRecommendations": obj.get("iaiEnableCertificationRecommendations") if obj.get("iaiEnableCertificationRecommendations") is not None else True,
+            "aiAgentDeleteRequestEnabled": obj.get("aiAgentDeleteRequestEnabled") if obj.get("aiAgentDeleteRequestEnabled") is not None else False,
             "sodReportConfigs": [Reportconfigdto.from_dict(_item) for _item in obj["sodReportConfigs"]] if obj.get("sodReportConfigs") is not None else None
         })
         return _obj

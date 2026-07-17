@@ -44,6 +44,7 @@ class TestOrgconfig(unittest.TestCase):
                 arm_db = 'EU',
                 arm_sso_url = 'https://your-arm-sso-url',
                 iai_enable_certification_recommendations = True,
+                ai_agent_delete_request_enabled = False,
                 sod_report_configs = [
                     sailpoint.org_config.models.report_config_dto.Report Config DTO(
                         column_name = 'SOD Business Name', 
